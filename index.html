@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portal da Manhã — 7 de agosto de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<style>
+  :root{
+    --ink:#17181C;
+    --ink-soft:#514F49;
+    --paper:#F6F3EC;
+    --paper-2:#FFFFFF;
+    --line:#E4DFD3;
+    --branding:#C1502E;
+    --branding-tint:#FBECE4;
+    --design:#20705C;
+    --design-tint:#E7F2ED;
+    --tecnologia:#3B4CC0;
+    --tecnologia-tint:#EAEBFA;
+    --star:#D79A2C;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  ::selection{background:var(--ink);color:var(--paper);}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* HEADER */
+  .site-header{padding:56px 0 36px;}
+  .kicker{
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);margin:0 0 14px;
+  }
+  .wordmark{
+    font-family:"Fraunces",serif;
+    font-weight:500;
+    font-size:clamp(40px,7vw,72px);
+    letter-spacing:-0.02em;
+    margin:0;
+    line-height:0.98;
+  }
+  .wordmark em{font-style:italic;font-weight:400;color:var(--branding);}
+  .header-meta{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:18px;padding-top:18px;border-top:1px solid var(--line);
+    gap:20px;flex-wrap:wrap;
+  }
+  .header-date{font-size:15px;color:var(--ink-soft);text-transform:capitalize;}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;}
+  .filter-btn{
+    font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;padding:9px 16px;border-radius:100px;
+    border:1px solid var(--line);background:var(--paper-2);color:var(--ink-soft);
+    cursor:pointer;transition:all .15s ease;
+  }
+  .filter-btn:hover{border-color:var(--ink);color:var(--ink);}
+  .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+
+  /* TAG PILL */
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 12px;border-radius:100px;
+  }
+  .tag.branding{background:var(--branding-tint);color:var(--branding);}
+  .tag.design{background:var(--design-tint);color:var(--design);}
+  .tag.tecnologia{background:var(--tecnologia-tint);color:var(--tecnologia);}
+  .stars{display:inline-flex;gap:2px;align-items:center;}
+  .stars svg{width:12px;height:12px;}
+
+  /* HERO */
+  .hero{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:44px;align-items:center;
+    padding:8px 0 56px;cursor:pointer;
+  }
+  .hero-art{border-radius:22px;overflow:hidden;box-shadow:0 24px 48px -24px rgba(23,24,28,.35);}
+  .hero-art svg{display:block;width:100%;height:auto;}
+  .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .hero h1{
+    font-family:"Fraunces",serif;font-weight:500;
+    font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.01em;
+    margin:0 0 18px;
+  }
+  .hero p.dek{font-size:17px;color:var(--ink-soft);margin:0 0 22px;max-width:46ch;}
+  .read-link{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    letter-spacing:.03em;text-transform:uppercase;
+  }
+  .read-link .arrow{transition:transform .15s ease;}
+  .hero:hover .read-link .arrow{transform:translateX(4px);}
+
+  /* GRID */
+  .section-label{
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);margin:0 0 22px;padding-top:32px;border-top:1px solid var(--line);
+  }
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:64px;
+  }
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 32px -20px rgba(23,24,28,.28);}
+  .card-art{aspect-ratio:4/3;}
+  .card-art svg{display:block;width:100%;height:100%;}
+  .card-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .card h3{
+    font-family:"Fraunces",serif;font-weight:500;font-size:19px;line-height:1.22;
+    margin:0;letter-spacing:-0.01em;
+  }
+  .card .dek{font-size:13.5px;color:var(--ink-soft);margin:0;flex:1;}
+  .card-foot{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:auto;}
+
+  .warn{
+    grid-column:1/-1;font-size:13px;color:var(--ink-soft);background:var(--paper-2);
+    border:1px dashed var(--line);border-radius:14px;padding:16px 20px;
+  }
+
+  /* DETAIL OVERLAY */
+  .overlay{
+    position:fixed;inset:0;background:rgba(23,24,28,.5);backdrop-filter:blur(2px);
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;
+    overflow-y:auto;z-index:50;animation:fade .18s ease;
+  }
+  @keyframes fade{from{opacity:0;}to{opacity:1;}}
+  .panel{
+    background:var(--paper-2);max-width:760px;width:100%;border-radius:24px;
+    padding:0 0 48px;animation:rise .22s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.4);
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .panel-art{aspect-ratio:16/8;border-radius:24px 24px 0 0;overflow:hidden;position:relative;}
+  .panel-art svg{display:block;width:100%;height:100%;}
+  .close-btn{
+    position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:100px;
+    background:rgba(255,255,255,.9);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+  }
+  .panel-body{padding:32px 44px 0;}
+  .panel-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .panel h2{
+    font-family:"Fraunces",serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);
+    line-height:1.1;letter-spacing:-0.01em;margin:0 0 22px;
+  }
+  .panel .summary p{font-size:16px;line-height:1.68;color:#2B2C30;margin:0 0 16px;}
+  .source-link{
+    display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+    font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    padding:12px 22px;border-radius:100px;border:1.5px solid var(--ink);
+    text-decoration:none;transition:background .15s ease,color .15s ease;
+  }
+  .source-link:hover{background:var(--ink);color:var(--paper);}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--ink-soft);font-size:13px;}
+  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;gap:26px;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .panel-body{padding:26px 22px 0;}
+  }
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    .header-meta{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useMemo } = React;
+
+/* ---------- DADOS DO DIA ---------- */
+const ARTICLES = [
+  {
+    id: 1,
+    category: "tecnologia",
+    categoryLabel: "Tecnologia/IA",
+    stars: 5,
+    title: "Hassabis deixa o comando do DeepMind e Jeff Dean sai do Google para abrir empresa própria",
+    dek: "Numa mesma semana, o Google reorganiza a cúpula da sua operação de IA e vê seu cientista-chefe partir — com investimento da própria empresa no que ele construir a seguir.",
+    source: "Axios / MIT Technology Review",
+    sourceUrl: "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai",
+    summary: [
+      "O Google promoveu uma reviravolta silenciosa, mas profunda, no topo da sua operação de inteligência artificial. Demis Hassabis, fundador e rosto público do DeepMind, deixa o cargo de CEO e passa a atuar como chairman da unidade e “chief scientist” da Alphabet — um recuo estratégico do dia a dia, não uma saída. Quem assume a operação é Koray Kavukcuoglu, até então CTO do laboratório, promovido a SVP para tocar o trabalho técnico e comercial.",
+      "A mudança acontece num momento delicado: o Google vem perdendo talentos importantes para rivais, atrasou o lançamento do próximo modelo de fronteira e enfrenta rumores de clima interno desgastado, enquanto a pressão de OpenAI e Anthropic aperta.",
+      "Para completar o tremor, Jeff Dean, cientista-chefe do Google e uma das figuras mais respeitadas da história da empresa, também está de saída — para abrir uma startup própria. O detalhe que chama atenção: o próprio Google vai investir no novo projeto de Dean, numa aposta pouco ortodoxa de manter um pé dentro do que ele construir a seguir, em vez de simplesmente tentar retê-lo."
+    ]
+  },
+  {
+    id: 2,
+    category: "design",
+    categoryLabel: "Design",
+    stars: 4,
+    title: "MVRDV vence concurso de € 240 milhões para “nova maravilha do mundo” em Roterdã",
+    dek: "Proposta “Rotterdam Rocks!” bate Heatherwick Studio e Mecanoo com sete rochas gigantes empilhadas às margens do rio Maas.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/07/21/mvrdv-rotterdam-rocks-shift-competition/",
+    summary: [
+      "A construtora holandesa MVRDV venceu a concorrida disputa promovida pela organização social Shift para projetar um novo marco de € 240 milhões em Roterdã. A proposta vencedora, batizada “Rotterdam Rocks!”, superou nomes como Heatherwick Studio, Mecanoo, Office for Political Innovation e Ecosistema Urbano com uma ideia radical: sete rochas gigantes e empilhadas às margens do rio Maas, abrigando terraços, espaços expositivos e áreas verdes.",
+      "O complexo de 30 mil m² vai reunir mostras imersivas, hotel, centro de convenções, praça de alimentação e mirantes panorâmicos. Mais do que um edifício-ícone, o projeto nasce com pretensão de laboratório aberto: a MVRDV propõe conduzir a própria obra como um experimento público, documentando estratégias de baixo carbono que funcionarem — e as que não funcionarem — e publicando os resultados para outras equipes reaproveitarem.",
+      "A Shift lançou o concurso em 2025 ao lado da agência cultural DVDL, pedindo por uma “nova maravilha do mundo” capaz de mobilizar as pessoas em torno da crise climática e da biodiversidade."
+    ]
+  },
+  {
+    id: 3,
+    category: "design",
+    categoryLabel: "Design",
+    stars: 4,
+    title: "Manica revela estádio dos Chiefs com cúpula transparente para 70 mil torcedores",
+    dek: "Projeto de US$ 3 bilhões substitui o histórico Arrowhead Stadium e usa geometria de telhado desenhada para maximizar o barulho da torcida.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/07/23/manica-kansas-city-chiefs-dome-stadium/",
+    summary: [
+      "O escritório americano Manica revelou o design do novo estádio dos Kansas City Chiefs, um gigante de 70 mil lugares totalmente fechado sob uma cúpula transparente. O projeto, orçado em US$ 3 bilhões e com abertura prevista para 2031, vai substituir o histórico Arrowhead Stadium e conta com mais de 400 mil pés quadrados de painéis translúcidos em ETFE posicionados diretamente sobre o gramado.",
+      "A equipe de engenheiros de áudio participou do desenho da geometria do telhado para maximizar o barulho da torcida — um aceno direto à fama do Arrowhead como um dos estádios mais barulhentos da NFL. A fachada curva e a arquibancada superior recortada também homenageiam o visual do estádio original, inaugurado em 1972.",
+      "O terreno vai continuar fora do perímetro urbano denso, cercado por estacionamentos pensados para preservar a cultura do tailgate. A Manica trabalha em parceria com a HNTB como arquiteta responsável, depois de vencer a concorrência contra outro escritório de Kansas City, a Populous."
+    ]
+  },
+  {
+    id: 4,
+    category: "tecnologia",
+    categoryLabel: "Tecnologia/IA",
+    stars: 4,
+    title: "Apple finalmente lança a Siri com IA generativa — e a reação é quase anticlimática",
+    dek: "Depois de mais de um ano de atraso, a nova assistente entende conversas encadeadas, mas chega sem o impacto que o hype prometia.",
+    source: "TechCrunch",
+    sourceUrl: "https://techcrunch.com/2026/08/03/apple-finally-fixed-siri-so-why-does-it-feel-anticlimactic/",
+    summary: [
+      "Depois de anos de promessas adiadas, a Apple finalmente lançou a reformulação da Siri baseada em IA generativa — e a onda de análises descreve o resultado como competente, mas quase anticlimático diante da expectativa acumulada. A nova assistente permite conversas mais naturais e encadeadas, entendendo contexto entre perguntas em vez de tratar cada comando como isolado, e integra melhor as informações pessoais do usuário para responder com mais precisão.",
+      "O lançamento marca o fim de um dos atrasos mais comentados da indústria de tecnologia: a Apple vinha sendo cobrada havia mais de um ano por não ter uma resposta à altura do ChatGPT e do Gemini dentro do próprio ecossistema do iPhone.",
+      "Ainda que a entrega tenha chegado mais discreta do que o hype sugeria, ela reposiciona a Siri como peça central da estratégia de IA da empresa daqui para frente, num momento em que rivais como Google e OpenAI seguem acelerando o ritmo de lançamentos."
+    ]
+  },
+  {
+    id: 5,
+    category: "branding",
+    categoryLabel: "Branding",
+    stars: 3,
+    title: "KesselsKramer, agência-lenda de Amsterdã, quebra e agora avalia recomeço",
+    dek: "Trinta anos depois de criar o “I amsterdam”, a agência foi declarada insolvente após o cancelamento inesperado de três contratos.",
+    source: "DutchNews / Adpulp",
+    sourceUrl: "https://www.dutchnews.nl/2026/06/agency-behind-iamsterdam-sign-declared-bankrupt/",
+    summary: [
+      "A KesselsKramer, uma das agências mais influentes e irreverentes da publicidade europeia, foi declarada insolvente por um tribunal de Amsterdã no fim de maio. Fundada em 1996 por Erik Kessels e Johan Kramer, a agência construiu reputação global com campanhas “anti-publicidade”, como o icônico slogan “I amsterdam” e a campanha de telecom “I am Ben”.",
+      "No momento da quebra, a agência ainda empregava 21 pessoas e tinha campanhas ativas nas ruas para o Stedelijk Museum e o Holland Festival — o colapso foi desencadeado pelo cancelamento inesperado de três grandes contratos comerciais.",
+      "Um administrador judicial nomeado pelo tribunal segue investigando as causas da falência e, principalmente, avaliando se um recomeço é viável. Trinta anos depois de fundada, a notícia pegou a indústria de surpresa e reacendeu o debate sobre a fragilidade financeira até das agências mais premiadas do setor."
+    ]
+  },
+  {
+    id: 6,
+    category: "branding",
+    categoryLabel: "Branding",
+    stars: 3,
+    title: "Novo Nordisk processa Eli Lilly por anúncios “enganosos” de remédios contra obesidade",
+    dek: "Disputa bilionária pelo mercado de canetas emagrecedoras vira também queda de braço publicitária entre as duas maiores farmacêuticas do segmento.",
+    source: "PR Week",
+    sourceUrl: "https://www.prweek.com/article/1965265/novo-nordisk-sues-eli-lilly-misleading-zepbound-mounjaro-ads",
+    summary: [
+      "A dinamarquesa Novo Nordisk processou a rival americana Eli Lilly na Justiça Federal de Nova Jersey, acusando-a de veicular publicidade “maliciosa e deceptivamente falsa” para os remédios contra obesidade e diabetes Zepbound e Mounjaro.",
+      "O centro da disputa é técnico: segundo a Novo, as campanhas da Lilly comparam as doses mais altas dos seus próprios medicamentos com doses mais baixas e desatualizadas do Wegovy, omitindo que uma dosagem maior do remédio da Novo foi aprovada pela FDA em março.",
+      "A ação aciona a Lanham Act e leis estaduais de concorrência desleal, e pede que a Justiça obrigue a Lilly a retirar os anúncios do ar e veicular uma campanha corretiva; a Novo já sinalizou que vai buscar uma liminar caso a rival não recue voluntariamente."
+    ]
+  },
+  {
+    id: 7,
+    category: "branding",
+    categoryLabel: "Branding",
+    stars: 3,
+    title: "Teads processa o Google — quinta empresa a fazer isso em pouco mais de um ano",
+    dek: "Ação alega perda de 6,88 trilhões de impressões publicitárias por práticas anticompetitivas do Google Ads e do exchange AdX.",
+    source: "Adweek",
+    sourceUrl: "https://www.adweek.com/media/teads-sues-google-claiming-some-disputed-ad-practices-were-never-really-retired/",
+    summary: [
+      "A Teads entrou com uma ação antitruste contra o Google nos Estados Unidos, tornando-se a quinta plataforma de publicidade (SSP) a processar a gigante por práticas anticompetitivas em pouco mais de um ano — na esteira de Index Exchange, Magnite, OpenX e PubMatic.",
+      "O processo, movido na Justiça Federal do Distrito Sul de Nova York, alega que a integração forçada entre o Google Ads e o exchange AdX prejudicou plataformas concorrentes e resultou na perda de cerca de 6,88 trilhões de impressões publicitárias entre 2017 e 2023. A Teads pede indenização triplicada, danos punitivos e restituição.",
+      "A ação se apoia numa decisão histórica de abril de 2025, quando uma corte federal americana concluiu que o Google manteve ilegalmente posição de monopólio em partes do mercado aberto de publicidade digital. Em nota, o Google rejeitou as acusações."
+    ]
+  },
+  {
+    id: 8,
+    category: "branding",
+    categoryLabel: "Branding",
+    stars: 3,
+    title: "Marcas trocam campanhas pontuais por “world-building” — e cedem controle criativo",
+    dek: "Na Copa do Mundo de 2026, McDonald's e Nike apostaram em universos narrativos contínuos em vez de um único comercial-tentpole.",
+    source: "Adweek",
+    sourceUrl: "https://www.adweek.com/creativity/adweek-creativity-advantage-brands-must-cede-control-in-their-world-building-era/",
+    summary: [
+      "Marcas estão trocando o modelo clássico de campanha pontual — um comercial de impacto, um momento isolado — por estratégias de “world-building”: construir universos narrativos contínuos em que o público entra e permanece. A Copa do Mundo de 2026 virou vitrine do fenômeno, com McDonald's e Nike optando por experiências imersivas de longa duração em vez de apostar tudo num único anúncio-tentpole.",
+      "Segundo analistas do setor, o movimento reflete uma mudança mais profunda: consumidores — sobretudo os mais jovens — respondem melhor a marcas que cedem parte do controle criativo e deixam a comunidade participar da construção da narrativa, em vez de apenas receberem uma mensagem pronta de cima para baixo.",
+      "Isso exige das marcas tolerância a ambiguidade e a abrir mão de aprovações rígidas em cada peça, trocando consistência total por relevância cultural contínua — uma aposta que só se sustenta quando há orçamento e paciência para pensar em ecossistema, não em campanha."
+    ]
+  },
+  {
+    id: 9,
+    category: "design",
+    categoryLabel: "Design",
+    stars: 3,
+    title: "Adobe integra mais de 70 ferramentas criativas direto dentro do ChatGPT",
+    dek: "Novo plugin unifica Photoshop, Illustrator, Premiere, Firefly e Acrobat numa experiência conversacional, sem precisar abrir os apps originais.",
+    source: "Fast Company",
+    sourceUrl: "https://www.fastcompany.com/91585672/adobe-chat-gpt-plugin",
+    summary: [
+      "A Adobe lançou um plugin unificado dentro do ChatGPT que reúne mais de 70 ferramentas profissionais de Photoshop, Illustrator, InDesign, Express, Premiere, Lightroom, Acrobat, Firefly e Adobe Stock numa única experiência conversacional.",
+      "Em vez de alternar entre conectores individuais de cada aplicativo, o usuário descreve o que quer em linguagem natural e o sistema coordena automaticamente as ferramentas certas nos bastidores — criando fotos, vídeos, posts para redes sociais ou PDFs sem precisar abrir os programas originais. Na prática, um designer pode enviar fotos de uma campanha, aplicar ajustes de estilo padronizados em todo o conjunto de imagens e transformar fotos em mockups de produto.",
+      "O plugin já está disponível globalmente desde o dia 6 de agosto e funciona mesmo sem conta Adobe, embora fazer login libere recursos adicionais — o movimento mais ambicioso da empresa até agora para se inserir direto no fluxo de trabalho dos assistentes de IA."
+    ]
+  },
+  {
+    id: 10,
+    category: "design",
+    categoryLabel: "Design",
+    stars: 3,
+    title: "Piscina flutuante que filtra a água do East River entra na reta final da 1ª fase",
+    dek: "Barcaça e sistema de infiltração da +Pool estão sendo montados no Brooklyn, mas operação só deve começar em 2027.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/07/29/floating-plus-pool-pilot-nearing-completion-construction/",
+    summary: [
+      "A construção da barcaça e do sistema de filtragem da +Pool, a piscina flutuante projetada para operar no East River, em Nova York, está entrando na reta final da sua primeira fase. Batizada “Pool 1”, a estrutura é uma versão retangular e piloto do conceito original em formato de cruz, proposto pela primeira vez para a cidade em 2011.",
+      "A montagem acontece no estaleiro Erie Basin Bargeport, no bairro do Red Hook, no Brooklyn, antes do transporte até o local definitivo de instalação, entre os bairros de Two Bridges e Lower East Side, próximo ao Pier 35. O grande diferencial é o sistema de infiltração que filtra a própria água do rio conforme ela entra na estrutura, permitindo banho seguro num curso d'água historicamente poluído.",
+      "Apesar do avanço físico da obra, o cronograma sofreu um novo atraso: trabalhos paralelos de proteção contra enchentes na região de Two Bridges empurraram a data de operação da piscina para, no mínimo, 2027."
+    ]
+  },
+  {
+    id: 11,
+    category: "design",
+    categoryLabel: "Design",
+    stars: 3,
+    title: "Por que apps de saúde mental não deveriam seguir todas as modas de UI",
+    dek: "Artigo de referência argumenta que microanimações chamativas viram sobrecarga cognitiva para usuários em momentos de crise.",
+    source: "Smashing Magazine",
+    sourceUrl: "https://www.smashingmagazine.com/2026/07/designing-distressed-users-mental-health-apps-ui/",
+    summary: [
+      "Um artigo de referência do setor questiona a corrida das equipes de produto em aplicar todas as modas visuais do momento — microanimações chamativas, gestos não convencionais, ícones experimentais — a aplicativos voltados para saúde mental. O argumento central: ninguém abre um app desse tipo por curiosidade, mas normalmente em momentos de estresse, ansiedade ou exaustão, estados em que qualquer atrito cognitivo extra vira sobrecarga, não charme.",
+      "Interfaces bem-sucedidas nesse contexto priorizam sinais discretos que reforçam sensação de controle, evitam demandar esforço mental adicional e favorecem interações em texto, que simulam uma conversa segura e sem julgamento.",
+      "O texto também aponta uma tendência de integrar dados de wearables — como Apple Watch e Oura — para antecipar sinais fisiológicos de estresse, como pico de frequência cardíaca ou queda na qualidade do sono, e sugerir proativamente um exercício de aterramento antes mesmo que o usuário perceba que precisa dele. A conclusão é direta: em produtos para públicos vulneráveis, simplicidade e sensibilidade emocional valem mais do que inovação visual por si só."
+    ]
+  },
+  {
+    id: 12,
+    category: "branding",
+    categoryLabel: "Branding",
+    stars: 2,
+    title: "Lavazza lança minissérie com Martin Scorsese dirigida pela própria filha",
+    dek: "“Family Blend” tem cinco episódios mensais e mistura documentário com comédia leve em torno do ritual de café da dupla.",
+    source: "Campaign US",
+    sourceUrl: "https://www.campaignlive.com/article/double-shot-scorsese-martin-daughter-francesca-star-lavazzas-new-miniseries/1965409",
+    summary: [
+      "A Lavazza apresentou “Family Blend”, uma minissérie de cinco episódios dirigida por Francesca Scorsese e estrelada por seu pai, o cineasta Martin Scorsese. Cada episódio, com dois a três minutos de duração, é lançado mensalmente entre julho e novembro nos canais globais da marca e dos próprios talentos envolvidos — o elenco de apoio inclui Jason Biggs, com uma aparição rápida de Adrien Brody no trailer.",
+      "A série mistura entrevistas em formato documental com passagens por locais de Nova York significativos para a carreira do diretor, unindo o olhar cinematográfico clássico de Scorsese à sensibilidade contemporânea da filha. O primeiro episódio, “But First… Coffee”, usa tom de comédia leve para acompanhar o ritual de café da dupla antes das entrevistas.",
+      "É um exemplo de como marcas de consumo seguem investindo em conteúdo de longa duração e prestígio autoral para construir afinidade emocional, em vez de apostar só em comerciais tradicionais de trinta segundos."
+    ]
+  }
+];
+
+const CATEGORY_META = {
+  branding: { label: "Branding", color: "var(--branding)" },
+  design: { label: "Design", color: "var(--design)" },
+  tecnologia: { label: "Tecnologia/IA", color: "var(--tecnologia)" }
+};
+
+/* ---------- ÍCONES ---------- */
+function CategoryIcon({ category, color }) {
+  if (category === "branding") {
+    return (
+      <path d="M20 34 L54 22 L54 58 L20 46 Z M20 34 L20 46 M12 36 Q8 40 12 44" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85" />
+    );
+  }
+  if (category === "design") {
+    return (
+      <path d="M18 54 L40 18 L52 26 L30 62 Z M18 54 L14 62 L22 58 Z M34 25 L45 32" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85" />
+    );
+  }
+  return (
+    <g fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85">
+      <rect x="24" y="24" width="24" height="24" rx="3" />
+      <path d="M30 24 V16 M42 24 V16 M30 56 V48 M42 56 V48 M24 30 H16 M24 42 H16 M56 30 H48 M56 42 H48" />
+    </g>
+  );
+}
+
+/* ---------- THUMBNAIL SVG (sem dependência de internet) ---------- */
+function Thumb({ article }) {
+  const meta = CATEGORY_META[article.category];
+  const seed = article.id * 47;
+  const cx = 60 + (seed % 60);
+  const cy = 40 + ((seed * 3) % 40);
+  const r = 70 + (seed % 50);
+  const gradId = "grad" + article.id;
+  return (
+    <svg viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={meta.color} stopOpacity="0.16" />
+          <stop offset="100%" stopColor={meta.color} stopOpacity="0.4" />
+        </linearGradient>
+      </defs>
+      <rect width="320" height="240" fill={meta.color} opacity="0.08" />
+      <circle cx={cx} cy={cy} r={r} fill={"url(#" + gradId + ")"} />
+      <circle cx={320 - cx * 0.6} cy={240 - cy * 0.5} r={r * 0.45} fill={meta.color} opacity="0.12" />
+      <g transform="translate(130,90)">
+        <CategoryIcon category={article.category} color={meta.color} />
+      </g>
+    </svg>
+  );
+}
+
+/* ---------- ESTRELAS ---------- */
+function Stars({ n }) {
+  return (
+    <span className="stars" aria-label={n + " de 5 estrelas"}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} viewBox="0 0 20 20" fill={i < n ? "var(--star)" : "none"} stroke="var(--star)" strokeWidth="1.2">
+          <polygon points="10,1.5 12.6,7.2 19,7.9 14.2,12.2 15.6,18.5 10,15.2 4.4,18.5 5.8,12.2 1,7.9 7.4,7.2" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+/* ---------- APP ---------- */
+function App() {
+  const [filter, setFilter] = useState("todas");
+  const [openId, setOpenId] = useState(null);
+
+  const sorted = useMemo(
+    () => [...ARTICLES].sort((a, b) => b.stars - a.stars),
+    []
+  );
+  const hero = sorted[0];
+  const rest = sorted.slice(1).filter(a => filter === "todas" || a.category === filter);
+  const openArticle = ARTICLES.find(a => a.id === openId);
+
+  const dateLabel = "sexta-feira, 7 de agosto de 2026";
+
+  return (
+    <div className="wrap">
+      <header className="site-header">
+        <p className="kicker">Portal da Manhã</p>
+        <h1 className="wordmark">Branding, Design<br/>&amp; <em>Tecnologia</em></h1>
+        <div className="header-meta">
+          <p className="header-date">{dateLabel} — curadoria diária das últimas 24h</p>
+          <div className="filters">
+            {["todas", "branding", "design", "tecnologia"].map(f => (
+              <button
+                key={f}
+                className={"filter-btn" + (filter === f ? " active" : "")}
+                onClick={() => setFilter(f)}
+              >
+                {f === "todas" ? "Todas" : CATEGORY_META[f].label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <section className="hero" onClick={() => setOpenId(hero.id)}>
+        <div>
+          <div className="hero-eyebrow">
+            <span className={"tag " + hero.category}>{hero.categoryLabel}</span>
+            <Stars n={hero.stars} />
+          </div>
+          <h1>{hero.title}</h1>
+          <p className="dek">{hero.dek}</p>
+          <span className="read-link">Ler resumo completo <span className="arrow">→</span></span>
+        </div>
+        <div className="hero-art"><Thumb article={hero} /></div>
+      </section>
+
+      <p className="section-label">Mais notícias de hoje</p>
+      <div className="grid">
+        {rest.length === 0 && (
+          <div className="warn">Nenhuma notícia encontrada para este filtro hoje.</div>
+        )}
+        {rest.map(article => (
+          <article key={article.id} className="card" onClick={() => setOpenId(article.id)}>
+            <div className="card-art"><Thumb article={article} /></div>
+            <div className="card-body">
+              <div className="card-top">
+                <span className={"tag " + article.category}>{article.categoryLabel}</span>
+                <Stars n={article.stars} />
+              </div>
+              <h3>{article.title}</h3>
+              <p className="dek">{article.dek}</p>
+              <p className="card-foot">{article.source}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <footer>
+        <div className="foot-row">
+          <span>Portal da Manhã — curadoria e resumos gerados automaticamente a partir de fontes públicas.</span>
+          <span>Atualizado às 7h · {dateLabel}</span>
+        </div>
+      </footer>
+
+      {openArticle && (
+        <div className="overlay" onClick={() => setOpenId(null)}>
+          <div className="panel" onClick={e => e.stopPropagation()}>
+            <div className="panel-art">
+              <Thumb article={openArticle} />
+              <button className="close-btn" onClick={() => setOpenId(null)} aria-label="Fechar">✕</button>
+            </div>
+            <div className="panel-body">
+              <div className="panel-eyebrow">
+                <span className={"tag " + openArticle.category}>{openArticle.categoryLabel}</span>
+                <Stars n={openArticle.stars} />
+              </div>
+              <h2>{openArticle.title}</h2>
+              <div className="summary">
+                {openArticle.summary.map((p, i) => <p key={i}>{p}</p>)}
+              </div>
+              <a className="source-link" href={openArticle.sourceUrl} target="_blank" rel="noopener noreferrer">
+                Ler matéria original em {openArticle.source} ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

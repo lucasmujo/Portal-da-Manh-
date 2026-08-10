@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portal da Manhã — 7 de agosto de 2026</title>
+<title>Portal da Manhã — 10 de agosto de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -132,6 +132,17 @@
     border:1px dashed var(--line);border-radius:14px;padding:16px 20px;
   }
 
+  /* IMAGENS REAIS (hotlink das fontes, com fallback SVG) */
+  .hero-art img, .card-art img, .panel-art img{
+    display:block;width:100%;height:100%;object-fit:cover;
+  }
+  .img-credit{
+    position:absolute;bottom:10px;right:12px;font-size:10px;font-weight:600;
+    letter-spacing:.04em;color:rgba(255,255,255,.9);text-shadow:0 1px 3px rgba(0,0,0,.6);
+    text-transform:uppercase;
+  }
+  .card-art, .hero-art, .panel-art{position:relative;}
+
   /* DETAIL OVERLAY */
   .overlay{
     position:fixed;inset:0;background:rgba(23,24,28,.5);backdrop-filter:blur(2px);
@@ -192,107 +203,114 @@ const { useState, useMemo } = React;
 const ARTICLES = [
   {
     id: 1,
-    category: "tecnologia",
-    categoryLabel: "Tecnologia/IA",
+    category: "branding",
+    categoryLabel: "Branding",
     stars: 5,
-    title: "Hassabis deixa o comando do DeepMind e Jeff Dean sai do Google para abrir empresa própria",
-    dek: "Numa mesma semana, o Google reorganiza a cúpula da sua operação de IA e vê seu cientista-chefe partir — com investimento da própria empresa no que ele construir a seguir.",
-    source: "Axios / MIT Technology Review",
-    sourceUrl: "https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai",
+    title: "TBWA revela nova identidade visual feita in-house",
+    dek: "A rede publicitária global assina sozinha o próprio redesenho, brincando com sua metodologia mais famosa: a “Disruption”.",
+    source: "Brand New",
+    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_identity_for_tbwa_done_in_house.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/tbwa_2026_new.jpg",
     summary: [
-      "O Google promoveu uma reviravolta silenciosa, mas profunda, no topo da sua operação de inteligência artificial. Demis Hassabis, fundador e rosto público do DeepMind, deixa o cargo de CEO e passa a atuar como chairman da unidade e “chief scientist” da Alphabet — um recuo estratégico do dia a dia, não uma saída. Quem assume a operação é Koray Kavukcuoglu, até então CTO do laboratório, promovido a SVP para tocar o trabalho técnico e comercial.",
-      "A mudança acontece num momento delicado: o Google vem perdendo talentos importantes para rivais, atrasou o lançamento do próximo modelo de fronteira e enfrenta rumores de clima interno desgastado, enquanto a pressão de OpenAI e Anthropic aperta.",
-      "Para completar o tremor, Jeff Dean, cientista-chefe do Google e uma das figuras mais respeitadas da história da empresa, também está de saída — para abrir uma startup própria. O detalhe que chama atenção: o próprio Google vai investir no novo projeto de Dean, numa aposta pouco ortodoxa de manter um pé dentro do que ele construir a seguir, em vez de simplesmente tentar retê-lo."
+      "A TBWA, uma das redes de publicidade mais influentes do mundo — responsável por campanhas históricas para marcas como Apple e Adidas —, apresentou uma atualização de sua própria identidade visual assinada inteiramente pela equipe interna da agência, sem contratar um estúdio externo.",
+      "O gesto chama atenção justamente por vir de uma agência conhecida por vender reinvenção de marca para seus clientes: ao repaginar o próprio visual, a TBWA reafirma publicamente a metodologia “Disruption”, seu método proprietário de estratégia criativa, usando o próprio redesenho como vitrine prática do conceito — inclusive no nome interno do projeto, um trocadilho com “new phone, who dis” e a palavra disrupt.",
+      "A publicação especializada Brand New, referência mundial em crítica de identidade corporativa, classificou o caso na categoria “Noted” — reservada a atualizações relevantes, mas que não chegam a representar uma reformulação completa de marca —, sinalizando um ajuste de tom e presença visual mais do que uma ruptura radical."
     ]
   },
   {
     id: 2,
-    category: "design",
-    categoryLabel: "Design",
+    category: "branding",
+    categoryLabel: "Branding",
     stars: 4,
-    title: "MVRDV vence concurso de € 240 milhões para “nova maravilha do mundo” em Roterdã",
-    dek: "Proposta “Rotterdam Rocks!” bate Heatherwick Studio e Mecanoo com sete rochas gigantes empilhadas às margens do rio Maas.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/07/21/mvrdv-rotterdam-rocks-shift-competition/",
+    title: "Turismo de Vermont ganha nova marca da DNCO: “Move Mountains”",
+    dek: "Campanha de identidade territorial para o estado americano gera um dos debates mais intensos da semana entre profissionais de branding.",
+    source: "Brand New",
+    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_vermont_tourism_by_dnco.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/vermont_tourism_logo_new.png",
     summary: [
-      "A construtora holandesa MVRDV venceu a concorrida disputa promovida pela organização social Shift para projetar um novo marco de € 240 milhões em Roterdã. A proposta vencedora, batizada “Rotterdam Rocks!”, superou nomes como Heatherwick Studio, Mecanoo, Office for Political Innovation e Ecosistema Urbano com uma ideia radical: sete rochas gigantes e empilhadas às margens do rio Maas, abrigando terraços, espaços expositivos e áreas verdes.",
-      "O complexo de 30 mil m² vai reunir mostras imersivas, hotel, centro de convenções, praça de alimentação e mirantes panorâmicos. Mais do que um edifício-ícone, o projeto nasce com pretensão de laboratório aberto: a MVRDV propõe conduzir a própria obra como um experimento público, documentando estratégias de baixo carbono que funcionarem — e as que não funcionarem — e publicando os resultados para outras equipes reaproveitarem.",
-      "A Shift lançou o concurso em 2025 ao lado da agência cultural DVDL, pedindo por uma “nova maravilha do mundo” capaz de mobilizar as pessoas em torno da crise climática e da biodiversidade."
+      "O escritório de design DNCO assinou a nova identidade visual do departamento de turismo do estado americano de Vermont, batizada de “Move Mountains” — referência direta às Green Mountains, cadeia montanhosa que dá nome e paisagem ao estado.",
+      "Marcas de destino turístico estão entre os projetos mais desafiadores do branding territorial: precisam equilibrar identidade regional, apelo emocional para visitantes de fora e ainda representar moradores locais, que costumam ser os primeiros a reagir publicamente a qualquer mudança visual.",
+      "Não por acaso, o projeto se tornou um dos mais comentados da semana no meio especializado, acumulando um volume de reações muito acima da média para uma publicação de identidade de marca — sinal de que o público de design e os próprios habitantes de Vermont têm opiniões fortes e divididas sobre o resultado."
     ]
   },
   {
     id: 3,
-    category: "design",
-    categoryLabel: "Design",
+    category: "branding",
+    categoryLabel: "Branding",
     stars: 4,
-    title: "Manica revela estádio dos Chiefs com cúpula transparente para 70 mil torcedores",
-    dek: "Projeto de US$ 3 bilhões substitui o histórico Arrowhead Stadium e usa geometria de telhado desenhada para maximizar o barulho da torcida.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/07/23/manica-kansas-city-chiefs-dome-stadium/",
+    title: "Wolff Olins assina novo logotipo da Cvent",
+    dek: "Consultoria de marca famosa por projetos como a identidade dos Jogos de Londres 2012 entrega novo símbolo para a plataforma de eventos corporativos.",
+    source: "Brand New",
+    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_logo_for_cvent_by_wolff_olins.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/cvent_logo_before_after.png",
     summary: [
-      "O escritório americano Manica revelou o design do novo estádio dos Kansas City Chiefs, um gigante de 70 mil lugares totalmente fechado sob uma cúpula transparente. O projeto, orçado em US$ 3 bilhões e com abertura prevista para 2031, vai substituir o histórico Arrowhead Stadium e conta com mais de 400 mil pés quadrados de painéis translúcidos em ETFE posicionados diretamente sobre o gramado.",
-      "A equipe de engenheiros de áudio participou do desenho da geometria do telhado para maximizar o barulho da torcida — um aceno direto à fama do Arrowhead como um dos estádios mais barulhentos da NFL. A fachada curva e a arquibancada superior recortada também homenageiam o visual do estádio original, inaugurado em 1972.",
-      "O terreno vai continuar fora do perímetro urbano denso, cercado por estacionamentos pensados para preservar a cultura do tailgate. A Manica trabalha em parceria com a HNTB como arquiteta responsável, depois de vencer a concorrência contra outro escritório de Kansas City, a Populous."
+      "A Cvent, plataforma de software voltada para gestão de eventos corporativos, apresentou um novo logotipo desenvolvido pela Wolff Olins, consultoria de branding com um dos portfólios mais respeitados do setor — entre seus trabalhos mais lembrados estão a polêmica identidade dos Jogos Olímpicos de Londres 2012 e o reposicionamento visual do Uber.",
+      "Empresas de software B2B como a Cvent costumam enfrentar um desafio específico de marca: comunicar solidez e confiança para compradores corporativos sem parecer genérica ou distante, já que o público de decisão é formado majoritariamente por profissionais de eventos e tecnologia, não consumidores finais.",
+      "O projeto foi classificado por especialistas do setor na categoria “Spotted” da crítica de branding — ou seja, identificado e catalogado como uma mudança relevante, ainda sem uma análise aprofundada de bastidores, processo criativo ou racional estratégico completo por trás da nova marca."
     ]
   },
   {
     id: 4,
-    category: "tecnologia",
-    categoryLabel: "Tecnologia/IA",
+    category: "design",
+    categoryLabel: "Design",
     stars: 4,
-    title: "Apple finalmente lança a Siri com IA generativa — e a reação é quase anticlimática",
-    dek: "Depois de mais de um ano de atraso, a nova assistente entende conversas encadeadas, mas chega sem o impacto que o hype prometia.",
-    source: "TechCrunch",
-    sourceUrl: "https://techcrunch.com/2026/08/03/apple-finally-fixed-siri-so-why-does-it-feel-anticlimactic/",
+    title: "MAD Architects inaugura museu-paisagem em Shenzhen",
+    dek: "Shenzhen Bay Culture Square combina volumes que lembram pedras com um telhado verde ondulado à beira-mar.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/08/05/shenzhen-bay-culture-square-mad/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/shenzhen-bay-culture-square-mad-hero_dezeen_2364_col_0.jpg",
     summary: [
-      "Depois de anos de promessas adiadas, a Apple finalmente lançou a reformulação da Siri baseada em IA generativa — e a onda de análises descreve o resultado como competente, mas quase anticlimático diante da expectativa acumulada. A nova assistente permite conversas mais naturais e encadeadas, entendendo contexto entre perguntas em vez de tratar cada comando como isolado, e integra melhor as informações pessoais do usuário para responder com mais precisão.",
-      "O lançamento marca o fim de um dos atrasos mais comentados da indústria de tecnologia: a Apple vinha sendo cobrada havia mais de um ano por não ter uma resposta à altura do ChatGPT e do Gemini dentro do próprio ecossistema do iPhone.",
-      "Ainda que a entrega tenha chegado mais discreta do que o hype sugeria, ela reposiciona a Siri como peça central da estratégia de IA da empresa daqui para frente, num momento em que rivais como Google e OpenAI seguem acelerando o ritmo de lançamentos."
+      "O escritório chinês MAD Architects, liderado por Ma Yansong, Dang Qun e Yosuke Hayano, concluiu o Shenzhen Bay Culture Square, um complexo cultural e museológico erguido na região de Houhai, no distrito de Nanshan, em Shenzhen — um terreno inteiramente conquistado ao mar.",
+      "O projeto ocupa cerca de 51 mil metros quadrados de terreno e soma aproximadamente 188 mil metros quadrados de área construída, reunindo galerias de exposição, espaços educativos, uma biblioteca de design e um teatro multiuso. Do ponto de vista formal, volumes esculturais em granito polido — que diminuem de altura conforme se afastam da cidade em direção ao parque vizinho — ficam sobre um telhado verde ondulado que esconde boa parte do museu no subsolo, criando caminhos sinuosos entre a cidade e a orla.",
+      "Segundo Ma Yansong, fundador do escritório, a intenção foi transformar “a natureza antiga na imaginação de futuro das pessoas”, tornando um grande equipamento cultural íntimo em escala humana; a altura do edifício também foi calculada para não interferir na rota de aves migratórias da via Ásia Oriental-Australásia. O museu é reconhecido como uma das “Dez Grandes Instalações Culturais da Nova Era” de Shenzhen e foi concluído após oito anos de desenvolvimento."
     ]
   },
   {
     id: 5,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 3,
-    title: "KesselsKramer, agência-lenda de Amsterdã, quebra e agora avalia recomeço",
-    dek: "Trinta anos depois de criar o “I amsterdam”, a agência foi declarada insolvente após o cancelamento inesperado de três contratos.",
-    source: "DutchNews / Adpulp",
-    sourceUrl: "https://www.dutchnews.nl/2026/06/agency-behind-iamsterdam-sign-declared-bankrupt/",
+    category: "design",
+    categoryLabel: "Design",
+    stars: 4,
+    title: "Demolição da Rike Concert Hall, em Tbilisi, gera protesto de arquitetos",
+    dek: "Edifício assinado pelo Studio Fuksas nunca chegou a abrir e agora é derrubado após mais de uma década fechado.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/08/03/rike-concert-hall-demolition-tbilisi-studio-fuksas/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/07/rike-concert-hall-demolition-tbilisi-studio-fuksas-hero_dezeen_2364_col_0.jpg",
     summary: [
-      "A KesselsKramer, uma das agências mais influentes e irreverentes da publicidade europeia, foi declarada insolvente por um tribunal de Amsterdã no fim de maio. Fundada em 1996 por Erik Kessels e Johan Kramer, a agência construiu reputação global com campanhas “anti-publicidade”, como o icônico slogan “I amsterdam” e a campanha de telecom “I am Ben”.",
-      "No momento da quebra, a agência ainda empregava 21 pessoas e tinha campanhas ativas nas ruas para o Stedelijk Museum e o Holland Festival — o colapso foi desencadeado pelo cancelamento inesperado de três grandes contratos comerciais.",
-      "Um administrador judicial nomeado pelo tribunal segue investigando as causas da falência e, principalmente, avaliando se um recomeço é viável. Trinta anos depois de fundada, a notícia pegou a indústria de surpresa e reacendeu o debate sobre a fragilidade financeira até das agências mais premiadas do setor."
+      "Começou em Tbilisi, capital da Geórgia, a demolição da Rike Concert Hall, edifício formado por dois volumes tubulares projetado pelo renomado Studio Fuksas que nunca chegou a ser inaugurado — a estrutura externa ficou pronta ainda em 2012, mas o acabamento interno jamais foi concluído, deixando o prédio fechado desde então. O trabalho começou menos de duas semanas depois da emissão da licença de demolição pela prefeitura de Tbilisi.",
+      "Imagens captadas pela emissora local TV Pirveli mostram operários removendo o revestimento externo em painéis de aço inoxidável que lembram escamas, um dos símbolos arquitetônicos mais discutidos da capital georgiana. Construído como parte de um plano de revitalização urbana do ex-presidente Mikheil Saakashvili, o edifício ficou associado ao governo anterior após a mudança política de 2012 — o que é apontado como a razão do projeto ter sido abandonado.",
+      "Procurado pela imprensa, o Studio Fuksas classificou a demolição como “um retrocesso cultural significativo”, afirmando ter oferecido repetidamente trabalhar com as autoridades georgianas em soluções alternativas de preservação e reaproveitamento do edifício, sem nunca obter resposta. O imóvel foi vendido a uma incorporadora em 2022 e repassado à atual proprietária, a construtora Makro Constructions, em 2025."
     ]
   },
   {
     id: 6,
-    category: "branding",
-    categoryLabel: "Branding",
+    category: "design",
+    categoryLabel: "Design",
     stars: 3,
-    title: "Novo Nordisk processa Eli Lilly por anúncios “enganosos” de remédios contra obesidade",
-    dek: "Disputa bilionária pelo mercado de canetas emagrecedoras vira também queda de braço publicitária entre as duas maiores farmacêuticas do segmento.",
-    source: "PR Week",
-    sourceUrl: "https://www.prweek.com/article/1965265/novo-nordisk-sues-eli-lilly-misleading-zepbound-mounjaro-ads",
+    title: "River Architects entrega casa Passive House ao redor de uma lagoa em Nova York",
+    dek: "Volumes em madeira com telhados de duas águas se organizam em torno de um espelho d’água no Hudson Valley.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/08/04/river-architects-china-pond-passive-house/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/07/china-pond-passive-house-river-architects-new-york_dezeen_2364_heroo.jpg",
     summary: [
-      "A dinamarquesa Novo Nordisk processou a rival americana Eli Lilly na Justiça Federal de Nova Jersey, acusando-a de veicular publicidade “maliciosa e deceptivamente falsa” para os remédios contra obesidade e diabetes Zepbound e Mounjaro.",
-      "O centro da disputa é técnico: segundo a Novo, as campanhas da Lilly comparam as doses mais altas dos seus próprios medicamentos com doses mais baixas e desatualizadas do Wegovy, omitindo que uma dosagem maior do remédio da Novo foi aprovada pela FDA em março.",
-      "A ação aciona a Lanham Act e leis estaduais de concorrência desleal, e pede que a Justiça obrigue a Lilly a retirar os anúncios do ar e veicular uma campanha corretiva; a Novo já sinalizou que vai buscar uma liminar caso a rival não recue voluntariamente."
+      "O escritório River Architects, sediado em Cold Spring, no estado de Nova York, concluiu a China Pond Passive House, residência de cerca de 400 metros quadrados erguida em um terreno arborizado de 2,2 acres na cidade de Carmel, na região do Hudson Valley, substituindo uma casa anterior de pegada semelhante.",
+      "A casa segue os rigorosos padrões internacionais Passive House de eficiência energética — envelope construtivo altamente isolado e hermético, vidros triplos, orientação solar cuidadosa e estratégias de sombreamento — e obteve a certificação Phius, funcionando inteiramente com bombas de calor elétricas, ventilação com recuperação de energia e sem uso de combustíveis fósseis.",
+      "Formalmente, o projeto reúne dois volumes com telhados de duas águas revestidos em cipreste e pinho Douglas reaproveitados, conectados por uma cunha de telhado plano sobre uma fundação de pedra local. Segundo James Hartford, sócio-diretor do escritório, a intenção foi manter uma sensação de “evolução” em relação à casa antiga, com avanços e recuos deliberados nos volumes que criam cantos inusitados sem que a nova construção parecesse imponente demais diante da paisagem ao redor da lagoa."
     ]
   },
   {
     id: 7,
-    category: "branding",
-    categoryLabel: "Branding",
+    category: "design",
+    categoryLabel: "Design",
     stars: 3,
-    title: "Teads processa o Google — quinta empresa a fazer isso em pouco mais de um ano",
-    dek: "Ação alega perda de 6,88 trilhões de impressões publicitárias por práticas anticompetitivas do Google Ads e do exchange AdX.",
-    source: "Adweek",
-    sourceUrl: "https://www.adweek.com/media/teads-sues-google-claiming-some-disputed-ad-practices-were-never-really-retired/",
+    title: "Tan France estreia coleção de móveis com a marca Castlery",
+    dek: "Ex-apresentador do Queer Eye assina linha de 18 peças inspirada em sua herança britânica e sul-asiática.",
+    source: "Dezeen",
+    sourceUrl: "https://www.dezeen.com/2026/08/06/tan-france-debuts-furniture-collection-castlery/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/tan-france-castlery-collection_dezeen_2364_col_1-1.jpg",
     summary: [
-      "A Teads entrou com uma ação antitruste contra o Google nos Estados Unidos, tornando-se a quinta plataforma de publicidade (SSP) a processar a gigante por práticas anticompetitivas em pouco mais de um ano — na esteira de Index Exchange, Magnite, OpenX e PubMatic.",
-      "O processo, movido na Justiça Federal do Distrito Sul de Nova York, alega que a integração forçada entre o Google Ads e o exchange AdX prejudicou plataformas concorrentes e resultou na perda de cerca de 6,88 trilhões de impressões publicitárias entre 2017 e 2023. A Teads pede indenização triplicada, danos punitivos e restituição.",
-      "A ação se apoia numa decisão histórica de abril de 2025, quando uma corte federal americana concluiu que o Google manteve ilegalmente posição de monopólio em partes do mercado aberto de publicidade digital. Em nota, o Google rejeitou as acusações."
+      "O designer de moda e apresentador de TV Tan France, conhecido por sua passagem pelo programa Queer Eye, lançou sua primeira coleção de móveis e itens de decoração em parceria com a marca cingapuriana Castlery, marcando sua estreia formal no design de mobiliário.",
+      "A linha reúne 18 peças que vão de um sofá modular batizado Kagan a uma poltrona de formato orgânico que remete a um ovo, passando pela luminária de mesa colorida Anika e mesas laterais inspiradas em técnicas tradicionais de torneamento em madeira. Madeira de carvalho e uma paleta terrosa de laranjas e verdes aparecem em toda a coleção, unidas por um motivo recorrente de arco recortado — uma referência direta à herança sul-asiática e britânica do designer.",
+      "Segundo o próprio France, o processo de criação partiu de referências visuais que ele já trazia da experiência como designer de moda, o que tornou a transição para o desenho de mobiliário mais natural do que ele esperava. A coleção já está disponível para venda no Reino Unido, Estados Unidos, Austrália, Cingapura e Canadá, e o designer já sinalizou interesse em desenhar também móveis de quarto e peças de mesa posta no futuro."
     ]
   },
   {
@@ -300,74 +318,63 @@ const ARTICLES = [
     category: "branding",
     categoryLabel: "Branding",
     stars: 3,
-    title: "Marcas trocam campanhas pontuais por “world-building” — e cedem controle criativo",
-    dek: "Na Copa do Mundo de 2026, McDonald's e Nike apostaram em universos narrativos contínuos em vez de um único comercial-tentpole.",
+    title: "Heineken recompensa fãs de Serena Williams com viagem ao US Open",
+    dek: "Marca de cerveja usa a lenda do tênis para ativação de relacionamento com público de longa data.",
     source: "Adweek",
-    sourceUrl: "https://www.adweek.com/creativity/adweek-creativity-advantage-brands-must-cede-control-in-their-world-building-era/",
+    sourceUrl: "https://www.adweek.com/creativity/heineken-will-reward-serena-williams-superfans-with-a-trip-to-the-us-open/",
+    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/08/SerenaHeinekenSecondServe.png",
     summary: [
-      "Marcas estão trocando o modelo clássico de campanha pontual — um comercial de impacto, um momento isolado — por estratégias de “world-building”: construir universos narrativos contínuos em que o público entra e permanece. A Copa do Mundo de 2026 virou vitrine do fenômeno, com McDonald's e Nike optando por experiências imersivas de longa duração em vez de apostar tudo num único anúncio-tentpole.",
-      "Segundo analistas do setor, o movimento reflete uma mudança mais profunda: consumidores — sobretudo os mais jovens — respondem melhor a marcas que cedem parte do controle criativo e deixam a comunidade participar da construção da narrativa, em vez de apenas receberem uma mensagem pronta de cima para baixo.",
-      "Isso exige das marcas tolerância a ambiguidade e a abrir mão de aprovações rígidas em cada peça, trocando consistência total por relevância cultural contínua — uma aposta que só se sustenta quando há orçamento e paciência para pensar em ecossistema, não em campanha."
+      "A Heineken lançou uma ativação de marketing estrelada pela tenista Serena Williams, na qual fãs de longa data da atleta poderão concorrer a uma viagem para acompanhar o US Open, um dos quatro torneios de tênis mais importantes do calendário mundial.",
+      "A campanha se encaixa em uma estratégia comum entre marcas de bebida que patrocinam grandes eventos esportivos: em vez de simplesmente estampar o logotipo em quadras e uniformes, a marca constrói uma narrativa em torno da relação emocional entre atleta e torcida, transformando espectadores em protagonistas da própria campanha.",
+      "Ao usar Serena Williams — uma das atletas mais premiadas da história do esporte, hoje também investidora e empresária — a Heineken aposta no capital de credibilidade e admiração já construído pela tenista fora das quadras, e não apenas em sua carreira competitiva, em um formato de “recompensar o superfã” que vem se tornando cada vez mais recorrente no marketing esportivo."
     ]
   },
   {
     id: 9,
-    category: "design",
-    categoryLabel: "Design",
+    category: "branding",
+    categoryLabel: "Branding",
     stars: 3,
-    title: "Adobe integra mais de 70 ferramentas criativas direto dentro do ChatGPT",
-    dek: "Novo plugin unifica Photoshop, Illustrator, Premiere, Firefly e Acrobat numa experiência conversacional, sem precisar abrir os apps originais.",
-    source: "Fast Company",
-    sourceUrl: "https://www.fastcompany.com/91585672/adobe-chat-gpt-plugin",
+    title: "Pepsi tenta provocar a Coca-Cola — e a crítica não gostou",
+    dek: "Nova investida publicitária da rival histórica é recebida com ceticismo pela imprensa especializada em marcas.",
+    source: "Brand New",
+    sourceUrl: "https://www.underconsideration.com/brandnew/archives/pepsi_attempts_to_zing_coke.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/sad_pepsi_logo_update_joke.jpg",
     summary: [
-      "A Adobe lançou um plugin unificado dentro do ChatGPT que reúne mais de 70 ferramentas profissionais de Photoshop, Illustrator, InDesign, Express, Premiere, Lightroom, Acrobat, Firefly e Adobe Stock numa única experiência conversacional.",
-      "Em vez de alternar entre conectores individuais de cada aplicativo, o usuário descreve o que quer em linguagem natural e o sistema coordena automaticamente as ferramentas certas nos bastidores — criando fotos, vídeos, posts para redes sociais ou PDFs sem precisar abrir os programas originais. Na prática, um designer pode enviar fotos de uma campanha, aplicar ajustes de estilo padronizados em todo o conjunto de imagens e transformar fotos em mockups de produto.",
-      "O plugin já está disponível globalmente desde o dia 6 de agosto e funciona mesmo sem conta Adobe, embora fazer login libere recursos adicionais — o movimento mais ambicioso da empresa até agora para se inserir direto no fluxo de trabalho dos assistentes de IA."
+      "A Pepsi voltou a mirar sua eterna rival Coca-Cola em uma nova ação publicitária, reacendendo um dos confrontos de marca mais antigos e conhecidos do mercado de consumo — a chamada “Guerra das Colas”, que já rendeu décadas de disputas criativas entre as duas gigantes.",
+      "A publicação Brand New, que cobre o caso, classificou a iniciativa na categoria editorial “Sad” dentro de “Linked” — usada para apontar movimentos de mercado considerados fracos ou pouco inspirados do ponto de vista estratégico, sugerindo que a tentativa de provocação não teria atingido o efeito desejado.",
+      "Esse tipo de rivalidade direta entre marcas concorrentes costuma ser uma faca de dois gumes: quando bem executada, gera memorabilidade instantânea; quando mal calibrada, pode soar como um aceno de insegurança em vez de confiança — reacendendo a discussão sobre até que ponto ainda vale a pena apostar em campanhas comparativas diretas, uma estratégia clássica de décadas passadas que hoje divide opiniões entre profissionais de marketing."
     ]
   },
   {
     id: 10,
-    category: "design",
-    categoryLabel: "Design",
-    stars: 3,
-    title: "Piscina flutuante que filtra a água do East River entra na reta final da 1ª fase",
-    dek: "Barcaça e sistema de infiltração da +Pool estão sendo montados no Brooklyn, mas operação só deve começar em 2027.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/07/29/floating-plus-pool-pilot-nearing-completion-construction/",
+    category: "tecnologia",
+    categoryLabel: "Tecnologia/IA",
+    stars: 4,
+    title: "Anthropic ativa o modo automático do Claude Code por padrão",
+    dek: "A partir de 14 de agosto, contas Pro, Max e Team passam a operar em modo autônomo sem precisar ativar nada — e a empresa diz que isso é mais seguro do que revisão manual.",
+    source: "TechCrunch",
+    sourceUrl: "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2269811684.jpg?w=1024",
     summary: [
-      "A construção da barcaça e do sistema de filtragem da +Pool, a piscina flutuante projetada para operar no East River, em Nova York, está entrando na reta final da sua primeira fase. Batizada “Pool 1”, a estrutura é uma versão retangular e piloto do conceito original em formato de cruz, proposto pela primeira vez para a cidade em 2011.",
-      "A montagem acontece no estaleiro Erie Basin Bargeport, no bairro do Red Hook, no Brooklyn, antes do transporte até o local definitivo de instalação, entre os bairros de Two Bridges e Lower East Side, próximo ao Pier 35. O grande diferencial é o sistema de infiltração que filtra a própria água do rio conforme ela entra na estrutura, permitindo banho seguro num curso d'água historicamente poluído.",
-      "Apesar do avanço físico da obra, o cronograma sofreu um novo atraso: trabalhos paralelos de proteção contra enchentes na região de Two Bridges empurraram a data de operação da piscina para, no mínimo, 2027."
+      "A Anthropic anunciou que o “modo automático” do Claude Code, sua ferramenta de programação assistida por inteligência artificial, passará a vir ativado por padrão para contas Pro, Max e Team a partir de 14 de agosto, em vez de precisar ser ligado manualmente como opção avançada — recurso que a empresa vinha testando desde março.",
+      "No modo automático, em vez de pedir aprovação humana a cada passo, o agente segue em frente sozinho, a menos que identifique uma ação “irreversível, destrutiva ou direcionada para fora do ambiente” do usuário. Segundo a Anthropic, um estudo com 1.053 testadores pagos mostrou que o modo automático captou 89% das ações potencialmente prejudiciais, contra apenas 13,6% identificadas por revisão manual — a empresa credita o resultado ao fato de que revisões manuais viram hábito, com usuários aprovando 97% dos pedidos de permissão sem análise real.",
+      "Boris Cherny, responsável pelo Claude Code, afirmou publicamente que a própria equipe usa o modo automático exclusivamente há meses e “não conseguiria mais voltar” aos pedidos de permissão a cada etapa. A empresa também disse estar reforçando camadas de segurança, como triagem contra injeção de prompts maliciosos e regras de bloqueio configuráveis para evitar vazamento de dados."
     ]
   },
   {
     id: 11,
-    category: "design",
-    categoryLabel: "Design",
+    category: "tecnologia",
+    categoryLabel: "Tecnologia/IA",
     stars: 3,
-    title: "Por que apps de saúde mental não deveriam seguir todas as modas de UI",
-    dek: "Artigo de referência argumenta que microanimações chamativas viram sobrecarga cognitiva para usuários em momentos de crise.",
-    source: "Smashing Magazine",
-    sourceUrl: "https://www.smashingmagazine.com/2026/07/designing-distressed-users-mental-health-apps-ui/",
+    title: "OpenAI compra startup de apresentações NextSlide",
+    dek: "Aquisição amplia o arsenal de ferramentas de produtividade construídas ao redor do ChatGPT.",
+    source: "TechCrunch",
+    sourceUrl: "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2259148891.jpg?resize=1200,686",
     summary: [
-      "Um artigo de referência do setor questiona a corrida das equipes de produto em aplicar todas as modas visuais do momento — microanimações chamativas, gestos não convencionais, ícones experimentais — a aplicativos voltados para saúde mental. O argumento central: ninguém abre um app desse tipo por curiosidade, mas normalmente em momentos de estresse, ansiedade ou exaustão, estados em que qualquer atrito cognitivo extra vira sobrecarga, não charme.",
-      "Interfaces bem-sucedidas nesse contexto priorizam sinais discretos que reforçam sensação de controle, evitam demandar esforço mental adicional e favorecem interações em texto, que simulam uma conversa segura e sem julgamento.",
-      "O texto também aponta uma tendência de integrar dados de wearables — como Apple Watch e Oura — para antecipar sinais fisiológicos de estresse, como pico de frequência cardíaca ou queda na qualidade do sono, e sugerir proativamente um exercício de aterramento antes mesmo que o usuário perceba que precisa dele. A conclusão é direta: em produtos para públicos vulneráveis, simplicidade e sensibilidade emocional valem mais do que inovação visual por si só."
-    ]
-  },
-  {
-    id: 12,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 2,
-    title: "Lavazza lança minissérie com Martin Scorsese dirigida pela própria filha",
-    dek: "“Family Blend” tem cinco episódios mensais e mistura documentário com comédia leve em torno do ritual de café da dupla.",
-    source: "Campaign US",
-    sourceUrl: "https://www.campaignlive.com/article/double-shot-scorsese-martin-daughter-francesca-star-lavazzas-new-miniseries/1965409",
-    summary: [
-      "A Lavazza apresentou “Family Blend”, uma minissérie de cinco episódios dirigida por Francesca Scorsese e estrelada por seu pai, o cineasta Martin Scorsese. Cada episódio, com dois a três minutos de duração, é lançado mensalmente entre julho e novembro nos canais globais da marca e dos próprios talentos envolvidos — o elenco de apoio inclui Jason Biggs, com uma aparição rápida de Adrien Brody no trailer.",
-      "A série mistura entrevistas em formato documental com passagens por locais de Nova York significativos para a carreira do diretor, unindo o olhar cinematográfico clássico de Scorsese à sensibilidade contemporânea da filha. O primeiro episódio, “But First… Coffee”, usa tom de comédia leve para acompanhar o ritual de café da dupla antes das entrevistas.",
-      "É um exemplo de como marcas de consumo seguem investindo em conteúdo de longa duração e prestígio autoral para construir afinidade emocional, em vez de apostar só em comerciais tradicionais de trinta segundos."
+      "A OpenAI adquiriu a NextSlide, startup especializada em transformar prompts, anotações, documentos e pesquisas em apresentações de slides prontas e editáveis, com o time da empresa já trabalhando integrado ao ChatGPT.",
+      "Segundo o fundador Ahmed Beshry, a missão da NextSlide sempre foi “tornar a comunicação visual mais acessível e ajudar mais pessoas a expressar suas ideias com clareza” — objetivo que a equipe pretende continuar perseguindo agora de dentro da OpenAI. Beshry revelou o acordo com alguns meses de atraso em relação ao fechamento real do negócio, que ocorreu no início do ano; os termos financeiros não foram divulgados.",
+      "Aquisições desse tipo têm se tornado uma estratégia recorrente entre grandes empresas de inteligência artificial: em vez de desenvolver do zero funcionalidades específicas de produtividade, elas compram equipes e tecnologia já validadas no mercado para acelerar a entrega de novos recursos — reforçando a disputa direta que se acirra entre OpenAI, Google e Microsoft pelo espaço de ferramentas de escritório assistidas por IA. Beshry, vale notar, já havia vendido outra startup antes: foi cofundador da Caper AI, de carrinhos de compra inteligentes, adquirida pela Instacart em 2021."
     ]
   }
 ];
@@ -398,8 +405,8 @@ function CategoryIcon({ category, color }) {
   );
 }
 
-/* ---------- THUMBNAIL SVG (sem dependência de internet) ---------- */
-function Thumb({ article }) {
+/* ---------- THUMBNAIL: imagem real da fonte, com fallback SVG ---------- */
+function ThumbSvg({ article }) {
   const meta = CATEGORY_META[article.category];
   const seed = article.id * 47;
   const cx = 60 + (seed % 60);
@@ -422,6 +429,26 @@ function Thumb({ article }) {
       </g>
     </svg>
   );
+}
+
+function Thumb({ article }) {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (article.imageUrl && !imgFailed) {
+    return (
+      <React.Fragment>
+        <img
+          src={article.imageUrl}
+          alt={article.title}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={() => setImgFailed(true)}
+        />
+        <span className="img-credit">{article.source}</span>
+      </React.Fragment>
+    );
+  }
+  return <ThumbSvg article={article} />;
 }
 
 /* ---------- ESTRELAS ---------- */
@@ -450,7 +477,7 @@ function App() {
   const rest = sorted.slice(1).filter(a => filter === "todas" || a.category === filter);
   const openArticle = ARTICLES.find(a => a.id === openId);
 
-  const dateLabel = "sexta-feira, 7 de agosto de 2026";
+  const dateLabel = "segunda-feira, 10 de agosto de 2026";
 
   return (
     <div className="wrap">

@@ -1,574 +1,537 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portal da Manhã — 10 de agosto de 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal da Manhã — 13 de agosto de 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
   :root{
-    --ink:#17181C;
-    --ink-soft:#514F49;
-    --paper:#F6F3EC;
-    --paper-2:#FFFFFF;
-    --line:#E4DFD3;
-    --branding:#C1502E;
-    --branding-tint:#FBECE4;
-    --design:#20705C;
-    --design-tint:#E7F2ED;
-    --tecnologia:#3B4CC0;
-    --tecnologia-tint:#EAEBFA;
-    --star:#D79A2C;
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --ink:#14161a;
+    --ink-2:#4a5058;
+    --ink-3:#868d96;
+    --line:#e8eaee;
+    --accent:#1b6ef3;
+    --radius:18px;
+    --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+    --shadow-lg:0 2px 4px rgba(16,24,40,.05), 0 18px 48px rgba(16,24,40,.10);
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
   body{
-    background:var(--paper);
+    background:var(--bg);
     color:var(--ink);
-    font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
-    line-height:1.5;
+    line-height:1.55;
   }
-  ::selection{background:var(--ink);color:var(--paper);}
-  a{color:inherit;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 96px}
+  header.top{margin-bottom:36px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+  h1.brand{font-size:clamp(32px,5vw,50px);line-height:1.05;letter-spacing:-.03em;margin:10px 0 8px;font-weight:800}
+  .sub{color:var(--ink-2);font-size:15px;margin:0}
+  .divider{height:1px;background:var(--line);margin:28px 0 32px}
 
-  /* HEADER */
-  .site-header{padding:56px 0 36px;}
-  .kicker{
-    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-soft);margin:0 0 14px;
-  }
-  .wordmark{
-    font-family:"Fraunces",serif;
-    font-weight:500;
-    font-size:clamp(40px,7vw,72px);
-    letter-spacing:-0.02em;
-    margin:0;
-    line-height:0.98;
-  }
-  .wordmark em{font-style:italic;font-weight:400;color:var(--branding);}
-  .header-meta{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    margin-top:18px;padding-top:18px;border-top:1px solid var(--line);
-    gap:20px;flex-wrap:wrap;
-  }
-  .header-date{font-size:15px;color:var(--ink-soft);text-transform:capitalize;}
-  .filters{display:flex;gap:8px;flex-wrap:wrap;}
-  .filter-btn{
-    font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;
-    text-transform:uppercase;padding:9px 16px;border-radius:100px;
-    border:1px solid var(--line);background:var(--paper-2);color:var(--ink-soft);
-    cursor:pointer;transition:all .15s ease;
-  }
-  .filter-btn:hover{border-color:var(--ink);color:var(--ink);}
-  .filter-btn.active{background:var(--ink);border-color:var(--ink);color:var(--paper);}
-
-  /* TAG PILL */
-  .tag{
+  .stars{display:inline-flex;gap:2px;align-items:center}
+  .star{width:13px;height:13px;display:block}
+  .badge{
     display:inline-flex;align-items:center;gap:6px;
     font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    padding:6px 12px;border-radius:100px;
+    padding:5px 10px;border-radius:999px;
   }
-  .tag.branding{background:var(--branding-tint);color:var(--branding);}
-  .tag.design{background:var(--design-tint);color:var(--design);}
-  .tag.tecnologia{background:var(--tecnologia-tint);color:var(--tecnologia);}
-  .stars{display:inline-flex;gap:2px;align-items:center;}
-  .stars svg{width:12px;height:12px;}
+  .b-branding{background:#fff1e6;color:#b04a10}
+  .b-design{background:#e6f6f1;color:#0b6b53}
+  .b-tech{background:#eceaff;color:#4632c4}
 
-  /* HERO */
   .hero{
-    display:grid;grid-template-columns:1.05fr 0.95fr;gap:44px;align-items:center;
-    padding:8px 0 56px;cursor:pointer;
+    background:var(--card);border:1px solid var(--line);border-radius:26px;
+    box-shadow:var(--shadow-lg);overflow:hidden;cursor:pointer;
+    display:grid;grid-template-columns:1.05fr .95fr;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .hero-art{border-radius:22px;overflow:hidden;box-shadow:0 24px 48px -24px rgba(23,24,28,.35);}
-  .hero-art svg{display:block;width:100%;height:auto;}
-  .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
-  .hero h1{
-    font-family:"Fraunces",serif;font-weight:500;
-    font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.01em;
-    margin:0 0 18px;
-  }
-  .hero p.dek{font-size:17px;color:var(--ink-soft);margin:0 0 22px;max-width:46ch;}
-  .read-link{
-    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
-    letter-spacing:.03em;text-transform:uppercase;
-  }
-  .read-link .arrow{transition:transform .15s ease;}
-  .hero:hover .read-link .arrow{transform:translateX(4px);}
+  .hero:hover{transform:translateY(-3px)}
+  .hero .art{min-height:300px}
+  .hero .body{padding:34px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .hero h2{font-size:clamp(24px,3vw,34px);line-height:1.14;letter-spacing:-.022em;margin:0;font-weight:800}
+  .hero p{margin:0;color:var(--ink-2);font-size:15.5px}
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--ink-3);font-size:12.5px;font-weight:600}
+  .dot{width:3px;height:3px;border-radius:50%;background:var(--ink-3);display:inline-block}
 
-  /* GRID */
-  .section-label{
-    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-soft);margin:0 0 22px;padding-top:32px;border-top:1px solid var(--line);
-  }
-  .grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:64px;
-  }
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
   .card{
-    background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
-    overflow:hidden;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
-    display:flex;flex-direction:column;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:0 20px 32px -20px rgba(23,24,28,.28);}
-  .card-art{aspect-ratio:4/3;}
-  .card-art svg{display:block;width:100%;height:100%;}
-  .card-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:12px;flex:1;}
-  .card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
-  .card h3{
-    font-family:"Fraunces",serif;font-weight:500;font-size:19px;line-height:1.22;
-    margin:0;letter-spacing:-0.01em;
-  }
-  .card .dek{font-size:13.5px;color:var(--ink-soft);margin:0;flex:1;}
-  .card-foot{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:auto;}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#dcdfe5}
+  .card .art{height:132px}
+  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{margin:0;font-size:16.5px;line-height:1.3;letter-spacing:-.012em;font-weight:750}
+  .card .dek{margin:0;color:var(--ink-2);font-size:13.5px;flex:1}
 
-  .warn{
-    grid-column:1/-1;font-size:13px;color:var(--ink-soft);background:var(--paper-2);
-    border:1px dashed var(--line);border-radius:14px;padding:16px 20px;
-  }
-
-  /* IMAGENS REAIS (hotlink das fontes, com fallback SVG) */
-  .hero-art img, .card-art img, .panel-art img{
-    display:block;width:100%;height:100%;object-fit:cover;
-  }
-  .img-credit{
-    position:absolute;bottom:10px;right:12px;font-size:10px;font-weight:600;
-    letter-spacing:.04em;color:rgba(255,255,255,.9);text-shadow:0 1px 3px rgba(0,0,0,.6);
-    text-transform:uppercase;
-  }
-  .card-art, .hero-art, .panel-art{position:relative;}
-
-  /* DETAIL OVERLAY */
   .overlay{
-    position:fixed;inset:0;background:rgba(23,24,28,.5);backdrop-filter:blur(2px);
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;
-    overflow-y:auto;z-index:50;animation:fade .18s ease;
+    position:fixed;inset:0;background:rgba(18,21,26,.42);backdrop-filter:blur(3px);
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:50;
+    overflow-y:auto;animation:fade .2s ease;
   }
-  @keyframes fade{from{opacity:0;}to{opacity:1;}}
-  .panel{
-    background:var(--paper-2);max-width:760px;width:100%;border-radius:24px;
-    padding:0 0 48px;animation:rise .22s cubic-bezier(.2,.8,.2,1);
-    box-shadow:0 40px 80px -30px rgba(0,0,0,.4);
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .modal{
+    background:var(--card);border-radius:24px;max-width:760px;width:100%;
+    box-shadow:0 30px 70px rgba(16,24,40,.22);overflow:hidden;animation:rise .28s cubic-bezier(.2,.8,.3,1);
   }
-  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-  .panel-art{aspect-ratio:16/8;border-radius:24px 24px 0 0;overflow:hidden;position:relative;}
-  .panel-art svg{display:block;width:100%;height:100%;}
-  .close-btn{
-    position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:100px;
-    background:rgba(255,255,255,.9);border:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;font-size:18px;
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
+  .modal .art{height:190px}
+  .modal .inner{padding:30px 34px 34px}
+  .modal h2{margin:14px 0 6px;font-size:26px;line-height:1.18;letter-spacing:-.02em;font-weight:800}
+  .modal .resumo p{color:#2e343c;font-size:15.5px;margin:0 0 14px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:11px 17px;
+    font-size:14px;font-weight:650;text-decoration:none;border:1px solid transparent;cursor:pointer;
+    font-family:inherit;transition:.18s ease;
   }
-  .panel-body{padding:32px 44px 0;}
-  .panel-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-  .panel h2{
-    font-family:"Fraunces",serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);
-    line-height:1.1;letter-spacing:-0.01em;margin:0 0 22px;
-  }
-  .panel .summary p{font-size:16px;line-height:1.68;color:#2B2C30;margin:0 0 16px;}
-  .source-link{
-    display:inline-flex;align-items:center;gap:8px;margin-top:14px;
-    font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
-    padding:12px 22px;border-radius:100px;border:1.5px solid var(--ink);
-    text-decoration:none;transition:background .15s ease,color .15s ease;
-  }
-  .source-link:hover{background:var(--ink);color:var(--paper);}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#155ad2}
+  .btn-ghost{background:#f2f4f7;color:var(--ink-2)}
+  .btn-ghost:hover{background:#e8ebef}
 
-  footer{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--ink-soft);font-size:13px;}
-  footer .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-3);font-size:12.5px}
+  .note{background:#fffbeb;border:1px solid #fde68a;color:#8a5a00;border-radius:12px;padding:12px 14px;font-size:13px;margin-top:20px}
 
-  @media (max-width:860px){
-    .hero{grid-template-columns:1fr;gap:26px;}
-    .grid{grid-template-columns:repeat(2,1fr);}
-    .panel-body{padding:26px 22px 0;}
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero .art{min-height:190px}
+    .hero .body{padding:26px 24px}
+    .grid{grid-template-columns:repeat(2,1fr)}
   }
-  @media (max-width:560px){
-    .grid{grid-template-columns:1fr;}
-    .header-meta{flex-direction:column;align-items:flex-start;}
+  @media (max-width:600px){
+    .wrap{padding:28px 16px 72px}
+    .grid{grid-template-columns:1fr}
+    .modal .inner{padding:24px 22px 28px}
   }
 </style>
 </head>
 <body>
 <div id="root"></div>
 
-<script type="text/babel" data-presets="react">
-const { useState, useMemo } = React;
+<script type="text/babel">
+const { useState, useEffect } = React;
 
-/* ---------- DADOS DO DIA ---------- */
-const ARTICLES = [
+/* ---------------------------------------------------------------
+   NOTÍCIAS — edição de 13/08/2026
+   Campos obrigatórios por item: title, source, url
+   --------------------------------------------------------------- */
+const NOTICIAS = [
   {
-    id: 1,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 5,
-    title: "TBWA revela nova identidade visual feita in-house",
-    dek: "A rede publicitária global assina sozinha o próprio redesenho, brincando com sua metodologia mais famosa: a “Disruption”.",
-    source: "Brand New",
-    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_identity_for_tbwa_done_in_house.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/tbwa_2026_new.jpg",
-    summary: [
-      "A TBWA, uma das redes de publicidade mais influentes do mundo — responsável por campanhas históricas para marcas como Apple e Adidas —, apresentou uma atualização de sua própria identidade visual assinada inteiramente pela equipe interna da agência, sem contratar um estúdio externo.",
-      "O gesto chama atenção justamente por vir de uma agência conhecida por vender reinvenção de marca para seus clientes: ao repaginar o próprio visual, a TBWA reafirma publicamente a metodologia “Disruption”, seu método proprietário de estratégia criativa, usando o próprio redesenho como vitrine prática do conceito — inclusive no nome interno do projeto, um trocadilho com “new phone, who dis” e a palavra disrupt.",
-      "A publicação especializada Brand New, referência mundial em crítica de identidade corporativa, classificou o caso na categoria “Noted” — reservada a atualizações relevantes, mas que não chegam a representar uma reformulação completa de marca —, sinalizando um ajuste de tom e presença visual mais do que uma ruptura radical."
-    ]
-  },
-  {
-    id: 2,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 4,
-    title: "Turismo de Vermont ganha nova marca da DNCO: “Move Mountains”",
-    dek: "Campanha de identidade territorial para o estado americano gera um dos debates mais intensos da semana entre profissionais de branding.",
-    source: "Brand New",
-    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_vermont_tourism_by_dnco.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/vermont_tourism_logo_new.png",
-    summary: [
-      "O escritório de design DNCO assinou a nova identidade visual do departamento de turismo do estado americano de Vermont, batizada de “Move Mountains” — referência direta às Green Mountains, cadeia montanhosa que dá nome e paisagem ao estado.",
-      "Marcas de destino turístico estão entre os projetos mais desafiadores do branding territorial: precisam equilibrar identidade regional, apelo emocional para visitantes de fora e ainda representar moradores locais, que costumam ser os primeiros a reagir publicamente a qualquer mudança visual.",
-      "Não por acaso, o projeto se tornou um dos mais comentados da semana no meio especializado, acumulando um volume de reações muito acima da média para uma publicação de identidade de marca — sinal de que o público de design e os próprios habitantes de Vermont têm opiniões fortes e divididas sobre o resultado."
-    ]
-  },
-  {
-    id: 3,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 4,
-    title: "Wolff Olins assina novo logotipo da Cvent",
-    dek: "Consultoria de marca famosa por projetos como a identidade dos Jogos de Londres 2012 entrega novo símbolo para a plataforma de eventos corporativos.",
-    source: "Brand New",
-    sourceUrl: "https://www.underconsideration.com/brandnew/archives/new_logo_for_cvent_by_wolff_olins.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/cvent_logo_before_after.png",
-    summary: [
-      "A Cvent, plataforma de software voltada para gestão de eventos corporativos, apresentou um novo logotipo desenvolvido pela Wolff Olins, consultoria de branding com um dos portfólios mais respeitados do setor — entre seus trabalhos mais lembrados estão a polêmica identidade dos Jogos Olímpicos de Londres 2012 e o reposicionamento visual do Uber.",
-      "Empresas de software B2B como a Cvent costumam enfrentar um desafio específico de marca: comunicar solidez e confiança para compradores corporativos sem parecer genérica ou distante, já que o público de decisão é formado majoritariamente por profissionais de eventos e tecnologia, não consumidores finais.",
-      "O projeto foi classificado por especialistas do setor na categoria “Spotted” da crítica de branding — ou seja, identificado e catalogado como uma mudança relevante, ainda sem uma análise aprofundada de bastidores, processo criativo ou racional estratégico completo por trás da nova marca."
-    ]
-  },
-  {
-    id: 4,
-    category: "design",
-    categoryLabel: "Design",
-    stars: 4,
-    title: "MAD Architects inaugura museu-paisagem em Shenzhen",
-    dek: "Shenzhen Bay Culture Square combina volumes que lembram pedras com um telhado verde ondulado à beira-mar.",
+    id: "eu-ai-act-renders",
+    title: "Realistic AI architectural renderings must be labelled under EU AI Act",
     source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/08/05/shenzhen-bay-culture-square-mad/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/shenzhen-bay-culture-square-mad-hero_dezeen_2364_col_0.jpg",
-    summary: [
-      "O escritório chinês MAD Architects, liderado por Ma Yansong, Dang Qun e Yosuke Hayano, concluiu o Shenzhen Bay Culture Square, um complexo cultural e museológico erguido na região de Houhai, no distrito de Nanshan, em Shenzhen — um terreno inteiramente conquistado ao mar.",
-      "O projeto ocupa cerca de 51 mil metros quadrados de terreno e soma aproximadamente 188 mil metros quadrados de área construída, reunindo galerias de exposição, espaços educativos, uma biblioteca de design e um teatro multiuso. Do ponto de vista formal, volumes esculturais em granito polido — que diminuem de altura conforme se afastam da cidade em direção ao parque vizinho — ficam sobre um telhado verde ondulado que esconde boa parte do museu no subsolo, criando caminhos sinuosos entre a cidade e a orla.",
-      "Segundo Ma Yansong, fundador do escritório, a intenção foi transformar “a natureza antiga na imaginação de futuro das pessoas”, tornando um grande equipamento cultural íntimo em escala humana; a altura do edifício também foi calculada para não interferir na rota de aves migratórias da via Ásia Oriental-Australásia. O museu é reconhecido como uma das “Dez Grandes Instalações Culturais da Nova Era” de Shenzhen e foi concluído após oito anos de desenvolvimento."
+    url: "https://www.dezeen.com/2026/08/10/ai-architectural-renderings-eu-ai-act/",
+    tituloPt: "Renders de arquitetura feitos com IA passam a exigir rótulo na União Europeia",
+    categoria: "Design",
+    estrelas: 5,
+    data: "10 de agosto de 2026",
+    dek: "O artigo 50 do AI Act entrou em vigor e joga imagens realistas geradas por IA na categoria de deepfake — com multas de até € 15 milhões.",
+    resumo: [
+      "Entrou em vigor no dia 2 de agosto o artigo 50 do AI Act europeu, o primeiro trecho da lei que atinge qualquer empresa que use inteligência artificial — e não apenas quem desenvolve modelos. A regra obriga quem publica imagens, áudios ou vídeos realistas gerados por IA a informar claramente que aquele conteúdo é sintético.",
+      "Segundo advogados ouvidos pela publicação, visualizações arquitetônicas realistas provavelmente caem na definição legal de deepfake, ainda que o termo normalmente evoque vídeos falsos de pessoas reais. O critério da lei é outro: basta que a imagem se pareça com pessoas, objetos, lugares ou eventos existentes e possa passar por autêntica aos olhos de quem vê. Isso inclui cenários fictícios porém verossímeis, como um prédio que ainda não foi construído. Uma cena com pessoas caminhando por um espaço que nunca existiu, se gerada por IA, precisa de rótulo.",
+      "O impacto vai além da arquitetura. Empresas que usam IA para alterar fotos de produto — deixando o item mais bonito, mudando a cor ou sugerindo qualidade superior — também precisam divulgar a manipulação. Retoque simples segue liberado: recorte, correção de cor, compressão e troca de fundo estão fora da obrigação. Textos gerados por IA só precisam de aviso quando tratam de temas de interesse público, como sustentabilidade, direitos do consumidor e estratégia ESG, e não passaram por revisão humana substancial. Chatbots de atendimento em site de marca também entram na regra.",
+      "A lei não define um formato único de rotulagem, exigindo apenas que seja claro e apareça no primeiro contato. O código de prática da Comissão Europeia sugere um ícone acompanhado de 'AI generated' ou 'AI modified', e o AI Office já disponibilizou ícones públicos em quatro variações. As penalidades chegam a € 15 milhões ou 3% do faturamento anual, embora a expectativa seja de que os reguladores não apliquem multas pesadas de imediato.",
+      "Para o setor criativo, a medida chega em meio a um debate quente. Artistas de visualização arquitetônica vêm argumentando que a substituição de renderização 3D profissional por geração automática empobrece o ofício e produz resultados cheios de erros — sem contar as disputas sobre uso não autorizado de obras humanas no treinamento dos modelos."
     ]
   },
   {
-    id: 5,
-    category: "design",
-    categoryLabel: "Design",
-    stars: 4,
-    title: "Demolição da Rike Concert Hall, em Tbilisi, gera protesto de arquitetos",
-    dek: "Edifício assinado pelo Studio Fuksas nunca chegou a abrir e agora é derrubado após mais de uma década fechado.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/08/03/rike-concert-hall-demolition-tbilisi-studio-fuksas/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/07/rike-concert-hall-demolition-tbilisi-studio-fuksas-hero_dezeen_2364_col_0.jpg",
-    summary: [
-      "Começou em Tbilisi, capital da Geórgia, a demolição da Rike Concert Hall, edifício formado por dois volumes tubulares projetado pelo renomado Studio Fuksas que nunca chegou a ser inaugurado — a estrutura externa ficou pronta ainda em 2012, mas o acabamento interno jamais foi concluído, deixando o prédio fechado desde então. O trabalho começou menos de duas semanas depois da emissão da licença de demolição pela prefeitura de Tbilisi.",
-      "Imagens captadas pela emissora local TV Pirveli mostram operários removendo o revestimento externo em painéis de aço inoxidável que lembram escamas, um dos símbolos arquitetônicos mais discutidos da capital georgiana. Construído como parte de um plano de revitalização urbana do ex-presidente Mikheil Saakashvili, o edifício ficou associado ao governo anterior após a mudança política de 2012 — o que é apontado como a razão do projeto ter sido abandonado.",
-      "Procurado pela imprensa, o Studio Fuksas classificou a demolição como “um retrocesso cultural significativo”, afirmando ter oferecido repetidamente trabalhar com as autoridades georgianas em soluções alternativas de preservação e reaproveitamento do edifício, sem nunca obter resposta. O imóvel foi vendido a uma incorporadora em 2022 e repassado à atual proprietária, a construtora Makro Constructions, em 2025."
-    ]
-  },
-  {
-    id: 6,
-    category: "design",
-    categoryLabel: "Design",
-    stars: 3,
-    title: "River Architects entrega casa Passive House ao redor de uma lagoa em Nova York",
-    dek: "Volumes em madeira com telhados de duas águas se organizam em torno de um espelho d’água no Hudson Valley.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/08/04/river-architects-china-pond-passive-house/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/07/china-pond-passive-house-river-architects-new-york_dezeen_2364_heroo.jpg",
-    summary: [
-      "O escritório River Architects, sediado em Cold Spring, no estado de Nova York, concluiu a China Pond Passive House, residência de cerca de 400 metros quadrados erguida em um terreno arborizado de 2,2 acres na cidade de Carmel, na região do Hudson Valley, substituindo uma casa anterior de pegada semelhante.",
-      "A casa segue os rigorosos padrões internacionais Passive House de eficiência energética — envelope construtivo altamente isolado e hermético, vidros triplos, orientação solar cuidadosa e estratégias de sombreamento — e obteve a certificação Phius, funcionando inteiramente com bombas de calor elétricas, ventilação com recuperação de energia e sem uso de combustíveis fósseis.",
-      "Formalmente, o projeto reúne dois volumes com telhados de duas águas revestidos em cipreste e pinho Douglas reaproveitados, conectados por uma cunha de telhado plano sobre uma fundação de pedra local. Segundo James Hartford, sócio-diretor do escritório, a intenção foi manter uma sensação de “evolução” em relação à casa antiga, com avanços e recuos deliberados nos volumes que criam cantos inusitados sem que a nova construção parecesse imponente demais diante da paisagem ao redor da lagoa."
-    ]
-  },
-  {
-    id: 7,
-    category: "design",
-    categoryLabel: "Design",
-    stars: 3,
-    title: "Tan France estreia coleção de móveis com a marca Castlery",
-    dek: "Ex-apresentador do Queer Eye assina linha de 18 peças inspirada em sua herança britânica e sul-asiática.",
-    source: "Dezeen",
-    sourceUrl: "https://www.dezeen.com/2026/08/06/tan-france-debuts-furniture-collection-castlery/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/tan-france-castlery-collection_dezeen_2364_col_1-1.jpg",
-    summary: [
-      "O designer de moda e apresentador de TV Tan France, conhecido por sua passagem pelo programa Queer Eye, lançou sua primeira coleção de móveis e itens de decoração em parceria com a marca cingapuriana Castlery, marcando sua estreia formal no design de mobiliário.",
-      "A linha reúne 18 peças que vão de um sofá modular batizado Kagan a uma poltrona de formato orgânico que remete a um ovo, passando pela luminária de mesa colorida Anika e mesas laterais inspiradas em técnicas tradicionais de torneamento em madeira. Madeira de carvalho e uma paleta terrosa de laranjas e verdes aparecem em toda a coleção, unidas por um motivo recorrente de arco recortado — uma referência direta à herança sul-asiática e britânica do designer.",
-      "Segundo o próprio France, o processo de criação partiu de referências visuais que ele já trazia da experiência como designer de moda, o que tornou a transição para o desenho de mobiliário mais natural do que ele esperava. A coleção já está disponível para venda no Reino Unido, Estados Unidos, Austrália, Cingapura e Canadá, e o designer já sinalizou interesse em desenhar também móveis de quarto e peças de mesa posta no futuro."
-    ]
-  },
-  {
-    id: 8,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 3,
-    title: "Heineken recompensa fãs de Serena Williams com viagem ao US Open",
-    dek: "Marca de cerveja usa a lenda do tênis para ativação de relacionamento com público de longa data.",
-    source: "Adweek",
-    sourceUrl: "https://www.adweek.com/creativity/heineken-will-reward-serena-williams-superfans-with-a-trip-to-the-us-open/",
-    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/08/SerenaHeinekenSecondServe.png",
-    summary: [
-      "A Heineken lançou uma ativação de marketing estrelada pela tenista Serena Williams, na qual fãs de longa data da atleta poderão concorrer a uma viagem para acompanhar o US Open, um dos quatro torneios de tênis mais importantes do calendário mundial.",
-      "A campanha se encaixa em uma estratégia comum entre marcas de bebida que patrocinam grandes eventos esportivos: em vez de simplesmente estampar o logotipo em quadras e uniformes, a marca constrói uma narrativa em torno da relação emocional entre atleta e torcida, transformando espectadores em protagonistas da própria campanha.",
-      "Ao usar Serena Williams — uma das atletas mais premiadas da história do esporte, hoje também investidora e empresária — a Heineken aposta no capital de credibilidade e admiração já construído pela tenista fora das quadras, e não apenas em sua carreira competitiva, em um formato de “recompensar o superfã” que vem se tornando cada vez mais recorrente no marketing esportivo."
-    ]
-  },
-  {
-    id: 9,
-    category: "branding",
-    categoryLabel: "Branding",
-    stars: 3,
-    title: "Pepsi tenta provocar a Coca-Cola — e a crítica não gostou",
-    dek: "Nova investida publicitária da rival histórica é recebida com ceticismo pela imprensa especializada em marcas.",
+    id: "brompton-blackburn",
+    title: "New Identity for Brompton Bikes by Studio Blackburn",
     source: "Brand New",
-    sourceUrl: "https://www.underconsideration.com/brandnew/archives/pepsi_attempts_to_zing_coke.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/sad_pepsi_logo_update_joke.jpg",
-    summary: [
-      "A Pepsi voltou a mirar sua eterna rival Coca-Cola em uma nova ação publicitária, reacendendo um dos confrontos de marca mais antigos e conhecidos do mercado de consumo — a chamada “Guerra das Colas”, que já rendeu décadas de disputas criativas entre as duas gigantes.",
-      "A publicação Brand New, que cobre o caso, classificou a iniciativa na categoria editorial “Sad” dentro de “Linked” — usada para apontar movimentos de mercado considerados fracos ou pouco inspirados do ponto de vista estratégico, sugerindo que a tentativa de provocação não teria atingido o efeito desejado.",
-      "Esse tipo de rivalidade direta entre marcas concorrentes costuma ser uma faca de dois gumes: quando bem executada, gera memorabilidade instantânea; quando mal calibrada, pode soar como um aceno de insegurança em vez de confiança — reacendendo a discussão sobre até que ponto ainda vale a pena apostar em campanhas comparativas diretas, uma estratégia clássica de décadas passadas que hoje divide opiniões entre profissionais de marketing."
+    url: "https://www.underconsideration.com/brandnew/archives/new_identity_for_brompton_bikes_by_studio_blackburn.php",
+    tituloPt: "Brompton ganha nova identidade assinada pelo Studio Blackburn",
+    categoria: "Branding",
+    estrelas: 5,
+    data: "11 de agosto de 2026",
+    dek: "A fabricante britânica de bicicletas dobráveis reposiciona sua marca com tipografia proprietária, slab serif e um sistema pensado para movimento.",
+    resumo: [
+      "A Brompton, fabricante britânica conhecida mundialmente por suas bicicletas dobráveis, apresentou uma nova identidade visual desenvolvida pelo Studio Blackburn — projeto que o Brand New colocou na categoria 'Reviewed', reservada aos trabalhos que a publicação analisa em profundidade.",
+      "Pela leitura dos elementos catalogados, o sistema se apoia em uma tipografia proprietária com traços de slab serif, um vocabulário visual que remete simultaneamente à engenharia de precisão e ao território lifestyle que a marca ocupa hoje. O azul característico da Brompton permanece como âncora cromática, funcionando como o fio que conecta a nova roupagem à memória construída ao longo de décadas.",
+      "O repertório de aplicações citado inclui materiais impressos em formato jornal, acabamentos metálicos e um trabalho de motion — indício de que a identidade foi concebida menos como um logotipo isolado e mais como um sistema que precisa se comportar bem em contextos distintos, do produto físico às plataformas digitais.",
+      "O movimento faz sentido comercial: nos últimos anos a Brompton deixou de ser apenas um objeto de nicho para ciclistas urbanos e passou a disputar espaço em coleções, colaborações e varejo de estilo de vida. Uma identidade que consiga equilibrar a herança de precisão mecânica com esse novo alcance cultural é justamente o tipo de desafio que costuma render debate acalorado entre designers.",
+      "Observação: o conteúdo completo da análise do Brand New é restrito a assinantes, então este resumo se apoia nos elementos públicos do artigo (título, categoria, indústria e descritores do projeto)."
     ]
   },
   {
-    id: 10,
-    category: "tecnologia",
-    categoryLabel: "Tecnologia/IA",
-    stars: 4,
-    title: "Anthropic ativa o modo automático do Claude Code por padrão",
-    dek: "A partir de 14 de agosto, contas Pro, Max e Team passam a operar em modo autônomo sem precisar ativar nada — e a empresa diz que isso é mais seguro do que revisão manual.",
+    id: "lego-va-dundee",
+    title: "Kengo Kuma backs campaign to turn V&A Dundee into Lego set",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/08/12/lego-va-dundee-kengo-kuma/",
+    tituloPt: "Kengo Kuma apoia campanha para transformar o V&A Dundee em set de Lego",
+    categoria: "Design",
+    estrelas: 4,
+    data: "12 de agosto de 2026",
+    dek: "A campanha quer fazer do museu projetado pelo arquiteto japonês o primeiro edifício escocês a virar um conjunto oficial da marca dinamarquesa.",
+    resumo: [
+      "Uma campanha pública ganhou o apoio do arquiteto japonês Kengo Kuma para transformar o V&A Dundee — o museu de design que ele projetou às margens do rio Tay, na Escócia — no primeiro edifício escocês a virar um conjunto oficial da Lego.",
+      "O prédio é uma escolha natural para o formato: sua fachada é composta por centenas de painéis de concreto pré-moldado dispostos em camadas horizontais que evocam os penhascos da costa escocesa. É uma geometria que, traduzida em tijolinhos, oferece exatamente o tipo de desafio de empilhamento e escalonamento que a linha Architecture da Lego costuma explorar.",
+      "Iniciativas desse tipo geralmente correm pela plataforma Lego Ideas, em que projetos que reúnem apoio suficiente do público passam a ser avaliados internamente pela empresa para eventual produção comercial. O endosso do próprio autor do edifício funciona como um selo de legitimidade e costuma ampliar bastante o alcance da campanha.",
+      "Para além da curiosidade, a história toca em um ponto interessante da cultura do design: brinquedos de montar viraram um canal legítimo de divulgação arquitetônica, colocando obras contemporâneas no mesmo repertório popular ocupado por monumentos históricos. Para uma instituição cuja missão é justamente popularizar o design, virar um produto de prateleira é quase uma extensão coerente do programa curatorial."
+    ]
+  },
+  {
+    id: "belfry-thissaway",
+    title: "Thissaway rebrands The Belfry Hotel & Resort",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/thissaway-refreshes-historic-golf-resort-the-belfry-following-major-expansion/",
+    tituloPt: "Thissaway reposiciona o resort de golfe The Belfry após expansão milionária",
+    categoria: "Branding",
+    estrelas: 4,
+    data: "Agosto de 2026",
+    dek: "O estúdio especializado em hospitalidade redesenha a identidade do complexo em Sutton Coldfield para acompanhar um salto de escala física.",
+    resumo: [
+      "O The Belfry Hotel & Resort, em Sutton Coldfield, Warwickshire, revelou um rebrand completo desenvolvido pelo Thissaway, estúdio britânico especializado em marcas de hospitalidade.",
+      "O timing não é acidental: a nova identidade foi lançada junto com uma obra de expansão de vários milhões de libras, que inclui a Masters Suite — um espaço de conferências de cerca de 8.852 metros quadrados — e um centro de bem-estar reformado. O raciocínio por trás do projeto é o de alinhar a apresentação visual do complexo ao seu novo tamanho físico e ao público que ele passa a atender.",
+      "É um caso clássico de rebrand motivado por mudança de escala, e não por desgaste estético. Quando um resort dobra sua capacidade de eventos corporativos, o sistema de marca antigo tende a ficar apertado: falta hierarquia para acomodar submarcas, falta flexibilidade para sinalização de ambientes novos e falta um tom que converse ao mesmo tempo com o golfista tradicional e com o organizador de convenções.",
+      "O The Belfry carrega peso histórico considerável no golfe britânico — foi sede da Ryder Cup em quatro ocasiões —, o que impõe ao estúdio um exercício delicado: modernizar sem apagar a memória esportiva que sustenta boa parte do valor da marca."
+    ]
+  },
+  {
+    id: "good-screens-report",
+    title: "How can tech serve us better? Insights explores in new report, Good Screens",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/features/good-screens-report-its-nice-that-insights-120826",
+    tituloPt: "Relatório 'Good Screens' investiga como a tecnologia pode servir melhor às pessoas",
+    categoria: "Design",
+    estrelas: 4,
+    data: "12 de agosto de 2026",
+    dek: "O braço de pesquisa visual do It's Nice That lança um guia para marcas que querem construir experiências de tela menos hostis.",
+    resumo: [
+      "O It's Nice That Insights, departamento de pesquisa visual criado pela publicação em 2024, lançou o relatório 'Good Screens', dedicado a uma pergunta que atravessa o design digital contemporâneo: como fazer com que a tecnologia trabalhe a favor de quem a usa?",
+      "O documento se apresenta como uma bússola para marcas que precisam construir experiências de tela melhores, reunindo ideias direcionadas a times criativos que atuam na interseção entre design e tecnologia. A proposta é sair do diagnóstico genérico sobre 'tempo de tela' e chegar a orientações aplicáveis por quem efetivamente projeta interfaces, campanhas e produtos digitais.",
+      "O tema chega num momento de virada de expectativa. Depois de mais de uma década de otimização por engajamento — notificações, rolagem infinita, ganchos de retenção —, cresce a pressão por interfaces que respeitem a atenção do usuário em vez de explorá-la. Marcas começaram a perceber que hostilidade digital tem custo reputacional.",
+      "Para estúdios e designers, relatórios como esse funcionam menos como leitura obrigatória e mais como munição argumentativa: dão vocabulário e evidência para defender, em reunião de cliente, decisões de projeto que priorizam clareza e calma em vez de métricas de curto prazo."
+    ]
+  },
+  {
+    id: "blacksmith-serie-b",
+    title: "AI code-testing startup Blacksmith's valuation jumps almost 10x in less than a year",
     source: "TechCrunch",
-    sourceUrl: "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2269811684.jpg?w=1024",
-    summary: [
-      "A Anthropic anunciou que o “modo automático” do Claude Code, sua ferramenta de programação assistida por inteligência artificial, passará a vir ativado por padrão para contas Pro, Max e Team a partir de 14 de agosto, em vez de precisar ser ligado manualmente como opção avançada — recurso que a empresa vinha testando desde março.",
-      "No modo automático, em vez de pedir aprovação humana a cada passo, o agente segue em frente sozinho, a menos que identifique uma ação “irreversível, destrutiva ou direcionada para fora do ambiente” do usuário. Segundo a Anthropic, um estudo com 1.053 testadores pagos mostrou que o modo automático captou 89% das ações potencialmente prejudiciais, contra apenas 13,6% identificadas por revisão manual — a empresa credita o resultado ao fato de que revisões manuais viram hábito, com usuários aprovando 97% dos pedidos de permissão sem análise real.",
-      "Boris Cherny, responsável pelo Claude Code, afirmou publicamente que a própria equipe usa o modo automático exclusivamente há meses e “não conseguiria mais voltar” aos pedidos de permissão a cada etapa. A empresa também disse estar reforçando camadas de segurança, como triagem contra injeção de prompts maliciosos e regras de bloqueio configuráveis para evitar vazamento de dados."
+    url: "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/",
+    tituloPt: "Startup de testes de código com IA multiplica avaliação por 10 em menos de um ano",
+    categoria: "Tecnologia",
+    estrelas: 4,
+    data: "12 de agosto de 2026",
+    dek: "A Blacksmith levantou US$ 45 milhões e chegou a US$ 550 milhões de valuation — sintoma de que o gargalo do software migrou de escrever para validar.",
+    resumo: [
+      "A Blacksmith anunciou uma rodada Série B de US$ 45 milhões liderada pela Peak XV Partners, que avaliou a empresa em US$ 550 milhões. O salto é notável: menos de um ano antes, na Série A de US$ 10 milhões, a companhia valia US$ 60 milhões — quase dez vezes menos.",
+      "A tese por trás do cheque é direta. Com a IA acelerando dramaticamente a escrita de código, o gargalo do desenvolvimento de software se deslocou. O problema deixou de ser produzir código e passou a ser testar e validar o volume muito maior de código que agora chega ao pipeline. Fundada em 2024, a Blacksmith atua exatamente nesse ponto, ajudando empresas a construir, testar e verificar software antes que ele chegue à produção. A base já ultrapassa 5.000 clientes.",
+      "O padrão é conhecido em ciclos de infraestrutura: quando uma etapa da cadeia fica barata e rápida demais, a etapa seguinte vira o novo estrangulamento — e o capital corre para lá. Se assistentes de código geram dez vezes mais linhas, alguém precisa garantir que essas linhas não quebrem nada.",
+      "Para quem trabalha com produto e design digital, o movimento tem um efeito colateral relevante: ciclos de entrega mais curtos aumentam a pressão sobre as etapas de validação que não são automatizáveis — pesquisa com usuários, acessibilidade, consistência de sistema de design. Ferramental de teste automatizado resolve regressão técnica, não coerência de experiência."
     ]
   },
   {
-    id: 11,
-    category: "tecnologia",
-    categoryLabel: "Tecnologia/IA",
-    stars: 3,
-    title: "OpenAI compra startup de apresentações NextSlide",
-    dek: "Aquisição amplia o arsenal de ferramentas de produtividade construídas ao redor do ChatGPT.",
-    source: "TechCrunch",
-    sourceUrl: "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2259148891.jpg?resize=1200,686",
-    summary: [
-      "A OpenAI adquiriu a NextSlide, startup especializada em transformar prompts, anotações, documentos e pesquisas em apresentações de slides prontas e editáveis, com o time da empresa já trabalhando integrado ao ChatGPT.",
-      "Segundo o fundador Ahmed Beshry, a missão da NextSlide sempre foi “tornar a comunicação visual mais acessível e ajudar mais pessoas a expressar suas ideias com clareza” — objetivo que a equipe pretende continuar perseguindo agora de dentro da OpenAI. Beshry revelou o acordo com alguns meses de atraso em relação ao fechamento real do negócio, que ocorreu no início do ano; os termos financeiros não foram divulgados.",
-      "Aquisições desse tipo têm se tornado uma estratégia recorrente entre grandes empresas de inteligência artificial: em vez de desenvolver do zero funcionalidades específicas de produtividade, elas compram equipes e tecnologia já validadas no mercado para acelerar a entrega de novos recursos — reforçando a disputa direta que se acirra entre OpenAI, Google e Microsoft pelo espaço de ferramentas de escritório assistidas por IA. Beshry, vale notar, já havia vendido outra startup antes: foi cofundador da Caper AI, de carrinhos de compra inteligentes, adquirida pela Instacart em 2021."
+    id: "above-water-cho-choi",
+    title: "New Logo, Identity, and Packaging for Above Water by Cho Choi Creative",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_packaging_for_above_water_by_cho_choi_creative.php",
+    tituloPt: "Above Water estreia identidade e embalagem pelo Cho Choi Creative",
+    categoria: "Branding",
+    estrelas: 4,
+    data: "12 de agosto de 2026",
+    dek: "Projeto de marca e packaging para a bebida de coco entrou na análise em profundidade do Brand New com o título 'Cuckoo for Coconuts'.",
+    resumo: [
+      "O Brand New dedicou sua análise principal do dia 12 de agosto ao trabalho do Cho Choi Creative para a Above Water, cobrindo logotipo, identidade e embalagem em um único pacote — combinação que costuma indicar um projeto de marca construído de dentro para fora, e não apenas um retoque de logo.",
+      "O apelido dado ao post pela publicação, 'Cuckoo for Coconuts', entrega o território do produto: bebidas à base de coco, uma categoria de prateleira notoriamente disputada, em que a diferenciação acontece quase inteiramente no ponto de venda e em poucos segundos de contato visual.",
+      "Projetos de identidade que nascem junto com o sistema de embalagem tendem a ter uma vantagem: a marca é desenhada já sabendo qual é o seu principal suporte físico e quais restrições de superfície, material e legibilidade ela enfrentará. Isso costuma resultar em soluções mais coesas do que rebrands em que o packaging é tratado como aplicação posterior.",
+      "A repercussão inicial foi forte — o post acumulou dezenas de avaliações da comunidade nas primeiras horas, indicador de que o trabalho gerou opinião dividida ou entusiasmo, os dois motores habituais de engajamento no Brand New.",
+      "Observação: a análise completa é restrita a assinantes; este resumo se baseia nos elementos públicos do artigo."
+    ]
+  },
+  {
+    id: "two-tribes-all-purpose",
+    title: "All Purpose unveils bold rebrand for Two Tribes",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/two-tribes-partners-with-all-purpose-for-vibrant-brewery-rebrand/",
+    tituloPt: "All Purpose assina rebrand vibrante da cervejaria Two Tribes",
+    categoria: "Branding",
+    estrelas: 3,
+    data: "Agosto de 2026",
+    dek: "A cervejaria independente de King's Cross substitui toda a linguagem visual da sua linha principal sob a plataforma 'Brewing Wonder'.",
+    resumo: [
+      "A Two Tribes, cervejaria independente instalada em King's Cross, Londres, aplicou um rebrand amplo em toda a sua linha principal de cervejas artesanais, em parceria com o estúdio londrino All Purpose.",
+      "A reformulação substitui integralmente a linguagem visual anterior por um sistema gráfico construído em torno de uma nova plataforma de marca batizada de 'Brewing Wonder'. Não se trata, portanto, de um ajuste de rótulo: a plataforma estratégica veio primeiro e o sistema visual foi desenvolvido como consequência dela.",
+      "O contexto de mercado ajuda a explicar a decisão. O setor de cerveja artesanal britânico passou de expansão eufórica para consolidação dura, com fechamentos e aquisições frequentes. Nesse cenário, marcas independentes que dependem de gôndola disputada precisam de identidades que funcionem como sinalização imediata de personalidade — o rótulo virou o principal canal de mídia da categoria.",
+      "Um sistema aplicado de uma vez em toda a linha, em vez de produto a produto, também facilita o reconhecimento de família na prateleira: o consumidor identifica a cervejaria antes mesmo de ler o nome do estilo."
+    ]
+  },
+  {
+    id: "type-around-town",
+    title: "Type Around Town asks us to pay attention to the letterforms that surround us every day",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/kwazi-design-type-around-town-graphic-design-project-110826",
+    tituloPt: "'Type Around Town' documenta Calcutá pelas letras que ninguém repara",
+    categoria: "Design",
+    estrelas: 3,
+    data: "11 de agosto de 2026",
+    dek: "O estúdio Kwazi Design construiu um arquivo visual robusto da tipografia vernacular da cidade indiana.",
+    resumo: [
+      "O estúdio indiano Kwazi Design vem documentando Calcutá através de um recorte tipográfico, e o resultado é o projeto 'Type Around Town' — um arquivo visual extenso que celebra a relação particular da cidade com as letras.",
+      "O material reunido é o tipo de tipografia que raramente entra em catálogo: placas de comércio pintadas à mão, sinalização de transporte, letreiros improvisados, painéis de oficina. É o vernáculo urbano, produzido por pintores de letra e artesãos anônimos, muitas vezes fora de qualquer tradição formal de design gráfico.",
+      "Projetos de arquivo como esse cumprem uma função dupla. A primeira é de preservação: essa camada visual desaparece rapidamente diante de reformas urbanas, padronização de fachadas e substituição por impressão digital genérica. A segunda é pedagógica — obrigam quem trabalha com tipografia a olhar para fontes de repertório que não vêm de fundições ocidentais.",
+      "Para o Brasil, o paralelo é imediato: a tipografia de rua brasileira, dos letreiros de mercearia às placas pintadas do Nordeste, ocupa exatamente o mesmo lugar de patrimônio informal em risco. Iniciativas de catalogação como a do Kwazi funcionam como modelo replicável."
+    ]
+  },
+  {
+    id: "godox-c100",
+    title: "Form Follows Function: A New Camera Type That's Mostly Viewfinder, No Screen",
+    source: "Core77",
+    url: "https://www.core77.com/posts/145050/Form-Follows-Function-A-New-Camera-Type-Thats-Mostly-Viewfinder-No-Screen",
+    tituloPt: "Uma câmera quase toda visor e sem tela: a aposta do Godox C100",
+    categoria: "Design",
+    estrelas: 3,
+    data: "12 de agosto de 2026",
+    dek: "O produto abre mão do display traseiro para forçar uma experiência de fotografia mais concentrada — decisão de design, não de custo.",
+    resumo: [
+      "O Godox C100 é uma câmera que subtrai em vez de somar: elimina o display traseiro e organiza praticamente todo o corpo do produto em torno do visor. A proposta é entregar uma experiência de fotografia deliberadamente diferente da que domina o mercado.",
+      "Tirar a tela não é economia de componente — é uma escolha de comportamento. Sem display, desaparece o hábito de conferir cada foto logo depois do disparo, o chamado 'chimping'. O fotógrafo é empurrado de volta para o enquadramento pelo visor e para a decisão tomada no momento, sem a validação imediata que as câmeras digitais introduziram.",
+      "É um exemplo limpo do princípio de que a forma segue a função quando a função é redefinida. A pergunta que o projeto faz não é 'como fazer uma câmera melhor', e sim 'que tipo de fotógrafo essa câmera cria'. A restrição vira a proposta de valor.",
+      "O produto se encaixa numa tendência mais ampla de dispositivos que vendem foco como benefício — dos dumbphones com botão dedicado às leitoras de e-book sem navegador. Em todos os casos, a subtração é comercializada como recurso premium, não como limitação."
+    ]
+  },
+  {
+    id: "xiaomi-n90-max",
+    title: "Xiaomi's Shocking $45,000 Luxury Hybrid SUV",
+    source: "Core77",
+    url: "https://www.core77.com/posts/145051/Xiaomis-Shocking-45000-Luxury-Hybrid-SUV",
+    tituloPt: "O SUV híbrido de luxo da Xiaomi por US$ 45 mil e seu interior incomum",
+    categoria: "Design",
+    estrelas: 3,
+    data: "12 de agosto de 2026",
+    dek: "O N90 Max chama atenção menos pelo preço agressivo e mais pelas soluções de design de interior que apresenta.",
+    resumo: [
+      "A Xiaomi apresentou o N90 Max, SUV híbrido de luxo com preço aproximado de US$ 45 mil — patamar que, para o conjunto de recursos oferecido, causou surpresa no setor. Mas o ponto que mais atraiu a atenção de designers foi o interior do veículo, descrito como extremamente inovador.",
+      "A trajetória da Xiaomi na indústria automotiva é um caso de estudo sobre transferência de competências. A empresa chegou vinda da eletrônica de consumo, categoria em que a integração entre hardware, software e ecossistema de produtos é a base do negócio — e aplicou essa lógica à cabine, tratando-a menos como painel de instrumentos e mais como dispositivo conectado.",
+      "Esse é justamente o terreno em que fabricantes tradicionais têm mais dificuldade. Ciclos de desenvolvimento automotivo levam anos e são organizados em torno de plataformas mecânicas; ciclos de eletrônica de consumo são medidos em meses e organizados em torno de interface e serviço. Quando o diferencial percebido migra do motor para a experiência da cabine, a vantagem muda de lado.",
+      "Para o design industrial, o caso reforça uma pergunta prática: quanto do valor percebido de um carro hoje está no que se vê e se toca por dentro, e não no desempenho mecânico que quase nenhum comprador consegue avaliar na compra."
+    ]
+  },
+  {
+    id: "amperos-together",
+    title: "New Logo and Identity for Amperos by Together",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_amperos_by_together.php",
+    tituloPt: "Amperos apresenta nova marca desenvolvida pelo estúdio Together",
+    categoria: "Branding",
+    estrelas: 3,
+    data: "12 de agosto de 2026",
+    dek: "Rebrand com antes e depois publicado na categoria 'Noted' do Brand New, sob o título 'Swim Against the Current'.",
+    resumo: [
+      "O estúdio Together assina a nova marca e identidade da Amperos, projeto publicado pelo Brand New na categoria 'Noted' — reservada a trabalhos que a publicação considera dignos de registro e comentário, um degrau abaixo das análises longas.",
+      "O post aparece com marcação de antes e depois, o que significa que existe uma identidade anterior sendo substituída, e não uma marca criada do zero. Esse formato costuma ser o mais instrutivo do Brand New: ver as duas versões lado a lado expõe as decisões que o estúdio tomou e o que foi deliberadamente descartado.",
+      "O apelido escolhido pela publicação, 'Swim Against the Current', sugere um posicionamento de contracorrente — seja pela direção estética adotada, seja pela decisão de fugir das convenções visuais da categoria em que a empresa atua.",
+      "Rebrands nessa faixa de visibilidade raramente viram manchete fora do circuito de design, mas são úteis como termômetro: mostram o que estúdios independentes estão testando longe da pressão de marcas globais.",
+      "Observação: o conteúdo integral é restrito a assinantes; o resumo se apoia nos elementos públicos do post."
     ]
   }
 ];
 
-const CATEGORY_META = {
-  branding: { label: "Branding", color: "var(--branding)" },
-  design: { label: "Design", color: "var(--design)" },
-  tecnologia: { label: "Tecnologia/IA", color: "var(--tecnologia)" }
+/* ------------------------- Ilustrações SVG ------------------------- */
+const PALETAS = {
+  Branding: { a:"#ff9a52", b:"#f4623a", c:"#ffd8b0", d:"#8f2f10" },
+  Design:   { a:"#39c39b", b:"#0f8f78", c:"#c5f0e2", d:"#085646" },
+  Tecnologia:{ a:"#7b6bf5", b:"#4632c4", c:"#d9d4ff", d:"#241a72" }
 };
 
-/* ---------- ÍCONES ---------- */
-function CategoryIcon({ category, color }) {
-  if (category === "branding") {
-    return (
-      <path d="M20 34 L54 22 L54 58 L20 46 Z M20 34 L20 46 M12 36 Q8 40 12 44" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85" />
-    );
-  }
-  if (category === "design") {
-    return (
-      <path d="M18 54 L40 18 L52 26 L30 62 Z M18 54 L14 62 L22 58 Z M34 25 L45 32" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85" />
-    );
-  }
-  return (
-    <g fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.85">
-      <rect x="24" y="24" width="24" height="24" rx="3" />
-      <path d="M30 24 V16 M42 24 V16 M30 56 V48 M42 56 V48 M24 30 H16 M24 42 H16 M56 30 H48 M56 42 H48" />
+function Art({ categoria, variante, className }) {
+  const p = PALETAS[categoria] || PALETAS.Design;
+  const gid = "g" + categoria + variante;
+  const formas = [
+    <g key="0">
+      <circle cx="150" cy="90" r="62" fill={p.c} opacity=".85"/>
+      <circle cx="230" cy="130" r="40" fill={p.d} opacity=".28"/>
+      <rect x="40" y="120" width="110" height="16" rx="8" fill="#fff" opacity=".65"/>
+    </g>,
+    <g key="1">
+      <rect x="48" y="34" width="96" height="96" rx="20" fill={p.c} opacity=".9"/>
+      <rect x="150" y="60" width="120" height="70" rx="16" fill="#fff" opacity=".5"/>
+      <circle cx="256" cy="46" r="22" fill={p.d} opacity=".3"/>
+    </g>,
+    <g key="2">
+      <path d="M20 150 Q90 40 160 120 T310 90" stroke="#fff" strokeWidth="14" fill="none" opacity=".6" strokeLinecap="round"/>
+      <circle cx="90" cy="86" r="34" fill={p.c} opacity=".9"/>
+      <rect x="200" y="30" width="70" height="70" rx="35" fill={p.d} opacity=".25"/>
+    </g>,
+    <g key="3">
+      <rect x="30" y="30" width="70" height="120" rx="14" fill="#fff" opacity=".55"/>
+      <rect x="112" y="58" width="70" height="92" rx="14" fill={p.c} opacity=".9"/>
+      <rect x="194" y="20" width="70" height="130" rx="14" fill={p.d} opacity=".26"/>
+    </g>,
+    <g key="4">
+      <circle cx="100" cy="90" r="52" fill="#fff" opacity=".5"/>
+      <circle cx="170" cy="90" r="52" fill={p.c} opacity=".8"/>
+      <circle cx="240" cy="90" r="52" fill={p.d} opacity=".26"/>
+    </g>,
+    <g key="5">
+      <polygon points="70,150 130,40 190,150" fill={p.c} opacity=".9"/>
+      <polygon points="160,150 220,60 280,150" fill="#fff" opacity=".45"/>
+      <rect x="30" y="140" width="260" height="12" rx="6" fill={p.d} opacity=".3"/>
     </g>
-  );
-}
-
-/* ---------- THUMBNAIL: imagem real da fonte, com fallback SVG ---------- */
-function ThumbSvg({ article }) {
-  const meta = CATEGORY_META[article.category];
-  const seed = article.id * 47;
-  const cx = 60 + (seed % 60);
-  const cy = 40 + ((seed * 3) % 40);
-  const r = 70 + (seed % 50);
-  const gradId = "grad" + article.id;
+  ];
   return (
-    <svg viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice">
+    <svg className={className} viewBox="0 0 320 170" preserveAspectRatio="xMidYMid slice"
+         xmlns="http://www.w3.org/2000/svg" role="img" aria-label={"Ilustração de " + categoria}>
       <defs>
-        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={meta.color} stopOpacity="0.16" />
-          <stop offset="100%" stopColor={meta.color} stopOpacity="0.4" />
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={p.a}/>
+          <stop offset="100%" stopColor={p.b}/>
         </linearGradient>
       </defs>
-      <rect width="320" height="240" fill={meta.color} opacity="0.08" />
-      <circle cx={cx} cy={cy} r={r} fill={"url(#" + gradId + ")"} />
-      <circle cx={320 - cx * 0.6} cy={240 - cy * 0.5} r={r * 0.45} fill={meta.color} opacity="0.12" />
-      <g transform="translate(130,90)">
-        <CategoryIcon category={article.category} color={meta.color} />
-      </g>
+      <rect width="320" height="170" fill={"url(#" + gid + ")"}/>
+      {formas[variante % formas.length]}
     </svg>
   );
 }
 
-function Thumb({ article }) {
-  const [imgFailed, setImgFailed] = useState(false);
-
-  if (article.imageUrl && !imgFailed) {
-    return (
-      <React.Fragment>
-        <img
-          src={article.imageUrl}
-          alt={article.title}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-          onError={() => setImgFailed(true)}
-        />
-        <span className="img-credit">{article.source}</span>
-      </React.Fragment>
-    );
-  }
-  return <ThumbSvg article={article} />;
-}
-
-/* ---------- ESTRELAS ---------- */
-function Stars({ n }) {
+function Estrelas({ n, cor }) {
+  const c = cor || "#f0a500";
   return (
     <span className="stars" aria-label={n + " de 5 estrelas"}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" fill={i < n ? "var(--star)" : "none"} stroke="var(--star)" strokeWidth="1.2">
-          <polygon points="10,1.5 12.6,7.2 19,7.9 14.2,12.2 15.6,18.5 10,15.2 4.4,18.5 5.8,12.2 1,7.9 7.4,7.2" />
+      {[1,2,3,4,5].map(i => (
+        <svg key={i} className="star" viewBox="0 0 24 24" fill={i <= n ? c : "#dfe3e8"}>
+          <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/>
         </svg>
       ))}
     </span>
   );
 }
 
-/* ---------- APP ---------- */
-function App() {
-  const [filter, setFilter] = useState("todas");
-  const [openId, setOpenId] = useState(null);
+function Badge({ categoria }) {
+  const cls = categoria === "Branding" ? "b-branding" : categoria === "Tecnologia" ? "b-tech" : "b-design";
+  return <span className={"badge " + cls}>{categoria}</span>;
+}
 
-  const sorted = useMemo(
-    () => [...ARTICLES].sort((a, b) => b.stars - a.stars),
-    []
+function Modal({ item, onClose }) {
+  useEffect(() => {
+    const h = e => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", h);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", h); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <Art className="art" categoria={item.categoria} variante={item.variante}/>
+        <div className="inner">
+          <div className="meta">
+            <Badge categoria={item.categoria}/>
+            <Estrelas n={item.estrelas}/>
+            <span className="dot"></span>
+            <span>{item.source}</span>
+            <span className="dot"></span>
+            <span>{item.data}</span>
+          </div>
+          <h2>{item.tituloPt}</h2>
+          <div className="resumo">
+            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
+          </div>
+          <div className="actions">
+            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">
+              Ler no {item.source} ↗
+            </a>
+            <button className="btn btn-ghost" onClick={onClose}>Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-  const hero = sorted[0];
-  const rest = sorted.slice(1).filter(a => filter === "todas" || a.category === filter);
-  const openArticle = ARTICLES.find(a => a.id === openId);
+}
 
-  const dateLabel = "segunda-feira, 10 de agosto de 2026";
+function App() {
+  const [aberta, setAberta] = useState(null);
+
+  const itens = NOTICIAS
+    .map((n, i) => ({ ...n, variante: i }))
+    .sort((a, b) => b.estrelas - a.estrelas);
+
+  if (!itens.length) {
+    return (
+      <div className="wrap">
+        <div className="note">Não foi possível carregar notícias hoje. Tente novamente mais tarde.</div>
+      </div>
+    );
+  }
+
+  const manchete = itens[0];
+  const resto = itens.slice(1);
+  const portais = Array.from(new Set(itens.map(i => i.source)));
 
   return (
     <div className="wrap">
-      <header className="site-header">
-        <p className="kicker">Portal da Manhã</p>
-        <h1 className="wordmark">Branding, Design<br/>&amp; <em>Tecnologia</em></h1>
-        <div className="header-meta">
-          <p className="header-date">{dateLabel} — curadoria diária das últimas 24h</p>
-          <div className="filters">
-            {["todas", "branding", "design", "tecnologia"].map(f => (
-              <button
-                key={f}
-                className={"filter-btn" + (filter === f ? " active" : "")}
-                onClick={() => setFilter(f)}
-              >
-                {f === "todas" ? "Todas" : CATEGORY_META[f].label}
-              </button>
-            ))}
-          </div>
-        </div>
+      <header className="top">
+        <div className="kicker">Quinta-feira, 13 de agosto de 2026</div>
+        <h1 className="brand">Portal da Manhã</h1>
+        <p className="sub">
+          {itens.length} notícias de Branding, Design e Tecnologia selecionadas em {portais.length} portais internacionais.
+          Clique em qualquer card para ler o resumo completo.
+        </p>
       </header>
 
-      <section className="hero" onClick={() => setOpenId(hero.id)}>
-        <div>
-          <div className="hero-eyebrow">
-            <span className={"tag " + hero.category}>{hero.categoryLabel}</span>
-            <Stars n={hero.stars} />
-          </div>
-          <h1>{hero.title}</h1>
-          <p className="dek">{hero.dek}</p>
-          <span className="read-link">Ler resumo completo <span className="arrow">→</span></span>
-        </div>
-        <div className="hero-art"><Thumb article={hero} /></div>
-      </section>
+      <div className="divider"></div>
 
-      <p className="section-label">Mais notícias de hoje</p>
+      <article className="hero" onClick={() => setAberta(manchete)}>
+        <Art className="art" categoria={manchete.categoria} variante={manchete.variante}/>
+        <div className="body">
+          <div className="meta">
+            <Badge categoria={manchete.categoria}/>
+            <Estrelas n={manchete.estrelas}/>
+            <span className="dot"></span>
+            <span>{manchete.source}</span>
+          </div>
+          <h2>{manchete.tituloPt}</h2>
+          <p>{manchete.dek}</p>
+          <div className="meta" style={{marginTop:"4px"}}>
+            <span>{manchete.data}</span>
+            <span className="dot"></span>
+            <span style={{color:"var(--accent)"}}>Ler resumo →</span>
+          </div>
+        </div>
+      </article>
+
       <div className="grid">
-        {rest.length === 0 && (
-          <div className="warn">Nenhuma notícia encontrada para este filtro hoje.</div>
-        )}
-        {rest.map(article => (
-          <article key={article.id} className="card" onClick={() => setOpenId(article.id)}>
-            <div className="card-art"><Thumb article={article} /></div>
-            <div className="card-body">
-              <div className="card-top">
-                <span className={"tag " + article.category}>{article.categoryLabel}</span>
-                <Stars n={article.stars} />
+        {resto.map(item => (
+          <article className="card" key={item.id} onClick={() => setAberta(item)}>
+            <Art className="art" categoria={item.categoria} variante={item.variante}/>
+            <div className="body">
+              <div className="meta">
+                <Badge categoria={item.categoria}/>
+                <Estrelas n={item.estrelas}/>
               </div>
-              <h3>{article.title}</h3>
-              <p className="dek">{article.dek}</p>
-              <p className="card-foot">{article.source}</p>
+              <h3>{item.tituloPt}</h3>
+              <p className="dek">{item.dek}</p>
+              <div className="meta">
+                <span>{item.source}</span>
+                <span className="dot"></span>
+                <span>{item.data}</span>
+              </div>
             </div>
           </article>
         ))}
       </div>
 
       <footer>
-        <div className="foot-row">
-          <span>Portal da Manhã — curadoria e resumos gerados automaticamente a partir de fontes públicas.</span>
-          <span>Atualizado às 7h · {dateLabel}</span>
-        </div>
+        Portal da Manhã · edição de 13/08/2026 · Fontes: {portais.join(" · ")}.
+        Resumos escritos e parafraseados a partir das reportagens originais; os links levam à fonte.
+        Ilustrações geradas em SVG — nenhuma imagem externa é carregada.
       </footer>
 
-      {openArticle && (
-        <div className="overlay" onClick={() => setOpenId(null)}>
-          <div className="panel" onClick={e => e.stopPropagation()}>
-            <div className="panel-art">
-              <Thumb article={openArticle} />
-              <button className="close-btn" onClick={() => setOpenId(null)} aria-label="Fechar">✕</button>
-            </div>
-            <div className="panel-body">
-              <div className="panel-eyebrow">
-                <span className={"tag " + openArticle.category}>{openArticle.categoryLabel}</span>
-                <Stars n={openArticle.stars} />
-              </div>
-              <h2>{openArticle.title}</h2>
-              <div className="summary">
-                {openArticle.summary.map((p, i) => <p key={i}>{p}</p>)}
-              </div>
-              <a className="source-link" href={openArticle.sourceUrl} target="_blank" rel="noopener noreferrer">
-                Ler matéria original em {openArticle.source} ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+      {aberta && <Modal item={aberta} onClose={() => setAberta(null)}/>}
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

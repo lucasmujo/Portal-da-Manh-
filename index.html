@@ -3,133 +3,148 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 13 de agosto de 2026</title>
+<title>Portal da Manhã — 14 de agosto de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f6f7f9;
-    --card:#ffffff;
-    --ink:#12151a;
-    --ink-2:#4a5361;
-    --ink-3:#828c9b;
-    --line:#e7eaef;
-    --accent:#1a56db;
-    --shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
-    --shadow-lg:0 2px 6px rgba(16,24,40,.06), 0 24px 60px rgba(16,24,40,.14);
-    --radius:18px;
+    --bg:#f6f6f4;
+    --surface:#ffffff;
+    --ink:#14161a;
+    --ink-2:#4a5058;
+    --ink-3:#868d96;
+    --line:#e6e6e2;
+    --accent:#d2451e;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 28px rgba(20,22,26,.06);
+    --shadow-lg:0 2px 6px rgba(20,22,26,.06), 0 24px 60px rgba(20,22,26,.12);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     -webkit-font-smoothing:antialiased;
-    line-height:1.55;
   }
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
 
-  header.top{padding:44px 0 10px}
-  .kicker{
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);font-weight:700;margin-bottom:10px
-  }
+  /* ---------- Cabeçalho ---------- */
+  header.top{padding:56px 0 34px;border-bottom:1px solid var(--line);margin-bottom:40px}
+  .kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
   h1.brand{
-    font-size:clamp(34px,5.4vw,54px);line-height:1.03;margin:0 0 10px;
-    letter-spacing:-.033em;font-weight:800
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(40px,7vw,74px);line-height:.98;letter-spacing:-.025em;
+    margin:16px 0 14px;
   }
-  .sub{color:var(--ink-2);font-size:16px;margin:0}
-  .rule{height:1px;background:var(--line);margin:26px 0 30px}
+  .sub{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--ink-3);font-size:14.5px}
+  .sub b{color:var(--ink-2);font-weight:600}
 
-  /* manchete */
-  .hero{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  /* ---------- Manchete ---------- */
+  .lead{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;box-shadow:var(--shadow);cursor:pointer;
-    display:grid;grid-template-columns:1.15fr 1fr;
-    transition:transform .25s ease, box-shadow .25s ease;
-    margin-bottom:34px;
+    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s;
+    display:grid;grid-template-columns:1.15fr 1fr;margin-bottom:44px;
   }
-  .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .hero .media{position:relative;min-height:340px;background:#eef1f5}
-  .hero .media img,.hero .media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .hero .body{padding:34px 34px 32px;display:flex;flex-direction:column;justify-content:center}
-  .hero h2{font-size:clamp(24px,2.7vw,34px);line-height:1.16;margin:14px 0 12px;letter-spacing:-.02em;font-weight:800}
-  .hero p{color:var(--ink-2);margin:0 0 18px;font-size:16px}
+  .lead:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .lead .media{position:relative;min-height:380px;background:#ececea}
+  .lead .body{padding:40px 42px;display:flex;flex-direction:column;justify-content:center}
+  .lead h2{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;
+    font-size:clamp(26px,3vw,38px);line-height:1.14;letter-spacing:-.02em;margin:14px 0 16px;
+  }
+  .lead p.dek{color:var(--ink-2);font-size:16px;line-height:1.62;margin:0 0 24px}
 
-  .metaRow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .tag{
-    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    padding:5px 10px;border-radius:999px;border:1px solid transparent
-  }
-  .tag.branding{background:#fff2e8;color:#b3450a;border-color:#ffdcc4}
-  .tag.design{background:#e8f7f2;color:#0b6b52;border-color:#c6ebe0}
-  .tag.tecnologia{background:#eceaff;color:#3f34b8;border-color:#d7d3ff}
-  .source{font-size:13px;color:var(--ink-3);font-weight:600}
-  .stars{font-size:13px;color:#e0a800;letter-spacing:1px}
-
-  /* grid */
-  .grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:22px;padding-bottom:60px
-  }
+  /* ---------- Grid de cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
-    transition:transform .22s ease, box-shadow .22s ease
+    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s;
   }
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .card .media{height:186px;background:#eef1f5;position:relative}
-  .card .media img,.card .media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
-  .card h3{font-size:17.5px;line-height:1.3;margin:0;letter-spacing:-.012em;font-weight:700}
-  .card .dek{color:var(--ink-2);font-size:14px;margin:0;flex:1}
-  .card .foot{display:flex;justify-content:space-between;align-items:center;padding-top:4px}
-
-  .rank{
-    position:absolute;top:12px;left:12px;background:rgba(18,21,26,.82);color:#fff;
-    font-size:12px;font-weight:700;border-radius:8px;padding:3px 9px;backdrop-filter:blur(4px)
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .card .media{position:relative;height:196px;background:#ececea}
+  .card .body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .card h3{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;
+    font-size:19.5px;line-height:1.24;letter-spacing:-.012em;margin:12px 0 10px;
   }
+  .card p.dek{color:var(--ink-2);font-size:14.2px;line-height:1.58;margin:0 0 18px;flex:1}
 
-  /* modal */
+  /* ---------- Meta ---------- */
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    padding:5px 10px;border-radius:999px;
+  }
+  .tag.branding{background:#fdeee6;color:#b03d17}
+  .tag.design{background:#e4f3ee;color:#17715a}
+  .tag.tec{background:#e9ecfb;color:#3a44a8}
+  .src{font-size:12.5px;color:var(--ink-3);font-weight:500}
+  .stars{margin-left:auto;font-size:12.5px;letter-spacing:1.5px;color:#e0a32c;white-space:nowrap}
+  .foot{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:14px;margin-top:auto}
+  .lead .foot{border-top:none;padding-top:0;margin-top:6px}
+
+  img.shot{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ---------- Overlay ---------- */
   .overlay{
-    position:fixed;inset:0;background:rgba(12,16,22,.55);backdrop-filter:blur(6px);
-    display:flex;align-items:flex-start;justify-content:center;padding:32px 18px;
-    z-index:50;overflow-y:auto;animation:fade .18s ease
+    position:fixed;inset:0;background:rgba(18,20,24,.5);backdrop-filter:blur(6px);
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;
+    z-index:50;overflow-y:auto;animation:fade .22s ease;
   }
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:none}}
   .modal{
-    background:var(--card);border-radius:22px;max-width:760px;width:100%;
-    box-shadow:var(--shadow-lg);overflow:hidden;animation:rise .26s cubic-bezier(.2,.8,.3,1)
+    background:var(--surface);border-radius:24px;max-width:800px;width:100%;
+    box-shadow:0 40px 90px rgba(0,0,0,.3);overflow:hidden;animation:rise .3s cubic-bezier(.2,.7,.3,1);
+    margin:auto;
   }
-  .modal .media{height:320px;background:#eef1f5}
-  .modal .media img,.modal .media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .modal .body{padding:28px 30px 32px}
-  .modal h2{font-size:27px;line-height:1.2;margin:14px 0 6px;letter-spacing:-.02em;font-weight:800}
-  .modal .orig{font-size:13px;color:var(--ink-3);margin:0 0 18px;font-style:italic}
-  .modal .txt p{color:var(--ink-2);font-size:15.6px;margin:0 0 14px}
-  .modal .note{
-    font-size:13px;color:var(--ink-3);background:#f8f9fb;border:1px solid var(--line);
-    border-radius:12px;padding:11px 14px;margin-top:6px
+  .modal .media{height:340px;background:#ececea;position:relative}
+  .modal .inner{padding:34px 40px 40px}
+  .modal h2{
+    font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,3.4vw,33px);
+    line-height:1.16;letter-spacing:-.02em;margin:16px 0 6px;
   }
-  .actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .modal .orig{font-size:13.5px;color:var(--ink-3);font-style:italic;margin:0 0 22px;line-height:1.5}
+  .modal .resumo p{font-size:16.5px;line-height:1.75;color:#282c33;margin:0 0 18px}
+  .modal .nota{font-size:13.5px;color:var(--ink-3);border-left:3px solid var(--line);padding-left:14px;margin:22px 0 0;line-height:1.6}
+  .actions{display:flex;gap:12px;align-items:center;margin-top:30px;flex-wrap:wrap}
   .btn{
-    display:inline-block;padding:11px 18px;border-radius:11px;font-size:14px;font-weight:600;
-    text-decoration:none;border:1px solid var(--line);color:var(--ink);background:#fff;cursor:pointer
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:14.5px;font-weight:600;padding:13px 22px;border-radius:999px;
+    border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;
+    transition:opacity .2s;font-family:inherit;
   }
-  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .btn:hover{opacity:.9}
+  .btn:hover{opacity:.85}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .closeX{
+    position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;
+    background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:19px;line-height:1;
+    color:var(--ink);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.16);z-index:2;
+  }
 
-  footer{border-top:1px solid var(--line);padding:28px 0 60px;color:var(--ink-3);font-size:13px}
+  footer.end{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13.5px;line-height:1.7}
 
-  @media (max-width:820px){
-    .hero{grid-template-columns:1fr}
-    .hero .media{min-height:230px;height:230px}
-    .hero .body{padding:24px}
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .lead{grid-template-columns:1fr}
+    .lead .media{min-height:250px}
+    .lead .body{padding:28px 26px 32px}
+  }
+  @media (max-width:620px){
+    .wrap{padding:0 16px 64px}
+    .grid{grid-template-columns:1fr}
+    .modal .inner{padding:26px 22px 32px}
     .modal .media{height:220px}
-    .modal .body{padding:22px}
+    .overlay{padding:16px}
   }
 </style>
 </head>
@@ -137,290 +152,294 @@
 <div id="root"></div>
 
 <script type="text/babel">
-const { useState } = React;
+const { useState, useEffect } = React;
 
-const DATA = [
+const noticias = [
   {
-    rank: 1,
-    estrelas: 5,
-    categoria: "Design",
-    title: "Jaguar's new car's interior has been revealed – welcome to the inside of the Type 01",
-    tituloPt: "Jaguar revela o interior do Type 01 e aposta em uma \"espinha central\" que separa os passageiros",
+    title: "Manifest rebrands flexible workspace operator Landmark Space as Elementa Workspace",
+    tituloPt: "Landmark Space vira Elementa Workspace em rebrand da Manifest inspirado na tabela periódica",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/jaguars-new-cars-interior-has-been-revealed-welcome-to-the-inside-of-the-type-01/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/Jaguar_ExteriorFinal-1024x695.png",
-    dek: "A marca abre a cabine do primeiro carro de produção derivado do polêmico conceito Type 00.",
-    resumo: [
-      "Depois de mais de um ano e meio de discussão pública em torno do conceito Type 00 — o carro elétrico rosa que dividiu o setor automotivo desde dezembro de 2024 —, a Jaguar mostrou o interior do Type 01, o modelo de produção que herda aquelas ideias. A revelação acontece antes da apresentação completa do carro, marcada para 6 de outubro.",
-      "O elemento central da cabine é uma espinha longitudinal que corta o interior de ponta a ponta e cria quatro espaços individuais, um para cada ocupante. Segundo Thomas Holden, chefe de design de interiores da marca, a escolha contraria a norma de interiores horizontais e busca traduzir para dentro do carro a mesma presença dramática do exterior. Há teto panorâmico de vidro, uma tela principal centrada no motorista e um segundo painel menor, mais abaixo, para os controles de clima.",
-      "As linhas são o fio condutor visual: o efeito de lâminas que percorre o capô reaparece no topo do painel, e o felino \"Leaper\" surge nas portas em um tratamento art déco feito de traços paralelos. Em relação ao conceito, a Jaguar trocou o travertino da espinha central por acabamentos mais macios e arredondados — a publicação especula que a pedra fina pode voltar como opção cara de personalização, no estilo Bentley.",
-      "A análise do Design Week é de que a reação de choque provocada pelo Type 00 foi calculada: com vendas em queda e tentativas anteriores de apoiar-se em valores britânicos clássicos sem sucesso, a marca precisava ser notada. O interior do Type 01, na leitura da publicação, confirma a estratégia — não é mais um carro \"me too\", e é justamente isso que a Jaguar precisava."
-    ]
-  },
-  {
-    rank: 2,
+    url: "https://www.designweek.co.uk/manifest-rebrands-flexible-workspace-operator-landmark-space-as-elementa-workspace/",
+    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/08/elementa-logo-hero.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=683",
+    categoria: "Branding",
     estrelas: 5,
-    categoria: "Branding",
-    title: "The new 7UP rebrand is bound to be contentious",
-    tituloPt: "7UP muda logo e sabor: agora é \"lime lemon\", e a inversão promete polêmica",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/branding/the-new-7up-rebrand-is-bound-to-be-contentious",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/zSwnJYP2rPkw7MkVh359dC-1920-80.jpg",
-    dek: "Maior atualização da marca em 15 anos mexe na identidade visual e também na fórmula do refrigerante.",
+    dek: "A operadora britânica de escritórios flexíveis troca de nome e ganha um sistema visual construído sobre elementos químicos.",
     resumo: [
-      "Apenas três anos depois do último rebrand, a 7UP apresentou um novo visual — e desta vez a mudança não parou na embalagem. A fórmula do refrigerante também foi ajustada, e a nova identidade reflete isso: o produto passa a ser descrito como \"lime lemon\" (limão-taiti primeiro, limão-siciliano depois), invertendo a ordem consagrada de \"lemon and lime\".",
-      "A Keurig Dr Pepper apresenta o lançamento como a primeira fórmula da categoria liderada pelo lime, criada para reforçar a distinção da marca junto a uma nova geração de consumidores. A empresa evoca o histórico da 7UP como \"a Uncola original\", uma marca que se construiu contrariando convenções, e diz estar voltando a essas raízes. Drew Panayiotou, diretor de marketing e inovação da KDP, descreve o movimento como transformar uma marca de herança em um \"disruptor moderno\", com identidade mais afiada e posicionamento distinto.",
-      "O desenho novo é limpo e direto, e segue a tendência recente de marcas que resgatam suas próprias origens: o wordmark tem um ar retrô e suavizado. A crítica do Creative Bloq recai menos sobre o traço e mais sobre a linguagem — \"lemon and lime\" é o que a linguística chama de binômio irreversível, uma expressão fixa que soa estranha quando invertida, como \"pimenta e sal\" ou \"parafusos e porcas\". \"Lime lemon\" soa, nas palavras do texto, vagamente herético.",
-      "A justificativa da empresa é de público: segundo dados citados pela KDP, 72% dos consumidores da Geração Z e da Geração Alfa preferem sabores cítricos mais marcados, o que teria motivado a virada para um perfil mais brilhante e centrado no lime. Se o novo sabor vai conquistar esse público, só se saberá quando a fórmula chegar às prateleiras."
+      "A agência britânica Manifest concluiu a reformulação completa da Landmark Space, operadora de escritórios flexíveis no Reino Unido, que passa a se chamar Elementa Workspace. Mais do que uma troca de nome, o projeto reposiciona a empresa em torno de pesquisa sobre desempenho humano, foco e bem-estar no ambiente de trabalho — um território que o setor costuma tratar apenas como discurso de vendas.",
+      "A identidade visual se organiza em torno de uma grade dinâmica que faz referência simultânea à tabela periódica e às plantas modulares de escritórios contemporâneos. A paleta segue a mesma lógica: tons neutros de base batizados de Carbon, Titanium, Silver e Scandium, acompanhados de uma faixa larga de cores de destaque com nomes de elementos químicos — Magnesium, Plutonium, Cobalt, Oxygen e Helium.",
+      "A tipografia combina Milling Simplex 1mm com GT Maru Mono Light, e o sistema traz um conjunto de ícones pixelados construídos sobre grade, pensados para sinalização, navegação digital e pontos de contato físicos. A Manifest também desenvolveu submarcas específicas para cada uma das trinta unidades, além de redesenhar o site e reorganizar todo o ecossistema de marketing digital da operadora.",
+      "Segundo Martin Farrar-Smith, diretor de design do Manifest Group, o novo nome abriu espaço para uma direção visual mais ampla em um mercado onde todos os grandes players disputam nichos estreitos. Do lado do cliente, Kate Cox, diretora de receita da Elementa, afirma que a assinatura 'Science at Work' não é uma linha de campanha, mas o padrão contra o qual todos os novos edifícios passarão a ser projetados."
     ]
   },
   {
-    rank: 3,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "Foot Locker's new brand platform aims to earn its 'Stripes' with sneakerheads",
-    tituloPt: "Foot Locker lança plataforma de marca em torno das listras e do seu próprio funcionário-símbolo",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/foot-locker-steps-reclaim-dominance-sneaker-culture/1967118",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/300/cached.offlinehbpl.hbpl.co.uk/news/SUC/foot-locker-brand-platform-SC-CUS.jpg",
-    dek: "Varejista tenta retomar protagonismo na cultura do tênis apoiando-se no seu ativo mais reconhecível.",
-    resumo: [
-      "A Foot Locker apresentou uma nova plataforma de marca construída em torno do elemento mais reconhecível do seu patrimônio visual: o uniforme listrado em preto e branco usado pelos funcionários das lojas, e os próprios \"Stripers\" que o vestem. O trabalho envolve uma lenda do rap e profissionais que passaram pela Wieden+Kennedy.",
-      "A leitura estratégica é de recuperação de terreno. Nos últimos anos a rede perdeu centralidade na cultura sneaker para marcas que vendem direto ao consumidor e para plataformas de revenda, e a resposta escolhida não foi inventar um território novo, e sim reafirmar o que já era distintivo — história, parcerias com marcas e a onipresença dos funcionários listrados como rosto humano do varejo de tênis.",
-      "É um caso interessante de arquitetura de marca: em vez de um novo símbolo, a Foot Locker promove a distinctive brand asset que já existia e que o público reconhece sem precisar de explicação. O uniforme deixa de ser detalhe operacional e vira o núcleo do posicionamento.",
-      "Observação: a cobertura foi lida a partir da chamada e da descrição pública do artigo no índice do Campaign US — o texto completo é de acesso restrito."
-    ],
-    paywall: true
-  },
-  {
-    rank: 4,
-    estrelas: 4,
-    categoria: "Design",
-    title: "Emirates and Arsenal unveil crest sculpture engineered from upcycled aircraft components",
-    tituloPt: "Emirates constrói o escudo do Arsenal com 84 peças recicladas de um A380 e de um Boeing 777",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/emirates-and-arsenal-unveil-crest-sculpture-engineered-from-upcycled-aircraft-components/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/permertesackerkaihavertzmartinodegaardriccardocalafioriandemiratescabincrewwiththeaircraftedarsenalcrest-1024x683.jpg",
-    dek: "Escultura iluminada de 2,4 metros marca 20 anos de parceria e a extensão do contrato até 2033.",
-    resumo: [
-      "A Emirates e o Arsenal apresentaram o \"Aircrafted Arsenal Crest\", uma escultura iluminada de 2,4 metros de altura que reconstrói o escudo do clube inteiramente a partir de componentes aeronáuticos reaproveitados. A peça celebra duas décadas de parceria entre a companhia aérea e o clube, além da renovação do acordo até 2033, e foi revelada no Emirates Stadium após a temporada em que o time venceu a Premier League.",
-      "A produção levou 34 dias e envolveu 15 especialistas em Dubai, sob liderança de Leandi Schoonraad, gerente de upcycling de aeronaves da Emirates. A equipe selecionou 84 peças, escolhidas por resistência e geometria, e passou por etapas de limpeza, corte, usinagem e rebitagem até chegar à estrutura final.",
-      "O detalhamento é o ponto forte do projeto. O canhão central foi refeito com componentes de um Airbus A380: o cubo de uma roda do trem de pouso principal virou a roda do canhão, um duto de titânio de ar sangrado foi remodelado como cano, e painéis compostos de piso formam o corpo tridimensional. A face do escudo usa chapas de fuselagem de um Boeing 777, com trilhos de carga adaptados para a borda externa e a estrutura interna. Janelas de aeronave foram moldadas individualmente para criar o letreiro retroiluminado do Arsenal.",
-      "Pintada nas cores oficiais do clube e apoiada sobre uma base iluminada de azulejo preto, a escultura foi transportada de Dubai a Londres em um cargueiro da Emirates SkyCargo e revelada por Sir Tim Clark, presidente da Emirates, e Richard Garlick, CEO do Arsenal. Ela fica permanentemente exposta na área de hospitalidade do estádio."
-    ]
-  },
-  {
-    rank: 5,
-    estrelas: 4,
-    categoria: "Design",
-    title: "Save The Children's touching animated short takes inspiration from kids cartoons to tackle the subject of summer holiday poverty",
-    tituloPt: "Um elefante que não para de crescer: a animação da Save The Children sobre pobreza nas férias escolares",
-    source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/alice-bowsher-plastic-horse-save-the-children-the-elephant-in-the-room-animation-project-130826",
-    imageUrl: null,
-    dek: "Ilustrações de Alice Bowsher e narração de Himesh Patel dão forma a um tema que costuma ficar em silêncio.",
-    resumo: [
-      "As seis semanas de férias escolares no Reino Unido não são iguais para todas as famílias. Segundo pesquisa da Save The Children, três em cada cinco pais apontam esse período como o financeiramente mais difícil do ano — pior até que o Natal. A nova campanha da organização, batizada \"The Elephant in the Room\", parte exatamente daí.",
-      "A animação de 90 segundos é ilustrada por Alice Bowsher, animada pelo estúdio Plastic Horse e narrada pelo ator britânico Himesh Patel. A história é contada do ponto de vista de um menino que teme não ter \"histórias para contar nem roupas para vestir\" ao voltar às aulas, enquanto um elefante — metáfora do assunto que ninguém menciona — cresce silenciosamente ao longo das cenas. Dan Paskin, diretor executivo da Save The Children no Reino Unido, afirma que quatro milhões de crianças vivem em situação de pobreza no país neste verão e que o filme quer dizer a elas que não estão sozinhas.",
-      "A escolha de Bowsher, ilustradora londrina com trajetória em murais de grande escala e livros infantis, sustenta o tom. Ela buscou referência deliberada nos desenhos dos anos 1990 assistidos ao voltar da escola — Vila Sésamo, Arthur, Hey Arnold — porque essa linguagem, segundo ela, se encaixa bem no assunto da campanha. O traço ingênuo e simples permite tratar cenas cotidianas de dificuldade familiar sem dramatizar.",
-      "Tecnicamente, o processo partiu de esboços digitais, passou por desenhos finais feitos com pincel e nanquim e chegou ao estúdio já digitalizado quadro a quadro. David Gilbert, cofundador do Plastic Horse, conta que a equipe recorta as ilustrações no Photoshop e as manipula no After Effects — uma parceria que já dura anos com a ilustradora."
-    ]
-  },
-  {
-    rank: 6,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "New Logo and Identity for RECUP by Mutabor",
-    tituloPt: "Mutabor redesenha a RECUP, sistema alemão de copos reutilizáveis",
+    title: "New Logo and Identity for Big Rock Brewery by Helms Workshop",
+    tituloPt: "Cervejaria canadense Big Rock ganha identidade ilustrada assinada pela Helms Workshop",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_recup_by_mutabor.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/recup_logo_before_after.png",
-    dek: "Wordmark em caixa-alta e paleta em tom menta marcam a nova fase da operação alemã.",
-    resumo: [
-      "O estúdio alemão Mutabor assina a nova identidade da RECUP, publicada pelo Brand New na categoria \"Spotted\" — o formato reservado a projetos apresentados com comparação direta entre antes e depois, sem análise crítica extensa.",
-      "Os elementos indexados pela publicação apontam a direção do trabalho: wordmark em caixa-alta, paleta construída sobre um tom de menta e classificação da marca na indústria corporativa. A ficha do projeto traz ainda a origem alemã como marcador — a RECUP opera um dos maiores sistemas de copos e embalagens reutilizáveis do país, com devolução em rede de estabelecimentos parceiros.",
-      "A combinação de tipografia em caixa-alta com um verde-menta claro sugere um reposicionamento em direção a algo mais institucional e menos artesanal, movimento comum em operações de circularidade que amadurecem de projeto ambientalista para infraestrutura de mercado.",
-      "Observação: o Brand New mantém o conteúdo completo do post atrás de assinatura. Este resumo foi escrito a partir dos elementos públicos da página — título, estúdio, categoria editorial, indústria e tags."
-    ],
-    paywall: true
-  },
-  {
-    rank: 7,
-    estrelas: 4,
-    categoria: "Design",
-    title: "Viral hand-drawn Spider-Man poster shows people are craving more originality in movie art",
-    tituloPt: "Cartaz do Homem-Aranha feito à mão por funcionário de cinema viraliza e expõe o cansaço com o pôster padrão",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/poster-design/viral-hand-drawn-spider-man-ad-shows-how-people-crave-more-art-and-originality-in-advertising",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/R73jUzxtc4to5PMhb9meZj-2000-80.jpg",
-    dek: "Sem receber o material oficial, um cinema canadense improvisou — e o desenho virou o melhor marketing do filme.",
-    resumo: [
-      "Um cinema Cineplex Famous Players em Prince George, na Colúmbia Britânica, não recebeu a remessa de cartazes de \"Spider-Man: Brand New Day\" e ficou com o quadro de \"em cartaz\" vazio. A solução foi pedir a um funcionário que desenhasse o pôster à mão. O resultado — um Homem-Aranha fazendo o gesto de chifres, com título em letreiro manual e um pedido de desculpas escrito no rodapé explicando a improvisação — se espalhou pelas redes sociais.",
-      "O próprio autor comentou no Reddit que o chefe pediu o desenho por causa do problema de envio e que nunca imaginou a repercussão. O cinema chegou a considerar imprimir o cartaz oficial localmente, mas desistiu: com o desenho já famoso, ele precisa continuar no lugar enquanto o filme estiver em cartaz. Há inclusive pedidos de fãs para que sejam feitas impressões da versão manual.",
-      "O contraste com o resto da campanha é o que dá peso à história. No mesmo período, um anúncio do Homem-Aranha da BMW projetado nos painéis de veículos gerou reação negativa por parecer distópico. Enquanto isso, o ativo mais barato e menos tecnológico da divulgação foi o que gerou afeto espontâneo.",
-      "O texto do Creative Bloq conecta o episódio a uma queixa antiga do design gráfico: a padronização dos cartazes de cinema, todos com a mesma composição de rostos empilhados e paleta desbotada. O sucesso do desenho canadense — comparado ao meme \"Spooderman\" e ao charme impressionista dos cartazes ganenses pintados à mão — mostra que o público responde a estética original mesmo quando ela não representa fielmente o filme."
-    ]
-  },
-  {
-    rank: 8,
-    estrelas: 4,
-    categoria: "Design",
-    title: "YouTube's new policy is bad news for animators",
-    tituloPt: "YouTube dobra a exigência para monetizar e tira degraus da escada de novos animadores",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/art/animation/youtubes-new-policy-is-bad-news-for-animators",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/r4svjaDMdsVtG4LPqF2PRQ-2000-80.jpg",
-    dek: "A partir de fevereiro de 2027, novos canais precisarão do dobro de horas assistidas para entrar no programa de parceiros.",
-    resumo: [
-      "O YouTube decidiu dobrar os requisitos de entrada no seu programa de parceiros. A partir de 1º de fevereiro de 2027, criadores que se candidatarem à monetização precisarão de 8.000 horas qualificadas de exibição nos doze meses anteriores. Para Shorts, a exigência sobe para 20 milhões de visualizações qualificadas em três meses. Ambos os números são o dobro dos atuais — 4.000 horas e 10 milhões de visualizações.",
-      "A mudança não afeta quem já está no programa nem os limiares de financiamento por fãs e de produtos de loja. A plataforma justifica o ajuste pelo próprio crescimento e afirma que ele ajudará a financiar novos incentivos a criadores, além de prever ganho médio maior graças à expansão do plano Premium Lite a mais países.",
-      "O problema, segundo o Creative Bloq, é o efeito desproporcional sobre animadores independentes. Uma única peça curta de animação exige muito mais tempo e trabalho do que a maioria dos formatos, o que dificulta manter a frequência de publicação que o algoritmo recompensa. Fenômenos como \"The Amazing Digital Circus\" e \"Skibidi Toilet\" mostraram que a plataforma pode ser porta de entrada para animação original — e estúdios grandes já garimpam criadores virais para levar ao streaming e ao cinema.",
-      "Em paralelo, animadores relatam frustração com o processo de revisão da plataforma. Adam Mickiewicz, cocriador de \"Bridge Kids\", afirmou que o episódio mais recente da série foi classificado como \"para crianças\" apesar de ser uma animação adulta com palavrões, e que a decisão foi apresentada como final e revisada por um humano."
-    ]
-  },
-  {
-    rank: 9,
-    estrelas: 3,
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_big_rock_brewery_by_helms_workshop.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/bigrock_logo_before_after.png",
     categoria: "Branding",
-    title: "New Logo and Identity for Gunnersbury Park and Museum by Wiedemann Lampe",
-    tituloPt: "Gunnersbury Park e Museu ganham identidade e sinalização assinadas pelo Wiedemann Lampe",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_gunnersbury_park_and_museum_by_wiedemann_lampe.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/gunnersbury_park_museum_logo_before_after.png",
-    dek: "Sans serif condensada e um símbolo de árvore conduzem o novo sistema do complexo londrino.",
+    estrelas: 5,
+    dek: "Projeto entra na categoria 'Reviewed' do Brand New, reservada aos trabalhos que o site considera mais relevantes.",
     resumo: [
-      "O estúdio Wiedemann Lampe desenvolveu a nova identidade visual e o sistema de sinalização do Gunnersbury Park and Museum, complexo que reúne parque histórico e museu em Londres. O Brand New publicou o projeto na categoria \"Noted\", com o título editorial \"The Museum doesn't Fall Far from the Tree\" — um trocadilho que já entrega o elemento central do desenho.",
-      "As tags do post indicam o vocabulário do sistema: sans serif condensada, um símbolo de árvore e um componente forte de wayfinding, coerente com um lugar em que a orientação física do visitante entre parque e edifícios é parte do problema de design, não um acessório.",
-      "A escolha da árvore como signo faz sentido para um endereço em que a paisagem é tão protagonista quanto o acervo. Já a condensada sugere um sistema pensado para funcionar bem em placas verticais, totens e aplicações ao ar livre, onde a largura é limitada e a legibilidade a distância importa mais que o refinamento tipográfico.",
-      "Observação: o conteúdo completo do post está atrás da assinatura do Brand New. O resumo acima foi montado a partir dos elementos públicos — título, estúdio, categoria, indústria e tags."
+      "O Brand New publicou nesta quinta-feira uma resenha completa da nova marca da Big Rock Brewery, cervejaria canadense que teve logotipo, identidade e embalagens redesenhados pela Helms Workshop — estúdio de Austin conhecido justamente por trabalhos no setor de bebidas.",
+      "A publicação classificou o projeto como 'Reviewed', sua categoria editorial mais exigente, reservada aos casos que os editores consideram dignos de análise crítica aprofundada. O texto foi assinado por Danica e leva o título 'Rock Out With Your Rock Out', trocadilho que sinaliza o tom mais solto da nova direção.",
+      "Pelas tags atribuídas ao post, o redesenho se apoia em ilustração, tipografia serifada em caixa alta e um sistema de embalagens renovado — combinação que sugere um retorno a códigos mais artesanais, na contramão do minimalismo sans-serif que dominou a categoria cervejeira na última década.",
+      "O post inclui comparativo de logotipo antes e depois e uma seção dedicada às embalagens."
     ],
     paywall: true
   },
   {
-    rank: 10,
+    title: "Breaking the beauty mold: Why K18 swapped a ‘picture-perfect’ beauty activation for a literal ball of hair",
+    tituloPt: "K18 rola uma bola de cabelo de 2,4 metros por Nova York — e a cidade passa dois dias sem entender o porquê",
+    source: "Campaign US",
+    url: "https://www.campaignlive.com/article/breaking-beauty-mold-why-k18-swapped-picture-perfect-beauty-activation-literal-ball-hair/1967343",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/SUC/K18-hairball-credit-ivy-chan-CUS.jpeg",
+    categoria: "Branding",
     estrelas: 4,
+    dek: "A marca de haircare da Unilever apostou no oposto da estética impecável da beleza — e virou notícia em telejornal local.",
+    resumo: [
+      "A K18, marca de cuidados capilares comprada pela Unilever em 2023, colocou uma bola de cabelo sintético de aproximadamente 2,4 metros para rolar pelas ruas de Nova York durante dias, sem qualquer identificação. Batizada de Tumblehair e composta por 167 bilhões de fios artificiais, a peça acumulou vídeos de passantes no Instagram e no TikTok antes de qualquer revelação de marca.",
+      "Só na terça-feira a K18 assumiu a autoria para seus 819 mil seguidores, com um vídeo que compilava as reações do público e a legenda: 'Ok, Nova York. Acabou a brincadeira. Somos nós por trás da bola gigante de cabelo que você viu rolando ontem. Desculpa pelo estresse emocional.' Emissoras locais como Fox 5 e ABC7NY chegaram a noticiar o objeto 'bizarro' e 'sem contexto'.",
+      "A bola terminou o percurso na Gansevoort Plaza, onde a marca montou o Hair Longevity Lab para lançar o sérum FutureIQ. A ativação incluiu análises capilares individuais em cadeiras de salão ao ar livre, uma máquina de garra cromada com brindes e gua shas metálicos gravados para quem comprasse na Sephora do outro lado da rua. Visitantes eram convidados a colar fios do próprio cabelo na Tumblehair.",
+      "Segundo a CMO Kleo Mack, a lógica foi deliberadamente contrária ao padrão da categoria: 'O marketing de beleza é cheio de cabelo bonito. Quisemos mostrar o outro lado da história.' O número de 167 bilhões representa a quantidade de fios que seriam retidos se cada nova-iorquino alcançasse o resultado clínico prometido pelo produto. A criação é da Uncommon Creative Studio, mesmo estúdio por trás da Rat Boot da NYFW de 2024."
+    ]
+  },
+  {
+    title: "Heatherwick Studio adjusts design of Louisville waterfront park to \"restore buzz\"",
+    tituloPt: "Heatherwick recua e reprojeta parque à beira-rio em Louisville depois de críticas de custo e segurança",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/08/11/heatherwick-studio-belvedere-louisville-waterfront-update/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/belvedere-heatherwick-studio-louisville-kentucky-updated-design_dezeen_2364_hero.jpg",
+    categoria: "Design",
+    estrelas: 4,
+    dek: "A versão anterior, com uma colina gramada sobre uma via expressa, foi enxugada. A nova gira em torno de um pavilhão de postes curvos.",
+    resumo: [
+      "O Heatherwick Studio apresentou uma versão revisada do projeto para o Belvedere, parque e espaço de eventos que conecta o centro de Louisville, no Kentucky, à orla do rio Ohio. A área, criada nos anos 1970, virou segundo Thomas Heatherwick um espaço 'árido e desconectado' da energia da cidade ao longo das últimas décadas.",
+      "O novo desenho abandona a proposta apresentada no início do ano passado, que previa uma grande forma ondulada coberta de grama sobre o viaduto da rodovia I-64. Conforme apurou a emissora local WLKY, a mudança veio depois de questionamentos sobre custo e segurança. A prefeitura também abriu uma consulta pública online e realizou encontros comunitários antes de fechar a revisão.",
+      "A versão atual se organiza em torno de um caminho contínuo e texturizado que atravessa os cerca de 365 metros do terreno, entra na malha urbana, contorna o pavilhão principal e desce por uma escadaria até a orla. Áreas gramadas, pavilhões de pedra, fontes, esculturas e postes de luz curvos completam o conjunto. O próprio pavilhão é composto por dezenas desses postes agrupados em uma forma de meia concha.",
+      "A obra deve começar neste outono no hemisfério norte, com inauguração prevista para 2030. As imagens são do estúdio NOD."
+    ]
+  },
+  {
+    title: "What does the sale of ArtStation and Sketchfab mean for digital artists?",
+    tituloPt: "Epic vende ArtStation e Sketchfab para a KitBash e artistas cobram uma coisa só: fim do lixo gerado por IA",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/art/digital-art/what-does-the-sale-of-artstation-and-sketchfab-mean-for-digital-artists",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/3omVpuKsspmQAAQKnrXAtc-1280-80.webp",
     categoria: "Tecnologia",
-    title: "Lovable confirms new $13.3B valuation, raises another $400M",
-    tituloPt: "Lovable levanta US$ 400 milhões e confirma avaliação de US$ 13,3 bilhões",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/08/picnew-copy.png?resize=1200,801",
-    dek: "A queridinha europeia do \"vibe coding\" dobra de valor em oito meses e chega a 60 milhões de projetos hospedados.",
+    estrelas: 4,
+    dek: "A maior plataforma de portfólio da arte digital muda de dono cinco anos depois da compra pela Epic Games.",
     resumo: [
-      "A startup sueca Lovable confirmou o que vinha sendo especulado desde julho: fechou uma nova rodada de US$ 400 milhões, uma Série C liderada pela Menlo Ventures e pelo Scaleup Europe Fund, com mais de uma dezena de outros investidores participando. A avaliação chega a US$ 13,3 bilhões.",
-      "O salto é rápido. A rodada anterior, anunciada em dezembro, trouxe US$ 330 milhões a uma avaliação de US$ 6,6 bilhões, também com a Menlo à frente e a CapitalG como colíder. Em junho, a empresa informou ter atingido US$ 500 milhões de receita anualizada.",
-      "A escala da operação explica parte do apetite dos investidores: a Lovable diz hospedar 60 milhões de projetos, que atraem 900 milhões de visitas mensais. Para dar conta disso, passou a treinar seu próprio modelo de IA interno, mantendo também as opções de modelos de fronteira, e assinou em junho um acordo plurianual com o Google Cloud prevendo aumento de cinco vezes no uso de infraestrutura.",
-      "A empresa também vem atuando como investidora no ecossistema europeu — apoiou, entre outras, a dinamarquesa Atech, que constrói software de \"vibe coding\" voltado ao projeto de hardware. O TechCrunch registra que uma das novas investidoras da Série C é a Regent, firma que também é proprietária do próprio site."
+      "A Epic Games anunciou a venda do ArtStation e do Sketchfab para a KitBash, empresa por trás das plataformas de assets 3D KitBash3D e Greyscalegorilla. As duas haviam sido adquiridas pela Epic em 2021. Com mais de 10 milhões de usuários registrados, o ArtStation é o principal portfólio online de boa parte dos artistas digitais que trabalham com games, cinema e entretenimento.",
+      "Do lado da Epic, o movimento libera atenção para a Unreal Engine 6, o Fortnite, a Epic Games Store e seu ecossistema de desenvolvedores. Do lado da KitBash, a compra monta uma cadeia que vai de formação e descoberta de artistas até assets 3D prontos para produção — algo que Banks Boutté, co-CEO da empresa, descreve como um ecossistema criativo mais conectado.",
+      "Nada muda de imediato para quem usa as plataformas: portfólios, bibliotecas e fluxos de trabalho seguem iguais, assinaturas e preços permanecem, e a KitBash afirmou explicitamente que a propriedade intelectual continua com os artistas, incluindo atribuição e direitos criativos. Assinantes do KitBash3D e do Cargo mantêm seus kits e assets.",
+      "A reação da comunidade, porém, se concentrou em outro ponto. A maior parte dos comentários pede que a nova dona revise a política de IA do ArtStation e reduza o volume de conteúdo gerado por inteligência artificial nas duas plataformas — para muitos dos artistas que abandonaram o site nos últimos anos, essa é a única mudança capaz de trazê-los de volta. O ArtStation respondeu no X dizendo que está ouvindo e que 'há confiança a ser reconquistada'."
     ]
   },
   {
-    rank: 11,
-    estrelas: 3,
-    categoria: "Design",
-    title: "Glasgow 2026: The Commonwealth Games in Lab Mode",
-    tituloPt: "Glasgow 2026 mostra que os Jogos da Commonwealth podem virar laboratório em vez de Olimpíada encolhida",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/glasgow-2026-the-commonwealth-games-in-lab-mode/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/L-R-Scottish-Gymnast-Reuben-Ward-1-1024x710.jpg",
-    dek: "Com um quinto do orçamento de Birmingham, a edição escocesa vira argumento a favor de um evento mais experimental.",
-    resumo: [
-      "Simon Daniel, diretor criativo do estúdio forpeople, argumenta em artigo de opinião que Glasgow 2026 reescreveu parte do manual dos Jogos da Commonwealth. Em vez de tentar ser uma Olimpíada em escala reduzida, a cidade entregou um evento enxuto e concentrado: dez modalidades (contra 19 em Birmingham), quatro sedes dentro de um corredor de cerca de treze quilômetros, nenhum estádio novo e nenhuma vila de atletas.",
-      "O resultado financeiro foi drástico — cerca de £160 milhões, pouco mais de um quinto dos £780 milhões gastos por Birmingham. Para o autor, isso não foi apenas aperto orçamentário, mas um reposicionamento deliberado, e o passo seguinte deveria ser usar essa agilidade como licença criativa. Os Jogos, defende ele, não deveriam competir em escala com a Olimpíada, e sim se tornar um laboratório de inovação para os esportes e para a cidade-sede.",
-      "Ele cita dois exemplos de fora: o UTMB, circuito de ultramaratona de trilha, que usa drones, câmeras nos corredores e rastreamento GPS ao vivo para tornar imersivo um esporte difícil de acompanhar; e o SailGP, que recorre a dados e gráficos ao vivo para deixar claro, para um espectador leigo, quem está ganhando e o que deve acontecer em seguida. O ponto de interesse, sublinha, não é a tecnologia, mas o design de experiência por trás dela — a pergunta certa não é o que adicionar, e sim o que faria alguém se importar mais.",
-      "O texto se estende ainda à sustentabilidade (uniformes com QR code para rastrear reuso, materiais monomateriais, corantes de base biológica), à inclusão — lembrando que o esporte paralímpico já integra o programa dos Jogos, ao contrário da separação entre Olimpíada e Paralimpíada — e ao papel de patrocinadores, que poderiam prototipar produtos em público. A aposta se volta para Amdavad 2030, centenário do evento: se Glasgow redesenhou o custo, a próxima sede poderia redesenhar a proposta."
-    ]
-  },
-  {
-    rank: 12,
-    estrelas: 3,
-    categoria: "Branding",
-    title: "New Logo for Great Harvest",
-    tituloPt: "Great Harvest atualiza o logotipo com slab serif e referência ao trigo",
+    title: "New Logo and Identity for SCANA Energy by Landor",
+    tituloPt: "Landor redesenha a SCANA Energy e coloca um urso no centro da marca",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_great_harvest.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/great_harvest_logo_before_after.png",
-    dek: "Rede americana de padarias e cafés troca a marca em um redesenho registrado pelo Brand New na categoria \"Spotted\".",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_scana_energy_by_landor.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/scana_energy_logo_before_after.png",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "Distribuidora de gás natural da Geórgia troca o registro corporativo por um mascote — escolha rara no setor de utilities.",
     resumo: [
-      "A Great Harvest, rede americana de padarias e cafeterias, apresentou um novo logotipo, publicado pelo Brand New no formato \"Spotted\" — o registro rápido de antes e depois, sem análise crítica desenvolvida.",
-      "As tags do post descrevem o repertório visual: slab serif, ângulos marcados e a referência ao trigo, com a marca classificada na indústria de restaurantes sob os marcadores de padaria e café.",
-      "A combinação é bastante coerente com o setor. A slab serif carrega associação histórica com robustez artesanal e impressão tipográfica antiga, e o trigo é o signo mais direto disponível para uma padaria — a questão de design, nesses casos, costuma ser menos o que representar e mais como fazê-lo sem cair no clichê do campo de espigas.",
-      "Observação: o conteúdo completo está restrito a assinantes do Brand New. Este resumo foi produzido a partir dos elementos públicos da página — título, categoria editorial, indústria e tags."
+      "A Landor assinou a nova identidade da SCANA Energy, distribuidora de gás natural que atua no estado americano da Geórgia. O post foi publicado pelo Brand New na categoria 'Noted' e assinado por Armin Vit, sob o título 'Bear Necessities'.",
+      "As tags do projeto entregam a estratégia: urso, mascote, tipografia proprietária e letras de desenho largo. É um caminho incomum para o segmento de utilities, historicamente dominado por marcas abstratas, siglas em azul e símbolos genéricos de energia — a adoção de um personagem sugere uma tentativa de aproximação afetiva com o consumidor doméstico.",
+      "O post traz o comparativo de logotipo antes e depois e uma seção dedicada exclusivamente ao urso."
     ],
     paywall: true
+  },
+  {
+    title: "The myth of the accessible typeface",
+    tituloPt: "\"Não existe fonte acessível\": designer de tipos desmonta o mito e defende que a resposta já estava na tipografia clássica",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/the-myth-of-the-accessible-typeface/",
+    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/08/Accessibility-optimised.gif?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=670",
+    categoria: "Design",
+    estrelas: 4,
+    dek: "Zeynep Akay, da Dalton Maag, ataca os checklists de acessibilidade e a indústria de conteúdo que cresceu em volta deles.",
+    resumo: [
+      "Em coluna para a Design Week, a designer de tipos Zeynep Akay argumenta que a entrada da acessibilidade no debate cultural veio acompanhada de uma enxurrada de desinformação. Clientes convertem a ansiedade em busca por checklists que garantam conformidade; designers, sem respostas fáceis, restringem o próprio processo e passam a tratar acessibilidade como inimiga da criatividade.",
+      "Esse vácuo, escreve ela, abriu espaço para 'charlatões de carrossel do LinkedIn', manchetes que prometem cura para dislexia e pesquisadores amadores ajustando variáveis até chegar a um resultado comercialmente conveniente. Diretrizes oficiais também contribuem para a confusão: o Americans with Disabilities Act, na versão de 2010, ainda pede caracteres sem serifa em telas de caixa eletrônico — regra que fazia sentido em displays de baixa resolução e hoje lança dúvida injustificada sobre o uso de serifas em telas Retina.",
+      "A boa notícia, segundo Akay, é que quase tudo o que é preciso saber sobre tipografia e acessibilidade é conhecimento antigo. Em quinze anos acompanhando estudos de legibilidade, ela diz nunca ter se surpreendido com uma conclusão: o que os estudos fazem é validar boas práticas já estabelecidas. Altura-x generosa, letras desambiguadas, espaçamento proporcional e uso adequado de estilos melhoram a leitura; formas puramente geométricas e entrelinhamento apertado atrapalham.",
+      "O ponto central da coluna é que não existe solução única. Acessibilidade envolve pessoas com deficiências visuais, dificuldades de processamento fonológico e uma camada de fatores sociais, culturais, linguísticos e econômicos — nenhuma delas interage com o design da mesma forma. Ela recomenda tratar o tema como escala deslizante, não como caixa a marcar, e sugere compensações práticas: se o cliente insiste no cinza claro sobre cinza médio, que ao menos haja um botão de alto contraste."
+    ]
+  },
+  {
+    title: "AKSH Architects lines The Earthen Retreat with mud walls",
+    tituloPt: "Depósitos abandonados em Pune viram pousada de barro e cal pela AKSH Architects",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/08/13/aksh-architects-earthen-retreat/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/aksh-architects-the-earthen-retreat-india-sq_dezeen_2364_col_1.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "Quatro construções de canteiro de obras sem uso foram reformadas até ficarem irreconhecíveis.",
+    resumo: [
+      "O escritório indiano AKSH Architects concluiu o The Earthen Retreat, um conjunto de casas de hóspedes em Pune erguido a partir de quatro pequenas edificações abandonadas — antigos escritórios de canteiro e depósitos que haviam perdido a função original — em um terreno de 557 metros quadrados.",
+      "As estruturas originais de madeira e aço foram mantidas, mas revestidas com barro e reboco de cal. O fundador Akash Shingvi descreve a intervenção como intencionalmente radical: cada espaço foi remodelado com formas escultóricas, superfícies naturais e planta fluida, tornando quase impossível reconhecer os prédios originais.",
+      "Os quatro blocos, cada um dividido em duas casas vizinhas, se organizam simetricamente ao redor de um pátio pavimentado com piscina no centro. Cada unidade tem quarto e banheiro parcialmente aberto para o exterior, protegido por uma cobertura de bambu que filtra luz e ar. Paredes e tetos texturizados aparecem em tons de bege e verde-escuro, perfurados por aberturas em arco e curvas.",
+      "Formas curvas se repetem nos bancos embutidos que contornam metade dos quartos e servem de criado-mudo, na banheira oval e na abertura do chuveiro. Segundo Shingvi, materiais excessivamente refinados não fariam sentido em um contexto tropical — daí a escolha por bambu, cal, barro e madeira de origem local. As fotos são de Harsh Lunavat."
+    ]
+  },
+  {
+    title: "Watch: 10 content creators play hide-and-seek in Kate Spade spot",
+    tituloPt: "Kate Spade escala dez criadores de conteúdo para uma brincadeira de esconde-esconde em Nova York",
+    source: "Campaign US",
+    url: "https://www.campaignlive.com/article/watch-10-content-creators-play-hide-and-seek-kate-spade-spot/1967159",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/SUC/kate-spade-creators-hide-seek-UWP-CUS.jpg",
+    categoria: "Branding",
+    estrelas: 3,
+    dek: "A cantora sul-africana Tyla estreia como embaixadora global da marca no filme de outono.",
+    resumo: [
+      "A Kate Spade New York anunciou a cantora Tyla como sua nova embaixadora global e a colocou no centro de 'Spark Something Beautiful', o filme da coleção de outono de 2026. A campanha promove a bolsa Duo Mini e reúne dez criadores de conteúdo em uma brincadeira de esconde-esconde pelas ruas de Nova York.",
+      "O elenco mistura perfis de nichos bastante distintos: Bretman Rock, Kareem Rahma (do Subway Takes), o comediante Dylan Kevitch, o meteorologista dançante Nick Kosir, a colunista de redes sociais da Cosmopolitan Julia Mervis, os criadores de gastronomia Ana Sofia e Gianluca Conte, a criadora de moda Payton Purther, Sally Carden e o coletivo 4inthe5.",
+      "O filme apresenta as novas cores sazonais da Duo Mini — entre elas Beet, Laurel Leaf, Smokey Petal, Driftwood, Hot Fudge, Pomegranate e Giraffe Haircalf. A direção é de Rupert Sanders, do longa 'Branca de Neve e o Caçador'.",
+      "A operação envolveu várias frentes: Alison Brod Marketing + Communications na assessoria, SHO+CO e UTA na gestão de talentos e influenciadores, Vayner Media no conteúdo social e Marcel como agência criativa da campanha."
+    ]
+  },
+  {
+    title: "Luke Healy turns harmless fibs about celebrity interactions into hilarious comics",
+    tituloPt: "Luke Healy inventa encontros com celebridades em quadrinhos de quatro quadros — e o TK Maxx é o cenário perfeito",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/luke-healy-celebrity-comics-illustration-project-130826",
+    imageUrl: "https://admin.itsnicethat.com/images/2-ceyELt5eVdwGfCXLOA8VUje1g=/280900/width-1440%7Cformat-jpeg/luke-healy-illustration-itsnicethat-Luke-Healy-Celebrity-Comics-Tom-Hollan.png",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "O cartunista irlandês desenha duas tirinhas por manhã sobre encontros que nunca aconteceram.",
+    resumo: [
+      "O cartunista e comediante irlandês Luke Healy, autor de seis livros publicados, desenha todas as manhãs duas tirinhas sobre encontros fictícios com celebridades. A prática nasceu de um show mensal de comédia chamado 'Ass', no qual ele improvisava anedotas constrangedoras envolvendo gente famosa.",
+      "A graça está em usar contra o leitor o conhecimento quase enciclopédico que todo mundo tem sobre celebridades: como uma pessoa famosa se comporta em público, como fala, como se veste. Tom Holland encomendaria uma fantasia de pelúcia sob medida? Healy nunca é maldoso — a referência declarada é Mitch Hedberg e seus non sequiturs.",
+      "O método é simples e rígido. Ele busca a celebridade no Google Imagens e usa o primeiro resultado: se Ariana Grande aparece de vestido de gala, é assim que ela vai estar no Morrisons. Depois escolhe um local mundano, atribui uma emoção forte ao personagem e deixa a situação se desdobrar. 'Quanto mais banal e específico, melhor', diz. Se Britney Spears ama Oreo, como isso a faz agir de forma estranha numa TK Maxx?",
+      "O contraste entre o glamour das celebridades e o kitsch do varejo britânico é o motor das tirinhas — Olivia Rodrigo vestida de Rainha Amidala num cinema em Walthamstow, Bad Bunny na M&S, Jeremy Renner na Oxfam, Sabrina Carpenter no Yo Sushi. Healy esboça no iPad, imprime e passa a tinta com caneta Rotring Isograph em papel comum de impressora; gosta do resultado tosco. Seu novo romance gráfico, 'Dogs On Dates', saiu pela Faber."
+    ]
+  },
+  {
+    title: "New Logo for BNZ Breakers",
+    tituloPt: "BNZ Breakers, da liga australiana de basquete, estreia logotipo condensado",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_bnz_breakers.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/bnz_breakers_logo_before_after.png",
+    categoria: "Branding",
+    estrelas: 3,
+    dek: "Franquia neozelandesa aparece na seção 'Spotted', dedicada a projetos captados pelos editores sem release oficial.",
+    resumo: [
+      "O Brand New registrou nesta quinta-feira o novo logotipo dos BNZ Breakers, franquia de basquete da Nova Zelândia. O item foi publicado na categoria 'Spotted', reservada a marcas que os editores identificam por conta própria, sem material enviado por estúdio ou cliente — o que significa que a autoria do redesenho não foi divulgada.",
+      "As tags do post indicam os elementos principais: basquete, tipografia condensada e Nova Zelândia. A escolha por letras condensadas segue a tendência recente em identidades esportivas, que vêm privilegiando marcas que funcionam bem em uniformes, transmissões e telas verticais de redes sociais.",
+      "O post traz comparativo antes e depois do logotipo."
+    ],
+    paywall: true
+  },
+  {
+    title: "The viral cursed milk cat has been turned into a hilarious animation using Blender",
+    tituloPt: "O gato do leite ganha história de origem: meme de 2020 vira animação low-poly no Blender",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/art/animation/the-viral-cursed-milk-cat-photos-been-turned-into-a-hilarious-animation-in-blender",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/S7ymkqzGFmzcgSEKccr4UC-2000-80.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "O artista Vossadova constrói curtas com bichos expressivos usando software livre — e resolveu explicar um meme de seis anos.",
+    resumo: [
+      "O artista 3D que assina como Vossadova vem desenvolvendo um estilo de animação low-poly bastante saturado para contar histórias curtas com personagens animais expressivos, tudo feito no Blender, software de animação gratuito e de código aberto.",
+      "Sua peça mais comentada agora pega o 'Milk Face Cat' — imagem que circula na internet desde maio de 2020, quando foi publicada em um lote de memes de animais no imgur — e finalmente lhe dá um enredo. Reinterpretado em baixa contagem de polígonos e com um susto no fim, o gato fica mais engraçado do que na foto original.",
+      "O timing ajuda: a expectativa em torno de 'Gatto', longa da Pixar previsto para o ano que vem, já vem alimentando uma nova onda de arte inspirada em felinos nas redes.",
+      "Em outro trabalho recente, o artista abandonou a iluminação quente que costuma usar para encarar uma cena noturna em tons frios, retratando uma situação que qualquer pessoa com gato reconhece de imediato."
+    ]
   }
 ];
 
-const PALETAS = {
-  Branding:   { a:"#ff8a4c", b:"#ffd166", c:"#f25f5c" },
-  Design:     { a:"#2ec4a6", b:"#7ee0c8", c:"#118a72" },
-  Tecnologia: { a:"#5b6ef5", b:"#a78bfa", c:"#3730a3" }
+const paletas = {
+  "Branding": ["#F4A261","#E76F51","#F6D8B8"],
+  "Design":   ["#2A9D8F","#48BFA5","#CFEDE5"],
+  "Tecnologia":["#5B6BE1","#8B5CF6","#D6DBFB"]
 };
 
-function Ilustracao({ categoria, seed }) {
-  const p = PALETAS[categoria] || PALETAS.Design;
+function Ilustracao({ categoria, seed, alto }) {
+  const p = paletas[categoria] || paletas["Design"];
   const id = "g" + seed;
-  const r = (n) => ((seed * 37 + n * 53) % 100);
+  const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"
+         style={{width:'100%',height:'100%',display:'block'}} aria-hidden="true">
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p.a}/>
-          <stop offset="100%" stopColor={p.b}/>
+          <stop offset="0%" stopColor={p[0]}/>
+          <stop offset="100%" stopColor={p[1]}/>
         </linearGradient>
       </defs>
       <rect width="400" height="260" fill={`url(#${id})`}/>
-      <circle cx={60 + r(1) * 2.6} cy={40 + r(2)} r={54 + r(3) * .5} fill={p.c} opacity=".26"/>
-      <circle cx={300 - r(4)} cy={200 - r(5)} r={70 + r(6) * .4} fill="#ffffff" opacity=".22"/>
-      <rect x={40 + r(7)} y={130 + r(8) * .4} width={120 + r(9)} height="14" rx="7" fill="#ffffff" opacity=".45"/>
-      <rect x={40 + r(7)} y={158 + r(8) * .4} width={70 + r(2)} height="14" rx="7" fill="#ffffff" opacity=".30"/>
-      <path d={`M0 ${230 - r(3)} Q 100 ${180 + r(4)} 200 ${222 - r(5)} T 400 ${200 + r(6)} V260 H0 Z`} fill={p.c} opacity=".22"/>
+      <circle cx={60 + r(1)*280} cy={40 + r(2)*160} r={40 + r(3)*55} fill={p[2]} opacity="0.55"/>
+      <circle cx={40 + r(4)*320} cy={60 + r(5)*150} r={25 + r(6)*40} fill="#ffffff" opacity="0.28"/>
+      <rect x={r(7)*260} y={r(8)*170} width={60 + r(9)*110} height={12 + r(10)*16}
+            rx="8" fill="#ffffff" opacity="0.4"
+            transform={`rotate(${-25 + r(11)*50} 200 130)`}/>
+      <path d={`M0 ${190 + r(12)*40} Q 100 ${140 + r(13)*60} 200 ${190 + r(14)*40} T 400 ${180 + r(15)*50} L400 260 L0 260 Z`}
+            fill="#ffffff" opacity="0.22"/>
     </svg>
   );
 }
 
-function Imagem({ item }) {
+function Imagem({ item, seed }) {
   const [falhou, setFalhou] = useState(false);
   if (!item.imageUrl || falhou) {
-    return <Ilustracao categoria={item.categoria} seed={item.rank}/>;
+    return <Ilustracao categoria={item.categoria} seed={seed}/>;
   }
   return (
-    <img
-      src={item.imageUrl}
-      alt={`Imagem da matéria: ${item.tituloPt}`}
-      referrerPolicy="no-referrer"
-      loading="lazy"
-      onError={() => setFalhou(true)}
-    />
+    <img className="shot" src={item.imageUrl} alt={item.tituloPt}
+         referrerPolicy="no-referrer" loading="lazy"
+         onError={() => setFalhou(true)}/>
   );
 }
 
-const Estrelas = ({ n }) => <span className="stars">{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
-const Tag = ({ c }) => <span className={"tag " + c.toLowerCase()}>{c}</span>;
+function Estrelas({ n }) {
+  return <span className="stars" title={`${n} de 5`}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+}
 
-function Modal({ item, onClose }) {
+function Tag({ c }) {
+  const cls = c === "Branding" ? "branding" : c === "Tecnologia" ? "tec" : "design";
+  return <span className={`tag ${cls}`}>{c}</span>;
+}
+
+function Modal({ item, seed, fechar }) {
+  useEffect(() => {
+    const esc = (e) => { if (e.key === "Escape") fechar(); };
+    document.addEventListener("keydown", esc);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", esc); document.body.style.overflow = ""; };
+  }, [fechar]);
+
   return (
-    <div className="overlay" onClick={onClose}>
+    <div className="overlay" onClick={fechar}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="media"><Imagem item={item}/></div>
-        <div className="body">
-          <div className="metaRow">
+        <div className="media">
+          <button className="closeX" onClick={fechar} aria-label="Fechar">×</button>
+          <Imagem item={item} seed={seed}/>
+        </div>
+        <div className="inner">
+          <div className="meta">
             <Tag c={item.categoria}/>
-            <span className="source">{item.source}</span>
+            <span className="src">{item.source}</span>
             <Estrelas n={item.estrelas}/>
           </div>
           <h2>{item.tituloPt}</h2>
           <p className="orig">Título original: “{item.title}”</p>
-          <div className="txt">
+          <div className="resumo">
             {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
           </div>
           {item.paywall && (
-            <div className="note">
-              Este resumo foi escrito a partir dos elementos públicos da matéria (título, categoria, tags e chamada), porque o texto integral está atrás de acesso restrito.
-            </div>
+            <p className="nota">
+              Este artigo está atrás de assinatura no {item.source}. O resumo acima foi escrito a partir
+              dos elementos públicos da página — título, categoria editorial, indústria, tags e imagem de
+              destaque. A análise crítica completa não foi lida.
+            </p>
           )}
           <div className="actions">
-            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} →</a>
-            <button className="btn" onClick={onClose}>Fechar</button>
+            <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">
+              Ler no {item.source} ↗
+            </a>
+            <button className="btn ghost" onClick={fechar}>Voltar</button>
           </div>
         </div>
       </div>
@@ -430,59 +449,68 @@ function Modal({ item, onClose }) {
 
 function App() {
   const [aberto, setAberto] = useState(null);
-  const [manchete, ...resto] = DATA;
-
-  React.useEffect(() => {
-    const h = (e) => { if (e.key === "Escape") setAberto(null); };
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
-  }, []);
+  const ordenadas = [...noticias].sort((a, b) => b.estrelas - a.estrelas);
+  const manchete = ordenadas[0];
+  const resto = ordenadas.slice(1);
+  const portais = new Set(noticias.map(n => n.source)).size;
+  const comFoto = noticias.filter(n => n.imageUrl).length;
 
   return (
     <div className="wrap">
       <header className="top">
-        <div className="kicker">Edição de quinta-feira</div>
+        <div className="kicker"><span className="dot"></span> Edição de sexta-feira</div>
         <h1 className="brand">Portal da Manhã</h1>
-        <p className="sub">13 de agosto de 2026 · 12 notícias de branding, design e tecnologia, selecionadas em 6 veículos</p>
+        <div className="sub">
+          <span><b>14 de agosto de 2026</b></span>
+          <span>{noticias.length} notícias</span>
+          <span>{portais} portais</span>
+          <span>{comFoto} com imagem original</span>
+          <span>Branding · Design · Tecnologia</span>
+        </div>
       </header>
-      <div className="rule"></div>
 
-      <div className="hero" onClick={() => setAberto(manchete)}>
-        <div className="media"><Imagem item={manchete}/></div>
+      <article className="lead" onClick={() => setAberto(manchete)}>
+        <div className="media"><Imagem item={manchete} seed={1}/></div>
         <div className="body">
-          <div className="metaRow">
+          <div className="meta">
             <Tag c={manchete.categoria}/>
-            <span className="source">{manchete.source}</span>
+            <span className="src">{manchete.source}</span>
             <Estrelas n={manchete.estrelas}/>
           </div>
           <h2>{manchete.tituloPt}</h2>
-          <p>{manchete.dek}</p>
-          <div><span className="btn primary" style={{fontSize:13, padding:"9px 15px"}}>Ler resumo</span></div>
+          <p className="dek">{manchete.dek}</p>
+          <div className="foot"><span className="src">Clique para ler o resumo completo →</span></div>
         </div>
-      </div>
+      </article>
 
       <div className="grid">
-        {resto.map((item) => (
-          <div className="card" key={item.rank} onClick={() => setAberto(item)}>
-            <div className="media">
-              <Imagem item={item}/>
-              <span className="rank">#{item.rank}</span>
-            </div>
+        {resto.map((item, i) => (
+          <article className="card" key={i} onClick={() => setAberto(item)}>
+            <div className="media"><Imagem item={item} seed={i + 2}/></div>
             <div className="body">
-              <div className="metaRow"><Tag c={item.categoria}/><Estrelas n={item.estrelas}/></div>
+              <div className="meta">
+                <Tag c={item.categoria}/>
+                <Estrelas n={item.estrelas}/>
+              </div>
               <h3>{item.tituloPt}</h3>
               <p className="dek">{item.dek}</p>
-              <div className="foot"><span className="source">{item.source}</span></div>
+              <div className="foot"><span className="src">{item.source}</span></div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)}/>}
-
-      <footer>
-        Portal da Manhã — resumo diário em português de branding, design e tecnologia. Os textos são paráfrases produzidas para esta edição; os créditos e o conteúdo original pertencem aos veículos citados. Edição de 13 de agosto de 2026.
+      <footer className="end">
+        <p>
+          <b>Portal da Manhã</b> — seleção diária de branding, design e tecnologia a partir dos principais
+          portais internacionais do setor. Resumos escritos em português a partir da leitura das matérias
+          originais; nenhum texto é reproduzido literalmente. As imagens são carregadas diretamente dos
+          servidores dos veículos de origem e pertencem a eles.
+        </p>
+        <p>Edição de 14 de agosto de 2026 · Fontes: Design Week, Brand New, Campaign US, Dezeen, Creative Bloq e It’s Nice That.</p>
       </footer>
+
+      {aberto && <Modal item={aberto} seed={99} fechar={() => setAberto(null)}/>}
     </div>
   );
 }

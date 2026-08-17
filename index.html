@@ -3,308 +3,435 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 16 de agosto de 2026</title>
+<title>Portal da Manhã — 17 de agosto de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f6f6f4; --card:#ffffff; --ink:#14161a; --muted:#6b7280; --line:#e7e7e3;
-    --accent:#1a1a1a; --warm:#e8703a; --green:#0f9b8e; --blue:#4f6ef7;
-    --shadow:0 1px 2px rgba(16,18,22,.04), 0 8px 24px rgba(16,18,22,.06);
-    --shadow-lg:0 2px 6px rgba(16,18,22,.06), 0 20px 50px rgba(16,18,22,.12);
-    --r:18px;
+    --bg:#f7f7f5;
+    --surface:#ffffff;
+    --ink:#15161a;
+    --ink-soft:#5b6069;
+    --ink-faint:#8a9099;
+    --line:#e7e7e3;
+    --accent:#c8452f;
+    --accent-soft:#fdf1ee;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 24px rgba(20,22,26,.06);
+    --shadow-lg:0 2px 6px rgba(20,22,26,.06), 0 24px 60px rgba(20,22,26,.12);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-  header.top{padding:44px 0 24px;border-bottom:1px solid var(--line);margin-bottom:32px}
-  .brand{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,58px);letter-spacing:-.02em;line-height:1;margin:0}
-  .kicker{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
-  .pill{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px}
-  .datestr{margin-top:14px;color:var(--muted);font-size:15px}
-  .sec-title{font-family:Fraunces,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:600}
-  /* hero */
-  .hero{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;display:grid;grid-template-columns:1.15fr 1fr;margin-bottom:34px}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  #root{min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Cabeçalho */
+  header.top{padding:56px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);
+    padding:6px 12px;border-radius:999px;
+  }
+  h1.title{
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-.02em;
+    margin:18px 0 10px;
+  }
+  .subtitle{color:var(--ink-soft);font-size:16px;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .meta-row b{color:var(--ink);font-weight:600}
+
+  /* Estrelas */
+  .stars{display:inline-flex;gap:2px;color:var(--accent);font-size:12px;letter-spacing:1px}
+  .stars .off{color:#d8d8d4}
+
+  .tag{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;padding:5px 10px;border-radius:999px;
+  }
+  .tag.branding{background:#fdf0e9;color:#a8542a}
+  .tag.design{background:#e8f5f0;color:#1e7a63}
+  .tag.tecnologia{background:#eceaFb;color:#4b41a8}
+
+  /* Manchete */
+  .hero{
+    background:var(--surface);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    display:grid;grid-template-columns:1.15fr 1fr;cursor:pointer;
+    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s;
+    margin-bottom:40px;
+  }
   .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
   .hero .media{position:relative;min-height:340px;background:#eee}
-  .hero .media img,.hero .media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-  .hero .body{padding:34px}
-  .hero h2{font-family:Fraunces,serif;font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.015em;margin:12px 0 14px}
-  .hero p{color:#3f444d;line-height:1.65;margin:0;font-size:15.5px}
-  /* grid */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;transition:transform .22s ease, box-shadow .22s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .hero .media img,.hero .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .hero .body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .hero h2{
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.015em;margin:0;
+  }
+  .hero p{margin:0;color:var(--ink-soft);font-size:15.5px;line-height:1.6}
+  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .src{font-size:13px;color:var(--ink-faint);font-weight:500}
+
+  /* Grade */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:60px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
+    transition:transform .26s cubic-bezier(.2,.7,.3,1), box-shadow .26s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
   .card .media{position:relative;aspect-ratio:16/10;background:#eee}
   .card .media img,.card .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .card h3{font-family:Fraunces,serif;font-size:19px;line-height:1.25;margin:0;letter-spacing:-.01em}
-  .card .dek{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0}
-  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted)}
-  .tag{padding:4px 9px;border-radius:999px;font-size:10.5px}
-  .tag.branding{background:#fdf0e8;color:#a44a1c}
-  .tag.design{background:#e6f6f4;color:#0b6f66}
-  .tag.tecnologia{background:#eceffe;color:#3348b8}
-  .stars{color:#e0a72b;letter-spacing:1px;font-size:12px}
-  .src{color:#111}
-  /* modal */
-  .overlay{position:fixed;inset:0;background:rgba(18,19,22,.5);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:40px 18px;z-index:50;overflow-y:auto;animation:fade .22s ease}
+  .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:17.5px;line-height:1.3;margin:0;font-weight:700;letter-spacing:-.01em}
+  .card .dek{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.55;flex:1}
+  .rank{
+    position:absolute;top:12px;left:12px;z-index:2;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
+    border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;
+    letter-spacing:.06em;color:var(--ink);
+  }
+
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(20,22,26,.5);backdrop-filter:blur(4px);
+    z-index:50;display:flex;align-items:flex-start;justify-content:center;
+    padding:5vh 20px;overflow-y:auto;animation:fade .22s ease;
+  }
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .modal{background:#fff;border-radius:22px;max-width:780px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);animation:rise .28s cubic-bezier(.2,.7,.3,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
+  .modal{
+    background:var(--surface);border-radius:24px;max-width:760px;width:100%;
+    box-shadow:0 40px 100px rgba(0,0,0,.3);overflow:hidden;animation:rise .3s cubic-bezier(.2,.7,.3,1);
+  }
   .modal .media{position:relative;aspect-ratio:16/9;background:#eee}
-  .modal .media img,.modal .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .modal .body{padding:30px 34px 34px}
-  .modal h2{font-family:Fraunces,serif;font-size:clamp(22px,3.2vw,31px);line-height:1.18;margin:14px 0 8px;letter-spacing:-.015em}
-  .modal .orig{color:var(--muted);font-size:13.5px;font-style:italic;margin:0 0 18px}
-  .modal .text p{line-height:1.75;font-size:16px;color:#2b2f36;margin:0 0 15px}
-  .note{background:#fbf7ec;border:1px solid #f0e4c8;color:#7a6220;font-size:13px;line-height:1.55;border-radius:12px;padding:12px 14px;margin-top:6px}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-  .btn{border:none;border-radius:999px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
-  .btn.primary{background:var(--accent);color:#fff}
-  .btn.ghost{background:#f1f1ee;color:#14161a}
-  .close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:999px;border:none;background:rgba(255,255,255,.92);cursor:pointer;font-size:18px;line-height:1;z-index:2;box-shadow:var(--shadow)}
-  footer{margin:56px 0 40px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
-  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero .media{min-height:230px;position:relative;aspect-ratio:16/9}}
-  @media(max-width:600px){.grid{grid-template-columns:1fr}.hero .body{padding:24px}.modal .body{padding:24px}}
+  .modal .media img,.modal .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .modal .body{padding:32px 36px 36px}
+  .modal h2{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(24px,3.4vw,32px);line-height:1.15;letter-spacing:-.015em;margin:14px 0 6px}
+  .modal .orig{font-size:13.5px;color:var(--ink-faint);font-style:italic;margin:0 0 20px}
+  .modal .text p{font-size:16px;line-height:1.72;color:#2c2f36;margin:0 0 16px}
+  .modal .note{font-size:13px;color:var(--ink-faint);border-left:3px solid var(--line);padding-left:12px;margin-top:18px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;
+    font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);
+    background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s;
+  }
+  .btn:hover{background:#f2f2ef}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.primary:hover{background:#000}
+  .close{
+    position:absolute;top:14px;right:14px;z-index:3;width:36px;height:36px;border-radius:999px;
+    border:none;background:rgba(255,255,255,.95);cursor:pointer;font-size:18px;line-height:1;
+    color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+
+  footer{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--ink-faint);font-size:13px;line-height:1.7}
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero{grid-template-columns:1fr}
+    .hero .media{min-height:240px;aspect-ratio:16/9}
+    .hero .body{padding:26px 24px 30px}
+  }
+  @media (max-width:600px){
+    .grid{grid-template-columns:1fr}
+    .wrap{padding:0 18px}
+    header.top{padding:36px 0 22px}
+    .modal .body{padding:24px 22px 28px}
+  }
 </style>
 </head>
 <body>
 <div id="root"></div>
 
 <script type="text/babel">
-const { useState } = React;
+const { useState, useEffect } = React;
 
-const NOTICIAS = [
+const DATA_EDICAO = "17 de agosto de 2026";
+
+const noticias = [
   {
-    title: "Helen & Hard uses uprooted spruce trees to shape Cabin Sande on Norway's Atlantic coast",
-    tituloPt: "Helen & Hard levanta cabana norueguesa sobre 18 abetos arrancados com raiz e tudo",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/15/cabin-sande-spruce-trees-norway-atlanic-ocean-helen-hard-architects/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/07/cabin-sande-helen-hard-architects-norway-timber-hero_dezeen_2364_col_3.jpg",
-    categoria: "Design",
+    rank: 1,
     estrelas: 5,
-    data: "15 de agosto de 2026",
-    dek: "Colunas em forma de árvore, feitas de abetos inteiros com raízes, sustentam uma cabana de 112 m² em Randaberg.",
+    categoria: "Design",
+    title: "Weber Is Shutting Off the June Oven's AI Camera, and a $90 Air Fryer Already Does The Same Thing",
+    tituloPt: "Weber desliga a câmera de IA do forno June — e uma air fryer de US$ 90 já faz a mesma coisa",
+    source: "Yanko Design",
+    data: "16/08/2026",
+    url: "https://www.yankodesign.com/2026/08/16/weber-is-shutting-off-the-june-ovens-ai-camera-and-a-90-air-fryer-already-does-the-same-thing/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/weber-is-shutting-off-the-june-ovens-ai-camera-and-a-90-air-fryer-already-does-the-same-thing/june_oven_vs_air_fryer_1.jpeg",
+    dek: "Em 22 de setembro o forno de US$ 999 perde nuvem, aplicativo e o reconhecimento de comida que o tornou famoso.",
     resumo: [
-      "O escritório norueguês Helen & Hard concluiu a Cabin Sande, uma cabana de madeira de 112 metros quadrados erguida sobre um promontório rochoso protegido em Randaberg, na costa atlântica da Noruega. A construção ocupa exatamente a pegada de uma cabana dos anos 1970 — restrições de planejamento obrigaram o novo edifício a repetir o tamanho e a altura do original.",
-      "O gesto estrutural é o coração do projeto: dezoito colunas ramificadas feitas de abetos inteiros, arrancados com o sistema radicular intacto. Cada árvore foi escavada, limpa, secada ao ar por oito meses e escaneada digitalmente, para que robôs pudessem fresar encaixes sob medida sem destruir a forma orgânica do tronco. As colunas se abrem no teto como copas e depois viram estantes, bancos, escadas, divisórias, caixilhos, portas, cozinha e lareira.",
-      "A lógica vem da tradição naval norueguesa da era viking, em que as junções naturalmente curvas entre tronco e raiz eram usadas para enrijecer as cavernas dos barcos de madeira. O escritório disse à Dezeen que queria evocar a sensação de estar sob um dossel de árvores — a sequência rítmica das colunas cria um abrigo que protege sem fechar.",
-      "O edifício em leque se abre para o Atlântico por uma janela de 9,5 metros de largura sem nenhum montante interrompendo a vista. Um sistema oculto de cabos de tensão e molas contrabalança o peso do beiral, que avança bem além do vidro para proteger a fachada do clima severo da costa. A base é um embasamento de pedra retirada do próprio terreno e a cobertura é plantada, acompanhando o contorno do relevo.",
-      "Fundado em Stavanger em 1996 por Siv Helene Stangeland e Reinhard Kropf, o Helen & Hard trabalha com habitação, edifícios culturais e projetos públicos, com foco em construção em madeira e fabricação digital. As fotos são de Ivar Kvaal e Sindre Ellingsen."
+      "A Weber vai desativar, em 22 de setembro, os serviços em nuvem do June Oven — o forno conectado de US$ 999 que ficou conhecido por usar uma câmera interna para identificar o alimento e escolher sozinho o programa de cozimento. Depois dessa data sobram apenas os botões manuais: sem aplicativo, sem reconhecimento de comida, sem conta. Os proprietários souberam por e-mail; não houve comunicado público, o que por si só diz muito sobre a decisão.",
+      "O detalhe mais desconfortável é que o truque original do June deixou de ser exclusivo. Lançado em 2015 por cerca de US$ 1.500, o reconhecimento de alimentos hoje aparece em air fryers vendidas por menos de cem dólares. A Daewoo Actuate usa uma câmera interna que compara o que está na cesta com doze presets e define tempo e temperatura sem aplicativo nem assinatura. A Culinix vende nos EUA um modelo de 8,5 litros com uma lista de alimentos reconhecidos suspeitamente idêntica — indício de que ambas compraram o mesmo módulo de câmera de fábrica e apenas trocaram o logotipo da caixa.",
+      "Outras marcas fugiram do problema por caminhos diferentes. A Emerson trocou a câmera por comando de voz processado localmente no aparelho, solução pouco glamourosa mas útil para quem tem artrite, baixa visão ou simplesmente está com as mãos sujas. Xiaomi e Dreo desistiram de adivinhar: a Mijia Pro acrescentou tanque de água para cozinhar a vapor e em sous vide, e a ChefMaker enfia uma sonda dentro da carne para medir temperatura interna real em vez de inferir qualquer coisa por imagem.",
+      "Enquanto isso, a Weber segue expandindo a plataforma Weber Connect nas suas churrasqueiras a carvão e a gás — a mesma tecnologia conectada que engenheiros do June ajudaram a construir. A mensagem involuntária é clara: cozinha conectada vale investimento quando está presa a uma churrasqueira, e vale ser silenciosamente desligada quando está presa a um forno que ninguém mais fabrica. O forno mais recente da Anova tem o mesmo reconhecimento por câmera, mas só funciona com assinatura ativa.",
+      "A escolha real em 2026, argumenta o texto, não é entre câmera, voz ou sonda. É entre possuir a inteligência do seu eletrodoméstico ou apenas alugá-la de uma empresa que pode desligá-la assim que ela deixar de fazer sentido numa planilha."
     ]
   },
   {
-    title: "SpaceX officially closes its Cursor acquisition",
-    tituloPt: "SpaceX conclui a compra da Cursor e leva a startup de código com IA para dentro da sua frota de GPUs",
+    rank: 2,
+    estrelas: 5,
+    categoria: "Branding",
+    title: "The new Monoprix rebrand awakens a French icon",
+    tituloPt: "Monoprix reacende um ícone francês: o rebrand que transforma supermercado em marca de estilo",
+    source: "Creative Bloq",
+    data: "14/08/2026",
+    url: "https://www.creativebloq.com/design/branding/the-new-monoprix-rebrand-awakens-a-french-icon",
+    imageUrl: null,
+    dek: "A W Conran Design, de Paris, reescreve a identidade da rede fundada em 1932 puxando referências do Art Nouveau e do cartaz popular.",
+    resumo: [
+      "A rede francesa Monoprix apresentou uma nova identidade de marca e começou a implantar o novo desenho de lojas, assinado pela W Conran Design em Paris. O resultado, na avaliação do texto, lembra menos um supermercado e mais a loja de um museu — ou uma versão suavizada dos cartazes que Jean-Paul Goude fez para as Galeries Lafayette.",
+      "A empresa foi fundada em 1932 por Max Heilbronn, em plena crise econômica, com uma ideia então inédita: uma loja de centro urbano reunindo todo o essencial do dia a dia a preços baixos. A missão declarada do fundador — tornar 'o belo, o bom e o bem-estar acessíveis a todos' — segue no centro da marca quase um século depois. Hoje a Monoprix é controlada pelo Casino Group, opera cerca de 736 lojas e combina mercearia com moda, cosméticos e utilidades domésticas, além de franquias na Bélgica, Luxemburgo, Tunísia, Qatar, Kuwait, Emirados Árabes, Guadalupe e Reunião.",
+      "A trajetória ajuda a explicar por que a nova identidade funciona. O apóstrofo do apelido popular 'Monop'' virou a marca gráfica 'Pop' da empresa. A rede lançou marcas próprias e autosserviço já em 1950, vendia alimentos ecológicos em 1990, entrou no comércio eletrônico no começo dos anos 2000 e, mais recentemente, passou a curar móveis de designers franceses a preços de desconto — peças que esgotam em horas e aparecem na Architectural Digest e na Elle Deco.",
+      "Para traduzir isso, a W Conran Design voltou às fontes: o legado da casa, o Art Nouveau, o cartaz popular e o design gráfico de massa. Dali saíram três princípios: a Monoprix não é apenas varejista, mas marca de gosto e curadoria; a mistura entre moda, casa, alimentação e beleza deve virar uma linguagem visual própria, não uma justaposição de departamentos; e a cultura pop é o DNA visual que ancora a marca tanto na cultura quanto no comércio.",
+      "Na prática, isso significa logotipo redesenhado, padronagem reinventada, iconografia proprietária criada do zero, ilustrações originais e uma paleta de cores vibrante — um sistema pensado para funcionar da sacola à fachada, do aplicativo à sinalização interna. 'Não redesenhamos uma marca, reacendemos um ícone', resume Martin Pilot, vice-presidente da W Conran Design. O tema do reposicionamento: 'um gosto pelo bom e pelo belo'."
+    ]
+  },
+  {
+    rank: 3,
+    estrelas: 5,
+    categoria: "Tecnologia",
+    title: "Stripe will reportedly acquire AI gateway startup OpenRouter for $7B+",
+    tituloPt: "Stripe deve comprar a OpenRouter por mais de US$ 7 bilhões — o 'Stripe da IA' vai para dentro da Stripe",
     source: "TechCrunch",
-    url: "https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/07/cursor.jpg?resize=1200,800",
-    categoria: "Tecnologia",
-    estrelas: 5,
-    data: "15 de agosto de 2026",
-    dek: "Negócio de US$ 60 bilhões anunciado em abril foi fechado; a empresa de Musk já havia absorvido a xAI neste ano.",
+    data: "16/08/2026",
+    url: "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2024/04/Stripe-resized.webp?resize=1200,674",
+    dek: "Segundo a Bloomberg, a negociação foi fechada. Em maio a startup valia US$ 1,3 bilhão.",
     resumo: [
-      "A Cursor, startup de edição de código assistida por inteligência artificial, passou oficialmente a fazer parte da SpaceX. O anúncio saiu no blog da própria Cursor e encerra um processo que vinha se desenhando desde abril.",
-      "O caminho foi longo: em abril, as duas empresas fecharam um acordo de desenvolvimento conjunto de tecnologia que também dava à SpaceX a opção de comprar a Cursor por US$ 60 bilhões. Dois meses depois, já como companhia de capital aberto, a SpaceX confirmou que exerceria a opção. A empresa de Elon Musk também já havia absorvido a xAI, outra companhia do mesmo fundador, no início do ano.",
-      "No comunicado, a Cursor volta repetidamente ao mesmo argumento: infraestrutura. A SpaceX vem alugando capacidade computacional para clientes como Anthropic e Google, e a startup afirma que, integrada ao grupo, terá acesso à \"maior frota de GPUs do mundo\". \"A SpaceX está construindo a capacidade computacional necessária para escalar inteligência muito além do que existe hoje\", diz o texto. \"A Cursor será um dos lugares onde essa inteligência se torna útil.\"",
-      "O movimento não vem sem atrito: a operação de data centers da SpaceX é alvo de processo por poluição gerada por turbinas a gás. Para o mercado de ferramentas de desenvolvimento, a leitura é direta — consolidação acelerada e concentração de poder computacional em poucos grupos."
+      "A Stripe teria finalizado o acordo para comprar a OpenRouter, segundo apuração da Bloomberg. O valor citado passa de US$ 7 bilhões — um salto expressivo em relação à avaliação de US$ 1,3 bilhão que a startup atingiu em maio, quando levantou uma rodada Série B de US$ 113 milhões com Sequoia, Andreessen Horowitz, Menlo Ventures e a CapitalG, da Alphabet.",
+      "A OpenRouter funciona como um roteador entre modelos de inteligência artificial: em vez de o cliente se comprometer com um único fornecedor, a plataforma permite escolher qual modelo usar para cada tarefa, considerando necessidade técnica e orçamento. A empresa afirma reunir mais de 400 modelos e 8 milhões de usuários no mundo.",
+      "A comparação com a compradora partiu da própria empresa comprada. Em maio, o presidente-executivo Alex Atallah descreveu a OpenRouter como o equivalente da Stripe para IA, justamente por oferecer um ponto único de acesso a sistemas diferentes e evitar aprisionamento a um fornecedor.",
+      "A conversa entre as duas empresas não é nova: o Wall Street Journal havia noticiado no mês passado que elas estavam em negociação. Procurada pelo TechCrunch, a Stripe respondeu que não comenta rumores ou especulações."
     ]
   },
   {
-    title: "Disney's finally returning to 2D animation for a nostalgic tribute to its oldest character",
-    tituloPt: "Disney volta à animação 2D para ressuscitar Oswald, o coelho que veio antes do Mickey",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/art/animation/disneys-finally-returning-to-2d-animation-for-a-nostalgic-tribute-to-its-oldest-character",
-    imageUrl: null,
-    categoria: "Design",
+    rank: 4,
     estrelas: 4,
-    data: "15 de agosto de 2026",
-    dek: "Minissérie em três partes dirigida por Jon Favreau mistura desenho à mão e live-action, no estilo de Uma Cilada para Roger Rabbit.",
-    resumo: [
-      "Antes do Mickey existiu Oswald, o Coelho Sortudo — o primeiro personagem recorrente criado por Walt Disney e Ub Iwerks, protagonista de 26 curtas entre 1927 e 1928. Uma disputa contratual entregou o personagem à Universal e ao produtor Charles Mintz, que ainda levou junto boa parte dos animadores. A resposta da Disney foi criar o Mickey, e o resto virou história. Oswald seguiu em mais de 150 desenhos pela Universal e sumiu no início dos anos 1940.",
-      "A Disney recomprou os direitos em 2006 e, agora, anunciou na convenção D23 que finalmente vai devolver o personagem às telas em uma minissérie de três partes no Disney+, escrita, dirigida e produzida por Jon Favreau — nome por trás de Elf, das versões live-action de Mogli e O Rei Leão e, mais recentemente, de The Mandalorian.",
-      "O detalhe que interessa a quem acompanha animação é a técnica: a série combina animação 2D desenhada à mão com live-action, na linhagem de Uma Cilada para Roger Rabbit. É a resposta mais concreta a um pedido que fãs repetem desde que o estúdio migrou para o 3D no início dos anos 2000. A produção envolve animadores veteranos da Disney e estúdios internacionais como o SPA Studios, responsável por Klaus.",
-      "Os cenários reais incluem a Disneylândia e o escritório de Walt Disney em Burbank, o que sugere uma narrativa meta sobre a própria história do estúdio, em vez de um desenho puro em mundo ficcional. No elenco estão Amy Sedaris, Kathryn Hahn, Steve Martin, Al Madrigal, Ravi Cabot-Conyers, Ryder Allen e Mykal-Michelle Harris. A estreia está marcada para fevereiro de 2027."
-    ]
-  },
-  {
-    title: "TUX Creative House makes Sunski's SPF a daily invitation to get outside",
-    tituloPt: "TUX tira o protetor solar da praia e leva a Sunski para o deserto, a floresta e a neve da Califórnia",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/tux-creative-house-makes-sunskis-spf-a-daily-invitation-to-get-outside",
-    imageUrl: null,
     categoria: "Branding",
-    estrelas: 4,
-    data: "14 de agosto de 2026",
-    dek: "Marca de óculos vira marca de proteção solar com identidade construída sobre totens desenhados à mão e paisagens californianas.",
-    resumo: [
-      "A Sunski faz óculos de sol leves e sustentáveis desde 2012. Para entrar numa segunda categoria — protetor solar —, a marca chamou a agência TUX Creative House, de Los Angeles, e pediu algo maior que uma embalagem: estratégia de marca, posicionamento, estratégia de produto, identidade visual, packaging e plataforma de lançamento.",
-      "O ponto de partida não foi o que a empresa sabia fabricar, e sim um momento do dia do consumidor. Como resume o cofundador Tom Stewart, a marca quis ocupar \"o instante em que você sai de dentro e entra na luz\". Óculos e protetor passam a ser vendidos juntos como um \"Daily Nature Kit\", dois objetos que você pega ao sair de casa.",
-      "Os fundadores mapearam duas armadilhas antes de a TUX começar: a estética genérica de marca outdoor — mosquetões, silhuetas de montanha, tipografia \"robusta\" — e o tratamento clínico que a indústria de beleza dá ao SPF, todo espaço em branco e verniz dermatológico. A saída foi geográfica: em vez de areia, surfe e coqueiros, a identidade se apoia nos desertos, florestas, lagos, litorais e montanhas nevadas da Califórnia. Isso amplia o repertório visual e torna o produto relevante o ano inteiro.",
-      "Essa geografia virou um conjunto de totens desenhados à mão, em estilo de cartaz serigrafado, cada um ligado a um produto e a um lugar — o recorrente é uma árvore, símbolo da própria proteção solar. A tipografia manuscrita original da Sunski permanece como assinatura, contrastando com uma display condensada que sustenta frases de campanha como \"Nature Wants You\" e com uma sans discreta para ingredientes e o painel regulatório.",
-      "A pesquisa também apontou que protetor solar é uma categoria silenciosamente marcada por gênero — ritual diário de skincare para mulheres, uso ocasional para homens, cada lado recebendo seu próprio código visual. A TUX construiu um único sistema que não responde a nenhum dos dois, guiado por paisagem e estilo de vida. A paleta sai do próprio produto: amarelo quente tirado da bisnaga contra azul-céu."
-    ]
-  },
-  {
-    title: "You can now plug Adobe straight into ChatGPT - but should you?",
-    tituloPt: "Adobe entra direto no ChatGPT — e a pergunta é se ferramenta de design combina com chatbot",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/you-can-now-plug-adobe-straight-into-chatgpt-but-should-you",
+    title: "Everybody sits: inside Look's global campaign for Herman Miller",
+    tituloPt: "'Todo mundo senta': a campanha global da Look para a Herman Miller tira o foco da cadeira e coloca em quem senta",
+    source: "The Brand Identity",
+    data: "11/08/2026",
+    url: "https://the-brandidentity.com/project/everybody-sits-inside-looks-global-campaign-for-herman-miller",
     imageUrl: null,
-    categoria: "Tecnologia",
-    estrelas: 4,
-    data: "15 de agosto de 2026",
-    dek: "Plugin unificado leva os apps da Adobe para dentro da conversa; a Creative Bloq testa se isso ajuda ou atrapalha o fluxo criativo.",
+    dek: "O briefing chegou com três frases e uma pergunta embutida. A agência devolveu outra — e virou plataforma.",
     resumo: [
-      "A Adobe lançou um plugin unificado que conecta seus aplicativos diretamente ao ChatGPT, permitindo acionar recursos de edição e geração de imagem sem sair da janela de conversa. A Creative Bloq examina o movimento com ceticismo produtivo: a pergunta do título — \"mas você deveria?\" — resume a posição editorial.",
-      "O argumento a favor é de atrito: para tarefas repetitivas e de ajuste fino, descrever o que se quer em linguagem natural pode ser mais rápido do que atravessar menus. O argumento contra é de controle. Ferramentas de design existem porque decisões visuais são incrementais e dependem de retorno imediato, algo que um prompt de texto entrega mal.",
-      "Há também a questão de para onde vai o centro de gravidade do trabalho criativo. Quando o ponto de entrada passa a ser um chatbot de terceiros, a Adobe entrega parte da relação direta com o usuário — e o designer passa a operar sua ferramenta por intermediário.",
-      "A publicação não conclui contra a integração, mas sugere tratá-la como atalho para tarefas acessórias, não como novo fluxo principal. Vale como termômetro de um movimento maior: a corrida das fabricantes de software criativo para estar presentes dentro dos assistentes, e não apenas ao lado deles."
+      "O briefing que a Herman Miller enviou a um pequeno grupo de agências começava assim: milhões de pessoas sentam numa cadeira Herman Miller, milhões amam sua cadeira Herman Miller, por que nem todo mundo senta numa? A Look, agência com escritórios em Londres, Nova York e Los Angeles, devolveu uma pergunta própria — e o que há com quem não senta? — e dali saiu a campanha.",
+      "O resultado desloca o assunto da cadeira para o ato de sentar, sob a linha 'Sit Your Best'. 'A filosofia de design da Herman Miller é essencialmente colocar as pessoas em primeiro lugar. As cadeiras são criadas para se adaptar a você, e não o contrário', explica Suzy Shaheen, diretora-geral de criação. Por isso o foco recaiu sobre a humanidade, a personalidade e a individualidade de quem senta — mostrando a variedade infinita de maneiras de recostar, inclinar e desabar sem sair do conforto. Daí vieram escalação de elenco, poses e coreografias que ninguém espera de uma empresa de cadeiras de escritório.",
+      "Jenelle Kelsch, diretora sênior de marketing da marca, aponta para o vídeo de lançamento da cadeira Equa, de 1984, como referência interna: quem assiste entende que a casa não faz campanha de produto convencional. O manifesto da nova campanha é direto — sentar se faz melhor numa cadeira 'projetada para a sua saúde'.",
+      "Por trás disso está a pesquisa ergonômica da marca. O designer Bill Stumpf passou décadas estudando os efeitos de permanecer sentado no corpo humano, da fadiga à cognição e à dor nas costas, e incorporou o que aprendeu nas cadeiras Ergon, Equa, Aeron e Embody. Ele acreditava que as pessoas seriam mais criativas se não estivessem distraídas pelo desconforto físico. Quando Stumpf morreu, em 2006, Jeff Weber deu continuidade ao projeto da Embody.",
+      "Visualmente, a Look apostou em escala, ritmo e cadência, partindo do arquivo visual da própria fabricante: frases grandes sobre cor sólida e muito espaço em volta. Max Siedentopf assinou as fotos e os filmes, trazendo o equilíbrio entre o cotidiano e o inesperado. O sistema foi construído como estrutura flexível — manifesto, tipografia, estilo fotográfico e direção de arte fixos, execuções adaptáveis por formato, produto e mercado. Segundo Kelsch, os outdoors entregaram alta visibilidade e o conteúdo social gerou engajamento relevante."
     ]
   },
   {
-    title: "Typsa Arquitectura weaves library in Luanda around existing trees",
-    tituloPt: "Biblioteca em Luanda é desenhada em torno das árvores que já estavam no terreno",
+    rank: 5,
+    estrelas: 4,
+    categoria: "Branding",
+    title: "Why Boc Studio rehabilitated CE Europa instead of redesigning it",
+    tituloPt: "O clube pediu para 'mudar o mínimo': como o Boc Studio restaurou o escudo centenário do CE Europa em vez de redesenhá-lo",
+    source: "The Brand Identity",
+    data: "11/08/2026",
+    url: "https://the-brandidentity.com/project/why-boc-studio-rehabilitated-ce-europa-instead-of-redesigning-it",
+    imageUrl: null,
+    dek: "Fundado em 1907 em Gràcia, o clube é um dos dez que criaram La Liga. A regra do projeto: melhore, não mude.",
+    resumo: [
+      "O CE Europa está enraizado no bairro de Vila de Gràcia, em Barcelona, desde 1907, e é um dos dez clubes fundadores de La Liga. É de propriedade dos sócios, e a torcida se chama escapulats — referência à faixa escapular que cruza a camisa há um século. O que faltava não era história nem gente, mas uma identidade que refletisse as duas coisas. O clube procurou o Boc Studio, de Barcelona, com uma instrução curta: mudar o mínimo.",
+      "Em vez de redesenhar do zero, o estúdio tratou o escudo centenário como um restaurador trata uma fachada tombada — reparando e afiando o que já existia. 'Nossa maior preocupação era perder autenticidade', explica Anna Clemente, gerente de marca e diretora criativa do clube. 'Não queríamos uma identidade nova que parecesse imposta; queríamos uma que parecesse ter sempre pertencido ao clube.' A regra dos cofundadores Jordi Canals e Oriol Bada: torne melhor, não mude. O objetivo não era fazer o Europa parecer deste ano, e sim garantir que ele continue parecendo ele mesmo daqui a cem.",
+      "O escudo foi redesenhado com proporções mais limpas e construção racionalizada, para funcionar reduzido a um ícone de aplicativo sem perder caráter — o contorno dourado contínuo dá peso ao símbolo num mural e vira massa sólida em tamanhos pequenos. Duas decisões testaram a regra. O estúdio propôs trocar o gol dentro do escudo pelo ano de 1907, como a data numa fachada restaurada, argumentando que dois elementos futebolísticos lado a lado eram redundantes; o clube recusou e a mudança caiu. A alteração que ficou de pé foi a remoção da quarta faixa branca do topo, deixando as linhas restantes a 45 graus, cruzando proporcionalmente com os cantos do escudo. Sócios antigos, alguns com o brasão tatuado no peito, viram o próprio escudo — só que mais nítido. Ninguém reclamou.",
+      "O Boc Studio também entregou ao clube um software que grava o som da torcida e o converte em um de quatro padrões — Escapulat, Heartbeat, Tifo e Wave —, todos recoloríveis em incontáveis variações e com a onda regulável conforme a intensidade. 'Com toda honestidade, é expressão, não ciência. É futebol', dizem os fundadores. Dentro da ferramenta o estúdio travou o que não pode mover: o escudo, intocável; a paleta fechada e suas combinações; a geometria e o movimento das ondas.",
+      "A tipografia sob medida veio do Murri Studio, construída a partir da faixa escapular: a mesma diagonal que cruza a camisa corta as letras. É condensada e de alto impacto, referência à sinalização pintada à mão do clube, feita para ser lida do outro lado do campo ou do outro lado do bar. A paleta foi apertada em vez de substituída — um azul-marinho, um dourado e branco, com um vermelho resgatado de uma camiseta do arquivo e a regra de que marinho e vermelho nunca se tocam. Como resumem os fundadores: 'o escudo é a constituição; o escapulat é a rua'."
+    ]
+  },
+  {
+    rank: 6,
+    estrelas: 4,
+    categoria: "Tecnologia",
+    title: "Anthropic CEO says AI backlash is 'fundamentally a crisis of trust'",
+    tituloPt: "Para o CEO da Anthropic, a rejeição à IA é 'fundamentalmente uma crise de confiança' — e não culpa de quem alerta sobre riscos",
+    source: "TechCrunch",
+    data: "16/08/2026",
+    url: "https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-2261514463.jpg?w=1024",
+    dek: "Dario Amodei responde à acusação de que seu discurso alimentou a reação negativa contra a indústria.",
+    resumo: [
+      "Dario Amodei, presidente-executivo da Anthropic, rebateu publicamente a ideia de que vem pintando um retrato excessivamente pessimista da inteligência artificial. A resposta foi dirigida ao investidor Gavin Baker, que argumentou — no podcast All-In e na rede X — que os alertas de Amodei sobre os perigos da tecnologia ajudaram a alimentar a reação negativa nos Estados Unidos, especialmente contra a construção de data centers.",
+      "Baker afirmou que Amodei 'perdeu o argumento' no debate sobre regulação e que, prestes a comandar uma das empresas mais importantes do mundo, deveria ser um defensor mais positivo do próprio setor. Ele não está sozinho: parte da indústria sustenta que o ceticismo público e até as medidas restritivas de governos decorrem, em alguma medida, de levar a sério os avisos catastrofistas de executivos de IA.",
+      "Amodei discordou do diagnóstico. Segundo ele, seus textos estão 'aproximadamente equilibrados entre riscos e benefícios' — escreveu um ensaio importante sobre cada lado — e o ensaio 'Machines of Loving Grace' nasceu justamente porque, na sua leitura, a indústria não estava desenhando um quadro inspirador o bastante sobre como a tecnologia poderia transformar o mundo para melhor.",
+      "Ele reconhece que a opinião pública sobre IA é negativa e que isso é um problema grande. O que rejeita é a atribuição de causa. 'Acho que é fundamentalmente uma crise de confiança', disse. 'As pessoas comuns não confiam em empresas, governos ou na indústria de tecnologia, e sempre suspeitam que estamos tramando alguma forma nova de passá-las para trás.' Na leitura dele, essa desconfiança vem se acumulando há décadas, e a reação à IA é apenas sua iteração mais recente.",
+      "Amodei ainda ofereceu a crítica que considera legítima: 'de longe a crítica mais precisa às empresas de IA, inclusive a Anthropic, é que ainda não cumprimos nossas grandes promessas de beneficiar o mundo. Isso é totalmente responsabilidade nossa.' Sobre regulação, disse que Baker propõe uma falsa escolha entre distribuir IA amplamente sem regras ou concentrá-la em poucas empresas por meio de regulação, e afirmou que a Anthropic tenta formular propostas que desacelerem as empresas de fronteira enquanto favorecem competidores menores."
+    ]
+  },
+  {
+    rank: 7,
+    estrelas: 4,
+    categoria: "Branding",
+    title: "Why the battle for brand distinctiveness starts with type",
+    tituloPt: "A disputa por distinção de marca começa na tipografia — e num mundo de IA, fonte sob medida virou necessidade estratégica",
+    source: "Creative Review",
+    data: "13/08/2026",
+    url: "https://www.creativereview.co.uk/the-battle-for-brand-distinctiveness-starts-with-type/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Heinz-typeface.jpg?auto=compress%2Cformat&crop=faces%2Centropy%2Cedges&fit=crop&q=60&w=1200",
+    dek: "Tom Foley, diretor criativo de tipografia do Studio Drama, argumenta que a fonte proprietária deixou de ser luxo.",
+    resumo: [
+      "Num cenário em que marcas disputam relevância e memorabilidade dentro de ambientes cada vez mais mediados por inteligência artificial, a tipografia sob medida deixou de ser um luxo de orçamento e passou a ser uma necessidade estratégica. É a tese defendida por Tom Foley, diretor criativo de tipografia do Studio Drama, em artigo publicado pela Creative Review.",
+      "O argumento parte de uma constatação simples: quando conteúdo, layout e imagem passam a ser gerados, remixados e redistribuídos por sistemas automatizados, os elementos que sobrevivem à padronização são os que a marca controla de ponta a ponta. A letra é um deles — e talvez o mais barato de manter consistente em todos os pontos de contato, do rótulo à interface.",
+      "O texto usa casos de marcas que investiram em famílias tipográficas próprias como demonstração de que a distinção visual, hoje, se conquista menos por um logotipo isolado e mais por um sistema de letras reconhecível mesmo quando o símbolo não aparece na imagem.",
+      "Vale registrar que se trata de um artigo de opinião assinado por um profissional que atua justamente na criação de tipografia sob medida — o que não invalida o argumento, mas convém ao leitor ter em conta ao avaliar a recomendação."
+    ],
+    nota: "Resumo produzido a partir dos elementos públicos do artigo (título, subtítulo, autoria e enquadramento editorial); o texto integral está sob acesso restrito da publicação."
+  },
+  {
+    rank: 8,
+    estrelas: 4,
+    categoria: "Branding",
+    title: "Pentagram rebrands the world's oldest concert hall",
+    tituloPt: "A Pentagram redesenha a sala de concertos mais antiga do mundo, a De Bijloke, em Gante",
+    source: "Creative Review",
+    data: "11/08/2026",
+    url: "https://www.creativereview.co.uk/muziekcentrum-de-bijloke-rebrand-pentagram/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/DeBijloke-rebrand-flag.jpg?auto=compress%2Cformat&crop=faces%2Centropy%2Cedges&fit=crop&q=60&w=1200",
+    dek: "Marina Willer e equipe partem da história do edifício, da programação diversa e do poder duradouro da música.",
+    resumo: [
+      "O Muziekcentrum De Bijloke, em Gante, na Bélgica, ganhou nova identidade assinada pela Pentagram, sob direção de Marina Willer e sua equipe. A instituição ocupa um conjunto arquitetônico de origem medieval — o antigo hospital e abadia de Bijloke — e é apontada como a mais antiga sala de concertos em funcionamento no mundo.",
+      "O ponto de partida do projeto, segundo a publicação, foi justamente a combinação de três forças: a história singular do lugar, a diversidade da programação atual (que vai da música antiga ao contemporâneo e a formatos híbridos) e aquilo que a Pentagram descreve como o poder duradouro da própria música.",
+      "O desafio prático de casas como essa costuma ser o mesmo: uma identidade precisa carregar séculos de peso institucional sem soar embalsamada, e ao mesmo tempo abrir espaço para uma agenda que muda a cada temporada. A resposta da equipe passa por um sistema visual que sirva tanto ao patrimônio quanto à programação contemporânea, aplicável de bandeiras e sinalização no complexo a materiais de temporada.",
+      "É mais um capítulo de uma sequência recente de reposicionamentos de instituições culturais europeias, em que estúdios grandes têm sido chamados para arbitrar o equilíbrio entre memória e circulação digital."
+    ],
+    nota: "Resumo baseado nos elementos públicos disponíveis (título, dek, autoria e contexto da instituição); o texto integral está sob acesso restrito da publicação."
+  },
+  {
+    rank: 9,
+    estrelas: 3,
+    categoria: "Design",
+    title: "Woonpioniers models adjoining Dutch homes on \"a game of Tetris\"",
+    tituloPt: "Duas famílias, um único volume: o Woonpioniers encaixa casas holandesas como peças de Tetris",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/14/luanda-library-typsa-arquitectura/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/07/luanda-library-typsa-arquitectura-angola-trees-sq1_dezeen_2364_col_0-213x213.jpg",
+    data: "16/08/2026",
+    url: "https://www.dezeen.com/2026/08/16/woonpioniers-cohouse-in-cothen/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/woonpioniers-cohouse-netherlands-sq_dezeen_2364_col_0.jpg",
+    dek: "A prefeitura exigiu que as duas casas coubessem em um único volume. O estúdio girou uma em torno da outra.",
+    resumo: [
+      "O estúdio holandês Woonpioniers concluiu a CoHouse, em Cothen, na província de Utrecht: um par de residências entrelaçadas projetadas para duas famílias dentro de um único volume com telhado de duas águas. As famílias haviam comprado juntas um terreno verde à beira do rio, mas a prefeitura local exigiu que as duas casas coubessem numa só massa construída.",
+      "A solução foi um projeto de cohousing de 237 metros quadrados com duas moradias de tamanho equivalente que se sobrepõem nos pavimentos superiores. 'Para aproveitar ao máximo o jardim, as vistas, a privacidade e a luz solar, as duas casas foram cuidadosamente giradas uma em torno da outra como num jogo de Tetris', explicou o sócio do estúdio Leen Bogerd ao Dezeen.",
+      "Cada residência foi ajustada às necessidades da respectiva família: uma tem as plantas voltadas para um jardim fechado, a outra para a paisagem ao redor. Ambas as famílias pediram uma construção de baixo carbono, o que levou a uma estrutura em pórtico de madeira, lajes em madeira laminada cruzada (CLT) e isolamento em fibra de madeira. Entre as duas casas, o piso divisório recebeu uma composição acústica de base biológica.",
+      "A demanda energética é atendida por bombas de calor geotérmicas, sistema de ventilação com recuperação de calor e telhado solar. Há ainda sombreamento externo nas fachadas sul e oeste, revestidas em madeira e reboco.",
+      "As duas casas compartilham a entrada e desembocam em cozinha e sala de jantar integradas no térreo, com grandes aberturas pensadas para 'suavizar a fronteira entre as casas e o jardim comum'. Numa delas, um vazio de pé-direito duplo leva luz até a sala de jantar, ao lado de uma escada aberta de madeira que sobe para quatro quartos e um banheiro. A outra tem planta mais fechada, com quatro quartos amplos no pavimento superior. Superfícies de madeira aparente convivem com pisos em tons de cinza e paleta neutra."
+    ]
+  },
+  {
+    rank: 10,
+    estrelas: 3,
     categoria: "Design",
-    estrelas: 4,
-    data: "14 de agosto de 2026",
-    dek: "Projeto angolano organiza volumes e pátios para preservar a vegetação madura do lote em vez de limpá-lo.",
+    title: "NUA Arquitectures renovates Catalan textile warehouse with timber office block",
+    tituloPt: "Do último polo têxtil da Catalunha do sul sobra um galpão — e a NUA Arquitectures constrói um escritório de madeira dentro dele",
+    source: "Dezeen",
+    data: "16/08/2026",
+    url: "https://www.dezeen.com/2026/08/16/nua-arquitectures-tuvatextil-office/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/tuvatextil-nua-arquitectures-architecture-barcelona-warehouse-office_dezeen_2364_sq.jpg",
+    dek: "Em El Pont d'Armentera havia 12 fábricas. Restou uma — e o projeto trata a memória industrial como matéria-prima.",
     resumo: [
-      "O escritório Typsa Arquitectura entregou em Luanda, Angola, uma biblioteca cuja planta foi literalmente costurada em volta das árvores que já ocupavam o terreno. Em vez de partir de um lote limpo — prática padrão em obras urbanas de porte —, o projeto tomou a vegetação madura existente como dado fixo e organizou volumes, circulações e pátios ao redor dela.",
-      "A decisão tem efeito climático direto: em Luanda, sombra é infraestrutura. As copas preservadas reduzem a carga térmica sobre as fachadas e criam áreas externas utilizáveis durante o dia, o que diminui a dependência de condicionamento artificial em um edifício de uso público e permanência longa.",
-      "Do ponto de vista da experiência, a solução gera uma sequência de espaços intermediários entre a rua e as salas de leitura — pátios e passagens sombreadas que funcionam como extensão da biblioteca, algo especialmente relevante em equipamentos culturais que também servem como ponto de encontro do bairro.",
-      "O projeto se soma a uma linha crescente de arquitetura africana contemporânea que trata a paisagem preexistente como patrimônio de projeto, e não como obstáculo de canteiro.",
-      "Resumo elaborado a partir da reportagem da Dezeen; alguns detalhes técnicos do projeto não foram integralmente verificados na fonte."
+      "O estúdio espanhol NUA Arquitectures reformou um armazém têxtil perto de Barcelona, usando divisórias de madeira para criar um pequeno bloco de escritórios dentro da estrutura original de concreto e tijolo. O projeto foi feito para a Tuvatèxtil, uma das últimas empresas ainda em operação em El Pont d'Armentera — que já foi o mais importante polo têxtil do sul da Catalunha, com doze fábricas.",
+      "Com boa parte desse patrimônio perdida, o estúdio optou por preservar e celebrar o tecido construído remanescente, inserindo os novos escritórios numa estrutura de madeira autoportante. 'O projeto recupera, reivindica e celebra a história industrial e têxtil de El Pont d'Armentera', disse a NUA ao Dezeen. 'É uma mediação entre memória, identidade e o ato de habitar — retenção adaptativa e reúso radical.'",
+      "Na entrada noroeste foi criada uma praça pavimentada comunitária, abrigada por uma cobertura abobadada de concreto e aço na cor terracota, pontuada por árvores e postes curvos de iluminação. Dali se acessa o canto do galpão que foi fechado com divisórias de madeira e vidro, criando o efeito de um edifício dentro do edifício, com dois pavimentos de escritórios e salas de reunião.",
+      "A oeste, os escritórios extrapolam a área da fábrica existente e formam um pequeno bloco térreo coroado por uma faixa de azulejos padronados, com refeitório e cozinha voltados para a praça. Um percurso pavimentado em terracota, apelidado de 'tapete vermelho' pelo estúdio, atravessa os escritórios e termina numa escada e numa rampa que descem até o piso do galpão, observado de cima por uma varanda com estrutura de madeira.",
+      "Todos os elementos viáveis, inclusive pedra, foram reciclados; para a reabilitação usou-se tectônica leve, como madeira e cerâmica. A estrutura de concreto e tijolo foi reforçada para permitir novas aberturas e claraboias, e as paredes receberam isolamento externo. Fundada em Tarragona em 2013 por Arnau Tiñena, Ferran Tiñena e Maria Rius, a NUA já assinou a reforma de uma antiga casa de pedra e a masia Casa Juià, ambas na Catalunha. Fotografia de Adrià Goula."
     ]
   },
   {
-    title: "5x5 shapes a bold, enduring identity for ONE's urban practice",
-    tituloPt: "5x5 condensa as três letras de ONE em uma só forma para o escritório que projeta cidades resilientes",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/5x5-shapes-a-bold-enduring-identity-for-ones-urban-practice",
-    imageUrl: null,
-    categoria: "Branding",
-    estrelas: 4,
-    data: "13 de agosto de 2026",
-    dek: "Marca construída a partir das letras da Zed Display funde O, N e E numa forma escultórica de proporção 16:9.",
-    resumo: [
-      "A ONE é um escritório de arquitetura e urbanismo que projeta cidades resilientes no longo prazo, cruzando dados, desenho espacial e políticas públicas para ajudar territórios a lidar com elevação do nível do mar, enchentes e tempestades extremas. Com escritórios na Holanda e nos Estados Unidos, a prática se aproximava dos dez anos do estúdio de Nova York quando chamou a agência londrina 5x5 para revisar a marca.",
-      "A 5x5 optou por não jogar fora o sistema simbólico existente. O objetivo, nas palavras da agência, era destilar o que já havia em \"uma única marca visual e um framework de identidade capaz de sustentar todo o escopo da prática, mantendo-se simples, distintivo e adaptável\".",
-      "O desafio central era representar dois escritórios em uma identidade só. A dualidade aparece sobretudo na tipografia: a Zed Display, da Typotheque — desenhada a partir de pesquisa científica sobre legibilidade —, funciona como aceno sutil às raízes de Amsterdã, enquanto a Feature Display, da Commercial Type, originalmente criada para o The New York Times, adiciona um tom editorial e um contraste americano.",
-      "A marca nasce diretamente das letras da Zed Display, fundidas em uma forma escultórica única que contém e sugere simultaneamente o \"O\", o \"N\" e o \"E\". Encaixada numa proporção 16:9, ela pode mascarar imagens, mudar de combinação cromática, ganhar volume em 3D, receber texturas ligadas à prática ou ser usada em sangria total, chegando a quase desaparecer no layout.",
-      "Os cofundadores Nik Kanbi e Jake Gilbert descrevem o sistema como algo construído para crescer: \"foi feito como sistema, não como estilo visual fixo, então tem espaço para responder à evolução do trabalho sem precisar ser refeito toda vez que o estúdio muda de direção\"."
-    ]
-  },
-  {
-    title: "The Modular Chair That Lets You Swap Parts Like a Building",
-    tituloPt: "Cadeira Facade trata painéis como fachada de prédio: troca-se a pele, não o móvel",
+    rank: 11,
+    estrelas: 3,
+    categoria: "Design",
+    title: "This Retro Apple IndyCar Livery Looks Like The Perfect Next Step After The Company's F1 Partnership",
+    tituloPt: "O arco-íris de 1977 volta às pistas: o conceito de pintura Apple para a IndyCar que a empresa ainda não fez",
     source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/08/15/__trashed-4/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/the-modular-chair-that-lets-you-swap-parts-like-a-building/facade-012.jpg",
-    categoria: "Design",
-    estrelas: 3,
-    data: "15 de agosto de 2026",
-    dek: "Junha Kahm desenha estrutura de aço inox com oito painéis simétricos de PETG que se desmontam e cabem em uma cesta de compras.",
+    data: "16/08/2026",
+    url: "https://www.yankodesign.com/2026/08/16/this-retro-apple-indycar-livery-looks-like-the-perfect-next-step-after-the-companys-f1-partnership/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/auto-draft/apple_indycar_livery_concept_1.jpeg",
+    dek: "Daniel Rodriguez veste um Dallara IR-18 com quatro décadas de identidade Apple ao mesmo tempo.",
     resumo: [
-      "A maior parte dos móveis faz uma pergunta única, no momento da compra: você gosta o bastante para conviver com isso, possivelmente para sempre? A cadeira modular Facade, do designer Junha Kahm, propõe outra: o que você quer dela agora — sabendo que a resposta tem permissão para mudar.",
-      "O objeto se divide em dois sistemas. Uma estrutura tubular de aço inoxidável construída sobre razão de proporção 1:2, e oito painéis simétricos de PETG que se encaixam nela. A proporção não é gratuita: dá à cadeira uma disciplina visual de grade que remete à composição da arquitetura industrial sem fantasiar de edifício. A estrutura é a constante; os painéis são a conversa.",
-      "Os oito painéis espelham-se entre si no assento e no encosto. Isso reduz a complexidade de fabricação e torna a reposição de peças realmente viável, em vez de uma promessa que desmorona na hora de encontrar a peça. A fixação é por parafusos e insertos roscados, e a cadeira inteira desmonta em componentes que cabem em uma cesta de supermercado — imagem que o próprio Kahm incluiu no projeto, meio dado prático, meio piada com móveis que exigem equipe de logística para atravessar a sala.",
-      "As juntas de PETG em cotovelo arredondado, moldadas em branco, contrastam com o metal escovado. Os ângulos são precisos: 14 graus na abertura das pernas traseiras, com variações de 3 e 8 graus nos demais encontros, o que dá estabilidade e uma leve inclinação para a frente.",
-      "O material dos painéis é o que abre o projeto: as versões translúcidas deixam a estrutura aparecer; as opacas, em branco e laranja âmbar, mudam a personalidade inteira do móvel. A lógica arquitetônica se sustenta porque a fachada de um edifício também é a camada mais exposta ao desgaste e a que pode ser atualizada sem tocar na estrutura. Se um painel arranha ou fica na cor errada para a sala, troca-se o painel, não a cadeira."
+      "A Apple gosta de automobilismo. O Apple TV virou a casa exclusiva da Fórmula 1 nos Estados Unidos, a empresa financiou um filme sobre F1 que faturou mais do que muitas equipes veem numa temporada inteira e ainda convenceu a Porsche a repintar dois carros de corrida com um esquema arco-íris de 46 anos atrás. O que a empresa nunca fez, apesar de todo esse entusiasmo, foi aparecer na IndyCar.",
+      "O designer Daniel Rodriguez resolveu renderizar essa versão ausente. O conceito veste um Dallara IR-18 com o espectro inteiro da história visual da Apple: das listras arco-íris de 1977 e do letreiro em Motter Tektura até selos modernos de Apple Pay e Apple TV+, lado a lado.",
+      "As listras se comportam de modo diferente conforme a superfície. Bico, placas laterais da asa e plano principal recebem o tratamento chapado de seis cores, de bordas duras, direto de 1977; já os sidepods e a tampa do motor exibem um degradê aerografado que parece papel de parede de iPhone. Vistas de cima, as duas metades se espelham com precisão, com lanças arco-íris saindo das entradas de ar e correndo por cima do motor numa simetria mais Cupertino do que IndyCar.",
+      "As palavras 'Apple Computer' descem pelo bico em Motter Tektura — a peculiar tipografia austríaca de exibição que Rob Janoff escolheu em 1977 porque suas formas arredondadas ecoavam as curvas da maçã. A fonte estava adormecida em carros de corrida havia décadas, e vê-la envolvendo um aeroscreen moderno é o tipo de piada tipográfica que a maioria sente antes de conseguir nomear.",
+      "A escolha de patrocínios é deliberadamente irônica: Apple Pay, Apple TV+ e Apple Podcasts dividem espaço com a maçã de seis cores, como se quatro décadas da mesma empresa tivessem se vestido para a mesma corrida. Fornecedores reais da categoria — Bosch, BBS, Sachs e Firestone — completam a pintura e evitam que o exercício vire fantasia. Há precedente histórico: em 1980 a Apple patrocinou um Porsche 935 K3 da Dick Barbour Racing, pilotado por Bobby Rahal, Allan Moffat e Bob Garretson, com um adesivo na traseira que dizia 'Don't upset the Apple Car'. A Porsche recriou exatamente essa pintura em maio deste ano, em Laguna Seca, para marcar os 75 anos de sua divisão de competição e os 50 anos da Apple."
     ]
   },
   {
-    title: "Friday Likes 585",
-    tituloPt: "Friday Likes 585: tegusu, Thinking Room e Redefine fecham a semana no Brand New",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/friday_likes_585.php",
-    imageUrl: null,
-    categoria: "Branding",
+    rank: 12,
     estrelas: 3,
-    data: "14 de agosto de 2026",
-    dek: "Seleção semanal de Armin Vit destaca trabalhos do japonês tegusu, do indonésio Thinking Room e do Redefine.",
-    resumo: [
-      "O Friday Likes é a coluna semanal do Brand New em que Armin Vit reúne os projetos de identidade que mais lhe chamaram atenção nos dias anteriores — normalmente trabalhos de estúdios menores ou de mercados fora do eixo anglo-americano, que dificilmente ganhariam um post individual.",
-      "A edição 585, publicada na sexta-feira, 14 de agosto, traz três estúdios: o japonês tegusu Inc., conhecido por marcas de traço geométrico e enxuto; o indonésio Thinking Room, um dos escritórios mais premiados do sudeste asiático, com repertório forte em tipografia e ilustração; e o Redefine.",
-      "A coluna vale menos pelo veredito e mais pelo recorte: é uma das poucas seções recorrentes de um veículo de branding de alcance global que sistematicamente aponta o holofote para fora dos grandes centros — algo relevante para quem acompanha a circulação internacional de trabalho de identidade.",
-      "Este resumo foi escrito a partir dos elementos públicos do post — título, categoria editorial e estúdios listados. O conteúdo integral do Brand New é restrito a assinantes, então a análise de cada projeto não foi lida."
-    ]
-  },
-  {
-    title: "Why Designers Are Suddenly Using Cork for Everything in 2026",
-    tituloPt: "Por que a cortiça virou o material do ano entre designers em 2026",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/08/15/why-designers-are-suddenly-using-cork-for-everything-in-2026/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/why-designers-are-suddenly-using-cork-for-everything-in-2026/Cork-Desings_Furniture_2026-Trends_23-296x197.jpg",
     categoria: "Design",
-    estrelas: 3,
-    data: "15 de agosto de 2026",
-    dek: "Renovável, leve e com bom desempenho térmico e acústico, a cortiça migrou da rolha para móveis, luminárias e arquitetura.",
+    title: "This ridiculous film poster makes me wish movies would get silly again",
+    tituloPt: "'Deus perdoa. Ela não': o cartaz de 'Mary Magnum: Jiu-Jitsu Nun' e o revival estético do grindhouse",
+    source: "Creative Bloq",
+    data: "16/08/2026",
+    url: "https://www.creativebloq.com/design/poster-design/this-ridiculous-film-poster-makes-me-wish-movies-would-get-silly-again",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/Zg77dSEuuQEjjnvv9d93vR-1920-80.jpg",
+    dek: "Contra o mar de cabeças flutuantes e minimalismos preguiçosos, um cartaz de capa de VHS dos anos 70.",
     resumo: [
-      "A Yanko Design mapeia um movimento que deixou de ser exceção: a cortiça se espalhou por móveis, luminárias, objetos e interiores ao longo de 2026, saindo do nicho do \"material sustentável simpático\" para virar escolha de projeto recorrente.",
-      "As razões são materiais, não estéticas. A cortiça é extraída da casca do sobreiro sem derrubar a árvore, que se regenera em ciclos de cerca de nove anos — ou seja, é renovável de verdade, e não apenas reciclável. É leve, isola termicamente, absorve som, resiste à umidade e retém carbono ao longo da vida útil da peça.",
-      "Para o designer, isso resolve vários problemas de uma vez: reduz peso de transporte, dispensa acabamentos pesados e entrega um comportamento acústico que materiais duros não dão. A textura granulada, antes vista como limitação visual, passou a funcionar como assinatura — especialmente em ambientes que fogem do brilho e do plástico.",
-      "O texto se soma a uma série de peças recentes do próprio veículo sobre o material, como o suporte multiuso Corctus em formato de cacto, sinal de que a cortiça deixou de ser tema de reportagem pontual para virar categoria."
-    ]
-  },
-  {
-    title: "The Luna Nook Is a 301-Square-Foot Tiny Home That Somehow Fits a Freestanding Bathtub",
-    tituloPt: "Casa minúscula de 28 m² no Maine encontra espaço para uma banheira exenta",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/08/15/the-luna-nook-is-a-301-square-foot-tiny-home-that-somehow-fits-a-freestanding-bathtub/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/luna-nook/luna_nook_yanko_design_01-296x197.jpg",
-    categoria: "Design",
-    estrelas: 3,
-    data: "15 de agosto de 2026",
-    dek: "Cabana da Nature Nooks fica em Sullivan, Maine, a minutos do Parque Nacional Acadia.",
-    resumo: [
-      "A Luna Nook é uma cabana de 301 pés quadrados — cerca de 28 metros quadrados — construída pela Nature Nooks em Sullivan, no estado americano do Maine, a poucos minutos do Parque Nacional Acadia.",
-      "O detalhe que dá título à matéria é a banheira exenta: em uma planta desse tamanho, cada peça sanitária costuma ser reduzida ao mínimo funcional, e abrir mão de metragem útil para acomodar uma banheira solta é uma decisão de projeto deliberada, não uma sobra de espaço.",
-      "A lógica é a de hospedagem em natureza, não a de moradia permanente comprimida: em vez de espremer todas as funções de uma casa, o projeto escolhe poucas experiências e as trata com generosidade — banho, vista e descanso —, deixando o resto compacto.",
-      "É um bom exemplo do amadurecimento do segmento de tiny homes de aluguel, que deixou de vender apenas o argumento do \"morar com menos\" para competir em qualidade de experiência com hotelaria boutique."
+      "Num mundo pós-MCU acostumado a superproduções recheadas de CGI, estrelas de Hollywood e orçamentos gigantescos, a autora do texto defende que se perdeu uma forma de arte pelo caminho — e que está na hora de um renascimento do filme B.",
+      "A resposta veio na forma de 'Mary Magnum: Jiu-Jitsu Nun', um thriller de ação de microorçamento cujo cartaz chamou atenção justamente por fugir do padrão. Em vez das cabeças flutuantes e do minimalismo preguiçoso que dominam o mercado de pôsteres, o desenho replica as capas de VHS dos filmes grindhouse dos anos 1970: imagem desbotada, bordas desgastadas e textura autenticamente retrô.",
+      "A composição traz a própria Mary Magnum empunhando uma arma, de hábito completo de freira. Do slogan escancaradamente cafona — 'God forgives. She doesn't' ('Deus perdoa. Ela não') — à tipografia com ares tarantinescos, o cartaz equilibra apelo camp e estilo genuíno.",
+      "A repercussão no Reddit deu o tom: 'você já tinha me convencido com a imagem, nem precisava ir tão longe com o título', escreveu um usuário; outro celebrou 'que nome, que premissa, que cartaz'. Um terceiro resumiu: 'perto o bastante — bem-vindo de volta, Grindhouse'.",
+      "O texto observa que a tendência de cartazes com estética retrô vem crescendo, citando o pôster recente de 'A Múmia', de Lee Cronin, que parece saído dos arquivos de terror dos anos 1980 — e torce para que o revival dure mais do que uma temporada."
     ]
   }
 ];
 
-const PALETAS = {
-  Branding: ["#f9c06a", "#e8703a", "#c2410c"],
-  Design: ["#7fd4c8", "#0f9b8e", "#0b6f66"],
-  Tecnologia: ["#a5b4fc", "#4f6ef7", "#3730a3"]
-};
+/* ---------- Ilustração SVG de fallback ---------- */
+function paletaDe(categoria){
+  if(categoria === "Branding") return ["#f6b17a","#e2703a","#9c3d1f","#fde8d7"];
+  if(categoria === "Design")   return ["#7ecfb4","#2f9c7f","#14614f","#e2f5ee"];
+  return ["#9d9bf0","#5b52c4","#332c86","#e9e7fb"];
+}
 
-function Ilustracao({ categoria, seed }) {
-  const p = PALETAS[categoria] || PALETAS.Design;
+function Ilustracao({categoria, seed}){
+  const [c1,c2,c3,c4] = paletaDe(categoria);
   const id = "g" + seed;
   const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração gerada para categoria " + categoria}>
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p[0]} />
-          <stop offset="100%" stopColor={p[1]} />
+          <stop offset="0%" stopColor={c4}/>
+          <stop offset="55%" stopColor={c1}/>
+          <stop offset="100%" stopColor={c2}/>
+        </linearGradient>
+        <linearGradient id={id + "b"} x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor={c3} stopOpacity="0.85"/>
+          <stop offset="100%" stopColor={c2} stopOpacity="0.25"/>
         </linearGradient>
       </defs>
-      <rect width="400" height="250" fill={`url(#${id})`} />
-      <circle cx={60 + r(1) * 260} cy={40 + r(2) * 120} r={40 + r(3) * 55} fill={p[2]} opacity="0.35" />
-      <circle cx={80 + r(4) * 240} cy={90 + r(5) * 120} r={25 + r(6) * 45} fill="#ffffff" opacity="0.22" />
-      <rect x={30 + r(7) * 200} y={130 + r(8) * 60} width={70 + r(9) * 120} height={16 + r(10) * 40} rx="10" fill="#ffffff" opacity="0.28" />
-      <path d={`M0 ${200 + r(11) * 30} Q 100 ${150 + r(12) * 60}, 200 ${195 + r(13) * 30} T 400 ${180 + r(14) * 40} L400 250 L0 250 Z`} fill={p[2]} opacity="0.4" />
+      <rect width="400" height="250" fill={"url(#" + id + ")"}/>
+      <circle cx={60 + r(1)*260} cy={40 + r(2)*140} r={40 + r(3)*55} fill={"url(#" + id + "b)"}/>
+      <rect x={20 + r(4)*230} y={110 + r(5)*80} width={70 + r(6)*130} height={16 + r(7)*40}
+            rx="10" fill={c3} opacity="0.35"/>
+      <path d={"M0," + (170 + r(8)*40) + " C110," + (110 + r(9)*70) + " 250," + (215 - r(1)*60) + " 400," + (140 + r(2)*60) + " L400,250 L0,250 Z"}
+            fill={c3} opacity="0.28"/>
+      <circle cx={300 + r(3)*70} cy={60 + r(4)*60} r={10 + r(5)*16} fill="#fff" opacity="0.5"/>
     </svg>
   );
 }
 
-function Figura({ item, seed }) {
+function Media({item}){
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={seed} />;
+  if(!item.imageUrl || falhou){
+    return <Ilustracao categoria={item.categoria} seed={item.rank}/>;
+  }
   return (
     <img
       src={item.imageUrl}
@@ -316,34 +443,51 @@ function Figura({ item, seed }) {
   );
 }
 
-const Estrelas = ({ n }) => <span className="stars" title={`${n} de 5`}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
+function Estrelas({n}){
+  return (
+    <span className="stars" title={n + " de 5"}>
+      {[1,2,3,4,5].map(i => <span key={i} className={i <= n ? "" : "off"}>★</span>)}
+    </span>
+  );
+}
 
-function Modal({ item, seed, onClose }) {
+function Etiqueta({categoria}){
+  const cls = categoria === "Branding" ? "branding" : categoria === "Design" ? "design" : "tecnologia";
+  return <span className={"tag " + cls}>{categoria}</span>;
+}
+
+function Modal({item, onClose}){
+  useEffect(() => {
+    const esc = (e) => { if(e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", esc);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", esc); document.body.style.overflow = ""; };
+  }, [onClose]);
+
   return (
     <div className="overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="media">
           <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-          <Figura item={item} seed={seed} />
+          <Media item={item}/>
         </div>
         <div className="body">
-          <div className="meta">
-            <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
-            <span className="src">{item.source}</span>
-            <span>{item.data}</span>
-            <Estrelas n={item.estrelas} />
+          <div className="row">
+            <Etiqueta categoria={item.categoria}/>
+            <Estrelas n={item.estrelas}/>
+            <span className="src">{item.source} · {item.data}</span>
           </div>
           <h2>{item.tituloPt}</h2>
           <p className="orig">Título original: “{item.title}”</p>
           <div className="text">
-            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
+            {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
           </div>
-          {!item.imageUrl && (
-            <div className="note">Este portal não expõe uma imagem de destaque acessível — a arte acima é uma ilustração gerada para esta edição.</div>
-          )}
+          {item.nota && <p className="note">{item.nota}</p>}
           <div className="actions">
-            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
-            <button className="btn ghost" onClick={onClose}>Fechar</button>
+            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">
+              Ler no {item.source} ↗
+            </a>
+            <button className="btn" onClick={onClose}>Fechar</button>
           </div>
         </div>
       </div>
@@ -351,68 +495,80 @@ function Modal({ item, seed, onClose }) {
   );
 }
 
-function App() {
+function App(){
   const [aberto, setAberto] = useState(null);
-  const ordenadas = [...NOTICIAS];
-  const [manchete, ...resto] = ordenadas;
+  const ordenadas = [...noticias].sort((a,b) => a.rank - b.rank);
+  const manchete = ordenadas[0];
+  const demais = ordenadas.slice(1);
+
+  const portais = new Set(noticias.map(n => n.source)).size;
+  const comFoto = noticias.filter(n => n.imageUrl).length;
 
   return (
     <div className="wrap">
       <header className="top">
-        <div className="kicker">
-          <span className="pill">Branding</span>
-          <span className="pill">Design</span>
-          <span className="pill">Tecnologia</span>
+        <span className="kicker">Edição de segunda-feira</span>
+        <h1 className="title">Portal da Manhã</h1>
+        <p className="subtitle">O que saiu de mais relevante em branding, design e tecnologia nas últimas 24 horas.</p>
+        <div className="meta-row">
+          <span><b>{DATA_EDICAO}</b></span>
+          <span><b>{noticias.length}</b> notícias</span>
+          <span><b>{portais}</b> portais</span>
+          <span><b>{comFoto}</b> com foto original</span>
         </div>
-        <h1 className="brand">Portal da Manhã</h1>
-        <p className="datestr">Domingo, 16 de agosto de 2026 · {NOTICIAS.length} matérias selecionadas de 6 portais internacionais</p>
       </header>
 
-      <h2 className="sec-title">Manchete</h2>
-      <div className="hero" onClick={() => setAberto(0)}>
-        <div className="media"><Figura item={manchete} seed={1} /></div>
+      <article className="hero" onClick={() => setAberto(manchete)}>
+        <div className="media">
+          <span className="rank">Manchete</span>
+          <Media item={manchete}/>
+        </div>
         <div className="body">
-          <div className="meta">
-            <span className={"tag " + manchete.categoria.toLowerCase()}>{manchete.categoria}</span>
-            <span className="src">{manchete.source}</span>
-            <Estrelas n={manchete.estrelas} />
+          <div className="row">
+            <Etiqueta categoria={manchete.categoria}/>
+            <Estrelas n={manchete.estrelas}/>
           </div>
           <h2>{manchete.tituloPt}</h2>
           <p>{manchete.dek}</p>
+          <div className="row">
+            <span className="src">{manchete.source} · {manchete.data}</span>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <h2 className="sec-title">Notícias do dia</h2>
-      <div className="grid">
-        {resto.map((item, i) => (
-          <article className="card" key={item.url} onClick={() => setAberto(i + 1)}>
-            <div className="media"><Figura item={item} seed={i + 2} /></div>
+      <section className="grid">
+        {demais.map(item => (
+          <article className="card" key={item.rank} onClick={() => setAberto(item)}>
+            <div className="media">
+              <span className="rank">{item.rank}</span>
+              <Media item={item}/>
+            </div>
             <div className="body">
-              <div className="meta">
-                <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
-                <span className="src">{item.source}</span>
+              <div className="row">
+                <Etiqueta categoria={item.categoria}/>
+                <Estrelas n={item.estrelas}/>
               </div>
               <h3>{item.tituloPt}</h3>
               <p className="dek">{item.dek}</p>
-              <div className="meta" style={{ marginTop: "auto" }}><Estrelas n={item.estrelas} /></div>
+              <span className="src">{item.source} · {item.data}</span>
             </div>
           </article>
         ))}
-      </div>
+      </section>
+
+      {aberto && <Modal item={aberto} onClose={() => setAberto(null)}/>}
 
       <footer>
-        Portal da Manhã · edição de 16 de agosto de 2026. Resumos escritos em português a partir da leitura das reportagens originais — nenhum texto é reprodução da fonte. Imagens carregadas diretamente dos servidores dos portais; quando indisponíveis, uma ilustração é gerada localmente.<br />
-        Portais desta edição: Dezeen, Yanko Design, Creative Bloq, The Brand Identity, Brand New e TechCrunch.
+        Portal da Manhã · edição de {DATA_EDICAO}. Todos os resumos foram escritos em português a partir da leitura das
+        matérias originais; nenhum texto é reprodução literal da fonte. As imagens são carregadas diretamente dos
+        servidores dos portais e permanecem sob direito de seus respectivos autores. Quando não há imagem disponível,
+        uma ilustração geométrica é gerada automaticamente.
       </footer>
-
-      {aberto !== null && (
-        <Modal item={ordenadas[aberto]} seed={aberto + 1} onClose={() => setAberto(null)} />
-      )}
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

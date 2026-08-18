@@ -3,490 +3,344 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 17 de agosto de 2026</title>
+<title>Portal da Manhã — 18 de agosto de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f7f7f5;
-    --surface:#ffffff;
-    --ink:#15161a;
-    --ink-soft:#5b6069;
-    --ink-faint:#8a9099;
-    --line:#e7e7e3;
-    --accent:#c8452f;
-    --accent-soft:#fdf1ee;
-    --radius:20px;
-    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 24px rgba(20,22,26,.06);
-    --shadow-lg:0 2px 6px rgba(20,22,26,.06), 0 24px 60px rgba(20,22,26,.12);
+    --bg:#f7f6f3; --card:#ffffff; --ink:#141414; --muted:#6b6b6b; --line:#e8e6e1;
+    --accent:#e2472c; --brand:#f0803c; --design:#1f9c8a; --tech:#5a6ff0;
+    --shadow:0 1px 2px rgba(20,20,20,.04), 0 8px 24px rgba(20,20,20,.06);
+    --shadow-lg:0 2px 4px rgba(20,20,20,.05), 0 18px 48px rgba(20,20,20,.10);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  #root{min-height:100vh}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+  #root{max-width:1180px;margin:0 auto;padding:0 24px 96px}
+  a{color:inherit}
+  header.top{padding:56px 0 32px;border-bottom:1px solid var(--line);margin-bottom:40px}
+  .kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  h1.brand{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(44px,7vw,76px);line-height:1;margin:16px 0 12px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:15px;max-width:60ch}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .pill{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted)}
 
-  /* Cabeçalho */
-  header.top{padding:56px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
-  .kicker{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);background:var(--accent-soft);
-    padding:6px 12px;border-radius:999px;
-  }
-  h1.title{
-    font-family:'Fraunces',Georgia,serif;font-weight:700;
-    font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-.02em;
-    margin:18px 0 10px;
-  }
-  .subtitle{color:var(--ink-soft);font-size:16px;margin:0}
-  .meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:13px;color:var(--ink-faint)}
-  .meta-row b{color:var(--ink);font-weight:600}
+  .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;margin-bottom:44px}
+  .hero:hover{transform:translateY(-3px)}
+  .hero-media{position:relative;min-height:380px;background:#eee}
+  .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .hero-body{padding:40px 40px 36px;display:flex;flex-direction:column;justify-content:center}
+  .hero-body h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(28px,3.4vw,42px);line-height:1.12;letter-spacing:-.015em;margin:14px 0 14px}
+  .hero-body p{color:var(--muted);font-size:15.5px;margin:0 0 22px}
 
-  /* Estrelas */
-  .stars{display:inline-flex;gap:2px;color:var(--accent);font-size:12px;letter-spacing:1px}
-  .stars .off{color:#d8d8d4}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;transition:transform .22s ease, box-shadow .22s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .card-media{position:relative;aspect-ratio:16/10;background:#eee;overflow:hidden}
+  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block}
+  .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card-body h3{font-size:18px;line-height:1.3;margin:0;font-weight:600;letter-spacing:-.01em}
+  .card-body .dek{color:var(--muted);font-size:14px;margin:0;flex:1}
 
-  .tag{
-    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;
-    text-transform:uppercase;padding:5px 10px;border-radius:999px;
-  }
-  .tag.branding{background:#fdf0e9;color:#a8542a}
-  .tag.design{background:#e8f5f0;color:#1e7a63}
-  .tag.tecnologia{background:#eceaFb;color:#4b41a8}
+  .tagrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:8px;color:#fff}
+  .tag.branding{background:var(--brand)} .tag.design{background:var(--design)} .tag.tech{background:var(--tech)}
+  .src{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+  .stars{font-size:12px;color:#d9a441;letter-spacing:1px;margin-left:auto}
 
-  /* Manchete */
-  .hero{
-    background:var(--surface);border-radius:var(--radius);overflow:hidden;
-    box-shadow:var(--shadow);border:1px solid var(--line);
-    display:grid;grid-template-columns:1.15fr 1fr;cursor:pointer;
-    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s;
-    margin-bottom:40px;
-  }
-  .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .hero .media{position:relative;min-height:340px;background:#eee}
-  .hero .media img,.hero .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .hero .body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px}
-  .hero h2{
-    font-family:'Fraunces',Georgia,serif;font-weight:700;
-    font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.015em;margin:0;
-  }
-  .hero p{margin:0;color:var(--ink-soft);font-size:15.5px;line-height:1.6}
-  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .src{font-size:13px;color:var(--ink-faint);font-weight:500}
-
-  /* Grade */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:60px}
-  .card{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
-    transition:transform .26s cubic-bezier(.2,.7,.3,1), box-shadow .26s;
-  }
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-  .card .media{position:relative;aspect-ratio:16/10;background:#eee}
-  .card .media img,.card .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .card h3{font-size:17.5px;line-height:1.3;margin:0;font-weight:700;letter-spacing:-.01em}
-  .card .dek{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.55;flex:1}
-  .rank{
-    position:absolute;top:12px;left:12px;z-index:2;
-    background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
-    border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;
-    letter-spacing:.06em;color:var(--ink);
-  }
-
-  /* Modal */
-  .overlay{
-    position:fixed;inset:0;background:rgba(20,22,26,.5);backdrop-filter:blur(4px);
-    z-index:50;display:flex;align-items:flex-start;justify-content:center;
-    padding:5vh 20px;overflow-y:auto;animation:fade .22s ease;
-  }
+  .overlay{position:fixed;inset:0;background:rgba(18,18,18,.42);backdrop-filter:blur(4px);z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;animation:fade .22s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
-  .modal{
-    background:var(--surface);border-radius:24px;max-width:760px;width:100%;
-    box-shadow:0 40px 100px rgba(0,0,0,.3);overflow:hidden;animation:rise .3s cubic-bezier(.2,.7,.3,1);
-  }
-  .modal .media{position:relative;aspect-ratio:16/9;background:#eee}
-  .modal .media img,.modal .media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .modal .body{padding:32px 36px 36px}
-  .modal h2{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(24px,3.4vw,32px);line-height:1.15;letter-spacing:-.015em;margin:14px 0 6px}
-  .modal .orig{font-size:13.5px;color:var(--ink-faint);font-style:italic;margin:0 0 20px}
-  .modal .text p{font-size:16px;line-height:1.72;color:#2c2f36;margin:0 0 16px}
-  .modal .note{font-size:13px;color:var(--ink-faint);border-left:3px solid var(--line);padding-left:12px;margin-top:18px}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;
-    font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);
-    background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s;
-  }
-  .btn:hover{background:#f2f2ef}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .modal{background:var(--card);max-width:840px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.28);animation:rise .28s cubic-bezier(.2,.8,.2,1)}
+  .modal-media{position:relative;aspect-ratio:16/9;background:#eee}
+  .modal-media img,.modal-media svg{width:100%;height:100%;object-fit:cover;display:block}
+  .modal-body{padding:32px 38px 38px}
+  .modal-body h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(26px,3.6vw,38px);line-height:1.15;margin:14px 0 6px;letter-spacing:-.015em}
+  .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 20px}
+  .modal-body .resumo p{font-size:16px;line-height:1.7;margin:0 0 16px}
+  .note{font-size:13px;color:var(--muted);background:#faf9f6;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:8px}
+  .actions{display:flex;gap:12px;align-items:center;margin-top:26px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;border-radius:12px;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);transition:background .18s ease}
   .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .btn.primary:hover{background:#000}
-  .close{
-    position:absolute;top:14px;right:14px;z-index:3;width:36px;height:36px;border-radius:999px;
-    border:none;background:rgba(255,255,255,.95);cursor:pointer;font-size:18px;line-height:1;
-    color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.15);
-  }
-
-  footer{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--ink-faint);font-size:13px;line-height:1.7}
-
-  @media (max-width:900px){
-    .grid{grid-template-columns:repeat(2,1fr)}
+  .btn:hover{opacity:.88}
+  .closex{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.92);font-size:18px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+  footer{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media (max-width:860px){
     .hero{grid-template-columns:1fr}
-    .hero .media{min-height:240px;aspect-ratio:16/9}
-    .hero .body{padding:26px 24px 30px}
-  }
-  @media (max-width:600px){
-    .grid{grid-template-columns:1fr}
-    .wrap{padding:0 18px}
-    header.top{padding:36px 0 22px}
-    .modal .body{padding:24px 22px 28px}
+    .hero-media{min-height:240px;position:relative;aspect-ratio:16/9}
+    .hero-body{padding:28px 24px 30px}
+    .modal-body{padding:24px 22px 30px}
+    #root{padding:0 16px 72px}
   }
 </style>
 </head>
 <body>
 <div id="root"></div>
-
 <script type="text/babel">
-const { useState, useEffect } = React;
+const { useState } = React;
 
-const DATA_EDICAO = "17 de agosto de 2026";
+const DATA_EXTENSO = "terça-feira, 18 de agosto de 2026";
 
-const noticias = [
+const NOTICIAS = [
   {
-    rank: 1,
-    estrelas: 5,
-    categoria: "Design",
-    title: "Weber Is Shutting Off the June Oven's AI Camera, and a $90 Air Fryer Already Does The Same Thing",
-    tituloPt: "Weber desliga a câmera de IA do forno June — e uma air fryer de US$ 90 já faz a mesma coisa",
-    source: "Yanko Design",
-    data: "16/08/2026",
-    url: "https://www.yankodesign.com/2026/08/16/weber-is-shutting-off-the-june-ovens-ai-camera-and-a-90-air-fryer-already-does-the-same-thing/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/weber-is-shutting-off-the-june-ovens-ai-camera-and-a-90-air-fryer-already-does-the-same-thing/june_oven_vs_air_fryer_1.jpeg",
-    dek: "Em 22 de setembro o forno de US$ 999 perde nuvem, aplicativo e o reconhecimento de comida que o tornou famoso.",
-    resumo: [
-      "A Weber vai desativar, em 22 de setembro, os serviços em nuvem do June Oven — o forno conectado de US$ 999 que ficou conhecido por usar uma câmera interna para identificar o alimento e escolher sozinho o programa de cozimento. Depois dessa data sobram apenas os botões manuais: sem aplicativo, sem reconhecimento de comida, sem conta. Os proprietários souberam por e-mail; não houve comunicado público, o que por si só diz muito sobre a decisão.",
-      "O detalhe mais desconfortável é que o truque original do June deixou de ser exclusivo. Lançado em 2015 por cerca de US$ 1.500, o reconhecimento de alimentos hoje aparece em air fryers vendidas por menos de cem dólares. A Daewoo Actuate usa uma câmera interna que compara o que está na cesta com doze presets e define tempo e temperatura sem aplicativo nem assinatura. A Culinix vende nos EUA um modelo de 8,5 litros com uma lista de alimentos reconhecidos suspeitamente idêntica — indício de que ambas compraram o mesmo módulo de câmera de fábrica e apenas trocaram o logotipo da caixa.",
-      "Outras marcas fugiram do problema por caminhos diferentes. A Emerson trocou a câmera por comando de voz processado localmente no aparelho, solução pouco glamourosa mas útil para quem tem artrite, baixa visão ou simplesmente está com as mãos sujas. Xiaomi e Dreo desistiram de adivinhar: a Mijia Pro acrescentou tanque de água para cozinhar a vapor e em sous vide, e a ChefMaker enfia uma sonda dentro da carne para medir temperatura interna real em vez de inferir qualquer coisa por imagem.",
-      "Enquanto isso, a Weber segue expandindo a plataforma Weber Connect nas suas churrasqueiras a carvão e a gás — a mesma tecnologia conectada que engenheiros do June ajudaram a construir. A mensagem involuntária é clara: cozinha conectada vale investimento quando está presa a uma churrasqueira, e vale ser silenciosamente desligada quando está presa a um forno que ninguém mais fabrica. O forno mais recente da Anova tem o mesmo reconhecimento por câmera, mas só funciona com assinatura ativa.",
-      "A escolha real em 2026, argumenta o texto, não é entre câmera, voz ou sonda. É entre possuir a inteligência do seu eletrodoméstico ou apenas alugá-la de uma empresa que pode desligá-la assim que ela deixar de fazer sentido numa planilha."
-    ]
-  },
-  {
-    rank: 2,
-    estrelas: 5,
-    categoria: "Branding",
-    title: "The new Monoprix rebrand awakens a French icon",
-    tituloPt: "Monoprix reacende um ícone francês: o rebrand que transforma supermercado em marca de estilo",
-    source: "Creative Bloq",
-    data: "14/08/2026",
-    url: "https://www.creativebloq.com/design/branding/the-new-monoprix-rebrand-awakens-a-french-icon",
-    imageUrl: null,
-    dek: "A W Conran Design, de Paris, reescreve a identidade da rede fundada em 1932 puxando referências do Art Nouveau e do cartaz popular.",
-    resumo: [
-      "A rede francesa Monoprix apresentou uma nova identidade de marca e começou a implantar o novo desenho de lojas, assinado pela W Conran Design em Paris. O resultado, na avaliação do texto, lembra menos um supermercado e mais a loja de um museu — ou uma versão suavizada dos cartazes que Jean-Paul Goude fez para as Galeries Lafayette.",
-      "A empresa foi fundada em 1932 por Max Heilbronn, em plena crise econômica, com uma ideia então inédita: uma loja de centro urbano reunindo todo o essencial do dia a dia a preços baixos. A missão declarada do fundador — tornar 'o belo, o bom e o bem-estar acessíveis a todos' — segue no centro da marca quase um século depois. Hoje a Monoprix é controlada pelo Casino Group, opera cerca de 736 lojas e combina mercearia com moda, cosméticos e utilidades domésticas, além de franquias na Bélgica, Luxemburgo, Tunísia, Qatar, Kuwait, Emirados Árabes, Guadalupe e Reunião.",
-      "A trajetória ajuda a explicar por que a nova identidade funciona. O apóstrofo do apelido popular 'Monop'' virou a marca gráfica 'Pop' da empresa. A rede lançou marcas próprias e autosserviço já em 1950, vendia alimentos ecológicos em 1990, entrou no comércio eletrônico no começo dos anos 2000 e, mais recentemente, passou a curar móveis de designers franceses a preços de desconto — peças que esgotam em horas e aparecem na Architectural Digest e na Elle Deco.",
-      "Para traduzir isso, a W Conran Design voltou às fontes: o legado da casa, o Art Nouveau, o cartaz popular e o design gráfico de massa. Dali saíram três princípios: a Monoprix não é apenas varejista, mas marca de gosto e curadoria; a mistura entre moda, casa, alimentação e beleza deve virar uma linguagem visual própria, não uma justaposição de departamentos; e a cultura pop é o DNA visual que ancora a marca tanto na cultura quanto no comércio.",
-      "Na prática, isso significa logotipo redesenhado, padronagem reinventada, iconografia proprietária criada do zero, ilustrações originais e uma paleta de cores vibrante — um sistema pensado para funcionar da sacola à fachada, do aplicativo à sinalização interna. 'Não redesenhamos uma marca, reacendemos um ícone', resume Martin Pilot, vice-presidente da W Conran Design. O tema do reposicionamento: 'um gosto pelo bom e pelo belo'."
-    ]
-  },
-  {
-    rank: 3,
-    estrelas: 5,
-    categoria: "Tecnologia",
-    title: "Stripe will reportedly acquire AI gateway startup OpenRouter for $7B+",
-    tituloPt: "Stripe deve comprar a OpenRouter por mais de US$ 7 bilhões — o 'Stripe da IA' vai para dentro da Stripe",
-    source: "TechCrunch",
-    data: "16/08/2026",
-    url: "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2024/04/Stripe-resized.webp?resize=1200,674",
-    dek: "Segundo a Bloomberg, a negociação foi fechada. Em maio a startup valia US$ 1,3 bilhão.",
-    resumo: [
-      "A Stripe teria finalizado o acordo para comprar a OpenRouter, segundo apuração da Bloomberg. O valor citado passa de US$ 7 bilhões — um salto expressivo em relação à avaliação de US$ 1,3 bilhão que a startup atingiu em maio, quando levantou uma rodada Série B de US$ 113 milhões com Sequoia, Andreessen Horowitz, Menlo Ventures e a CapitalG, da Alphabet.",
-      "A OpenRouter funciona como um roteador entre modelos de inteligência artificial: em vez de o cliente se comprometer com um único fornecedor, a plataforma permite escolher qual modelo usar para cada tarefa, considerando necessidade técnica e orçamento. A empresa afirma reunir mais de 400 modelos e 8 milhões de usuários no mundo.",
-      "A comparação com a compradora partiu da própria empresa comprada. Em maio, o presidente-executivo Alex Atallah descreveu a OpenRouter como o equivalente da Stripe para IA, justamente por oferecer um ponto único de acesso a sistemas diferentes e evitar aprisionamento a um fornecedor.",
-      "A conversa entre as duas empresas não é nova: o Wall Street Journal havia noticiado no mês passado que elas estavam em negociação. Procurada pelo TechCrunch, a Stripe respondeu que não comenta rumores ou especulações."
-    ]
-  },
-  {
-    rank: 4,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "Everybody sits: inside Look's global campaign for Herman Miller",
-    tituloPt: "'Todo mundo senta': a campanha global da Look para a Herman Miller tira o foco da cadeira e coloca em quem senta",
-    source: "The Brand Identity",
-    data: "11/08/2026",
-    url: "https://the-brandidentity.com/project/everybody-sits-inside-looks-global-campaign-for-herman-miller",
-    imageUrl: null,
-    dek: "O briefing chegou com três frases e uma pergunta embutida. A agência devolveu outra — e virou plataforma.",
-    resumo: [
-      "O briefing que a Herman Miller enviou a um pequeno grupo de agências começava assim: milhões de pessoas sentam numa cadeira Herman Miller, milhões amam sua cadeira Herman Miller, por que nem todo mundo senta numa? A Look, agência com escritórios em Londres, Nova York e Los Angeles, devolveu uma pergunta própria — e o que há com quem não senta? — e dali saiu a campanha.",
-      "O resultado desloca o assunto da cadeira para o ato de sentar, sob a linha 'Sit Your Best'. 'A filosofia de design da Herman Miller é essencialmente colocar as pessoas em primeiro lugar. As cadeiras são criadas para se adaptar a você, e não o contrário', explica Suzy Shaheen, diretora-geral de criação. Por isso o foco recaiu sobre a humanidade, a personalidade e a individualidade de quem senta — mostrando a variedade infinita de maneiras de recostar, inclinar e desabar sem sair do conforto. Daí vieram escalação de elenco, poses e coreografias que ninguém espera de uma empresa de cadeiras de escritório.",
-      "Jenelle Kelsch, diretora sênior de marketing da marca, aponta para o vídeo de lançamento da cadeira Equa, de 1984, como referência interna: quem assiste entende que a casa não faz campanha de produto convencional. O manifesto da nova campanha é direto — sentar se faz melhor numa cadeira 'projetada para a sua saúde'.",
-      "Por trás disso está a pesquisa ergonômica da marca. O designer Bill Stumpf passou décadas estudando os efeitos de permanecer sentado no corpo humano, da fadiga à cognição e à dor nas costas, e incorporou o que aprendeu nas cadeiras Ergon, Equa, Aeron e Embody. Ele acreditava que as pessoas seriam mais criativas se não estivessem distraídas pelo desconforto físico. Quando Stumpf morreu, em 2006, Jeff Weber deu continuidade ao projeto da Embody.",
-      "Visualmente, a Look apostou em escala, ritmo e cadência, partindo do arquivo visual da própria fabricante: frases grandes sobre cor sólida e muito espaço em volta. Max Siedentopf assinou as fotos e os filmes, trazendo o equilíbrio entre o cotidiano e o inesperado. O sistema foi construído como estrutura flexível — manifesto, tipografia, estilo fotográfico e direção de arte fixos, execuções adaptáveis por formato, produto e mercado. Segundo Kelsch, os outdoors entregaram alta visibilidade e o conteúdo social gerou engajamento relevante."
-    ]
-  },
-  {
-    rank: 5,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "Why Boc Studio rehabilitated CE Europa instead of redesigning it",
-    tituloPt: "O clube pediu para 'mudar o mínimo': como o Boc Studio restaurou o escudo centenário do CE Europa em vez de redesenhá-lo",
-    source: "The Brand Identity",
-    data: "11/08/2026",
-    url: "https://the-brandidentity.com/project/why-boc-studio-rehabilitated-ce-europa-instead-of-redesigning-it",
-    imageUrl: null,
-    dek: "Fundado em 1907 em Gràcia, o clube é um dos dez que criaram La Liga. A regra do projeto: melhore, não mude.",
-    resumo: [
-      "O CE Europa está enraizado no bairro de Vila de Gràcia, em Barcelona, desde 1907, e é um dos dez clubes fundadores de La Liga. É de propriedade dos sócios, e a torcida se chama escapulats — referência à faixa escapular que cruza a camisa há um século. O que faltava não era história nem gente, mas uma identidade que refletisse as duas coisas. O clube procurou o Boc Studio, de Barcelona, com uma instrução curta: mudar o mínimo.",
-      "Em vez de redesenhar do zero, o estúdio tratou o escudo centenário como um restaurador trata uma fachada tombada — reparando e afiando o que já existia. 'Nossa maior preocupação era perder autenticidade', explica Anna Clemente, gerente de marca e diretora criativa do clube. 'Não queríamos uma identidade nova que parecesse imposta; queríamos uma que parecesse ter sempre pertencido ao clube.' A regra dos cofundadores Jordi Canals e Oriol Bada: torne melhor, não mude. O objetivo não era fazer o Europa parecer deste ano, e sim garantir que ele continue parecendo ele mesmo daqui a cem.",
-      "O escudo foi redesenhado com proporções mais limpas e construção racionalizada, para funcionar reduzido a um ícone de aplicativo sem perder caráter — o contorno dourado contínuo dá peso ao símbolo num mural e vira massa sólida em tamanhos pequenos. Duas decisões testaram a regra. O estúdio propôs trocar o gol dentro do escudo pelo ano de 1907, como a data numa fachada restaurada, argumentando que dois elementos futebolísticos lado a lado eram redundantes; o clube recusou e a mudança caiu. A alteração que ficou de pé foi a remoção da quarta faixa branca do topo, deixando as linhas restantes a 45 graus, cruzando proporcionalmente com os cantos do escudo. Sócios antigos, alguns com o brasão tatuado no peito, viram o próprio escudo — só que mais nítido. Ninguém reclamou.",
-      "O Boc Studio também entregou ao clube um software que grava o som da torcida e o converte em um de quatro padrões — Escapulat, Heartbeat, Tifo e Wave —, todos recoloríveis em incontáveis variações e com a onda regulável conforme a intensidade. 'Com toda honestidade, é expressão, não ciência. É futebol', dizem os fundadores. Dentro da ferramenta o estúdio travou o que não pode mover: o escudo, intocável; a paleta fechada e suas combinações; a geometria e o movimento das ondas.",
-      "A tipografia sob medida veio do Murri Studio, construída a partir da faixa escapular: a mesma diagonal que cruza a camisa corta as letras. É condensada e de alto impacto, referência à sinalização pintada à mão do clube, feita para ser lida do outro lado do campo ou do outro lado do bar. A paleta foi apertada em vez de substituída — um azul-marinho, um dourado e branco, com um vermelho resgatado de uma camiseta do arquivo e a regra de que marinho e vermelho nunca se tocam. Como resumem os fundadores: 'o escudo é a constituição; o escapulat é a rua'."
-    ]
-  },
-  {
-    rank: 6,
-    estrelas: 4,
-    categoria: "Tecnologia",
-    title: "Anthropic CEO says AI backlash is 'fundamentally a crisis of trust'",
-    tituloPt: "Para o CEO da Anthropic, a rejeição à IA é 'fundamentalmente uma crise de confiança' — e não culpa de quem alerta sobre riscos",
-    source: "TechCrunch",
-    data: "16/08/2026",
-    url: "https://techcrunch.com/2026/08/16/anthropic-ceo-says-ai-backlash-is-fundamentally-a-crisis-of-trust/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-2261514463.jpg?w=1024",
-    dek: "Dario Amodei responde à acusação de que seu discurso alimentou a reação negativa contra a indústria.",
-    resumo: [
-      "Dario Amodei, presidente-executivo da Anthropic, rebateu publicamente a ideia de que vem pintando um retrato excessivamente pessimista da inteligência artificial. A resposta foi dirigida ao investidor Gavin Baker, que argumentou — no podcast All-In e na rede X — que os alertas de Amodei sobre os perigos da tecnologia ajudaram a alimentar a reação negativa nos Estados Unidos, especialmente contra a construção de data centers.",
-      "Baker afirmou que Amodei 'perdeu o argumento' no debate sobre regulação e que, prestes a comandar uma das empresas mais importantes do mundo, deveria ser um defensor mais positivo do próprio setor. Ele não está sozinho: parte da indústria sustenta que o ceticismo público e até as medidas restritivas de governos decorrem, em alguma medida, de levar a sério os avisos catastrofistas de executivos de IA.",
-      "Amodei discordou do diagnóstico. Segundo ele, seus textos estão 'aproximadamente equilibrados entre riscos e benefícios' — escreveu um ensaio importante sobre cada lado — e o ensaio 'Machines of Loving Grace' nasceu justamente porque, na sua leitura, a indústria não estava desenhando um quadro inspirador o bastante sobre como a tecnologia poderia transformar o mundo para melhor.",
-      "Ele reconhece que a opinião pública sobre IA é negativa e que isso é um problema grande. O que rejeita é a atribuição de causa. 'Acho que é fundamentalmente uma crise de confiança', disse. 'As pessoas comuns não confiam em empresas, governos ou na indústria de tecnologia, e sempre suspeitam que estamos tramando alguma forma nova de passá-las para trás.' Na leitura dele, essa desconfiança vem se acumulando há décadas, e a reação à IA é apenas sua iteração mais recente.",
-      "Amodei ainda ofereceu a crítica que considera legítima: 'de longe a crítica mais precisa às empresas de IA, inclusive a Anthropic, é que ainda não cumprimos nossas grandes promessas de beneficiar o mundo. Isso é totalmente responsabilidade nossa.' Sobre regulação, disse que Baker propõe uma falsa escolha entre distribuir IA amplamente sem regras ou concentrá-la em poucas empresas por meio de regulação, e afirmou que a Anthropic tenta formular propostas que desacelerem as empresas de fronteira enquanto favorecem competidores menores."
-    ]
-  },
-  {
-    rank: 7,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "Why the battle for brand distinctiveness starts with type",
-    tituloPt: "A disputa por distinção de marca começa na tipografia — e num mundo de IA, fonte sob medida virou necessidade estratégica",
-    source: "Creative Review",
-    data: "13/08/2026",
-    url: "https://www.creativereview.co.uk/the-battle-for-brand-distinctiveness-starts-with-type/",
-    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Heinz-typeface.jpg?auto=compress%2Cformat&crop=faces%2Centropy%2Cedges&fit=crop&q=60&w=1200",
-    dek: "Tom Foley, diretor criativo de tipografia do Studio Drama, argumenta que a fonte proprietária deixou de ser luxo.",
-    resumo: [
-      "Num cenário em que marcas disputam relevância e memorabilidade dentro de ambientes cada vez mais mediados por inteligência artificial, a tipografia sob medida deixou de ser um luxo de orçamento e passou a ser uma necessidade estratégica. É a tese defendida por Tom Foley, diretor criativo de tipografia do Studio Drama, em artigo publicado pela Creative Review.",
-      "O argumento parte de uma constatação simples: quando conteúdo, layout e imagem passam a ser gerados, remixados e redistribuídos por sistemas automatizados, os elementos que sobrevivem à padronização são os que a marca controla de ponta a ponta. A letra é um deles — e talvez o mais barato de manter consistente em todos os pontos de contato, do rótulo à interface.",
-      "O texto usa casos de marcas que investiram em famílias tipográficas próprias como demonstração de que a distinção visual, hoje, se conquista menos por um logotipo isolado e mais por um sistema de letras reconhecível mesmo quando o símbolo não aparece na imagem.",
-      "Vale registrar que se trata de um artigo de opinião assinado por um profissional que atua justamente na criação de tipografia sob medida — o que não invalida o argumento, mas convém ao leitor ter em conta ao avaliar a recomendação."
-    ],
-    nota: "Resumo produzido a partir dos elementos públicos do artigo (título, subtítulo, autoria e enquadramento editorial); o texto integral está sob acesso restrito da publicação."
-  },
-  {
-    rank: 8,
-    estrelas: 4,
-    categoria: "Branding",
-    title: "Pentagram rebrands the world's oldest concert hall",
-    tituloPt: "A Pentagram redesenha a sala de concertos mais antiga do mundo, a De Bijloke, em Gante",
-    source: "Creative Review",
-    data: "11/08/2026",
-    url: "https://www.creativereview.co.uk/muziekcentrum-de-bijloke-rebrand-pentagram/",
-    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/DeBijloke-rebrand-flag.jpg?auto=compress%2Cformat&crop=faces%2Centropy%2Cedges&fit=crop&q=60&w=1200",
-    dek: "Marina Willer e equipe partem da história do edifício, da programação diversa e do poder duradouro da música.",
-    resumo: [
-      "O Muziekcentrum De Bijloke, em Gante, na Bélgica, ganhou nova identidade assinada pela Pentagram, sob direção de Marina Willer e sua equipe. A instituição ocupa um conjunto arquitetônico de origem medieval — o antigo hospital e abadia de Bijloke — e é apontada como a mais antiga sala de concertos em funcionamento no mundo.",
-      "O ponto de partida do projeto, segundo a publicação, foi justamente a combinação de três forças: a história singular do lugar, a diversidade da programação atual (que vai da música antiga ao contemporâneo e a formatos híbridos) e aquilo que a Pentagram descreve como o poder duradouro da própria música.",
-      "O desafio prático de casas como essa costuma ser o mesmo: uma identidade precisa carregar séculos de peso institucional sem soar embalsamada, e ao mesmo tempo abrir espaço para uma agenda que muda a cada temporada. A resposta da equipe passa por um sistema visual que sirva tanto ao patrimônio quanto à programação contemporânea, aplicável de bandeiras e sinalização no complexo a materiais de temporada.",
-      "É mais um capítulo de uma sequência recente de reposicionamentos de instituições culturais europeias, em que estúdios grandes têm sido chamados para arbitrar o equilíbrio entre memória e circulação digital."
-    ],
-    nota: "Resumo baseado nos elementos públicos disponíveis (título, dek, autoria e contexto da instituição); o texto integral está sob acesso restrito da publicação."
-  },
-  {
-    rank: 9,
-    estrelas: 3,
-    categoria: "Design",
-    title: "Woonpioniers models adjoining Dutch homes on \"a game of Tetris\"",
-    tituloPt: "Duas famílias, um único volume: o Woonpioniers encaixa casas holandesas como peças de Tetris",
+    title: "Ferrari's controversial first EV sells for record $40 million at auction",
+    tituloPt: "O primeiro Ferrari elétrico é arrematado por US$ 40 milhões e vira recorde mundial",
     source: "Dezeen",
-    data: "16/08/2026",
-    url: "https://www.dezeen.com/2026/08/16/woonpioniers-cohouse-in-cothen/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/woonpioniers-cohouse-netherlands-sq_dezeen_2364_col_0.jpg",
-    dek: "A prefeitura exigiu que as duas casas coubessem em um único volume. O estúdio girou uma em torno da outra.",
+    url: "https://www.dezeen.com/2026/08/17/ferrari-luce-ev-auction-record/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/hero-ferrari-luce-chassis-0-auction_dezeen_2364_col_0.jpg",
+    categoria: "design",
+    estrelas: 5,
+    dek: "O chassis 0 do Ferrari Luce, desenhado por Jony Ive e Marc Newson, foi vendido por mais de 60 vezes a estimativa.",
     resumo: [
-      "O estúdio holandês Woonpioniers concluiu a CoHouse, em Cothen, na província de Utrecht: um par de residências entrelaçadas projetadas para duas famílias dentro de um único volume com telhado de duas águas. As famílias haviam comprado juntas um terreno verde à beira do rio, mas a prefeitura local exigiu que as duas casas coubessem numa só massa construída.",
-      "A solução foi um projeto de cohousing de 237 metros quadrados com duas moradias de tamanho equivalente que se sobrepõem nos pavimentos superiores. 'Para aproveitar ao máximo o jardim, as vistas, a privacidade e a luz solar, as duas casas foram cuidadosamente giradas uma em torno da outra como num jogo de Tetris', explicou o sócio do estúdio Leen Bogerd ao Dezeen.",
-      "Cada residência foi ajustada às necessidades da respectiva família: uma tem as plantas voltadas para um jardim fechado, a outra para a paisagem ao redor. Ambas as famílias pediram uma construção de baixo carbono, o que levou a uma estrutura em pórtico de madeira, lajes em madeira laminada cruzada (CLT) e isolamento em fibra de madeira. Entre as duas casas, o piso divisório recebeu uma composição acústica de base biológica.",
-      "A demanda energética é atendida por bombas de calor geotérmicas, sistema de ventilação com recuperação de calor e telhado solar. Há ainda sombreamento externo nas fachadas sul e oeste, revestidas em madeira e reboco.",
-      "As duas casas compartilham a entrada e desembocam em cozinha e sala de jantar integradas no térreo, com grandes aberturas pensadas para 'suavizar a fronteira entre as casas e o jardim comum'. Numa delas, um vazio de pé-direito duplo leva luz até a sala de jantar, ao lado de uma escada aberta de madeira que sobe para quatro quartos e um banheiro. A outra tem planta mais fechada, com quatro quartos amplos no pavimento superior. Superfícies de madeira aparente convivem com pisos em tons de cinza e paleta neutra."
+      "O primeiro exemplar de produção do Ferrari Luce — o carro elétrico que Jony Ive e Marc Newson assinaram pelo estúdio LoveFrom — foi arrematado por US$ 40 milhões (cerca de £29,6 milhões) num leilão beneficente da RM Sotheby's durante a Monterey Car Week, na Califórnia. A estimativa antes do pregão era de US$ 1,1 milhão, o que significa que o lance vencedor superou em mais de sessenta vezes o preço de tabela do modelo.",
+      "É o valor mais alto já pago por um carro novo em leilão. Toda a receita foi destinada às iniciativas educacionais da The Ferrari Foundation, o que ajuda a explicar a escalada dos lances: trata-se de uma unidade Tailor Made inteiramente branca, identificada como chassis 0, impossível de replicar.",
+      "O resultado contrasta com a recepção do lançamento. Quando o Luce foi apresentado em maio, as ações da Ferrari caíram 8% em meio a críticas ao formato de quatro portas e cinco lugares, considerado por parte dos entusiastas uma ruptura com a identidade da marca. Luca di Montezemolo, que presidiu a empresa por 23 anos até 2014, resumiu o desconforto ao dizer que se corria o risco de destruir uma lenda.",
+      "O mercado, porém, respondeu de forma oposta ao humor dos comentaristas: a Ferrari esgotou toda a produção prevista para 2026 em dois meses, e as primeiras entregas estão marcadas para outubro. O leilão funciona, assim, como um teste público do valor simbólico de um projeto de design que dividiu opiniões antes mesmo de rodar."
     ]
   },
   {
-    rank: 10,
-    estrelas: 3,
-    categoria: "Design",
-    title: "NUA Arquitectures renovates Catalan textile warehouse with timber office block",
-    tituloPt: "Do último polo têxtil da Catalunha do sul sobra um galpão — e a NUA Arquitectures constrói um escritório de madeira dentro dele",
+    title: "Designed like Mamdani",
+    tituloPt: "A marca pessoal de Mamdani: o que a prefeitura de Nova York ensina sobre design político",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/zohran-mamdani-personal-brand-design-new-york-mayor/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Zohran-Mamdani-100-day-address.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    categoria: "branding",
+    estrelas: 5,
+    dek: "Numa era de política obcecada por imagem, o prefeito de Nova York construiu uma marca coerente e ancorada em bom design.",
+    resumo: [
+      "A Creative Review analisa como Zohran Mamdani, prefeito de Nova York, montou uma marca pessoal que se sustenta menos em produção cara e mais em coerência: tom de voz, tipografia e ritmo de publicação funcionando como um sistema único.",
+      "O texto abre com um exemplo de comunicação: quando os Knicks conquistaram o título da NBA em junho, encerrando uma espera de 53 anos, Mamdani publicou apenas três palavras — desfile, quinta-feira, Manhattan. A reportagem compara essa concisão com a mensagem bem mais protocolar do ex-primeiro-ministro britânico Keir Starmer sobre o título do Arsenal, para argumentar que a diferença não é apenas cultural, e sim de construção de voz.",
+      "O ponto central é que Mamdani não fala como político: fala como uma pessoa comum, e essa escolha é tratada como decisão de marca, não como acaso. A matéria conecta isso ao trabalho gráfico da gestão, incluindo a campanha de turismo da cidade para a Copa do Mundo, desenhada por Arsh Raziuddin, em que a linguagem visual acompanha o mesmo registro direto.",
+      "Para quem trabalha com identidade, o caso interessa por inverter a lógica habitual da comunicação institucional: em vez de suavizar arestas até restar um discurso neutro, o sistema aposta em uma personalidade reconhecível e a repete com disciplina em cada ponto de contato."
+    ]
+  },
+  {
+    title: "New Logo and Identity for Tourisme Abitibi-Témiscamingue by LG2",
+    tituloPt: "LG2 assina a nova identidade do Tourisme Abitibi-Témiscamingue, no Quebec",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_tourisme_abitibi_temiscamingue_by_lg2.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/abitibi_temiscamingue_logo_before.png",
+    categoria: "branding",
+    estrelas: 4,
+    dek: "Novo monograma e paleta alaranjada para a agência de turismo da região canadense, sob o título editorial \"Blaze a Trail\".",
+    resumo: [
+      "O Brand New publicou, na categoria Noted, a nova marca do Tourisme Abitibi-Témiscamingue, agência de turismo de uma das regiões mais setentrionais do Quebec, no Canadá. O projeto é assinado pela LG2, uma das maiores agências independentes canadenses.",
+      "Pelas informações públicas do post — título editorial \"Blaze a Trail\", categoria Destinations e as etiquetas atribuídas pelo editor Armin Vit —, a nova identidade é organizada em torno de um monograma, com uso predominante do laranja e um acabamento descrito como rough, isto é, de traço propositalmente irregular em vez de geometria limpa.",
+      "A combinação sugere um posicionamento de território selvagem e exploração, o que faz sentido para uma região conhecida por florestas boreais, lagos e trilhas. O post traz ainda a comparação antes-e-depois do logotipo e exemplos de aplicação.",
+      "Vale registrar que a semana no Brand New é atípica: o site avisou na segunda-feira que publicará menos posts do que o habitual, em razão da pausa anual de verão."
+    ],
+    paywall: true
+  },
+  {
+    title: "Puresport ditches AI-generated product shots for oil paintings",
+    tituloPt: "Puresport troca imagens geradas por IA por pinturas a óleo feitas à mão",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/puresport-oil-painting-campaign-amy-hunt-ai/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Puresport-oil-painting-tomas-king.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    categoria: "branding",
+    estrelas: 4,
+    dek: "Quatro naturezas-mortas encomendadas a artistas diferentes para lançar um eletrólito com a medalhista Amy Hunt.",
+    resumo: [
+      "A Puresport, marca londrina de nutrição esportiva ligada à cultura da corrida, lançou seu eletrólito de romã em parceria com a atleta britânica Amy Hunt, medalhista de prata olímpica, por meio de quatro naturezas-mortas originais em vez das habituais fotos de produto.",
+      "As obras são de Trish Walsh-O'Neill, Tomás King, Tony Robinson e Patricia Robinson, e partem da linguagem clássica dos estudos de frutas, mas cada uma resolve o briefing de um jeito: uma coloca flores dentro da garrafa, outra recorre a uma lata de óleo como referência à mecânica da corrida, outra parte de uma foto de romãzeira trazida de viagem. Há óleo escuro e denso, aquarela luminosa, acrílico e guache — o rótulo \"pinturas a óleo\" da manchete simplifica o que na prática é uma variedade de meios.",
+      "A justificativa vem do time interno. Mikey Robinson, head de criação da marca, descreve o raciocínio como uma escolha deliberada pelo caminho difícil: em 2026, o fácil seria subir fotos de produto num fluxo de IA e gerar centenas de peças. Emma Grimshaw, head de design, associa o esforço manual à própria trajetória da atleta e ao processo de tentativa e erro do produto, do sabor à embalagem.",
+      "O briefing enviado aos artistas foi curto — garrafa, sachê e caixa, com liberdade total desde que a embalagem aparecesse em destaque. As peças estão circulando nos canais orgânicos e pagos da marca, e a expectativa declarada é de que outras empresas da categoria voltem a contratar artistas, prática que hoje é mais comum no luxo."
+    ]
+  },
+  {
+    title: "Waugh Thistleton Architects set to build \"tallest mass timber office building in the US\"",
+    tituloPt: "Waugh Thistleton vai erguer o maior edifício de escritórios em madeira maciça dos EUA",
     source: "Dezeen",
-    data: "16/08/2026",
-    url: "https://www.dezeen.com/2026/08/16/nua-arquitectures-tuvatextil-office/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/tuvatextil-nua-arquitectures-architecture-barcelona-warehouse-office_dezeen_2364_sq.jpg",
-    dek: "Em El Pont d'Armentera havia 12 fábricas. Restou uma — e o projeto trata a memória industrial como matéria-prima.",
+    url: "https://www.dezeen.com/2026/08/17/us-tallest-mass-timber-office-building-waugh-thistleton-architects/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/us-tallest-mass-timber-office-building-waugh-thistleton-architects_dezeen_2364_col_1.jpg",
+    categoria: "design",
+    estrelas: 4,
+    dek: "Bevel terá 12 andares e 55 metros em Bellevue, Washington, com estrutura híbrida de madeira e aço.",
     resumo: [
-      "O estúdio espanhol NUA Arquitectures reformou um armazém têxtil perto de Barcelona, usando divisórias de madeira para criar um pequeno bloco de escritórios dentro da estrutura original de concreto e tijolo. O projeto foi feito para a Tuvatèxtil, uma das últimas empresas ainda em operação em El Pont d'Armentera — que já foi o mais importante polo têxtil do sul da Catalunha, com doze fábricas.",
-      "Com boa parte desse patrimônio perdida, o estúdio optou por preservar e celebrar o tecido construído remanescente, inserindo os novos escritórios numa estrutura de madeira autoportante. 'O projeto recupera, reivindica e celebra a história industrial e têxtil de El Pont d'Armentera', disse a NUA ao Dezeen. 'É uma mediação entre memória, identidade e o ato de habitar — retenção adaptativa e reúso radical.'",
-      "Na entrada noroeste foi criada uma praça pavimentada comunitária, abrigada por uma cobertura abobadada de concreto e aço na cor terracota, pontuada por árvores e postes curvos de iluminação. Dali se acessa o canto do galpão que foi fechado com divisórias de madeira e vidro, criando o efeito de um edifício dentro do edifício, com dois pavimentos de escritórios e salas de reunião.",
-      "A oeste, os escritórios extrapolam a área da fábrica existente e formam um pequeno bloco térreo coroado por uma faixa de azulejos padronados, com refeitório e cozinha voltados para a praça. Um percurso pavimentado em terracota, apelidado de 'tapete vermelho' pelo estúdio, atravessa os escritórios e termina numa escada e numa rampa que descem até o piso do galpão, observado de cima por uma varanda com estrutura de madeira.",
-      "Todos os elementos viáveis, inclusive pedra, foram reciclados; para a reabilitação usou-se tectônica leve, como madeira e cerâmica. A estrutura de concreto e tijolo foi reforçada para permitir novas aberturas e claraboias, e as paredes receberam isolamento externo. Fundada em Tarragona em 2013 por Arnau Tiñena, Ferran Tiñena e Maria Rius, a NUA já assinou a reforma de uma antiga casa de pedra e a masia Casa Juià, ambas na Catalunha. Fotografia de Adrià Goula."
+      "Os escritórios Waugh Thistleton Architects e Mithun projetaram o Bevel, um edifício comercial de 12 andares e 55 metros de altura em Bellevue, no estado de Washington, encomendado pela incorporadora e construtora Skanska.",
+      "Segundo a organização WoodWorks, será o mais alto edifício de escritórios em madeira maciça dos Estados Unidos. É também o primeiro projeto construído do escritório britânico Waugh Thistleton em solo americano — um marco relevante, já que o estúdio é uma das referências mundiais em construção em madeira.",
+      "A estrutura é híbrida: pilares, vigas e tetos de madeira ficam cem por cento aparentes, enquanto base e estacionamento são de concreto, com núcleo de aço e apoios sísmicos para responder às exigências da região. Craig Curtis, sócio da Mithun, afirma que a solução em madeira permitiu deslocar o núcleo para a lateral e liberar lajes mais abertas, chegando a paridade de custo com o concreto.",
+      "O dado que dá dimensão ao projeto vem de Jennifer Cover, CEO da WoodWorks: dos 22 edifícios altos em madeira já construídos ou em obras no país, apenas três são comerciais. A maior parte é residencial, o que faz do Bevel um teste da viabilidade do material no mercado de escritórios."
     ]
   },
   {
-    rank: 11,
-    estrelas: 3,
-    categoria: "Design",
-    title: "This Retro Apple IndyCar Livery Looks Like The Perfect Next Step After The Company's F1 Partnership",
-    tituloPt: "O arco-íris de 1977 volta às pistas: o conceito de pintura Apple para a IndyCar que a empresa ainda não fez",
+    title: "Heart Aerospace X1 takes flight as the world's largest battery-electric aircraft",
+    tituloPt: "O X1 da Heart Aerospace voa e se torna o maior avião elétrico a bateria do mundo",
     source: "Yanko Design",
-    data: "16/08/2026",
-    url: "https://www.yankodesign.com/2026/08/16/this-retro-apple-indycar-livery-looks-like-the-perfect-next-step-after-the-companys-f1-partnership/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/auto-draft/apple_indycar_livery_concept_1.jpeg",
-    dek: "Daniel Rodriguez veste um Dallara IR-18 com quatro décadas de identidade Apple ao mesmo tempo.",
+    url: "https://www.yankodesign.com/2026/08/17/heart-aerospace-x1-takes-flight-as-the-worlds-largest-battery-electric-aircraft/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/heart-aerospaces-x1-takes-flight-as-the-worlds-largest-battery-electric-aircraft/Heart-Aerospace-X1-Electric-Powered-Aircraft-11.jpg",
+    categoria: "design",
+    estrelas: 4,
+    dek: "Voo de 27 minutos em Nova York consumiu cerca de US$ 5 em eletricidade e valida o caminho para o regional ES-30.",
     resumo: [
-      "A Apple gosta de automobilismo. O Apple TV virou a casa exclusiva da Fórmula 1 nos Estados Unidos, a empresa financiou um filme sobre F1 que faturou mais do que muitas equipes veem numa temporada inteira e ainda convenceu a Porsche a repintar dois carros de corrida com um esquema arco-íris de 46 anos atrás. O que a empresa nunca fez, apesar de todo esse entusiasmo, foi aparecer na IndyCar.",
-      "O designer Daniel Rodriguez resolveu renderizar essa versão ausente. O conceito veste um Dallara IR-18 com o espectro inteiro da história visual da Apple: das listras arco-íris de 1977 e do letreiro em Motter Tektura até selos modernos de Apple Pay e Apple TV+, lado a lado.",
-      "As listras se comportam de modo diferente conforme a superfície. Bico, placas laterais da asa e plano principal recebem o tratamento chapado de seis cores, de bordas duras, direto de 1977; já os sidepods e a tampa do motor exibem um degradê aerografado que parece papel de parede de iPhone. Vistas de cima, as duas metades se espelham com precisão, com lanças arco-íris saindo das entradas de ar e correndo por cima do motor numa simetria mais Cupertino do que IndyCar.",
-      "As palavras 'Apple Computer' descem pelo bico em Motter Tektura — a peculiar tipografia austríaca de exibição que Rob Janoff escolheu em 1977 porque suas formas arredondadas ecoavam as curvas da maçã. A fonte estava adormecida em carros de corrida havia décadas, e vê-la envolvendo um aeroscreen moderno é o tipo de piada tipográfica que a maioria sente antes de conseguir nomear.",
-      "A escolha de patrocínios é deliberadamente irônica: Apple Pay, Apple TV+ e Apple Podcasts dividem espaço com a maçã de seis cores, como se quatro décadas da mesma empresa tivessem se vestido para a mesma corrida. Fornecedores reais da categoria — Bosch, BBS, Sachs e Firestone — completam a pintura e evitam que o exercício vire fantasia. Há precedente histórico: em 1980 a Apple patrocinou um Porsche 935 K3 da Dick Barbour Racing, pilotado por Bobby Rahal, Allan Moffat e Bob Garretson, com um adesivo na traseira que dizia 'Don't upset the Apple Car'. A Porsche recriou exatamente essa pintura em maio deste ano, em Laguna Seca, para marcar os 75 anos de sua divisão de competição e os 50 anos da Apple."
+      "O demonstrador X1, da sueca Heart Aerospace, fez seu primeiro voo em 12 de agosto, decolando do Plattsburgh International Airport, no norte do estado de Nova York. Com isso, tornou-se o maior avião movido a bateria já levado ao ar.",
+      "Os números da aeronave: 106 pés de envergadura, 76 pés de comprimento, mais de 25 mil libras no peso de decolagem e quatro motores elétricos. O voo durou 27 minutos, chegou a 1.100 pés de altitude e entregou mais de um megawatt de potência, sob certificado especial de aeronavegabilidade da FAA na categoria experimental. A empresa calcula que a eletricidade consumida custou cerca de cinco dólares.",
+      "O X1 não é um produto final: serve de plataforma de teste para o ES-30, avião regional híbrido-elétrico de 30 lugares. O projeto prevê autonomia de aproximadamente 200 km em modo puramente elétrico, cerca de 800 km em modo híbrido e recarga em torno de trinta minutos.",
+      "Do lado comercial, United Airlines e Air Canada estão entre os clientes, com compromissos que somam US$ 9,4 bilhões. A primeira unidade de pré-produção do ES-30 está sendo montada na fábrica-piloto de Los Angeles, com testes previstos para 2028 e entrada em serviço projetada para 2031 — prazos que ainda dependem de certificação."
     ]
   },
   {
-    rank: 12,
-    estrelas: 3,
-    categoria: "Design",
-    title: "This ridiculous film poster makes me wish movies would get silly again",
-    tituloPt: "'Deus perdoa. Ela não': o cartaz de 'Mary Magnum: Jiu-Jitsu Nun' e o revival estético do grindhouse",
-    source: "Creative Bloq",
-    data: "16/08/2026",
-    url: "https://www.creativebloq.com/design/poster-design/this-ridiculous-film-poster-makes-me-wish-movies-would-get-silly-again",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/Zg77dSEuuQEjjnvv9d93vR-1920-80.jpg",
-    dek: "Contra o mar de cabeças flutuantes e minimalismos preguiçosos, um cartaz de capa de VHS dos anos 70.",
+    title: "Wispr raises $280M at $2B valuation as it looks beyond dictation",
+    tituloPt: "Wispr capta US$ 280 milhões a uma avaliação de US$ 2 bilhões e mira além do ditado",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/08/17/wispr-raises-280m-at-2b-valuation-as-it-looks-beyond-dictation/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/02/Wispr-Flow-Android-hero.jpg?resize=1200,718",
+    categoria: "tech",
+    estrelas: 4,
+    dek: "Série B liderada pela Menlo Ventures chega menos de dez meses após a rodada anterior.",
     resumo: [
-      "Num mundo pós-MCU acostumado a superproduções recheadas de CGI, estrelas de Hollywood e orçamentos gigantescos, a autora do texto defende que se perdeu uma forma de arte pelo caminho — e que está na hora de um renascimento do filme B.",
-      "A resposta veio na forma de 'Mary Magnum: Jiu-Jitsu Nun', um thriller de ação de microorçamento cujo cartaz chamou atenção justamente por fugir do padrão. Em vez das cabeças flutuantes e do minimalismo preguiçoso que dominam o mercado de pôsteres, o desenho replica as capas de VHS dos filmes grindhouse dos anos 1970: imagem desbotada, bordas desgastadas e textura autenticamente retrô.",
-      "A composição traz a própria Mary Magnum empunhando uma arma, de hábito completo de freira. Do slogan escancaradamente cafona — 'God forgives. She doesn't' ('Deus perdoa. Ela não') — à tipografia com ares tarantinescos, o cartaz equilibra apelo camp e estilo genuíno.",
-      "A repercussão no Reddit deu o tom: 'você já tinha me convencido com a imagem, nem precisava ir tão longe com o título', escreveu um usuário; outro celebrou 'que nome, que premissa, que cartaz'. Um terceiro resumiu: 'perto o bastante — bem-vindo de volta, Grindhouse'.",
-      "O texto observa que a tendência de cartazes com estética retrô vem crescendo, citando o pôster recente de 'A Múmia', de Lee Cronin, que parece saído dos arquivos de terror dos anos 1980 — e torce para que o revival dure mais do que uma temporada."
+      "A Wispr, startup de ditado por inteligência artificial, levantou US$ 280 milhões em uma Série B liderada pela Menlo Ventures, com avaliação de US$ 2 bilhões. O total captado pela empresa chega a US$ 361 milhões, e a rodada anterior tinha sido fechada há menos de dez meses.",
+      "Os investidores já presentes — Notable Capital, NEA, Neo Ventures, 8VC e MVP Ventures — reforçaram suas posições, e entraram Acrew, Forerunner, Goodwater, Peak XV, Together Fund e PLUS Capital.",
+      "Junto com o anúncio veio um novo modelo de fala, chamado Canto, que segundo a empresa reduz a taxa de erro de 30% para menos de 10%. O contexto importa: usuários vinham reclamando de queda de qualidade no Wispr Flow, e o novo modelo é a resposta direta a essas críticas.",
+      "A empresa também está ampliando o escopo do produto. Desde novembro lançou aplicativo Android, montou times comerciais na Índia e no Reino Unido, fechou parceria com o anel Oasis e lançou um assistente de anotações para reuniões — território ocupado por Granola, Fireflies e Read AI. No mês passado criou o Wispr Interface Labs, sob comando de Ariya Rastrow, ex-Amazon Alexa."
+    ]
+  },
+  {
+    title: "Tatjana von Stein blends Jugendstil style with 1980s glamour for The Dean Munich",
+    tituloPt: "Tatjana von Stein mistura Jugendstil e glamour oitentista no hotel The Dean Munich",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/08/17/tatjana-von-stein-the-dean-munich/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/the-dean-munich-tatjana-von-stein_dezeen_2364_sq_0.jpg",
+    categoria: "design",
+    estrelas: 3,
+    dek: "Centenas de luminárias e móveis sob medida para um hotel de 281 quartos no bairro Westend.",
+    resumo: [
+      "A designer franco-alemã Tatjana von Stein desenhou centenas de luminárias e peças de mobiliário sob medida para o The Dean Munich, novo endereço da rede irlandesa The Dean. São 281 quartos e suítes, três bares e o restaurante japonês Ibasho, instalados na reforma de um hotel já existente no bairro Westend.",
+      "A referência declarada é dupla: o Jugendstil, a versão bávara do art nouveau, cruzado com as boates decadentes dos anos 1980. Na prática isso aparece em dourados e vermelhos, veludo, carpetes floridos e vitrais.",
+      "No lobby, uma plataforma escalonada abriga um bar circular sob um recesso de teto reflexivo, com piso restaurado de pedra preta em padrão chevron e peças vintage originais de Josef Hoffmann e Otto Wagner, ao lado de um par de abajures em forma de esfinge. No Ibasho, cuja cozinha é comandada pelo chef Alex Craciun, há um conversation pit com sofás de veludo dourado e um bar de mármore em ferradura cercado por cadeiras Verner Panton revestidas em couro rosa; atrás dele fica o bar Noren, com alto-falantes Friendly Pressure feitos sob encomenda.",
+      "A curadoria de arte, com obras de artistas de Munique, ficou a cargo de Christian Ganzenberg, diretor do festival Various Others. É o maior hotel da rede e o segundo fora da Irlanda, depois de Berlim. Fotografias de Dean Hearne."
+    ]
+  },
+  {
+    title: "Ian Teeple's punk flyers look like they've been dragged through a photocopier and a mosh pit",
+    tituloPt: "Os panfletos punk de Ian Teeple parecem ter passado pela fotocopiadora e pela roda-punk",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/ian-teeple-illustration-graphic-design-discover-170826",
+    imageUrl: "https://admin.itsnicethat.com/images/WkvtubY0E6fEHLJ1-fPclDG6aDk=/280845/width-1440/ian-teeple-illustration-itsnicethat-Self_Portrait.jpg",
+    categoria: "design",
+    estrelas: 3,
+    dek: "Tinta, giz de cera, pastel oleoso, colagem e fotocópia repetida para cartazes de show tão altos quanto a banda.",
+    resumo: [
+      "O It's Nice That apresenta o trabalho de Ian Teeple, músico, artista visual e designer gráfico americano cujos cartazes de show competem em intensidade com as bandas que anunciam.",
+      "A prática dele nasceu dentro da cena punk do meio-oeste dos Estados Unidos, fazendo panfletos e divulgação para as próprias bandas, Warm Bodies e Silicone Prairie. Foi por aí que começou a se aproximar de artistas que admirava.",
+      "O método é deliberadamente rústico: desenho em tinta, pastel oleoso, giz de cera e tinta de aerógrafo, depois fotocópia e recomposição por colagem, num vaivém entre o digital e o impresso até a imagem ficar \"amassada\". Teeple diz gostar de lógica de sonho e de técnicas automáticas de criação, e de usar — ou mal usar — recursos de baixa tecnologia. Os temas giram em torno da figura humana e de situações que o incomodam ou assustam.",
+      "Entre os trabalhos citados estão peças para Snooper, Dry Cleaning e Bikini Kill. As influências declaradas incluem Francis Bacon, visível nos rostos explodidos, e Mike Kelley. A virada mais recente, segundo ele, veio da mudança para a Austrália."
+    ]
+  },
+  {
+    title: "Inside Arsenal's supporter-first creative strategy",
+    tituloPt: "Por dentro da estratégia criativa do Arsenal, construída com os próprios torcedores",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/arsenal-supporter-co-creation-creative-strategy-reuben-dangoor/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/AWFC-banner.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1200&h=675",
+    categoria: "branding",
+    estrelas: 3,
+    dek: "O clube do norte de Londres apostou na cocriação com a torcida e virou uma das marcas mais distintivas do futebol.",
+    resumo: [
+      "A Creative Review examina como o Arsenal transformou a relação com a torcida em método de trabalho criativo, e não apenas em discurso de marketing. A tese da reportagem é que o clube do norte de Londres apostou de forma integral na cocriação com quem acompanha o time e, com isso, construiu uma das marcas mais autênticas e reconhecíveis do futebol.",
+      "O material publicado indica que a estratégia passa por trazer criadores ligados à torcida para dentro do processo — o artista Reuben Dangoor é citado no próprio endereço da matéria —, invertendo a lógica tradicional em que a comunicação do clube é produzida de fora para dentro por agências.",
+      "O ponto de interesse para quem trabalha com identidade é o efeito acumulado: quando o repertório visual vem de dentro da comunidade, ele carrega códigos que dificilmente seriam reproduzidos por um concorrente, o que gera distinção real em vez de diferenciação cosmética.",
+      "É um contraponto útil a outra pauta recente do setor, a de que marcas icônicas não conseguem se sustentar apenas na nostalgia: aqui a memória coletiva é matéria-prima, mas quem a manipula é a própria base de torcedores."
+    ],
+    paywall: true
+  },
+  {
+    title: "The Redmi K100 Pro Turns Its Glass Back Into a Glowing Sketchpad",
+    tituloPt: "O Redmi K100 Pro transforma a traseira de vidro num bloco de desenho luminescente",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/08/17/the-redmi-k100-pro-turns-its-glass-back-into-a-glowing-sketchpad/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/auto-draft/redmi_k100_pro_1.jpeg",
+    categoria: "design",
+    estrelas: 3,
+    dek: "O acabamento Glowing Firefly esconde uma camada luminescente que registra o traço de uma lanterna — sem chip nem bateria.",
+    resumo: [
+      "A Redmi lançou na China, em 11 de agosto, o K100 Pro, cujo acabamento traseiro chamado Glowing Firefly resolve com material aquilo que outras marcas resolvem com eletrônica.",
+      "Entre o vidro traseiro e a camada de tinta verde há um material luminescente. Ao apontar uma lanterna, um laser ou uma caneta de luz para a superfície, o material absorve energia exatamente no trajeto do feixe e a libera lentamente depois — o que permite desenhar ou assinar sobre o vidro, com o traço desaparecendo aos poucos. Não há chip, sensor nem consumo de bateria envolvidos.",
+      "O resto da ficha técnica acompanha o posicionamento de topo de linha: tela OLED de 185 Hz, processador Snapdragon 8 Elite Gen 5 da série V, câmera de 200 MP, bateria de 8.580 mAh e carregamento de 100 W.",
+      "O texto do Yanko Design compara a solução ao Nothing Phone 2a Plus Community Edition, que usava revestimento fosforescente verde carregado pela luz ambiente. A diferença é a precisão: aqui o brilho responde ao ponto exato onde a luz incide, o que converte a traseira do aparelho numa superfície de desenho efêmera."
     ]
   }
 ];
 
-/* ---------- Ilustração SVG de fallback ---------- */
-function paletaDe(categoria){
-  if(categoria === "Branding") return ["#f6b17a","#e2703a","#9c3d1f","#fde8d7"];
-  if(categoria === "Design")   return ["#7ecfb4","#2f9c7f","#14614f","#e2f5ee"];
-  return ["#9d9bf0","#5b52c4","#332c86","#e9e7fb"];
-}
+const PALETAS = {
+  branding: ["#FFB067","#F2683C","#E14D2A","#FFD8A8"],
+  design:   ["#7FD8C8","#1F9C8A","#12756A","#C9F0E7"],
+  tech:     ["#A9B6FF","#5A6FF0","#3B45B8","#D8DEFF"]
+};
 
-function Ilustracao({categoria, seed}){
-  const [c1,c2,c3,c4] = paletaDe(categoria);
+function Ilustracao({ categoria, seed }) {
+  const p = PALETAS[categoria] || PALETAS.design;
   const id = "g" + seed;
   const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração gerada para categoria " + categoria}>
+    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={c4}/>
-          <stop offset="55%" stopColor={c1}/>
-          <stop offset="100%" stopColor={c2}/>
+          <stop offset="0%" stopColor={p[0]} />
+          <stop offset="100%" stopColor={p[2]} />
         </linearGradient>
         <linearGradient id={id + "b"} x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor={c3} stopOpacity="0.85"/>
-          <stop offset="100%" stopColor={c2} stopOpacity="0.25"/>
+          <stop offset="0%" stopColor={p[3]} stopOpacity="0.85" />
+          <stop offset="100%" stopColor={p[1]} stopOpacity="0.5" />
         </linearGradient>
       </defs>
-      <rect width="400" height="250" fill={"url(#" + id + ")"}/>
-      <circle cx={60 + r(1)*260} cy={40 + r(2)*140} r={40 + r(3)*55} fill={"url(#" + id + "b)"}/>
-      <rect x={20 + r(4)*230} y={110 + r(5)*80} width={70 + r(6)*130} height={16 + r(7)*40}
-            rx="10" fill={c3} opacity="0.35"/>
-      <path d={"M0," + (170 + r(8)*40) + " C110," + (110 + r(9)*70) + " 250," + (215 - r(1)*60) + " 400," + (140 + r(2)*60) + " L400,250 L0,250 Z"}
-            fill={c3} opacity="0.28"/>
-      <circle cx={300 + r(3)*70} cy={60 + r(4)*60} r={10 + r(5)*16} fill="#fff" opacity="0.5"/>
+      <rect width="400" height="250" fill={"url(#" + id + ")"} />
+      <circle cx={60 + r(1) * 260} cy={40 + r(2) * 120} r={50 + r(3) * 60} fill={"url(#" + id + "b)"} />
+      <rect x={20 + r(4) * 200} y={90 + r(5) * 90} width={90 + r(6) * 120} height={70 + r(7) * 70}
+            rx="18" fill={p[1]} opacity="0.55" transform={"rotate(" + Math.round(r(8) * 30 - 15) + " 200 150)"} />
+      <path d={"M0 " + (170 + r(9) * 40) + " Q 100 " + (110 + r(10) * 60) + " 200 " + (165 + r(11) * 40) + " T 400 " + (150 + r(12) * 50) + " V250 H0 Z"}
+            fill={p[3]} opacity="0.55" />
+      <circle cx={320 - r(13) * 80} cy={190 - r(14) * 60} r={14 + r(15) * 18} fill="#fff" opacity="0.35" />
     </svg>
   );
 }
 
-function Media({item}){
+function Figura({ item, idx }) {
   const [falhou, setFalhou] = useState(false);
-  if(!item.imageUrl || falhou){
-    return <Ilustracao categoria={item.categoria} seed={item.rank}/>;
-  }
+  if (!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={idx + 3} />;
   return (
-    <img
-      src={item.imageUrl}
-      alt={item.tituloPt}
-      referrerPolicy="no-referrer"
-      loading="lazy"
-      onError={() => setFalhou(true)}
-    />
+    <img src={item.imageUrl}
+         alt={"Imagem da matéria: " + item.tituloPt}
+         referrerPolicy="no-referrer"
+         loading="lazy"
+         onError={() => setFalhou(true)} />
   );
 }
 
-function Estrelas({n}){
-  return (
-    <span className="stars" title={n + " de 5"}>
-      {[1,2,3,4,5].map(i => <span key={i} className={i <= n ? "" : "off"}>★</span>)}
-    </span>
-  );
-}
+const Estrelas = ({ n }) => <span className="stars">{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
+const rotulo = { branding: "Branding", design: "Design", tech: "Tecnologia" };
 
-function Etiqueta({categoria}){
-  const cls = categoria === "Branding" ? "branding" : categoria === "Design" ? "design" : "tecnologia";
-  return <span className={"tag " + cls}>{categoria}</span>;
-}
-
-function Modal({item, onClose}){
-  useEffect(() => {
-    const esc = (e) => { if(e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", esc);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", esc); document.body.style.overflow = ""; };
-  }, [onClose]);
-
+function Modal({ item, idx, onClose }) {
   return (
     <div className="overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="media">
-          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-          <Media item={item}/>
+        <div className="modal-media">
+          <button className="closex" onClick={onClose} aria-label="Fechar">×</button>
+          <Figura item={item} idx={idx} />
         </div>
-        <div className="body">
-          <div className="row">
-            <Etiqueta categoria={item.categoria}/>
-            <Estrelas n={item.estrelas}/>
-            <span className="src">{item.source} · {item.data}</span>
+        <div className="modal-body">
+          <div className="tagrow">
+            <span className={"tag " + item.categoria}>{rotulo[item.categoria]}</span>
+            <span className="src">{item.source}</span>
+            <Estrelas n={item.estrelas} />
           </div>
           <h2>{item.tituloPt}</h2>
           <p className="orig">Título original: “{item.title}”</p>
-          <div className="text">
+          <div className="resumo">
             {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
           </div>
-          {item.nota && <p className="note">{item.nota}</p>}
+          {item.paywall && (
+            <div className="note">
+              Resumo produzido a partir dos elementos públicos da página (título, dek, categoria e etiquetas), porque o conteúdo completo está atrás de assinatura.
+            </div>
+          )}
           <div className="actions">
-            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">
-              Ler no {item.source} ↗
-            </a>
+            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
             <button className="btn" onClick={onClose}>Fechar</button>
           </div>
         </div>
@@ -495,80 +349,66 @@ function Modal({item, onClose}){
   );
 }
 
-function App(){
+function App() {
   const [aberto, setAberto] = useState(null);
-  const ordenadas = [...noticias].sort((a,b) => a.rank - b.rank);
-  const manchete = ordenadas[0];
-  const demais = ordenadas.slice(1);
-
-  const portais = new Set(noticias.map(n => n.source)).size;
-  const comFoto = noticias.filter(n => n.imageUrl).length;
+  const [manchete, ...resto] = NOTICIAS;
+  const portais = [...new Set(NOTICIAS.map(n => n.source))];
 
   return (
-    <div className="wrap">
+    <React.Fragment>
       <header className="top">
-        <span className="kicker">Edição de segunda-feira</span>
-        <h1 className="title">Portal da Manhã</h1>
-        <p className="subtitle">O que saiu de mais relevante em branding, design e tecnologia nas últimas 24 horas.</p>
+        <div className="kicker"><span className="dot"></span> Edição de {DATA_EXTENSO}</div>
+        <h1 className="brand">Portal da Manhã</h1>
+        <p className="sub">Uma leitura diária do que aconteceu em branding, design e tecnologia nas últimas 24 horas. Clique em qualquer matéria para ler o resumo completo em português.</p>
         <div className="meta-row">
-          <span><b>{DATA_EDICAO}</b></span>
-          <span><b>{noticias.length}</b> notícias</span>
-          <span><b>{portais}</b> portais</span>
-          <span><b>{comFoto}</b> com foto original</span>
+          <span className="pill">{NOTICIAS.length} notícias</span>
+          <span className="pill">{portais.length} portais</span>
+          {portais.map(p => <span className="pill" key={p}>{p}</span>)}
         </div>
       </header>
 
-      <article className="hero" onClick={() => setAberto(manchete)}>
-        <div className="media">
-          <span className="rank">Manchete</span>
-          <Media item={manchete}/>
-        </div>
-        <div className="body">
-          <div className="row">
-            <Etiqueta categoria={manchete.categoria}/>
-            <Estrelas n={manchete.estrelas}/>
+      <article className="hero" onClick={() => setAberto(0)}>
+        <div className="hero-media"><Figura item={manchete} idx={0} /></div>
+        <div className="hero-body">
+          <div className="tagrow">
+            <span className={"tag " + manchete.categoria}>{rotulo[manchete.categoria]}</span>
+            <span className="src">{manchete.source}</span>
+            <Estrelas n={manchete.estrelas} />
           </div>
           <h2>{manchete.tituloPt}</h2>
           <p>{manchete.dek}</p>
-          <div className="row">
-            <span className="src">{manchete.source} · {manchete.data}</span>
-          </div>
+          <span className="btn primary" style={{alignSelf:"flex-start"}}>Ler resumo →</span>
         </div>
       </article>
 
-      <section className="grid">
-        {demais.map(item => (
-          <article className="card" key={item.rank} onClick={() => setAberto(item)}>
-            <div className="media">
-              <span className="rank">{item.rank}</span>
-              <Media item={item}/>
-            </div>
-            <div className="body">
-              <div className="row">
-                <Etiqueta categoria={item.categoria}/>
-                <Estrelas n={item.estrelas}/>
+      <div className="grid">
+        {resto.map((item, i) => (
+          <article className="card" key={item.url} onClick={() => setAberto(i + 1)}>
+            <div className="card-media"><Figura item={item} idx={i + 1} /></div>
+            <div className="card-body">
+              <div className="tagrow">
+                <span className={"tag " + item.categoria}>{rotulo[item.categoria]}</span>
+                <span className="src">{item.source}</span>
+                <Estrelas n={item.estrelas} />
               </div>
               <h3>{item.tituloPt}</h3>
               <p className="dek">{item.dek}</p>
-              <span className="src">{item.source} · {item.data}</span>
             </div>
           </article>
         ))}
-      </section>
-
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)}/>}
+      </div>
 
       <footer>
-        Portal da Manhã · edição de {DATA_EDICAO}. Todos os resumos foram escritos em português a partir da leitura das
-        matérias originais; nenhum texto é reprodução literal da fonte. As imagens são carregadas diretamente dos
-        servidores dos portais e permanecem sob direito de seus respectivos autores. Quando não há imagem disponível,
-        uma ilustração geométrica é gerada automaticamente.
+        <span>Portal da Manhã · {DATA_EXTENSO}</span>
+        <span>Resumos escritos em português a partir das fontes originais. Direitos das imagens e dos textos originais pertencem aos respectivos portais.</span>
       </footer>
-    </div>
+
+      {aberto !== null && <Modal item={NOTICIAS[aberto]} idx={aberto} onClose={() => setAberto(null)} />}
+    </React.Fragment>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

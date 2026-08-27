@@ -3,432 +3,338 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 26 de agosto de 2026</title>
+<title>Portal da Manhã — 27 de agosto de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f6f6f4;
-    --surface:#ffffff;
-    --ink:#141414;
-    --ink-2:#4a4a4a;
-    --ink-3:#8a8a8a;
-    --line:#e6e5e1;
-    --accent:#c8452e;
-    --radius:18px;
+    --bg:#f6f6f4; --card:#ffffff; --ink:#14161a; --muted:#6b7280; --line:#e6e6e1;
+    --accent:#e2483c; --branding:#f4a261; --design:#2a9d8f; --tech:#6366f1;
+    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 24px rgba(20,22,26,.06);
+    --shadow-lg:0 2px 6px rgba(20,22,26,.06), 0 20px 50px rgba(20,22,26,.12);
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    line-height:1.55;
-  }
-  #root{max-width:1180px;margin:0 auto;padding:32px 20px 80px;}
-
-  .topbar{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
-    border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px;}
-  .brand{font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-0.03em;margin:0;}
-  .brand em{font-style:normal;color:var(--accent);}
-  .dateline{font-size:13px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.12em;font-weight:600;}
-  .kicker{font-size:14px;color:var(--ink-2);margin-top:6px;}
-
-  .stars{color:var(--accent);letter-spacing:2px;font-size:12px;}
-  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
-  .source{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
-    background:#efeeea;border-radius:999px;padding:4px 10px;}
-  .cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;
-    border-radius:999px;padding:4px 10px;}
-  .cat.branding{background:#c8452e;}
-  .cat.design{background:#1f7a6a;}
-  .cat.tech{background:#4c4bbd;}
-
-  .hero{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;
-    box-shadow:0 1px 2px rgba(0,0,0,.03);display:grid;grid-template-columns:1.15fr 1fr;margin-bottom:34px;}
-  .hero:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.10);}
-  .hero-media{position:relative;min-height:340px;background:#eceae5;}
-  .hero-body{padding:34px;display:flex;flex-direction:column;justify-content:center;}
-  .hero h2{font-size:clamp(24px,3vw,34px);line-height:1.18;letter-spacing:-0.02em;margin:6px 0 14px;}
-  .hero p{color:var(--ink-2);font-size:16px;margin:0;}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-    cursor:pointer;display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease;}
-  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.09);}
-  .card-media{position:relative;height:180px;background:#eceae5;}
-  .card-body{padding:18px 18px 22px;flex:1;display:flex;flex-direction:column;}
-  .card h3{font-size:18px;line-height:1.3;letter-spacing:-0.01em;margin:4px 0 10px;}
-  .card p{color:var(--ink-2);font-size:14px;margin:0;}
-
-  img.shot{width:100%;height:100%;object-fit:cover;display:block;}
-
-  .overlay{position:fixed;inset:0;background:rgba(20,20,20,.45);backdrop-filter:blur(3px);
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 18px;z-index:50;
-    overflow-y:auto;animation:fade .22s ease;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  header.top{padding:52px 0 26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1.brand{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(40px,7vw,68px);line-height:1;margin:12px 0 10px;font-weight:400;letter-spacing:-.02em}
+  .date{color:var(--muted);font-size:14px}
+  .meta-line{margin-top:16px;font-size:13px;color:var(--muted)}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;color:#fff}
+  .b-Branding{background:#d97706}
+  .b-Design{background:#16857a}
+  .b-Tecnologia{background:#4f46e5}
+  .stars{color:#e0a800;font-size:13px;letter-spacing:1px}
+  .lead{display:grid;grid-template-columns:1.15fr 1fr;gap:0;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);cursor:pointer;transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s;margin-bottom:34px}
+  .lead:hover{transform:translateY(-3px)}
+  .lead .ph{position:relative;min-height:340px;background:#eceae5}
+  .lead .txt{padding:38px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .lead h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(26px,3.2vw,40px);line-height:1.1;margin:0;letter-spacing:-.01em}
+  .lead p{color:#4b5158;font-size:15px;line-height:1.6;margin:0}
+  .src{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;transition:transform .26s cubic-bezier(.2,.8,.2,1), box-shadow .26s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .card .ph{position:relative;aspect-ratio:16/10;background:#eceae5}
+  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:17px;line-height:1.32;margin:0;font-weight:600;letter-spacing:-.01em}
+  .card .dek{font-size:13.5px;color:#5b6169;line-height:1.55;margin:0}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .row2{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  img.cover{width:100%;height:100%;object-fit:cover;display:block}
+  .ph svg{position:absolute;inset:0;width:100%;height:100%}
+  /* modal */
+  .ov{position:fixed;inset:0;background:rgba(18,20,24,.55);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:50;overflow-y:auto;animation:fade .22s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .modal{background:var(--surface);max-width:780px;width:100%;border-radius:22px;overflow:hidden;
-    animation:rise .28s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 70px rgba(0,0,0,.25);}
-  .modal-media{height:300px;background:#eceae5;position:relative;}
-  .modal-body{padding:30px 32px 36px;}
-  .modal h2{font-size:clamp(22px,3vw,30px);line-height:1.2;letter-spacing:-0.02em;margin:8px 0 16px;}
-  .modal .text p{color:var(--ink-2);font-size:16px;margin:0 0 14px;}
-  .note{font-size:13px;color:var(--ink-3);border-left:3px solid var(--line);padding-left:12px;margin-top:18px;}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
-  .btn{border:none;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:600;cursor:pointer;
-    text-decoration:none;display:inline-block;transition:opacity .2s;}
-  .btn:hover{opacity:.85;}
-  .btn-primary{background:var(--ink);color:#fff;}
-  .btn-ghost{background:#efeeea;color:var(--ink);}
-  .closex{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.92);border:none;
-    width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1;}
-
-  footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);
-    font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-
-  @media (max-width:800px){
-    .hero{grid-template-columns:1fr;}
-    .hero-media{min-height:220px;}
-    .hero-body{padding:24px;}
-    .modal-media{height:210px;}
-    .modal-body{padding:24px;}
-  }
+  @keyframes rise{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:none}}
+  .modal{background:var(--card);max-width:820px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.3);animation:rise .3s cubic-bezier(.2,.8,.2,1)}
+  .modal .hero{position:relative;aspect-ratio:16/9;background:#eceae5}
+  .modal .inner{padding:32px 38px 40px}
+  .modal h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,34px);line-height:1.15;margin:14px 0 6px}
+  .modal .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 18px}
+  .modal p.body-t{font-size:15.5px;line-height:1.75;color:#33383f;margin:0 0 14px}
+  .note{font-size:13px;color:#8a6d3b;background:#fdf6e3;border:1px solid #f1e3bd;padding:10px 14px;border-radius:10px;margin-top:6px}
+  .actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  .btn{border:0;font-family:inherit;font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block}
+  .btn-p{background:var(--ink);color:#fff}
+  .btn-s{background:#f0f0ec;color:var(--ink)}
+  .close{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:20px;cursor:pointer;line-height:1;box-shadow:var(--shadow)}
+  footer{margin:56px 0 40px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.lead{grid-template-columns:1fr}.lead .ph{min-height:220px;aspect-ratio:16/9}.lead .txt{padding:26px 24px}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}.modal .inner{padding:24px 22px 32px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
-
 <script type="text/babel">
-const { useState } = React;
+const {useState} = React;
 
 const NOTICIAS = [
   {
-    id: 1,
-    title: "New Logo and Identity for Calendly by Smith & Diction",
-    tituloPt: "A Calendly abandona o azul corporativo e vira uma marca de gente: o rebrand da Smith & Diction que transforma agendamento em conversa",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_calendly_by_smith_diction.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/Calendly_Logo_before_after.png",
-    categoria: "Branding",
-    data: "25 de agosto de 2026",
+    title: "Big-name studios encouraging architects to use AI",
+    tituloPt: "Os grandes escritórios de arquitetura pararam de resistir: como Foster, Zaha Hadid e companhia passaram a empurrar a IA para dentro do estúdio",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/08/25/architecture-studios-encouraging-ai-feature/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/architecture-studios-using-ai-feature-sq_dezeen_2364_col_1.jpg",
+    categoria: "Design",
     estrelas: 5,
-    dek: "O Brand New abre a semana com uma resenha completa do novo sistema visual da plataforma de agendamento — monograma, pastéis, padrões generativos e um conjunto próprio de ícones.",
+    dek: "Os escritórios mais influentes do mundo já usam IA de concepção formal a análise de projeto e relatórios.",
     resumo: [
-      "O Brand New publicou nesta terça-feira uma resenha na categoria 'Reviewed' — a mais aprofundada do site — sobre a nova identidade da Calendly, plataforma de agendamento de reuniões usada por milhões de profissionais. O trabalho é assinado pelo estúdio norte-americano Smith & Diction, conhecido por identidades que fogem do vocabulário asséptico do software B2B.",
-      "Pelo material público do post, o projeto se organiza em torno de um novo monograma e de um sistema visual construído com pastéis, padrões e desfoques — as tags atribuídas pelo editor incluem 'monogram', 'pastels', 'patterns', 'blurry', 'generative' e 'icon set', o que sugere um sistema em parte gerado proceduralmente, com um conjunto de ícones próprio e gradientes suaves no lugar do azul chapado da marca anterior. A tag 'ai' também aparece, indicando que o reposicionamento acompanha a entrada da empresa em funcionalidades de agendamento automatizado.",
-      "O título editorial escolhido por Armin Vit e equipe — 'Till we Meet Again' — brinca com a natureza do produto: uma marca cuja função é marcar o próximo encontro. O post é classificado como 'before after', ou seja, apresenta comparação direta entre o logotipo antigo e o novo, além de aplicações de amostra.",
-      "Para o mercado brasileiro de branding, o caso interessa por um motivo específico: a Calendly é uma daquelas marcas de software que cresceram sem identidade forte, apoiadas apenas na utilidade do produto. Redesenhá-las agora, quando a categoria virou commodity e a diferenciação passou a depender de personalidade, é exatamente o tipo de desafio que o setor vem discutindo o ano inteiro."
+      "O Dezeen levantou como os escritórios de arquitetura mais visíveis do planeta estão incorporando inteligência artificial no dia a dia — e a conclusão é que a fase de experimentação silenciosa acabou. A reportagem mostra estúdios de grande porte não apenas tolerando o uso de IA, mas incentivando ativamente que seus arquitetos recorram a ela.",
+      "O uso descrito vai muito além da imagem bonita de concurso. A tecnologia aparece em três frentes distintas: geração e teste de alternativas formais nas etapas iniciais de projeto, análise de dados de desempenho e viabilidade, e produção de relatórios e documentação — justamente o trabalho que costuma consumir as horas menos glamourosas do escritório.",
+      "O pano de fundo importa. A publicação vem poucos dias depois de o próprio Dezeen registrar a retração mais longa já medida nas receitas da arquitetura americana e da entrada em vigor, na União Europeia, da exigência de rotular renderizações realistas geradas por IA. Ou seja: os escritórios estão automatizando em um momento de aperto econômico e de regulação recém-nascida, o que torna a pergunta sobre o que sobra para o arquiteto júnior bem menos abstrata."
     ],
-    paywall: true
+    parcial: true
   },
   {
-    id: 2,
-    title: "New Wordmark and Identity for Instagram",
-    tituloPt: "O 'r' que ninguém pediu: o Brand New disseca o primeiro wordmark novo do Instagram em dez anos, feito com Koto, Something Special Studios e MCKL",
+    title: "New Name, Logo, and Identity for Kinisla by RichardsDee",
+    tituloPt: "Um gigante irlandês de laticínios troca de nome e vira 'Kinisla' — e o Brand New batiza o texto de 'Kerry On, My Wheyward Sun'",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_wordmark_and_identity_for_instagram.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/instagram_2026_logo_before_after.png",
+    url: "https://www.underconsideration.com/brandnew/archives/new_name_logo_and_identity_for_kinisla_by_richardsdee.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/Kinisla_before_after.jpg",
     categoria: "Branding",
-    data: "24 de agosto de 2026",
     estrelas: 5,
-    dek: "Assinado por Armin Vit, o texto trata da maior mudança de marca da rede social desde 2016 — e o detalhe que dominou a discussão foi a letra 'r'.",
+    dek: "Naming, tipografia proprietária e um sistema de ícones geométricos em verde para o setor de laticínios da Irlanda.",
     resumo: [
-      "Na segunda-feira o Brand New publicou sua resenha do novo wordmark e sistema de identidade do Instagram, o primeiro redesenho de peso da rede social em cerca de dez anos. O título editorial — 'You \"r\" Welcome' — deixa claro onde está o ponto de discórdia: o desenho da letra 'r' na nova assinatura manuscrita.",
-      "As tags do post revelam o time envolvido e a natureza do trabalho: a agência londrina Koto, o estúdio nova-iorquino Something Special Studios, a fundição MCKL Type e o time interno da Meta aparecem creditados. As categorias 'script' e 'geometric sans serif' indicam um sistema de dois níveis — uma assinatura caligráfica que evoca o logotipo original do aplicativo e uma sans geométrica de apoio para interface e comunicação.",
-      "O contexto importa: o Instagram chegou a três bilhões de usuários e vinha sendo criticado por ter perdido carisma para o TikTok. O redesenho é lido pela imprensa de design como uma tentativa de reafirmar a origem 'criativa' da plataforma — devolver traço humano a uma marca que havia se tornado puramente funcional.",
-      "Vale registrar que o post recebeu dezenas de reações na enquete do site em poucas horas, o que no ecossistema do Brand New é sinal de rebrand polêmico. Como o conteúdo completo é restrito a assinantes, o resumo acima se apoia no título, nas tags, nos créditos e no material público da página."
+      "O Brand New abriu a quarta-feira com um projeto completo da RichardsDee: nome novo, logo novo e identidade nova para a Kinisla, uma empresa irlandesa de agricultura e laticínios. A resenha ficou por conta de Jon, na categoria 'Reviewed' — a mais aprofundada da casa — e com o trocadilho de sempre no título, 'Kerry On, My Wheyward Sun', que brinca com o 'whey' (soro do leite) e com a região de Kerry.",
+      "Pelo que é público do post, o trabalho não foi um retoque: houve renomeação, o que significa que a empresa abandonou a marca anterior por inteiro. As tags do projeto entregam o vocabulário visual escolhido — geometria, verde, tipografia proprietária e um conjunto de ícones, mais uma sans serif como base. É a receita corporativa contemporânea aplicada a um setor que historicamente comunica através de fotografia de pasto e selos de tradição.",
+      "A escolha de encomendar uma tipografia própria chama atenção num segmento em que a maioria das empresas se contenta com fontes de biblioteca. Combinada ao sistema de ícones, sugere uma marca pensada para operar em muitos pontos de contato — embalagem, veículo, uniforme, digital — sem depender do logo isolado para se fazer reconhecer."
     ],
-    paywall: true
+    parcial: true
   },
   {
-    id: 3,
-    title: "The story behind the new French football identity",
-    tituloPt: "Zidane assume e a França troca de camisa gráfica: como o Solstices Studio unificou todas as seleções francesas em um só sistema",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/french-national-football-team-identity-solstices-studio/",
-    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/FFF-identity.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1151",
-    categoria: "Branding",
-    data: "26 de agosto de 2026",
-    estrelas: 4,
-    dek: "A nova identidade das seleções francesas saiu um dia depois do anúncio de Zinédine Zidane como técnico. Por trás dela, uma designer com PSG e LOSC no currículo.",
-    resumo: [
-      "A Federação Francesa de Futebol (FFF) apresentou a nova identidade visual de suas seleções nacionais logo após a Copa do Mundo de 2026 — e, num timing que não parece acidental, um dia depois de anunciar Zinédine Zidane como novo técnico da equipe masculina.",
-      "O projeto saiu de uma concorrência aberta a agências. O briefing pedia três coisas: modernizar a marca, federar todas as seleções francesas sob um mesmo sistema (masculina, feminina, categorias de base, futsal) e reforçar a presença digital, de marketing e de eventos da federação.",
-      "Quem venceu foi Anaïs Allegrini, fundadora e diretora criativa do Solstices Studio, sediado em Bordeaux. O currículo dela em futebol é sólido: enquanto estava na Dragon Rouge Paris, desenvolveu os logotipos do PSG e do LOSC (Lille); já à frente do Solstices, assinou o troféu da Coupe de France e a identidade anterior da própria FFF.",
-      "A Creative Review conversou com o estúdio sobre a abordagem. O caso é especialmente relevante para quem trabalha com marcas esportivas no Brasil: é mais um exemplo da tendência de federações substituírem escudos e aplicações fragmentadas por sistemas únicos e escaláveis, pensados primeiro para tela e depois para o campo."
-    ]
-  },
-  {
-    id: 4,
-    title: "OneMay's surreal visual identity for Sam Kerr's WAWA sparkling water",
-    tituloPt: "Coalas de óculos 3D e carros retrô no deserto: a OneMay recusa a estética 'zero açúcar' e transforma cada lata da WAWA num mundo próprio",
+    title: "Dragon Rouge creates new brand identity for food processing giant Foodera Technologies",
+    tituloPt: "Cinco fabricantes de máquinas viram uma marca só: a Dragon Rouge extraiu o logo da Foodera da geometria de uma linha de produção",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/onemays-surreal-visual-identity-for-sam-kerrs-wawa-sparkling-water/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/Sunset-Drive-Lifestyle-1024x683.jpg",
+    url: "https://www.designweek.co.uk/dragon-rouge-creates-new-brand-identity-for-food-processing-giant-foodera-technologies/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/13-1024x576.png",
     categoria: "Branding",
-    data: "25 de agosto de 2026",
     estrelas: 4,
-    dek: "A agência de Liverpool criou identidade, sistema de embalagem e universo visual para a água com gás lançada com a jogadora australiana Sam Kerr.",
+    dek: "Verde-limão de equipamento de segurança, monograma isométrico e arquitetura de marca que preserva as cinco empresas de origem.",
     resumo: [
-      "A OneMay, agência sediada em Liverpool, desenvolveu junto com a empresa Spark&Ace a identidade completa da WAWA — marca de água com gás lançada em parceria com a futebolista australiana Sam Kerr. O objetivo declarado era atacar uma convenção da categoria: a de que água gaseificada é o que sobra quando você desiste do refrigerante.",
-      "'A maioria das águas com gás é vendida como uma concessão. Menos açúcar. Menos calorias. Menos culpa. Menos graça', disse Lee Weaver, cofundador e diretor criativo da OneMay. 'Queríamos que água com gás parecesse algo que as pessoas escolhem, e não o que aceitam por falta de opção.'",
-      "A plataforma criativa recebeu o nome Water With Aura. No centro do sistema há um wordmark expressivo, de formas arredondadas, calibrado para alta legibilidade na lata. Cada sabor — Sunset Drive, Garden of Zen, Purple Haze, Palm Halo e Zing of Life — é tratado como um estado de espírito distinto, com paleta saturada própria e ilustração em colagem surreal: coalas de óculos 3D, veículos retrô em paisagens desérticas, figuras cósmicas.",
-      "O sistema foi construído para escalar além da embalagem. As colagens migram para camisetas, ecobags e mídia exterior — um dos outdoors traz a linha 'Out of this world fizzy water'. Segundo Martin Porter, também cofundador da OneMay, a intenção era que 'cada lata parecesse um pequeno mundo próprio: brilhante, estranho e desejável'.",
-      "Weaver resume a lógica do projeto numa frase que vale como princípio de design de embalagem: 'o sabor é o produto; a sensação é a marca'."
+      "Depois de vencer uma concorrência em fevereiro, a Dragon Rouge foi encarregada de criar nome, estratégia, identidade visual e arquitetura de marca da Foodera Technologies — a entidade que reúne Kiremko, Idaho Steel, Reyco Systems, Tummers Group e Van der Giessen em um dos maiores fornecedores mundiais de máquinas para processamento de alimentos.",
+      "A solução de arquitetura foi conservadora no bom sentido: a Foodera vira a marca corporativa mestre, enquanto as cinco empresas históricas continuam operando como marcas de produto dentro do portfólio. Ninguém perde o reconhecimento que construiu em seus mercados. O posicionamento se ancora na ideia 'Built to Lead'.",
+      "O símbolo tem origem literal na fábrica: um elemento em ângulo reto representa a linha de produção integrada e um cubo isolado representa os componentes individuais de maquinário e o serviço de manutenção. Desenhados em projeção isométrica, os dois formam um 'F' abstrato. A paleta cruza um verde-limão de alta visibilidade — o mesmo de vestimenta de segurança industrial — com um verde escuro, apoiada por linhas técnicas, anotações de blueprint e tipografia condensada.",
+      "Becky King, diretora executiva de criação da Dragon Rouge, descreve o sistema como algo desenhado para se mover, escalar e se adaptar. A marca foi ao ar globalmente em junho e está sendo implantada ao longo do ano em uniforme pesado, interfaces móveis e embalagem de consumo."
     ]
   },
   {
-    id: 5,
-    title: "McDonald's brings Xbox game food to its real-world menu",
-    tituloPt: "Nuggets de Halo e macarrão com queijo de Fallout viram cardápio real: a Leo UK leva a comida dos videogames para dentro do McDonald's",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/mcdonalds-side-missions-xbox-campaign/",
-    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/2_SideMissions_AV.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1200&h=1200",
-    categoria: "Branding",
-    data: "25 de agosto de 2026",
-    estrelas: 4,
-    dek: "Campanha 360 com Xbox, World of Warcraft, Fallout, Halo e Candy Crush inverte a lógica: em vez da marca entrar no jogo, o jogo entra no cardápio.",
-    resumo: [
-      "O McDonald's expandiu sua plataforma Side Missions numa parceria com o Xbox e um elenco de franquias de peso — World of Warcraft, Fallout, Halo: Campaign Evolved e Candy Crush — resultando em um cardápio por tempo limitado e uma campanha 360 assinada pela Leo UK.",
-      "O filme principal, de 60 segundos, começa dentro de uma cena de Halo: dois fuzileiros abandonam a missão para dar uma passada no McDonald's e encontram lá uma leva de outros personagens icônicos dos games. Dirigido por Romain Chassaing pela produtora Academy, o filme é o centro de um esforço bem mais amplo.",
-      "O cardápio traz itens tirados diretamente dos jogos: McNuggets de pimenta-preta e alho inspirados nos Moa Nuggets de Halo e os Blamco Cheese Bites, referência ao Blamco Mac & Cheese de Fallout 76. Os Arcos Dourados foram redesenhados na linguagem visual de cada jogo participante.",
-      "A distribuição seguiu lógica de comunidade e não de mídia paga: criadores de conteúdo 'vazaram' a colaboração antes do anúncio, depois participaram de um evento de degustação com easter eggs e referências de lore, e em seguida cosplayers reais assumiram a divulgação nas redes. No app MyMcDonald's, pontos de fidelidade podem ser trocados por itens dentro dos jogos — emotes, boosters, skins e até uma armadura de Master Chief com tema da rede.",
-      "'Durante anos os fãs levaram a comida do McDonald's para dentro dos jogos favoritos deles. Então pareceu o momento certo de inverter isso', disse Andrew Long, CCO da Leo UK. A plataforma Side Missions foi lançada no ano passado a partir da percepção de que 'ir ao McDonald's costuma ser o melhor desvio da vida'."
-    ]
-  },
-  {
-    id: 6,
-    title: "Shigeru Ban unveils coastal wellness retreat on Awaji Island",
-    tituloPt: "Um hotel em forma de D entre a floresta e o mar: Shigeru Ban entrega um retiro de 'pré-doença' com onsen em cada quarto e camas com sensor",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/24/shigeru-ban-hotel-pasona-awaji-island/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/shigeru-ban-hotel-pasona-awaji-island-2_dezeen_2364_hero_14.jpg",
-    categoria: "Design",
-    data: "24 de agosto de 2026",
-    estrelas: 4,
-    dek: "Terceiro projeto do vencedor do Pritzker para o grupo Pasona na ilha japonesa, o Natureverse Retreat foi desenhado para estadias de 30 dias ou mais.",
-    resumo: [
-      "Shigeru Ban, vencedor do Pritzker em 2014 e agraciado com a Medalha de Ouro do AIA em 2026, concluiu o Pasona Natureverse Retreat, hotel de bem-estar na ponta da ilha de Awaji, perto de Kobe, no Japão.",
-      "O conceito que organiza tudo é o Mibyo — noção japonesa de tratamento preventivo que se traduz aproximadamente como 'pré-doença'. O hotel foi desenhado prioritariamente para estadias longas, de 30 dias ou mais, embora aceite temporadas curtas. Todo hóspede recebe um programa personalizado que pode incluir talassoterapia, meditação em hammam, ioga, terapia sonora e aromaterapia.",
-      "A forma em D responde diretamente ao terreno, espremido entre a costa e a floresta. 'Para expressar as características de um sítio definido por duas paisagens completamente contrastantes, fachadas distintas foram projetadas para os lados leste e oeste', explicou Ban. As duas estruturas lineares se integram num único volume em D, flanqueando um átrio iluminado por claraboia.",
-      "Os 57 quartos dos cinco pavimentos se organizam ao redor desse átrio central: metade voltada para o mar, metade para a mata. A fachada marítima aposta na horizontalidade — quatro níveis de lajes salientes e sacadas correndo toda a largura, com o muro de contenção servindo de embasamento. A face voltada para a montanha faz o oposto: colunas revestidas de madeira num ritmo vertical quase clássico, com uma marquise maciça de madeira e uma escadaria monumental na entrada.",
-      "Cada quarto tem um onsen privativo. Vários trazem camas com sensores que monitoram o movimento corporal noturno e se ajustam sozinhas. Há ainda uma sala dedicada à ioga aérea com redes de tecido suspensas, piscina interna abastecida com água salgada do Mar Interior de Seto, cinco restaurantes — alguns comandados por chefs com estrela Michelin — e um salão de eventos no terceiro andar com 500 painéis de vidro cobertos por obras de arte. É o terceiro projeto de Ban para o grupo Pasona na ilha. Fotografia de Hiroyuki Hirai."
-    ]
-  },
-  {
-    id: 7,
-    title: "Grass-topped Dutch office by Studio Massimo \"adds habitat rather than taking it\"",
-    tituloPt: "Casca de choupo nas paredes e cem espécies de urze no telhado: o escritório holandês que se esconde na charneca protegida",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/25/studio-massimo-office-by-nature-netherlands/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/studio-massimo-office-by-nature-netherlands-hero_dezeen_2364_col_2.jpg",
-    categoria: "Design",
-    data: "25 de agosto de 2026",
-    estrelas: 4,
-    dek: "O Studio Massimo substituiu um salão de eventos abandonado por um edifício biobaseado de 1.120 m² que, visto do norte, é praticamente invisível.",
-    resumo: [
-      "O escritório amsterdamês Studio Massimo concluiu o Office in Nature, um edifício de 1.120 metros quadrados construído com materiais biobaseados na charneca de Tafelberg, paisagem protegida na Holanda do Norte. O prédio substitui um salão de eventos em ruínas.",
-      "A referência formal é curiosa e local: o plaggenhut, tipo de moradia que trabalhadores da região construíam com turfa e grama. A ideia era fazer o edifício funcionar como extensão da paisagem, não como objeto pousado sobre ela.",
-      "'A atmosfera do lugar é genuinamente inspiradora', disse Max Verhoeven, fundador do estúdio, ao Dezeen. 'Você sente os milênios de formação glacial, a areia, a urze, as árvores moldadas pelo vento.' Sobre a cobertura, ele é mais categórico: 'O telhado é uma paisagem de urze ativa por direito próprio, plantada com cerca de cem espécies nativas cultivadas organicamente. Ele acrescenta habitat em vez de tirá-lo.'",
-      "Vindo do norte, o edifício some: telhado verde tomado pela vegetação e um muro baixo feito de telhas reaproveitadas escondem tudo, exceto um caminho emoldurado por uma parede geométrica de madeira. Dentro, o espaço se abre num vazio central de sete metros de altura, com forros em ripas de madeira clara que curvam suavemente ao redor das claraboias que correm por toda a cumeeira.",
-      "A estrutura é de pilares e vigas de madeira laminada e os interiores — paredes, forros, armários e escadas — são acabados quase inteiramente em madeira Red Grandis. A face sul projeta-se para a charneca com portas de correr envidraçadas de pé-direito completo, e tanto essa elevação quanto as empenas são revestidas de painéis texturizados de casca de choupo que se confundem com os troncos ao redor. 'Todo espaço de trabalho tem acesso direto ao exterior por porta de correr', diz Verhoeven. Fotografia de Riccardo de Vecchi."
-    ]
-  },
-  {
-    id: 8,
-    title: "From Barbie logos to medieval manuscripts: step inside Teddy Blanks' film title design process",
-    tituloPt: "Ele comprou bonecas no eBay para reconstruir metade de um alfabeto: como Teddy Blanks desenhou os créditos de Barbie, Weapons e Werwulf",
+    title: "Studio Thonik's typographic orchestra identity mimics the movement of a conductor's baton",
+    tituloPt: "Uma orquestra sem sede virou uma fonte que inclina até 90 graus: o Studio Thonik transformou a batuta do maestro em sistema visual",
     source: "It's Nice That",
-    url: "https://www.itsnicethat.com/features/teddy-blanks-chips-film-title-typography-graphic-design-spotlight-240826",
-    imageUrl: "https://admin.itsnicethat.com/images/Az5o5pELIspJTTVICaV1DF88xK4=/281212/width-1440/werwulf_titles_teddy_blanks_chips_itsnicethat_hero.jpg",
+    url: "https://www.itsnicethat.com/articles/studio-thonik-phion-symphony-orchestra-graphic-design-discover-260826",
+    imageUrl: "https://admin.itsnicethat.com/images/mdWthyhQVdjNOmiC1IAObEBsDCM=/281332/width-1440%7Cformat-jpeg/Studio-Thonik-Phion-Symphony-Orchestra-Graphic-Design-Itsnicethat-1.png",
     categoria: "Design",
-    data: "24 de agosto de 2026",
     estrelas: 4,
-    dek: "O cofundador do estúdio Chips explica por que letreiro de cinema não é branding — e conta a coincidência arrepiante do logo de 'Weapons'.",
+    dek: "A GT Planar, da Grilli Type, tem eixo contínuo de inclinação — e cada concerto ganha um ângulo diferente.",
     resumo: [
-      "Teddy Blanks começou fazendo os letreiros dos curtas de Lena Dunham na faculdade e hoje assina alguns dos títulos de filme mais comentados do cinema recente. Cofundador do estúdio Chips, no Brooklyn, ele conversou com o It's Nice That sobre um ofício que ele mesmo desmistifica: 'no fim das contas, letreiros de filme são uma obrigação contratual. Você precisa deles porque sindicatos e contratos exigem creditar essas pessoas nessa ordem específica'.",
-      "Para os créditos finais de Barbie, de Greta Gerwig, ele recortou à mão os arquivos de alta resolução das embalagens da Mattel e animou os elementos. O logotipo principal deu mais trabalho: era um letreiro que a Mattel havia descontinuado trinta anos antes. As versões que circulavam online, autotraçadas no Illustrator, não tinham fidelidade suficiente. Blanks comprou exemplares de uma revista Barbie do fim dos anos 1980 para poder redesenhar a partir de fonte original.",
-      "E não parou aí: Skipper, Ken e os demais personagens tinham logos customizados no mesmo estilo, com variações sutis de espessura ao longo dos anos. Ele foi ao eBay e comprou toda boneca daquele período que encontrou. Assim juntou 'meio alfabeto' e extrapolou o resto para construir uma fonte completa.",
-      "A história mais estranha é a de 'Weapons' (2025). O diretor Zach Cregger achou a primeira proposta ornamental demais. Blanks então foi ao mínimo: colocou dentro do 'O' da palavra um pequeno triângulo, referência ao sino que a personagem Tia Gladys toca. Cregger ligou quase imediatamente perguntando como ele tinha chegado àquilo — o filme é uma alegoria sobre alcoolismo e o triângulo dentro do círculo é justamente o símbolo dos Alcoólicos Anônimos. Blanks jura que não sabia.",
-      "Para o Werwulf, de Robert Eggers, o próprio diretor já havia recortado letras de um manuscrito do século XIV. Blanks redesenhou o 'W' à mão no Procreate — um capitular lombárdico de arestas duras — e aplicou textura usando um mapa de deslocamento gerado a partir do escaneamento de papel em branco da época.",
-      "A lição que ele tirou de 'The Green Knight' contraria tudo o que aprendeu em branding: 'o que importa é o impacto naquele instante — não como aquilo se encaixa em um sistema de design maior'."
+      "A Phion Symphony Orchestra não tem prédio. É um conjunto itinerante, sem sede nem fachada reconhecível — e foi exatamente essa ausência que definiu a estratégia do estúdio amsterdamês Thonik. Sem lugar nem arquitetura para servir de âncora, a identidade foi fundada na própria música.",
+      "A ferramenta escolhida foi a GT Planar, uma sans serif da Grilli Type com eixo variável de inclinação que percorre 90 graus contínuos. Falco van Burg, líder de design do estúdio, explica que a fonte guarda detalhes que só aparecem quando ela é inclinada: no momento em que o tipo tomba, formas extras emergem e reforçam seu caráter.",
+      "O sistema funciona como partitura. Antes de desenhar qualquer coisa, o estúdio pergunta o que a peça musical transmite — se é calma ou inquieta, se cresce devagar ou atinge o ouvinte de imediato. Uma peça inquieta dobra as letras com força e quebra a palavra; uma peça calma mantém tudo aberto e silencioso. Cada concerto ganha imagem própria sem que a orquestra deixe de ser reconhecível.",
+      "É uma resposta elegante a um problema recorrente do branding cultural: como criar consistência para uma instituição que muda de endereço toda semana. A resposta do Thonik foi trocar o lugar pelo gesto — e o gesto, nesse caso, é o da batuta."
     ]
   },
   {
-    id: 9,
-    title: "The CBI's latest AI report on how design businesses can bridge AI's execution divide",
-    tituloPt: "A fase de brincar com IA acabou: relatório da CBI aponta 'divisão de execução' e alerta que o funil de talento júnior do design pode quebrar",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/the-cbis-latest-ai-report-on-how-design-businesses-can-bridge-ais-execution-divide/",
-    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/08/CBI-The-Adoption-Decade-cover.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=767&h=1024",
-    categoria: "Design",
-    data: "26 de agosto de 2026",
-    estrelas: 3,
-    dek: "63% das empresas pesquisadas já usam IA em escala no design de produto — mas o lucro não vem de dar ChatGPT para todo mundo.",
-    resumo: [
-      "A CBI (a confederação da indústria britânica) e a consultoria Oliver Wyman publicaram o relatório 'The Adoption Decade', e a Design Week destrinchou o que ele significa para estúdios independentes e times criativos internos. A tese central: a primeira onda de experimentação com IA acabou. O sucesso deixou de ser medido por quantas ferramentas generativas você testou.",
-      "O relatório aponta que 63% das empresas pesquisadas já migraram para uso escalado ou agêntico de IA em design de produto e P&D. Mas os ganhos de lucratividade não vieram de implementações superficiais — de liberar ChatGPT ou Gemini para todo mundo. O documento descreve uma 'divisão de execução': o abismo crescente entre empresas que rodam pilotos isolados e as que embutiram IA no modelo operacional de ponta a ponta.",
-      "Curiosamente, os ganhos econômicos de curto prazo vieram de aumentar a capacidade dos trabalhadores, não de cortar pessoal. A IA acelera exploração inicial de conceito e prototipagem rápida — modeladores 3D ouvidos pela publicação dizem que nunca usam para trabalho final, mas conseguem apresentar ideias muito mais completas a stakeholders antes da etapa cara de modelagem.",
-      "Há dois alertas duros. O primeiro é jurídico: treinar ou ajustar modelos com material de cliente ou trabalho de terceiros carrega risco relevante, e uma revisão do governo britânico em março de 2026 concluiu que a ambiguidade permanece até que a lei de copyright seja reformada. Estúdios precisarão de protocolos claros de licenciamento, metadados e proveniência de ativos.",
-      "O segundo é estrutural e mais grave a médio prazo: a automação de desenho técnico rotineiro, geração de imagens de conceito e diagramação básica ameaça transformar a pirâmide dos estúdios em um losango, espremendo as posições de entrada. Uma pesquisa recente já apontou queda de 50% nas vagas para recém-formados em relação ao ano anterior. A Design Week é cética quanto à correção espontânea: em concorrências apertadas, ignorar o funil de talento economiza dinheiro e parece 'problema de outra pessoa' — com a conta chegando só daqui a uma década."
-    ]
-  },
-  {
-    id: 10,
-    title: "How Hangar derived Portico's identity from the basilica next door",
-    tituloPt: "Um 'Q' esquisito talhado na pedra vira assinatura de marca: o hotel maltês que tirou toda a identidade das inscrições da basílica ao lado",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/how-hangar-derived-porticos-identity-from-the-basilica-next-door",
-    imageUrl: null,
-    categoria: "Branding",
-    data: "26 de agosto de 2026",
-    estrelas: 3,
-    dek: "Em Mosta, Malta, o estúdio Hangar recusou domos e rotundas — o clichê local — e foi fotografar cada letra gravada na fachada da basílica vizinha.",
-    resumo: [
-      "O hotel boutique Portico fica em Mosta, Malta, colado à Basílica de Mosta Dome, e leva o nome do pórtico que define a fachada da igreja. O estúdio maltês Hangar foi contratado antes mesmo de o hotel ter nome, encarregado de naming, posicionamento, mensagem e identidade.",
-      "'Quando visitamos o local, notamos que a suíte principal tem vista direta para a basílica', conta o diretor criativo Clint Tabone. A partir daí o estúdio foi estudar a história arquitetônica do prédio para entender o que o diferenciava das outras igrejas locais. A decisão editorial foi evitar o óbvio: marcas da região tipicamente recorrem a domos, rotundas, terminologia religiosa e derivações da palavra Mosta.",
-      "Como pórtico é um limiar arquitetônico, o Hangar adotou chegada, transição e abrigo como posicionamento, condensados na linha 'A sanctuary of rest' — um santuário de descanso.",
-      "A identidade veio de outro lugar. O estúdio voltou ao sítio e fotografou todas as inscrições da basílica: orações e mensagens em latim e maltês, além de nomes de artistas. Ao estudar aquela tipografia, perceberam que as letras vinham de períodos diferentes e técnicas diferentes — algumas de 1992. O wordmark foi desenhado do zero a partir dessas inscrições em pedra, com pequenos ajustes de proporção.",
-      "O detalhe mais elegante é técnico: letras entalhadas escurecem com o tempo por idade e exposição. O Hangar traduziu esse escurecimento em um traço interno no wordmark, transformando um efeito de intemperismo em recurso tipográfico deliberado. Entre centenas de letras talhadas, o estúdio ainda encontrou uma interpretação incomum do 'Q', reinterpretada dentro da palavra 'boutique'. As fontes de apoio são Familjen Grotesk, Garda Nova (da Feliciano Type) e a serifada Meso, da Sociotype.",
-      "Observação da edição: a página deste caso não expôs imagem de destaque acessível, então o card usa a ilustração gerada pelo Portal."
-    ],
-    semImagem: true
-  },
-  {
-    id: 11,
-    title: "The return of the compact disc",
-    tituloPt: "Madonna lançou o novo álbum em três versões de CD e Taylor Swift em dezoito: o formato que era para estar morto virou território de design",
+    title: "Advertising's new era of weird",
+    tituloPt: "A publicidade sempre flertou com o estranho — mas as agências agora estão testando até onde dá para ir sem perder o sentido",
     source: "Creative Review",
-    url: "https://www.creativereview.co.uk/compact-disc-return-analogue-graphic-design-album-art/",
-    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Madonna-Confessions-II.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=931",
-    categoria: "Design",
-    data: "24 de agosto de 2026",
-    estrelas: 3,
-    dek: "'O CD está onde o vinil estava há dezenove anos', diz o pesquisador Keith Jopling. E isso significa trabalho novo para designers gráficos.",
+    url: "https://www.creativereview.co.uk/advertising-new-era-of-weird/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Manscaped.jpg?auto=compress%2Cformat&w=1200",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "Com o público cada vez mais difícil de surpreender, a CR ouviu as agências que mantêm o bizarro ancorado em alguma ideia.",
     resumo: [
-      "O novo álbum de estúdio de Madonna, Confessions II, saiu em três variantes físicas de CD: uma caixa cristal transparente com adesivos impressos na frente e no verso, um digipack de quatro painéis com pôster desdobrável, e um livro de capa mole de 7 × 10,25 polegadas com imagens exclusivas do ensaio de Rafael Pavarotti.",
-      "Todas as três foram desenhadas e produzidas pela Special Offer Inc, o estúdio nova-iorquino por trás da campanha de 'Brat', de Charli xcx — provavelmente a peça de direção de arte musical mais influente dos últimos anos.",
-      "À primeira vista, investir tanto cuidado num formato supostamente agonizante parece desperdício. Só que, no fim de 2025, 'The Life of a Showgirl', de Taylor Swift, foi lançado em dezoito versões diferentes de CD — 'Sweat & Vanilla Perfume' com pôster, 'It's Beautiful Edition Limited Release Deluxe', e por aí vai.",
-      "'Alguns anos atrás todo mundo achava que o CD ia desaparecer gradualmente. Agora parece que vai sobreviver', diz Keith Jopling, pesquisador da indústria musical e autor de 'Body of Work: How the Album Outplayed the Algorithm and Survived Playlist Culture'. Ele oferece a comparação mais útil do texto: 'Em 2025 tivemos o 19º ano consecutivo de crescimento do vinil no Reino Unido. Eu diria que o CD está onde o vinil estava há dezenove anos — um formato de nicho, mas viável no preço certo.'",
-      "A pergunta que a Creative Review deixa em aberto interessa diretamente a quem trabalha com design gráfico: esse ressurgimento pode inaugurar uma nova onda criativa de arte para música em formato físico?"
+      "A Creative Review abriu a quinta-feira com uma reportagem sobre o que chama de 'nova era do estranho' na publicidade. A premissa: a propaganda nunca teve medo do bizarro, mas as campanhas de agora estão levando isso a extremos que não se viam antes.",
+      "A explicação econômica é direta. À medida que o público fica mais difícil de surpreender — saturado de conteúdo, imune a fórmula, com o polegar sempre pronto para rolar a tela —, o estranho deixa de ser um risco criativo e vira uma tática de sobrevivência para conquistar atenção.",
+      "O ângulo da reportagem, porém, não é celebratório. A publicação conversou com as agências que conseguem manter o descontrole ancorado em algo com significado, e a distinção é justamente essa: entre o bizarro que carrega uma ideia de marca e o bizarro que existe só para gerar recorte de rede social. A primeira categoria constrói memória; a segunda evapora no fim de semana.",
+      "Vale a pena para quem trabalha com criação de campanha e vive a tensão entre ser notado e ser lembrado — que raramente são a mesma coisa."
+    ],
+    parcial: true
+  },
+  {
+    title: "Shirt storm: the beautiful game and its critical clients",
+    tituloPt: "A 'camisa código de barras' do Newcastle e o cliente mais implacável do design: o torcedor que se sente dono da marca",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/shirt-storm-the-beautiful-game-and-its-critical-clients/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/England_Admiral_Getty.jpg",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "Tom Carey, da Canva e da Affinity, sobre por que o design de uniforme virou o briefing mais exigente que existe.",
+    resumo: [
+      "Horas — talvez segundos — depois de o Newcastle United revelar sua camisa titular 2026/27, as redes sociais já tinham veredito. Apelidada de 'camisa código de barras' pela torcida, o uniforme provocou milhares de comentários sobre a espessura das listras pretas e sobre se o clube tinha se afastado demais da própria identidade. Depois veio o escudo proposto, e o barulho aumentou.",
+      "Tom Carey, diretor global de criação para experiência de marca na Affinity e na Canva, argumenta que essa reação, longe de ser um pesadelo, é a prova de que o design entrou em algo maior do que ele mesmo. Quando alguém discute apaixonadamente uma cor, uma listra ou um escudo, é porque aquilo passou a lhe pertencer.",
+      "O texto passeia por exemplos que já venceram a disputa: o Venezia FC, cujos uniformes cruzam futebol com arte, arquitetura e moda de luxo; e o Walthamstow FC, cuja camisa inspirada em William Morris se tornou o primeiro uniforme de futebol a ganhar um prêmio D&AD. Do outro lado estão os fracassos célebres — o escudo do Leeds em 2018, abandonado após a revolta dos torcedores, e a troca do azul pelo vermelho no Cardiff City, revertida três anos depois.",
+      "Segundo a ESPN, os clubes começam a discutir conceitos de 18 a 20 meses antes do lançamento. Rob Revel, designer da camisa do Sunderland, estudou desenhos arquitetônicos da ponte Keel Crossing fornecidos pela prefeitura e produziu mais de 60 conceitos antes de chegar ao definitivo. Sua observação mais reveladora é a mais simples: 'o design é a parte fácil'.",
+      "Carey fecha lembrando que o julgamento também envelhece: a camisa da Inglaterra da Admiral, usada entre 1980 e 1983, foi acusada na época de ser comercial demais e diferente demais — e hoje é celebrada como pioneira. A do Newcastle talvez tenha o mesmo destino. Talvez."
     ]
   },
   {
-    id: 12,
-    title: "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
-    tituloPt: "Universal, Sony, Warner e EA colocam dinheiro na Stability AI: os US$ 76 milhões que parecem menos rodada de risco e mais acordo de paz",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2024/10/unnamed-2.png?w=1152",
-    categoria: "Tecnologia",
-    data: "25 de agosto de 2026",
+    title: "New Logo and Identity for The Train Factory by Hasan & Partners",
+    tituloPt: "Uma antiga fábrica de trens em Helsinque vira destino de gastronomia e entretenimento — com identidade industrial pela Hasan & Partners",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_the_train_factory_by_hasan_partners.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/the_train_factory_logo_before_after.png",
+    categoria: "Branding",
     estrelas: 3,
-    dek: "A empresa por trás do Stable Diffusion chega a US$ 232 milhões captados — e a lista de investidores é uma fotografia de quem ela precisa ter do lado.",
+    dek: "Sans serif em caixa alta e vocabulário industrial para um complexo finlandês de entretenimento e restaurantes.",
     resumo: [
-      "A Stability AI, criadora do modelo de geração de imagens Stable Diffusion, anunciou uma Série B de US$ 76 milhões, elevando o total captado pela empresa a US$ 232 milhões.",
-      "O que chama atenção não é o valor, e sim a composição. Entraram na rodada a Universal Music Group, a Sony Music Group, a Warner Music Group e a gigante dos games Electronic Arts, além das gestoras AMD Ventures e Pacific Alliance Ventures. A leitura do TechCrunch é direta: mais do que uma rodada de venture capital convencional, é uma lista das empresas de quem a Stability hoje depende para licenciamento de conteúdo e acordos de distribuição.",
-      "O CEO Prem Akkaraju, que assumiu em 2024, chamou o aporte de 'uma afirmação da nossa visão de que a IA generativa capacita todo produtor, músico e contador de histórias'. O dinheiro deve financiar a expansão da suíte de 'produção criativa' e do braço de serviços profissionais da companhia.",
-      "No último ano a Stability vinha fechando acordos para embutir IA generativa nos fluxos de trabalho de empresas de entretenimento: Universal Music e EA em outubro, Warner Music em novembro — em todos os casos com essas empresas codesenvolvendo as ferramentas, e não apenas licenciando o resultado.",
-      "No front jurídico, a empresa teve um período majoritariamente favorável. Venceu em grande medida a ação de copyright movida pela Getty Images no Reino Unido, que a acusava de violar direitos ao usar imagens do acervo no treinamento do modelo. Um processo semelhante da Getty nos Estados Unidos ainda tramita."
+      "Publicado na categoria 'Noted' por Armin Vit em 26 de agosto, o projeto da agência finlandesa Hasan & Partners para o The Train Factory ganhou do Brand New o trocadilho 'That Tracks' — algo como 'isso faz sentido', com o trilho embutido.",
+      "Pelos elementos públicos do post, a marca atende a um complexo que cruza entretenimento e restaurantes, e a linguagem escolhida é declaradamente industrial: sans serif, caixa alta, referência direta ao passado fabril do lugar. É a estratégia clássica de reconversão de patrimônio industrial — não esconder a origem de galpão, e sim transformá-la em ativo de marca.",
+      "O caso se soma a um movimento que aparece com frequência nas páginas do Brand New: antigas instalações produtivas europeias reconvertidas em destinos culturais e gastronômicos, quase sempre com identidades que preservam a tipografia robusta e a paleta contida do maquinário original."
+    ],
+    parcial: true
+  },
+  {
+    title: "Viral AI startup Instinct has raised $350 million at a $2.5 billion valuation",
+    tituloPt: "Um ano de vida, um fundador de 23 anos e US$ 2,5 bilhões de avaliação: a Instinct é o assistente de IA que ninguém sabe se deve deixar entrar no celular",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/08/26/viral-ai-startup-instinct-has-raised-350-million-at-a-2-5-billion-valuation/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-2255991416.jpg?resize=1200,795",
+    categoria: "Tecnologia",
+    estrelas: 4,
+    dek: "Série B de US$ 250 milhões co-liderada por Index e Benchmark — e uma polêmica crescente sobre permissões.",
+    resumo: [
+      "A Instinct, fundada há pouco mais de um ano e comandada por Noah Shinn, de 23 anos, contou ao Wall Street Journal que levantou US$ 250 milhões em uma Série B recente. O aporte eleva o total captado a US$ 350 milhões e coloca a empresa — operada pela Spear Street Technology — em uma avaliação de US$ 2,5 bilhões. A rodada foi co-liderada por Index Ventures e Benchmark.",
+      "O produto é um agente de IA que promete organizar a vida do usuário. Você conecta seus aplicativos e dispositivos e conversa com ele por mensagem de texto ou por ligação. Shinn afirma que os primeiros usuários já planejaram viagens de carro pelo país, compraram mercado da semana e ingressos de show, cancelaram centenas de dólares em assinaturas — e que alguém está organizando o próprio casamento pelo assistente.",
+      "O contraponto vem junto. Ainda em beta fechado e com um site deliberadamente rudimentar, a Instinct já acumulou críticas por privacidade: usuários apontam permissões excessivamente generosas exigidas pelo aplicativo e termos de uso cujo potencial invasivo incomodou parte do público. É a tensão que define esta geração de agentes — para ser útil, o sistema precisa de acesso a tudo; e é justamente o acesso a tudo que assusta."
     ]
+  },
+  {
+    title: "Nevi Brings a Little Playfulness to the Serious Desk Lamp",
+    tituloPt: "A luminária que balança e volta sozinha: Nevi transforma o joão-bobo em objeto de mesa — e a embalagem também vira luminária",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/08/26/nevi-brings-a-little-playfulness-to-the-serious-desk-lamp/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/nevi-brings-a-little-playfulness-to-the-serious-desk-lamp/nevi_kinetic_desk_lamp_1.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "Aço inox AISI 304 acabado à mão, base esférica meio escovada e meio espelhada — e uma caixa que ninguém precisa jogar fora.",
+    resumo: [
+      "Assinada pelo designer Andrei Ananenka, a Nevi pega o prazer quase infantil do brinquedo joão-bobo — perder o equilíbrio e voltar sozinho — e o traduz para uma luminária de mesa escultural. Parada, ela é quase arquitetônica: base arredondada de aço inox ancorando uma haste vertical fina. Empurrada de leve, oscila e retorna suavemente à posição vertical.",
+      "O movimento é deliberadamente contido. A graça não está em truque, e sim no pequeno momento tátil: o toque, a oscilação controlada, o retorno satisfatório ao equilíbrio. Para conseguir isso com um corpo alto e esbelto, os projetistas tiveram que calibrar o peso interno, o centro de gravidade e a duração de cada movimento — trabalho invisível que sustenta a aparente simplicidade.",
+      "O material carrega parte da experiência. A peça é feita em aço AISI 304 com acabamento inteiramente manual: a metade inferior da base esférica tem acabamento acetinado escovado, a superior é polida em espelho. Quando a luminária balança, a superfície polida captura fragmentos do ambiente e as reflexões deslizam pela base. O próprio corpo metálico ainda ajuda a dissipar o calor da fonte de luz, o que mantém a silhueta limpa.",
+      "A ideia mais interessante, porém, chega antes da luminária. A embalagem, em alumínio de alto padrão, foi desenhada com o mesmo comportamento autocentrante do produto: depois de aberta, um LED sem fio ilumina uma silhueta da Nevi usinada em CNC na tampa, e a caixa também balança e volta. Em vez de pedir ao usuário que descarte corretamente uma embalagem premium, o projeto simplesmente dá a ele um motivo para ficar com ela."
+    ]
+  },
+  {
+    title: "Crocs Finally Made a $100 Clog Worth Wearing in Cold Weather",
+    tituloPt: "Sola Vibram e forro Polartec removível em um croc de US$ 100: a marca desenterrou um modelo de 2010 para provar que parou de ser piada",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/08/26/crocs-finally-made-a-100-clog-worth-wearing-in-cold-weather/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/crocs-finally-made-a-100-clog-worth-wearing-in-cold-weather/crocs-tembo-01.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "O Tembo II RO chega em duas cores e resolve o problema estrutural do furinho no inverno.",
+    resumo: [
+      "O Tembo original é de 2010, de uma fase em que a Crocs experimentava silhuetas mais voltadas ao ar livre e não encontrou seu momento. Quinze anos depois, a marca tirou o modelo do próprio arquivo e o reconstruiu do zero com duas atualizações de peso: sola de borracha Vibram e um forro-bootie removível em Polartec.",
+      "A Vibram já tinha aparecido antes no Classic EXP Clog, mas aqui o desenho da banda de rodagem foi refeito especificamente para tração em piso molhado e gelado. É a mesma empresa que fabrica solas para botas de montanhismo e tênis de trilha — ver o octógono amarelo em um croc é engraçado por dois segundos, até você pensar no que aquilo significa em desempenho.",
+      "O forro Polartec é o detalhe mais inteligente, porque resolve um problema estrutural, não estético: os furos que tornam o croc respirável no verão viram passivo assim que a temperatura cai. O bootie removível é menos um bônus e mais uma correção.",
+      "O calçado integra a linha EXP, uma família crescente de estilos experimentais que pega silhuetas de arquivo e adiciona melhorias reais de desempenho. A US$ 100, com Vibram e Polartec juntos, o preço é notável para o padrão do setor outdoor. Chega em 27 de agosto em duas cores: 'Orange Zing', laranja saturado de cone de trânsito, e 'Elephant', um cinza contido."
+    ]
+  },
+  {
+    title: "Gradwatch 2026: Katelyn Lee, Parsons School of Design",
+    tituloPt: "Gradwatch 2026: a designer gráfica Katelyn Lee, da Parsons, entra na vitrine anual de novos talentos da Creative Review",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/gradwatch-2026-katelyn-lee-parsons-school-of-design/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/katelynleeisonline_7resized.jpg?auto=compress%2Cformat&w=1200",
+    categoria: "Design",
+    estrelas: 3,
+    dek: "Mais um capítulo da série anual em que a CR aposta na geração que está saindo das escolas.",
+    resumo: [
+      "A Creative Review publicou nesta quinta-feira mais uma edição do Gradwatch 2026, sua vitrine anual de recém-formados. Desta vez, a designer gráfica Katelyn Lee, da Parsons School of Design, em Nova York, fala sobre o que move o próprio trabalho.",
+      "A série tem função concreta no calendário do setor: acontece logo depois das mostras de fim de curso e funciona como filtro editorial para quem contrata. Em uma temporada em que o funil de talento júnior aparece como preocupação recorrente — relatórios recentes apontam que a automação de tarefas iniciais pode estreitar a porta de entrada da profissão —, esse tipo de curadoria ganha peso extra.",
+      "Na mesma leva, a publicação já trouxe Charlie Scott, da Falmouth University, e Mac Brown, da Northern School of Art. Vale acompanhar como conjunto: lidos em sequência, os perfis desenham um retrato razoavelmente honesto do que as escolas britânicas e americanas estão formando agora."
+    ],
+    parcial: true
+  },
+  {
+    title: "New Logo and Identity for DroneForce by Condensed",
+    tituloPt: "Monograma com asas em laranja: a DroneForce ganha identidade pelo estúdio Condensed e aparece na seção 'Spotted' do Brand New",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_droneforce_by_condensed.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/droneforce_logo_new.png",
+    categoria: "Branding",
+    estrelas: 2,
+    dek: "Registro curto na seção de projetos observados, com monograma, asas e laranja como marcadores.",
+    resumo: [
+      "Registro curto do Brand New em 26 de agosto, publicado por Armin Vit na seção 'Spotted' — a categoria reservada a projetos que a casa registra sem resenhar a fundo. O trabalho é do estúdio Condensed para a DroneForce, classificada na indústria de tecnologia.",
+      "As tags do post entregam o essencial do desenho: monograma, asas e laranja. É um vocabulário coerente para o setor de drones, que costuma oscilar entre a estética de aviação e a de segurança operacional — e o laranja empurra decididamente para o segundo campo, o da alta visibilidade e do equipamento de campo.",
+      "Por ser um item da seção 'Spotted', não há análise crítica nem histórico de processo: o Brand New apenas marca a existência do projeto para quem acompanha o fluxo diário de identidades novas."
+    ],
+    parcial: true
   }
 ];
 
 const PALETAS = {
-  Branding: ["#f4a261", "#e76f51", "#c8452e"],
-  Design: ["#2a9d8f", "#4cbfa6", "#1f7a6a"],
-  Tecnologia: ["#6c63ff", "#4c4bbd", "#8f7bff"]
+  Branding: ["#f4a261","#e76f51","#ffb703"],
+  Design:   ["#2a9d8f","#48cae4","#80ed99"],
+  Tecnologia:["#6366f1","#8b5cf6","#22d3ee"]
 };
 
-function Ilustracao({ categoria, seed, alto }) {
-  const cores = PALETAS[categoria] || PALETAS.Design;
-  const gid = "g" + seed;
-  const r1 = 30 + ((seed * 37) % 40);
-  const r2 = 20 + ((seed * 53) % 30);
-  const rot = (seed * 47) % 90;
+function Ilustracao({categoria, seed}){
+  const c = PALETAS[categoria] || PALETAS.Design;
+  const id = "g"+seed;
+  const r = (n)=> ((seed*9301+n*49297)%233280)/233280;
   return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"
-         style={{ width: "100%", height: "100%", display: "block" }} role="img"
-         aria-label={"Ilustração abstrata para matéria de " + categoria}>
+    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={cores[0]} />
-          <stop offset="100%" stopColor={cores[2]} />
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={c[0]}/>
+          <stop offset="100%" stopColor={c[1]}/>
+        </linearGradient>
+        <linearGradient id={id+"b"} x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={c[2]} stopOpacity="0.85"/>
+          <stop offset="100%" stopColor={c[1]} stopOpacity="0.2"/>
         </linearGradient>
       </defs>
-      <rect width="400" height="240" fill={"url(#" + gid + ")"} />
-      <circle cx={90 + (seed * 17) % 120} cy={70 + (seed * 23) % 60} r={r1} fill={cores[1]} opacity="0.55" />
-      <circle cx={300 - (seed * 11) % 90} cy={170 - (seed * 19) % 70} r={r2} fill="#ffffff" opacity="0.28" />
-      <rect x={210} y={40} width={130} height={130} rx="16" fill="#ffffff" opacity="0.16"
-            transform={"rotate(" + rot + " 275 105)"} />
-      <path d="M0,200 Q100,150 200,195 T400,170 L400,240 L0,240 Z" fill="#ffffff" opacity="0.2" />
+      <rect width="400" height="250" fill={"url(#"+id+")"}/>
+      <circle cx={60+r(1)*280} cy={40+r(2)*160} r={40+r(3)*55} fill={"url(#"+id+"b)"} opacity="0.75"/>
+      <rect x={30+r(4)*220} y={30+r(5)*120} width={70+r(6)*110} height={60+r(7)*80} rx="18" fill="#ffffff" opacity="0.16"/>
+      <path d={"M0 "+(180+r(8)*40)+" Q 100 "+(90+r(9)*70)+" 200 "+(160+r(10)*50)+" T 400 "+(130+r(11)*60)+" V250 H0 Z"} fill="#ffffff" opacity="0.14"/>
+      <circle cx={320-r(12)*140} cy={200-r(13)*120} r={16+r(14)*22} fill="#ffffff" opacity="0.22"/>
     </svg>
   );
 }
 
-function Midia({ item, alto }) {
+function Foto({item, idx}){
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) {
-    return <Ilustracao categoria={item.categoria} seed={item.id} alto={alto} />;
-  }
+  if(!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={idx+3}/>;
   return (
-    <img
-      className="shot"
-      src={item.imageUrl}
-      referrerPolicy="no-referrer"
-      loading="lazy"
-      alt={item.tituloPt}
-      onError={() => setFalhou(true)}
-    />
+    <img className="cover" src={item.imageUrl} alt={item.tituloPt}
+         referrerPolicy="no-referrer" loading="lazy"
+         onError={()=>setFalhou(true)}/>
   );
 }
 
-function Estrelas({ n }) {
-  return <span className="stars">{"★".repeat(n) + "☆".repeat(5 - n)}</span>;
-}
+const Estrelas = ({n}) => <span className="stars">{"★".repeat(n)}<span style={{opacity:.3}}>{"★".repeat(5-n)}</span></span>;
 
-function Meta({ item }) {
-  const classe = item.categoria === "Branding" ? "branding"
-    : item.categoria === "Tecnologia" ? "tech" : "design";
+function Modal({item, idx, onClose}){
   return (
-    <div className="meta">
-      <span className="source">{item.source}</span>
-      <span className={"cat " + classe}>{item.categoria}</span>
-      <Estrelas n={item.estrelas} />
-    </div>
-  );
-}
-
-function Modal({ item, aoFechar }) {
-  return (
-    <div className="overlay" onClick={aoFechar}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-media">
-          <Midia item={item} alto />
-          <button className="closex" onClick={aoFechar} aria-label="Fechar">×</button>
+    <div className="ov" onClick={onClose}>
+      <div className="modal" onClick={e=>e.stopPropagation()}>
+        <div className="hero">
+          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+          <Foto item={item} idx={idx}/>
         </div>
-        <div className="modal-body">
-          <Meta item={item} />
-          <h2>{item.tituloPt}</h2>
-          <div className="text">
-            {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
+        <div className="inner">
+          <div className="row2">
+            <span className={"badge b-"+item.categoria}>{item.categoria}</span>
+            <Estrelas n={item.estrelas}/>
+            <span className="src">{item.source}</span>
           </div>
-          {item.paywall && (
-            <div className="note">
-              Matéria com conteúdo restrito a assinantes. Este resumo foi escrito a partir dos
-              elementos públicos da página — título, categoria editorial, indústria, tags e créditos.
-            </div>
-          )}
-          <div className="note">Publicado em {item.data} · Fonte: {item.source}</div>
+          <h2>{item.tituloPt}</h2>
+          <p className="orig">Título original: “{item.title}”</p>
+          {item.resumo.map((p,i)=><p className="body-t" key={i}>{p}</p>)}
+          {item.parcial && <div className="note">Resumo produzido a partir dos elementos públicos da matéria (título, dek, categoria, tags e trechos abertos), já que o conteúdo integral está atrás de assinatura ou paywall.</div>}
           <div className="actions">
-            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">
-              Ler no {item.source} →
-            </a>
-            <button className="btn btn-ghost" onClick={aoFechar}>Fechar</button>
+            <a className="btn btn-p" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
+            <button className="btn btn-s" onClick={onClose}>Voltar</button>
           </div>
         </div>
       </div>
@@ -436,55 +342,64 @@ function Modal({ item, aoFechar }) {
   );
 }
 
-function App() {
+function App(){
   const [aberto, setAberto] = useState(null);
-  const ordenadas = [...NOTICIAS].sort((a, b) => b.estrelas - a.estrelas || a.id - b.id);
-  const manchete = ordenadas[0];
-  const demais = ordenadas.slice(1);
-
+  const lead = NOTICIAS[0];
+  const resto = NOTICIAS.slice(1);
+  const portais = [...new Set(NOTICIAS.map(n=>n.source))];
   return (
-    <React.Fragment>
-      <header className="topbar">
-        <div>
-          <h1 className="brand">Portal da <em>Manhã</em></h1>
-          <div className="kicker">Branding, design e tecnologia — o que saiu nas últimas 24 horas.</div>
-        </div>
-        <div className="dateline">Quarta-feira, 26 de agosto de 2026 · {NOTICIAS.length} matérias · 7 portais</div>
+    <div className="wrap">
+      <header className="top">
+        <div className="kicker">Edição de quinta-feira</div>
+        <h1 className="brand">Portal da Manhã</h1>
+        <div className="date">27 de agosto de 2026 · branding, design e tecnologia das últimas 24 horas</div>
+        <div className="meta-line">{NOTICIAS.length} matérias · {portais.length} portais · clique em qualquer card para ler o resumo completo</div>
       </header>
 
-      <article className="hero" onClick={() => setAberto(manchete)}>
-        <div className="hero-media"><Midia item={manchete} alto /></div>
-        <div className="hero-body">
-          <Meta item={manchete} />
-          <h2>{manchete.tituloPt}</h2>
-          <p>{manchete.dek}</p>
+      <article className="lead" onClick={()=>setAberto(0)}>
+        <div className="ph"><Foto item={lead} idx={0}/></div>
+        <div className="txt">
+          <div className="row2">
+            <span className={"badge b-"+lead.categoria}>{lead.categoria}</span>
+            <Estrelas n={lead.estrelas}/>
+          </div>
+          <h2>{lead.tituloPt}</h2>
+          <p>{lead.dek}</p>
+          <div className="src">{lead.source}</div>
         </div>
       </article>
 
       <div className="grid">
-        {demais.map((item) => (
-          <article className="card" key={item.id} onClick={() => setAberto(item)}>
-            <div className="card-media"><Midia item={item} /></div>
-            <div className="card-body">
-              <Meta item={item} />
+        {resto.map((item,i)=>(
+          <article className="card" key={item.url} onClick={()=>setAberto(i+1)}>
+            <div className="ph"><Foto item={item} idx={i+1}/></div>
+            <div className="body">
+              <div className="row2">
+                <span className={"badge b-"+item.categoria}>{item.categoria}</span>
+                <Estrelas n={item.estrelas}/>
+              </div>
               <h3>{item.tituloPt}</h3>
-              <p>{item.dek}</p>
+              <p className="dek">{item.dek}</p>
+              <div className="row" style={{marginTop:"auto",paddingTop:"8px"}}>
+                <span className="src">{item.source}</span>
+              </div>
             </div>
           </article>
         ))}
       </div>
 
       <footer>
-        <span>Portal da Manhã · edição de 26 de agosto de 2026</span>
-        <span>Resumos em português produzidos para esta edição. Imagens e textos originais pertencem aos respectivos portais.</span>
+        Portal da Manhã — edição de 27 de agosto de 2026.<br/>
+        Fontes desta edição: {portais.join(" · ")}.<br/>
+        Resumos em português produzidos a partir da leitura das matérias originais; nenhum texto foi copiado. As imagens são carregadas diretamente dos servidores dos portais de origem e pertencem a seus respectivos detentores.
       </footer>
 
-      {aberto && <Modal item={aberto} aoFechar={() => setAberto(null)} />}
-    </React.Fragment>
+      {aberto !== null && <Modal item={NOTICIAS[aberto]} idx={aberto} onClose={()=>setAberto(null)}/>}
+    </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

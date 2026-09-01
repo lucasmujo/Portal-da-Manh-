@@ -3,111 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 31 de agosto de 2026</title>
+<title>Portal da Manhã — 1 de setembro de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f6f6f4;
-    --card:#ffffff;
-    --ink:#16161a;
-    --ink-soft:#5c5c66;
-    --ink-faint:#8e8e99;
-    --line:#e6e6e1;
-    --accent:#c9522b;
-    --radius:18px;
-    --shadow:0 1px 2px rgba(20,20,25,.04), 0 8px 28px rgba(20,20,25,.06);
-    --shadow-hover:0 2px 6px rgba(20,20,25,.06), 0 18px 44px rgba(20,20,25,.10);
+    --bg:#f6f6f4; --surface:#ffffff; --ink:#15161a; --muted:#6b6f76;
+    --line:#e6e5e1; --accent:#c0472c; --accent-soft:#fdeee9;
+    --radius:20px; --shadow:0 1px 2px rgba(20,20,20,.04), 0 8px 28px rgba(20,20,20,.06);
+    --shadow-hi:0 2px 6px rgba(20,20,20,.06), 0 18px 48px rgba(20,20,20,.10);
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Inter","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     -webkit-font-smoothing:antialiased;
-    line-height:1.55;
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 80px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header.top{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1.brand{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,7vw,68px);line-height:1;margin:12px 0 10px}
+  .subline{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+  .pill{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;color:var(--muted)}
 
-  header.top{padding:56px 0 34px;border-bottom:1px solid var(--line);margin-bottom:38px;}
-  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px;}
-  h1.brand{font-size:clamp(34px,6vw,58px);line-height:1.02;margin:0 0 14px;letter-spacing:-.03em;font-weight:800;}
-  .datebar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;color:var(--ink-soft);font-size:14px;}
-  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:12.5px;color:var(--ink-soft);}
+  .lead{display:grid;grid-template-columns:1.15fr .85fr;gap:0;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
+  .lead:hover{transform:translateY(-3px);box-shadow:var(--shadow-hi)}
+  .lead .media{position:relative;min-height:340px;background:#eceae5}
+  .lead .media img,.lead .media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .lead .body{padding:34px 34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .lead h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.12;margin:0}
+  .lead p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.6}
 
-  .stars{color:var(--accent);letter-spacing:2px;font-size:13px;}
-  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--ink-faint);}
-  .src{font-weight:700;color:var(--ink);letter-spacing:.02em;font-size:12px;text-transform:uppercase;}
-  .tag{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:11px;color:var(--ink-soft);background:#fff;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:26px 0 60px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hi)}
+  .card .media{position:relative;aspect-ratio:16/10;background:#eceae5}
+  .card .media img,.card .media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:17.5px;line-height:1.3;margin:0;font-weight:600;letter-spacing:-.01em}
+  .card .dek{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0}
 
-  .hero{
-    display:grid;grid-template-columns:1.15fr 1fr;gap:0;background:var(--card);
-    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-    box-shadow:var(--shadow);cursor:pointer;transition:box-shadow .25s ease, transform .25s ease;margin-bottom:44px;
-  }
-  .hero:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);}
-  .hero .media{min-height:380px;position:relative;background:#eceae5;}
-  .hero .body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center;}
-  .hero h2{font-size:clamp(24px,3vw,34px);line-height:1.14;letter-spacing:-.02em;margin:14px 0 14px;font-weight:800;}
-  .hero p{color:var(--ink-soft);font-size:15.5px;margin:0 0 20px;}
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)}
+  .src{font-weight:600;color:var(--ink);letter-spacing:.02em}
+  .tag{border-radius:999px;padding:3px 9px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .tag.branding{background:#fdeee9;color:#b1401f}
+  .tag.design{background:#e6f3ee;color:#1f6b52}
+  .tag.tec{background:#eceaf9;color:#4a41a8}
+  .stars{color:var(--accent);letter-spacing:2px;font-size:12px}
+  .dim{color:#d6d3cd}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px;}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-    box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
-    transition:box-shadow .25s ease, transform .25s ease;
-  }
-  .card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px);}
-  .card .media{height:190px;position:relative;background:#eceae5;}
-  .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1;}
-  .card h3{font-size:18.5px;line-height:1.25;letter-spacing:-.01em;margin:0;font-weight:700;}
-  .card p{color:var(--ink-soft);font-size:14px;margin:0;}
-  .rank{
-    position:absolute;top:12px;left:12px;background:rgba(255,255,255,.94);
-    border-radius:999px;padding:3px 11px;font-size:12px;font-weight:800;color:var(--ink);
-    box-shadow:0 1px 6px rgba(0,0,0,.10);
-  }
-  img.shot{width:100%;height:100%;object-fit:cover;display:block;}
-
-  .sectitle{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 18px;}
-
-  /* leitor */
-  .overlay{
-    position:fixed;inset:0;background:rgba(22,22,26,.42);backdrop-filter:blur(4px);
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:50;
-    animation:fade .22s ease;overflow-y:auto;
-  }
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(24,24,26,.5);backdrop-filter:blur(4px);z-index:50;
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;animation:fade .2s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-  .reader{
-    background:var(--card);max-width:760px;width:100%;border-radius:22px;overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.24);animation:rise .28s cubic-bezier(.2,.8,.3,1);
-  }
-  .reader .media{height:300px;background:#eceae5;position:relative;}
-  .reader .inner{padding:32px 36px 40px;}
-  .reader h2{font-size:clamp(23px,3.4vw,32px);line-height:1.16;letter-spacing:-.02em;margin:14px 0 18px;font-weight:800;}
-  .reader .text p{font-size:16.5px;color:#2c2c33;margin:0 0 16px;line-height:1.68;}
-  .note{font-size:13px;color:var(--ink-faint);border-left:3px solid var(--line);padding-left:12px;margin-top:22px;}
-  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);}
-  .btn{
-    display:inline-block;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:600;
-    text-decoration:none;border:1px solid var(--line);color:var(--ink);background:#fff;cursor:pointer;
-    transition:background .18s ease,border-color .18s ease;
-  }
-  .btn:hover{background:#f2f1ee;}
-  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .btn.primary:hover{background:#000;}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .modal{background:var(--surface);border-radius:24px;max-width:820px;width:100%;overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.28);animation:rise .28s cubic-bezier(.2,.8,.2,1)}
+  .modal .media{position:relative;aspect-ratio:16/9;background:#eceae5}
+  .modal .media img,.modal .media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .modal .body{padding:30px 34px 36px}
+  .modal h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,34px);line-height:1.15;margin:14px 0 6px}
+  .modal .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 18px}
+  .modal .text p{font-size:16px;line-height:1.72;color:#2b2d33;margin:0 0 16px}
+  .modal .note{font-size:13px;color:var(--muted);background:#f4f3f0;border-left:3px solid var(--line);padding:10px 14px;border-radius:8px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:600;
+    text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.18s}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn:hover{transform:translateY(-1px)}
+  .close{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;border:none;
+    background:rgba(255,255,255,.92);font-size:18px;cursor:pointer;line-height:1;box-shadow:0 2px 10px rgba(0,0,0,.15)}
 
-  footer{margin-top:60px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px;}
-
-  @media (max-width:820px){
-    .hero{grid-template-columns:1fr;}
-    .hero .media{min-height:230px;}
-    .hero .body{padding:26px 24px 30px;}
-    .reader .inner{padding:26px 22px 32px;}
-    .overlay{padding:16px 12px;}
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--muted);font-size:13px;line-height:1.7}
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .lead{grid-template-columns:1fr}
+    .lead .media{min-height:230px;aspect-ratio:16/9;position:relative}
+  }
+  @media (max-width:620px){
+    .grid{grid-template-columns:1fr}
+    .wrap{padding:0 16px}
+    .modal .body{padding:24px 20px 30px}
   }
 </style>
 </head>
@@ -115,282 +98,289 @@
 <div id="root"></div>
 
 <script type="text/babel">
-const {useState} = React;
+const { useState } = React;
 
 const NOTICIAS = [
   {
-    title: "Wildling’s identity by PAPA TOM is raw and deliberately imperfect",
-    tituloPt: "Laranja Pantone 021 num spritzer de pomar: a PAPA TOM recusou o verde-e-marrom obrigatório do 'natural' e desenhou uma marca que parece ter crescido sozinha",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/wildlings-identity-by-papa-tom-is-raw-and-deliberately-imperfect",
-    imageUrl: null,
-    categoria: "Branding",
-    data: "31 de agosto de 2026",
+    title: "Kengo Kuma awarded Andrée Putman Lifetime Achievement Award by CDA",
+    tituloPt: "Kengo Kuma recebe o Andrée Putman Lifetime Achievement Award e diz que se enxerga como “corredor de longa distância”",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/01/kengo-kuma-andree-putman-lifetime-achievement-award-cda/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/kengo-kuma-portrait-hero_dezeen_2364_col_0.jpg",
+    categoria: "design",
     estrelas: 5,
+    data: "1 de setembro de 2026",
     resumo: [
-      "Existe um conjunto de códigos visuais que quase toda bebida 'regional e sustentável' obedece sem pensar: verde, marrom, uma folha, uma maçã, uma ilustração fofa de campo florido. A PAPA TOM, estúdio de branding sediado em Backnang, no sul da Alemanha, olhou para esse repertório e decidiu ir para o lado oposto ao criar a identidade do Wildling, um spritzer sem álcool feito com suco de maçã de pomares regionais, água com gás e urtiga selvagem.",
-      "O cliente é a Schwäbisches Mostviertel, uma associação regional perto de Stuttgart que reúne municípios, empresas e moradores em torno da preservação dos pomares tradicionais da região — as chamadas Streuobstwiesen. A bebida é, na prática, um instrumento: dar visibilidade e valor econômico a uma paisagem que precisa de futuro. A associação levou a ideia ao estúdio pedindo posicionamento, nome, identidade e um sistema que funcionasse em bar, em evento e em varejo.",
-      "A decisão estratégica central foi de postura. Segundo os cofundadores e diretores de criação Thomas Korell e Pascal Palmieri, ninguém quer estar num balcão segurando algo com cara de suquinho engraçado — então o Wildling foi posicionado para sentar ao lado de uma cerveja, de um vinho ou de um aperitivo, com a mesma confiança. O nome nasceu da aspereza real daquelas terras: árvores velhas, chão irregular, ervas selvagens, clima, trabalho, crescimento e apodrecimento. Wildling soa como algo que cresce nos próprios termos, dizem eles — algo enraizado, indomado, que não foi feito para se comportar bem.",
-      "O sistema visual mistura três técnicas deliberadamente. A fotografia é documental e propositalmente suja: paisagens reais, mãos, trabalho, luz, borrão, movimento. O 3D entra para encenar a garrafa e a embalagem com controle de forma e reflexo. E a IA é usada para estender atmosferas e empurrar o mundo visual para algo levemente estranho. A regra que os diretores repetem é que nenhuma técnica poderia virar a história: todas tinham que servir ao mesmo sentimento — cru, regional, reduzido e um pouco selvagem.",
-      "Na tipografia, a dupla Overused Grotesk (da Randommaerks) e Bradford (da Lineto) divide funções: a primeira carrega a informação de forma clara e funcional; a segunda entrega caráter, com força, arestas e uma qualidade que o estúdio descreve como suábia no melhor sentido, aterrada pelas serifas.",
-      "O 'W' do logo foi desenhado do zero e não é símbolo de natureza nenhum — nada de maçã, folha ou ícone de prado. A inspiração são patas de animal: a pegada de uma criatura que segue o próprio caminho. Ele aparece com mais força no rótulo, dando presença a uma garrafa pequena de vidro transparente, escolhida justamente pelo ar despretensioso, quase de cerveja. E a cor é o gesto mais agressivo do projeto: Pantone Orange 021, um laranja-sinal, direto e alto, escolhido para que o Wildling fosse reconhecido antes de precisar se explicar."
+      "O arquiteto japonês Kengo Kuma foi anunciado como o vencedor do Andrée Putman Lifetime Achievement Award de 2027, a mais alta honraria concedida pela Créateurs Design Association & Awards (CDA). O prêmio não é decidido por inscrição: são os próprios membros da associação que escolhem o nome, o que reforça o caráter de reconhecimento entre pares.",
+      "A justificativa gira em torno de uma ideia só: a de que Kuma passou mais de três décadas perguntando como a arquitetura pode reconstruir a relação entre as pessoas e o mundo natural — e respondeu a essa pergunta em praticamente todos os continentes. Yuri Xavier, cofundador da CDA, resumiu dizendo que os membros optaram por homenagear não um edifício específico, mas a totalidade dessa investigação, no espírito de diálogo entre tradição e modernidade que a própria Andrée Putman encarnava.",
+      "Entre os projetos recentes citados estão o Estádio Nacional do Japão, em Tóquio, com sua envoltória de madeira, e o V&A Dundee, na Escócia. Kuma respondeu à premiação com uma metáfora esportiva: disse se considerar um corredor de longa distância, alguém cuja prioridade é seguir correndo por muito tempo com um objetivo único — a harmonia entre o humano e a natureza. Acrescentou que o mais importante para ele é justamente o fato de o prêmio olhar para o conjunto da obra, e não para um recorte.",
+      "A entrega acontece na cerimônia da CDA no Shangri-La Paris, em 16 de janeiro de 2027, quando também serão anunciados os vencedores de quinze categorias. Norman Foster, Tadao Ando e Christian de Portzamparc estão entre os premiados de edições anteriores."
     ]
   },
   {
-    title: "The Outline: Adobe updates, Salon art, and ‘Other Washingtons’ - 31/08/2026",
-    tituloPt: "Camadas de luz não destrutivas, edição por instrução com máscara e rabisco vermelho que vira imagem: o Photoshop desta semana quer devolver o controle ao designer",
+    title: "Balearic Islands' model for social housing wins Obel Award 2026",
+    tituloPt: "O prêmio de arquitetura foi para uma burocracia: como as Ilhas Baleares transformaram a própria administração pública em projeto e levaram o Obel Award 2026",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/01/obel-award-2026-balearic-islands-social-housing/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/balearic-islands-social-housing-model-obel-award-2026_dezeen_2364_hero_0.jpg",
+    categoria: "design",
+    estrelas: 5,
+    data: "1 de setembro de 2026",
+    resumo: [
+      "O Obel Award deste ano não premiou um edifício. Premiou um método. O vencedor é o modelo de habitação social desenvolvido pelo Instituto Balear da Habitação (IBAVI), nas ilhas espanholas, que reorganizou a forma como o poder público encomenda, licita, projeta, constrói e entrega moradia.",
+      "Entre 2019 e 2023, sob condução da economista Cris Ballester Parets e do arquiteto Carles Oliver Barceló, as Baleares reescreveram a administração da habitação pública em torno de três eixos: materiais locais, princípios de construção circular e projeto responsivo ao clima. A meta era ampliar rapidamente o estoque público diante de uma escassez aguda de aluguel social — sem baixar a qualidade como moeda de troca.",
+      "Nathalie de Vries, sócia fundadora do MVRDV e presidente do júri, disse que o notável do caso é a arquitetura inovadora aparecer não só no desenho e na escolha de materiais, mas também na licitação, na política e no processo. E lembrou que a falta de habitação pública não é um problema das Baleares: é a mesma pressão estrutural em cidades e regiões do mundo inteiro. O que o modelo oferece, segundo ela, é um arcabouço adaptável — e a prova de que a administração pública pode virar motor de mudança.",
+      "O tema desta edição era Systems' Hack, que pedia aos concorrentes que pensassem como adaptar estruturas existentes quando elas deixam de servir. A citação do júri é explícita: o significado do projeto não está num prédio, num material ou numa linguagem arquitetônica, mas no modo como ele conecta política pública, experimentação, responsabilidade ambiental, capacidade produtiva local e entrega de moradia digna como partes de um mesmo sistema.",
+      "Detalhe eloquente: Oliver Barceló renunciou à sua parte do prêmio, que será destinada a iniciativas de habitação emergencial nas ilhas, e o IBAVI também abriu mão do valor. Ballester Parets usará parte do fundo para ampliar o alcance internacional do modelo. O Obel anunciou ainda que abrirá um segundo ciclo, com nova premiação sob o mesmo tema na primavera de 2027."
+    ]
+  },
+  {
+    title: "A new online archive tries to predict Microsoft's next confusing rebrand",
+    tituloPt: "Alguém catalogou os 158 nomes que 72 produtos da Microsoft já tiveram — e agora tenta prever qual será o próximo rebatismo confuso",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/branding/a-new-online-archive-tries-to-predict-microsofts-next-confusing-rebrand",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/adJF9582JnvxZhQCgVXVMD-1000-80.jpg",
+    categoria: "branding",
+    estrelas: 4,
+    data: "1 de setembro de 2026",
+    resumo: [
+      "A Microsoft tem um hábito peculiar: rebatizar os próprios produtos de maneiras que parecem calculadas para confundir quem os usa. O Microsoft Office virou Microsoft 365 (Office) e depois Microsoft Copilot 365 — este último com um logo quase idêntico ao do chatbot de IA da empresa.",
+      "Loryan Strant, várias vezes reconhecido com o selo MVP (Microsoft Most Valuable Professional), decidiu resolver o problema por conta própria e criou o Microsoft Rebrand Registry, um arquivo online que lista de forma metódica todas as permutações de marca adotadas pela empresa ao longo dos anos. O projeto nasceu meio como piada, meio como recurso genuinamente útil — a mesma lógica de outro trabalho dele, o Let Me Correct That For You, que documenta a grafia oficial dos nomes dos produtos, incluindo os critérios erráticos de maiúsculas e minúsculas, de PowerPoint a Copilot.",
+      "Os números do registro: 72 produtos ainda vivos, 158 nomes acumulados entre eles. Oito produtos já passaram por três trocas de nome, entre eles o Azure AI Search e o aplicativo Microsoft 365 Copilot.",
+      "A parte mais divertida é a seção de análise, que cruza há quanto tempo cada nome atual está em uso com a frequência histórica de mudanças naquela mesma família de produtos para estimar quem é o próximo da fila. Segundo Strant, há probabilidade elevada de rebrand em breve para Azure App Service, Azure SQL Database, Azure DevOps e Microsoft Dynamics 365 Field Service."
+    ]
+  },
+  {
+    title: "Maynard declutters Canterbury with heritage-inspired wayfinding",
+    tituloPt: "Menos placas, não mais: como a Maynard limpou a sinalização de Canterbury usando o gótico da catedral e a tipografia de Chaucer",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/the-outline-31-08-2026/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/Spared_02_18_08_26182849-1024x683.jpg",
-    categoria: "Design",
-    data: "31 de agosto de 2026",
-    estrelas: 5,
+    url: "https://www.designweek.co.uk/maynard-declutters-canterbury-with-heritage-inspired-wayfinding/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/08/Maynard_Best-Wayfinding-for-Urban-Public-Realm13-1024x771.jpg",
+    categoria: "design",
+    estrelas: 4,
+    data: "30 de agosto de 2026",
     resumo: [
-      "O digest semanal da Design Week desta segunda abre com o pacote mais substancial que a Adobe entregou ao Photoshop em meses — e o eixo dele não é 'mais IA', é mais controle sobre a IA.",
-      "Três adições concentram o interesse. As Light Adjustment Layers trazem para dentro do Photoshop um ajuste de luz não destrutivo no espírito do Camera Raw, o que significa poder reabrir a decisão de exposição, contraste e sombra depois. O Instruct Edit with Masks, movido pelo Firefly Image 5, combina comando em linguagem natural com máscara — ou seja, você diz o que quer e delimita exatamente onde. E o AI Markup permite anotar visualmente sobre a imagem: um rabisco vermelho de uma parede de grade e de um gato vira, ao clicar em 'Generate', uma parede azulejada real e um gato ruivo caminhando.",
-      "A Adobe também abriu o beta de um AI-Assisted Editor, um espaço de trabalho baseado em prompt com remoção de fundo, expansão generativa e upscale de resolução. Entram ainda melhorias de fluxo como Dynamic Text em caminho customizado e um painel acoplável do Adobe Stock com mais de 900 milhões de ativos.",
-      "O restante da edição cobre movimentações e projetos. A Instrument nomeou Jack De Caluwé como Chief Creative Officer — ele volta à agência quase nove anos depois de uma primeira passagem, vindo de diretor executivo de criação na R/GA, e vai comandar a direção criativa para clientes como Google, Spotify e ServiceNow. A FutureBrand promoveu Sam Hollis a Global Strategy Partner, tornando-o o estrategista mais sênior da rede de mais de 20 escritórios. E a SuperHeroes contratou o especialista em IA Quim Español como diretor de criação.",
-      "Entre os projetos, dois se destacam. A artista Amanda Williams e o estúdio Span criaram Other Washingtons, instalação pública no bairro Washington Park, em Chicago, que cerca a estátua de George Washington de 1904 com bandeiras e faixas homenageando pessoas negras americanas que compartilham o sobrenome — com tipografia extraída da autobiografia de Booker T. Washington, de 1901, e um site interativo de arquivo coletivo. E o estúdio Wignall & Moore, com o paisagista Tom Stuart-Smith, entregou A Memorial Forest no cemitério militar de Brookwood, em Surrey: 31 estelas de pedra de Portland posicionadas segundo um mapa celeste feito com a Royal Astronomical Society, representando as estrelas visíveis no momento do Armistício de 1918, erguidas sem fundação de concreto para preservar o solo."
+      "Canterbury tem cerca de 55 mil habitantes e recebe algo como 8 milhões de visitantes por ano na cidade e no distrito ao redor. A sinalização para pedestres havia crescido por acúmulo: estilos diferentes, localizações aleatórias, informações desencontradas. Segundo Helen Garley, design associate da Maynard, não faltava sinalização — sobrava tipo de informação, tudo disputando atenção e nada construindo uma marca forte para a cidade.",
+      "A auditoria do estúdio encontrou totens de mapa na estação Canterbury West, postes indicadores, placas de parede e outros formatos com legibilidades incompatíveis entre si, além de peças desatualizadas, incompletas ou reaproveitadas para colar informação promocional. A resposta foi contraintuitiva para um projeto de sinalização: instalar menos placas, porém mais úteis, em vez de acrescentar mais objetos a uma paisagem urbana já saturada. O sistema se resume a totens de chegada e navegação, postes direcionais e peças fixadas em parede.",
+      "Os painéis são de alumínio leve, finos o bastante para caber nas vielas estreitas do centro medieval e para se prender a muros antigos de tijolo sem danificá-los — com resistência ao clima britânico e ao vandalismo como bônus.",
+      "A camada gráfica é toda extraída da cidade. A tipografia principal, Noctis, dialoga com a escrita gótica Black Letter, presente na arquitetura local e usada na primeira edição dos Contos da Cantuária, de Geoffrey Chaucer, impressa por William Caxton, que introduziu a prensa na Inglaterra em 1476. Para textos corridos, entra a Graphik, escolhida por legibilidade. Setas, marcador de norte e o marco de fronteira histórica derivam do arco típico de Canterbury e foram gravados em um disco de bronze embutido na base das peças.",
+      "Os vitrais da catedral — entre os mais antigos do mundo — viraram um desenho feito à mão inserido na sinalização, atravessado pela luz do sol. O vermelho é a cor de destaque, referência aos telhados de terracota, e o restante da paleta vem da paisagem, do brasão preto, vermelho e dourado e dos próprios vitrais. O projeto integra o Connected Canterbury, programa de £22 milhões que também reabre o castelo da cidade e cria a nova praça Westgate Square. A expectativa é aliviar as rotas mais congestionadas e distribuir visitantes para destinos menos óbvios."
     ]
   },
   {
-    title: "Arkadë Studio’s identity for Camelot tells a legend instead of a view",
-    tituloPt: "Um cavaleiro heráldico desenhado à mão para não competir com o cartão-postal: como o Arkadë Studio salvou um hotel chamado Camelot de virar resort temático",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/arkad%C3%AB-studios-identity-for-camelot-tells-a-legend-instead-of-a-view",
+    title: "This viral creative challenge ingeniously rebranded pens for the AI age",
+    tituloPt: "“Uma ferramenta de gerar ideias que não tira água do planeta”: um post no LinkedIn virou concurso com 350 anúncios de caneta contra a IA — e a Parker entrou na brincadeira",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/advertising/this-viral-creative-challenge-rebrands-pens-for-the-ai-age",
     imageUrl: null,
-    categoria: "Branding",
-    data: "31 de agosto de 2026",
+    categoria: "branding",
     estrelas: 4,
+    data: "1 de setembro de 2026",
     resumo: [
-      "Chamar um hotel de Camelot é assumir uma dívida. O nome carrega expectativa, e havia dois jeitos óbvios de errar: fugir completamente da mitologia, deixando o nome parecer aleatório, ou abraçá-la demais e transformar o lugar num resort temático. O Arkadë Studio, de Tirana, foi contratado exatamente para encontrar o meio — confiante, aterrado, com mito suficiente para justificar o nome.",
-      "O Camelot é um hotel de 26 quartos em Ksamil, na Riviera Albanesa, um destino comumente vendido como 'as Maldivas da Europa'. E é justamente aí que está a segunda decisão interessante: Ksamil já tem seu cartão-postal, e o estúdio se recusou a competir com ele. Segundo as cofundadoras Eduina Jaupi e Gea Madhi, a região está cheia de lugares idênticos — azul e branco, espreguiçadeiras, vibe mediterrânea. O litoral aparece apenas no azul de um lacre de cera e na linguagem da chegada. Uma vez que você está contando uma lenda em vez de vender uma vista, dizem elas, é permitido ser poético e literário.",
-      "A marca heráldica foi desenhada à mão: um cavaleiro armado dentro de uma moldura. A escolha pelo traço manual em vez do vetor foi consciente — uma marca vetorial pareceria correta e fria, chegando pronta e sem passado, enquanto essa carrega peso e idade, como se sempre estivesse ali e o estúdio apenas a tivesse desenterrado. E o desenho serve a três materialidades: carimbo em cera, relevo seco no papel e gravação em metal.",
-      "A tipografia trabalha em trio. O logotipo é em Caslon, afiado e coerente ao lado do cavaleiro. O texto de apoio usa a Brygada 1918, da Capitalics Warsaw Type Foundry, levemente condensada e editorial. E os momentos manuscritos ficam com a irregular Pushkin, da ParaType. As designers são explícitas sobre o risco: um toque 'antigo' a mais e o conjunto teria tombado de referência para pastiche.",
-      "A paleta evita todo o vocabulário medieval esperado — sem dourado, sem bordô, sem tons de joia. É creme quente, marrom profundo, cinza-pedra e um azul tirado do mar Jônico. Marrom com azul não é combinação que alguém associe a branding medieval, o que faz o conjunto ler como pensado em vez de fantasiado.",
-      "A disciplina de aplicação talvez seja o melhor detalhe. A marca completa aparece só em três lugares: na cera, no relevo e na fachada, em escala. Em todo o resto ela é reduzida a um fragmento, uma letra ou nada. Um lacre ganha autoridade justamente por não estar em toda parte, explicam as fundadoras. A chave do quarto traz a linha 'A lenda começa', e uma ilustração de castelo feita à mão vive dentro da pasta de boas-vindas."
+      "Começou como um exercício solitário. O redator e estrategista freelancer Kushagra Oberoi publicou no LinkedIn uma ideia de campanha “anti-IA” para as canetas Parker: um mock-up de outdoor com a foto de uma caneta e a linha “uma ferramenta de gerar ideias que não priva o planeta de água” — alfinetada direta ao consumo hídrico dos data centers.",
+      "O post acumulou milhares de curtidas e outros criativos passaram a sugerir ajustes no texto. Aí o One Minute Briefs e Andrew Tindall, chief growth officer da System1, transformaram aquilo em briefing aberto: criar cartazes em formato de outdoor sob a hashtag #SellMeThisPen. Dez peças seriam submetidas ao modelo de teste de anúncios da System1 para medir qual teria maior potencial de engajar consumidores.",
+      "Chegaram cerca de 350 ideias. A própria Parker Pen Company percebeu o movimento e entrou oferecendo brindes aos vencedores — tornando-se beneficiária acidental de uma campanha viral inteiramente orgânica. O vencedor condensou o conceito inicial em uma palavra só, apresentada com esperteza: “Think”. Serve como descrição da função da caneta e como apelo a quem estava prestes a abrir o ChatGPT para gerar o próximo material de marca.",
+      "O pano de fundo é uma desconfiança pública crescente. Tindall citou pesquisa publicada no Journal of Marketing Analytics segundo a qual 8 em cada 10 pessoas não acreditam nas justificativas das marcas para o uso de IA: independentemente do argumento apresentado, o público conclui que a empresa usou IA porque era mais fácil ou mais barato para ela — não porque beneficiava o consumidor ou a sociedade. O texto conecta o caso a outras marcas que passaram a criticar abertamente a IA no próprio marketing, de Polaroid ao “Make AI Mediocre Again” da Cadbury.",
+      "Vale a pergunta de sempre: a Parker vai assinar uma campanha oficial em cima disso, ou vai deixar o valor de marca dissolver no feed?"
     ]
   },
   {
-    title: "Foster + Partners designs retail podium to highlight \"precision and modernity\" of Norton Motorcycles",
-    tituloPt: "A Foster + Partners transformou a loja da Norton num museu: cada moto sobe num pódio individual com luz zenital e gaveta embutida",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/30/foster-partners-norton-motorcycles-showroom/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/08/foster-and-partners-norton-motorcycles-showroom-hero-1.jpg",
-    categoria: "Design",
-    data: "30 de agosto de 2026",
+    title: "Urgent.Agency builds Museum Ordrupgaard's identity on the idea of home",
+    tituloPt: "A palavra MUSEUM numa ponta, ORDRUPGAARD na outra, e a obra no meio: a Urgent.Agency criou uma moldura que nunca é desenhada",
+    source: "The Brand Identity",
+    url: "https://the-brandidentity.com/project/urgent-agency-builds-museum-ordrupgaards-identity-on-the-idea-of-home",
+    imageUrl: null,
+    categoria: "branding",
     estrelas: 4,
-    resumo: [
-      "A Foster + Partners Industrial Design — o braço de produto do escritório fundado por Norman Foster — desenvolveu um conceito de showroom para a britânica Norton Motorcycles em que as motos deixam de ser mercadoria exposta e passam a ser objeto sobre plinto, apresentadas como esculturas.",
-      "O projeto integra o rebranding em curso da marca, que busca reafirmar sua herança de engenharia sem parecer nostálgica. Gerry McGovern, chief creative advisor da Norton e responsável por conduzir a colaboração, resume a premissa: motos, no seu melhor, são objetos de desejo emocionais e escultóricos, e nas lojas experienciais elas serão apresentadas em ambientes que reflitam sua precisão e modernidade.",
-      "Cada pódio individual tem estética futurista e resolve o lado prático junto com o teatral: iluminação superior dedicada para desenhar as formas aerodinâmicas, gavetas de armazenagem e um armário aberto para acessórios e equipamentos. Foster comenta que a história da Norton está enraizada em design, engenharia e artesanato, e que o conceito busca ser uma expressão contemporânea dessa herança.",
-      "O sistema foi projetado como modular e escalável, de showrooms compactos a destinos-flagship, podendo incorporar telas digitais e interativas e áreas de configuração de máquinas sob medida. A Norton pretende levar o conceito a mais de 200 lojas globalmente, começando pelos endereços principais em mercados-chave. A ambição declarada por McGovern não é meramente vender motos, mas encená-las — elevando a compra de transação a experiência.",
-      "Contexto: a Norton foi fundada em 1898 e é conhecida pela participação no Isle of Man TT e por modelos históricos como Manx, Atlas e Navigator. A marca foi adquirida em 2020 pela indiana TVS Motor Company, que desde então investiu em nova fábrica na Inglaterra, em identidade visual e agora em estratégia de varejo."
-    ]
-  },
-  {
-    title: "30 Years After the Keychain, Bandai Just Made the Tamagotchi a Ring",
-    tituloPt: "64 componentes num anel de 28 mm: a Bandai levou dois anos para encolher o Tamagotchi até caber no dedo",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/08/30/30-years-after-the-keychain-bandai-just-made-the-tamagotchi-a-ring/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/30-years-after-the-keychain-bandai-just-made-the-tamagotchi-a-ring/tamagotchi-ring-03.jpg",
-    categoria: "Design",
-    data: "30 de agosto de 2026",
-    estrelas: 4,
-    resumo: [
-      "O Tamagotchi original era um ovo de plástico de cerca de 50 mm que você prendia na mochila e tentava não deixar morrer. Trinta anos depois, a Bandai anunciou uma versão que se usa no dedo — a 39ª entrada da série principal e, de longe, a menor já feita.",
-      "A engenharia é o ponto. Miniaturizar a esse nível não é encolher peças, é redesenhar o layout interno inteiro. O Tamagotchi Ring reúne 64 componentes — 52 eletrônicos e 12 plásticos — num corpo de 28 x 23 x 35 mm, quase metade do tamanho do chaveiro de 1996. O display é um LCD colorido de 0,56 polegada, o menor já montado num Tamagotchi. E a bateria deixou de ser célula-botão substituível para virar recarregável, carregada por um estojo que vem na caixa, simplesmente porque não sobrava espaço para outra solução.",
-      "O que impressiona é que a experiência não foi cortada junto com o volume: são 30 personagens criáveis, minigames e customização de quarto. Não é uma versão reduzida rodando num corpo minúsculo — é o Tamagotchi completo. Na mão, o objeto se comporta mais como pequena escultura vestível do que como eletrônico de consumo.",
-      "O anúncio saiu em 27 de agosto de 2026, marcando os 30 anos da franquia, e o timing não é acidental: uma marca que já passou por tantas reinvenções sabe quando um marco pede algo de fato novo em vez de mais uma variação de cor. Um bicho virtual em forma de anel é um objeto diferente de um bicho virtual de chaveiro, mesmo que a criatura lá dentro se comporte igual — muda onde ele vive no seu dia e o quanto sua dedicação fica visível.",
-      "Detalhes: três combinações de cor (preto com prata metálica, azul-claro com dourado metálico e rosa com branco pérola), tamanho japonês 14 (cerca de 17,3 mm de diâmetro interno) com adaptador para o 10 — aproximadamente 7 e 5,5 nos EUA. A autonomia da bateria não foi divulgada, o que é a lacuna honesta do anúncio. A Bandai não confirmou lançamento internacional direto, e o envio só começa em fevereiro de 2027 — prazo longo para uma pré-venda de agosto, sinal de que o desafio de fabricação é real."
-    ]
-  },
-  {
-    title: "This Startup Says Your House Should Be the Robot, Not ‘Have’ a Robot",
-    tituloPt: "Contra a aposta bilionária nos robôs bípedes: a LiveLarge acha que a casa inteira é que deveria ser inteligente — e construiu um quarto para provar",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/08/30/this-startup-says-your-house-should-be-the-robot-not-have-a-robot/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/this-startup-says-your-house-should-be-the-robot-not-have-a-robot/LiveLarge-Reveals-Flagship-L-Space-Showcasing-an-AI-Powered-Adaptive-Living-Environment-hero.jpg",
-    categoria: "Tecnologia",
-    data: "30 de agosto de 2026",
-    estrelas: 3,
-    resumo: [
-      "Boa parte do dinheiro de IA hoje está apostando em robôs. Centenas de startups de IA corporificada e seus investidores acreditam que uma máquina bípede vai acabar virando o sistema operacional da casa, andando de cômodo em cômodo e resolvendo tudo. Endong Zhang, fundador e CEO da LiveLarge Home Inc., acha o enquadramento errado — e é bem direto sobre isso.",
-      "O argumento dele é prático: um robô tem bateria limitada, campo de visão limitado e só pode estar em um lugar por vez, o que faz dele um candidato fraco para operar uma residência de vários cômodos com várias pessoas dentro. A aposta mais sólida, na visão de Zhang, é o próprio edifício como infraestrutura inteligente.",
-      "A empresa, fundada em 2023, passou os primeiros anos parecendo mais uma operação séria de construção na Califórnia do que uma startup de tecnologia, entregando mais de 20 ADUs (unidades habitacionais acessórias) e projetos residenciais na Bay Area e em Los Angeles. Em julho de 2026 revelou o Flagship L-Space, um ambiente autônomo nativo de IA que é a declaração física mais clara da tese: luz, som, ar, vidro de privacidade e uma assistente de voz chamada Lila coordenados como um sistema único, e não como uma pilha de apps separados, organizados em três modos — Focus, Reset e Passion.",
-      "A imagem conceitual que Zhang repete é a do governanta: alguém que lê o ambiente, observa o que é preciso e age sem receber instrução passo a passo. A casa inteligente tradicional recebe comando ou segue regra fixa, sem entender a situação, decidir ou planejar. Sem uma governanta humana, diz ele, a própria casa precisa ouvir, observar, entender, decidir e agir.",
-      "A resposta de privacidade é arquitetural: o máximo possível de computação roda localmente, num NVIDIA Jetson Orin embarcado, de modo que conversas, sinais biométricos e dados de uso podem permanecer no cômodo. O sistema usa impressões vocais para reconhecer usuários habituais, cada um com histórico e perfil separados e sem acesso cruzado. O modelo Flagship adiciona visão computacional processada localmente, permitindo que a Lila reconheça pessoas e leia gestos — tudo on-device, porque dado visual de dentro de uma casa não deveria sair do prédio casualmente.",
-      "Para designers, a previsão de Zhang é de requalificação: posicionamento de sensores, folgas para robôs e arquitetura de interação passariam a ser entregáveis padrão ao lado de plantas e paletas de materiais. E a inteligência, na visão dele, não ficaria presa ao imóvel — se você se muda, o modelo da casa, as preferências e a memória se mudam com você. A nova casa vira o novo corpo, mas o agente continua."
-    ]
-  },
-  {
-    title: "New Logo and Packaging for Keith’s Cacao by Kinoto Studio",
-    tituloPt: "'Put your Ceremony where your Mouth is': o Brand New destrincha o novo logo curvilíneo do cacau cerimonial Keith's Cacao pelo Kinoto Studio",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_keiths_cacao_by_kinoto_studio.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/08/keiths_cacao_logo_before_after.png",
-    categoria: "Branding",
     data: "27 de agosto de 2026",
-    estrelas: 3,
     resumo: [
-      "O Brand New publicou na seção Noted o redesenho de logo e embalagem da Keith's Cacao, marca de cacau cerimonial, assinado pelo Kinoto Studio. O título da matéria é um dos trocadilhos característicos do Armin Vit: 'Put your Ceremony where your Mouth is'.",
-      "Pelos elementos públicos da publicação, o projeto é classificado na indústria de Consumer Products e marcado com as tags cacao, curvy, Kinoto Studio e packaging — o que indica um sistema construído sobre formas curvilíneas, com a embalagem como parte central do trabalho e não como aplicação secundária. A matéria é do tipo before/after, ou seja, traz a comparação direta entre a marca antiga e a nova, além de uma seção dedicada à embalagem.",
-      "Vale um contexto de categoria: cacau cerimonial é um nicho que costuma se apoiar em códigos visuais de ritual, espiritualidade e artesanato — grafismos indígenas estilizados, texturas de papel kraft, tipografia manuscrita. Uma direção curvilínea sugere um caminho mais contemporâneo e menos literal, embora a avaliação editorial completa do Brand New esteja atrás do paywall de assinatura.",
-      "O Brand New segue em regime de posts limitados por causa da pausa anual de verão do estúdio, anunciada em 17 de agosto, o que explica o volume mais baixo de publicações nas últimas semanas."
-    ],
-    paywall: true
+      "O Museum Ordrupgaard, na Dinamarca, nasceu como casa de campo dos colecionadores Wilhelm e Henny Hansen, no início do século 20, e foi aberto ao público desde cedo. Hoje reúne arte francesa e dinamarquesa, a Casa de Finn Juhl, a extensão projetada por Zaha Hadid, um parque de arte e um jardim. O desafio entregue à Urgent.Agency, de Copenhague — que já assinou trabalhos para o Designmuseum Danmark e o Thorvaldsens Museum — era tornar esse conjunto compreensível sem simplificar a experiência cultural nem baixar a régua de ambição, como resume Ann-Sophie Lignell, chefe de comunicação e marketing do museu. O escopo incluiu plataforma de marca, identidade, site e até o próprio nome da instituição.",
+      "O conceito escolhido foi hospitalidade doméstica. Mads Quistgaard, sócio fundador e diretor criativo, explica com a metáfora do jantar: quando você convida amigos, faz escolhas — pensa em quem são, no que podem gostar, no que servir, em como pôr a mesa. Boa hospitalidade nunca é tamanho único; é atenta, específica e considerada. O museu, diz ele, é quase o oposto de um cubo branco: pessoal, sensorial e belamente patinado.",
+      "A tradução gráfica é engenhosa. O logotipo posiciona MUSEUM em uma borda do formato e ORDRUPGAARD na outra; o que entra entre as duas palavras é uma obra, uma fotografia ou uma informação. A identidade cria uma moldura sem desenhar moldura alguma — o conteúdo vira o centro da composição, em vez de virar suporte para a marca. O dispositivo expande e contrai em cartazes, publicações, sinalização, redes e formatos digitais responsivos; para aplicações muito pequenas, o monograma “MO” condensa a mesma lógica.",
+      "As fontes Stabil Grotesk e Victor Serif, ambas da KOMETA, encarnam os contrastes da casa: histórico e contemporâneo, doméstico e institucional, racional e sensual. A grotesca cuida de navegação, datas, lugares e textos longos; a serifada, mais quente, aparece nas pessoas, nos artistas e nos títulos das obras. A paleta veio da arquitetura e da luz — da delicadeza da Casa de Finn Juhl ao concreto escuro e orgânico de Hadid, que Quistgaard descreve como tendo presença quase animal, “como se uma baleia azul gigante tivesse pousado no gramado”.",
+      "Uma dúvida ficou aberta durante toda a estratégia: a Casa de Finn Juhl deveria ter entrada digital própria, ou até marca própria, já que atrai um público internacional pequeno mas devotado? A resposta não veio do posicionamento, e sim do sistema: só na fase de UX e design digital o estúdio resolveu o impasse dando a Finn Juhl presença destacada e momentos próprios no site, sem descolá-lo do museu."
+    ]
   },
   {
-    title: "Bielke&Yang designs Ytri, an island hotel 60km off Norway’s coast",
-    tituloPt: "Cinco horas de balsa pública até a porta do hotel: a Bielke&Yang tratou a dificuldade de chegar como o principal ativo da marca Ytri",
+    title: "Over a year of listening shaped [Alkemy]+'s identity for Palermo FC",
+    tituloPt: "Mais de um ano ouvindo a torcida antes de desenhar qualquer coisa: a [Alkemy]+ e a nova identidade do Palermo FC",
     source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/bielke-yang-designs-ytri-an-island-hotel-60km-off-norways-coast",
+    url: "https://the-brandidentity.com/project/over-a-year-of-listening-shaped-alkemy-s-identity-for-palermo-fc",
     imageUrl: null,
-    categoria: "Branding",
-    data: "25 de agosto de 2026",
+    categoria: "branding",
     estrelas: 4,
+    data: "31 de agosto de 2026",
     resumo: [
-      "Ytri é um retiro de 38 quartos em Træna, arquipélago a 60 km da costa de Helgeland, na Noruega, erguido pela incorporadora comunitária Træna 365. A agência de Oslo Bielke&Yang foi contratada para o pacote completo: estratégia, naming, identidade, sistema de design, site e sinalização.",
-      "O trabalho começou pela escuta. A equipe passou tempo na ilha conversando com moradores, proprietários e arquitetos, e o que emergiu não foi um conceito de hotelaria, foi um modo de vida: havfolket, o termo norueguês para o povo do mar que vive da e com a água naquela região há mais de 9.000 anos. O presidente da Træna 365, Mikael Forselius, resume que eles não estão construindo um hotel, estão mostrando o havfolket.",
-      "O eixo do posicionamento é a percepção do tempo. Træna fica a 33 milhas náuticas do continente, o que separa o visitante física e mentalmente ao mesmo tempo. A plataforma de marca coloca isso de forma direta: você não segue o tempo, o tempo segue você. O nome Ytri vem do nórdico antigo e significa o ponto mais externo — descreve tanto a geografia quanto a sensação de estar na borda de algo. Forselius admite que a equipe recebeu o nome com ceticismo, até estarem todos lá em cima e concluírem que não poderia se chamar outra coisa.",
-      "A identidade traduz contrastes. A paleta opõe um marrom-avermelhado escuro, que representa o calor e o conforto do hotel, ao mar ártico gelado e ao céu varrido pelo vento. O 'Y' do logo é geométrico, com diagonais que espelham as linhas do telhado da arquitetura assinada pelo estúdio Vardehaugen e os picos serrilhados das montanhas ao fundo — uma referência ao vernáculo das vilas de pesca, mas, como diz o designer sênior Felix Skaara, a um grau de afastamento, buscando o sentimento em vez de copiar elementos.",
-      "A tipografia customizada Ytri Flare, criada por Bobby Tannam, tem curvas suavizadas que contrastam com as arestas duras do logo, e foi desenhada para parecer antiga — à altura de 9.000 anos de ocupação. A ideia de entalhe migra para os materiais: as letras metálicas da sinalização têm perfil chanfrado que projeta sombras como picos de montanha, e os 38 números de quarto são cortados do terrazzo que sobrou do piso do hotel, quebrados à mão para que cada um tenha uma borda diferente. Como a água salgada bate constantemente nas construções, a escolha de materiais precisou resistir a sal e vento por décadas.",
-      "A fotografia segue a mesma lógica de honestidade. A agência trabalhou com dois fotógrafos em duas funções: Einar Aslaksen para a arquitetura, onde a precisão e a luz importam, e Jonathan Vivaas Kise para o registro documental — enviado à ilha por alguns dias para participar das atividades e fotografar no improviso, voltando com milhares de imagens. A designer Martine Ludvigsen explica o motivo: hotéis de luxo costumam ser fotografados de forma glossy e estilizada, e se a fotografia for impecável, a promessa de luxo descalço não se sustenta.",
-      "Chegar exige voo até a Noruega e cinco horas na balsa pública ao longo da costa de Helgeland — a mesma balsa que os moradores de Træna pegam para trabalhar. Skaara é claro que essa é a parte que protegeria acima de tudo: viajantes hoje podem comprar quase qualquer versão encenada de isolamento, mas não podem comprar uma jornada que já existia antes do hotel. A dificuldade faz parte do apelo; um lugar que se alcança em qualquer tarde não é o ponto mais externo."
+      "O The Brand Identity publicou o estudo de caso da nova identidade do Palermo FC, clube italiano, assinada pela agência [Alkemy]+. O ponto que dá título à matéria é o processo: mais de um ano de escuta antecedeu o trabalho de desenho propriamente dito.",
+      "É um dado relevante para quem trabalha com marca esportiva. Identidade de clube é o território em que o cliente formal — a diretoria — divide o poder de veto com um cliente informal e barulhento: a torcida, que se considera legítima proprietária dos símbolos. Projetos que pulam a etapa de escuta costumam encontrar essa conta na forma de campanha de reversão nas redes.",
+      "O caso soma-se a uma sequência recente de rebrands de futebol cobertos pelo portal — de escudos remontados a sistemas visuais que precisam funcionar tanto no bordado da camisa quanto no avatar de aplicativo.",
+      "Nota de transparência: esta síntese foi escrita a partir dos elementos públicos disponíveis (título, categoria, portal e contexto editorial), sem acesso ao corpo completo do estudo de caso. Para o detalhamento do escudo, da tipografia e do sistema, vale abrir a fonte original."
     ]
   },
   {
-    title: "In Holly Thomas’ comics beauty and grief collide to confront \"the weird mystery of death and dying\"",
-    tituloPt: "Rochas com olhos, árvores em espiral e borboletas: Holly Thomas transformou o diário de uma viagem sozinha aos Andes em quadrinhos sobre luto",
-    source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/holly-thomas-illustration-project-260826",
-    imageUrl: "https://admin.itsnicethat.com/images/8Zh-M7ywAxIF0mnVIHd84J9Xj0Q=/281351/width-1440/Holly-Thomas-Picking-up-a-toad-illustration-itsnicethat-5.jpg",
-    categoria: "Design",
-    data: "26 de agosto de 2026",
-    estrelas: 3,
-    resumo: [
-      "Em 2023, a ilustradora londrina Holly Thomas viajou sozinha para os Andes colombianos. Era sua primeira viagem solo depois da morte do pai, dois anos antes, e ela levou um diário — entradas em fluxo de consciência, frases longuíssimas que se emendavam umas nas outras com uma sequência infinita de 'e's, como ela descreve ao It's Nice That.",
-      "Nas semanas seguintes, começou a traduzir aquelas palavras em desenho. O resultado é Picking up a Toad, uma série de quadrinhos em acrílica, guache e lápis. Olhando o projeto inteiro, ela diz se impressionar com o quanto momentos de gratidão e alegria ficam lado a lado com momentos de luto, medo e escuridão — e como os tipos de sentimento amplificaram uns aos outros, resultando numa experiência rica e mágica.",
-      "As ilustrações são cheias de vida, banhadas em rosas e verdes vibrantes, emolduradas por rochas com olhos, árvores que rodopiam e borboletas coloridas. A escolha de cor tem explicação direta: era um lugar transbordando de vida, com ruído constante de insetos, canto de pássaro, plantas e flores, e a cor virou uma forma de documentar a sensação de estar cercada por tanta beleza. A influência do realismo mágico é explícita — A Casa dos Espíritos, de Isabel Allende, é um dos livros favoritos dela.",
-      "Há um desenho em que Holly aparece enterrada, cercada de crânios e fósseis. Desenhar e escrever sobre coisas que a assustam, explica, ajuda a ter menos medo delas. É um hábito antigo: ela lembra de ter feito um desenho raivoso e triste quando sua peixinha dourada, Vanessa, morreu na infância.",
-      "A conclusão da artista é sobre permitir que alegria e tristeza coexistam. Antes, ela conta, sentia estar num lugar estranho e congelado, incapaz de sentir qualquer uma das duas direito. Ainda acha difícil falar sobre luto, mas fazer esses quadrinhos ajudou a colocar em palavras coisas que ela não conseguia expressar."
-    ]
-  },
-  {
-    title: "Dezeen's top five houses of August 2026",
-    tituloPt: "Um teto retrátil operado por volante e uma casa enterrada em terraços de pedra grega: as cinco residências mais lidas do mês na Dezeen",
+    title: "Twelve installations designed by architects at Burning Man over the years",
+    tituloPt: "Quarenta anos de Burning Man vistos pela arquitetura: doze instalações que arquitetos ergueram no deserto de Black Rock",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/08/30/top-houses-august-2026/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/06/sky-view-sun-valley-idaho-olson-kundig-architects_dezeen_2364_hero.jpg",
-    categoria: "Design",
-    data: "30 de agosto de 2026",
+    url: "https://www.dezeen.com/2026/08/31/burning-man-40-years-architects/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/08/burning-man-40-year-anniversary-round-up_dezeen_2364_col_5.jpg",
+    categoria: "design",
     estrelas: 3,
+    data: "31 de agosto de 2026",
     resumo: [
-      "A retrospectiva mensal de residências da Dezeen reúne o que os leitores mais procuraram em agosto — e o conjunto tem uma coerência involuntária: quase todas as cinco casas resolvem sua ideia central pela relação com o terreno ou com o céu.",
-      "A Sky View, no Idaho, do estúdio americano Olson Kundig Architects, é coroada por um teto retrátil operado por um volante manual, dando vista para as montanhas ao redor e para nuvens e estrelas acima. Concreto com marcas de fôrma fecha os volumes do pavimento inferior, enquanto acima as fachadas envidraçadas das áreas sociais se estendem pela paisagem.",
-      "Within the Earth, na ilha grega de Sifnos, do arquiteto Alexandre Pavlidis, encaixa a casa na encosta costeira com uma série de muros de pedra escalonados e enterrados que abrem para pátios panorâmicos — uma referência direta aos terraços da região usados para cultivar oliveiras e uvas.",
-      "A Casa Nido, em Valência, do estúdio local Iterare Arquitectos, insere um cubo branco dentro da casca de tijolo de um edifício existente, com resultado deliberadamente cru e reduzido. As aberturas originais foram preenchidas com concreto ou brises de calcário, e um pátio fechado nos fundos traz luz natural.",
-      "A Ushas, em Kerala, na Índia, do estúdio Evolving Radical Aesthetics, tem um templo a céu aberto escavado num muro de arrimo servindo de espaço de meditação. Feita em granito preto de origem local, distribui-se em três volumes escalonados que acompanham as curvas da colina, com a sala de estar em balanço abrigando o templo embaixo.",
-      "E a Cabin Sande, na costa atlântica da Noruega, do estúdio Helen & Hard, é uma cabana de madeira sobre um embasamento de pedra retirada do próprio sítio, com telhado plantado sustentado por 18 colunas ramificadas feitas de abetos inteiros — incluindo os sistemas de raízes."
+      "Por ocasião dos 40 anos do Burning Man, a Dezeen reuniu doze instalações erguidas no deserto de Black Rock, em Nevada, por arquitetos e escritórios de arquitetura ao longo da história do festival.",
+      "A compilação funciona como um recorte curioso da disciplina: o Burning Man é um dos poucos contextos em que arquitetos projetam sabendo que a obra será desmontada — em muitos casos, queimada — em questão de dias. Isso libera experimentação estrutural, uso de materiais improváveis e uma escala de gesto que raramente sobrevive a um processo de aprovação urbanística convencional.",
+      "O resultado, ao longo de quatro décadas, é um arquivo informal de pavilhões temporários, templos e estruturas de grande porte que anteciparam soluções depois vistas em projetos permanentes — de geometrias paramétricas a construções em madeira e materiais reaproveitados.",
+      "Nota de transparência: este resumo foi elaborado a partir do título, do contexto editorial e do formato de compilação da Dezeen, sem reprodução do texto original. A lista completa das doze obras está na fonte."
     ]
   },
   {
-    title: "Self-driving truck startup Gatik raises $200M following PepsiCo deal",
-    tituloPt: "Enquanto todo mundo corria atrás de robotáxi, a Gatik ficou com o caminhãozinho de bairro — e acaba de levantar US$ 200 milhões com o fundo soberano do Catar",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/08/25/self-driving-truck-startup-gatik-raises-200m-following-pepsico-deal/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/08/Gatik-PepsiCo-flet.jpg?resize=1200,800",
-    categoria: "Tecnologia",
-    data: "25 de agosto de 2026",
+    title: "MB&F's Alien-Inspired Desk Clock Ships as 222 Loose Parts You Assemble Yourself Over 10 Hours",
+    tituloPt: "222 peças soltas e dez horas de montagem: o relógio de mesa da MB&F inspirado em Alien aposta que você vai valorizar mais o que construiu com as próprias mãos",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/08/31/mbfs-alien-inspired-desk-clock-ships-as-222-loose-parts-you-assemble-yourself-over-10-hours/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/mbfs-alien-inspired-desk-clock-ships-as-222-loose-parts-you-assemble-yourself-over-10-hours/mbf_nostromo_clock_1.jpeg",
+    categoria: "design",
     estrelas: 3,
+    data: "31 de agosto de 2026",
     resumo: [
-      "A Gatik, startup de veículos autônomos conhecida por seus caminhões-baú sem motorista, levantou US$ 200 milhões apenas dois meses depois de fechar um acordo comercial plurianual com a PepsiCo. A rodada foi liderada pelo Qatar Investment Authority e pela Koch Disruptive Technologies, com participação de Millennium Management, ARK Invest e Intact Private Capital. A empresa, sediada em Santa Clara, na Califórnia, já captou cerca de US$ 500 milhões desde que saiu do modo stealth em 2019, e não revelou o valuation.",
-      "O interesse da história não está no cheque, está no recorte. Enquanto dezenas de startups e gigantes de tecnologia foram atrás de robôs de calçada, robotáxis, carretas autônomas de longa distância ou veículos para construção e mineração, a Gatik escolheu a entrega de curta distância — o chamado 'middle mile'. Construiu uma frota de caminhões-baú fabricados pela Isuzu, começou com rotas fixas de menos de 16 km e evoluiu para rotas dinâmicas com dezenas de pontos de coleta e entrega cobrindo até 640 km.",
-      "É praticamente uma categoria sem concorrência direta, onde a empresa virou o player dominante. A carteira de clientes inclui a canadense Loblaws, a Kroger e a Tyson Foods — e o primeiro cliente, revelado seis anos atrás, foi o Walmart. A maior parceria pública é com a PepsiCo: 41 caminhões sem motorista levando Cheetos, Doritos e outros produtos da Frito-Lay de centros de distribuição para lojas em Dallas, Phoenix e no noroeste do Arkansas.",
-      "No ano passado a empresa atingiu o marco técnico e operacional que permitiu tirar o motorista de segurança do volante nas rotas comerciais. Segundo o cofundador e CEO Gautam Narang, os caminhões de terceira geração operam 24 horas por dia em vias urbanas e rodovias e lidam com chuva e neve leves.",
-      "Os contratos comerciais já fechados somam US$ 600 milhões em receita contratada. Os novos US$ 200 milhões devem financiar a expansão para além dos 350 funcionários atuais, com contratação de engenheiros e equipe operacional e entrada em novos mercados — eventualmente, algum dia, fora da América do Norte."
+      "A MB&F, casa relojoeira conhecida por objetos que flertam com ficção científica, lançou um relógio de mesa que não chega montado. Ele é entregue como 222 peças soltas, e cabe ao comprador dedicar cerca de dez horas para transformá-las em um objeto funcional.",
+      "A justificativa que a marca oferece tem nome na literatura de economia comportamental: o “efeito IKEA”, a tendência bem documentada de atribuirmos mais valor àquilo que montamos nós mesmos. Aplicado a um objeto de luxo, o argumento inverte a lógica habitual do segmento — em vez de vender a perfeição pronta e intocada, vende-se o trabalho.",
+      "A referência estética vem do universo de Alien, o que no vocabulário de design se traduz em componentes expostos, acabamento industrial e uma linguagem mecânica deliberadamente aparente. Não é decoração aplicada: a montagem manual é parte do produto.",
+      "Nota de transparência: síntese produzida a partir do título e do trecho de abertura publicado no índice do portal, sem reprodução do artigo completo. Especificações técnicas e preço estão na fonte."
+    ]
+  },
+  {
+    title: "This House Makes You Sweat, Then Harvests That Energy to Power Itself",
+    tituloPt: "180 degraus de madeira em espiral: a casa-conceito que só funciona se você subir e descer — e que converte esse esforço em energia",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/08/31/this-house-makes-you-sweat-then-harvests-that-energy-to-power-itself/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/08/this-house-makes-you-sweat-then-harvests-that-energy-to-power-itself/the-staircase-house-concept-03.jpg",
+    categoria: "design",
+    estrelas: 3,
+    data: "31 de agosto de 2026",
+    resumo: [
+      "A maioria das casas pede que você fique parado. A Staircase House pede que você suba. O conceito, ainda não construído, envolve cerca de 180 degraus de madeira em torno de um volume simples, transformando a circulação vertical no elemento organizador de todo o projeto.",
+      "A proposta é converter o esforço físico dos moradores em energia para a própria casa — uma inversão da lógica doméstica corrente, em que o conforto é medido pela quantidade de movimento que se consegue eliminar. Como peça de arquitetura especulativa, o interesse não está na viabilidade do balanço energético, e sim na provocação: e se a casa cobrasse participação em vez de oferecer passividade?",
+      "O projeto aparece nas seções de arquitetura e design sustentável do Yanko Design, ao lado de uma leva recente de conceitos que tentam repensar a relação entre corpo, moradia e consumo energético.",
+      "Nota de transparência: resumo escrito a partir do título e do trecho público de abertura do artigo, sem reprodução do conteúdo integral."
+    ]
+  },
+  {
+    title: "Gradwatch 2026: Harry Murray, London College of Communication",
+    tituloPt: "Gradwatch 2026: o fotojornalista Harry Murray, da London College of Communication, entra na vitrine anual da Creative Review",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/gradwatch-2026-harry-murray-london-college-of-communication/",
+    imageUrl: "https://creativereview.imgix.net/uploads/2026/08/Harry-Murray-Crossing.jpg",
+    categoria: "design",
+    estrelas: 3,
+    data: "28 de agosto de 2026",
+    resumo: [
+      "A Creative Review segue publicando o Gradwatch 2026, sua seleção anual de recém-formados que a redação enxerga como a próxima geração das indústrias criativas. Desta vez o escolhido é Harry Murray, fotojornalista formado pela London College of Communication.",
+      "O Gradwatch é um dos poucos formatos editoriais britânicos que dá espaço consistente ao trabalho de fim de curso — território normalmente invisível fora das exposições de graduação. Para estúdios que contratam, funciona como um radar de talento; para os estudantes, como primeira exposição a um público profissional amplo.",
+      "A série vem alternando disciplinas: nas semanas anteriores passaram por ela a designer gráfica Katelyn Lee, da Parsons, e Charlie Scott, da Falmouth University. A entrada de um fotojornalista amplia o escopo para além do design gráfico.",
+      "Nota de transparência: síntese baseada no título, no dek e no contexto da série publicados pelo portal, sem acesso ao texto completo da entrevista."
+    ]
+  },
+  {
+    title: "Instagram puts new limits on undisclosed AI profiles",
+    tituloPt: "O Instagram passa a restringir perfis de IA que não se identificam como tal",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/08/31/instagram-puts-new-limits-on-undisclosed-ai-profiles/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/08/Instagram-label-.png",
+    categoria: "tec",
+    estrelas: 4,
+    data: "31 de agosto de 2026",
+    resumo: [
+      "O Instagram anunciou novas restrições a perfis operados por inteligência artificial que não deixam essa condição explícita para quem os segue. A plataforma passa a impor limites a contas de IA não declaradas e a reforçar a rotulagem desse tipo de conteúdo.",
+      "A medida tem consequências diretas para quem trabalha com marca. À medida que personagens gerados por IA passam a acumular audiência e a fechar acordos comerciais, a fronteira entre criador humano, embaixador de marca e ativo publicitário sintético fica confusa — e as regras de divulgação viram infraestrutura reputacional, não burocracia.",
+      "A decisão se soma a um movimento mais amplo de plataformas apertando o cerco ao conteúdo sintético não sinalizado. Apple e Spotify já vinham adotando políticas semelhantes em seus próprios ecossistemas, o que sugere convergência de mercado em torno da rotulagem obrigatória.",
+      "Nota de transparência: resumo produzido a partir do título e do contexto editorial do portal, sem reprodução do texto integral. Os detalhes operacionais da política estão na fonte."
     ]
   }
 ];
 
 const PALETAS = {
-  "Branding":   ["#F6C177","#E4633A","#C1352B"],
-  "Design":     ["#8FD6C0","#3BA88C","#1F6B63"],
-  "Tecnologia": ["#A9B8F5","#6A6FE0","#3D2E8F"]
+  branding: ["#f4b27a", "#e0714a", "#c0472c", "#fbe3d2"],
+  design:   ["#8fd3bd", "#3f9e82", "#1f6b52", "#dff0e9"],
+  tec:      ["#a9a5ee", "#6f66cf", "#4a41a8", "#e6e4f8"]
 };
 
-function Ilustracao({categoria, seed, alto}){
-  const cores = PALETAS[categoria] || PALETAS["Design"];
+function Ilustracao({ categoria, seed }) {
+  const p = PALETAS[categoria] || PALETAS.design;
   const id = "g" + seed;
-  const r = (n)=> ((seed*9301 + n*49297) % 233280) / 233280;
+  const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"
-         style={{width:"100%", height:"100%", display:"block"}} aria-hidden="true">
+    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={cores[0]}/>
-          <stop offset="55%" stopColor={cores[1]}/>
-          <stop offset="100%" stopColor={cores[2]}/>
+          <stop offset="0%" stopColor={p[0]} />
+          <stop offset="100%" stopColor={p[2]} />
+        </linearGradient>
+        <linearGradient id={id + "b"} x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor={p[3]} stopOpacity="0.9" />
+          <stop offset="100%" stopColor={p[1]} stopOpacity="0.5" />
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill={`url(#${id})`}/>
-      <circle cx={60 + r(1)*260} cy={50 + r(2)*140} r={38 + r(3)*54} fill="#fff" opacity="0.13"/>
-      <circle cx={90 + r(4)*240} cy={70 + r(5)*130} r={20 + r(6)*40} fill="#fff" opacity="0.10"/>
-      <rect x={20 + r(7)*220} y={20 + r(8)*130} width={80 + r(9)*120} height={60 + r(10)*80}
-            rx="14" fill="#000" opacity="0.08"
-            transform={`rotate(${-18 + r(11)*36} 200 130)`}/>
-      <path d={`M0,${200 + r(12)*40} Q ${100 + r(13)*60},${140 + r(14)*60} 200,${190 + r(15)*40} T 400,${170 + r(16)*50} L400,260 L0,260 Z`}
-            fill="#fff" opacity="0.16"/>
+      <rect width="400" height="250" fill={`url(#${id})`} />
+      <circle cx={70 + r(1) * 200} cy={60 + r(2) * 100} r={50 + r(3) * 55} fill={`url(#${id}b)`} opacity="0.75" />
+      <rect x={200 + r(4) * 120} y={-20 + r(5) * 90} width="150" height="150" rx="26"
+            fill={p[3]} opacity="0.45" transform={`rotate(${r(6) * 40 - 20} 275 55)`} />
+      <path d={`M0 ${180 + r(7) * 40} Q 100 ${120 + r(8) * 70} 200 ${170 + r(9) * 40} T 400 ${150 + r(10) * 50} V250 H0 Z`}
+            fill={p[2]} opacity="0.55" />
+      <circle cx={40 + r(11) * 60} cy={200 - r(12) * 60} r={14 + r(13) * 16} fill="#fff" opacity="0.28" />
     </svg>
   );
 }
 
-function Media({item, seed, alt}){
+function Figura({ item, seed }) {
   const [falhou, setFalhou] = useState(false);
-  if(!item.imageUrl || falhou){
-    return <Ilustracao categoria={item.categoria} seed={seed}/>;
-  }
+  if (!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={seed} />;
   return (
-    <img className="shot"
-         src={item.imageUrl}
-         alt={alt}
-         referrerPolicy="no-referrer"
-         loading="lazy"
-         onError={()=>setFalhou(true)} />
+    <img
+      src={item.imageUrl}
+      alt={item.tituloPt}
+      referrerPolicy="no-referrer"
+      loading="lazy"
+      onError={() => setFalhou(true)}
+    />
   );
 }
 
-function Estrelas({n}){
-  return <span className="stars">{"★".repeat(n)}<span style={{opacity:.28}}>{"★".repeat(5-n)}</span></span>;
+const LABEL = { branding: "Branding", design: "Design", tec: "Tecnologia" };
+
+function Estrelas({ n }) {
+  return (
+    <span className="stars">
+      {"★".repeat(n)}<span className="dim">{"★".repeat(5 - n)}</span>
+    </span>
+  );
 }
 
-function Leitor({item, seed, aoFechar}){
+function Modal({ item, seed, onClose }) {
   return (
-    <div className="overlay" onClick={aoFechar}>
-      <div className="reader" onClick={e=>e.stopPropagation()}>
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="media">
-          <Media item={item} seed={seed} alt={`Imagem da matéria: ${item.tituloPt}`}/>
+          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+          <Figura item={item} seed={seed} />
         </div>
-        <div className="inner">
+        <div className="body">
           <div className="meta">
+            <span className={"tag " + item.categoria}>{LABEL[item.categoria]}</span>
             <span className="src">{item.source}</span>
-            <span>·</span>
-            <span>{item.data}</span>
-            <span className="tag">{item.categoria}</span>
-            <Estrelas n={item.estrelas}/>
+            <span>·</span><span>{item.data}</span>
+            <Estrelas n={item.estrelas} />
           </div>
           <h2>{item.tituloPt}</h2>
+          <p className="orig">Título original: “{item.title}”</p>
           <div className="text">
-            {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
+            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
           </div>
-          {item.paywall && (
-            <div className="note">
-              Nota: este texto do Brand New está atrás de assinatura. O resumo acima foi escrito a partir dos elementos públicos da página — título, categoria, indústria, tags e formato do post.
-            </div>
-          )}
           <div className="actions">
-            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
-            <button className="btn" onClick={aoFechar}>Fechar</button>
+            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">
+              Ler no {item.source} ↗
+            </a>
+            <button className="btn" onClick={onClose}>Voltar</button>
           </div>
         </div>
       </div>
@@ -398,77 +388,75 @@ function Leitor({item, seed, aoFechar}){
   );
 }
 
-function App(){
-  const [aberta, setAberta] = useState(null);
-  const [manchete, ...resto] = NOTICIAS;
-  const portais = new Set(NOTICIAS.map(n=>n.source));
+function App() {
+  const [aberto, setAberto] = useState(null);
+  const ordenadas = [...NOTICIAS].sort((a, b) => b.estrelas - a.estrelas);
+  const manchete = ordenadas[0];
+  const demais = ordenadas.slice(1);
+  const portais = new Set(NOTICIAS.map(n => n.source)).size;
+  const comFoto = NOTICIAS.filter(n => n.imageUrl).length;
 
   return (
     <div className="wrap">
       <header className="top">
-        <div className="kicker">Edição de segunda-feira</div>
+        <div className="kicker">Edição de terça-feira</div>
         <h1 className="brand">Portal da Manhã</h1>
-        <div className="datebar">
-          <span>31 de agosto de 2026</span>
+        <div className="subline">
+          <span>1 de setembro de 2026</span>
           <span className="pill">{NOTICIAS.length} notícias</span>
-          <span className="pill">{portais.size} portais</span>
-          <span className="pill">Branding · Design · Tecnologia</span>
+          <span className="pill">{portais} portais</span>
+          <span className="pill">{comFoto} com foto original</span>
         </div>
       </header>
 
-      <div className="hero" onClick={()=>setAberta(0)}>
-        <div className="media">
-          <span className="rank">1</span>
-          <Media item={manchete} seed={1} alt={`Imagem da matéria: ${manchete.tituloPt}`}/>
-        </div>
+      <div className="lead" onClick={() => setAberto(0)}>
+        <div className="media"><Figura item={manchete} seed={1} /></div>
         <div className="body">
           <div className="meta">
+            <span className={"tag " + manchete.categoria}>{LABEL[manchete.categoria]}</span>
             <span className="src">{manchete.source}</span>
-            <span>·</span>
-            <span>{manchete.data}</span>
-            <span className="tag">{manchete.categoria}</span>
-            <Estrelas n={manchete.estrelas}/>
+            <span>·</span><span>{manchete.data}</span>
+            <Estrelas n={manchete.estrelas} />
           </div>
           <h2>{manchete.tituloPt}</h2>
-          <p>{manchete.resumo[0].slice(0,190)}…</p>
-          <div><span className="btn">Abrir resumo</span></div>
+          <p>{manchete.resumo[0].slice(0, 240)}…</p>
         </div>
       </div>
 
-      <p className="sectitle">Demais destaques do dia</p>
       <div className="grid">
-        {resto.map((item, i)=>(
-          <div className="card" key={item.url} onClick={()=>setAberta(i+1)}>
-            <div className="media">
-              <span className="rank">{i+2}</span>
-              <Media item={item} seed={i+2} alt={`Imagem da matéria: ${item.tituloPt}`}/>
-            </div>
+        {demais.map((item, i) => (
+          <article className="card" key={item.url} onClick={() => setAberto(i + 1)}>
+            <div className="media"><Figura item={item} seed={i + 2} /></div>
             <div className="body">
               <div className="meta">
+                <span className={"tag " + item.categoria}>{LABEL[item.categoria]}</span>
                 <span className="src">{item.source}</span>
-                <span className="tag">{item.categoria}</span>
-                <Estrelas n={item.estrelas}/>
               </div>
               <h3>{item.tituloPt}</h3>
-              <p>{item.resumo[0].slice(0,120)}…</p>
-              <div style={{marginTop:"auto", paddingTop:"6px", fontSize:"12px", color:"var(--ink-faint)"}}>{item.data}</div>
+              <p className="dek">{item.resumo[0].slice(0, 150)}…</p>
+              <div className="meta" style={{ marginTop: "auto", paddingTop: "8px" }}>
+                <Estrelas n={item.estrelas} />
+                <span>{item.data}</span>
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      <footer>
-        Portal da Manhã — recorte diário de branding, design e tecnologia. Resumos escritos em português a partir das fontes originais; os textos integrais permanecem com seus veículos.
-      </footer>
-
-      {aberta !== null && (
-        <Leitor item={NOTICIAS[aberta]} seed={aberta+1} aoFechar={()=>setAberta(null)}/>
+      {aberto !== null && (
+        <Modal item={ordenadas[aberto]} seed={aberto + 1} onClose={() => setAberto(null)} />
       )}
+
+      <footer>
+        Portal da Manhã · seleção diária de branding, design e tecnologia a partir de portais internacionais.
+        Todos os resumos são escritos em português e parafraseados; os textos e as imagens originais
+        pertencem aos respectivos veículos. Clique em qualquer card para ler o resumo completo e acessar a fonte.
+      </footer>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

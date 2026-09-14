@@ -3,150 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 13 de setembro de 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Portal da Manhã — 14 de setembro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
     --bg:#f6f6f4;
-    --card:#ffffff;
-    --ink:#14161a;
-    --ink-2:#4a5058;
-    --ink-3:#868d97;
+    --surface:#ffffff;
+    --ink:#15161a;
+    --ink-2:#4a4d57;
+    --ink-3:#8b8f9c;
     --line:#e6e5e1;
-    --accent:#c2410c;
+    --accent:#d4462f;
     --radius:20px;
-    --shadow:0 1px 2px rgba(20,22,26,.04), 0 8px 24px rgba(20,22,26,.06);
-    --shadow-lg:0 2px 4px rgba(20,22,26,.05), 0 24px 60px rgba(20,22,26,.12);
+    --shadow:0 1px 2px rgba(20,20,25,.04), 0 8px 28px rgba(20,20,25,.06);
+    --shadow-hover:0 2px 6px rgba(20,20,25,.06), 0 18px 48px rgba(20,20,25,.11);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  #root{min-height:100vh}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px 80px}
 
-  /* ---------- Cabeçalho ---------- */
-  header.top{padding:56px 0 32px;border-bottom:1px solid var(--line);margin-bottom:40px}
-  .kicker{
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:14px;
-  }
-  h1.brand{
-    font-family:'Instrument Serif',Georgia,serif;
-    font-weight:400;font-size:clamp(44px,7vw,78px);line-height:1;
-    margin:0 0 16px;letter-spacing:-.02em;
-  }
-  .sub{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:620px}
-  .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .chip{
-    font-size:12px;font-weight:500;color:var(--ink-2);
-    background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;
-  }
+  header.top{padding:56px 0 34px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1.brand{font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-.035em;margin:12px 0 10px;font-weight:800}
+  .sub{color:var(--ink-2);font-size:15px;margin:0}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--ink-2)}
 
-  /* ---------- Manchete ---------- */
   .hero{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;box-shadow:var(--shadow);cursor:pointer;
-    transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s;
-    display:grid;grid-template-columns:1.15fr 1fr;margin-bottom:44px;
+    display:grid;grid-template-columns:1.15fr 1fr;margin-bottom:34px;
+    transition:box-shadow .28s ease, transform .28s ease;
   }
-  .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .hero-media{position:relative;min-height:380px;background:#eceae5}
-  .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-body{padding:40px 40px 36px;display:flex;flex-direction:column;justify-content:center}
-  .hero h2{
-    font-family:'Instrument Serif',Georgia,serif;font-weight:400;
-    font-size:clamp(28px,3.2vw,40px);line-height:1.12;letter-spacing:-.015em;margin:16px 0 14px;
-  }
-  .hero p.dek{color:var(--ink-2);font-size:15px;line-height:1.65;margin:0}
+  .hero:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+  .hero-media{position:relative;min-height:340px;background:#eceae5}
+  .hero-media img,.card-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center}
+  .hero h2{font-size:clamp(24px,2.6vw,34px);line-height:1.16;letter-spacing:-.022em;margin:14px 0 14px;font-weight:750}
+  .hero p.dek{color:var(--ink-2);font-size:15.5px;line-height:1.6;margin:0}
 
-  /* ---------- Cards ---------- */
-  .section-label{
-    display:flex;align-items:center;gap:14px;margin:0 0 22px;
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;
-  }
-  .section-label::after{content:"";flex:1;height:1px;background:var(--line)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px;padding-bottom:60px}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
-    transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s;
-  }
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .card-media{height:186px;background:#eceae5;position:relative;overflow:hidden}
-  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
-  .card h3{font-size:17px;line-height:1.32;font-weight:600;margin:12px 0 10px;letter-spacing:-.01em}
-  .card p{color:var(--ink-2);font-size:13.5px;line-height:1.6;margin:0 0 16px;flex:1}
-
-  /* ---------- Micro-elementos ---------- */
   .tagline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .tag{
-    font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;
-    padding:4px 9px;border-radius:6px;
-  }
-  .tag.branding{background:#fdf1e7;color:#b4490d}
-  .tag.design{background:#e7f5f1;color:#0f6b58}
-  .tag.tech{background:#eceaff;color:#4b3fb0}
-  .source{font-size:11.5px;color:var(--ink-3);font-weight:500}
-  .stars{font-size:12px;color:#d97706;letter-spacing:1px}
-  .stars .off{color:#dcd9d2}
-  .foot-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
+  .cat{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+  .cat.branding{background:#fdeee9;color:#b83c22}
+  .cat.design{background:#e6f4ef;color:#17705a}
+  .cat.tech{background:#eaeafb;color:#4038a8}
+  .src{font-size:12.5px;color:var(--ink-3);font-weight:600}
+  .stars{font-size:12.5px;color:#e0a32b;letter-spacing:1px}
 
-  /* ---------- Leitor ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
+    transition:box-shadow .28s ease, transform .28s ease;
+  }
+  .card:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px)}
+  .card-media{height:178px;background:#eceae5;position:relative;overflow:hidden}
+  .card-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:17px;line-height:1.3;letter-spacing:-.012em;margin:0;font-weight:700}
+  .card .snippet{color:var(--ink-2);font-size:13.5px;line-height:1.55;margin:0}
+  .card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:6px}
+
+  .section-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin:0 0 16px}
+
+  /* leitor */
   .overlay{
-    position:fixed;inset:0;background:rgba(20,22,26,.5);backdrop-filter:blur(6px);
-    z-index:100;display:flex;align-items:flex-start;justify-content:center;
-    padding:40px 20px;overflow-y:auto;animation:fade .22s ease;
+    position:fixed;inset:0;background:rgba(18,18,22,.42);backdrop-filter:blur(6px);
+    z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;
+    padding:48px 20px;animation:fade .22s ease;
   }
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
   .reader{
-    background:var(--card);border-radius:24px;max-width:760px;width:100%;
-    box-shadow:0 40px 90px rgba(0,0,0,.28);overflow:hidden;animation:rise .3s cubic-bezier(.2,.7,.3,1);
+    background:#fff;border-radius:24px;max-width:780px;width:100%;overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.28);animation:rise .32s cubic-bezier(.2,.8,.3,1);
   }
-  .reader-media{height:300px;background:#eceae5}
-  .reader-media img,.reader-media svg{width:100%;height:100%;object-fit:cover;display:block}
+  .reader-media{height:330px;background:#eceae5}
+  .reader-media img{width:100%;height:100%;object-fit:cover;display:block}
   .reader-body{padding:34px 40px 40px}
-  .reader h2{
-    font-family:'Instrument Serif',Georgia,serif;font-weight:400;
-    font-size:clamp(26px,3.4vw,36px);line-height:1.15;letter-spacing:-.015em;margin:14px 0 8px;
-  }
-  .reader .orig{font-size:13px;color:var(--ink-3);font-style:italic;margin:0 0 22px;line-height:1.5}
-  .reader .text p{font-size:16px;line-height:1.75;color:#2b3038;margin:0 0 18px}
-  .reader .note{
-    font-size:13px;color:var(--ink-2);background:#faf9f6;border:1px solid var(--line);
-    border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;line-height:1.6;
-  }
-  .reader-actions{display:flex;gap:12px;align-items:center;margin-top:26px;flex-wrap:wrap}
+  .reader h2{font-size:clamp(23px,3vw,31px);line-height:1.18;letter-spacing:-.02em;margin:14px 0 18px;font-weight:780}
+  .reader p{color:#33353d;font-size:16px;line-height:1.72;margin:0 0 16px}
+  .note{font-size:13px;color:var(--ink-3);font-style:italic;border-left:3px solid var(--line);padding-left:12px;margin-top:22px}
+  .reader-actions{display:flex;gap:12px;align-items:center;margin-top:28px;flex-wrap:wrap}
   .btn{
-    font-family:inherit;font-size:13.5px;font-weight:600;border-radius:999px;
-    padding:11px 20px;cursor:pointer;border:1px solid var(--line);text-decoration:none;
-    display:inline-block;transition:.18s;
+    display:inline-block;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:650;
+    text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;
+    transition:background .2s ease,border-color .2s ease;
   }
-  .btn-primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .btn-primary:hover{background:#000}
-  .btn-ghost{background:#fff;color:var(--ink-2)}
-  .btn-ghost:hover{background:#f2f1ed}
+  .btn:hover{background:#f2f1ee}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.primary:hover{background:#2b2d34}
 
-  footer.bot{border-top:1px solid var(--line);padding:32px 0 60px;color:var(--ink-3);font-size:12.5px;line-height:1.7}
+  footer.bot{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13px;line-height:1.7}
 
-  @media (max-width:820px){
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
     .hero{grid-template-columns:1fr}
-    .hero-media{min-height:230px;height:230px}
-    .hero-body{padding:26px 24px 30px}
-    .reader-body{padding:26px 24px 32px}
-    .reader-media{height:210px}
-    header.top{padding:36px 0 26px;margin-bottom:30px}
+    .hero-media{min-height:250px}
+    .hero-body{padding:28px 26px 30px}
+  }
+  @media (max-width:620px){
+    .wrap{padding:0 16px 56px}
+    .grid{grid-template-columns:1fr}
+    .reader-body{padding:26px 22px 32px}
+    .overlay{padding:20px 12px}
+    .reader-media{height:220px}
   }
 </style>
 </head>
@@ -154,292 +122,296 @@
 <div id="root"></div>
 
 <script type="text/babel">
-const { useState, useMemo } = React;
+const { useState } = React;
 
-const DATA = [
+const NOTICIAS = [
   {
-    title: "I hate to say it, but the backlash to this beer company's rebrand is justified",
-    tituloPt: "O landlord da Timothy Taylor ficou jovem, magro e cabeludo — e o Creative Bloq diz que, desta vez, a revolta da internet tem razão",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/branding/i-hate-to-say-it-but-the-backlash-to-this-beer-companys-rebrand-is-justified",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/PRT97vfqt7cupu9JRYhXhU-1920-80.jpg",
+    title: "How retro branding is bringing warmth and fun to São Paulo's bars and restaurants",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/features/the-view-from-sao-paulo-retro-bar-and-restaurant-branding-graphic-design-140926",
+    imageUrl: "https://m.itsnicethat.com/original_images/TVF_Meta_WGRsslO.png?class=w1440",
+    tituloPt: "Caixa de fruta flexográfica, rótulo de cachaça e placa pintada à mão: como os bares de São Paulo enterraram o minimalismo e viraram o laboratório gráfico da cidade",
     categoria: "Branding",
-    data: "12 de setembro",
     estrelas: 5,
+    dek: "A correspondente do It's Nice That em São Paulo mapeia a virada das identidades paulistanas — do geométrico 'elegante' para o ilustrado, quente e deliberadamente imperfeito.",
     resumo: [
-      "A cervejaria de Yorkshire Timothy Taylor apresentou seu primeiro rebrand relevante em mais de uma década: logo novo, embalagem nova, pump clips novos e — o ponto que incendiou as redes — um novo personagem estampando a Landlord, sua cerveja mais conhecida. O editor de design do Creative Bloq, Daniel John, abre o texto assumindo que anda cético em relação a essas ondas de indignação, porque a internet vive de controvérsia e quase nunca reage à lógica de design por trás de uma mudança. Neste caso específico, diz ele, a revolta procede.",
-      "O incômodo é com o rosto. O antigo landlord parecia um personagem, aquele estalajadeiro arquetípico de pub inglês; o novo aparece mais jovem, mais em forma, mais bonito e com bem mais cabelo — alguém que, nas palavras do autor, você escalaria para interpretar o dono de uma microcervejaria recém-inaugurada. O CEO Andrew Carter justifica o movimento dizendo que nada muda no que é fabricado, e que a intenção é fazer com que o cuidado colocado em cada pint apareça na forma como a marca se apresenta hoje, mantendo-se relevante para a próxima geração de bebedores.",
-      "O argumento contrário do artigo é de mercado, não de gosto: a Landlord já é a cask ale mais vendida do Reino Unido em valor e em volume, e já é popular entre consumidores mais jovens. A tese é que a marca confundiu 'antiquado' com 'fora de moda'. Num cenário de modas visuais descartáveis e conteúdo artificial, a herança virou ativo caro — daí a fila de marcas ressuscitando logos antigos nos últimos anos.",
-      "A conclusão é uma lição prática para estúdios: modernizar uma marca com história não obriga a fazê-la parecer moderna. São justamente as peculiaridades, as cores fora de tendência, o texto antiquado e os personagens datados que impedem uma marca de escorregar para a homogeneidade do flat design com sans-serif. A Timothy Taylor tinha de graça aquilo que muitas marcas contemporâneas pagam caro a agências para tentar fabricar: caráter genuíno."
+      "Elaine Ramos, designer e correspondente do It's Nice That em São Paulo, assina um panorama sobre a mudança de temperatura do design gráfico paulistano. Durante anos, diz ela, a paisagem visual da cidade foi dominada por identidades minimalistas ditas 'elegantes': lettering geométrico, padronagens feitas de fragmentos de letra, pontos, arcos, hachuras. O designer abria a caixa de ferramentas — simplifica, geometriza, fragmenta — e pronto, nascia mais uma marca. Esse repertório, argumenta o texto, deu lugar a identidades lúdicas, coloridas, ilustradas e abertamente artesanais, que extrapolam o logo e a fachada.",
+      "O ponto de partida é o Bar Exquisito, identidade criada pelo Estúdio Caxa a partir de pesquisa em cultura vernacular latino-americana: embalagens baratas de comida de rua, caixas de fruta impressas em flexografia com suas manchas de cor e erros de registro, e a tradição da pintura de letreiros à mão. O projeto inclui uma tipografia desenhada a partir de letreiros de mercado e um conjunto de ilustrações.",
+      "O Estúdio Arado, fundado em 2018 por dois designers mineiros e dedicado a pesquisar o 'imaginário rural brasileiro', assinou a marca da Cervejaria Duas Irmãs: um retrato das duas irmãs dentro de uma oval central, lettering feito à mão que abraça distorções, cardápio pintado direto na parede e detalhes de linguagem comercial de outra época, incluindo o clássico 'agradecemos a preferência'.",
+      "Na mesma linha, o Estúdio Sarau desenhou o Bar Ovo a partir de rótulos litográficos de cachaça, caixas de fósforo e publicidade da primeira metade do século 20 — molduras, sombras e degradês de linha. Já Flora de Carvalho, para o Suei, em Barra Funda, partiu da ideia de calor implícita no nome do bar para criar um estilo que ela descreve como 'derretido', com contornos irregulares, tipografia de pincel e pretos falhados imitando xerox. Desafiando o manual da marca, o projeto usa três formas completamente diferentes de escrever o nome do bar.",
+      "A onda não é só paulistana: no Rio, o Biabum assinou o Salva Bar, restaurante baiano, com textura de risografia, carranca, vapor do Recôncavo, Farol da Barra e um wordmark baseado numa edição de 1968 das obras completas de Jorge Amado. E o PS2, dupla paulistana hoje sediada em Hamburgo, acaba de entregar o Bar Aperitivo, com referência nos verões italianos dos anos 1970 e os 'O' do wordmark transformados em azeitonas.",
+      "A conclusão do texto é menos celebratória do que parece. Numa cidade avessa a qualquer ideia de preservação, moldada pela especulação imobiliária e por uma cultura de reforma permanente, onde pouquíssimos bares sobreviveram décadas sem mudar, essa emulação da tradição ganha um contorno irônico: cabe ao designer fabricar os sinais de autenticidade e reconstruir simbolicamente a memória que a cidade engoliu."
     ]
   },
   {
-    title: "Automattic confirms Mullenweg has returned as CEO after attempted ouster by board",
-    tituloPt: "\"Não sou um troll, sou um pirata\": Matt Mullenweg expulsou os outros admins do Slack e voltou ao comando da Automattic dias depois de o conselho tirá-lo do cargo",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/12/automattic-confirms-mullenweg-has-returned-as-ceo-after-attempted-ouster-by-board/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2024/10/matt-mullenweg.jpg?resize=1200,799",
-    categoria: "Tecnologia",
-    data: "12 de setembro",
+    title: "Studio Saar tops LDF pavilion with police and rain shields",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/14/studio-saar-atelier-one-pangolin-shield-bamboo-pavilion/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/studio-saar-atelier-one-pangolin-shield-bamboo-pavilion-1_dezeen_2364_hero_4.jpg",
+    tituloPt: "Escudos antimotim desenhados pelos colonizadores britânicos viram telhado: o pavilhão-pangolim que o Studio Saar plantou na frente da Somerset House",
+    categoria: "Design",
     estrelas: 5,
+    dek: "O projeto-símbolo do London Design Festival 2026 é uma casca de bambu coberta por escudos de polícia indianos e capas de chuva de Meghalaya.",
     resumo: [
-      "Depois de uma semana caótica, a Automattic — dona do WordPress.com — emitiu comunicado confirmando que Matt Mullenweg segue como presidente do conselho e CEO da empresa, \"com apoio integral do board\". A nota chegou ao TechCrunch por e-mail, num sábado logo depois das 17h no horário do leste americano, e mencionava ainda as manifestações públicas de apoio de executivos e funcionários, o que parece ser uma referência às postagens que o próprio Mullenweg vinha repostando em sua conta no X.",
-      "O episódio começou dias antes, quando o conselho votou por colocar o fundador do WordPress em licença remunerada, sem explicar os motivos. O movimento aparentemente pegou Mullenweg de surpresa: ele foi ao Slack corporativo acusar os conselheiros de conspirarem contra ele. Na quarta-feira, a companhia confirmou a saída, informando que o diretor financeiro Mark Davies assumiria como CEO interino com a confiança do conselho.",
-      "O plano não correu bem. Recusando-se a deixar o posto, Mullenweg removeu os demais administradores do Slack da empresa e comunicou aos funcionários que tudo estava resolvido e que ele havia retomado o controle — algo que múltiplas fontes relataram ao TechCrunch. Em determinado momento escreveu no Slack que agora era \"um pirata\" e soltou um palavrão, hábito que ele notoriamente não tinha; depois brincou pedindo que o acionassem caso aquilo virasse um problema de RH, já que seus interlocutores habituais estavam com Mark Davies.",
-      "Questionado pelo TechCrunch se o retorno era real, prometeu um post no blog. Quando o post saiu, era sobre a compra de uma casa-barco. Perguntado se estava trollando, respondeu que não era um troll, era um pirata. Nunca deu declaração oficial sobre a volta, mas anotou no X que esta provavelmente era a quinta vez que enfrentava um \"golpe\". A Automattic não respondeu aos pedidos de comentário sobre a saída do conselheiro Toni Schneider — CEO fundador da empresa e hoje à frente do Bluesky — nem sobre as demais mudanças na composição do board, que, segundo apurou a publicação, ainda podem estar em curso."
+      "O landmark project do London Design Festival deste ano se chama The Pangolin Shield e foi projetado pelo Studio Saar em parceria com os engenheiros estruturais da Atelier One, liderados pelo fundador Neil Thomas. O pavilhão está instalado no trecho recém-pedestrianizado do Strand, em frente à Somerset House e ao lado da India House.",
+      "A escolha do lugar não é acidental. Como explicou ao Dezeen o cofundador do Studio Saar, Ananya Singhal, a Somerset House foi a sede administrativa da Marinha britânica durante o período colonial e a India House abriga a Alta Comissão da Índia. O pavilhão ainda fica de frente para um busto de Jawaharlal Nehru, primeiro-ministro da Índia. Para Singhal, cujo escritório é uma prática indo-britânica trabalhando com um engenheiro inglês, o endereço permitia falar da nova relação entre os dois países.",
+      "A estrutura é uma casca em grelha de bambu, reforçada com fixações de aço e recoberta por duas camadas de escudos muito diferentes entre si. A primeira é feita de escudos tradicionais da polícia indiana, construídos com lathis — bastões de bambu. Por cima deles vêm os knups, capas de chuva trançadas usadas por agricultores no nordeste da Índia, em Meghalaya, região cujo nome significa 'terra das nuvens' e onde chove mais de dois metros por ano.",
+      "'Os escudos de polícia foram desenhados pelos governantes coloniais britânicos para conter distúrbios na Índia naquela época; é muito bonita a ideia de transformar isso em parte de uma estrutura que abriga visitantes e moradores', disse Singhal. O bambu foi escolhido por ser leve, durável, de crescimento rápido, biodegradável e por permitir formas complexas.",
+      "O nome e a silhueta remetem ao pangolim, o mamífero mais traficado do mundo — Singhal também é fotógrafo de vida selvagem e conservacionista, e quis trazer o animal para a conversa. Dentro do pavilhão há uma escultura do bicho e os desenhos do projeto.",
+      "Um detalhe pouco glamouroso: a peça foi danificada no transporte da Índia para o Reino Unido e, por 'excesso de cautela', ficará exposta durante o festival com um andaime interno de apoio. 'É um espaço público e vai ter gente bêbada subindo e descendo esta rua', justificou o arquiteto. O pavilhão fica no Strand de 12 a 20 de setembro; as fotos são de Taran Wilkhu."
     ]
   },
   {
-    title: "New Alzheimer's Research UK campaign strikes optimistic tone",
-    tituloPt: "E se a primeira pessoa curada de Alzheimer já estiver viva hoje? A Beyond filmou um parque britânico inteiro num plano-sequência só para fazer essa pergunta",
+    title: "Amsterdam's Brandt gallery celebrates major rebrand",
     source: "Creative Review",
-    url: "https://www.creativereview.co.uk/alzheimers-research-uk-the-first-campaign-beyond/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Alzheimers-Research-UK-The-First-One-ad.jpg",
+    url: "https://www.creativereview.co.uk/amsterdam-brandt-gallery-rebrand/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/CS_Brandt_Gallery_30.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1333",
+    tituloPt: "O dono tirou o próprio nome da galeria e entregou o rebranding para uma parente que acabou de abrir estúdio: a Rutger Brandt Gallery agora é só Brandt",
     categoria: "Branding",
-    data: "11 de setembro",
     estrelas: 4,
+    dek: "Dez anos depois de abrir, a galeria de Amsterdã faz seu primeiro rebranding grande — com mudança de nome, wordmark autoral e a ABC Laica, da Dinamo.",
     resumo: [
-      "A Alzheimer's Research UK abandonou o manual clássico da publicidade de causa — aquele que há décadas aposta em histórias dilacerantes para provocar culpa ou compaixão — e lançou The First One, campanha criada pela agência independente Beyond em resposta direta ao que a própria instituição chama de \"sadvertising\". A proposta é enquadrar a demência não como tragédia inevitável, mas como desafio científico passível de ser vencido.",
-      "O filme principal é um plano-sequência único e ininterrupto atravessando um parque britânico movimentado, dirigido por Saman Aminzadeh pela LoveSong com fotografia de Robbie Ryan. A câmera passa por multidões de idades e perfis diferentes, sublinhando o alcance universal da condição e, ao mesmo tempo, criando uma sensação de impaciência: a cada rosto que cruza o quadro, o espectador é convidado a pensar em qual geração poderia ser a primeira a ser salva caso a pesquisa acelere. A locução é de Aimee Lou Wood e a trilha, convenientemente, é do The Cure.",
-      "Os números sustentam a aposta. A campanha dá sequência a For a Cure, trabalho anterior da Beyond lançado em 2023; desde então a arrecadação da instituição cresceu 32% e sua posição no ranking de \"crença na causa\" entre as ONGs britânicas subiu do 14º para o 8º lugar, segundo o YouGov. A demência é a principal causa de morte no Reino Unido e afeta uma em cada duas pessoas, direta ou indiretamente. A frase-âncora resume tudo: em algum lugar, alguém vivo hoje pode ser o primeiro a ser curado.",
-      "A veiculação cobre TV, rádio, social e cinema em âmbito nacional, às vésperas do Dia Mundial do Alzheimer, em 21 de setembro. Há ainda execuções de mídia sob medida: takeovers de OOH espelhados que refletem o transeunte para dentro do próprio anúncio, vinhetas reimaginadas da Pearl & Dean nos cinemas e uma parceria com o podcast The Rest Is History ligando a pesquisa atual a grandes viradas científicas do passado. Jonny Ray, cofundador da Beyond, atribui o resultado à união entre criação e mídia em torno de um conceito estratégico forte."
+      "A galeria Brandt, de Amsterdã, apresentou o primeiro grande rebranding de sua história ao completar dez anos, assinado pelo recém-fundado estúdio Bureau Brandt. A casa é conhecida pela programação dinâmica, que mistura exposições e performances no espaço principal, e participa regularmente de feiras internacionais como The Armory Show, Untitled Art, NADA New York e Art Toronto.",
+      "A operação tem um lado familiar: o fundador Rutger Brandt procurou Sophia Brandt, parente que abriu o Bureau Brandt depois de seis anos no estúdio North, para desenvolver a nova identidade. O briefing pedia um sistema visual capaz de acompanhar a mudança de direção da galeria e ampliar sua presença no circuito global de arte.",
+      "A decisão mais visível é a troca de nome: de Rutger Brandt Gallery para simplesmente Brandt. Segundo o fundador, a ideia era criar uma marca 'mais inclusiva, mais confiante sobre onde estamos hoje e mais alinhada à direção que queremos tomar'. 'A base pessoal continua importante, mas o foco vem se deslocando para algo mais coletivo e mais aberto', disse ele.",
+      "O logo é um wordmark desenhado sob medida, equilibrando peso e simplicidade. No resto do sistema, o Bureau Brandt usa a ABC Laica, da fundição suíça Dinamo — uma tipografia construída a partir do diálogo entre dois instrumentos opostos, a pena de bico largo e a pena de bico fino, o que dá à comunicação um tom mais pessoal e brincalhão.",
+      "A paleta é preto e branco, escolha deliberada para que os artistas ocupem o centro da cena e a galeria funcione como plataforma comunitária. Um azul vivo aparece de vez em quando, usado com parcimônia, como elemento de apropriação da marca."
     ]
   },
   {
-    title: "This logo just turned 40, but it could have been made yesterday",
-    tituloPt: "Sem briefing e com menos de uma semana de prazo: o canguru dourado do Australian Made faz 40 anos com 99% de reconhecimento e nota de confiança +82",
+    title: "A new Nigerian design language",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/a-new-nigerian-design-language/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/BELONWUS_Owo_10.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1333",
+    tituloPt: "O jeito como o cobrador de ônibus dobra a nota na palma da mão virou linguagem visual: como o estúdio Belonwus fez uma fintech nigeriana fugir do azul e do verde",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "O estúdio de Lagos desenhou a identidade da Owo — 'dinheiro' em iorubá — a partir de mercados, fala cotidiana e tipografia vernacular.",
+    resumo: [
+      "Quando a agência nigeriana Belonwus começou a desenvolver a identidade da Owo, plataforma de pagamentos voltada a nigerianos, a equipe descartou de saída o caminho óbvio: mais uma marca de fintech vestida nos azuis e verdes de sempre. Em vez disso, foi buscar referência na cultura local.",
+      "O nome já é o primeiro gesto — 'owo' é a palavra iorubá para dinheiro. A partir daí, o estúdio puxou repertório da vibração dos mercados de rua e do modo como os cobradores de ônibus dobram as cédulas com destreza na palma da mão. A letra O, que não é usada por nenhum grande símbolo monetário do mundo, virou a oportunidade de transformar um ritual cotidiano em símbolo gráfico.",
+      "'Queríamos que tivesse a linguagem visual do dinheiro, mas de uma perspectiva nigeriana, com um texto enraizado na fala cotidiana', explica Jordan Belonwu, fundador e diretor criativo do estúdio. Ele destaca uma das linhas da campanha: 'Mande dinheiro tão simples quanto um Oi.'",
+      "Em seis anos de operação, a Belonwus se firmou como uma das principais agências criativas independentes da Nigéria, atuando em branding, direção criativa, design espacial e narrativa visual, com projetos para 1897, Owo, Bamboo, OctaFX e marcas emergentes. O traço que a distingue, segundo o Creative Review, é a capacidade de infundir estéticas culturais antigas numa linguagem contemporânea, garimpando tipografia vernacular e sistemas visuais ignorados para criar identidades que soam ao mesmo tempo inconfundivelmente nigerianas e globalmente legíveis."
+    ]
+  },
+  {
+    title: "HS2 excavations used to create biscuit-like Sweet Terrain tiles",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/14/sweet-terrain-bahbak-hashemi-nezhad-rafael-el-baz/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/sweet-terrain-tiles-hs2-bahbak-hashemi-nezhad-rafael-el-baz-design-clay-products_dezeen_2364_hero.jpg",
+    tituloPt: "Doze toneladas de argila escavada do canteiro viraram azulejo com relevo de forma de biscoito árabe — e vão revestir uma estação de trem em Londres",
+    categoria: "Design",
+    estrelas: 4,
+    dek: "Bahbak Hashemi-Nezhad e Rafael El Baz moldaram Sweet Terrain a partir de formas tradicionais de ma'amoul e do barro do próprio buraco da HS2.",
+    resumo: [
+      "Os designers Bahbak Hashemi-Nezhad e Rafael El Baz usaram moldes tradicionais de biscoito para criar Sweet Terrain, uma coleção de azulejos destinada a uma estação da linha de alta velocidade HS2 e feita com a argila escavada durante a própria construção.",
+      "A dupla resgatou 12 toneladas de barro retirado do canteiro de Old Oak Common, estação em obras em Londres projetada pelo escritório WilkinsonEyre. O material, que iria para aterro, foi refinado até chegar à consistência ideal para a produção de cerâmica.",
+      "Os relevos vêm de moldes modelados a partir das ferramentas de madeira usadas tradicionalmente para fazer ma'amoul, biscoito de origem árabe. O desenho nasceu das visitas dos designers a confeitarias no oeste de Londres pertencentes a padeiros libaneses e sírios que migraram para a região — a ideia é iluminar essas histórias e inserir identidade local num projeto de infraestrutura vasto e controverso.",
+      "'As metas eram fazer objetos hiperlocais que ressoem com quem vai vê-los e usá-los, e com isso instilar orgulho e incorporar uma narrativa que não é possível com produtos de prateleira', disse Hashemi-Nezhad ao Dezeen. El Baz acrescenta que projetos de infraestrutura, grandes ou pequenos, podem ser humanizados por meio do design.",
+      "A produção foi feita com a Craven Dunnill Jackfield, uma das mais antigas e últimas fabricantes tradicionais de azulejo do Reino Unido, que já produziu peças para o metrô de Londres. Juntos, desenvolveram escaneamentos 3D dos moldes de biscoito e testaram tamanhos e profundidades: 'Raso demais perde a tatilidade; saliente demais corre risco de lascar por vandalismo.'",
+      "Os azulejos devem ser usados nos 'espaços silenciosos' da estação — salas multifé, banheiros e corredores — e a quantidade final, ainda não confirmada, deve ficar na casa dos milhares. Os designers agora trabalham com o laboratório de esmaltes do fabricante, com a intenção de usar esmaltação manual. Para o padeiro Vasken Jermakian, da Sweetland Bakery, o projeto é 'um ato de reconhecimento'."
+    ]
+  },
+  {
+    title: "The Outline: Guinness, New Balance, and KFC - 14/09/2026",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/the-outline-guinness-new-balance-and-kfc-14-09-2026/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/Screenshot-2026-09-04-at-11.52.54.png",
+    tituloPt: "A harpa da Guinness virou a letra V de 'Lovely', a New Balance plantou um jardim de 900 m² na fábrica e a KFC transformou molho em acessório de passarela",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "O resumo semanal do Design Week traz a campanha global da AMV BBDO para a Guinness, uma colaboração inesperada em Cumbria e nove porta-molhos de grife.",
+    resumo: [
+      "A edição desta segunda do digest semanal do Design Week reúne movimentações de negócio, nomeações e curiosidades do setor. O destaque de marca é a Guinness, que lançou uma campanha global de out-of-home assinada pela AMV BBDO transformando sua harpa de 160 anos em recurso tipográfico: o 'V' da palavra 'Lovely' é substituído pelo símbolo da marca. A ação, batizada 'LoVely', reativa a plataforma clássica 'Lovely Day for a Guinness', que remonta à publicidade dos anos 1930, com fotografia de Dan Burn-Forti e Peter Franklyn Banks captando momentos reais no Electric Picnic, na Irlanda, e na Premier League. Está no ar na Irlanda e na Grã-Bretanha, com rollout previsto para África e Ásia-Pacífico — e chega enquanto a Diageo se prepara para investir quase US$ 1 bilhão na marca nos próximos três anos.",
+      "A parceria mais inusitada é a do joalheiro londrino Bleue Burnham com a New Balance. Além de assinar um 991v1 Made in UK, ele projetou um jardim de 900 metros quadrados para os funcionários da fábrica da marca em Flimby, na Cumbria: um espaço restaurativo com bancos encaixados em canteiros e cerejeiras crescendo através de mesas de piquenique. O tênis puxa direto do jardim — camurça marrom cor de pinha, costura multicolorida 'wild garden' aplicada à mão e o azul-bebê característico do designer na palmilha. Um documentário sobre a construção do jardim é narrado por Monty Don, do Gardeners' World da BBC. Só 240 pares.",
+      "No campo das curiosidades, a KFC transformou seus molhos em acessórios de moda: a Pocket Dip Collection tem nove porta-molhos com alça de marca e colorway próprio, um para cada sabor do cardápio Tenders & Dips, do Texas BBQ ao Mango Masala. Não estão à venda — a marca leva a coleção ao restaurante da Baker Street em 15 de setembro para sortear entre fãs, em mais um dos seus cruzamentos com moda, depois de uma linha de couro desgastado com a Aries e um desfile na London Fashion Week com Sinead Gorey em 2025.",
+      "A edição ainda registra o centenário da extensão da Northern line até Morden, com sete estações de Charles Holden; a nomeação do estúdio australiano Universal Favourite como parceiro-líder de design da LION por três anos; uma colaboração da Monotype com Elle Cordova, criadora da série viral 'Fonts Hanging Out'; ilustrações da Tanu Vasu para a reforma do Queen Mary 2 da Cunard; o retorno do Broken Britain Billboard em versão 'Unbreak Britain', em Whitechapel, durante o LDF; e a exposição da Koestler Arts no Southbank Centre, curada por jovens adultos que tiveram pais presos na infância."
+    ]
+  },
+  {
+    title: "Sylvan Hillebrand gives a 125-year-old oil paint company a contemporary refresh",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/sylvan-hillebrand-rembrandt-graphic-design-project-140926",
+    imageUrl: "https://m.itsnicethat.com/original_images/Sylvan-Hillebrand-Rembrandt-Graphic-Design-ItsNiceThat-6.jpg?class=w1440",
+    tituloPt: "Ele se mudou para Bolonha por um mês para conseguir olhar de fora a marca holandesa mais holandesa possível: o refresh da fabricante de tintas Rembrandt",
+    categoria: "Branding",
+    estrelas: 4,
+    dek: "O briefing não era reinventar, era afiar. O logotipo foi redesenhado sem que o consumidor médio percebesse — e a mudança vai levar anos para aparecer na prateleira.",
+    resumo: [
+      "Há mais de 125 anos a holandesa Rembrandt produz tintas a óleo valorizadas por profissionais pela transparência e pelo brilho. Cada cor segue uma receita própria e cada lote passa por controle de qualidade no laboratório da própria empresa; os materiais chegam hoje a artistas em mais de 100 países.",
+      "'O briefing não era reinventar a Rembrandt, era afiar sua identidade', conta o designer holandês Sylvan Hillebrand, responsável pela atualização visual. O cliente queria se afastar de uma expressão de artesania 'excessivamente tradicional, ligeiramente empoeirada' e chegar a algo mais relevante para uma geração mais jovem de artistas que ainda leva material de qualidade a sério.",
+      "O desafio é logístico além de estético. A marca existe no varejo e no digital, com centenas de cores em óleos, pastéis e aquarelas, e os lojistas mantêm estoques variados do produto antigo — pode levar anos até que tudo seja atualizado. Por isso, a nova identidade precisava conviver com a antiga durante a transição.",
+      "Para se distanciar, Hillebrand se mudou por um mês para Bolonha: 'Eu precisava de alguma distância dos Países Baixos para olhar a Rembrandt e suas origens holandesas de dentro e de fora ao mesmo tempo.' O resultado inclui um novo sistema tipográfico, paleta ampliada, um selo de herança reformulado e novas imagens de marca.",
+      "O logotipo foi mantido por precisar de reconhecimento imediato, mas redesenhado, reespaçado e testado sem que a mudança ficasse perceptível para o consumidor comum. A tipografia combina a Suisse International, para o lado contemporâneo e funcional, com a Suisse Neu, mais expressiva e ligada à herança — um aceno à influência histórica do design suíço sobre o gráfico holandês. A paleta original preto, dourado e off-white permaneceu, com acréscimo de bordô, verde e um cinza quente.",
+      "O selo de qualidade partiu de uma marca circular encontrada numa das gravuras do próprio Rembrandt Harmenszoon van Rijn. E, nas fotos de produto, feitas com o fotógrafo Corey Martin, o logo e o selo aparecem carimbados diretamente sobre pigmento de tinta, contra fundos em degradê."
+    ]
+  },
+  {
+    title: "Elon Musk's daughter's Tesla-trolling fashion advert is as cinematic as Star Wars",
     source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/logos-icons/this-logo-just-turned-40-but-it-could-have-been-made-yesterday",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/ovkvGP74irYA9s4XtoW8T6-1920-80.jpg",
+    url: "https://www.creativebloq.com/ai/elon-musks-daughters-tesla-trolling-fashion-advert-is-as-cinematic-as-star-wars",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/ik7JD24ZvjvHMahi6d9mgf-1920-80.jpg",
+    tituloPt: "A filha de Elon Musk passeia com um sósia do Tesla Optimus na coleira: a Desigual escalou Vivian Wilson para uma campanha anti-robô cheia de camadas",
     categoria: "Branding",
-    data: "12 de setembro",
     estrelas: 4,
+    dek: "Em 'Born to Disobey', a marca catalã transforma a rebeldia genérica da publicidade de moda em algo com endereço — e o robô é interpretado por um humano.",
     resumo: [
-      "Quarenta anos é uma eternidade para qualquer peça criativa seguir em circulação — quanto mais para um logo, que normalmente já dá alegria se durar quatro. Marcas mudam de discurso, empresas se fundem ou se dividem e, quando as vendas caem, os pedidos de rebrand se acumulam mesmo que a culpa não seja do símbolo. O triângulo verde com canguru dourado estilizado do Australian Made é a exceção que o Creative Bloq foi investigar.",
-      "O símbolo nasceu em 1986, dentro da campanha Australian Made lançada no governo de Bob Hawke, e praticamente não mudou desde então. Também não perdeu força: numa pesquisa recente, 99% dos australianos disseram reconhecê-lo, e ele acumula uma nota líquida de confiança do consumidor de +82, o que o coloca entre as marcas mais confiáveis do país, de qualquer categoria.",
-      "O detalhe mais desconcertante é a origem. Não houve briefing. O desenho foi feito pelo designer australiano Ken Cato em menos de uma semana, depois de um telefonema do governo. Cato resumiu recentemente a lição que tirou dali: nunca ignorar o óbvio, e sim tornar o óbvio visível. Um canguru saltando sobre um triângulo verde não é uma metáfora sofisticada que precisa de duas páginas de explicação — é um jeito direto e limpo de dizer \"Austrália\" em um instante.",
-      "Foi essa contenção que garantiu a sobrevivência do logo à fadiga global de rebrands: como nunca tentou ser moderno, descolado ou esperto, nunca ficou datado. O único susto veio em 2020, quando o governo australiano lançou uma \"Nation Brand\" separada que muita gente comparou, sem gentileza, a uma partícula de coronavírus — na verdade era uma acácia dourada, o emblema floral do país. A nova marca jamais teve a função de substituir o Australian Made, mas o simples fato de tanta gente ter achado que sim, e ter se irritado com isso, já era prova do vínculo. A moral: algumas ideias não precisam ser reinventadas, precisam de alguém disposto a confiar que a resposta óbvia, desenhada com simplicidade, era a resposta certa."
+      "Marcas de moda adoram se apresentar como rebeldes, celebrando autoexpressão e quebra de regras. A espanhola Desigual, segundo o Creative Bloq, finalmente encontrou contra o que se rebelar — e fez isso com uma campanha tão cinematográfica quanto cheia de camadas.",
+      "O centro da ação é um filme em que uma modelo tenta avariar os circuitos de um robô claramente baseado no Tesla Optimus. O subtexto é o que dá a virada: a modelo é Vivian Jenna Wilson, filha afastada do CEO da Tesla, Elon Musk.",
+      "A campanha 'Born to Disobey' é assinada pela ProdCo, com o filme dirigido pela PSG (Yukihiro 'Sho' Shoda, Pau López e Gerardo del Hierro, antigo TURBO). Ao longo do curta, Vivian testa os limites da programação de um robô batizado DESI 84 — referência ao ano de fundação da marca, sediada em Barcelona. Ela bate uma bola apoiada no peito do robô, o passeia na coleira e tenta ensiná-lo a se comportar no quarto. Depois de o robô pifar e ficar batendo a cabeça na parede, ela conclui: 'Algumas coisas não foram feitas para ser consertadas.'",
+      "Há ovos de páscoa: Vivian aparece lendo R.U.R., a peça de ficção científica de Karel Čapek de 1920 que deu ao mundo a palavra 'robô'. E o próprio robô do filme é, na verdade, um ator humano — ironia deliberada num momento de medo sobre robôs e IA substituindo empregos. O ator estudou vídeos do Optimus para imitar seus movimentos.",
+      "Segundo a marca, a mensagem é que 'a maior rebeldia já não é lutar contra o sistema, e sim recusar-se a fazer parte dele'. A produtora conta que o personagem de Vivian se desenvolveu naturalmente, com pouca discussão, por causa do ceticismo genuíno dela em relação ao que o robô representa: a modelo, que é trans, já criticou publicamente o impacto da IA sobre empregos criativos e por esvaziar a arte de intenção humana.",
+      "O Creative Bloq observa que a campanha pega a pose fria e a falsa profundidade da linguagem visual típica da publicidade de moda de luxo e, desta vez, usa esse repertório para dizer alguma coisa — com uma leitura edipiana difícil de ignorar."
     ]
   },
   {
-    title: "\"Industry in Germany is no longer open to what design can do\" say Currents Berlin organisers",
-    tituloPt: "Oitenta marcas, sessenta endereços e zero dinheiro público: duas jornalistas montaram em Berlim o festival de design que a Alemanha não estava disposta a financiar",
+    title: "Barbour gets lost in the countryside in latest campaign",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/barbour-aw26-campaign-film/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/The-Barbour-Way-screenshot-3.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1203&h=1200",
+    tituloPt: "Dois pubs com o mesmo nome, um mal-entendido e 130 milhas de estrada: a Barbour escalou Sienna Miller e Idris Elba para vender tartã",
+    categoria: "Branding",
+    estrelas: 3,
+    dek: "'The Barbour Way', da The Sunshine Company, é bonito e bem executado — e, na avaliação do Creative Review, um pouco seguro demais.",
+    resumo: [
+      "A Barbour lançou sua campanha de outono-inverno 2026, 'The Barbour Way', com um filme estrelado por Sienna Miller e Idris Elba como dois amigos numa aventura pelo interior. A peça foi criada pela The Sunshine Company e dirigida por Shannon Murphy, com fotografia de Robbie Ryan.",
+      "O roteiro parte de uma confusão entre dois pubs de mesmo nome: vestidos de Barbour, os protagonistas atravessam ruas de paralelepípedo e campos de fazenda até se reencontrarem numa encosta gramada. A narrativa é inspirada na jornada de 130 milhas que o fundador John Barbour fez de Kirkcudbrightshire, no sudoeste da Escócia, até South Shields, em 1894, onde abriu a primeira loja da marca.",
+      "O filme também serve para mostrar que a Barbour é mais do que jaqueta encerada: os tartãs da temporada aparecem em tricôs, camisas, vestidos, calças, casacos e acessórios. São dois novos padrões 'reimaginados' — o Birchwood, releitura do tartã de gala da marca inspirada nos bosques escoceses, e o Shadow, uma interpretação mais suave do tartã clássico.",
+      "A avaliação do Creative Review é morna no melhor sentido: bem fotografado, com charme dos protagonistas e boa costura com a herança da marca, mas um pouco seguro. Depois de um verão longo e quente, diz o texto, funciona como uma queda confortável na estação do aconchego.",
+      "A publicação lembra ainda que a Barbour, antes confinada à associação com a jaqueta encerada, se beneficiou do interesse renovado da moda por heritage, tendências dos anos 2000, cottagecore e quiet luxury, além de colaborações recentes com Paul Smith, Farm Rio e Margaret Howell."
+    ]
+  },
+  {
+    title: "London design \"an international success story\" says Sadiq Khan",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/10/currents-berlin-interview/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/hero-currents-berlin_dezeen_2364_col_0.jpg",
+    url: "https://www.dezeen.com/2026/09/14/london-design-festival-sadiq-khan/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/london-design-festival-sadiq-khan_dezeen_2364_col_1.jpg",
+    tituloPt: "£2,2 milhões investidos em dez anos destravaram £1,23 bilhão: a conta que o prefeito de Londres faz do London Design Festival — e o que ele admite sobre o Brexit",
     categoria: "Design",
-    data: "10 de setembro",
-    estrelas: 4,
+    estrelas: 3,
+    dek: "Em entrevista ao Dezeen, Sadiq Khan celebra os 600 mil visitantes do festival e reconhece que sair da União Europeia dificultou contratar e colaborar.",
     resumo: [
-      "O Currents estreou em Berlim com um modelo deliberadamente descentralizado e curado pela própria comunidade, com patrocínio corporativo mínimo e financiamento quase inteiramente bottom-up, bancado pelas marcas e estúdios participantes — uma lógica próxima à do 3 Days of Design de Copenhague. As fundadoras, as jornalistas Laura Ewert e Jasmin Jouhar, descrevem o formato como \"muito Berlim\": uma sala vazia, dez pessoas reunidas e, duas semanas depois, uma exposição em pé sem quase nenhum dinheiro. Jouhar chama isso de espírito de DIY — em Berlim ninguém espera que alguém venha dizer que está na hora.",
-      "A dupla afirma que o lançamento chega num momento decisivo, com mais estúdios e marcas interessantes saindo de Berlim do que nunca, mas quase nenhuma plataforma e nenhum financiamento para mostrá-los, dentro ou fora do país. Outros festivais tentaram representar a cidade ao longo dos anos, notadamente a Berlin Design Week organizada desde 2017 pelo estúdio State of Design, mas foram amplamente ignorados pela comunidade local. Ewert diz achar estranho que, com a qualidade de design que existe ali, não houvesse um lugar onde os designers berlinenses se sentissem confortáveis para expor.",
-      "Fora de Berlim o quadro não é melhor: a tradicional IMM Cologne chegou a cancelar sua edição de 2025 por queda de demanda, voltando apenas neste ano. Enquanto Suíça e Áustria aparecem em Milão com verba e estrutura, os alemães se viram sozinhos. O Currents também tentou verba pública e não conseguiu. Para Jouhar, houve um momento decisivo no pós-guerra em que a indústria alemã realmente se abriu ao design — foi a Braun com Dieter Rams e a Erco com Otl Aicher —, mas isso acabou: hoje a indústria não está mais aberta ao que o design pode fazer por seus processos e produtos. Ewert completa que, na Alemanha, o assunto é função, não design. O resultado é um beco sem saída: trabalho subvalorizado pela indústria e, ao mesmo tempo, inelegível para fomento cultural por ter aplicação comercial.",
-      "Ainda assim a cena prospera. Além de nomes consagrados como Konstantin Grcic e da manufatura de porcelana KPM, fundada em 1763, o programa reúne a Objekte Unserer Tage — que lança a coleção Linde durante o evento —, a marca de vidro Moonarij e estúdios como Llot Llov, Daftar e Hahn & Wolf. São 80 marcas e estúdios em 60 locais, com maioria local, além de participações como a Kaldewei e a sueca Bolon, que acaba de abrir seu primeiro showroom na cidade; um programa de palestras acontece no Eternithaus, edifício modernista restaurado. Para Ewert, o que mudou é que a energia DIY continua, mas o resultado já não parece DIY: está em nível internacional. Jouhar observa que isso é notável para uma cidade sem indústria desde a desindustrialização do pós-guerra, o que mantém a Alemanha mais descentralizada que os vizinhos, com Munique e Colônia também disputando atenção. Mesmo assim, Ewert aposta que Berlim pode se firmar como a nova capital alemã do design."
+      "Com o London Design Festival já em andamento, o Dezeen entrevistou o prefeito de Londres, Sadiq Khan, sobre o evento e o estado do design na cidade.",
+      "Perguntado por que vale investir na cena de design londrina, Khan recorreu à galeria de nomes: Thomas Heatherwick e Norman Foster na arquitetura e nos espaços públicos, Vivienne Westwood na moda, Tom Dixon no design de produto e Es Devlin na prática multidisciplinar. O festival, disse, funciona como um anúncio poderoso da cidade, atraindo atenção internacional, investimento e mais de 600 mil visitantes.",
+      "Os números que ele apresenta: ao longo dos últimos dez anos, a prefeitura investiu £2,2 milhões no festival, o que teria destravado £1,23 bilhão para a economia em empregos e investimento.",
+      "Entre as atrações deste ano, Khan citou The Pangolin Shield, a instalação no Strand, os distritos de design espalhados por onze bairros da cidade e a exposição Awakenings, no V&A, continuação da longa parceria do museu com o festival.",
+      "A resposta mais franca vem na comparação com Milão e Copenhague. Depois de afirmar que o LDF serviu de modelo para semanas de design mundo afora, o prefeito reconhece: 'Não há dúvida de que a saída do Reino Unido da UE tornou mais difícil para a indústria de design de Londres negociar, colaborar e recrutar talento na Europa.' Mais papelada, barreiras à circulação de talento criativo e menos acesso a financiamento europeu são os obstáculos citados — apesar dos quais, diz ele, Londres segue um lugar acolhedor para designers.",
+      "A entrevista foi originalmente escrita para a revista Dezeen Dispatch da edição 2026 do LDF, que acontece em vários endereços da cidade de 12 a 20 de setembro."
     ]
   },
   {
-    title: "How The Atlantic turned 169 years of print into a festival identity",
-    tituloPt: "Conchas, cavalos-marinhos, sereias e tridentes impressos desde 1857: a equipe interna da The Atlantic vasculhou o arquivo inteiro da revista e se recusou a deixar a IA montar as páginas",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/how-the-atlantic-turned-169-years-of-print-into-a-festival-identity",
-    imageUrl: null,
+    title: "New Logo and Identity for Ruggi by Fol",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_ruggi_by_fol.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/ruggi_logo_new.png",
+    tituloPt: "Uma figura humana virou ícone de marca de bens de consumo na Turquia: o Brand New registra como 'Spotted' a nova identidade da Ruggi, pelo estúdio Fol",
     categoria: "Branding",
-    data: "11 de setembro",
-    estrelas: 4,
+    estrelas: 3,
+    dek: "Registro curto na categoria Spotted, com marcação de antes e depois. O conteúdo completo está atrás do paywall do Brand New.",
     resumo: [
-      "Para o Atlantic Festival 2026, o time de design interno da revista foi até a sala de arquivo do escritório em Nova York e voltou com bordas, divisores de seção, mastheads e ornamentos — conchas, cavalos-marinhos, sereias, tridentes — que acompanham as páginas da publicação desde 1857. A equipe vasculhou todas as edições atrás de fragmentos que pudessem ser desmontados, recombinados, redesenhados e empurrados para outro lugar, com uma pergunta de partida: como fazer 169 anos de história do design parecerem vivos e, ao mesmo tempo, capturar a energia de um evento ao vivo?",
-      "Tudo foi fotografado e escaneado, depois reconstruído por image trace para funcionar como vetor, com ajustes pontuais, de modo que um mesmo fragmento escale de um ativo pequeno até um fundo de palco. A decisão mais demorada, conta a diretora de design Laura Scofield, foi definir quão \"limpos\" esses elementos deveriam ficar: com as ferramentas atuais é tentador transformar uma xilogravura de 200 anos num vetor impecável, mas o que se perde nisso é justamente a personalidade — a tremida de uma borda, os pontos onde a tinta não pegou. Discutiram muito e optaram por preservar as irregularidades, deixando a tradução para o digital visivelmente imperfeita. As composições, segundo ela, são montagens de tempos heterogêneos: elementos que nunca haviam dividido uma página aparecem agora lado a lado.",
-      "A única referência externa ao arquivo foi o Verbasizer, o aplicativo que David Bowie construiu com Ty Roberts nos anos 1990 para automatizar a técnica de cut-up que usava para escrever letras. O time chegou a considerar um randomizador de IA que montaria os ornamentos em layouts, mas descartou a ideia para continuar experimentando em seus próprios termos. As fontes vêm do sistema da revista: Garamond como tipo de texto em todas as superfícies e a Atlantic Condensed como display, cujo alto contraste nas serifas traz autoridade, conforme explica o VP e diretor criativo executivo Drew Campbell.",
-      "O emblema de Poseidon criado por W. A. Dwiggins, colofão da revista desde 1946, foi reposicionado menos como colofão e mais como elemento de interesse visual — a gravura oval fica entre \"New York City\" e as datas de setembro no lockup principal, que tem versões empilhada e horizontal. Um segundo símbolo, um medalhão oval com a letra A desenhado em estilo próximo ao do Poseidon, alterna com ele em alguns lockups e também aparece sozinho, em escala, como logomarca declarativa. As regras de sistema são rígidas: bordas tratadas como dispositivos gráficos monumentais, exageradas e sangradas; composições sempre assimétricas, nunca espelhadas; tipografia e grafismos sempre em preto puro, por mais colorido que fique o fundo. A paleta veio de outra pesquisa sobre Dwiggins conduzida pelo diretor de arte Devin Rochford, que encontrou pistas na decoração estêncil de The Travels of Marco Polo (1933) e nas etiquetas de lombada de Gargantua and Pantagruel (1936) — daí o salto para laranjas e amarelos de alto contraste atrás de ornamentos centenários. Para a animação, a prática barcelonesa Mallandrich recebeu o arquivo completo e devolveu um parallax de ondas, com camadas escalonadas que fazem os elementos históricos se moverem no vaivém do oceano; os sangramentos de tinta foram feitos nativamente no After Effects, cada revelação seguindo o contorno da arte em vez de uma máscara comum."
-    ]
+      "O Brand New publicou na categoria 'Spotted' — seus registros mais curtos, feitos sem análise longa — a nova marca e identidade da Ruggi, assinada pelo estúdio Fol. O post é de Armin Vit e traz comparação de antes e depois.",
+      "Pelos metadados públicos do post, o projeto está classificado na indústria de Bens de Consumo (Consumer Products) e recebeu as tags 'fol', 'human', 'icon', 'person' e 'turkey' — ou seja: um ícone construído a partir de uma figura humana, para uma marca turca, com o estúdio Fol como autor.",
+      "O post entra numa semana movimentada do Brand New, que também registrou a identidade da Spoak pela Nimble, a Tecate pela Bulletproof, o Hotel Willo pela Rethink e o novo logo da Hololive, além da edição 587 do Friday Likes.",
+      "Observação editorial: o conteúdo completo deste post, incluindo as imagens do sistema e o comentário do Brand New, está atrás do paywall de assinatura do site. O resumo acima foi escrito exclusivamente a partir dos elementos públicos — título, categoria editorial, indústria, tags e data."
+    ],
+    paywall: true
   },
   {
-    title: "OpenAI's Sam Altman says it would be 'ill-advised' to go public in 2026",
-    tituloPt: "O pedido de IPO já está protocolado em sigilo, mas Sam Altman diz que abrir capital agora, com tudo o que está acontecendo em segurança, seria um erro",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/04/GettyImages-2198353376.jpg?resize=1200,800",
+    title: "Long-running AI agents quietly drop compliance rules, and bigger context windows won't fix it",
+    source: "VentureBeat",
+    url: "https://venturebeat.com/orchestration/long-running-ai-agents-quietly-drop-compliance-rules-and-bigger-context-windows-wont-fix-it",
+    imageUrl: "https://images.ctfassets.net/jdtwqhzvc2n1/1Z4k1A8qAkzZcuAVWGLI2m/07013603fec43c94ab4d08befa8b8fd9/u7277289442_An_AI_robot_is_looking_at_spreadsheets._Dollar_si_51f0b024-c77e-4449-bbef-60a30e0e3a5a_1.png?w=800&q=75",
+    imgW: 1456,
+    tituloPt: "No nono dia o agente esqueceu a regra e ninguém percebeu: por que ampliar a janela de contexto não resolve o problema de governança da IA corporativa",
     categoria: "Tecnologia",
-    data: "12 de setembro",
-    estrelas: 4,
+    estrelas: 3,
+    dek: "Um arquiteto de dados descreve a 'deriva silenciosa' de agentes que rodam por dias — e propõe tirar a regra de compliance de dentro do prompt.",
     resumo: [
-      "A OpenAI protocolou confidencialmente seu pedido de abertura de capital, mas não vai à bolsa neste ano. A confirmação veio do próprio CEO, Sam Altman, em entrevista a Alyson Shontell, editora-chefe da Fortune, em meio ao desdobramento do episódio de invasão envolvendo OpenAI e HuggingFace e a um debate mais amplo sobre segurança em inteligência artificial.",
-      "Perguntado se a empresa ainda sente pressão para \"andar muito rápido\" por conta dos planos de IPO, Altman respondeu que a OpenAI não está com pressa e que, considerando tudo o que está acontecendo na área de segurança, este seria um momento mal aconselhado para abrir o capital. A empresa iria ao mercado, segundo ele, quando estivesse pronta — ou seja, quando o negócio estivesse pronto e quando houvesse conforto em relação ao momento que a sociedade vive com essa tecnologia.",
-      "Pressionado sobre se isso significava descartar 2026, foi direto: não em 2026, há muita coisa a fazer antes. A declaração alinha o discurso público com o que já vinha sendo noticiado — em junho, o New York Times havia relatado que, embora a OpenAI tivesse contratado bancos e advogados mirando o terceiro ou quarto trimestre de 2026, a companhia pendia para 2027 em razão da volatilidade das ações de tecnologia e de seus próprios desafios financeiros."
+      "O texto, assinado pelo consultor e arquiteto de gestão de dados corporativos Ankit Anand, descreve um cenário concreto: você implanta um agente de IA para rodar um fluxo de validação de dados-mestre por vários dias. No terceiro dia, ele já processou milhares de registros. As regras de governança que você fixou no prompt de sistema no começo? Sumiram — foram empurradas para fora da memória ativa.",
+      "O mais perigoso, segundo o autor, é que nada quebra. O sistema não trava, não dispara um único alerta de observabilidade. Ele apenas continua rodando, gerando resultados enquanto ignora as restrições que você supunha travadas. Semanas depois, uma auditoria interna encontra a lacuna de compliance e o time rastreia a origem até o nono dia.",
+      "A explicação técnica é a diluição da atenção. Em ambiente de piloto, a janela de contexto é pequena e o mecanismo de atenção do modelo mapeia bem o prompt de sistema. Mas LLMs são motores probabilísticos de geração, não bancos de dados determinísticos: quando a sequência de tokens escala para centenas de milhares, a atenção se dilui — o fenômeno que pesquisadores chamam de 'lost in the middle'. O modelo perde a fronteira entre contexto conversacional descartável e regra imutável.",
+      "Pipelines padrão de RAG não salvam o dia, argumenta Anand: bancos vetoriais são bons em achar texto semanticamente parecido, mas não impõem persistência de estado nem sobrescrevem saídas probabilísticas com restrições operacionais rígidas.",
+      "A solução proposta é separação dura, via arquitetura neuro-simbólica: a rede neural cuida do raciocínio e uma camada determinística de regras, inteiramente fora da janela de contexto, cuida da lógica simbólica. O modelo gera o rascunho; um motor determinístico avalia a saída contra lógica imutável antes de qualquer ação ser executada.",
+      "As três ações práticas sugeridas: auditar se os agentes em produção revalidam suas restrições no dia 4, no dia 10 e no dia 30; tirar os limites críticos do prompt em linguagem natural e movê-los para motores de política determinísticos com gateways de API que bloqueiem a ação; e isolar fisicamente a memória de rascunho do agente das suas restrições operacionais. Tratar a memória de trabalho do LLM como efêmera, e as regras de governança como estado imutável — e nunca misturar as duas."
     ]
-  },
-  {
-    title: "No fonts on a dead planet: a website case study",
-    tituloPt: "Trocaram a Monument Grotesk por Arial para economizar carbono, não aguentaram, e acabaram cortando 67% das emissões do próprio site mesmo assim",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/no-fonts-on-a-dead-planet/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/04-1024x768.jpg",
-    categoria: "Design",
-    data: "10 de setembro",
-    estrelas: 3,
-    resumo: [
-      "Em 2022, Mirella Arapian e sua equipe estavam num quiz de bar quando veio a pergunta: o que emite mais carbono, enviar 100 e-mails ou dirigir 1 km de carro? Responderam carro com toda a confiança. Erraram. Dali saiu uma investigação que levou a uma constatação incômoda: se a internet fosse um país, estaria entre os maiores emissores do mundo — e designers praticamente não pensam no impacto ambiental do próprio trabalho.",
-      "Então olharam para si mesmos. Segundo o Website Carbon Calculator, o site do estúdio emitia mais que 76,5% das páginas testadas: cerca de 145,6 kg de CO₂ por ano, com aproximadamente 10 mil visualizações mensais. Cada visita implica dados trafegando de um servidor por redes até o dispositivo, e toda essa infraestrutura consome energia — na maior parte das vezes de origem fóssil. Quanto mais dados uma página exige, mais energia para carregá-la. A ironia não escapou a ninguém: um estúdio com reputação em marcas radicais nas áreas de meio ambiente e tecnologia mantinha um site perdulário.",
-      "O diagnóstico do setor é duro. A indústria de design ficou muito boa em adicionar: mais uma animação, mais uma interação, mais uma fonte, mais um vídeo, mais um slideshow. A tecnologia tornou isso quase sem atrito e, em algum ponto do caminho, mais virou sinônimo de melhor. A home antiga tinha sete imagens em tela cheia, vídeo e animações de cerca de 8 MB por arquivo, com imagens na média de 700 KB. A equipe passou a questionar item por item: isto precisa estar aqui? Precisa ser deste tamanho? Precisa se mover? O que está contribuindo? Precisa mesmo existir?",
-      "Algumas respostas foram fáceis — JPGs de alta resolução viraram AVIF otimizados, quase toda a motion e o vídeo saíram, a navegação e o volume de conteúdo encolheram. Outras doeram. Trocaram a Monument Grotesk, da Dinamo, por Arial, fonte de sistema que dispensa download extra e, portanto, reduz transferência de dados. Era tecnicamente eficiente. Também era Arial. Há um limite para o quanto um designer suporta comprometer, e o estúdio acabou recorrendo ao Google Fonts, aceitando um pequeno aumento de energia em troca de uma tipografia que sustentasse a marca — o ponto, argumenta a autora, não é chegar ao menor número possível a qualquer custo, mas entender o custo de cada decisão e o que vale a pena. O mesmo raciocínio levou a interface do branco ao dark mode, reduzindo consumo sem abrir mão de acessibilidade. Resultado: as emissões por visualização caíram de 1,21 g para 0,42 g de CO₂, queda de 67%. A lição, diz ela, não é o número: é que restrição força ideias melhores. Quando não dá para apelar ao espetáculo nem jogar mais 8 MB de vídeo no problema, é preciso fazer o design comunicar mais com menos."
-    ]
-  },
-  {
-    title: "Misfits partners with Interact Brands on a shiny global packaging refresh",
-    tituloPt: "Caramelo escorrendo, biscoito quebrado e corte transversal da barra: a Misfits trocou o grafismo chapado por fotografia 3D e assumiu de vez a estética de doce",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/misfits-partners-with-interact-brands-on-a-shiny-global-packaging-refresh/",
-    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/09/Misfits_07-2617747_3x2.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=683",
-    categoria: "Branding",
-    data: "10 de setembro",
-    estrelas: 3,
-    resumo: [
-      "A marca britânica de barras proteicas Misfits apresentou um novo sistema global de embalagens desenvolvido com a agência Interact Brands, cobrindo seu portfólio no Reino Unido e nos Estados Unidos. O gatilho foi o lançamento da Misfits Stuffed, nova linha de barras de alta proteína: com o portfólio crescendo, a marca quis evoluir o sistema visual para refletir melhor seu posicionamento de doce moderno sem abrir mão da presença colorida e ousada que a firmou na gôndola.",
-      "A comparação entre o antes e o depois mostra a virada para imagem de produto dinâmica, tanto nos invólucros individuais quanto nas caixas multipack. Onde antes havia grafismos mais chapados, padrões repetidos do logo nas tampas dos displays e chamadas nutricionais em texto padrão, agora há fotografia tridimensional de comida: caramelo escorrendo, biscoito quebrado, espirais de cobertura e cortes transversais detalhados das barras. As linhas de texto padronizadas deram lugar a tipografia condensada para cada sabor — Cookie Dough, Caramel Fudge, Cookie Butter —, e a linha Stuffed adota fundo dividido em duas cores, logotipo em script e emblemas circulares emoldurando os números nutricionais.",
-      "Kirsten Wintermute, vice-presidente de marketing da Misfits, diz que o lançamento da Stuffed foi a oportunidade de evoluir visualmente e apostar naquilo que diferencia a marca, levando o design para uma direção mais indulgente e elevada sem perder a personalidade. Kris Haro, diretor de design da Interact Brands, explica que a marca chegou com bases fortes e voz distinta, mas precisava evoluir para acomodar inovações que já extrapolavam o recorte original plant-based — daí a paleta ampliada, os sistemas tipográficos expressivos inspirados em cada produto e as releituras sob medida de códigos nostálgicos de embalagem de doce.",
-      "A troca chega às prateleiras físicas e digitais dos dois países em outubro de 2026. Fundada no Reino Unido em 2020, a Misfits já se expandiu para Europa e América do Norte, está presente em mais de 6 mil pontos de venda e vendeu mais de 40 milhões de barras. A linha Stuffed estreia em lojas selecionadas do Costco nos EUA em 12 de setembro de 2026, seguida por Wegmans e Fresh Thyme, com lançamento no varejo britânico em outubro."
-    ]
-  },
-  {
-    title: "Lozi designs modular plywood furniture to make the most of compact bedrooms",
-    tituloPt: "Módulos a partir de 40 cm de largura e uma cama que some na parede: a Lozi quer oferecer marcenaria sob medida sem o preço da marcenaria sob medida",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/10/lozi-modular-plywood-furniture-compact-bedrooms/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/lozi-plywood-furniture-london-design-festival-modular-system-sq.jpg",
-    categoria: "Design",
-    data: "10 de setembro",
-    estrelas: 3,
-    resumo: [
-      "Durante o London Design Festival deste ano, a especialista em mobiliário de compensado Lozi estreia um sistema modular pensado para quartos pequenos, com guarda-roupas de linhas limpas e uma cama retrátil, proposto como alternativa acessível à marcenaria sob medida. A ideia nasceu no fim da pandemia, quando o fundador Soroush Pourhashemi passou a receber vários pedidos de clientes que precisavam que o quarto também funcionasse como espaço de trabalho.",
-      "Soluções sob medida para isso costumam sair caríssimas, por envolverem muito trabalho de projeto e prazos longos de fabricação. Com 14 anos de experiência em móveis customizados, Pourhashemi desenvolveu peças que, combinadas, mobiliam um quarto inteiro mantendo a conveniência e o custo menor de móveis avulsos. A analogia que ele oferece é direta: o usuário mistura unidades independentes para montar um conjunto que imita a marcenaria embutida, à maneira de como a Ikea vende a estante Billy.",
-      "A coleção reúne três modelos de guarda-roupa, uma cama retrátil tipo Murphy, um módulo de escrivaninha, uma cômoda e uma estrutura de cama independente, com criados-mudos e cabeceira opcionais. Cada peça pode ser adaptada e combinada sem necessidade de projeto específico. O maior problema dos quartos pequenos, segundo o designer, é usar o espaço limitado com eficiência — daí unidades a partir de apenas 40 cm de largura. E como quartos pequenos também tendem a parecer bagunçados, todo o desenho foi mantido limpo, com prateleiras e armazenamento escondidos atrás de portas bem acabadas em vez de estantes abertas.",
-      "Os guarda-roupas incluem uma unidade de portas duplas e outra de porta única, com terminações curvas que se combinam de várias formas; a cama retrátil pode compor uma parede contínua de armazenamento e desaparece quando não está em uso. As escrivaninhas funcionam sozinhas ou encaixadas ao lado dos armários, e a cômoda traz penteadeira embutida. A produção acontece na oficina da marca na Hackney Road, com um sistema de gabaritos modulares feito sob encomenda que permite fabricar todos os componentes curvos pelo mesmo processo. As curvas características da Lozi aparecem em toda a coleção, somando personalidade e reduzindo o risco de esbarrões em quinas dentro de um espaço apertado. O lançamento sai em quatro acabamentos clássicos — bordo, carvalho, cerejeira e nogueira."
-    ]
-  },
-  {
-    title: "New Logo for Hololive",
-    tituloPt: "Triângulo, azul e sans serif: o Brand New registra como Spotted o novo logo da Hololive, a gigante japonesa de VTubers",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_hololive.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/hololive_logo_before_after.png",
-    categoria: "Branding",
-    data: "10 de setembro",
-    estrelas: 3,
-    resumo: [
-      "O Brand New publicou, na categoria Spotted — a mais enxuta da casa, reservada a registros rápidos de mudanças de marca sem crítica estendida —, o novo logo da Hololive, a operação japonesa de VTubers que se tornou uma das maiores forças do entretenimento digital saído do Japão. O post traz o clássico par antes-e-depois da publicação e leva a assinatura de Armin Vit.",
-      "Pelos metadados públicos do item, a mudança é catalogada na indústria de Mídia e marcada com as tags azul, Japão, sans serif e triângulo — o que indica um redesenho ancorado numa forma triangular, paleta azul e tipografia sem serifa, os três elementos que o editor considerou definidores do novo desenho. A entrada acumulava, no fim de semana, nenhum comentário de leitores, o que é comum nos Spotted, que circulam menos que os Reviewed.",
-      "A análise detalhada do desenho, as aplicações e a opinião editorial completa ficam atrás da assinatura do Brand New, de modo que este resumo foi escrito a partir dos elementos públicos da página — título, categoria editorial, data, indústria e tags."
-    ],
-    paywall: true
-  },
-  {
-    title: "New Motion and Graphic System for Brunch Electronik Festival by THRU",
-    tituloPt: "\"Marky Mark and the Funky Brunch\": o Brand New registra o novo sistema gráfico e de movimento do festival barcelonês Brunch Electronik, assinado pela THRU",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_brunch_electronik_festival_by_thru.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/brunch_elektronik_festival_logo_before_after.png",
-    categoria: "Branding",
-    data: "8 de setembro",
-    estrelas: 3,
-    resumo: [
-      "Sob o título-trocadilho \"Marky Mark and the Funky Brunch\", o Brand New registrou na categoria Noted o novo sistema gráfico e de movimento do Brunch Electronik, o festival de música eletrônica diurna nascido em Barcelona, com criação do estúdio THRU. A categoria Noted fica entre a análise completa dos Reviewed e o registro rápido dos Spotted: há comentário editorial, mas em formato mais curto.",
-      "O que os elementos públicos da página revelam sobre o escopo é relevante: o projeto está catalogado na indústria de Entretenimento e traz as tags Barcelona, festival, motion, música e THRU Motion. A menção explícita a \"Motion and Graphic System\" no título, e não apenas a um logo, indica que o trabalho vai além da marca estática — trata-se de um sistema pensado para se comportar em movimento, algo coerente com um festival cuja comunicação vive em telas, palcos e redes sociais. A página exibe o par antes-e-depois do logo e uma amostra de aplicação.",
-      "O texto analítico do Brand New e o restante das peças estão restritos a assinantes; este resumo foi elaborado a partir do que é público na página — título, categoria editorial, data, indústria, tags e estrutura do material apresentado."
-    ],
-    paywall: true
   }
 ];
 
-/* ---------- Ilustração de fallback ---------- */
-function Ilustracao({ categoria, seed }) {
-  const paletas = {
-    "Branding": ["#f7b267", "#f4845f", "#e05b3a", "#fde8d4"],
-    "Design":   ["#5eead4", "#14b8a6", "#0f766e", "#dcf5ef"],
-    "Tecnologia": ["#a5b4fc", "#6366f1", "#4338ca", "#e7e6ff"]
-  };
-  const p = paletas[categoria] || paletas["Design"];
+const PALETAS = {
+  Branding: ["#F7C59F","#E8804B","#C8452A"],
+  Design:   ["#A8DCCB","#3FA88B","#12695A"],
+  Tecnologia:["#B9BDF2","#6A6BDA","#3B3596"]
+};
+
+function Ilustracao({ categoria, seed, alto }) {
+  const p = PALETAS[categoria] || PALETAS.Branding;
   const id = "g" + seed;
-  const r = (n) => ((seed * 37 + n * 91) % 100) / 100;
+  const r = (n) => ((seed * 37 + n * 61) % 100) / 100;
   return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img"
-         aria-label={"Ilustração gerada para a categoria " + categoria}>
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"
+         style={{width:"100%",height:"100%",display:"block"}} aria-hidden="true">
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p[3]} />
-          <stop offset="100%" stopColor={p[0]} />
+          <stop offset="0%" stopColor={p[0]}/>
+          <stop offset="100%" stopColor={p[1]}/>
         </linearGradient>
-        <linearGradient id={id + "b"} x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor={p[1]} />
-          <stop offset="100%" stopColor={p[2]} />
+        <linearGradient id={id+"b"} x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={p[2]} stopOpacity="0.85"/>
+          <stop offset="100%" stopColor={p[1]} stopOpacity="0.25"/>
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill={"url(#" + id + ")"} />
-      <circle cx={70 + r(1) * 200} cy={60 + r(2) * 120} r={50 + r(3) * 45}
-              fill={"url(#" + id + "b)"} opacity="0.75" />
-      <rect x={30 + r(4) * 190} y={110 + r(5) * 80} width={70 + r(6) * 90} height={40 + r(7) * 60}
-            rx="14" fill={p[2]} opacity="0.32" transform={"rotate(" + (r(8) * 30 - 15) + " 200 160)"} />
-      <path d={"M0 " + (200 + r(9) * 40) + " Q 100 " + (150 + r(10) * 60) + " 200 " + (195 + r(11) * 40) +
-               " T 400 " + (185 + r(12) * 45) + " L400 260 L0 260 Z"}
-            fill={p[1]} opacity="0.4" />
-      <circle cx={300 + r(13) * 70} cy={50 + r(14) * 50} r={12 + r(15) * 16} fill="#fff" opacity="0.5" />
+      <rect width="400" height="240" fill={"url(#"+id+")"}/>
+      <circle cx={70 + r(1)*260} cy={60 + r(2)*120} r={40 + r(3)*55} fill={"url(#"+id+"b)"}/>
+      <rect x={20 + r(4)*230} y={30 + r(5)*110} width={70 + r(6)*110} height={70 + r(7)*90}
+            rx="18" fill={p[2]} opacity="0.30"
+            transform={"rotate(" + Math.round(r(8)*40 - 20) + " 200 120)"}/>
+      <path d={"M0," + (150 + r(9)*50) + " C 110," + (70 + r(10)*90) + " 250," + (210 - r(11)*90) + " 400," + (110 + r(12)*70) + " L400,240 L0,240 Z"}
+            fill="#ffffff" opacity="0.22"/>
+      <circle cx={330 - r(13)*70} cy={190 - r(14)*70} r={12 + r(15)*20} fill="#ffffff" opacity="0.4"/>
     </svg>
   );
 }
 
-function Midia({ item, idx }) {
+function Midia({ item, idx, alt }) {
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={idx + 3} />;
+  if (!item.imageUrl || falhou) {
+    return <Ilustracao categoria={item.categoria} seed={idx + 3} />;
+  }
   return (
     <img src={item.imageUrl}
-         alt={item.tituloPt}
+         alt={alt || item.tituloPt}
          referrerPolicy="no-referrer"
          loading="lazy"
          onError={() => setFalhou(true)} />
   );
 }
 
-function Estrelas({ n }) {
-  return (
-    <span className="stars" aria-label={n + " de 5 estrelas"}>
-      {[1,2,3,4,5].map(i =>
-        <span key={i} className={i <= n ? "" : "off"}>★</span>
-      )}
-    </span>
-  );
-}
+const Estrelas = ({ n }) => (
+  <span className="stars" title={n + " de 5"}>{"★".repeat(n)}<span style={{color:"#dcdcd6"}}>{"★".repeat(5-n)}</span></span>
+);
 
-function TagCat({ categoria }) {
-  const cls = categoria === "Branding" ? "branding" : categoria === "Design" ? "design" : "tech";
-  return <span className={"tag " + cls}>{categoria}</span>;
-}
+const Cat = ({ c }) => (
+  <span className={"cat " + (c === "Design" ? "design" : c === "Tecnologia" ? "tech" : "branding")}>{c}</span>
+);
 
 function Leitor({ item, idx, fechar }) {
   return (
-    <div className="overlay" onClick={fechar} role="dialog" aria-modal="true">
+    <div className="overlay" onClick={fechar}>
       <div className="reader" onClick={(e) => e.stopPropagation()}>
         <div className="reader-media"><Midia item={item} idx={idx} /></div>
         <div className="reader-body">
           <div className="tagline">
-            <TagCat categoria={item.categoria} />
-            <span className="source">{item.source} · {item.data}</span>
+            <Cat c={item.categoria} />
+            <span className="src">{item.source}</span>
             <Estrelas n={item.estrelas} />
           </div>
           <h2>{item.tituloPt}</h2>
-          <p className="orig">Título original: “{item.title}”</p>
-          <div className="text">
-            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
-          </div>
+          {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
           {item.paywall &&
-            <p className="note">
-              Boa parte do conteúdo desta matéria está restrita a assinantes do {item.source}.
-              O resumo acima foi escrito apenas a partir dos elementos públicos da página — título,
-              categoria editorial, data, indústria e tags.
-            </p>}
+            <div className="note">Matéria atrás de paywall — o resumo acima foi escrito a partir dos elementos públicos da página (título, categoria, indústria, tags e data), sem acesso ao texto completo.</div>}
           <div className="reader-actions">
-            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">
-              Ler no {item.source} ↗
-            </a>
-            <button className="btn btn-ghost" onClick={fechar}>Fechar</button>
+            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
+            <button className="btn" onClick={fechar}>Fechar</button>
           </div>
         </div>
       </div>
@@ -448,77 +420,68 @@ function Leitor({ item, idx, fechar }) {
 }
 
 function App() {
-  const [aberto, setAberto] = useState(null);
-  const itens = useMemo(() => DATA.slice().sort((a, b) => b.estrelas - a.estrelas), []);
-  const manchete = itens[0];
-  const resto = itens.slice(1);
-  const portais = useMemo(() => new Set(DATA.map(d => d.source)).size, []);
-  const comFoto = useMemo(() => DATA.filter(d => d.imageUrl).length, []);
+  const [aberta, setAberta] = useState(null);
+  const manchete = NOTICIAS[0];
+  const resto = NOTICIAS.slice(1);
+  const portais = Array.from(new Set(NOTICIAS.map(n => n.source)));
+  const comFoto = NOTICIAS.filter(n => n.imageUrl).length;
 
   return (
-    <React.Fragment>
-      <div className="wrap">
-        <header className="top">
-          <div className="kicker">Domingo · 13 de setembro de 2026</div>
-          <h1 className="brand">Portal da Manhã</h1>
-          <p className="sub">
-            A seleção do dia em branding, design e tecnologia, garimpada nos principais
-            portais internacionais e resumida em português. Clique em qualquer matéria
-            para ler o resumo completo sem sair da página.
-          </p>
-          <div className="meta-row">
-            <span className="chip">{DATA.length} notícias</span>
-            <span className="chip">{portais} portais</span>
-            <span className="chip">{comFoto} com foto original</span>
-          </div>
-        </header>
-
-        <div className="hero" onClick={() => setAberto(0)}>
-          <div className="hero-media"><Midia item={manchete} idx={0} /></div>
-          <div className="hero-body">
-            <div className="tagline">
-              <TagCat categoria={manchete.categoria} />
-              <span className="source">{manchete.source} · {manchete.data}</span>
-              <Estrelas n={manchete.estrelas} />
-            </div>
-            <h2>{manchete.tituloPt}</h2>
-            <p className="dek">{manchete.resumo[0].slice(0, 220)}…</p>
-          </div>
+    <div className="wrap">
+      <header className="top">
+        <div className="kicker">Segunda-feira, 14 de setembro de 2026</div>
+        <h1 className="brand">Portal da Manhã</h1>
+        <p className="sub">Branding, design e tecnologia das últimas 24 horas, resumidos em português.</p>
+        <div className="meta-row">
+          <span className="pill">{NOTICIAS.length} notícias</span>
+          <span className="pill">{portais.length} portais</span>
+          <span className="pill">{comFoto} com foto original</span>
+          <span className="pill">Clique em qualquer card para ler o resumo</span>
         </div>
+      </header>
 
-        <div className="section-label">Mais notícias de hoje</div>
-        <div className="grid">
-          {resto.map((item, i) => (
-            <div className="card" key={item.url} onClick={() => setAberto(i + 1)}>
-              <div className="card-media"><Midia item={item} idx={i + 1} /></div>
-              <div className="card-body">
-                <div className="tagline">
-                  <TagCat categoria={item.categoria} />
-                  <span className="source">{item.source} · {item.data}</span>
-                </div>
-                <h3>{item.tituloPt}</h3>
-                <p>{item.resumo[0].slice(0, 150)}…</p>
-                <div className="foot-row">
-                  <Estrelas n={item.estrelas} />
-                  <span className="source">Ler resumo →</span>
-                </div>
+      <article className="hero" onClick={() => setAberta(0)}>
+        <div className="hero-media"><Midia item={manchete} idx={0} /></div>
+        <div className="hero-body">
+          <div className="tagline">
+            <Cat c={manchete.categoria} />
+            <span className="src">{manchete.source}</span>
+            <Estrelas n={manchete.estrelas} />
+          </div>
+          <h2>{manchete.tituloPt}</h2>
+          <p className="dek">{manchete.dek}</p>
+        </div>
+      </article>
+
+      <p className="section-label">Mais da edição</p>
+      <div className="grid">
+        {resto.map((item, i) => (
+          <article className="card" key={item.url} onClick={() => setAberta(i + 1)}>
+            <div className="card-media"><Midia item={item} idx={i + 1} /></div>
+            <div className="card-body">
+              <div className="tagline">
+                <Cat c={item.categoria} />
+                <span className="src">{item.source}</span>
+              </div>
+              <h3>{item.tituloPt}</h3>
+              <p className="snippet">{item.dek}</p>
+              <div className="card-foot">
+                <Estrelas n={item.estrelas} />
+                <span style={{fontSize:"12.5px",color:"#8b8f9c"}}>Ler resumo →</span>
               </div>
             </div>
-          ))}
-        </div>
-
-        <footer className="bot">
-          Portal da Manhã · edição de 13 de setembro de 2026. Todos os resumos são versões
-          em português escritas a partir da leitura das matérias originais — nenhum texto foi
-          copiado das fontes. Imagens de destaque carregadas diretamente dos servidores dos
-          respectivos portais e pertencentes aos seus detentores de direitos. Clique no título
-          de qualquer item para acessar a reportagem completa na fonte.
-        </footer>
+          </article>
+        ))}
       </div>
 
-      {aberto !== null &&
-        <Leitor item={itens[aberto]} idx={aberto} fechar={() => setAberto(null)} />}
-    </React.Fragment>
+      <footer className="bot">
+        Portal da Manhã — edição de 14 de setembro de 2026. Os resumos são produzidos e parafraseados em português a partir das matérias originais; nenhum texto é copiado das fontes. Todos os créditos e as imagens pertencem aos portais de origem, e cada item leva ao artigo completo.<br/>
+        Fontes desta edição: {portais.join(" · ")}.
+      </footer>
+
+      {aberta !== null &&
+        <Leitor item={NOTICIAS[aberta]} idx={aberta} fechar={() => setAberta(null)} />}
+    </div>
   );
 }
 

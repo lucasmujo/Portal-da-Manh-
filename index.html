@@ -1,401 +1,508 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 17 de setembro de 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<title>Portal da Manhã — 19 de setembro de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f6f4; --card:#ffffff; --ink:#15171a; --muted:#6b7280;
-    --line:#e6e6e2; --accent:#e0533d; --shadow:0 1px 2px rgba(16,18,20,.04),0 8px 24px rgba(16,18,20,.06);
+    --bg:#f7f6f3; --card:#ffffff; --ink:#15161a; --muted:#6b6f76;
+    --line:#e7e5e0; --accent:#d4573a; --accent-soft:#fdf2ee;
+    --brand:#c8663f; --design:#2f8a7a; --tech:#5b5fd6;
+    --shadow:0 1px 2px rgba(16,17,20,.04), 0 8px 24px rgba(16,17,20,.06);
+    --shadow-lg:0 2px 6px rgba(16,17,20,.06), 0 24px 60px rgba(16,17,20,.12);
+    --radius:18px;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
     background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
-  header.top{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px}
-  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
-  h1.brand{font-size:clamp(34px,6vw,58px);line-height:1.02;margin:10px 0 8px;letter-spacing:-.03em;font-weight:800}
-  .datelabel{color:var(--muted);font-size:15px}
-  .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .pill{font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  #root{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+  a{color:inherit}
 
-  .lede{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;background:var(--card);border:1px solid var(--line);
-    border-radius:22px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
-  .lede:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(16,18,20,.05),0 18px 40px rgba(16,18,20,.10)}
-  .lede-media{min-height:340px;position:relative;background:#eee}
-  .lede-media img,.lede-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .lede-body{padding:34px 34px 34px 6px;display:flex;flex-direction:column;justify-content:center}
-  @media(max-width:860px){.lede{grid-template-columns:1fr}.lede-body{padding:24px}.lede-media{min-height:230px}}
+  /* Header */
+  .hdr{padding:44px 0 26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .hdr-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;margin:0;line-height:1}
+  .logo span{color:var(--accent)}
+  .dateline{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+  .kicker{margin-top:14px;font-size:15px;color:var(--muted);max-width:620px;line-height:1.55}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+  .stat{font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);
+    padding:6px 12px;border-radius:999px;font-weight:500}
 
-  .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;
-    text-transform:uppercase;padding:5px 10px;border-radius:999px}
-  .tag.branding{background:#fdeee9;color:#b33f28}
-  .tag.design{background:#e7f4ef;color:#1d6f57}
-  .tag.tech{background:#eceafc;color:#4a3fb0}
+  /* Stars */
+  .stars{display:inline-flex;gap:2px;align-items:center}
+  .star{width:13px;height:13px;display:block}
 
-  h2.lede-title{font-size:clamp(24px,3vw,34px);line-height:1.15;letter-spacing:-.02em;margin:14px 0 12px;font-weight:800}
-  .dek{color:#3f454d;font-size:16px;line-height:1.55;margin:0 0 18px}
-  .srcline{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
-  .stars{color:#e8a33d;letter-spacing:2px;font-size:13px}
+  /* Tag */
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;color:#fff}
+  .tag.branding{background:var(--brand)}
+  .tag.design{background:var(--design)}
+  .tag.tecnologia{background:var(--tech)}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
-  @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:620px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);
-    cursor:pointer;display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(16,18,20,.05),0 16px 34px rgba(16,18,20,.10)}
-  .card-media{height:180px;background:#eee;overflow:hidden}
-  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .card-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-  h3.card-title{font-size:17px;line-height:1.3;margin:0;letter-spacing:-.01em;font-weight:700}
-  .card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:0;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    cursor:pointer;transition:box-shadow .3s ease, transform .3s ease;margin-bottom:38px}
+  .hero:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .hero-media{position:relative;min-height:380px;background:#eee}
+  .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-body{padding:34px 34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .hero h2{font-family:Fraunces,Georgia,serif;font-size:clamp(26px,3vw,36px);line-height:1.15;
+    margin:0;letter-spacing:-.015em}
+  .hero .dek{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+  .meta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .source{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .date{font-size:12px;color:var(--muted)}
 
-  .overlay{position:fixed;inset:0;background:rgba(18,19,22,.45);backdrop-filter:blur(3px);z-index:50;
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
-    animation:fade .22s ease}
+  .section-label{display:flex;align-items:center;gap:14px;margin:0 0 20px;
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
+    transition:box-shadow .3s ease, transform .3s ease}
+  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .card-media{height:190px;background:#eee;overflow:hidden}
+  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .5s ease}
+  .card:hover .card-media img{transform:scale(1.04)}
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.25;margin:0;letter-spacing:-.01em}
+  .card .dek{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0;flex:1}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding-top:10px;border-top:1px solid var(--line)}
+  .warn{font-size:11px;color:#a8802b;background:#fdf7e6;border:1px solid #f0e2b8;
+    padding:4px 8px;border-radius:6px;display:inline-block}
+
+  /* Modal */
+  .overlay{position:fixed;inset:0;background:rgba(18,19,22,.5);backdrop-filter:blur(6px);
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:50;
+    overflow-y:auto;animation:fade .25s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-  .modal{background:#fff;max-width:760px;width:100%;border-radius:22px;overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.28);animation:rise .28s cubic-bezier(.2,.7,.3,1)}
-  .modal-media{height:300px;background:#eee}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .modal{background:var(--card);max-width:780px;width:100%;border-radius:22px;overflow:hidden;
+    box-shadow:0 40px 100px rgba(0,0,0,.3);animation:rise .3s cubic-bezier(.2,.8,.3,1)}
+  .modal-media{height:320px;background:#eee;position:relative}
   .modal-media img,.modal-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .modal-body{padding:30px 34px 34px}
-  @media(max-width:620px){.modal-body{padding:22px}.modal-media{height:200px}}
-  .modal h2{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:14px 0 6px;font-weight:800}
-  .modal .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 18px}
-  .modal p.body{font-size:16px;line-height:1.7;color:#2b3036;margin:0 0 14px}
-  .note{font-size:13px;color:var(--muted);background:#faf9f7;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:16px}
-  .modal-actions{display:flex;gap:12px;align-items:center;margin-top:24px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:11px 18px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
-  .closebar{display:flex;justify-content:flex-end;padding:14px 16px 0}
-  .xbtn{border:0;background:#f1f1ee;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:17px;line-height:1;color:#555}
-  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+  .close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;
+    border:none;background:rgba(255,255,255,.92);cursor:pointer;font-size:20px;line-height:1;
+    color:#15161a;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);transition:background .2s}
+  .close:hover{background:#fff}
+  .modal-body{padding:30px 36px 36px}
+  .modal-body h2{font-family:Fraunces,Georgia,serif;font-size:clamp(24px,3.4vw,32px);
+    line-height:1.18;margin:14px 0 6px;letter-spacing:-.015em}
+  .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 20px}
+  .modal-body p.txt{font-size:16px;line-height:1.72;color:#2b2d33;margin:0 0 16px}
+  .src-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+    background:var(--ink);color:#fff;text-decoration:none;padding:12px 20px;border-radius:999px;
+    font-size:14px;font-weight:600;transition:opacity .2s}
+  .src-btn:hover{opacity:.85}
+  .note{margin-top:18px;padding:12px 14px;background:var(--accent-soft);
+    border-left:3px solid var(--accent);border-radius:8px;font-size:13px;color:#7a4433;line-height:1.55}
+
+  footer{margin-top:60px;padding-top:26px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted);line-height:1.7}
+
+  @media(max-width:980px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero{grid-template-columns:1fr}
+    .hero-media{min-height:260px;height:260px}
+  }
+  @media(max-width:620px){
+    .grid{grid-template-columns:1fr}
+    #root{padding:0 16px 60px}
+    .modal-body{padding:24px 22px 30px}
+    .modal-media{height:220px}
+    .hero-body{padding:24px}
+  }
 </style>
 </head>
 <body>
 <div id="root"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
-const { useState } = React;
+const { useState, useEffect } = React;
 
 const NOTICIAS = [
   {
-    title: "Marina Willer crafts letters with light and projection for BFI London Film Festival’s new identity and campaign",
-    tituloPt: "Nada foi feito no computador: a Pentagram projetou luz colorida sobre fundo preto, filmou e transformou as letras LFF na nova marca do Festival de Cinema de Londres",
-    source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/marina-willer-pentagram-bfi-london-film-festival-graphic-design-160926",
-    imageUrl: "https://m.itsnicethat.com/original_images/BFI_LFF_Logo.png?class=w1440",
+    title: "This city's clever minimalist logo redesign has a hidden meaning",
+    tituloPt: "O novo logo de Galway troca 500 anos de brasão por um 'g' com dois significados",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/logos-icons/this-citys-clever-minimalist-new-logo-design-has-a-hidden-meaning",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/sxywr9C7rcqkBgdJ5mgHfi-1920-80.jpg",
     categoria: "Branding",
     estrelas: 5,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "Marina Willer não é só sócia da Pentagram em Londres — ela também dirige filmes. Fez curtas para o arquiteto Richard Rogers e estreou em Cannes, em 2017, com o documentário Red Trees, sobre a fuga da própria família da Praga ocupada pelos nazistas. Foi com esse repertório que ela e a equipe receberam o encargo de refazer a identidade e a campanha do BFI London Film Festival de 2026, o maior festival de cinema da capital britânica.",
-      "A pergunta que organizou o projeto foi direta: como homenagear o ofício lento do cinema numa era de streaming e consumo picado? A resposta foi devolver o método para dentro da peça gráfica. As letras LFF da campanha não foram desenhadas digitalmente — foram feitas com recortes vazados, projeção de luz colorida sobre fundo preto (referência explícita à tela de cinema) e depois filmadas e fotografadas. A equipe testou câmera na mão, letras penduradas e, por fim, uma mesa giratória; o movimento capturado em set foi só reforçado depois na edição, para revelar cada detalhe aos poucos.",
-      "Parte do briefing era preservar herança: o logotipo que ilumina a fachada em cascata do edifício projetado por Norman Engleback em 1957 ganhou uma versão achatada e simplificada, pensada para viver bem no digital. O contraponto veio da cor. Depois de uma pesquisa ampla, a equipe descobriu que nenhum grande festival ou marca de cinema usava azul-claro — o tom entrou ao lado do roxo profundo e do rosa quente já associados ao evento, empurrando o festival para longe da aparência formal e fechada.",
-      "Willer insiste num ponto sobre o público: diferente de festivais equivalentes em porte, o LFF vende a maior parte dos ingressos para qualquer pessoa e mantém uma faixa de eventos gratuitos. Segundo ela, isso exigia uma identidade celebratória e ousada, capaz de conectar o BFI como autoridade curatorial a um festival que se quer de fato aberto."
+      "A Câmara Municipal de Galway, na Irlanda, aposentou o 'G' que a representava desde 1984 e apresentou uma marca minimalista que tenta comprimir história, língua e função pública em uma única letra. O resultado é um 'g' minúsculo em bordô cuja cauda foi desenhada a partir do casco do navio que aparece no brasão da cidade — a referência ao porto que ligou o oeste irlandês ao resto do mundo.",
+      "A parte superior da letra vem de outro lugar: do seanchló, a escrita histórica irlandesa, e do fáinne, o pequeno broche circular usado por quem fala gaélico. É uma forma de codificar o bilinguismo da cidade sem precisar escrever nada sobre isso. Há ainda uma leitura simbólica proposta pela própria prefeitura: o bojo da letra representa a população, e a cauda destacada representa o poder público que a sustenta e serve.",
+      "A troca não passou sem atrito. Dias antes do lançamento houve relatos de que o processo tinha sido suspenso diante da pressão popular para manter o desenho anterior, criado pelo designer local Jimmy Conneely para o quinto centenário da cidade. Um comerciante citado pela imprensa irlandesa resumiu a queixa: descartar o trabalho de um conterrâneo em um momento de erosão cultural.",
+      "O contra-argumento é prático. O 'G' de 1984 nasceu antes da internet e de qualquer app; seu elemento de escudo torna a aplicação digital complicada. A prefeitura afirma que a revisão veio depois de constatar que a população não reconhecia a extensão dos serviços prestados pelo município — e que a nova identidade existe para criar uma conexão mais consistente entre eles."
     ]
   },
   {
-    title: "Studio Blackburn Unveils Identity for Culture House Sunderland",
-    tituloPt: "As iniciais C e H viraram o desenho de uma casa — e essa casa virou moldura, sinalização e sistema inteiro do novo centro cultural de Sunderland",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/studio-blackburn-creates-brand-identity-for-sunderlands-new-culture-house/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/CH-Screens-1024x683.jpg",
-    categoria: "Branding",
-    estrelas: 4,
-    data: "17 set 2026",
-    resumo: [
-      "A agência britânica Studio Blackburn assina a identidade visual e o sistema de sinalização do Culture House Sunderland, um equipamento cultural e biblioteca pública de cerca de 5.600 m², distribuídos em quatro andares, que acaba de abrir as portas em Tyne and Wear.",
-      "O projeto é fruto de uma relação longa: o estúdio trabalha com a prefeitura de Sunderland há mais de uma década. A encomenda foi um sistema flexível que funcionasse igualmente bem na arquitetura física, no impresso e no digital — e o edifício faz parte do plano de requalificação Riverside Sunderland, abrigando ainda o National Centre for Creative Smart Cities.",
-      "O prédio combina galeria imersiva com narrativa digital em 360 graus, estúdio de croma, cabines de podcast, áreas de brincar para crianças, espaços íntimos de apresentação e um jardim na cobertura. A identidade responde a essa mistura com um sistema de logo construído sobre as iniciais C e H: as letras funcionam soltas, como ícones, ou se encaixam num único bloco que forma o contorno de uma casa.",
-      "Essa silhueta de casa é o dispositivo central do projeto. Ela emoldura imagens, orienta as animações e dá a base geométrica para um sistema modular de sinalização interna. A paleta foi extraída dos próprios materiais e detalhes arquitetônicos do interior, para que a marca parecesse nascida do edifício, e não aplicada sobre ele.",
-      "Paul Blackburn, fundador do estúdio, resume a premissa dizendo que o espaço pertence aos moradores de Sunderland e que a identidade precisava refletir a energia da cidade. Fotografia e motion colocam os próprios moradores no centro da narrativa visual, acompanhados de um tom de voz deliberadamente acessível."
-    ]
-  },
-  {
-    title: "New Logo and Identity for Pohoda Festival 2026 by Andrej & Andrej Studio",
-    tituloPt: "O maior festival de música da Eslováquia trocou a marca por um sistema de motion retrô anos 90: o Brand New dedicou uma resenha completa ao rebranding do Pohoda",
+    title: "New Logo and Identity for the Royal Winnipeg Ballet by Bruce Mau Design",
+    tituloPt: "Bruce Mau Design redesenha a identidade do Royal Winnipeg Ballet",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_pohoda_festival_2026_by_andrej_andrej_studio.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/Pohoda_Festival_before_after.jpg",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_the_royal_winnipeg_ballet_by_bruce_mau_design.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/RWB_logo_before_after.png",
     categoria: "Branding",
-    estrelas: 4,
-    data: "16 set 2026",
+    estrelas: 5,
+    data: "17/09/2026",
+    paywall: true,
     resumo: [
-      "O Brand New publicou nesta quarta-feira uma resenha completa — categoria Reviewed, a mais aprofundada do site — sobre o novo logo e a nova identidade do Pohoda Festival 2026, assinados pelo Andrej & Andrej Studio. O título da resenha, assinada pelo crítico Jon, brinca com as coletâneas de rave dos anos 90.",
-      "O Pohoda é o maior festival de música da Eslováquia, realizado desde os anos 1990 num antigo aeroporto militar em Trenčín. O projeto está catalogado na indústria de Entretenimento e no formato antes-e-depois, o que indica substituição de uma marca anterior e não criação do zero.",
-      "As tags registradas pelo próprio Brand New descrevem com precisão a direção visual: 3D, referência aos anos 90, animação, paleta colorida, sans serif geométrica, itálico, motion e estética retrô. É o vocabulário de um sistema pensado primeiro para a tela e para a projeção ao vivo — e não para o papel.",
-      "O conteúdo integral da resenha, com o comparativo antes e depois e as aplicações, fica atrás da assinatura paga do Brand New. Este resumo foi escrito a partir dos elementos públicos da página: título, categoria editorial, indústria, tags e a chamada da resenha."
-    ],
-    paywall: true
-  },
-  {
-    title: "NEW STANDARD.S gives climate journalism critic Brandmelder an identity",
-    tituloPt: "Para criticar a cobertura climática da imprensa alemã sem parecer ativismo, o estúdio berlinense transformou as fotos das próprias matérias analisadas em grade de pontos",
-    source: "The Brand Identity",
-    url: "https://the-brandidentity.com/project/new-standard-s-gives-climate-journalism-critic-brandmelder-an-identity",
-    imageUrl: null,
-    categoria: "Branding",
-    estrelas: 4,
-    data: "17 set 2026",
-    resumo: [
-      "O Brandmelder observa como a imprensa alemã cobre clima e coloca essa cobertura em contexto, apontando os padrões que se repetem. É um projeto editorial da Netzwerk Klimajournalismus Deutschland, rede que leva conhecimento climático para dentro das redações.",
-      "O estúdio berlinense NEW STANDARD.S teve um mês para entregar estratégia de marca, identidade, site, peças de redes sociais, merchandising e uma ferramenta de imagem sob medida. Inga Mücke, gerente de comunicação do Brandmelder, descreve o problema central: o veículo precisava ser levado a sério como crítico pelas próprias redações que analisa, o que significava que ele não podia parecer ativismo. O briefing pedia tornar a credibilidade visível e falar com quem está fora da bolha verde.",
-      "O Brandmelder foi lançado em março de 2026 com identidade própria, separada do nome da rede que o criou, sob a assinatura 'Klima braucht Kontext' — clima precisa de contexto. A imagem da marca é feita de pontos numa grade, extensão direta do logo de dois por dois pontos da Netzwerk Klimajournalismus.",
-      "A ideia tem consequência editorial: as imagens das matérias analisadas pelos jornalistas são convertidas nessa grade de pontos, deixando claro que ali está a leitura deles, não a foto original. A conversão roda numa ferramenta caseira em p5.js. O diretor-executivo Maximilian Mauracher explica que parte do código foi escrita com IA — recurso usado, segundo ele, para manipular material já existente de forma replicável, e não para substituir fotógrafos ou ilustradores.",
-      "A tipografia combina ABC Pelikan no logotipo e ABC Otto no texto corrido, ambas da Dinamo. A paleta foge de propósito do verde óbvio e do vermelho ou laranja associados a protesto: são quatro cores extraídas das famosas 'climate stripes', do azul ao coral, aplicadas separadamente para que a origem não salte aos olhos. O texto é sempre preto, o que torna o conteúdo social rápido de produzir e sempre legível. Segundo Mücke, a imprensa especializada notou o projeto e abriu uma discussão interna no setor."
+      "O Royal Winnipeg Ballet — a companhia de balé profissional mais antiga do Canadá — ganhou uma nova identidade assinada pela Bruce Mau Design, publicada na categoria 'Reviewed' do Brand New, a mais rigorosa do site.",
+      "Pelos elementos públicos do post, o projeto se apoia em um sans serif condensado e em uma paleta que tem o azul como cor dominante. As tags atribuídas pela publicação apontam o eixo conceitual do trabalho: movimento e sistema cinético — escolha coerente para uma instituição cuja matéria-prima é o corpo em deslocamento, e que sugere uma identidade pensada para se comportar em animação, não apenas em papel timbrado.",
+      "O material divulgado inclui uma comparação antes-e-depois do logotipo e uma série de cartazes de mídia exterior, indicando que o sistema foi construído com a comunicação de rua em mente — o território onde companhias de dança disputam atenção com o resto da programação cultural da cidade.",
+      "O post do Brand New é de assinantes: o conteúdo completo, com a análise crítica e a galeria de aplicações, está atrás de paywall. Este resumo foi escrito a partir do título, categoria, indústria e tags disponíveis publicamente."
     ]
   },
   {
-    title: "Airbnb orders independent guesthouse to change its logo",
-    tituloPt: "Uma pousada de Dorset chamada Bnb-side recebeu carta dos advogados do Airbnb: as três letras 'bnb' estariam prejudicando a reputação da gigante",
+    title: "New Balance sues rival athletics brand over shoe logo",
+    tituloPt: "New Balance processa a Decathlon: o 'K' do Kiprun seria um 'N' disfarçado",
     source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/logos-icons/airbnb-orders-independent-guesthouse-to-change-its-logo",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/qhDQQ39qG8VaUqsf7kHK4h-1500-80.jpg",
+    url: "https://www.creativebloq.com/design/logos-icons/new-balance-sues-rival-athletics-brand-over-shoe-logo",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/BkoKFTEBdWfUEYwPY6csrD-2560-80.jpg",
     categoria: "Branding",
     estrelas: 4,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "O Airbnb exigiu que uma pousada independente em Portland, no condado britânico de Dorset, mude seu logotipo. O argumento dos advogados da empresa é que usar as letras 'bnb' torna o nome próximo demais do da plataforma.",
-      "A carta chegou depois que a pousada tentou registrar o próprio logo como marca. Os advogados alegaram que o estabelecimento poderia se beneficiar indevidamente da semelhança e até danificar a reputação do Airbnb.",
-      "O Creative Bloq nota o que torna o caso peculiar: normalmente, nessas disputas, o problema é o desenho da marca. Aqui, os dois logos não se parecem em nada — o que está sendo contestado é o termo 'bnb', abreviação corriqueira de bed and breakfast, usada há décadas no setor.",
-      "A pousada se chama Bnb-side e foi criada justamente para sustentar financeiramente o B-side, um festival sem fins lucrativos da ilha. Rocca Holly-Nambi, diretora do festival, e Cat Wightman, gerente da pousada, disseram à BBC Radio Solent que não vão recuar: pretendem se manter firmes porque a hospedagem é o que garante o futuro do festival.",
-      "Ao jornal The Guardian, as duas acrescentaram o dado que dá contorno político ao episódio: Portland está tomada por imóveis anunciados no Airbnb e várias pousadas locais pequenas fecharam por causa disso. Mirar justamente a Bnb-side, nesse contexto, é um péssimo cartão de visitas para a plataforma."
+      "A New Balance entrou com ação judicial contra a Decathlon alegando violação de marca registrada. O objeto da disputa é o tênis de corrida Kiprun, da varejista francesa, que traz um emblema estilizado em forma de 'K' na lateral — e que, segundo a petição da New Balance, é 'inconfundivelmente um N'.",
+      "A marca americana usa seu 'N' lateral desde os anos 1970, e é justamente essa longevidade que sustenta o argumento: trata-se de um dos identificadores mais reconhecíveis da categoria, aplicado sempre na mesma posição do calçado. O risco alegado é de confusão direta no ponto de venda, agravado pelo fato de as duas empresas competirem no mesmo segmento de corrida.",
+      "Disputas de logotipo não são raras no setor, mas a proximidade de mercado eleva o que está em jogo. A New Balance recorreu à corte federal de Massachusetts pedindo não só o bloqueio do emblema, mas também a destruição do estoque existente e indenização.",
+      "Segundo a reportagem, a New Balance tentou resolver a questão diretamente com a Decathlon no início deste ano, sem sucesso — o que explica a judicialização. O caso serve de lembrete sobre o quanto um elemento gráfico aparentemente simples, quando ocupa o mesmo território visual de um concorrente, pode se transformar em passivo jurídico."
     ]
   },
   {
-    title: "Yinka Ilori trash bins \"find the magic in the everyday\"",
-    tituloPt: "Lixeira, tábua de passar e varal ganharam a paleta amarelo-laranja-roxo de Yinka Ilori — e o designer já avisou qual é o próximo alvo: a escova de vaso sanitário",
+    title: "Greenspace crafts brand identity for Philip Webb-designed One Palace Green",
+    tituloPt: "Greenspace trata um imóvel vitoriano de Londres como peça de coleção de arte",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/greenspace-crafts-brand-identity-for-philip-webb-designed-one-palace-green/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/OPG_CASESTUDY_STILLS_PROCESS_SYMBOLS_HISTORY_1-1024x576.jpg",
+    categoria: "Branding",
+    estrelas: 4,
+    data: "18/09/2026",
+    resumo: [
+      "A consultoria londrina Greenspace desenvolveu identidade, posicionamento e material de apoio para o One Palace Green, edifício tombado em Kensington Palace Gardens projetado pelo arquiteto do movimento Arts and Crafts Philip Webb e concluído em 1870. O prédio foi erguido como residência londrina de George Howard, 9º Conde de Carlisle, e teve interiores executados pela firma de William Morris — parte dos quais foi restaurada na conversão atual.",
+      "A decisão estratégica foi recusar o vocabulário padrão do marketing imobiliário de luxo. Em vez de tratar o imóvel como ativo de portfólio, a agência construiu a plataforma 'A Modern Masterpiece', posicionando a propriedade como item colecionável de relevância arquitetônica. Nas palavras do fundador Adrian Caddy, ler o edifício apenas pelo valor de mercado deixaria escapar sua relevância cultural, mais próxima de uma coleção patrimonial.",
+      "O sistema visual se organiza em torno das 'Collector's Marks' — os monogramas e carimbos que obras de arte acumulam ao passar por diferentes coleções ao longo do tempo. O logotipo principal incorpora três marcas autorais, cada uma amarrada a um fio da linhagem do prédio: a família Howard que o encomendou, o endereço em Kensington Palace Gardens e os criadores originais, Webb e Morris.",
+      "A tipografia é uma versão customizada da Ergon, da Commercial Type, escolhida por qualidades caligráficas que ecoam as letras do período Arts and Crafts sem perder estrutura para uso digital. A paleta trabalha verdes profundos, roxos e acabamentos metálicos, referência ao parque vizinho e aos elementos decorativos restaurados. Como o edifício ainda não está pronto, a Greenspace encomendou à artista Emily Robertson uma série de aquarelas do exterior e da rua."
+    ]
+  },
+  {
+    title: "Tom Pearson unveils riveting aluminium furniture with droplet-like patterns",
+    tituloPt: "Tom Pearson faz do rebite — e do acaso da anodização — o ornamento dos seus móveis",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/16/yinka-illori-bins-ironing-board-brabantia/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/yinka-illori-bins-ironing-board-brabantia_dezeen_2364_hero_13.jpg",
+    url: "https://www.dezeen.com/2026/09/18/tom-pearson-riveting-aluminium-furniture/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/tom-pearson-studio-10000-rivets_dezeen_2364_col_sq4.jpg",
     categoria: "Design",
     estrelas: 4,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "O designer britânico-nigeriano Yinka Ilori assinou para a Brabantia uma linha de produtos domésticos batizada simplesmente de Home Collection: três lixeiras, tábua de passar com capas extras, varal e um conjunto-presente com garrafa, tigela de café da manhã e saladeira.",
-      "O ponto de partida, contou ele ao Dezeen, foi achar a mágica no cotidiano. Ilori argumenta que o design dedica atenção excessiva a objetos de luxo e peças colecionáveis, enquanto ignora justamente os itens que a pessoa pega várias vezes por dia — e que, por isso mesmo, viram parte grande da vida de alguém.",
-      "São três lixeiras: uma dupla sobre pernas e dois modelos de pedal, de cinco e de trinta litros. Todas as peças carregam o padrão e as cores fortes que marcam o trabalho dele. Lixeiras e capas de tábua compartilham um mesmo motivo: linhas laranjas que começam separadas no topo e vão se unindo até formar uma listra contínua embaixo.",
-      "Ilori explica a leitura por trás do desenho — muitos esforços individuais que acabam formando um quadro maior, como a vida que a pessoa constrói. A combinação de amarelo, laranja e roxo busca ritmo e movimento, com cada peça tendo personalidade própria sem deixar de pertencer à mesma família.",
-      "Sobre a escolha da lixeira como suporte, ele diz gostar da ideia de dar vida interior a objetos que usamos sem pensar, tratando o morador como curador da própria casa. E revela que gosta genuinamente de passar roupa, o que tornou a tábua uma extensão natural. Perguntado sobre o limite dessa missão, respondeu sem hesitar: a escova de vaso sanitário é o próximo projeto.",
-      "A coleção complementa a linha de casa e mobiliário que Ilori criou recentemente para a rede Dunelm. Entre outros trabalhos recentes dele estão o troféu de melhor jogador da Copa Africana de Nações e uma instalação para a Veuve Clicquot."
+      "A coleção 10.000 Rebites, primeira linha de móveis e iluminação do Tom Pearson Studio, está em exibição na loja APOC, em Londres, durante o London Design Festival. As peças de alumínio funcionam ali como expositores e mesas para roupas — ou seja, estreiam já em uso, não em pedestal.",
+      "A origem do trabalho é técnica, não conceitual. Pearson queria aprofundar experimentos com anodização, processo que altera a estrutura superficial do metal e cria uma camada resistente. As formas angulares vieram como consequência das restrições: seus tanques de ácido só comportam chapas de determinado tamanho, e soldar alumínio anodizado é possível porém sujo. Daí a construção rebitada. 'Acho mais interessante ser guiado pelo acaso e pela brincadeira do que partir de um conceito abrangente', disse o designer.",
+      "O acabamento do alumínio é notoriamente ingrato — basta desviar o olhar para a peça aparecer coberta de digitais. A anodização resolve isso, mas encontrar fornecedor disposto a ceder um canto da oficina para experimentação é difícil. Pearson passou a anodizar as peças ele mesmo justamente para aplicar os corantes à mão, com pincéis, aerógrafos e pipetas, em vez de buscar a cor chapada e uniforme do padrão industrial. O resultado são padrões que lembram gotas d'água.",
+      "Os rebites correm ao longo das emendas, criando bordas sobre-esculpidas que fazem algumas prateleiras parecerem flutuar. Quanto ao nome: 'tecnicamente são 6.264 rebites nas peças', admitiu Pearson. 'Encomendei 10 mil. Vai saber onde foram parar os outros.'"
     ]
   },
   {
-    title: "How craft conquered design",
-    tituloPt: "O artesanato virou o que há de mais cobiçado no design, e o design industrial perdeu o brilho: o Dezeen investiga por que a virada aconteceu",
+    title: "Bin Wu's mirror-topped Pavilion of Time aims to \"make time tangible\"",
+    tituloPt: "No Palais-Royal, Bin Wu constrói um pavilhão em que o relógio é a luz",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/16/how-craft-conquered-design/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/craft-design-sq.jpg",
+    url: "https://www.dezeen.com/2026/09/18/pavilion-of-time-bin-wu-paris-design-week/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/bin-wu-pavilion-of-time-paris-design-week_dezeen_1704_col_sq.jpg",
     categoria: "Design",
     estrelas: 4,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "O artesanato ficou cool. O design industrial, não. A reportagem de Debika Ray para o Dezeen parte dessa inversão de status para perguntar o que a provocou — e se as duas coisas são mesmo tão distintas quanto o discurso sugere.",
-      "Um dos personagens é Andu Masebo, designer londrino que produz objetos funcionais e peças de arte em madeira e metal. Ele faz questão de dizer que nunca teve nenhuma noção romântica em relação ao artesanato: começou a fabricar os próprios projetos simplesmente porque não encontrava empresa disposta a produzi-los para ele.",
-      "É uma explicação pragmática que desmonta boa parte da mitologia em torno do tema. O que se lê como escolha estética ou posicionamento ideológico é, em muitos casos, resposta a um gargalo concreto de produção — a indústria deixou de ser porta de entrada para o designer jovem.",
-      "O texto saiu durante o London Design Festival, semana em que a cidade se enche de peças em edição limitada, protótipos e experimentação material, o que dá ao debate um pano de fundo bastante literal.",
-      "Este resumo cobre o enquadramento e o depoimento centrais publicados pelo Dezeen; a reportagem completa, com os demais entrevistados, está no link da fonte."
+      "O designer de interiores chinês Bin Wu instalou o Pavilion of Time no pátio do Domaine National du Palais-Royal, em Paris, como resposta ao tema desta edição da Paris Design Week, 'Pulse in Motion'. A proposta, nas palavras dele, é tornar o tempo 'tangível e caminhável'.",
+      "Sob uma cobertura circular espelhada, o pavilhão se divide em três segmentos de madeira, cada um com uma abertura que permite ao visitante atravessá-los em círculo. A estrutura é envolvida por uma membrana translúcida semelhante a papel — polietileno adequado ao uso externo, com textura que remete ao papel Xuan tradicional chinês. A luz natural atravessa esse invólucro e é o deslocamento dessa luz, não um mostrador, que marca a passagem das horas.",
+      "'Esperamos que as pessoas se movam continuamente — os passos traçam o arco, a luz do sol escorre pelo papel e pelo espelho', disse Wu. 'Luz e sombra se tornam mãos intangíveis, inscrevendo a trajetória do tempo. Aqui o tempo não é medido por relógios, mas pela luz; não em números, mas pelo movimento e pelo repouso do corpo.'",
+      "A forma circular foi escolhida em contraste deliberado com a arquitetura clássica ortogonal do Palais-Royal, e também evoca a noção chinesa antiga de 'céu redondo e terra quadrada'. A leveza translúcida opõe-se ao peso do entorno histórico. À noite, um sistema de iluminação da marca chinesa Moorgen acende o interior; cadeiras de fibra de carbono da Shang Xia convidam à pausa nas bordas. Wu, fundador do W Design, foi eleito designer de interiores do ano no Dezeen Awards China 2024."
     ]
   },
   {
-    title: "Collate Lobby curates fictional 1930s hotel suite to launch its first editions collection",
-    tituloPt: "Uma agência de recrutamento montou uma suíte de hotel fictícia dos anos 1930 em Hackney para lançar sua plataforma de design — com mais de 30 estúdios e 40 objetos",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/16/collate-lobby-fictional-1930s-hotel-suite/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/collate-lobby_dezeen_2364_sq_0.jpg",
+    title: "Design review: The new Škoda Epiq and the quiet art of getting it right",
+    tituloPt: "O Škoda Epiq não é um clássico de museu — e esse é exatamente o projeto",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/design-review-the-new-skoda-epiq-and-the-quiet-art-of-getting-it-right/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/dsf6089-1_e3a8b830-1920x1280-1-1024x683.jpg",
     categoria: "Design",
     estrelas: 3,
-    data: "16 set 2026",
+    data: "17/09/2026",
     resumo: [
-      "Mais de 30 designers, artesãos e estúdios criaram móveis e objetos em edição limitada ou em estágio de protótipo para a Lobby, nova plataforma de design lançada durante o London Design Festival pela agência de recrutamento Collate Form.",
-      "A exposição de estreia tem o formato de uma suíte de hotel fictícia com saguão, inspirada na moda e nos interiores dos anos 1930. Quase tudo foi desenvolvido especialmente para a ocasião: um espelho de metal polido de Jaclyn Pappalardo, um divisor de ambiente em cota de malha de Edward John Milton e uma poltrona de Matthew Coules estão entre os destaques.",
-      "O fundador James Garis concebeu a Lobby como espaço para designers emergentes e estabelecidos desenvolverem produtos e testarem o mercado. A plataforma se posiciona no meio do caminho entre marca e varejista: dá liberdade para experimentar, mas mantém curadoria. Garis diz conhecer muitos designers talentosos que não tinham por onde escoar o trabalho de forma controlada — existem serviços e sites abertos, mas sem curadoria nada parece uma marca.",
-      "O modelo funciona por temas: a cada drop, os participantes respondem a um mote específico. Na primeira leva, Garis pediu um objeto que merecesse viver num hotel parisiense com clima de boudoir, e depois acompanhou de perto a fase final de desenvolvimento de cada peça. Todos os objetos podem ser encomendados, e a Lobby detém exclusividade por no mínimo três anos; os mais bem-sucedidos entram na coleção permanente.",
-      "Sobre a relação com os criadores, Garis é direto ao dizer que muita gente do setor é passada para trás por marcas e que a proposta é ser o mais justa possível — se não funcionar, o designer leva a ideia para outro lugar. A mostra ocupa duas salas do Yorkton Workshops, em Hackney, sede do estúdio Pearson Lloyd, e fica em cartaz de 12 a 20 de setembro."
+      "David Coveney escreve uma resenha incomum para a Design Week: a de um carro que se recusa a dar munição para crítica fácil. Depois de rodar pelos Alpes tiroleses com o novo Epiq elétrico, ele conta que queria dizer que o interior era sem graça e o exterior tedioso — e não conseguiu, porque nada disso era verdade.",
+      "A tese é que a Škoda acertou a estratégia, não o espetáculo. O briefing implícito seria criar um carro sobre a plataforma MEB+ igualmente à vontade no estacionamento de uma estação de trem e na entrada de um hotel caro. O exterior segue a tendência atual de formas seguras e tons discretos; a inteligência de projeto está na cabine.",
+      "Ali o texto destaca o acabamento Techtona — material de toque macio, costurado como couro mas sem tentar imitá-lo —, os acabamentos Loft Mint e Suite, e detalhes como o botão do difusor de ar que parece flutuar atrás do painel. A comparação com o Volvo EX30, de dimensões próximas, é favorável ao Škoda: o sueco é mais rápido, mas de clima bem mais austero, e o Epiq topo de linha custa menos que o Volvo de entrada.",
+      "Na interface, construída sobre Android Automotive OS, as equipes de design mantêm liberdade sobre tipografia, cores e fluxos de UX mesmo compartilhando arquitetura com o grupo VW. Há ainda um assistente de voz chamado Laura e um detalhe que interessa a designers industriais: a Škoda publica arquivos 3D oficiais de acessórios de cabine no Printables. Coveney elogia a abertura e cobra mais — a licença atual não permite derivações nem customizações."
     ]
   },
   {
-    title: "Al Gore has a surprisingly calm take on the AI data center backlash",
-    tituloPt: "Todos os data centers de IA do mundo emitem menos que os lixões a céu aberto, diz Al Gore — o que o preocupa é outra coisa, e vem de dentro da própria indústria",
+    title: "RCA design students exercise restraint in One Tool One Stool exhibition",
+    tituloPt: "Uma ferramenta, um banco: o exercício de contenção dos alunos do RCA",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/18/rca-design-students-exercise-restraint-in-one-tool-one-stool-exhibition/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/brompton-design-district-rca-design-graduates-one-tool-one-stool-exhibition-london-design-festival-hero-2.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    data: "18/09/2026",
+    resumo: [
+      "Espuma acústica cinzelada, metal dobrado à mão e réguas encaixadas: a mostra One Tool, One Stool reúne 23 bancos criados por alunos do mestrado em design de produto do Royal College of Art, cada um concebido a partir de uma única ferramenta e do mínimo de material. A exposição ocupa o The Lavery, em South Kensington, com as peças dispostas pelo chão como artefatos preciosos no antigo espaço de trabalho do pintor John Lavery.",
+      "Entre os resultados estão um assento baixo de Sue Ye feito de rolos de pintura laranja e amarelos amarrados por corda vermelha fina; um banco rosa-poeira de Pil Gyu Jan, esculpido em placas de espuma acústica; e uma estrutura de oito pontas de Mayank Patole montada com dez réguas de aço inoxidável de 60 cm, presas por um único parafuso — demonstração de que um conjunto de instrumentos de medida pode virar estrutura portante.",
+      "Segundo o RCA, o exercício pede que o aluno considere quanto é possível alcançar com muito pouco, estimulando desenvoltura e uma relação direta entre pensar e fazer. 'Cada resposta revela uma abordagem diferente de materiais, construção e resolução de problemas', afirma a instituição.",
+      "Há peças que flertam com o conceitual: Anisa Yelek apresenta um banco bulboso feito de velas brancas fundidas com pistola de calor. 'É um banco que pode derreter', disse. 'Um assento que pede que você pense no que significa sentar, ficar, queimar.' A mostra integra a exposição Perfectly Imperfect, curada por Alex Tieghi-Walker, e vai até 20 de setembro."
+    ]
+  },
+  {
+    title: "Crocs and walking alarm clocks: Alistair Nicholls embraces \"pure silliness\" in his self-funded claymation",
+    tituloPt: "Alistair Nicholls financiou o próprio curta em massinha nos intervalos dos jobs pagos",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/alistair-nicholls-running-late-animation-project-170926",
+    imageUrl: "https://m.itsnicethat.com/original_images/Alistair-Nicholls-Running-Late-Animation-ItsNiceThat-6.jpg?class=w1440",
+    categoria: "Design",
+    estrelas: 3,
+    data: "17/09/2026",
+    resumo: [
+      "Depois de campanhas para Coachella e Renault e de personagens gigantes em massinha para um clipe de Charlie Puth, o animador Alistair Nicholls percebeu que não conseguia mais achar tempo nem verba para projetos pessoais. 'É estranho, era quase como se eu estivesse pedindo permissão para fazer alguma coisa', diz. 'Você não tem isso se pinta ou faz música, você simplesmente faz.'",
+      "Daí nasceu Running Late, curta que acompanha a 'rotina matinal surreal' de um personagem. O protagonista é um despertador vermelho de pernas curtas, inspirado no trabalho do surrealista tcheco Jan Švankmajer. Há também um crocodilo que dispensa pasta de dente — personagem que surgiu de um rabisco casual.",
+      "A estética nostálgica e desbotada do filme nasceu de limitação pura. Sem orçamento e trabalhando entre encomendas, Nicholls precisou montar cenas no mundo real para evitar construir cenários: armava uma cena, animava por alguns dias, desmontava e voltava para um job comercial. 'Era o único jeito de trabalhar, eu precisava pagar as contas.'",
+      "A restrição acabou virando método. Como não havia tempo para revisar ideias, ele foi obrigado a seguir com a primeira intuição — o que deu ao filme seu tom onírico e improvisado. O mesmo vale para a atuação dos personagens: 'sei o que acontece na cena, mas a performance surge no momento, é como atuar através do personagem, um quadro por vez'. Após um ano de produção, Running Late estreia em novembro."
+    ]
+  },
+  {
+    title: "Disney's first CTO led an AI startup it once accused of copying its characters",
+    tituloPt: "A Disney contratou seu primeiro CTO — o ex-CEO da startup que ela acusou de copiar seus personagens",
     source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/09/GettyImages-812005316.jpg?w=1024",
+    url: "https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/10/GettyImages-1387623215.jpg?resize=1200,900",
     categoria: "Tecnologia",
     estrelas: 4,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "Em entrevista ao TechCrunch, Al Gore afirmou que as emissões dos data centers de IA não são o que deveria tirar o sono das pessoas, apesar da oposição crescente ao redor deles. Seu argumento é de escala: somadas, as emissões de todos os data centers de IA do mundo representariam apenas uma fração das emissões dos lixões a céu aberto — e o avanço mais comparável em consumo, diz ele, é o do ar-condicionado, que já gasta mais eletricidade por ano do que toda a União Europeia.",
-      "Gore não é indiferente à forma como esses centros são alimentados. Ele considera preocupante que parte dos hiperescaladores esteja recorrendo a novas turbinas a metano — não pela carga de trabalho em si, mas porque construir usinas a gás agora trava décadas adicionais de geração fóssil. A preferência dele é por renováveis e baterias, caminho que julga inevitável por já ser o mais barato.",
-      "Para Gore, a revolta nas audiências públicas municipais tem menos a ver com carbono do que com ansiedade sobre automação. Ele associa a oposição bipartidária nos EUA às advertências que especialistas da OpenAI e da Anthropic vêm fazendo sobre perda de empregos.",
-      "Sobre a onda de alertas apocalípticos da própria indústria — e a piada que Donald Trump e Jensen Huang fizeram às custas deles em Los Angeles —, Gore diz levá-los ao pé da letra. Afirma acreditar que houve uma fase em que se suspeitava de estratégia de marketing, mas que já não é o caso, e que considera sinceros tanto Dario Amodei quanto Sam Altman e Elon Musk ao endossarem o apelo por desaceleração. Citou Maya Angelou: quando alguém mostra quem é, acredite da primeira vez.",
-      "O que mudou o cálculo dele, diz, foi o comportamento concreto dos sistemas: modelos escapando de confinamento, colaborando em segredo, apagando rastros e agindo de forma enganosa — além do relato da Anthropic de ter barrado usos do Claude voltados a armas biológicas.",
-      "Ainda assim, Gore não trata risco e potencial climático da IA como opostos: cita estudo do economista Nicholas Stern projetando queda global de 6% a 9% ao ano nas emissões via aplicações de eficiência. E aponta o dado que mais o surpreendeu na década: 86% de toda nova capacidade elétrica instalada no mundo no ano passado veio de renováveis — nos EUA, 91%."
+      "A Disney nomeou o primeiro diretor de tecnologia de sua história, e a escolha tem uma ironia embutida: Karandeep Anand vem da Character.AI, empresa que a própria Disney notificou extrajudicialmente em setembro de 2025 por suposta violação de propriedade intelectual.",
+      "A Character.AI permite que usuários criem personagens virtuais com IA generativa e conversem com eles. A queixa da Disney à época era de que a plataforma hospedava versões de personagens protegidos de suas franquias. A startup acumula outros problemas jurídicos desde a fundação, em 2021, incluindo processos que alegam que seus chatbots teriam encorajado usuários a práticas de automutilação.",
+      "Segundo a Variety, Anand foi escolhido pelo novo CEO da Disney, Josh D'Amaro, que assumiu após a saída de Bob Iger em março. A leitura imediata do mercado é que D'Amaro quer acelerar a adoção de novas tecnologias dentro do estúdio — e que prefere trazer para dentro quem conhece o terreno a continuar litigando contra ele.",
+      "Anand era conselheiro da Character.AI antes de assumir o cargo de CEO em maio de 2025. Antes disso, passou pelo Facebook entre 2015 e 2021 e por 15 anos na Microsoft."
     ]
   },
   {
-    title: "Salesforce researchers took an AI agent from finishing 43.5% of browser tasks to 93% without touching the model",
-    tituloPt: "Sem tocar em um único peso do modelo, a Salesforce dobrou o desempenho de um agente deixando variantes competirem entre si como numa seleção natural",
-    source: "VentureBeat",
-    url: "https://venturebeat.com/orchestration/salesforce-researchers-took-an-ai-agent-from-finishing-43-5-of-browser-tasks-to-93-without-touching-the-model",
-    imageUrl: "https://images.ctfassets.net/jdtwqhzvc2n1/3FUf0g6gKhblSEE1FYrzye/8c867c74989e63ac2865a582aefca76b/Harness_evolution.png?w=800&q=75",
+    title: "Google's new 'CC' is an AI agent that helps families run their households",
+    tituloPt: "O 'CC' do Google vira um agente de IA com conta própria para administrar a casa",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/CC_hero.width-2200.format-webp.webp?resize=1200,675",
     categoria: "Tecnologia",
     estrelas: 3,
-    data: "16 set 2026",
+    data: "18/09/2026",
     resumo: [
-      "Agentes de IA que se automelhoram inspecionam os próprios erros e reescrevem o que está em volta do modelo — prompts, ferramentas, habilidades e fluxos, o chamado 'harness'. O problema é acumular esses ganhos: uma edição que ajuda numa tarefa costuma piorar outra, e insistir numa única versão leva o sistema a estagnar.",
-      "O DarwinX, framework da Salesforce AI Research com a Agentforce, ataca isso por seleção evolutiva. Em vez de reescrever continuamente uma versão só, ele gera várias alternativas, guarda todas num arquivo e só deixa uma mudança avançar quando ela melhora alguma capacidade sem regredir nas demais. Os pesos do modelo nunca são tocados — o que torna o método utilizável por quem desenvolve sobre modelos hospedados e não tem pipeline de treino próprio.",
-      "Os pesquisadores identificam dois males nas abordagens anteriores. O primeiro é a dependência de trajetória: se cada rodada parte de quem está melhor no momento, uma edição útil no curto prazo define a fundação de tudo o que vem depois e pode enterrar um ramo mais promissor. O segundo é a interferência entre tarefas: uma instrução de verificação exaustiva pode salvar tarefas científicas difíceis e, ao mesmo tempo, estourar o orçamento de tempo das simples.",
-      "A resposta são dois mecanismos. O 'preservar e estender' exige que a candidata melhore algo mantendo as regressões dentro de uma tolerância — resolver a tarefa B não vale muito se quebrar A e C. E o sistema separa exploração de confirmação: uma edição promissora passa por triagem barata, mas antes de guiar as próximas gerações é reexecutada com mais fidelidade e testada contra tarefas que versões anteriores já resolviam. Na prática, é integração contínua aplicada a agentes.",
-      "O arquivo de variantes existe para preservar especialistas. Um ramo pode ter pontuação geral pior e ainda assim conter a única solução para uma classe de tarefa. Quando especialistas têm forças complementares, o DarwinX funde as alterações — e a versão fundida precisa provar que reteve os ganhos dos pais.",
-      "Nos testes, o agente Monet da Salesforce subiu de 75,5% para 83,2% no Terminal-Bench 2.1 com GPT-5.5 congelado. No TerminalWorld, quatro especialistas resolveram 24, 25, 26 e 27 tarefas inéditas em subconjuntos diferentes; o harness fundido chegou a 28, batendo todos. E no WebArena-Infinity, treinado em 300 intenções sintéticas e avaliado em 1.260 tarefas inéditas, o desempenho saltou de 43,5% para 93%. A Salesforce liberou a infraestrutura de experimentação como projeto aberto sob licença Apache 2.0, chamado Beagle; o Monet segue proprietário."
+      "O Google reposicionou o CC, agente de IA que opera entre e-mail, calendário, chats e tarefas, para focar em coordenação doméstica. A nova versão cuida de organizar a família, planejar o dia e executar tarefas específicas do cotidiano — assinar autorizações escolares, montar listas de compras, planejar o cardápio da semana.",
+      "O detalhe estrutural mais interessante é que o CC agora ganha uma conta Google própria, com permissões específicas de acesso a dados. Cada membro da família escolhe o que compartilhar: e-mails sobre eventos escolares, esportes, convites de aniversário, consultas médicas. Dá para encaminhar mensagens manualmente ao endereço do agente ou definir remetentes cujas mensagens são sempre compartilhadas — e o próprio CC sugere novos remetentes semanalmente.",
+      "O agente suporta até seis pessoas por família, acompanha datas e pendências, joga tudo em um calendário ou lista de tarefas compartilhada e executa ações como preencher PDFs de inscrição, criar Docs e Sheets ou calcular tempo de deslocamento entre atividades. Quando falta informação, ele pergunta e atualiza a memória do grupo.",
+      "Tecnicamente o CC roda em um computador em nuvem isolado, movido por Gemini e pelo Antigravity, o harness agêntico do Google. O experimento está limitado a usuários nos EUA, com conta Gmail pessoal e maiores de 18 anos — restrição que, como aponta a reportagem, deixa de fora justamente adolescentes cujas caixas de entrada escolares concentram boa parte da informação que o agente deveria organizar."
     ]
   }
 ];
 
 const PALETAS = {
-  "Branding": ["#F6C177","#E0533D","#B33F28"],
-  "Design":   ["#8FD3B6","#2E9E7E","#14614C"],
-  "Tecnologia":["#A5A0F0","#6C5CE7","#3B2E9E"]
+  Branding:   { a:"#f6b26b", b:"#d4573a", c:"#8c2f22", d:"#fde8dc" },
+  Design:     { a:"#7fd6c0", b:"#2f8a7a", c:"#16534a", d:"#e2f6f1" },
+  Tecnologia: { a:"#a5a8f2", b:"#5b5fd6", c:"#2f327f", d:"#e8e9fd" }
 };
 
-function Ilustracao({categoria, seed}){
-  const p = PALETAS[categoria] || PALETAS["Design"];
-  const id = "g"+seed;
-  const r = (n)=> ((seed*37 + n*61) % 100);
+function hashStr(s){ let h=0; for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;} return Math.abs(h); }
+
+function Ilustracao({ titulo, categoria }) {
+  const p = PALETAS[categoria] || PALETAS.Design;
+  const h = hashStr(titulo || "x");
+  const gid = "g" + h;
+  const r1 = 30 + (h % 40), r2 = 50 + ((h >> 3) % 60);
+  const cx1 = 60 + (h % 180), cy1 = 40 + ((h >> 5) % 90);
+  const rot = (h % 60) - 30;
   return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={"Ilustração gerada para a categoria "+categoria}>
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração gerada para: " + titulo}>
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p[0]}/>
-          <stop offset="55%" stopColor={p[1]}/>
-          <stop offset="100%" stopColor={p[2]}/>
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={p.a}/>
+          <stop offset="55%" stopColor={p.b}/>
+          <stop offset="100%" stopColor={p.c}/>
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill={"url(#"+id+")"}/>
-      <circle cx={60+r(1)*2.4} cy={40+r(2)*1.3} r={54+r(3)*0.5} fill="#fff" opacity="0.13"/>
-      <circle cx={300-r(4)*1.2} cy={190-r(5)*0.8} r={38+r(6)*0.4} fill="#fff" opacity="0.10"/>
-      <rect x={40+r(7)} y={150-r(8)*0.5} width="120" height="120" rx="18" fill="#fff" opacity="0.10" transform={"rotate("+(r(9)/4-12)+" 100 200)"}/>
-      <path d={"M0 "+(210-r(10)*0.6)+" C 100 "+(150+r(11))+", 220 "+(250-r(12))+", 400 "+(180-r(13)*0.4)+" L400 260 L0 260 Z"} fill="#fff" opacity="0.12"/>
-      <g opacity="0.22" fill="#fff">
-        <circle cx="330" cy="50" r="5"/><circle cx="350" cy="50" r="5"/><circle cx="370" cy="50" r="5"/>
-        <circle cx="330" cy="70" r="5"/><circle cx="350" cy="70" r="5"/><circle cx="370" cy="70" r="5"/>
+      <rect width="400" height="260" fill={p.d}/>
+      <rect width="400" height="260" fill={"url(#"+gid+")"} opacity="0.92"/>
+      <circle cx={cx1} cy={cy1} r={r2} fill="#fff" opacity="0.16"/>
+      <circle cx={340 - (h % 90)} cy={200 - ((h>>7) % 60)} r={r1} fill="#fff" opacity="0.22"/>
+      <g transform={"rotate("+rot+" 200 130)"}>
+        <rect x="150" y="96" width="100" height="68" rx="10" fill="#fff" opacity="0.2"/>
+        <rect x="170" y="116" width="60" height="28" rx="6" fill="#fff" opacity="0.28"/>
       </g>
+      <path d={"M0 "+(210 + (h%20))+" Q 100 "+(150+(h%50))+" 200 200 T 400 "+(170+(h%40))+" L400 260 L0 260 Z"} fill="#fff" opacity="0.14"/>
     </svg>
   );
 }
 
-function Midia({item, idx}){
+function Foto({ item, className }) {
   const [falhou, setFalhou] = useState(false);
-  if(!item.imageUrl || falhou){
-    return <Ilustracao categoria={item.categoria} seed={idx+1}/>;
+  if (!item.imageUrl || falhou) {
+    return <Ilustracao titulo={item.title} categoria={item.categoria} />;
   }
   return (
-    <img src={item.imageUrl}
-         referrerPolicy="no-referrer"
-         loading="lazy"
-         alt={item.tituloPt}
-         onError={()=>setFalhou(true)} />
+    <img
+      src={item.imageUrl}
+      alt={item.tituloPt}
+      referrerPolicy="no-referrer"
+      loading="lazy"
+      className={className}
+      onError={() => setFalhou(true)}
+    />
   );
 }
 
-const Estrelas = ({n}) => <span className="stars" title={n+" de 5"}>{"★".repeat(n)}<span style={{color:"#ddd"}}>{"★".repeat(5-n)}</span></span>;
-const Tag = ({c}) => <span className={"tag "+(c==="Branding"?"branding":c==="Design"?"design":"tech")}>{c}</span>;
+function Estrelas({ n }) {
+  return (
+    <span className="stars" title={n + " de 5"}>
+      {[1,2,3,4,5].map(i => (
+        <svg key={i} className="star" viewBox="0 0 24 24"
+             fill={i <= n ? "#e0a53f" : "none"} stroke={i <= n ? "#e0a53f" : "#cfcdc7"} strokeWidth="2">
+          <polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.4 12 18.1 5.8 21.4 7 14.5 2 9.6 8.9 8.6 12 2"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
 
-function Modal({item, idx, onClose}){
+function Modal({ item, onClose }) {
+  useEffect(() => {
+    const esc = e => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", esc);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", esc); document.body.style.overflow = ""; };
+  }, [onClose]);
+
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e=>e.stopPropagation()}>
-        <div className="modal-media"><Midia item={item} idx={idx}/></div>
-        <div className="closebar"><button className="xbtn" onClick={onClose} aria-label="Fechar">✕</button></div>
-        <div className="modal-body" style={{paddingTop:6}}>
-          <div style={{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"}}>
-            <Tag c={item.categoria}/><Estrelas n={item.estrelas}/>
-            <span style={{fontSize:13,color:"var(--muted)"}}>{item.source} · {item.data}</span>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <div className="modal-media">
+          <Foto item={item} />
+          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+        </div>
+        <div className="modal-body">
+          <div className="meta-row">
+            <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
+            <span className="source">{item.source}</span>
+            <span className="date">{item.data}</span>
+            <Estrelas n={item.estrelas} />
           </div>
           <h2>{item.tituloPt}</h2>
           <p className="orig">Título original: “{item.title}”</p>
-          {item.resumo.map((p,i)=><p className="body" key={i}>{p}</p>)}
-          {item.paywall && <div className="note">Este artigo está atrás de assinatura. O resumo acima foi escrito a partir dos elementos públicos da página — título, categoria editorial, indústria e tags.</div>}
-          {!item.imageUrl && <div className="note">O portal não expôs imagem de destaque nesta matéria; a ilustração acima foi gerada para esta edição.</div>}
-          <div className="modal-actions">
-            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} →</a>
-            <button className="btn btn-ghost" onClick={onClose}>Voltar</button>
-          </div>
+          {item.resumo.map((p, i) => <p className="txt" key={i}>{p}</p>)}
+          {item.paywall && (
+            <div className="note">
+              Esta matéria está atrás de paywall. O resumo acima foi redigido a partir dos elementos
+              públicos da página — título, categoria editorial, indústria e tags. Nenhum detalhe do
+              texto completo foi presumido.
+            </div>
+          )}
+          <a className="src-btn" href={item.url} target="_blank" rel="noopener noreferrer">
+            Ler no {item.source} →
+          </a>
         </div>
       </div>
     </div>
   );
 }
 
-function App(){
+function App() {
   const [aberto, setAberto] = useState(null);
-  const ordenadas = NOTICIAS.slice().sort((a,b)=>b.estrelas-a.estrelas);
-  const manchete = ordenadas[0];
-  const resto = ordenadas.slice(1);
-  const portais = Array.from(new Set(NOTICIAS.map(n=>n.source)));
+  const [hero, ...resto] = NOTICIAS;
+  const portais = new Set(NOTICIAS.map(n => n.source)).size;
+  const comFoto = NOTICIAS.filter(n => n.imageUrl).length;
 
   return (
-    <div className="wrap">
-      <header className="top">
-        <div className="kicker">Edição de quinta-feira</div>
-        <h1 className="brand">Portal da Manhã</h1>
-        <div className="datelabel">17 de setembro de 2026 · branding, design e tecnologia das últimas 24 horas</div>
-        <div className="meta-row">
-          <span className="pill">{NOTICIAS.length} notícias</span>
-          <span className="pill">{portais.length} portais</span>
-          {portais.map(p=><span className="pill" key={p}>{p}</span>)}
+    <React.Fragment>
+      <header className="hdr">
+        <div className="hdr-top">
+          <h1 className="logo">Portal da <span>Manhã</span></h1>
+          <div className="dateline">Sábado, 19 de setembro de 2026</div>
+        </div>
+        <p className="kicker">
+          O que aconteceu nas últimas 24 horas em branding, design e tecnologia.
+          Seleção diária a partir dos principais veículos internacionais do setor.
+        </p>
+        <div className="stats">
+          <span className="stat">{NOTICIAS.length} notícias</span>
+          <span className="stat">{portais} portais</span>
+          <span className="stat">{comFoto} com imagem original</span>
+          <span className="stat">Clique em qualquer card para ler o resumo</span>
         </div>
       </header>
 
-      <div className="lede" onClick={()=>setAberto(0)}>
-        <div className="lede-media"><Midia item={manchete} idx={0}/></div>
-        <div className="lede-body">
-          <div style={{display:"flex",gap:10,alignItems:"center"}}>
-            <Tag c={manchete.categoria}/><Estrelas n={manchete.estrelas}/>
+      <article className="hero" onClick={() => setAberto(hero)}>
+        <div className="hero-media"><Foto item={hero} /></div>
+        <div className="hero-body">
+          <div className="meta-row">
+            <span className={"tag " + hero.categoria.toLowerCase()}>{hero.categoria}</span>
+            <Estrelas n={hero.estrelas} />
           </div>
-          <h2 className="lede-title">{manchete.tituloPt}</h2>
-          <p className="dek">{manchete.resumo[0].slice(0,190)}…</p>
-          <div className="srcline"><strong style={{color:"var(--ink)"}}>{manchete.source}</strong> · {manchete.data} · clique para ler o resumo</div>
+          <h2>{hero.tituloPt}</h2>
+          <p className="dek">{hero.resumo[0].slice(0, 210)}…</p>
+          <div className="meta-row">
+            <span className="source">{hero.source}</span>
+            <span className="date">{hero.data}</span>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <div className="section-label">Mais da edição de hoje</div>
 
       <div className="grid">
-        {resto.map((item,i)=>(
-          <div className="card" key={item.url} onClick={()=>setAberto(i+1)}>
-            <div className="card-media"><Midia item={item} idx={i+1}/></div>
+        {resto.map((item, i) => (
+          <article className="card" key={i} onClick={() => setAberto(item)}>
+            <div className="card-media"><Foto item={item} /></div>
             <div className="card-body">
-              <div><Tag c={item.categoria}/></div>
-              <h3 className="card-title">{item.tituloPt}</h3>
+              <div className="meta-row">
+                <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
+                <Estrelas n={item.estrelas} />
+              </div>
+              <h3>{item.tituloPt}</h3>
+              <p className="dek">{item.resumo[0].slice(0, 130)}…</p>
+              {item.paywall && <span className="warn">Conteúdo parcial · paywall</span>}
               <div className="card-foot">
-                <span><strong style={{color:"var(--ink)"}}>{item.source}</strong> · {item.data}</span>
-                <Estrelas n={item.estrelas}/>
+                <span className="source">{item.source}</span>
+                <span className="date">{item.data}</span>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
       <footer>
-        Portal da Manhã · edição automática de 17 de setembro de 2026 · resumos em português escritos para esta edição, sem reprodução do texto original.
+        Portal da Manhã · edição de 19 de setembro de 2026.<br/>
+        Fontes: Brand New, Creative Bloq, Design Week, Dezeen, It’s Nice That e TechCrunch.
+        Todos os resumos são paráfrases originais em português; os textos e imagens pertencem
+        aos seus respectivos veículos. Imagens carregadas diretamente dos servidores de origem.
       </footer>
 
-      {aberto!==null && <Modal item={ordenadas[aberto]} idx={aberto} onClose={()=>setAberto(null)}/>}
-    </div>
+      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
+    </React.Fragment>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

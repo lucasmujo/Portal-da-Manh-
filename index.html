@@ -3,423 +3,444 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 19 de setembro de 2026</title>
+<title>Portal da Manhã — 20 de setembro de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f7f6f3; --card:#ffffff; --ink:#15161a; --muted:#6b6f76;
-    --line:#e7e5e0; --accent:#d4573a; --accent-soft:#fdf2ee;
-    --brand:#c8663f; --design:#2f8a7a; --tech:#5b5fd6;
-    --shadow:0 1px 2px rgba(16,17,20,.04), 0 8px 24px rgba(16,17,20,.06);
-    --shadow-lg:0 2px 6px rgba(16,17,20,.06), 0 24px 60px rgba(16,17,20,.12);
-    --radius:18px;
+    --bg:#f6f6f4;
+    --card:#ffffff;
+    --ink:#15161a;
+    --ink-2:#4a4d57;
+    --ink-3:#858895;
+    --line:#e7e7e2;
+    --accent:#c8452e;
+    --radius:20px;
+    --shadow:0 1px 2px rgba(18,20,28,.04), 0 8px 24px rgba(18,20,28,.06);
+    --shadow-lg:0 2px 6px rgba(18,20,28,.06), 0 24px 60px rgba(18,20,28,.12);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    background:var(--bg); color:var(--ink);
+    background:var(--bg);
+    color:var(--ink);
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  #root{max-width:1180px;margin:0 auto;padding:0 20px 80px}
-  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px 80px}
 
   /* Header */
-  .hdr{padding:44px 0 26px;border-bottom:1px solid var(--line);margin-bottom:34px}
-  .hdr-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;margin:0;line-height:1}
-  .logo span{color:var(--accent)}
-  .dateline{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
-  .kicker{margin-top:14px;font-size:15px;color:var(--muted);max-width:620px;line-height:1.55}
-  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
-  .stat{font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);
-    padding:6px 12px;border-radius:999px;font-weight:500}
+  header.top{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1.brand{
+    font-family:Fraunces,Georgia,serif;font-weight:600;
+    font-size:clamp(40px,7vw,68px);line-height:1;margin:14px 0 10px;letter-spacing:-.02em;
+  }
+  .subhead{color:var(--ink-3);font-size:15px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-3);display:inline-block}
 
-  /* Stars */
-  .stars{display:inline-flex;gap:2px;align-items:center}
-  .star{width:13px;height:13px;display:block}
+  /* Section title */
+  .sec-title{
+    font-family:Fraunces,Georgia,serif;font-size:22px;font-weight:600;
+    margin:0 0 20px;display:flex;align-items:center;gap:12px;
+  }
+  .sec-title:after{content:"";flex:1;height:1px;background:var(--line)}
 
-  /* Tag */
-  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    padding:4px 10px;border-radius:999px;color:#fff}
-  .tag.branding{background:var(--brand)}
-  .tag.design{background:var(--design)}
-  .tag.tecnologia{background:var(--tech)}
-
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:0;background:var(--card);
-    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
-    cursor:pointer;transition:box-shadow .3s ease, transform .3s ease;margin-bottom:38px}
-  .hero:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
-  .hero-media{position:relative;min-height:380px;background:#eee}
+  /* Hero card */
+  .hero{
+    background:var(--card);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);cursor:pointer;display:grid;grid-template-columns:1.25fr 1fr;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    margin-bottom:40px;border:1px solid var(--line);
+  }
+  .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .hero-media{position:relative;min-height:340px;background:#eceae6}
   .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-body{padding:34px 34px 30px;display:flex;flex-direction:column;justify-content:center;gap:14px}
-  .hero h2{font-family:Fraunces,Georgia,serif;font-size:clamp(26px,3vw,36px);line-height:1.15;
-    margin:0;letter-spacing:-.015em}
-  .hero .dek{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
-  .meta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .source{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-  .date{font-size:12px;color:var(--muted)}
+  .hero-body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .hero-body h2{
+    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);
+    line-height:1.16;margin:0;letter-spacing:-.015em;
+  }
+  .hero-body p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
 
-  .section-label{display:flex;align-items:center;gap:14px;margin:0 0 20px;
-    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  /* Meta row */
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .src{
+    font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    background:#f0efec;color:var(--ink-2);padding:5px 10px;border-radius:999px;
+  }
+  .cat{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .cat.branding{background:#fdeee6;color:#a8431f}
+  .cat.design{background:#e4f3ec;color:#1f6b4d}
+  .cat.tec{background:#e9ecfb;color:#3a45a0}
+  .stars{font-size:13px;color:#d9a441;letter-spacing:1px}
+  .date{font-size:12px;color:var(--ink-3)}
 
   /* Grid */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;
-    transition:box-shadow .3s ease, transform .3s ease}
-  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-  .card-media{height:190px;background:#eee;overflow:hidden}
-  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .5s ease}
-  .card:hover .card-media img{transform:scale(1.04)}
-  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .card h3{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.25;margin:0;letter-spacing:-.01em}
-  .card .dek{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0;flex:1}
-  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;
-    padding-top:10px;border-top:1px solid var(--line)}
-  .warn{font-size:11px;color:#a8802b;background:#fdf7e6;border:1px solid #f0e2b8;
-    padding:4px 8px;border-radius:6px;display:inline-block}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+    box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .card-media{height:184px;background:#eceae6;position:relative}
+  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block}
+  .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:11px;flex:1}
+  .card-body h3{
+    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:18.5px;line-height:1.26;
+    margin:0;letter-spacing:-.01em;
+  }
+  .card-body .dek{margin:0;color:var(--ink-2);font-size:13.8px;line-height:1.55;flex:1}
 
   /* Modal */
-  .overlay{position:fixed;inset:0;background:rgba(18,19,22,.5);backdrop-filter:blur(6px);
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:50;
-    overflow-y:auto;animation:fade .25s ease}
+  .overlay{
+    position:fixed;inset:0;background:rgba(20,21,26,.42);backdrop-filter:blur(6px);
+    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;
+    z-index:50;overflow-y:auto;animation:fade .22s ease;
+  }
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  .modal{background:var(--card);max-width:780px;width:100%;border-radius:22px;overflow:hidden;
-    box-shadow:0 40px 100px rgba(0,0,0,.3);animation:rise .3s cubic-bezier(.2,.8,.3,1)}
-  .modal-media{height:320px;background:#eee;position:relative}
+  @keyframes rise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+  .modal{
+    background:var(--card);border-radius:24px;max-width:780px;width:100%;
+    overflow:hidden;box-shadow:0 40px 100px rgba(10,12,18,.32);animation:rise .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal-media{height:330px;background:#eceae6}
   .modal-media img,.modal-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;
-    border:none;background:rgba(255,255,255,.92);cursor:pointer;font-size:20px;line-height:1;
-    color:#15161a;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 2px 10px rgba(0,0,0,.18);transition:background .2s}
-  .close:hover{background:#fff}
-  .modal-body{padding:30px 36px 36px}
-  .modal-body h2{font-family:Fraunces,Georgia,serif;font-size:clamp(24px,3.4vw,32px);
-    line-height:1.18;margin:14px 0 6px;letter-spacing:-.015em}
-  .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 20px}
-  .modal-body p.txt{font-size:16px;line-height:1.72;color:#2b2d33;margin:0 0 16px}
-  .src-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
-    background:var(--ink);color:#fff;text-decoration:none;padding:12px 20px;border-radius:999px;
-    font-size:14px;font-weight:600;transition:opacity .2s}
-  .src-btn:hover{opacity:.85}
-  .note{margin-top:18px;padding:12px 14px;background:var(--accent-soft);
-    border-left:3px solid var(--accent);border-radius:8px;font-size:13px;color:#7a4433;line-height:1.55}
+  .modal-body{padding:34px 40px 40px}
+  .modal-body h2{
+    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:29px;line-height:1.18;
+    margin:16px 0 8px;letter-spacing:-.015em;
+  }
+  .orig{font-size:13px;color:var(--ink-3);font-style:italic;margin:0 0 20px}
+  .modal-body .txt p{color:var(--ink-2);font-size:16px;line-height:1.72;margin:0 0 16px}
+  .note{font-size:13px;color:var(--ink-3);border-left:2px solid var(--line);padding-left:12px;margin:20px 0 0}
+  .actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;
+    text-decoration:none;border:none;cursor:pointer;font-family:inherit;
+  }
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:#2c2e36}
+  .btn-ghost{background:#f0efec;color:var(--ink-2)}
+  .btn-ghost:hover{background:#e6e5e1}
 
-  footer{margin-top:60px;padding-top:26px;border-top:1px solid var(--line);
-    font-size:13px;color:var(--muted);line-height:1.7}
+  footer{margin-top:64px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13px;line-height:1.7}
 
-  @media(max-width:980px){
+  @media (max-width:900px){
     .grid{grid-template-columns:repeat(2,1fr)}
     .hero{grid-template-columns:1fr}
-    .hero-media{min-height:260px;height:260px}
+    .hero-media{min-height:240px}
+    .hero-body{padding:26px}
   }
-  @media(max-width:620px){
+  @media (max-width:600px){
+    .wrap{padding:0 16px 56px}
     .grid{grid-template-columns:1fr}
-    #root{padding:0 16px 60px}
-    .modal-body{padding:24px 22px 30px}
+    .modal-body{padding:24px}
     .modal-media{height:220px}
-    .hero-body{padding:24px}
   }
 </style>
 </head>
 <body>
 <div id="root"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
-const { useState, useEffect } = React;
+const { useState } = React;
 
 const NOTICIAS = [
   {
-    title: "This city's clever minimalist logo redesign has a hidden meaning",
-    tituloPt: "O novo logo de Galway troca 500 anos de brasão por um 'g' com dois significados",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/logos-icons/this-citys-clever-minimalist-new-logo-design-has-a-hidden-meaning",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/sxywr9C7rcqkBgdJ5mgHfi-1920-80.jpg",
-    categoria: "Branding",
+    title: "Basura creates data centre toy that emits \"ear piercing hum\" when squeezed",
+    tituloPt: "Uma pelúcia de data center que geme: a Basura transformou o barulho real de um galpão de IA na Virgínia em brinquedo de adoção",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/18/basura-big-data-centre-toy-bezzy/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/basura-big-data-sq_dezeen_2364_col_0.jpg",
+    categoria: "branding",
     estrelas: 5,
-    data: "18/09/2026",
+    data: "18 set 2026",
+    alt: "Pelúcia em formato de data center criada pela agência Basura",
     resumo: [
-      "A Câmara Municipal de Galway, na Irlanda, aposentou o 'G' que a representava desde 1984 e apresentou uma marca minimalista que tenta comprimir história, língua e função pública em uma única letra. O resultado é um 'g' minúsculo em bordô cuja cauda foi desenhada a partir do casco do navio que aparece no brasão da cidade — a referência ao porto que ligou o oeste irlandês ao resto do mundo.",
-      "A parte superior da letra vem de outro lugar: do seanchló, a escrita histórica irlandesa, e do fáinne, o pequeno broche circular usado por quem fala gaélico. É uma forma de codificar o bilinguismo da cidade sem precisar escrever nada sobre isso. Há ainda uma leitura simbólica proposta pela própria prefeitura: o bojo da letra representa a população, e a cauda destacada representa o poder público que a sustenta e serve.",
-      "A troca não passou sem atrito. Dias antes do lançamento houve relatos de que o processo tinha sido suspenso diante da pressão popular para manter o desenho anterior, criado pelo designer local Jimmy Conneely para o quinto centenário da cidade. Um comerciante citado pela imprensa irlandesa resumiu a queixa: descartar o trabalho de um conterrâneo em um momento de erosão cultural.",
-      "O contra-argumento é prático. O 'G' de 1984 nasceu antes da internet e de qualquer app; seu elemento de escudo torna a aplicação digital complicada. A prefeitura afirma que a revisão veio depois de constatar que a população não reconhecia a extensão dos serviços prestados pelo município — e que a nova identidade existe para criar uma conexão mais consistente entre eles."
+      "A agência nova-iorquina Basura se juntou ao músico Big Data para criar Bezzy: um bicho de pelúcia com corpo em formato de data center, sorriso, olhos e braços e pernas compridos. Quando alguém aperta o boneco, ele reproduz uma gravação de áudio captada por uma das pessoas entrevistadas pela equipe — uma moradora que vive ao lado de um data center na Virgínia. A etiqueta presa ao brinquedo diz, em tradução livre, algo como \"me abrace e ganhe um zumbido eterno que fura o ouvido\".",
+      "O boneco é a peça mais visível de uma campanha satírica maior, batizada Adopt a Data Center, que inclui site, adesivos e cartazes e que acompanha o lançamento do primeiro álbum do Big Data em mais de sete anos. A ideia, segundo a agência, é apresentar os data centers de IA como se fossem animais de abrigo à espera de um lar definitivo — uma paródia direta de iniciativas como o Adopt-a-Panda do WWF. Foram produzidas 20 unidades do Bezzy.",
+      "Rajeev Basu, fundador da Basura, conta que a equipe entrevistou dezenas de pessoas que moram perto desses complexos para entender como é, na prática, viver ao lado de um. As queixas se repetiam: ruído, excesso de luz, mudança no uso do solo, impacto sobre os moradores e pressão sobre a água e a eletricidade locais. Ele define a campanha como \"um convite absurdo e provocador\" para olhar com mais atenção o que está sendo instalado ao lado das casas das pessoas.",
+      "A equipe faz questão de dizer que o projeto não é antitecnologia nem anti-IA — a proposta é cobrar proporcionalidade: se as promessas são tão grandes, o compromisso com segurança e prestação de contas precisaria ser do mesmo tamanho. O tema tem dado notícia: moradores da região de Memphis entraram na Justiça contra Elon Musk por poluição sonora, e estudos preliminares já apontam efeito de ilha de calor no entorno desses empreendimentos."
     ]
   },
   {
-    title: "New Logo and Identity for the Royal Winnipeg Ballet by Bruce Mau Design",
-    tituloPt: "Bruce Mau Design redesenha a identidade do Royal Winnipeg Ballet",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_the_royal_winnipeg_ballet_by_bruce_mau_design.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/RWB_logo_before_after.png",
-    categoria: "Branding",
+    title: "Originality is overrated. Elaboration is the thing.",
+    tituloPt: "O estudo mais citado da publicidade tem uma segunda metade que quase ninguém lê — e ela diz que originalidade vende pouco",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/originality-is-overrated-elaboration-is-the-thing/",
+    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/09/shutterstock_2180557871.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=758",
+    categoria: "branding",
     estrelas: 5,
-    data: "17/09/2026",
-    paywall: true,
+    data: "19 set 2026",
+    alt: "Ilustração vetorial de um homem segurando um lápis com ideias saindo da cabeça",
     resumo: [
-      "O Royal Winnipeg Ballet — a companhia de balé profissional mais antiga do Canadá — ganhou uma nova identidade assinada pela Bruce Mau Design, publicada na categoria 'Reviewed' do Brand New, a mais rigorosa do site.",
-      "Pelos elementos públicos do post, o projeto se apoia em um sans serif condensado e em uma paleta que tem o azul como cor dominante. As tags atribuídas pela publicação apontam o eixo conceitual do trabalho: movimento e sistema cinético — escolha coerente para uma instituição cuja matéria-prima é o corpo em deslocamento, e que sugere uma identidade pensada para se comportar em animação, não apenas em papel timbrado.",
-      "O material divulgado inclui uma comparação antes-e-depois do logotipo e uma série de cartazes de mídia exterior, indicando que o sistema foi construído com a comunicação de rua em mente — o território onde companhias de dança disputam atenção com o resto da programação cultural da cidade.",
-      "O post do Brand New é de assinantes: o conteúdo completo, com a análise crítica e a galeria de aplicações, está atrás de paywall. Este resumo foi escrito a partir do título, categoria, indústria e tags disponíveis publicamente."
+      "Cat How, fundadora e diretora executiva de criação da How&How, escreve na Design Week sobre o estudo que toda agência coloca no deck: em 2013, Werner Reinartz e Peter Saffert, da Universidade de Colônia, analisaram 437 campanhas de TV de 90 marcas de bens de consumo na Alemanha, cruzando notas de criatividade dadas por consumidores treinados com quase seis anos de dados de venda. Conclusão célebre: cada euro investido em campanha muito criativa devolvia quase o dobro em impacto de vendas.",
+      "O que ninguém cita é a segunda metade. Os pesquisadores dividiram criatividade em cinco dimensões mensuráveis — originalidade, flexibilidade, elaboração, síntese e valor artístico — e foram ver qual delas realmente mexia no produto. Elaboração ganhou, com índice 1,32 sobre a média. Originalidade, a dimensão em torno da qual todo o sistema de premiação foi construído, marcou 1,06. Praticamente a média.",
+      "Elaboração, na definição da autora, é o trabalho de pegar uma ideia e se recusar a largá-la até que esteja terminada: a quarta semana do projeto, não a primeira tarde; o princípio de movimento aplicado aos sessenta ativos e não aos três do deck; a décima primeira versão de um nome. O texto argumenta que o modelo comercial do setor está construído sobre a metade errada — dá-se a ideia de graça no pitch e absorve-se o acabamento nas alterações, e não existe categoria de prêmio para a rodada 43.",
+      "A autora também discute por que isso virou um problema específico de 2026: modelos de IA são excelentes em produzir 1,06. Ela cita pesquisa de Anil Doshi e Oliver Hauser publicada na Science Advances em 2024, segundo a qual escritores que recebem ideias geradas por IA produzem textos avaliados como mais criativos, ao mesmo tempo em que o conjunto do que escrevem fica mais parecido entre si. E aponta que, em Cannes neste ano, 40% das inscrições declararam algum uso de IA — contra 20% em 2025 e 11% em 2024.",
+      "O argumento não é abandonar a originalidade: no estudo, a combinação originalidade + elaboração foi a mais forte de todas. Originalidade seria o viabilizador, não o produto. O texto fecha com a história do logo do Citi, que Paula Scher rabiscou num guardanapo em segundos por um honorário de US$ 1,5 milhão e definiu como algo feito \"em um segundo e 34 anos\"."
     ]
   },
   {
-    title: "New Balance sues rival athletics brand over shoe logo",
-    tituloPt: "New Balance processa a Decathlon: o 'K' do Kiprun seria um 'N' disfarçado",
+    title: "Mother Design rebrands psychic platform Keen",
+    tituloPt: "A Mother Design tirou a plataforma de médiuns Keen do branco clínico do bem-estar e a jogou dentro de uma tapeçaria de arte folk",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/mother-design-keen-rebrand-identity/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/3featured.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1200&h=1200",
+    categoria: "branding",
+    estrelas: 4,
+    data: "18 set 2026",
+    alt: "Peças da nova identidade da plataforma Keen criada pela Mother Design",
+    resumo: [
+      "A Mother Design assinou a nova identidade global da Keen, plataforma on-line que conecta pessoas a conselheiros espirituais. A marca anterior era limpa, porém um tanto clínica; o objetivo declarado do trabalho é \"reenquadrar a orientação psíquica para a vida moderna\".",
+      "A mudança de posicionamento veio antes da mudança visual. A Keen quer ocupar um papel mais cotidiano — ajudar as pessoas a ganhar outra perspectiva sobre as questões que têm diante de si —, em vez de ser acionada apenas em grandes acontecimentos e previsões solenes. Parte do movimento responde ao fato de que os consumidores têm recorrido a assistentes de IA, plataformas de coaching e astrologia para lidar com as incertezas da vida.",
+      "Para isso, a agência construiu um mundo ilustrado junto com a ilustradora María Jesús Contreras. O sistema bebe em arte folk e mistura, numa mesma tapeçaria interligada, paisagens urbanas, campo, simbologia espiritual e vida cotidiana. As imagens não funcionam como peças isoladas: cenas e símbolos são extraídos e redistribuídos pelo site, pelo aplicativo e pelas comunicações.",
+      "Para ancorar a fantasia das ilustrações, formas circulares e elípticas viram moldura recorrente nas peças, e uma variação da fonte Season, da Displaay Type Foundry, equilibra referências antigas com uma sensibilidade contemporânea. A paleta — vermelho terroso, branco quente, amarelo e verde — é inspirada nos pigmentos mais antigos usados em arte humana. A fotografia entra de forma estratégica, destacando consultores reais para reforçar a conexão humana que diferencia a Keen das alternativas movidas a IA.",
+      "\"Bem-estar se tornou surpreendentemente uniforme. Espaço em branco, paletas suaves, tipografia arredondada e promessas gentis viraram o padrão da categoria\", diz Jo Tulej, diretora de criação da Mother Design. Segundo ela, a ideia era manter a calma e a acessibilidade, mas de um jeito mais rico, mais quente e inconfundivelmente próprio."
+    ]
+  },
+  {
+    title: "Is this the worst typography cockup of 2026?",
+    tituloPt: "O kerning apertado demais: a arte-chave de um jogo de terror japonês viralizou porque \"In Us\" virou outra palavra",
     source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/logos-icons/new-balance-sues-rival-athletics-brand-over-shoe-logo",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/BkoKFTEBdWfUEYwPY6csrD-2560-80.jpg",
-    categoria: "Branding",
+    url: "https://www.creativebloq.com/design/fonts-typography/is-this-the-worst-typography-cockup-of-2026",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/iKTxNmHyF33zaxvJCaYjHc-825-80.jpg",
+    categoria: "design",
     estrelas: 4,
-    data: "18/09/2026",
+    data: "19 set 2026",
+    alt: "Arte-chave do jogo In Us com quatro exorcistas encapuzados diante de um vitral",
     resumo: [
-      "A New Balance entrou com ação judicial contra a Decathlon alegando violação de marca registrada. O objeto da disputa é o tênis de corrida Kiprun, da varejista francesa, que traz um emblema estilizado em forma de 'K' na lateral — e que, segundo a petição da New Balance, é 'inconfundivelmente um N'.",
-      "A marca americana usa seu 'N' lateral desde os anos 1970, e é justamente essa longevidade que sustenta o argumento: trata-se de um dos identificadores mais reconhecíveis da categoria, aplicado sempre na mesma posição do calçado. O risco alegado é de confusão direta no ponto de venda, agravado pelo fato de as duas empresas competirem no mesmo segmento de corrida.",
-      "Disputas de logotipo não são raras no setor, mas a proximidade de mercado eleva o que está em jogo. A New Balance recorreu à corte federal de Massachusetts pedindo não só o bloqueio do emblema, mas também a destruição do estoque existente e indenização.",
-      "Segundo a reportagem, a New Balance tentou resolver a questão diretamente com a Decathlon no início deste ano, sem sucesso — o que explica a judicialização. O caso serve de lembrete sobre o quanto um elemento gráfico aparentemente simples, quando ocupa o mesmo território visual de um concorrente, pode se transformar em passivo jurídico."
+      "Tom May conta na Creative Bloq o caso de In Us, jogo de terror cooperativo da Engawa Games, estúdio independente japonês antes conhecido pelo caótico Parking Together!. O título de sobrevivência multiplayer acompanha uma equipe de exorcistas por uma vila tomada por demônios: os jogadores precisam identificar quais moradores são monstros disfarçados e exorcizá-los antes que a situação piore.",
+      "A arte-chave é genuinamente boa — vitral iluminado, luz de vela, figura encapuzada, um exorcista-corvo de fedora armado. O problema está no logotipo: o letreiro estilizado do título ficou com o espaçamento tão fechado que \"In us\" passa a se parecer muito mais com outra palavra, bem menos apropriada para uma capa de jogo. O efeito foi notado pelo site DualShockers e, como o autor observa, é impossível de desver depois da primeira vez. A arte seguia no ar na página do jogo no Steam no momento da publicação.",
+      "A parte mais interessante do texto é a tentativa de explicar por que esse tipo de erro acontece. A hipótese de May é a de sempre: o designer passa horas encarando o logo de perto, em alta resolução, em tela grande — e a certa altura para de enxergar letras e passa a enxergar formas a serem equilibradas. Quando o olhar se fixa no detalhe, o cérebro deixa de ver o conjunto, e fica fácil perder o que a palavra parece para alguém que a vê pela primeira vez, em miniatura, no celular, por meio segundo. Tipografia display estilizada só agrava o efeito.",
+      "Ele compara o fenômeno ao experimento do \"gorila invisível\", de Christopher Chabris e Daniel Simons, em que espectadores concentrados em contar passes de basquete não percebem uma pessoa fantasiada de gorila atravessando a cena. E admite ter cometido erros equivalentes em duas décadas de revistas impressas: capas que só revelaram o erro de digitação depois de terem sido vistas trinta vezes e aprovadas por uma dúzia de pessoas."
     ]
   },
   {
-    title: "Greenspace crafts brand identity for Philip Webb-designed One Palace Green",
-    tituloPt: "Greenspace trata um imóvel vitoriano de Londres como peça de coleção de arte",
+    title: "London Packaging Week Innovation Awards 2026 Winners Named",
+    tituloPt: "Prada, Heinz, Jack Daniel's e M&S: os vencedores do prêmio de inovação em embalagem da London Packaging Week 2026",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/greenspace-crafts-brand-identity-for-philip-webb-designed-one-palace-green/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/OPG_CASESTUDY_STILLS_PROCESS_SYMBOLS_HISTORY_1-1024x576.jpg",
-    categoria: "Branding",
+    url: "https://www.designweek.co.uk/london-packaging-week-innovation-awards-2026-winners-named/",
+    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/09/Prada-Paradigme-2.jpeg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=819",
+    categoria: "branding",
     estrelas: 4,
-    data: "18/09/2026",
+    data: "17 set 2026",
+    alt: "Frasco do perfume Prada Paradigme dentro de uma caixa geométrica verde-escura",
     resumo: [
-      "A consultoria londrina Greenspace desenvolveu identidade, posicionamento e material de apoio para o One Palace Green, edifício tombado em Kensington Palace Gardens projetado pelo arquiteto do movimento Arts and Crafts Philip Webb e concluído em 1870. O prédio foi erguido como residência londrina de George Howard, 9º Conde de Carlisle, e teve interiores executados pela firma de William Morris — parte dos quais foi restaurada na conversão atual.",
-      "A decisão estratégica foi recusar o vocabulário padrão do marketing imobiliário de luxo. Em vez de tratar o imóvel como ativo de portfólio, a agência construiu a plataforma 'A Modern Masterpiece', posicionando a propriedade como item colecionável de relevância arquitetônica. Nas palavras do fundador Adrian Caddy, ler o edifício apenas pelo valor de mercado deixaria escapar sua relevância cultural, mais próxima de uma coleção patrimonial.",
-      "O sistema visual se organiza em torno das 'Collector's Marks' — os monogramas e carimbos que obras de arte acumulam ao passar por diferentes coleções ao longo do tempo. O logotipo principal incorpora três marcas autorais, cada uma amarrada a um fio da linhagem do prédio: a família Howard que o encomendou, o endereço em Kensington Palace Gardens e os criadores originais, Webb e Morris.",
-      "A tipografia é uma versão customizada da Ergon, da Commercial Type, escolhida por qualidades caligráficas que ecoam as letras do período Arts and Crafts sem perder estrutura para uso digital. A paleta trabalha verdes profundos, roxos e acabamentos metálicos, referência ao parque vizinho e aos elementos decorativos restaurados. Como o edifício ainda não está pronto, a Greenspace encomendou à artista Emily Robertson uma série de aquarelas do exterior e da rua."
+      "Os London Packaging Week Innovation Awards 2026 anunciaram os vencedores por categoria, celebrados durante a feira realizada no ExCeL London entre 16 e 17 de setembro. Christelle Anya, diretora de conteúdo e comunidade da Easyfairs, destacou a amplitude do que hoje conta como inovação em embalagem — de engenharia de luxo a mudanças discretas em produtos do dia a dia, passando por novos materiais e soluções de redução de impacto ambiental. O fio comum, segundo ela, é propósito.",
+      "No lado cotidiano, a Heinz venceu a categoria de alimentos com sua garrafa de 111 oz, desenhada para ambientes de alto giro, com área de pegada esculpida e geometria curva feita sob medida para dar precisão ao aperto. A Hair Gain levou a divisão de perfumaria e cuidados pessoais com a embalagem da máscara capilar Scalp Work, cuja bomba de pressão resolve o problema prático de manusear o produto com as mãos molhadas ou ensaboadas. A FOLI ganhou em utilidades domésticas.",
+      "No território do luxo, o destaque foi o Jack Daniel's x McLaren Halo Mix, desenvolvido pela Hunter Luxury: a estrutura se inspira no Halo, o arco de proteção da Fórmula 1, combina peças impressas em 3D e oito etapas de fabricação e traz um sistema de molas de grau aeroespacial acionado por um botão escondido. A TwoNYC Boxes venceu em edição limitada com a caixa de lançamento do Prada Paradigms, que usa gravidade, ímãs e rolamentos internos: o consumidor vira e bate na embalagem para liberar o produto.",
+      "Nas categorias de sustentabilidade, a Law Print & Packaging Management venceu em alimentos com uma embalagem monomaterial de polietileno para as rações Canagan; a Faddie Dean Distillery levou bebidas; e o stick de pele da Prada ganhou em beleza e cuidados pessoais. O prêmio especial da noite, de Equipe de Embalagem do Ano, ficou com a varejista Marks & Spencer."
     ]
   },
   {
-    title: "Tom Pearson unveils riveting aluminium furniture with droplet-like patterns",
-    tituloPt: "Tom Pearson faz do rebite — e do acaso da anodização — o ornamento dos seus móveis",
+    title: "Victoria Yakusha crafts sculptural jewellery boutique in New York",
+    tituloPt: "\"Meu trabalho aqui foi mais próximo do de um escultor\": a ucraniana Victoria Yakusha desenha a primeira loja da Guzema em Nova York",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/18/tom-pearson-riveting-aluminium-furniture/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/tom-pearson-studio-10000-rivets_dezeen_2364_col_sq4.jpg",
-    categoria: "Design",
+    url: "https://www.dezeen.com/2026/09/19/guzema-jewellery-boutique-soho-new-york-victoria-yakusha-studio/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/guzema-soho-boutique_victoria-yakusha-studio_dezeen_sq1ex.jpg",
+    categoria: "design",
     estrelas: 4,
-    data: "18/09/2026",
+    data: "19 set 2026",
+    alt: "Interior bege da butique Guzema no SoHo, com vitrines arredondadas de camurça cinza",
     resumo: [
-      "A coleção 10.000 Rebites, primeira linha de móveis e iluminação do Tom Pearson Studio, está em exibição na loja APOC, em Londres, durante o London Design Festival. As peças de alumínio funcionam ali como expositores e mesas para roupas — ou seja, estreiam já em uso, não em pedestal.",
-      "A origem do trabalho é técnica, não conceitual. Pearson queria aprofundar experimentos com anodização, processo que altera a estrutura superficial do metal e cria uma camada resistente. As formas angulares vieram como consequência das restrições: seus tanques de ácido só comportam chapas de determinado tamanho, e soldar alumínio anodizado é possível porém sujo. Daí a construção rebitada. 'Acho mais interessante ser guiado pelo acaso e pela brincadeira do que partir de um conceito abrangente', disse o designer.",
-      "O acabamento do alumínio é notoriamente ingrato — basta desviar o olhar para a peça aparecer coberta de digitais. A anodização resolve isso, mas encontrar fornecedor disposto a ceder um canto da oficina para experimentação é difícil. Pearson passou a anodizar as peças ele mesmo justamente para aplicar os corantes à mão, com pincéis, aerógrafos e pipetas, em vez de buscar a cor chapada e uniforme do padrão industrial. O resultado são padrões que lembram gotas d'água.",
-      "Os rebites correm ao longo das emendas, criando bordas sobre-esculpidas que fazem algumas prateleiras parecerem flutuar. Quanto ao nome: 'tecnicamente são 6.264 rebites nas peças', admitiu Pearson. 'Encomendei 10 mil. Vai saber onde foram parar os outros.'"
+      "A designer ucraniana Victoria Yakusha assinou o interior quase monocromático e escultural da primeira loja da marca de joias Guzema nos Estados Unidos. Também ucraniana, a Guzema ocupa um espaço de 102 metros quadrados na Wooster Street, no SoHo, em Nova York.",
+      "\"Meu trabalho aqui foi mais próximo do de um escultor\", disse Yakusha. \"Não queríamos a sensação de varejo tradicional. Queríamos algo mais íntimo.\" O espaço é longo e estreito, com produtos apresentados em nichos embutidos nos dois lados e dentro de uma série de vitrines esculturais que correm pelo centro. Essas ilhas monolíticas são revestidas em camurça cinza-pomba e arredondadas \"como uma pedra de rio\".",
+      "O restante do ambiente é um pouco mais claro: reboco de tom mineral e módulos de armazenagem combinando criam a impressão de uma superfície única e contínua. Na vitrine, vasos brancos esculpidos à mão, com pele texturizada e topo em forma de tigela, apresentam as joias. As peças seguem a mesma linguagem da luminária de piso Sonaih, da Faina, marca de mobiliário, iluminação e decoração da própria Yakusha.",
+      "\"Queríamos que a joia parecesse descoberta, não apenas exposta\", explicou a designer sobre a instalação da vitrine, em que cada vaso é modelado à mão, camada por camada. No fundo da loja há uma área de consulta semiprivada para atendimentos individuais, separada do salão principal por uma divisória de tijolos de vidro e mobiliada com peças da Faina — sofá curvo, pufe e arandela —, além de mesa em metal brunido e talheres de Natalia Criado.",
+      "Ex-editora de moda, Yakusha já abriu galerias de sua linha de mobiliário em Antuérpia e Miami. Desde a invasão russa à Ucrânia em 2022, desenhou uma coleção de móveis em homenagem ao país e propôs um museu para preservar patrimônio cultural ucraniano ameaçado. As fotos são de Matthew Williams."
     ]
   },
   {
-    title: "Bin Wu's mirror-topped Pavilion of Time aims to \"make time tangible\"",
-    tituloPt: "No Palais-Royal, Bin Wu constrói um pavilhão em que o relógio é a luz",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/18/pavilion-of-time-bin-wu-paris-design-week/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/bin-wu-pavilion-of-time-paris-design-week_dezeen_1704_col_sq.jpg",
-    categoria: "Design",
+    title: "New ad shows a minute in the life of Senegalese brand Kirène",
+    tituloPt: "Um minuto de meio-dia em Dakar, filmado inteiramente por uma equipe senegalesa — e com a garrafa d'água em cena o tempo todo",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/ad-senegal-brand-kirene-couro-prod/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Kirene-ad.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=963",
+    categoria: "branding",
     estrelas: 4,
-    data: "18/09/2026",
+    data: "17 set 2026",
+    alt: "Cena do filme publicitário da marca senegalesa Kirène rodado em Dakar",
     resumo: [
-      "O designer de interiores chinês Bin Wu instalou o Pavilion of Time no pátio do Domaine National du Palais-Royal, em Paris, como resposta ao tema desta edição da Paris Design Week, 'Pulse in Motion'. A proposta, nas palavras dele, é tornar o tempo 'tangível e caminhável'.",
-      "Sob uma cobertura circular espelhada, o pavilhão se divide em três segmentos de madeira, cada um com uma abertura que permite ao visitante atravessá-los em círculo. A estrutura é envolvida por uma membrana translúcida semelhante a papel — polietileno adequado ao uso externo, com textura que remete ao papel Xuan tradicional chinês. A luz natural atravessa esse invólucro e é o deslocamento dessa luz, não um mostrador, que marca a passagem das horas.",
-      "'Esperamos que as pessoas se movam continuamente — os passos traçam o arco, a luz do sol escorre pelo papel e pelo espelho', disse Wu. 'Luz e sombra se tornam mãos intangíveis, inscrevendo a trajetória do tempo. Aqui o tempo não é medido por relógios, mas pela luz; não em números, mas pelo movimento e pelo repouso do corpo.'",
-      "A forma circular foi escolhida em contraste deliberado com a arquitetura clássica ortogonal do Palais-Royal, e também evoca a noção chinesa antiga de 'céu redondo e terra quadrada'. A leveza translúcida opõe-se ao peso do entorno histórico. À noite, um sistema de iluminação da marca chinesa Moorgen acende o interior; cadeiras de fibra de carbono da Shang Xia convidam à pausa nas bordas. Wu, fundador do W Design, foi eleito designer de interiores do ano no Dezeen Awards China 2024."
+      "Merchandising explícito costuma ser visto como defeito na publicidade contemporânea, com as agências preferindo construções de marca mais sutis. Fait de Sénégal, novo filme da Kirène — principal marca de bebidas do Senegal —, é o contraexemplo que a Creative Review resolveu destacar.",
+      "Dirigido e produzido inteiramente no Senegal, o filme mergulha no coração de Dakar para percorrer um único minuto do meio-dia, marcado no início e no fim por um relógio analógico, reunindo perspectivas diferentes espalhadas pela cidade. Embalado pelos ritmos clássicos do Orchestra Baobab, esse minuto passa por mercados lotados, trânsito serpenteando, tecelões de rua, jovens de patins, o primeiro aniversário de um recém-nascido e trabalhadores de companhia aérea chegando ao aeroporto.",
+      "A água Kirène atravessa todas as cenas como um fio da vida diária — recurso que, na avaliação da publicação, consegue soar autêntico em vez de irritante. O filme é assinado por Kes-Tchaas Eccleston e Xavier Damase e foi escrito, dirigido e produzido de ponta a ponta por uma equipe senegalesa.",
+      "\"Trabalhamos com muitas marcas e com muita publicidade, mas com este filme queríamos mostrar que é possível produzir trabalho de nível mundial inteiramente na África Ocidental, contando nossas próprias histórias\", diz o produtor Ibra Dia. \"É esse o sentido do que fazemos na Couro Prod.\"",
+      "Ficha técnica: produção Couro Prod; direção Kes-Tchaas Eccleston e Xavier Damase; fotografia Sam Meyer; produção Ibra Dia; montagem Xavier Damase e Kes-Tchaas Eccleston; cor Thomas Kumeling (Doma); VFX Lucas Hrubizna; desenho de som e mixagem Oskar Justesen; música Orchestra Baobab."
     ]
   },
   {
-    title: "Design review: The new Škoda Epiq and the quiet art of getting it right",
-    tituloPt: "O Škoda Epiq não é um clássico de museu — e esse é exatamente o projeto",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/design-review-the-new-skoda-epiq-and-the-quiet-art-of-getting-it-right/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/dsf6089-1_e3a8b830-1920x1280-1-1024x683.jpg",
-    categoria: "Design",
-    estrelas: 3,
-    data: "17/09/2026",
-    resumo: [
-      "David Coveney escreve uma resenha incomum para a Design Week: a de um carro que se recusa a dar munição para crítica fácil. Depois de rodar pelos Alpes tiroleses com o novo Epiq elétrico, ele conta que queria dizer que o interior era sem graça e o exterior tedioso — e não conseguiu, porque nada disso era verdade.",
-      "A tese é que a Škoda acertou a estratégia, não o espetáculo. O briefing implícito seria criar um carro sobre a plataforma MEB+ igualmente à vontade no estacionamento de uma estação de trem e na entrada de um hotel caro. O exterior segue a tendência atual de formas seguras e tons discretos; a inteligência de projeto está na cabine.",
-      "Ali o texto destaca o acabamento Techtona — material de toque macio, costurado como couro mas sem tentar imitá-lo —, os acabamentos Loft Mint e Suite, e detalhes como o botão do difusor de ar que parece flutuar atrás do painel. A comparação com o Volvo EX30, de dimensões próximas, é favorável ao Škoda: o sueco é mais rápido, mas de clima bem mais austero, e o Epiq topo de linha custa menos que o Volvo de entrada.",
-      "Na interface, construída sobre Android Automotive OS, as equipes de design mantêm liberdade sobre tipografia, cores e fluxos de UX mesmo compartilhando arquitetura com o grupo VW. Há ainda um assistente de voz chamado Laura e um detalhe que interessa a designers industriais: a Škoda publica arquivos 3D oficiais de acessórios de cabine no Printables. Coveney elogia a abertura e cobra mais — a licença atual não permite derivações nem customizações."
-    ]
-  },
-  {
-    title: "RCA design students exercise restraint in One Tool One Stool exhibition",
-    tituloPt: "Uma ferramenta, um banco: o exercício de contenção dos alunos do RCA",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/18/rca-design-students-exercise-restraint-in-one-tool-one-stool-exhibition/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/brompton-design-district-rca-design-graduates-one-tool-one-stool-exhibition-london-design-festival-hero-2.jpg",
-    categoria: "Design",
-    estrelas: 3,
-    data: "18/09/2026",
-    resumo: [
-      "Espuma acústica cinzelada, metal dobrado à mão e réguas encaixadas: a mostra One Tool, One Stool reúne 23 bancos criados por alunos do mestrado em design de produto do Royal College of Art, cada um concebido a partir de uma única ferramenta e do mínimo de material. A exposição ocupa o The Lavery, em South Kensington, com as peças dispostas pelo chão como artefatos preciosos no antigo espaço de trabalho do pintor John Lavery.",
-      "Entre os resultados estão um assento baixo de Sue Ye feito de rolos de pintura laranja e amarelos amarrados por corda vermelha fina; um banco rosa-poeira de Pil Gyu Jan, esculpido em placas de espuma acústica; e uma estrutura de oito pontas de Mayank Patole montada com dez réguas de aço inoxidável de 60 cm, presas por um único parafuso — demonstração de que um conjunto de instrumentos de medida pode virar estrutura portante.",
-      "Segundo o RCA, o exercício pede que o aluno considere quanto é possível alcançar com muito pouco, estimulando desenvoltura e uma relação direta entre pensar e fazer. 'Cada resposta revela uma abordagem diferente de materiais, construção e resolução de problemas', afirma a instituição.",
-      "Há peças que flertam com o conceitual: Anisa Yelek apresenta um banco bulboso feito de velas brancas fundidas com pistola de calor. 'É um banco que pode derreter', disse. 'Um assento que pede que você pense no que significa sentar, ficar, queimar.' A mostra integra a exposição Perfectly Imperfect, curada por Alex Tieghi-Walker, e vai até 20 de setembro."
-    ]
-  },
-  {
-    title: "Crocs and walking alarm clocks: Alistair Nicholls embraces \"pure silliness\" in his self-funded claymation",
-    tituloPt: "Alistair Nicholls financiou o próprio curta em massinha nos intervalos dos jobs pagos",
+    title: "Victor Hwang on why we should be updating existing websites rather than making new ones",
+    tituloPt: "Reciclagem digital: em vez de refazer o site do zero, este designer atualizou o que já existia — e se inspirou em Páginas Amarelas e Rolodex",
     source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/alistair-nicholls-running-late-animation-project-170926",
-    imageUrl: "https://m.itsnicethat.com/original_images/Alistair-Nicholls-Running-Late-Animation-ItsNiceThat-6.jpg?class=w1440",
-    categoria: "Design",
-    estrelas: 3,
-    data: "17/09/2026",
-    resumo: [
-      "Depois de campanhas para Coachella e Renault e de personagens gigantes em massinha para um clipe de Charlie Puth, o animador Alistair Nicholls percebeu que não conseguia mais achar tempo nem verba para projetos pessoais. 'É estranho, era quase como se eu estivesse pedindo permissão para fazer alguma coisa', diz. 'Você não tem isso se pinta ou faz música, você simplesmente faz.'",
-      "Daí nasceu Running Late, curta que acompanha a 'rotina matinal surreal' de um personagem. O protagonista é um despertador vermelho de pernas curtas, inspirado no trabalho do surrealista tcheco Jan Švankmajer. Há também um crocodilo que dispensa pasta de dente — personagem que surgiu de um rabisco casual.",
-      "A estética nostálgica e desbotada do filme nasceu de limitação pura. Sem orçamento e trabalhando entre encomendas, Nicholls precisou montar cenas no mundo real para evitar construir cenários: armava uma cena, animava por alguns dias, desmontava e voltava para um job comercial. 'Era o único jeito de trabalhar, eu precisava pagar as contas.'",
-      "A restrição acabou virando método. Como não havia tempo para revisar ideias, ele foi obrigado a seguir com a primeira intuição — o que deu ao filme seu tom onírico e improvisado. O mesmo vale para a atuação dos personagens: 'sei o que acontece na cena, mas a performance surge no momento, é como atuar através do personagem, um quadro por vez'. Após um ano de produção, Running Late estreia em novembro."
-    ]
-  },
-  {
-    title: "Disney's first CTO led an AI startup it once accused of copying its characters",
-    tituloPt: "A Disney contratou seu primeiro CTO — o ex-CEO da startup que ela acusou de copiar seus personagens",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/10/GettyImages-1387623215.jpg?resize=1200,900",
-    categoria: "Tecnologia",
+    url: "https://www.itsnicethat.com/articles/victor-hwang-mater-graphic-design-160926",
+    imageUrl: "https://m.itsnicethat.com/original_images/Mater-ItsNiceThat-0.png?class=w1440",
+    categoria: "design",
     estrelas: 4,
-    data: "18/09/2026",
+    data: "16 set 2026",
+    alt: "Telas do site Mater redesenhado por Victor Hwang",
     resumo: [
-      "A Disney nomeou o primeiro diretor de tecnologia de sua história, e a escolha tem uma ironia embutida: Karandeep Anand vem da Character.AI, empresa que a própria Disney notificou extrajudicialmente em setembro de 2025 por suposta violação de propriedade intelectual.",
-      "A Character.AI permite que usuários criem personagens virtuais com IA generativa e conversem com eles. A queixa da Disney à época era de que a plataforma hospedava versões de personagens protegidos de suas franquias. A startup acumula outros problemas jurídicos desde a fundação, em 2021, incluindo processos que alegam que seus chatbots teriam encorajado usuários a práticas de automutilação.",
-      "Segundo a Variety, Anand foi escolhido pelo novo CEO da Disney, Josh D'Amaro, que assumiu após a saída de Bob Iger em março. A leitura imediata do mercado é que D'Amaro quer acelerar a adoção de novas tecnologias dentro do estúdio — e que prefere trazer para dentro quem conhece o terreno a continuar litigando contra ele.",
-      "Anand era conselheiro da Character.AI antes de assumir o cargo de CEO em maio de 2025. Antes disso, passou pelo Facebook entre 2015 e 2021 e por 15 anos na Microsoft."
+      "Victor Hwang faz alguns dos sites mais cuidadosos e conscientes em relação ao clima que circulam hoje. Um deles é o Mater, plataforma de pesquisa e publicação sobre o mundo material fundada pela artista Maddie Rose Hills, que acaba de receber uma atualização extensa. A It's Nice That já havia conversado com ele em 2022, quando concluiu a primeira versão do site.",
+      "A demanda surgiu quando Maddie voltou com um documento de mais de cem páginas reunindo referências e anotações de cinco anos de Mater: ela queria transformar aquilo num arquivo público e vivo. A primeira ideia foi hospedar o acervo numa nova seção; logo ficou claro que o sistema de arquivo deveria virar a espinha dorsal do site inteiro. Mesmo com a reformulação, os dois decidiram não criar uma nova URL e sim atualizar o site existente — algo que Hwang chama de reciclagem digital.",
+      "\"O que mais me deixa feliz é quando alguém quer atualizar um site que já usa há anos, em vez de recomeçar\", diz ele. \"Na arquitetura se fala muito em reúso adaptativo, e o mesmo deveria valer para coisas digitais. O conhecimento se acumula ao longo do tempo em todos os ajustes que você faz, e jogar um site fora é como destruir um ecossistema inteiro construído ao longo de anos.\"",
+      "As referências são, nas palavras dele, \"uma mistura do pragmático e do poético\". Para distinguir o acervo do conteúdo comissionado, Hwang escolheu uma lavagem pastel — aceno às Páginas Amarelas, o diretório pré-internet — mas em azul, em homenagem à cor original dos hiperlinks. Outra referência é o Rolodex: o que interessava era o movimento, a experiência de folhear uma lista finita até achar algo, traduzida em animações lentas na home que emulam \"a sensação de uma página web nos anos 90 carregando\".",
+      "Sob a superfície, a dupla refez o encanamento: menos JavaScript por página, estrutura que exige menos processamento para montar o site quando entra conteúdo novo, e conteúdo internalizado — em vez de puxado de um CMS externo, tudo passa a viver dentro do Mater, o que significa um servidor a menos rodando. O site é majoritariamente texto e imagem, sem vídeo, e a tipografia continua sendo a universalmente acessível Times New Roman. \"É sobretudo fazer o trabalho de base, chato, de um jeito atencioso\", resume."
     ]
   },
   {
-    title: "Google's new 'CC' is an AI agent that helps families run their households",
-    tituloPt: "O 'CC' do Google vira um agente de IA com conta própria para administrar a casa",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/CC_hero.width-2200.format-webp.webp?resize=1200,675",
-    categoria: "Tecnologia",
+    title: "Fritz Hansen Sound Club invites visitors to enjoy music in Bauhaus-inspired listening spaces",
+    tituloPt: "Uma luminária de 1930 e um toca-discos japonês, os dois em bordô: a Fritz Hansen virou o showroom de Londres em quatro cenas domésticas de escuta",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/20/fritz-hansen-sound-club-london/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/hero-fritz-hansen-sound-club-technics_dezeen_2364_col_0.jpg",
+    categoria: "design",
     estrelas: 3,
-    data: "18/09/2026",
+    data: "20 set 2026",
+    alt: "Ambiente do Fritz Hansen Sound Club durante a London Design Festival",
     resumo: [
-      "O Google reposicionou o CC, agente de IA que opera entre e-mail, calendário, chats e tarefas, para focar em coordenação doméstica. A nova versão cuida de organizar a família, planejar o dia e executar tarefas específicas do cotidiano — assinar autorizações escolares, montar listas de compras, planejar o cardápio da semana.",
-      "O detalhe estrutural mais interessante é que o CC agora ganha uma conta Google própria, com permissões específicas de acesso a dados. Cada membro da família escolhe o que compartilhar: e-mails sobre eventos escolares, esportes, convites de aniversário, consultas médicas. Dá para encaminhar mensagens manualmente ao endereço do agente ou definir remetentes cujas mensagens são sempre compartilhadas — e o próprio CC sugere novos remetentes semanalmente.",
-      "O agente suporta até seis pessoas por família, acompanha datas e pendências, joga tudo em um calendário ou lista de tarefas compartilhada e executa ações como preencher PDFs de inscrição, criar Docs e Sheets ou calcular tempo de deslocamento entre atividades. Quando falta informação, ele pergunta e atualiza a memória do grupo.",
-      "Tecnicamente o CC roda em um computador em nuvem isolado, movido por Gemini e pelo Antigravity, o harness agêntico do Google. O experimento está limitado a usuários nos EUA, com conta Gmail pessoal e maiores de 18 anos — restrição que, como aponta a reportagem, deixa de fora justamente adolescentes cujas caixas de entrada escolares concentram boa parte da informação que o agente deveria organizar."
+      "A marca dinamarquesa Fritz Hansen se associou à especialista em áudio Technics para transformar seu showroom em Farringdon numa sequência de cenas domésticas de escuta durante a London Design Festival. O showroom foi organizado em quatro ambientes em que os visitantes são convidados a ouvir uma seleção curada de discos de vinil.",
+      "A instalação combina móveis e luminárias da Fritz Hansen com toca-discos, fones e caixas da japonesa Technics. No centro de cada cenário estão dois objetos em tom bordô combinando: uma edição limitada de 90 anos da luminária de mesa Kaiser Idell Luxus e o toca-discos SL 40CBT da Technics.",
+      "Em referência às origens modernistas da luminária, a ambientação evoca a Bauhaus e mistura móveis dos anos 1930 com peças do catálogo da marca. A área do Estudo combina escrivaninhas de estrutura em aço com a cadeira Ant, de Arne Jacobsen, em acabamento de folheado de cerejeira; o Canto de Leitura traz a icônica Egg Chair do mesmo designer. No andar de baixo, a Sala de Estar é um espaço de convívio, com toca-discos e caixas voltados para os convidados, o sofá PK31 e o daybed PK80 de Poul Kjærholm, além de um carrinho de bebidas dos anos 1930 e mesas de centro PK61.",
+      "\"O som tem papel direto em como experimentamos o espaço\", disse Els Van Hoorebeeck, diretora de criação da Fritz Hansen. \"Ele molda como nos movemos, onde pausamos e como nos relacionamos com mobiliário, luz e materiais.\" O Sound Club estreou durante o 3 Days of Design, em Copenhague, com a proposta de investigar como o som informa a percepção de um interior.",
+      "Fundada em 1872, a Fritz Hansen fez história trabalhando com Jacobsen, Kjærholm, Hans J Wegner, Børge Mogensen e Verner Panton. Na apresentação há também uma nova versão da cadeira Monolit, de Cecilie Manz, uma releitura mais compacta e de parede da Kaiser Idell e uma versão estofada da cadeira N02 Recycle, do estúdio japonês Nendo."
+    ]
+  },
+  {
+    title: "Absolutely bananas! In a new book, 100 artists celebrate the fruit basket's favourite class clown",
+    tituloPt: "192 páginas de banana: um estúdio sueco bancou do próprio bolso um livro com mais de 100 obras sobre a fruta mais palhaça da fruteira",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/studio-trikken-banana-art-book-publication-project-160926",
+    imageUrl: "https://m.itsnicethat.com/original_images/Studio-Trikken-Banana-Art-Book-Publication-ItsNiceThat-16.jpg?class=w1440",
+    categoria: "design",
+    estrelas: 3,
+    data: "17 set 2026",
+    alt: "Páginas do Banana Art Book publicado pelo Studio Trikken",
+    resumo: [
+      "Nenhuma outra fruta tem o mesmo peso cômico e artístico da banana. Ao longo da história ela alternou papéis — recurso de comédia, ícone musical, comentário sobre o capitalismo —, sem nunca deixar de ser a palhaça da fruteira. Foi essa constatação que levou o Studio Trikken, dupla sueca, a fazer um livro inteiro sobre o assunto, financiado do próprio bolso e sem nenhum apoio.",
+      "\"Quando começamos a falar de um livro de banana, ficamos intrigados com a rapidez com que as ideias surgiam espontaneamente; uma bobagem vinha atrás da outra\", conta John Schulisch, metade do estúdio. O Banana Art Book faz exatamente o que o nome promete: reúne mais de 100 obras com bananas, de artistas, designers e ilustradores — de estudantes e ilustradores emergentes a estúdios de design consagrados.",
+      "\"Queríamos que cada página fosse diferente, então buscamos variedade de estilo, técnica e tipo de participante\", diz John. Além das imagens, há um prefácio de Ritupriya Basu, um ensaio criativo de Heejae Kim e entrevistas com artistas selecionados — \"192 páginas de energia bananal alegre\". O briefing enviado aos participantes era aberto: \"depositamos confiança total nos participantes\".",
+      "Por que banana, entre todas as frutas? \"Ela tem a capacidade de ser tantas coisas e de carregar tantos significados diferentes\", responde Johan Elmehag, a outra metade do estúdio. \"A forma é esquisita, a cor é alegre e personagens de desenho escorregam nelas. Neste livro a fruta é palhaço, contador e ditador ao mesmo tempo.\"",
+      "O projeto gráfico é deliberadamente sóbrio, com as piadas escondidas nos detalhes: o livro é composto na Banana Grotesk, da MNKY Type; o índice se chama \"Yellow Pages\"; em algumas páginas o texto curva como uma banana; e há até uma caixinha de transporte inspirada nas caixas de banana. \"Existe uma angústia enorme na busca pelo perfeito, então de vez em quando gostamos de mostrar o dedo para esse perfeccionismo\", diz Johan."
+    ]
+  },
+  {
+    title: "Trump suggests rebranding AI with a new name, says he's also creating an AI Force",
+    tituloPt: "Trump abriu uma enquete para rebatizar a inteligência artificial e anunciou que vai criar uma \"AI Force\" e um czar da IA",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/06/donald-trump-open-mouth.jpg?resize=1200,800",
+    categoria: "tec",
+    estrelas: 4,
+    data: "19 set 2026",
+    alt: "Donald Trump falando à imprensa na pista do aeroporto de Orly, em Paris",
+    resumo: [
+      "O presidente Donald Trump reagiu ao debate recente sobre segurança em IA declarando que as preocupações fazem parte de uma longa lista de fraudes \"geradas pelos Dumocratas da Esquerda Radical, com o propósito de destruir nosso País\".",
+      "No sábado, Trump começou escrevendo em sua rede, a Truth Social, que \"muita gente acha que as palavras 'Inteligência Artificial' são imprecisas e muito deselegantes\" e publicou uma enquete em que seguidores podiam votar em um novo nome para a tecnologia: Superior Intelligence, Extreme Intelligence ou Supreme Intelligence. A votação seguia aberta quando a TechCrunch publicou a reportagem.",
+      "Horas depois, ele postou que as tentativas de \"dizimar ou destruir a IA\" seriam mais uma das \"muitas\" fraudes democratas, ao lado de itens como Rússia, Ucrânia, aquecimento global e os dois processos de impeachment. Disse ainda que não vai \"ficar parado e deixar isso acontecer\" e que a suposta fraude \"começou com um ataque aos nossos Data Centers\". Não apresentou evidências de que a desconfiança em relação a IA e data centers não seja orgânica e sincera — vale lembrar que republicanos e democratas têm criticado data centers, e que Nova York se tornou o primeiro estado a suspender licenças para grandes projetos.",
+      "Trump afirmou que vai \"zelar pela indústria, ajudá-la e cuidar dela enquanto cresce\", e que está formando uma AI Force nos moldes da Space Force criada em seu primeiro mandato. \"Nesse sentido, anunciarei em breve o 'czar' da IA — apenas indivíduos de QI alto devem se candidatar\", escreveu. Ele não detalhou quais seriam as atribuições da tal força nem do czar. O capitalista de risco David Sacks deixou o cargo de czar de IA e cripto no início deste ano.",
+      "O debate se intensificou depois que um pesquisador anunciou sua saída da Anthropic alegando que as principais empresas de IA \"acreditam sinceramente que isso pode matar todos nós até o fim da década\". O CEO da Anthropic, Dario Amodei, divulgou em seguida um plano para \"cadenciar a fronteira\", aparentemente endossado por Sam Altman e Elon Musk. Críticos da indústria argumentam que boa parte dessas preocupações existenciais serve de distração diante de danos mais imediatos."
+    ]
+  },
+  {
+    title: "Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking",
+    tituloPt: "Os testes de IA viraram peça de marketing — e uma startup de 25 pessoas quer ser o College Board dos modelos",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/Team.jpeg?resize=1200,800",
+    categoria: "tec",
+    estrelas: 3,
+    data: "19 set 2026",
+    alt: "Equipe da startup Vals AI reunida no escritório em San Francisco",
+    resumo: [
+      "Benchmarks viraram a forma padrão de as empresas de IA validarem a capacidade de seus modelos e se destacarem da concorrência — o que, na prática, significa que bons resultados em teste quase sempre equivalem a boa assessoria de imprensa. O problema é que as empresas também aprenderam a driblar os sistemas legados de avaliação, muitos deles antigos e não desenhados para medir modelos modernos.",
+      "A Vals, fundada em 2024, diz estar em missão de consertar esse sistema. Em menos de dois anos a empresa se estabeleceu no setor: levantou uma rodada semente liderada por 8VC e Bloomberg Beta e, no mês passado, captou US$ 40 milhões em série A liderada pela Andreessen Horowitz. Rayan Krishnan, cofundador de 25 anos, estagiou na Palantir e, durante a graduação em Stanford, trabalhou para a Microsoft e para o laboratório de IA da universidade.",
+      "\"Estávamos vendo uma porção de modelos novos e muito capazes chegando rapidamente ao mercado, e os benchmarks acadêmicos não estavam acompanhando esse avanço da fronteira\", diz Krishnan. A diferenciação da Vals está em dois pontos: ela não divulga publicamente o material dos testes — o que impede que empresas treinem seus modelos contra as provas — e avalia a capacidade de executar tarefas complexas ligadas a setores específicos, como direito, finanças e programação, em vez de conhecimento geral.",
+      "\"O que fazemos é olhar quais são os impactos reais dos modelos\", afirma ele. \"Eles conseguem fazer um trabalho que produz um resultado da mesma qualidade que o de um humano, dentro de cada domínio?\" A ideia é checar tanto os desfechos positivos quanto os negativos — entender o que aconteceria se esses modelos \"corressem soltos pelo mundo\". A empresa já mantém benchmarks sobre autoaperfeiçoamento recursivo e trabalha em saúde mental, cibersegurança, biossegurança e até aplicação das Convenções de Genebra.",
+      "As empresas pagam a Vals para testar seus próprios modelos, num arranjo que Krishnan compara ao de um estudante que paga ao College Board para fazer o SAT. A receita é oito vezes maior que a do ano passado e a equipe, que começou o ano com oito pessoas, já triplicou para 25. Para ele, à medida que empresas de IA abrem capital, esse tipo de avaliação tende a virar parte central de como elas apresentam seus números e investimentos ao público."
     ]
   }
 ];
 
 const PALETAS = {
-  Branding:   { a:"#f6b26b", b:"#d4573a", c:"#8c2f22", d:"#fde8dc" },
-  Design:     { a:"#7fd6c0", b:"#2f8a7a", c:"#16534a", d:"#e2f6f1" },
-  Tecnologia: { a:"#a5a8f2", b:"#5b5fd6", c:"#2f327f", d:"#e8e9fd" }
+  branding: ["#F4A261","#E76F51","#FFD9A0"],
+  design:   ["#7FC6A4","#2A9D8F","#CDEBDC"],
+  tec:      ["#8FA3E8","#6C63C7","#D8DDF7"]
 };
 
-function hashStr(s){ let h=0; for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;} return Math.abs(h); }
-
-function Ilustracao({ titulo, categoria }) {
-  const p = PALETAS[categoria] || PALETAS.Design;
-  const h = hashStr(titulo || "x");
-  const gid = "g" + h;
-  const r1 = 30 + (h % 40), r2 = 50 + ((h >> 3) % 60);
-  const cx1 = 60 + (h % 180), cy1 = 40 + ((h >> 5) % 90);
-  const rot = (h % 60) - 30;
+function Ilustra({ categoria, seed, className }) {
+  const p = PALETAS[categoria] || PALETAS.design;
+  const id = "g" + seed;
+  const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração gerada para: " + titulo}>
+    <svg className={className} viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração decorativa">
       <defs>
-        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p.a}/>
-          <stop offset="55%" stopColor={p.b}/>
-          <stop offset="100%" stopColor={p.c}/>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={p[0]}/>
+          <stop offset="100%" stopColor={p[1]}/>
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill={p.d}/>
-      <rect width="400" height="260" fill={"url(#"+gid+")"} opacity="0.92"/>
-      <circle cx={cx1} cy={cy1} r={r2} fill="#fff" opacity="0.16"/>
-      <circle cx={340 - (h % 90)} cy={200 - ((h>>7) % 60)} r={r1} fill="#fff" opacity="0.22"/>
-      <g transform={"rotate("+rot+" 200 130)"}>
-        <rect x="150" y="96" width="100" height="68" rx="10" fill="#fff" opacity="0.2"/>
-        <rect x="170" y="116" width="60" height="28" rx="6" fill="#fff" opacity="0.28"/>
-      </g>
-      <path d={"M0 "+(210 + (h%20))+" Q 100 "+(150+(h%50))+" 200 200 T 400 "+(170+(h%40))+" L400 260 L0 260 Z"} fill="#fff" opacity="0.14"/>
+      <rect width="400" height="260" fill={`url(#${id})`}/>
+      <circle cx={60 + r(1)*280} cy={50 + r(2)*160} r={40 + r(3)*50} fill={p[2]} opacity="0.55"/>
+      <circle cx={40 + r(4)*320} cy={40 + r(5)*180} r={22 + r(6)*30} fill="#ffffff" opacity="0.28"/>
+      <rect x={30 + r(7)*220} y={90 + r(8)*90} width={70 + r(9)*90} height={10} rx="5" fill="#ffffff" opacity="0.45"/>
+      <rect x={50 + r(10)*200} y={130 + r(11)*70} width={50 + r(12)*70} height={10} rx="5" fill="#ffffff" opacity="0.32"/>
+      <path d={`M0 ${200 + r(13)*30} Q 100 ${150 + r(14)*60} 200 ${200 + r(15)*30} T 400 ${190 + r(16)*40} L400 260 L0 260 Z`} fill={p[2]} opacity="0.5"/>
     </svg>
   );
 }
 
-function Foto({ item, className }) {
+function Figura({ item, idx, className }) {
   const [falhou, setFalhou] = useState(false);
   if (!item.imageUrl || falhou) {
-    return <Ilustracao titulo={item.title} categoria={item.categoria} />;
+    return <Ilustra categoria={item.categoria} seed={idx + 3} className={className}/>;
   }
   return (
     <img
       src={item.imageUrl}
-      alt={item.tituloPt}
+      alt={item.alt || item.tituloPt}
       referrerPolicy="no-referrer"
       loading="lazy"
-      className={className}
       onError={() => setFalhou(true)}
     />
   );
 }
 
-function Estrelas({ n }) {
+const LABEL = { branding: "Branding", design: "Design", tec: "Tecnologia" };
+
+function Meta({ item }) {
   return (
-    <span className="stars" title={n + " de 5"}>
-      {[1,2,3,4,5].map(i => (
-        <svg key={i} className="star" viewBox="0 0 24 24"
-             fill={i <= n ? "#e0a53f" : "none"} stroke={i <= n ? "#e0a53f" : "#cfcdc7"} strokeWidth="2">
-          <polygon points="12 2 15.1 8.6 22 9.6 17 14.5 18.2 21.4 12 18.1 5.8 21.4 7 14.5 2 9.6 8.9 8.6 12 2"/>
-        </svg>
-      ))}
-    </span>
+    <div className="meta">
+      <span className="src">{item.source}</span>
+      <span className={"cat " + item.categoria}>{LABEL[item.categoria]}</span>
+      <span className="stars">{"★".repeat(item.estrelas)}{"☆".repeat(5 - item.estrelas)}</span>
+      <span className="date">{item.data}</span>
+    </div>
   );
 }
 
-function Modal({ item, onClose }) {
-  useEffect(() => {
-    const esc = e => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", esc);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", esc); document.body.style.overflow = ""; };
-  }, [onClose]);
-
+function Modal({ item, idx, onClose }) {
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <div className="modal-media">
-          <Foto item={item} />
-          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-        </div>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-media"><Figura item={item} idx={idx}/></div>
         <div className="modal-body">
-          <div className="meta-row">
-            <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
-            <span className="source">{item.source}</span>
-            <span className="date">{item.data}</span>
-            <Estrelas n={item.estrelas} />
-          </div>
+          <Meta item={item}/>
           <h2>{item.tituloPt}</h2>
-          <p className="orig">Título original: “{item.title}”</p>
-          {item.resumo.map((p, i) => <p className="txt" key={i}>{p}</p>)}
-          {item.paywall && (
-            <div className="note">
-              Esta matéria está atrás de paywall. O resumo acima foi redigido a partir dos elementos
-              públicos da página — título, categoria editorial, indústria e tags. Nenhum detalhe do
-              texto completo foi presumido.
-            </div>
-          )}
-          <a className="src-btn" href={item.url} target="_blank" rel="noopener noreferrer">
-            Ler no {item.source} →
-          </a>
+          <p className="orig">Título original: “{item.title}” — {item.source}</p>
+          <div className="txt">
+            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
+          </div>
+          {item.paywall && <p className="note">Resumo produzido a partir dos elementos públicos da página (título, categoria, indústria, tags e linha de apoio), já que o texto completo está atrás de paywall.</p>}
+          <div className="actions">
+            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
+            <button className="btn btn-ghost" onClick={onClose}>Fechar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -428,81 +449,65 @@ function Modal({ item, onClose }) {
 
 function App() {
   const [aberto, setAberto] = useState(null);
-  const [hero, ...resto] = NOTICIAS;
-  const portais = new Set(NOTICIAS.map(n => n.source)).size;
-  const comFoto = NOTICIAS.filter(n => n.imageUrl).length;
+  const ordenadas = [...NOTICIAS];
+  const manchete = ordenadas[0];
+  const resto = ordenadas.slice(1);
+
+  React.useEffect(() => {
+    const h = (e) => { if (e.key === "Escape") setAberto(null); };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, []);
 
   return (
-    <React.Fragment>
-      <header className="hdr">
-        <div className="hdr-top">
-          <h1 className="logo">Portal da <span>Manhã</span></h1>
-          <div className="dateline">Sábado, 19 de setembro de 2026</div>
-        </div>
-        <p className="kicker">
-          O que aconteceu nas últimas 24 horas em branding, design e tecnologia.
-          Seleção diária a partir dos principais veículos internacionais do setor.
-        </p>
-        <div className="stats">
-          <span className="stat">{NOTICIAS.length} notícias</span>
-          <span className="stat">{portais} portais</span>
-          <span className="stat">{comFoto} com imagem original</span>
-          <span className="stat">Clique em qualquer card para ler o resumo</span>
+    <div className="wrap">
+      <header className="top">
+        <div className="kicker">Edição de domingo</div>
+        <h1 className="brand">Portal da Manhã</h1>
+        <div className="subhead">
+          <span>20 de setembro de 2026</span><span className="dot"></span>
+          <span>{NOTICIAS.length} notícias</span><span className="dot"></span>
+          <span>Branding · Design · Tecnologia</span>
         </div>
       </header>
 
-      <article className="hero" onClick={() => setAberto(hero)}>
-        <div className="hero-media"><Foto item={hero} /></div>
+      <h2 className="sec-title">Notícias</h2>
+
+      <article className="hero" onClick={() => setAberto(0)}>
+        <div className="hero-media"><Figura item={manchete} idx={0}/></div>
         <div className="hero-body">
-          <div className="meta-row">
-            <span className={"tag " + hero.categoria.toLowerCase()}>{hero.categoria}</span>
-            <Estrelas n={hero.estrelas} />
-          </div>
-          <h2>{hero.tituloPt}</h2>
-          <p className="dek">{hero.resumo[0].slice(0, 210)}…</p>
-          <div className="meta-row">
-            <span className="source">{hero.source}</span>
-            <span className="date">{hero.data}</span>
-          </div>
+          <Meta item={manchete}/>
+          <h2>{manchete.tituloPt}</h2>
+          <p>{manchete.resumo[0].slice(0, 200)}…</p>
         </div>
       </article>
 
-      <div className="section-label">Mais da edição de hoje</div>
-
       <div className="grid">
         {resto.map((item, i) => (
-          <article className="card" key={i} onClick={() => setAberto(item)}>
-            <div className="card-media"><Foto item={item} /></div>
+          <article className="card" key={item.url} onClick={() => setAberto(i + 1)}>
+            <div className="card-media"><Figura item={item} idx={i + 1}/></div>
             <div className="card-body">
-              <div className="meta-row">
-                <span className={"tag " + item.categoria.toLowerCase()}>{item.categoria}</span>
-                <Estrelas n={item.estrelas} />
-              </div>
+              <Meta item={item}/>
               <h3>{item.tituloPt}</h3>
               <p className="dek">{item.resumo[0].slice(0, 130)}…</p>
-              {item.paywall && <span className="warn">Conteúdo parcial · paywall</span>}
-              <div className="card-foot">
-                <span className="source">{item.source}</span>
-                <span className="date">{item.data}</span>
-              </div>
             </div>
           </article>
         ))}
       </div>
 
       <footer>
-        Portal da Manhã · edição de 19 de setembro de 2026.<br/>
-        Fontes: Brand New, Creative Bloq, Design Week, Dezeen, It’s Nice That e TechCrunch.
-        Todos os resumos são paráfrases originais em português; os textos e imagens pertencem
-        aos seus respectivos veículos. Imagens carregadas diretamente dos servidores de origem.
+        Portal da Manhã — seleção diária de branding, design e tecnologia.<br/>
+        Resumos escritos em português a partir da leitura das matérias originais; os textos não reproduzem o conteúdo das fontes. Imagens carregadas diretamente dos servidores dos portais e creditadas a eles. Clique em qualquer card para ler o resumo completo.
       </footer>
 
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
-    </React.Fragment>
+      {aberto !== null && (
+        <Modal item={ordenadas[aberto]} idx={aberto} onClose={() => setAberto(null)}/>
+      )}
+    </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

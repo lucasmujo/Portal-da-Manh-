@@ -1,148 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 20 de setembro de 2026</title>
+<title>Portal da Manhã — 21 de setembro de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 <style>
   :root{
-    --bg:#f6f6f4;
-    --card:#ffffff;
-    --ink:#15161a;
-    --ink-2:#4a4d57;
-    --ink-3:#858895;
-    --line:#e7e7e2;
-    --accent:#c8452e;
+    --bg:#f6f5f2; --surface:#ffffff; --ink:#15171a; --muted:#6b7280; --line:#e6e4df;
+    --accent:#c2410c; --accent-soft:#fff3ec; --green:#0f766e; --blue:#4338ca;
+    --shadow:0 1px 2px rgba(15,23,42,.05), 0 8px 24px rgba(15,23,42,.06);
+    --shadow-lg:0 2px 4px rgba(15,23,42,.06), 0 18px 50px rgba(15,23,42,.10);
     --radius:20px;
-    --shadow:0 1px 2px rgba(18,20,28,.04), 0 8px 24px rgba(18,20,28,.06);
-    --shadow-lg:0 2px 6px rgba(18,20,28,.06), 0 24px 60px rgba(18,20,28,.12);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px 80px}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+  header.top{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+  h1.logo{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.4vw,68px);line-height:1.02;margin:18px 0 8px;letter-spacing:-.01em}
+  .date{color:var(--muted);font-size:15px}
+  .meta-line{margin-top:14px;color:var(--muted);font-size:13.5px}
 
-  /* Header */
-  header.top{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px}
-  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
-  h1.brand{
-    font-family:Fraunces,Georgia,serif;font-weight:600;
-    font-size:clamp(40px,7vw,68px);line-height:1;margin:14px 0 10px;letter-spacing:-.02em;
-  }
-  .subhead{color:var(--ink-3);font-size:15px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-3);display:inline-block}
+  .hero{display:grid;grid-template-columns:1.25fr 1fr;gap:0;background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;border:1px solid var(--line)}
+  .hero:hover{transform:translateY(-3px)}
+  .hero-media{position:relative;min-height:340px;background:#eceae5}
+  .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+  .hero-body{padding:34px 34px 30px;display:flex;flex-direction:column;justify-content:center}
+  .hero-body h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(26px,3.1vw,38px);line-height:1.12;margin:14px 0 12px;letter-spacing:-.01em}
+  .hero-body p{margin:0;color:#3f444b;font-size:15.5px}
 
-  /* Section title */
-  .sec-title{
-    font-family:Fraunces,Georgia,serif;font-size:22px;font-weight:600;
-    margin:0 0 20px;display:flex;align-items:center;gap:12px;
-  }
-  .sec-title:after{content:"";flex:1;height:1px;background:var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:26px 0 60px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;transition:transform .22s ease, box-shadow .22s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .card-media{position:relative;height:178px;background:#eceae5}
+  .card-media img,.card-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .card-body h3{font-size:17px;line-height:1.3;margin:0;font-weight:600;letter-spacing:-.005em}
+  .card-body .dek{font-size:13.5px;color:var(--muted);margin:0}
 
-  /* Hero card */
-  .hero{
-    background:var(--card);border-radius:var(--radius);overflow:hidden;
-    box-shadow:var(--shadow);cursor:pointer;display:grid;grid-template-columns:1.25fr 1fr;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
-    margin-bottom:40px;border:1px solid var(--line);
-  }
-  .hero:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .hero-media{position:relative;min-height:340px;background:#eceae6}
-  .hero-media img,.hero-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .hero-body{padding:38px 38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px}
-  .hero-body h2{
-    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(24px,2.6vw,33px);
-    line-height:1.16;margin:0;letter-spacing:-.015em;
-  }
-  .hero-body p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+  .tag.Branding{background:#fff1e7;color:#b4460f}
+  .tag.Design{background:#e8f6f3;color:#0b6b62}
+  .tag.Tecnologia{background:#eceafe;color:#4338ca}
+  .src{font-size:12px;color:var(--muted);font-weight:500}
+  .stars{font-size:12.5px;color:#d97706;letter-spacing:1px}
+  .warn{font-size:11.5px;color:#9a6a00;background:#fff8e6;border-radius:8px;padding:5px 8px}
 
-  /* Meta row */
-  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .src{
-    font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
-    background:#f0efec;color:var(--ink-2);padding:5px 10px;border-radius:999px;
-  }
-  .cat{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-  .cat.branding{background:#fdeee6;color:#a8431f}
-  .cat.design{background:#e4f3ec;color:#1f6b4d}
-  .cat.tec{background:#e9ecfb;color:#3a45a0}
-  .stars{font-size:13px;color:#d9a441;letter-spacing:1px}
-  .date{font-size:12px;color:var(--ink-3)}
-
-  /* Grid */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
-    box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s;
-  }
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-  .card-media{height:184px;background:#eceae6;position:relative}
-  .card-media img,.card-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:11px;flex:1}
-  .card-body h3{
-    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:18.5px;line-height:1.26;
-    margin:0;letter-spacing:-.01em;
-  }
-  .card-body .dek{margin:0;color:var(--ink-2);font-size:13.8px;line-height:1.55;flex:1}
-
-  /* Modal */
-  .overlay{
-    position:fixed;inset:0;background:rgba(20,21,26,.42);backdrop-filter:blur(6px);
-    display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;
-    z-index:50;overflow-y:auto;animation:fade .22s ease;
-  }
+  .overlay{position:fixed;inset:0;background:rgba(16,18,22,.45);backdrop-filter:blur(5px);display:flex;align-items:flex-start;justify-content:center;padding:36px 18px;z-index:50;overflow-y:auto;animation:fade .2s ease}
   @keyframes fade{from{opacity:0}to{opacity:1}}
-  @keyframes rise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
-  .modal{
-    background:var(--card);border-radius:24px;max-width:780px;width:100%;
-    overflow:hidden;box-shadow:0 40px 100px rgba(10,12,18,.32);animation:rise .3s cubic-bezier(.2,.8,.2,1);
-  }
-  .modal-media{height:330px;background:#eceae6}
-  .modal-media img,.modal-media svg{width:100%;height:100%;object-fit:cover;display:block}
-  .modal-body{padding:34px 40px 40px}
-  .modal-body h2{
-    font-family:Fraunces,Georgia,serif;font-weight:600;font-size:29px;line-height:1.18;
-    margin:16px 0 8px;letter-spacing:-.015em;
-  }
-  .orig{font-size:13px;color:var(--ink-3);font-style:italic;margin:0 0 20px}
-  .modal-body .txt p{color:var(--ink-2);font-size:16px;line-height:1.72;margin:0 0 16px}
-  .note{font-size:13px;color:var(--ink-3);border-left:2px solid var(--line);padding-left:12px;margin:20px 0 0}
-  .actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-  .btn{
-    display:inline-block;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;
-    text-decoration:none;border:none;cursor:pointer;font-family:inherit;
-  }
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-primary:hover{background:#2c2e36}
-  .btn-ghost{background:#f0efec;color:var(--ink-2)}
-  .btn-ghost:hover{background:#e6e5e1}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .modal{background:var(--surface);max-width:760px;width:100%;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.28);animation:rise .28s cubic-bezier(.2,.8,.2,1)}
+  .modal-media{position:relative;height:300px;background:#eceae5}
+  .modal-media img,.modal-media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .close{position:absolute;top:14px;right:14px;z-index:2;border:none;background:rgba(255,255,255,.94);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:var(--shadow);line-height:1}
+  .modal-body{padding:28px 32px 34px}
+  .modal-body h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(24px,3.4vw,33px);line-height:1.15;margin:14px 0 6px}
+  .modal-body .orig{font-size:13px;color:var(--muted);font-style:italic;margin:0 0 18px}
+  .modal-body p.txt{font-size:16px;line-height:1.72;color:#2f343a;margin:0 0 15px}
+  .srcbtn{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;text-decoration:none;padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600}
+  .srcbtn:hover{background:var(--accent)}
+  .note{font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px;margin-top:16px}
 
-  footer{margin-top:64px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13px;line-height:1.7}
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--muted);font-size:13px;text-align:center}
 
-  @media (max-width:900px){
-    .grid{grid-template-columns:repeat(2,1fr)}
-    .hero{grid-template-columns:1fr}
-    .hero-media{min-height:240px}
-    .hero-body{padding:26px}
-  }
-  @media (max-width:600px){
-    .wrap{padding:0 16px 56px}
-    .grid{grid-template-columns:1fr}
-    .modal-body{padding:24px}
-    .modal-media{height:220px}
-  }
+  @media(max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-media{min-height:250px;height:250px}}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}.modal-media{height:220px}.modal-body{padding:22px 20px 28px}header.top{padding:32px 0 22px}}
 </style>
 </head>
 <body>
@@ -151,363 +81,356 @@
 <script type="text/babel">
 const { useState } = React;
 
-const NOTICIAS = [
-  {
-    title: "Basura creates data centre toy that emits \"ear piercing hum\" when squeezed",
-    tituloPt: "Uma pelúcia de data center que geme: a Basura transformou o barulho real de um galpão de IA na Virgínia em brinquedo de adoção",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/18/basura-big-data-centre-toy-bezzy/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/basura-big-data-sq_dezeen_2364_col_0.jpg",
-    categoria: "branding",
-    estrelas: 5,
-    data: "18 set 2026",
-    alt: "Pelúcia em formato de data center criada pela agência Basura",
-    resumo: [
-      "A agência nova-iorquina Basura se juntou ao músico Big Data para criar Bezzy: um bicho de pelúcia com corpo em formato de data center, sorriso, olhos e braços e pernas compridos. Quando alguém aperta o boneco, ele reproduz uma gravação de áudio captada por uma das pessoas entrevistadas pela equipe — uma moradora que vive ao lado de um data center na Virgínia. A etiqueta presa ao brinquedo diz, em tradução livre, algo como \"me abrace e ganhe um zumbido eterno que fura o ouvido\".",
-      "O boneco é a peça mais visível de uma campanha satírica maior, batizada Adopt a Data Center, que inclui site, adesivos e cartazes e que acompanha o lançamento do primeiro álbum do Big Data em mais de sete anos. A ideia, segundo a agência, é apresentar os data centers de IA como se fossem animais de abrigo à espera de um lar definitivo — uma paródia direta de iniciativas como o Adopt-a-Panda do WWF. Foram produzidas 20 unidades do Bezzy.",
-      "Rajeev Basu, fundador da Basura, conta que a equipe entrevistou dezenas de pessoas que moram perto desses complexos para entender como é, na prática, viver ao lado de um. As queixas se repetiam: ruído, excesso de luz, mudança no uso do solo, impacto sobre os moradores e pressão sobre a água e a eletricidade locais. Ele define a campanha como \"um convite absurdo e provocador\" para olhar com mais atenção o que está sendo instalado ao lado das casas das pessoas.",
-      "A equipe faz questão de dizer que o projeto não é antitecnologia nem anti-IA — a proposta é cobrar proporcionalidade: se as promessas são tão grandes, o compromisso com segurança e prestação de contas precisaria ser do mesmo tamanho. O tema tem dado notícia: moradores da região de Memphis entraram na Justiça contra Elon Musk por poluição sonora, e estudos preliminares já apontam efeito de ilha de calor no entorno desses empreendimentos."
-    ]
-  },
-  {
-    title: "Originality is overrated. Elaboration is the thing.",
-    tituloPt: "O estudo mais citado da publicidade tem uma segunda metade que quase ninguém lê — e ela diz que originalidade vende pouco",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/originality-is-overrated-elaboration-is-the-thing/",
-    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/09/shutterstock_2180557871.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=758",
-    categoria: "branding",
-    estrelas: 5,
-    data: "19 set 2026",
-    alt: "Ilustração vetorial de um homem segurando um lápis com ideias saindo da cabeça",
-    resumo: [
-      "Cat How, fundadora e diretora executiva de criação da How&How, escreve na Design Week sobre o estudo que toda agência coloca no deck: em 2013, Werner Reinartz e Peter Saffert, da Universidade de Colônia, analisaram 437 campanhas de TV de 90 marcas de bens de consumo na Alemanha, cruzando notas de criatividade dadas por consumidores treinados com quase seis anos de dados de venda. Conclusão célebre: cada euro investido em campanha muito criativa devolvia quase o dobro em impacto de vendas.",
-      "O que ninguém cita é a segunda metade. Os pesquisadores dividiram criatividade em cinco dimensões mensuráveis — originalidade, flexibilidade, elaboração, síntese e valor artístico — e foram ver qual delas realmente mexia no produto. Elaboração ganhou, com índice 1,32 sobre a média. Originalidade, a dimensão em torno da qual todo o sistema de premiação foi construído, marcou 1,06. Praticamente a média.",
-      "Elaboração, na definição da autora, é o trabalho de pegar uma ideia e se recusar a largá-la até que esteja terminada: a quarta semana do projeto, não a primeira tarde; o princípio de movimento aplicado aos sessenta ativos e não aos três do deck; a décima primeira versão de um nome. O texto argumenta que o modelo comercial do setor está construído sobre a metade errada — dá-se a ideia de graça no pitch e absorve-se o acabamento nas alterações, e não existe categoria de prêmio para a rodada 43.",
-      "A autora também discute por que isso virou um problema específico de 2026: modelos de IA são excelentes em produzir 1,06. Ela cita pesquisa de Anil Doshi e Oliver Hauser publicada na Science Advances em 2024, segundo a qual escritores que recebem ideias geradas por IA produzem textos avaliados como mais criativos, ao mesmo tempo em que o conjunto do que escrevem fica mais parecido entre si. E aponta que, em Cannes neste ano, 40% das inscrições declararam algum uso de IA — contra 20% em 2025 e 11% em 2024.",
-      "O argumento não é abandonar a originalidade: no estudo, a combinação originalidade + elaboração foi a mais forte de todas. Originalidade seria o viabilizador, não o produto. O texto fecha com a história do logo do Citi, que Paula Scher rabiscou num guardanapo em segundos por um honorário de US$ 1,5 milhão e definiu como algo feito \"em um segundo e 34 anos\"."
-    ]
-  },
-  {
-    title: "Mother Design rebrands psychic platform Keen",
-    tituloPt: "A Mother Design tirou a plataforma de médiuns Keen do branco clínico do bem-estar e a jogou dentro de uma tapeçaria de arte folk",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/mother-design-keen-rebrand-identity/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/3featured.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1200&h=1200",
-    categoria: "branding",
-    estrelas: 4,
-    data: "18 set 2026",
-    alt: "Peças da nova identidade da plataforma Keen criada pela Mother Design",
-    resumo: [
-      "A Mother Design assinou a nova identidade global da Keen, plataforma on-line que conecta pessoas a conselheiros espirituais. A marca anterior era limpa, porém um tanto clínica; o objetivo declarado do trabalho é \"reenquadrar a orientação psíquica para a vida moderna\".",
-      "A mudança de posicionamento veio antes da mudança visual. A Keen quer ocupar um papel mais cotidiano — ajudar as pessoas a ganhar outra perspectiva sobre as questões que têm diante de si —, em vez de ser acionada apenas em grandes acontecimentos e previsões solenes. Parte do movimento responde ao fato de que os consumidores têm recorrido a assistentes de IA, plataformas de coaching e astrologia para lidar com as incertezas da vida.",
-      "Para isso, a agência construiu um mundo ilustrado junto com a ilustradora María Jesús Contreras. O sistema bebe em arte folk e mistura, numa mesma tapeçaria interligada, paisagens urbanas, campo, simbologia espiritual e vida cotidiana. As imagens não funcionam como peças isoladas: cenas e símbolos são extraídos e redistribuídos pelo site, pelo aplicativo e pelas comunicações.",
-      "Para ancorar a fantasia das ilustrações, formas circulares e elípticas viram moldura recorrente nas peças, e uma variação da fonte Season, da Displaay Type Foundry, equilibra referências antigas com uma sensibilidade contemporânea. A paleta — vermelho terroso, branco quente, amarelo e verde — é inspirada nos pigmentos mais antigos usados em arte humana. A fotografia entra de forma estratégica, destacando consultores reais para reforçar a conexão humana que diferencia a Keen das alternativas movidas a IA.",
-      "\"Bem-estar se tornou surpreendentemente uniforme. Espaço em branco, paletas suaves, tipografia arredondada e promessas gentis viraram o padrão da categoria\", diz Jo Tulej, diretora de criação da Mother Design. Segundo ela, a ideia era manter a calma e a acessibilidade, mas de um jeito mais rico, mais quente e inconfundivelmente próprio."
-    ]
-  },
-  {
-    title: "Is this the worst typography cockup of 2026?",
-    tituloPt: "O kerning apertado demais: a arte-chave de um jogo de terror japonês viralizou porque \"In Us\" virou outra palavra",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/fonts-typography/is-this-the-worst-typography-cockup-of-2026",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/iKTxNmHyF33zaxvJCaYjHc-825-80.jpg",
-    categoria: "design",
-    estrelas: 4,
-    data: "19 set 2026",
-    alt: "Arte-chave do jogo In Us com quatro exorcistas encapuzados diante de um vitral",
-    resumo: [
-      "Tom May conta na Creative Bloq o caso de In Us, jogo de terror cooperativo da Engawa Games, estúdio independente japonês antes conhecido pelo caótico Parking Together!. O título de sobrevivência multiplayer acompanha uma equipe de exorcistas por uma vila tomada por demônios: os jogadores precisam identificar quais moradores são monstros disfarçados e exorcizá-los antes que a situação piore.",
-      "A arte-chave é genuinamente boa — vitral iluminado, luz de vela, figura encapuzada, um exorcista-corvo de fedora armado. O problema está no logotipo: o letreiro estilizado do título ficou com o espaçamento tão fechado que \"In us\" passa a se parecer muito mais com outra palavra, bem menos apropriada para uma capa de jogo. O efeito foi notado pelo site DualShockers e, como o autor observa, é impossível de desver depois da primeira vez. A arte seguia no ar na página do jogo no Steam no momento da publicação.",
-      "A parte mais interessante do texto é a tentativa de explicar por que esse tipo de erro acontece. A hipótese de May é a de sempre: o designer passa horas encarando o logo de perto, em alta resolução, em tela grande — e a certa altura para de enxergar letras e passa a enxergar formas a serem equilibradas. Quando o olhar se fixa no detalhe, o cérebro deixa de ver o conjunto, e fica fácil perder o que a palavra parece para alguém que a vê pela primeira vez, em miniatura, no celular, por meio segundo. Tipografia display estilizada só agrava o efeito.",
-      "Ele compara o fenômeno ao experimento do \"gorila invisível\", de Christopher Chabris e Daniel Simons, em que espectadores concentrados em contar passes de basquete não percebem uma pessoa fantasiada de gorila atravessando a cena. E admite ter cometido erros equivalentes em duas décadas de revistas impressas: capas que só revelaram o erro de digitação depois de terem sido vistas trinta vezes e aprovadas por uma dúzia de pessoas."
-    ]
-  },
-  {
-    title: "London Packaging Week Innovation Awards 2026 Winners Named",
-    tituloPt: "Prada, Heinz, Jack Daniel's e M&S: os vencedores do prêmio de inovação em embalagem da London Packaging Week 2026",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/london-packaging-week-innovation-awards-2026-winners-named/",
-    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/09/Prada-Paradigme-2.jpeg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=819",
-    categoria: "branding",
-    estrelas: 4,
-    data: "17 set 2026",
-    alt: "Frasco do perfume Prada Paradigme dentro de uma caixa geométrica verde-escura",
-    resumo: [
-      "Os London Packaging Week Innovation Awards 2026 anunciaram os vencedores por categoria, celebrados durante a feira realizada no ExCeL London entre 16 e 17 de setembro. Christelle Anya, diretora de conteúdo e comunidade da Easyfairs, destacou a amplitude do que hoje conta como inovação em embalagem — de engenharia de luxo a mudanças discretas em produtos do dia a dia, passando por novos materiais e soluções de redução de impacto ambiental. O fio comum, segundo ela, é propósito.",
-      "No lado cotidiano, a Heinz venceu a categoria de alimentos com sua garrafa de 111 oz, desenhada para ambientes de alto giro, com área de pegada esculpida e geometria curva feita sob medida para dar precisão ao aperto. A Hair Gain levou a divisão de perfumaria e cuidados pessoais com a embalagem da máscara capilar Scalp Work, cuja bomba de pressão resolve o problema prático de manusear o produto com as mãos molhadas ou ensaboadas. A FOLI ganhou em utilidades domésticas.",
-      "No território do luxo, o destaque foi o Jack Daniel's x McLaren Halo Mix, desenvolvido pela Hunter Luxury: a estrutura se inspira no Halo, o arco de proteção da Fórmula 1, combina peças impressas em 3D e oito etapas de fabricação e traz um sistema de molas de grau aeroespacial acionado por um botão escondido. A TwoNYC Boxes venceu em edição limitada com a caixa de lançamento do Prada Paradigms, que usa gravidade, ímãs e rolamentos internos: o consumidor vira e bate na embalagem para liberar o produto.",
-      "Nas categorias de sustentabilidade, a Law Print & Packaging Management venceu em alimentos com uma embalagem monomaterial de polietileno para as rações Canagan; a Faddie Dean Distillery levou bebidas; e o stick de pele da Prada ganhou em beleza e cuidados pessoais. O prêmio especial da noite, de Equipe de Embalagem do Ano, ficou com a varejista Marks & Spencer."
-    ]
-  },
-  {
-    title: "Victoria Yakusha crafts sculptural jewellery boutique in New York",
-    tituloPt: "\"Meu trabalho aqui foi mais próximo do de um escultor\": a ucraniana Victoria Yakusha desenha a primeira loja da Guzema em Nova York",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/19/guzema-jewellery-boutique-soho-new-york-victoria-yakusha-studio/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/guzema-soho-boutique_victoria-yakusha-studio_dezeen_sq1ex.jpg",
-    categoria: "design",
-    estrelas: 4,
-    data: "19 set 2026",
-    alt: "Interior bege da butique Guzema no SoHo, com vitrines arredondadas de camurça cinza",
-    resumo: [
-      "A designer ucraniana Victoria Yakusha assinou o interior quase monocromático e escultural da primeira loja da marca de joias Guzema nos Estados Unidos. Também ucraniana, a Guzema ocupa um espaço de 102 metros quadrados na Wooster Street, no SoHo, em Nova York.",
-      "\"Meu trabalho aqui foi mais próximo do de um escultor\", disse Yakusha. \"Não queríamos a sensação de varejo tradicional. Queríamos algo mais íntimo.\" O espaço é longo e estreito, com produtos apresentados em nichos embutidos nos dois lados e dentro de uma série de vitrines esculturais que correm pelo centro. Essas ilhas monolíticas são revestidas em camurça cinza-pomba e arredondadas \"como uma pedra de rio\".",
-      "O restante do ambiente é um pouco mais claro: reboco de tom mineral e módulos de armazenagem combinando criam a impressão de uma superfície única e contínua. Na vitrine, vasos brancos esculpidos à mão, com pele texturizada e topo em forma de tigela, apresentam as joias. As peças seguem a mesma linguagem da luminária de piso Sonaih, da Faina, marca de mobiliário, iluminação e decoração da própria Yakusha.",
-      "\"Queríamos que a joia parecesse descoberta, não apenas exposta\", explicou a designer sobre a instalação da vitrine, em que cada vaso é modelado à mão, camada por camada. No fundo da loja há uma área de consulta semiprivada para atendimentos individuais, separada do salão principal por uma divisória de tijolos de vidro e mobiliada com peças da Faina — sofá curvo, pufe e arandela —, além de mesa em metal brunido e talheres de Natalia Criado.",
-      "Ex-editora de moda, Yakusha já abriu galerias de sua linha de mobiliário em Antuérpia e Miami. Desde a invasão russa à Ucrânia em 2022, desenhou uma coleção de móveis em homenagem ao país e propôs um museu para preservar patrimônio cultural ucraniano ameaçado. As fotos são de Matthew Williams."
-    ]
-  },
-  {
-    title: "New ad shows a minute in the life of Senegalese brand Kirène",
-    tituloPt: "Um minuto de meio-dia em Dakar, filmado inteiramente por uma equipe senegalesa — e com a garrafa d'água em cena o tempo todo",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/ad-senegal-brand-kirene-couro-prod/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Kirene-ad.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=963",
-    categoria: "branding",
-    estrelas: 4,
-    data: "17 set 2026",
-    alt: "Cena do filme publicitário da marca senegalesa Kirène rodado em Dakar",
-    resumo: [
-      "Merchandising explícito costuma ser visto como defeito na publicidade contemporânea, com as agências preferindo construções de marca mais sutis. Fait de Sénégal, novo filme da Kirène — principal marca de bebidas do Senegal —, é o contraexemplo que a Creative Review resolveu destacar.",
-      "Dirigido e produzido inteiramente no Senegal, o filme mergulha no coração de Dakar para percorrer um único minuto do meio-dia, marcado no início e no fim por um relógio analógico, reunindo perspectivas diferentes espalhadas pela cidade. Embalado pelos ritmos clássicos do Orchestra Baobab, esse minuto passa por mercados lotados, trânsito serpenteando, tecelões de rua, jovens de patins, o primeiro aniversário de um recém-nascido e trabalhadores de companhia aérea chegando ao aeroporto.",
-      "A água Kirène atravessa todas as cenas como um fio da vida diária — recurso que, na avaliação da publicação, consegue soar autêntico em vez de irritante. O filme é assinado por Kes-Tchaas Eccleston e Xavier Damase e foi escrito, dirigido e produzido de ponta a ponta por uma equipe senegalesa.",
-      "\"Trabalhamos com muitas marcas e com muita publicidade, mas com este filme queríamos mostrar que é possível produzir trabalho de nível mundial inteiramente na África Ocidental, contando nossas próprias histórias\", diz o produtor Ibra Dia. \"É esse o sentido do que fazemos na Couro Prod.\"",
-      "Ficha técnica: produção Couro Prod; direção Kes-Tchaas Eccleston e Xavier Damase; fotografia Sam Meyer; produção Ibra Dia; montagem Xavier Damase e Kes-Tchaas Eccleston; cor Thomas Kumeling (Doma); VFX Lucas Hrubizna; desenho de som e mixagem Oskar Justesen; música Orchestra Baobab."
-    ]
-  },
-  {
-    title: "Victor Hwang on why we should be updating existing websites rather than making new ones",
-    tituloPt: "Reciclagem digital: em vez de refazer o site do zero, este designer atualizou o que já existia — e se inspirou em Páginas Amarelas e Rolodex",
-    source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/victor-hwang-mater-graphic-design-160926",
-    imageUrl: "https://m.itsnicethat.com/original_images/Mater-ItsNiceThat-0.png?class=w1440",
-    categoria: "design",
-    estrelas: 4,
-    data: "16 set 2026",
-    alt: "Telas do site Mater redesenhado por Victor Hwang",
-    resumo: [
-      "Victor Hwang faz alguns dos sites mais cuidadosos e conscientes em relação ao clima que circulam hoje. Um deles é o Mater, plataforma de pesquisa e publicação sobre o mundo material fundada pela artista Maddie Rose Hills, que acaba de receber uma atualização extensa. A It's Nice That já havia conversado com ele em 2022, quando concluiu a primeira versão do site.",
-      "A demanda surgiu quando Maddie voltou com um documento de mais de cem páginas reunindo referências e anotações de cinco anos de Mater: ela queria transformar aquilo num arquivo público e vivo. A primeira ideia foi hospedar o acervo numa nova seção; logo ficou claro que o sistema de arquivo deveria virar a espinha dorsal do site inteiro. Mesmo com a reformulação, os dois decidiram não criar uma nova URL e sim atualizar o site existente — algo que Hwang chama de reciclagem digital.",
-      "\"O que mais me deixa feliz é quando alguém quer atualizar um site que já usa há anos, em vez de recomeçar\", diz ele. \"Na arquitetura se fala muito em reúso adaptativo, e o mesmo deveria valer para coisas digitais. O conhecimento se acumula ao longo do tempo em todos os ajustes que você faz, e jogar um site fora é como destruir um ecossistema inteiro construído ao longo de anos.\"",
-      "As referências são, nas palavras dele, \"uma mistura do pragmático e do poético\". Para distinguir o acervo do conteúdo comissionado, Hwang escolheu uma lavagem pastel — aceno às Páginas Amarelas, o diretório pré-internet — mas em azul, em homenagem à cor original dos hiperlinks. Outra referência é o Rolodex: o que interessava era o movimento, a experiência de folhear uma lista finita até achar algo, traduzida em animações lentas na home que emulam \"a sensação de uma página web nos anos 90 carregando\".",
-      "Sob a superfície, a dupla refez o encanamento: menos JavaScript por página, estrutura que exige menos processamento para montar o site quando entra conteúdo novo, e conteúdo internalizado — em vez de puxado de um CMS externo, tudo passa a viver dentro do Mater, o que significa um servidor a menos rodando. O site é majoritariamente texto e imagem, sem vídeo, e a tipografia continua sendo a universalmente acessível Times New Roman. \"É sobretudo fazer o trabalho de base, chato, de um jeito atencioso\", resume."
-    ]
-  },
-  {
-    title: "Fritz Hansen Sound Club invites visitors to enjoy music in Bauhaus-inspired listening spaces",
-    tituloPt: "Uma luminária de 1930 e um toca-discos japonês, os dois em bordô: a Fritz Hansen virou o showroom de Londres em quatro cenas domésticas de escuta",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/09/20/fritz-hansen-sound-club-london/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/hero-fritz-hansen-sound-club-technics_dezeen_2364_col_0.jpg",
-    categoria: "design",
-    estrelas: 3,
-    data: "20 set 2026",
-    alt: "Ambiente do Fritz Hansen Sound Club durante a London Design Festival",
-    resumo: [
-      "A marca dinamarquesa Fritz Hansen se associou à especialista em áudio Technics para transformar seu showroom em Farringdon numa sequência de cenas domésticas de escuta durante a London Design Festival. O showroom foi organizado em quatro ambientes em que os visitantes são convidados a ouvir uma seleção curada de discos de vinil.",
-      "A instalação combina móveis e luminárias da Fritz Hansen com toca-discos, fones e caixas da japonesa Technics. No centro de cada cenário estão dois objetos em tom bordô combinando: uma edição limitada de 90 anos da luminária de mesa Kaiser Idell Luxus e o toca-discos SL 40CBT da Technics.",
-      "Em referência às origens modernistas da luminária, a ambientação evoca a Bauhaus e mistura móveis dos anos 1930 com peças do catálogo da marca. A área do Estudo combina escrivaninhas de estrutura em aço com a cadeira Ant, de Arne Jacobsen, em acabamento de folheado de cerejeira; o Canto de Leitura traz a icônica Egg Chair do mesmo designer. No andar de baixo, a Sala de Estar é um espaço de convívio, com toca-discos e caixas voltados para os convidados, o sofá PK31 e o daybed PK80 de Poul Kjærholm, além de um carrinho de bebidas dos anos 1930 e mesas de centro PK61.",
-      "\"O som tem papel direto em como experimentamos o espaço\", disse Els Van Hoorebeeck, diretora de criação da Fritz Hansen. \"Ele molda como nos movemos, onde pausamos e como nos relacionamos com mobiliário, luz e materiais.\" O Sound Club estreou durante o 3 Days of Design, em Copenhague, com a proposta de investigar como o som informa a percepção de um interior.",
-      "Fundada em 1872, a Fritz Hansen fez história trabalhando com Jacobsen, Kjærholm, Hans J Wegner, Børge Mogensen e Verner Panton. Na apresentação há também uma nova versão da cadeira Monolit, de Cecilie Manz, uma releitura mais compacta e de parede da Kaiser Idell e uma versão estofada da cadeira N02 Recycle, do estúdio japonês Nendo."
-    ]
-  },
-  {
-    title: "Absolutely bananas! In a new book, 100 artists celebrate the fruit basket's favourite class clown",
-    tituloPt: "192 páginas de banana: um estúdio sueco bancou do próprio bolso um livro com mais de 100 obras sobre a fruta mais palhaça da fruteira",
-    source: "It's Nice That",
-    url: "https://www.itsnicethat.com/articles/studio-trikken-banana-art-book-publication-project-160926",
-    imageUrl: "https://m.itsnicethat.com/original_images/Studio-Trikken-Banana-Art-Book-Publication-ItsNiceThat-16.jpg?class=w1440",
-    categoria: "design",
-    estrelas: 3,
-    data: "17 set 2026",
-    alt: "Páginas do Banana Art Book publicado pelo Studio Trikken",
-    resumo: [
-      "Nenhuma outra fruta tem o mesmo peso cômico e artístico da banana. Ao longo da história ela alternou papéis — recurso de comédia, ícone musical, comentário sobre o capitalismo —, sem nunca deixar de ser a palhaça da fruteira. Foi essa constatação que levou o Studio Trikken, dupla sueca, a fazer um livro inteiro sobre o assunto, financiado do próprio bolso e sem nenhum apoio.",
-      "\"Quando começamos a falar de um livro de banana, ficamos intrigados com a rapidez com que as ideias surgiam espontaneamente; uma bobagem vinha atrás da outra\", conta John Schulisch, metade do estúdio. O Banana Art Book faz exatamente o que o nome promete: reúne mais de 100 obras com bananas, de artistas, designers e ilustradores — de estudantes e ilustradores emergentes a estúdios de design consagrados.",
-      "\"Queríamos que cada página fosse diferente, então buscamos variedade de estilo, técnica e tipo de participante\", diz John. Além das imagens, há um prefácio de Ritupriya Basu, um ensaio criativo de Heejae Kim e entrevistas com artistas selecionados — \"192 páginas de energia bananal alegre\". O briefing enviado aos participantes era aberto: \"depositamos confiança total nos participantes\".",
-      "Por que banana, entre todas as frutas? \"Ela tem a capacidade de ser tantas coisas e de carregar tantos significados diferentes\", responde Johan Elmehag, a outra metade do estúdio. \"A forma é esquisita, a cor é alegre e personagens de desenho escorregam nelas. Neste livro a fruta é palhaço, contador e ditador ao mesmo tempo.\"",
-      "O projeto gráfico é deliberadamente sóbrio, com as piadas escondidas nos detalhes: o livro é composto na Banana Grotesk, da MNKY Type; o índice se chama \"Yellow Pages\"; em algumas páginas o texto curva como uma banana; e há até uma caixinha de transporte inspirada nas caixas de banana. \"Existe uma angústia enorme na busca pelo perfeito, então de vez em quando gostamos de mostrar o dedo para esse perfeccionismo\", diz Johan."
-    ]
-  },
-  {
-    title: "Trump suggests rebranding AI with a new name, says he's also creating an AI Force",
-    tituloPt: "Trump abriu uma enquete para rebatizar a inteligência artificial e anunciou que vai criar uma \"AI Force\" e um czar da IA",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/06/donald-trump-open-mouth.jpg?resize=1200,800",
-    categoria: "tec",
-    estrelas: 4,
-    data: "19 set 2026",
-    alt: "Donald Trump falando à imprensa na pista do aeroporto de Orly, em Paris",
-    resumo: [
-      "O presidente Donald Trump reagiu ao debate recente sobre segurança em IA declarando que as preocupações fazem parte de uma longa lista de fraudes \"geradas pelos Dumocratas da Esquerda Radical, com o propósito de destruir nosso País\".",
-      "No sábado, Trump começou escrevendo em sua rede, a Truth Social, que \"muita gente acha que as palavras 'Inteligência Artificial' são imprecisas e muito deselegantes\" e publicou uma enquete em que seguidores podiam votar em um novo nome para a tecnologia: Superior Intelligence, Extreme Intelligence ou Supreme Intelligence. A votação seguia aberta quando a TechCrunch publicou a reportagem.",
-      "Horas depois, ele postou que as tentativas de \"dizimar ou destruir a IA\" seriam mais uma das \"muitas\" fraudes democratas, ao lado de itens como Rússia, Ucrânia, aquecimento global e os dois processos de impeachment. Disse ainda que não vai \"ficar parado e deixar isso acontecer\" e que a suposta fraude \"começou com um ataque aos nossos Data Centers\". Não apresentou evidências de que a desconfiança em relação a IA e data centers não seja orgânica e sincera — vale lembrar que republicanos e democratas têm criticado data centers, e que Nova York se tornou o primeiro estado a suspender licenças para grandes projetos.",
-      "Trump afirmou que vai \"zelar pela indústria, ajudá-la e cuidar dela enquanto cresce\", e que está formando uma AI Force nos moldes da Space Force criada em seu primeiro mandato. \"Nesse sentido, anunciarei em breve o 'czar' da IA — apenas indivíduos de QI alto devem se candidatar\", escreveu. Ele não detalhou quais seriam as atribuições da tal força nem do czar. O capitalista de risco David Sacks deixou o cargo de czar de IA e cripto no início deste ano.",
-      "O debate se intensificou depois que um pesquisador anunciou sua saída da Anthropic alegando que as principais empresas de IA \"acreditam sinceramente que isso pode matar todos nós até o fim da década\". O CEO da Anthropic, Dario Amodei, divulgou em seguida um plano para \"cadenciar a fronteira\", aparentemente endossado por Sam Altman e Elon Musk. Críticos da indústria argumentam que boa parte dessas preocupações existenciais serve de distração diante de danos mais imediatos."
-    ]
-  },
-  {
-    title: "Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking",
-    tituloPt: "Os testes de IA viraram peça de marketing — e uma startup de 25 pessoas quer ser o College Board dos modelos",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/Team.jpeg?resize=1200,800",
-    categoria: "tec",
-    estrelas: 3,
-    data: "19 set 2026",
-    alt: "Equipe da startup Vals AI reunida no escritório em San Francisco",
-    resumo: [
-      "Benchmarks viraram a forma padrão de as empresas de IA validarem a capacidade de seus modelos e se destacarem da concorrência — o que, na prática, significa que bons resultados em teste quase sempre equivalem a boa assessoria de imprensa. O problema é que as empresas também aprenderam a driblar os sistemas legados de avaliação, muitos deles antigos e não desenhados para medir modelos modernos.",
-      "A Vals, fundada em 2024, diz estar em missão de consertar esse sistema. Em menos de dois anos a empresa se estabeleceu no setor: levantou uma rodada semente liderada por 8VC e Bloomberg Beta e, no mês passado, captou US$ 40 milhões em série A liderada pela Andreessen Horowitz. Rayan Krishnan, cofundador de 25 anos, estagiou na Palantir e, durante a graduação em Stanford, trabalhou para a Microsoft e para o laboratório de IA da universidade.",
-      "\"Estávamos vendo uma porção de modelos novos e muito capazes chegando rapidamente ao mercado, e os benchmarks acadêmicos não estavam acompanhando esse avanço da fronteira\", diz Krishnan. A diferenciação da Vals está em dois pontos: ela não divulga publicamente o material dos testes — o que impede que empresas treinem seus modelos contra as provas — e avalia a capacidade de executar tarefas complexas ligadas a setores específicos, como direito, finanças e programação, em vez de conhecimento geral.",
-      "\"O que fazemos é olhar quais são os impactos reais dos modelos\", afirma ele. \"Eles conseguem fazer um trabalho que produz um resultado da mesma qualidade que o de um humano, dentro de cada domínio?\" A ideia é checar tanto os desfechos positivos quanto os negativos — entender o que aconteceria se esses modelos \"corressem soltos pelo mundo\". A empresa já mantém benchmarks sobre autoaperfeiçoamento recursivo e trabalha em saúde mental, cibersegurança, biossegurança e até aplicação das Convenções de Genebra.",
-      "As empresas pagam a Vals para testar seus próprios modelos, num arranjo que Krishnan compara ao de um estudante que paga ao College Board para fazer o SAT. A receita é oito vezes maior que a do ano passado e a equipe, que começou o ano com oito pessoas, já triplicou para 25. Para ele, à medida que empresas de IA abrem capital, esse tipo de avaliação tende a virar parte central de como elas apresentam seus números e investimentos ao público."
-    ]
-  }
-];
-
 const PALETAS = {
-  branding: ["#F4A261","#E76F51","#FFD9A0"],
-  design:   ["#7FC6A4","#2A9D8F","#CDEBDC"],
-  tec:      ["#8FA3E8","#6C63C7","#D8DDF7"]
+  Branding: ["#f59e0b","#ea580c","#be123c"],
+  Design:   ["#14b8a6","#0f766e","#15803d"],
+  Tecnologia:["#6366f1","#7c3aed","#2563eb"]
 };
 
-function Ilustra({ categoria, seed, className }) {
-  const p = PALETAS[categoria] || PALETAS.design;
+function Ilustracao({ categoria, seed }){
+  const cores = PALETAS[categoria] || PALETAS.Design;
   const id = "g" + seed;
   const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
   return (
-    <svg className={className} viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração decorativa">
+    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de " + categoria}>
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={p[0]}/>
-          <stop offset="100%" stopColor={p[1]}/>
+          <stop offset="0%" stopColor={cores[0]} />
+          <stop offset="55%" stopColor={cores[1]} />
+          <stop offset="100%" stopColor={cores[2]} />
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill={`url(#${id})`}/>
-      <circle cx={60 + r(1)*280} cy={50 + r(2)*160} r={40 + r(3)*50} fill={p[2]} opacity="0.55"/>
-      <circle cx={40 + r(4)*320} cy={40 + r(5)*180} r={22 + r(6)*30} fill="#ffffff" opacity="0.28"/>
-      <rect x={30 + r(7)*220} y={90 + r(8)*90} width={70 + r(9)*90} height={10} rx="5" fill="#ffffff" opacity="0.45"/>
-      <rect x={50 + r(10)*200} y={130 + r(11)*70} width={50 + r(12)*70} height={10} rx="5" fill="#ffffff" opacity="0.32"/>
-      <path d={`M0 ${200 + r(13)*30} Q 100 ${150 + r(14)*60} 200 ${200 + r(15)*30} T 400 ${190 + r(16)*40} L400 260 L0 260 Z`} fill={p[2]} opacity="0.5"/>
+      <rect width="400" height="260" fill={"url(#" + id + ")"} />
+      <circle cx={70 + r(1)*240} cy={60 + r(2)*120} r={40 + r(3)*45} fill="#ffffff" opacity="0.16" />
+      <circle cx={40 + r(4)*300} cy={150 + r(5)*80} r={25 + r(6)*40} fill="#000000" opacity="0.10" />
+      <rect x={200 + r(7)*120} y={20 + r(8)*60} width={90} height={90} rx="18" fill="#ffffff" opacity="0.13"
+            transform={"rotate(" + Math.round(r(9)*40 - 20) + " 260 80)"} />
+      <path d={"M0 " + (200 + r(10)*30) + " Q 100 " + (150 + r(11)*60) + " 200 " + (195 + r(12)*40) + " T 400 " + (185 + r(13)*45) + " L400 260 L0 260 Z"}
+            fill="#ffffff" opacity="0.14" />
     </svg>
   );
 }
 
-function Figura({ item, idx, className }) {
+function Figura({ item, tipo }){
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) {
-    return <Ilustra categoria={item.categoria} seed={idx + 3} className={className}/>;
-  }
+  if (!item.imageUrl || falhou) return <Ilustracao categoria={item.categoria} seed={item.id} />;
   return (
-    <img
-      src={item.imageUrl}
-      alt={item.alt || item.tituloPt}
-      referrerPolicy="no-referrer"
-      loading="lazy"
-      onError={() => setFalhou(true)}
-    />
+    <img src={item.imageUrl}
+         alt={item.alt}
+         loading={tipo === "hero" ? "eager" : "lazy"}
+         referrerPolicy="no-referrer"
+         onError={() => setFalhou(true)} />
   );
 }
 
-const LABEL = { branding: "Branding", design: "Design", tec: "Tecnologia" };
+const Estrelas = ({ n }) => <span className="stars">{"★".repeat(n) + "☆".repeat(5 - n)}</span>;
 
-function Meta({ item }) {
-  return (
-    <div className="meta">
-      <span className="src">{item.source}</span>
-      <span className={"cat " + item.categoria}>{LABEL[item.categoria]}</span>
-      <span className="stars">{"★".repeat(item.estrelas)}{"☆".repeat(5 - item.estrelas)}</span>
-      <span className="date">{item.data}</span>
-    </div>
-  );
-}
-
-function Modal({ item, idx, onClose }) {
+function Modal({ item, onClose }){
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-media"><Figura item={item} idx={idx}/></div>
+      <div className="modal" onClick={(e)=>e.stopPropagation()}>
+        <div className="modal-media">
+          <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+          <Figura item={item} tipo="modal" />
+        </div>
         <div className="modal-body">
-          <Meta item={item}/>
+          <div className="row">
+            <span className={"tag " + item.categoria}>{item.categoria}</span>
+            <span className="src">{item.source} · {item.dataPt}</span>
+            <Estrelas n={item.estrelas} />
+          </div>
           <h2>{item.tituloPt}</h2>
-          <p className="orig">Título original: “{item.title}” — {item.source}</p>
-          <div className="txt">
-            {item.resumo.map((par, i) => <p key={i}>{par}</p>)}
-          </div>
-          {item.paywall && <p className="note">Resumo produzido a partir dos elementos públicos da página (título, categoria, indústria, tags e linha de apoio), já que o texto completo está atrás de paywall.</p>}
-          <div className="actions">
-            <a className="btn btn-primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} ↗</a>
-            <button className="btn btn-ghost" onClick={onClose}>Fechar</button>
-          </div>
+          <p className="orig">Título original: “{item.title}”</p>
+          {item.resumo.map((p, i) => <p className="txt" key={i}>{p}</p>)}
+          <a className="srcbtn" href={item.url} target="_blank" rel="noopener noreferrer">Ler no {item.source} →</a>
+          {item.nota && <p className="note">{item.nota}</p>}
         </div>
       </div>
     </div>
   );
 }
 
-function App() {
+function App(){
   const [aberto, setAberto] = useState(null);
-  const ordenadas = [...NOTICIAS];
+  const ordenadas = [...NOTICIAS].sort((a,b)=> b.estrelas - a.estrelas || a.id - b.id);
   const manchete = ordenadas[0];
   const resto = ordenadas.slice(1);
-
-  React.useEffect(() => {
-    const h = (e) => { if (e.key === "Escape") setAberto(null); };
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
-  }, []);
+  const portais = new Set(NOTICIAS.map(n=>n.source)).size;
+  const comFoto = NOTICIAS.filter(n=>n.imageUrl).length;
 
   return (
     <div className="wrap">
       <header className="top">
-        <div className="kicker">Edição de domingo</div>
-        <h1 className="brand">Portal da Manhã</h1>
-        <div className="subhead">
-          <span>20 de setembro de 2026</span><span className="dot"></span>
-          <span>{NOTICIAS.length} notícias</span><span className="dot"></span>
-          <span>Branding · Design · Tecnologia</span>
-        </div>
+        <span className="kicker">Edição diária</span>
+        <h1 className="logo">Portal da Manhã</h1>
+        <div className="date">Segunda-feira, 21 de setembro de 2026</div>
+        <div className="meta-line">{NOTICIAS.length} notícias · {portais} portais · {comFoto} com imagem original · branding, design e tecnologia</div>
       </header>
 
-      <h2 className="sec-title">Notícias</h2>
-
-      <article className="hero" onClick={() => setAberto(0)}>
-        <div className="hero-media"><Figura item={manchete} idx={0}/></div>
+      <article className="hero" onClick={()=>setAberto(manchete)}>
+        <div className="hero-media"><Figura item={manchete} tipo="hero" /></div>
         <div className="hero-body">
-          <Meta item={manchete}/>
+          <div className="row">
+            <span className={"tag " + manchete.categoria}>{manchete.categoria}</span>
+            <span className="src">{manchete.source} · {manchete.dataPt}</span>
+            <Estrelas n={manchete.estrelas} />
+          </div>
           <h2>{manchete.tituloPt}</h2>
-          <p>{manchete.resumo[0].slice(0, 200)}…</p>
+          <p>{manchete.chamada}</p>
         </div>
       </article>
 
       <div className="grid">
-        {resto.map((item, i) => (
-          <article className="card" key={item.url} onClick={() => setAberto(i + 1)}>
-            <div className="card-media"><Figura item={item} idx={i + 1}/></div>
+        {resto.map(item => (
+          <article className="card" key={item.id} onClick={()=>setAberto(item)}>
+            <div className="card-media"><Figura item={item} tipo="card" /></div>
             <div className="card-body">
-              <Meta item={item}/>
+              <div className="row">
+                <span className={"tag " + item.categoria}>{item.categoria}</span>
+                <Estrelas n={item.estrelas} />
+              </div>
               <h3>{item.tituloPt}</h3>
-              <p className="dek">{item.resumo[0].slice(0, 130)}…</p>
+              <p className="dek">{item.chamada}</p>
+              <div className="row" style={{marginTop:"auto"}}>
+                <span className="src">{item.source} · {item.dataPt}</span>
+              </div>
+              {!item.imageUrl && <span className="warn">Imagem original indisponível — ilustração gerada</span>}
             </div>
           </article>
         ))}
       </div>
 
       <footer>
-        Portal da Manhã — seleção diária de branding, design e tecnologia.<br/>
-        Resumos escritos em português a partir da leitura das matérias originais; os textos não reproduzem o conteúdo das fontes. Imagens carregadas diretamente dos servidores dos portais e creditadas a eles. Clique em qualquer card para ler o resumo completo.
+        Portal da Manhã · edição de 21 de setembro de 2026 · resumos em português escritos para esta edição.<br/>
+        Clique em qualquer matéria para ler o resumo completo e ir à fonte original.
       </footer>
 
-      {aberto !== null && (
-        <Modal item={ordenadas[aberto]} idx={aberto} onClose={() => setAberto(null)}/>
-      )}
+      {aberto && <Modal item={aberto} onClose={()=>setAberto(null)} />}
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+const NOTICIAS = [
+  {
+    id: 1,
+    title: "Isabel + Helen showcase their \"obsession with movement\" with kinetic models at The Conran Shop",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/21/isabel-helen-showcase-their-obsession-with-movement-with-kinetic-models-at-the-conran-shop/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/motion-sickness-isabel-helen_dezeen_2364_sq_0.jpg",
+    alt: "Modelos cinéticos coloridos da exposição Motion Sickness, da dupla Isabel + Helen, na galeria do subsolo da Conran Shop em Londres",
+    tituloPt: "Dez anos de protótipos que giram, batem asas e andam: a dupla Isabel + Helen abriu a gaveta de bastidores na Conran Shop",
+    categoria: "Design",
+    estrelas: 5,
+    dataPt: "21/09/2026",
+    chamada: "Esferas girando, asas batendo e um trenzinho carregando seis ovos: a exposição Motion Sickness mostra os protótipos que normalmente ninguém vê.",
+    resumo: [
+      "A britânica Isabel Gibson e a inglesa Helen Chesner ocuparam a galeria do subsolo da Conran Shop, em Sloane Square, com uma exposição que não mostra projetos prontos — mostra o que vem antes deles. Batizada de Motion Sickness e apresentada dentro da programação do London Design Festival, a mostra reúne maquetes cinéticas coloridas: esferas que giram, asas que batem, engenhocas sobre rodas.",
+      "Boa parte das peças é protótipo de verdade, feito para colaborações com marcas como Hermès e Burberry ou para instalações em lugares tão distintos quanto o museu V&A e o festival Coachella. A escolha de expor justamente esses objetos foi deliberada: as duas queriam expor o método de trabalho, que gira quase inteiramente em torno da construção de modelos físicos.",
+      "Gibson explicou ao Dezeen que o estúdio pula rápido para o protótipo porque imaginar e desenhar um movimento não basta — é preciso pôr a mão para descobrir como a coisa realmente se comporta. Chesner completa que o movimento costuma carregar alguma transformação ou um momento de revelação, e que a maneira como algo se move muda inteiramente a leitura: a mesma peça pode parecer alegre ou sinistra dependendo do gesto.",
+      "O pano de fundo da exposição é uma série de pinturas de edição limitada, cada uma com uma roda colorida. Elas não foram pintadas à mão no sentido convencional: a dupla construiu uma máquina cinética que gira o pincel e desenha círculos concêntricos. Entre os destaques do salão estão um trem de brinquedo que carrega meia dúzia de ovos bamboleando em sincronia e um conjunto de quinze esferas de papel que giram quando se puxa um barbante.",
+      "A mostra também marca uma década de idas e vindas entre o estúdio e a Conran Shop — uma das primeiras encomendas da dupla foi justamente a exposição da loja para o LDF de 2016. É ainda uma das primeiras mostras que a varejista monta na galeria do subsolo da unidade de Sloane Square, hoje sua carro-chefe depois do fechamento das lojas de Fulham Road e Marylebone High Street. A empresa, fundada por Terence Conran em 1973, vem desde 2023 apostando mais nas próprias coleções do que na revenda de outras marcas.",
+      "Sobre o processo, Chesner resume sem romantismo: é tentar coisas sem ser precioso demais com nenhuma delas. Boa parte não funciona — e o trabalho é continuar empilhando tentativas até que funcione."
+    ],
+    nota: null
+  },
+  {
+    id: 2,
+    title: "Skincare has never looked so good: Odds' identity for Alaena strikes a soft balance between science and nature",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/odds-studio-alaena-branding-graphic-design-project-210926",
+    imageUrl: "https://m.itsnicethat.com/original_images/ALAENA-03.gif?class=w1440",
+    alt: "Embalagens da marca de skincare Alaena em tom único de azul, com detalhes cromados e transparências, identidade criada pelo Odds Studio",
+    tituloPt: "Um único azul de papel, escolhido por correspondência física: como o Odds Studio construiu toda a embalagem da Alaena em cima de uma cor",
+    categoria: "Branding",
+    estrelas: 5,
+    dataPt: "21/09/2026",
+    chamada: "O estúdio parisiense entrou pela primeira vez no setor de beleza e decidiu fazer o contrário do esperado: tirar coisas em vez de acrescentar.",
+    resumo: [
+      "A Alaena é uma marca francesa de skincare de luxo fundada pela dermatologista Sylvie Peres com a própria família, sobre uma premissa declaradamente otimista: apoiar as funções biológicas da pele em vez de corrigi-las ou disfarçá-las. Quando o Odds Studio, de Paris, foi chamado para redesenhar a cara da marca — seu primeiro projeto de identidade no setor de beleza —, foi essa origem que o estúdio decidiu manter no centro.",
+      "Djelissa Latini, cofundadora do Odds, conta ao It's Nice That que havia algo profundamente humano naquela abordagem, ainda que ancorada em ciência. Amélie Warnault, a outra cofundadora, foi franca sobre o que o projeto não podia ser: prometer criar algo completamente diferente de tudo seria um tanto pretensioso num setor tão saturado. Em vez de perseguir diferenciação, as duas voltaram sempre ao que parecia verdadeiro sobre a Alaena. Na prática, desenhar a nova marca pareceu menos acrescentar e mais remover tudo o que era supérfluo.",
+      "A contenção aparece antes de tudo na tipografia. O espacejamento do logotipo é generoso de propósito, dando à palavra espaço para respirar. As letras, lineares e afiadas, saem de documentos científicos e de material de arquivo da própria marca. Certos layouts flertam com o rigor médico e chegam a lembrar as tabelas de Snellen usadas em exames de vista. Em outros momentos a tipografia vira micrografia discreta, sobreposta com parcimônia a fotos bem dirigidas dos ingredientes naturais.",
+      "Para a embalagem, a dupla ergueu o sistema inteiro sobre um único tom de azul — e encontrou um equivalente físico quase perfeito: o Colorplan New Blue, da G. F. Smith. Segundo Warnault, é uma cor autêntica, tranquilizadora e discretamente distinta, que espelha o equilíbrio entre precisão científica e cuidado humano que a marca defende.",
+      "Ao lado desse azul entram detalhes cromados e prateados e transparências pensadas para revelar o produto em vez de escondê-lo — como se encontrássemos uma amostra ou uma formulação num laboratório, diz Latini. Potes, caixas e rótulos referenciam de modo sutil a precisão dos instrumentos científicos, mas o resultado resiste a ficar frio ou clínico demais.",
+      "Cada composição do sistema é construída sobre uma grade, com áreas deixadas deliberadamente vazias para que os elementos expressivos tenham espaço de sobra para trabalhar."
+    ],
+    nota: null
+  },
+  {
+    id: 3,
+    title: "World model companies are keeping a lot of secrets",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/ALLIN_16-09-AM_melanieolmsteadphotographe-635.jpg?w=1024",
+    alt: "Michael Rabbat, cofundador da AMI Labs, durante painel sobre world models na conferência All In",
+    tituloPt: "Ninguém quer dizer o que está construindo: o setor de \"world models\" acumulou bilhões e virou uma floresta escura",
+    categoria: "Tecnologia",
+    estrelas: 4,
+    dataPt: "20/09/2026",
+    chamada: "Fundadores, executivos e até os fornecedores de dados desconversam quando a pergunta é onde a tecnologia vira produto.",
+    resumo: [
+      "O editor de IA do TechCrunch, Russell Brandom, moderou um painel sobre world models na conferência All In e saiu de lá com uma constatação incômoda: é um dos cantos mais opacos da indústria de inteligência artificial. Os grandes nomes do campo são a AMI Labs, de Yann LeCun, e a World Labs, de Fei-Fei Li — as duas bem financiadas, muito comentadas e pouco preocupadas, por enquanto, em ganhar dinheiro.",
+      "No fundo, world models tratam de automatizar inteligência espacial, o que abre caminhos que vão de robótica a vídeo interativo e a sistemas de direção autônoma mais complexos. O problema começa quando se pergunta onde exatamente isso vira produto comercial.",
+      "Michael Rabbat, cofundador da AMI Labs e VP de World Models, participou do painel e foi evasivo: falaremos sobre isso quando estivermos prontos para falar. Por e-mail, esclareceu que a empresa segue em fase de pesquisa e construção e não comenta publicamente planos de produto nem cronogramas. A AMI tem menos de um ano de vida, então o silêncio é compreensível — mas a discrição se estende a todo o setor.",
+      "O Marble, da World Labs, é provavelmente o produto mais desenvolvido do campo, com demonstrações que vão de criação de mídia à construção de ambientes exploráveis para videogames e efeitos de CGI. Ainda assim, o conjunto parece mais um mostruário de capacidades do que um produto com mercado definido.",
+      "A opacidade chega até os fornecedores. Alex de Vigan, CEO da Physicl, que vende dados para o setor, disse a Brandom que sabe que seus dados têm sido úteis, mas continua no escuro sobre para quê — e que produziria dados melhores se soubesse no que os clientes estão trabalhando.",
+      "Parte do mistério vem da própria versatilidade da ideia. A mesma abordagem de modelagem que ajuda um Waymo a costurar o trânsito pode servir para um robô humanoide carregar caixas ou transformar alguns minutos de vídeo num ambiente navegável. A AMI já encostou em manufatura, biomedicina, robótica e até software médico, via parceria com a Nabia.",
+      "A explicação mais convincente para o silêncio é competitiva: enquanto captar dinheiro for fácil, não há pressão para escolher um foco — e anunciar um foco atrairia imediatamente os rivais, dos outros laboratórios de world models até OpenAI e Anthropic. Brandom compara o cenário à hipótese da floresta escura de Cixin Liu: se você não sabe quem mais está na mata, o melhor é não chamar atenção."
+    ],
+    nota: null
+  },
+  {
+    id: 4,
+    title: "Bugatti unveils Miami skyscraper as first US branded residence",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/09/20/bugatti-skyscraper-miami-brandon-haw-yabu-pushelberg/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/bugatti-skyscraper-miami-brandon-haw-yabu-pushelberg_dezeen_2364_col_0.jpg",
+    alt: "Render do arranha-céu Bugatti Residences Miami, torre de 60 andares dividida em quatro blocos às margens do rio Miami",
+    tituloPt: "Miami ganha mais um arranha-céu de montadora: a Bugatti anunciou 60 andares à beira do rio, com um traço herdado dos carros dos anos 1930",
+    categoria: "Design",
+    estrelas: 4,
+    dataPt: "20/09/2026",
+    chamada: "Depois de Porsche, Bentley, Mercedes-Benz e Aston Martin, é a vez da Bugatti — e a fachada cita a linha C das carrocerias da marca.",
+    resumo: [
+      "A Bugatti revelou os planos de um arranha-céu de 60 andares às margens do rio Miami, projetado pelo escritório americano Brandon Haw Architecture com interiores assinados pelo Yabu Pushelberg. Chamado Bugatti Residences Miami, será o primeiro empreendimento residencial de marca da montadora nos Estados Unidos — o primeiro do mundo, anunciado em 2023, deve sair em Dubai.",
+      "A torre entra numa fila razoavelmente longa. Miami já recebeu arranha-céus batizados por Porsche, Bentley, Mercedes-Benz e Aston Martin, e a cidade virou uma espécie de vitrine desse modelo de negócio em que a marca de carro empresta o nome a um edifício residencial.",
+      "Os renders divulgados mostram uma torre dividida em quatro blocos distintos, com espaços de pé-direito duplo entre eles. Serão 183 apartamentos e quatro coberturas, todos com interiores do Yabu Pushelberg. O desenvolvimento é conduzido pelo Prosper Group ao lado do Versluys Group.",
+      "Segundo a Bugatti, o projeto foi informado tanto pela arquitetura de Miami quanto pela forma dos superesportivos, com um aceno explícito à chamada linha C — um motivo gráfico usado nas carrocerias da marca desde os anos 1930. Wiebke Ståhl, diretora-gerente da Bugatti International, diz que a arquitetura ousada, o espírito criativo e o apelo global da cidade a tornavam um cenário convincente para o próximo projeto residencial da marca.",
+      "O terreno fica em Brickell, bairro que atravessa uma onda de novas construções: ali também estão previstos um arranha-céu de 54 andares da Foster + Partners, uma torre de 51 andares da SOM e um edifício de 90 andares desenvolvido pela Dolce & Gabbana.",
+      "Jay Roberts, CEO do Prosper Group, foi direto sobre a lógica do negócio: Miami virou o epicentro global de migração de riqueza e investimento institucional, e Brickell reúne o terreno à beira d'água que interessa à estratégia da incorporadora."
+    ],
+    nota: null
+  },
+  {
+    id: 5,
+    title: "An accidental 9/11 reference led this English football club to scrap its new clothing designs",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/logos-icons/accidental-9-11-references-caused-this-english-football-club-to-scrap-its-new-clothing-designs",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/YNdc8ZvtD8qJQW8TCnaBrf-1920-80.jpg",
+    alt: "Peças da coleção Campus do Oxford United com a inscrição United 93 em estilo de numeração de camisa de futebol",
+    tituloPt: "\"United 93\" era só o ano de fundação do clube — até a coleção sair e a internet lembrar do voo sequestrado em 2001",
+    categoria: "Branding",
+    estrelas: 4,
+    dataPt: "19/09/2026",
+    chamada: "O Oxford United recolheu a linha em poucas horas, pediu desculpas e admitiu falha de diligência. Parte da torcida acha que não havia nada a pedir desculpa.",
+    resumo: [
+      "O clube inglês Oxford United lançou uma linha de roupas esportivas batizada de Campus Collection e a retirou do ar em poucas horas, depois que usuários de redes sociais apontaram imediatamente uma associação não intencional com os atentados de 11 de setembro de 2001.",
+      "As peças traziam a inscrição \"United 93\" no estilo dos números impressos nas costas das camisas de futebol. \"United\" faz parte do nome do clube e o número remetia a 1893, ano de fundação. O problema é que o voo United 93 foi um dos quatro sequestrados pela Al-Qaeda naquele 11 de setembro — a aeronave caiu depois que os passageiros enfrentaram os sequestradores, episódio que ficou ainda mais conhecido no mundo todo depois de virar filme homônimo.",
+      "O caso foi agravado pela estética escolhida: a própria coleção tinha inspiração declaradamente americana, descrita pelo clube como influenciada pelo estilo e pela cultura dos esportes dos Estados Unidos — uma escolha curiosa para um time da terceira divisão inglesa.",
+      "O detalhe mais desconcertante, segundo o Creative Bloq, é que o clube chegou perto de perceber o risco. A coleção estava prevista para uma semana antes, no dia 11 de setembro, e foi adiada justamente por preocupação com a sensibilidade da data. Ninguém, ainda assim, notou a leitura possível do slogan.",
+      "Em nota publicada nas redes, o Oxford United disse que a linha foi lançada sem compreensão do contexto histórico e de suas associações, que jamais deveria ter chegado ao ponto de venda e que assume total responsabilidade por não ter feito a devida diligência. A coleção foi removida com efeito imediato e os processos de aprovação estão sendo revistos.",
+      "Nem todos compraram o pedido de desculpas. Num fórum de torcedores, alguém classificou o episódio como um erro monumental pelo qual esperaria ser demitido se tivesse aprovado. Do outro lado, defensores do clube argumentaram que nem tudo gira em torno dos Estados Unidos — e um deles ironizou que o próximo passo seria a Porsche pedir desculpas pelo 911."
+    ],
+    nota: null
+  },
+  {
+    id: 6,
+    title: "Greta Gerwig's Narnia logo oozes magical energy",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/logos-icons/looks-woke-greta-gerwigs-narnia-logo-divides-fans",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/NYgoQTXkfg3QAJuswazSph-1920-80.jpg",
+    alt: "Logotipo de Narnia: The Magician's Nephew, com serifas arredondadas e um feixe de luz roxo, laranja e azul sobre fundo preto",
+    tituloPt: "A serifa de Nárnia foi arredondada e ganhou um feixe de luz roxo: o primeiro logo do filme de Greta Gerwig rachou os fãs ao meio",
+    categoria: "Branding",
+    estrelas: 4,
+    dataPt: "19/09/2026",
+    chamada: "\"Mais Tron do que Nárnia\", reclamou um. Outro disse que até o título parecia woke. Há também quem tenha achado mágico.",
+    resumo: [
+      "O primeiro logotipo de Narnia: The Magician's Nephew, adaptação que Greta Gerwig dirige para a Netflix, foi divulgado e imediatamente dividiu o público — o que, no fim, é bastante coerente com o restante do projeto.",
+      "A diretora de Barbie já vinha sinalizando que não pretendia ser fiel ao cânone: a leitura é declaradamente \"rock n roll\" e inclui uma Aslan feminina, dublada por Meryl Streep, segundo material divulgado pela revista Empire. O logo segue a mesma lógica de romper com a tradição.",
+      "O desenho é uma releitura contemporânea da serifa clássica associada aos livros e à série de filmes de 2005. As hastes das letras ganharam curvas e os cantos foram arredondados, o que produz um ar de encantamento infantil e aquece bastante o conjunto em comparação com a serifa arcaica anterior.",
+      "Do centro da composição emerge um feixe de luz que se espalha em tons de roxo, laranja e azul, sugerindo energia mágica. O fundo preto liso é o que permite que cada raio de luz apareça com nitidez — uma escolha simples que segura toda a peça.",
+      "A recepção, porém, foi irregular. Um usuário do X reclamou que ficou mais Tron do que Nárnia; outro escreveu que até o título parecia woke e que não se pode ter nada de bom. Na direção oposta, houve quem comentasse que a visão de Gerwig já estava parecendo mágica e quem dissesse achar animador ver Nárnia filtrada pelo estilo dela.",
+      "O filme tem estreia prevista nos cinemas para 12 de fevereiro de 2027."
+    ],
+    nota: null
+  },
+  {
+    id: 7,
+    title: "'Visual Joy' guides Bathgate Design's identity for artist Alex Fulton",
+    source: "The Brand Identity",
+    url: "https://the-brandidentity.com/project/visual-joy-guides-bathgate-designs-identity-for-artist-alex-fulton",
+    imageUrl: null,
+    alt: "Identidade visual da artista neozelandesa Alex Fulton criada pelo estúdio Bathgate Design",
+    tituloPt: "Doze anos com a mesma identidade: a artista Alex Fulton entregou o próprio rebranding a outros designers e proibiu a si mesma de dirigir a arte",
+    categoria: "Branding",
+    estrelas: 3,
+    dataPt: "18/09/2026",
+    chamada: "O estúdio chegou a apresentar um símbolo, e artista e designers decidiram juntos que a marca não precisava de nenhum.",
+    resumo: [
+      "A neozelandesa Alex Fulton, artista e designer de interiores, se apresentava com a mesma identidade havia doze anos. Ela resume a sensação ao The Brand Identity com uma imagem doméstica: em algum momento você percebe que se mudou e os móveis não.",
+      "A prática dela atravessa interiores, ensino, palestras e as peças originais que vende por galerias — e a parte artística vinha crescendo. O que ela pediu ao Bathgate Design, estúdio de branding sediado em Christchurch, não foi uma faxina na identidade antiga, mas algo capaz de representar tudo isso. O escopo incluiu estratégia, identidade, redação, direção de arte, fotografia e o design do site.",
+      "O maior medo declarado por Fulton era que o resultado ficasse polido, sério ou \"designer\" demais: seu trabalho sempre foi colorido, confiante e um pouco irreverente, e ela queria a mesma energia sem que a marca gritasse por cima das obras. Também se impôs uma regra: não queria dirigir a arte do próprio rebranding pelas mãos de outra pessoa, e preferiu confiar em bons designers.",
+      "Charlotte Sole, diretora criativa do Bathgate, conta que o estúdio foi completamente admitido no mundo da artista — casa, ateliê, processo. Em vez de focar no que ela faz, a equipe foi atrás do que sustenta tudo: curiosidade, instinto, gosto e um jeito particular de olhar. A estratégia nomeou as tensões criativas que fazem o trabalho funcionar — maximalismo e contenção, brincadeira e precisão, observação e originalidade — e a identidade opera do mesmo jeito, sabendo quando empurrar e quando segurar.",
+      "\"Visual Joy\" virou a bússola do projeto: há sempre beleza e alegria, diz Sole, mas nunca cor por cor. Na etapa de conceito o estúdio chegou a apresentar um símbolo, e a decisão conjunta foi de que a marca não precisava dele — o logotipo sozinho dava conta. Ele foi composto em Diverse A, da fundição DDOTT, num peso Black que Sole descreve como forte e confiante, com um tanto de charme; para usos mais amplos entrou a Reformat A, da SM, mais neutra e atemporal.",
+      "A contenção mora sobretudo na tipografia e nas composições, construídas sobre grade e com áreas deixadas propositalmente lisas. O preto ancora a paleta e traz maturidade ao que poderia virar doce demais. A cor, por sua vez, muda conforme a obra, a coleção ou o projeto — o sistema deixa essa decisão para o instinto da artista e do estúdio, já que Fulton trabalha com cor profissionalmente há anos.",
+      "Toda a imagem foi produzida do zero, em dois ensaios com objetivos distintos: um de estúdio, com cor forte e composições de aresta dura para as fotos de destaque, e outro na casa da artista, mais solto e próximo da fotografia de moda, destinado ao digital e às redes. A voz da marca, apelidada internamente de \"The Artful Charmer\", saiu do humor da própria Fulton.",
+      "Sobre resultados, ela evita cravar: é cedo para ligar a identidade a trabalhos específicos, mas mudou a forma como as pessoas entendem o que ela faz, dando mais espaço à arte ao lado dos interiores — e, diz, isso dá às pessoas permissão para procurá-la com propostas mais inesperadas."
+    ],
+    nota: "O site da fonte não expôs uma imagem de destaque acessível; esta matéria aparece com a ilustração gerada pelo Portal da Manhã."
+  },
+  {
+    id: 8,
+    title: "Illustrator Mason London puts playful spin on Guinness archive",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/mason-london-guinness-collection-good-times/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Mason-London-Good-Times-Guinness-stickers.jpg",
+    alt: "Adesivos da coleção Good Times, do ilustrador Mason London para a Guinness, com releitura de elementos gráficos históricos da marca",
+    tituloPt: "O tucano da Guinness caiu nas mãos de Mason London: a coleção Good Times mexe no arquivo gráfico mais protegido da cervejaria",
+    categoria: "Branding",
+    estrelas: 3,
+    dataPt: "17/09/2026",
+    chamada: "O ilustrador revisita alguns dos elementos gráficos mais icônicos da marca irlandesa — mascote incluído — numa colaboração de tom deliberadamente brincalhão.",
+    resumo: [
+      "O ilustrador Mason London assina uma colaboração com a Guinness batizada de Good Times, que reimagina alguns dos elementos gráficos mais reconhecíveis da cervejaria irlandesa — entre eles o tucano que virou mascote da marca em campanhas históricas.",
+      "A Guinness tem um dos arquivos publicitários mais admirados do século XX, construído em boa parte pelas ilustrações de John Gilroy nos anos 1930 e 1940, e mexer nesse repertório é sempre um exercício de equilíbrio entre reverência e liberdade. Segundo o Creative Review, o tom escolhido por Mason London para a coleção é deliberadamente brincalhão.",
+      "A matéria da Creative Review apresenta a colaboração como uma releitura em chave contemporânea desses ícones gráficos, aplicada em peças de coleção."
+    ],
+    nota: "Resumo escrito a partir dos elementos públicos da matéria (título, chamada e imagem de destaque) — o corpo completo do texto está atrás do paywall da Creative Review."
+  },
+  {
+    id: 9,
+    title: "ScrollEd wants to turn textbooks into TikTok",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/09/20/scrolled-wants-to-turn-textbooks-into-tiktok/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/Socrates-as-Tik-Tok-feed.png",
+    alt: "Ilustração em que Sócrates aparece dentro de um feed vertical no estilo TikTok",
+    tituloPt: "E se o livro didático virasse feed vertical? A ScrollEd quer converter conteúdo escolar no formato que já sequestrou a atenção dos alunos",
+    categoria: "Tecnologia",
+    estrelas: 3,
+    dataPt: "20/09/2026",
+    chamada: "A startup aposta que o problema não é o formato curto em si, e sim o que se coloca dentro dele.",
+    resumo: [
+      "A ScrollEd, coberta pela repórter Rebecca Bellan no TechCrunch, parte de uma premissa que soa provocativa em qualquer sala de aula: se a rolagem vertical infinita é o formato que efetivamente prende a atenção de estudantes hoje, talvez faça sentido entregar conteúdo didático exatamente nesse formato em vez de lutar contra ele.",
+      "A proposta é converter material de estudo em peças curtas consumidas num feed, na lógica do TikTok — uma aposta que coloca a startup no meio de um debate antigo da educação, entre quem vê o vídeo curto como porta de entrada legítima para temas difíceis e quem argumenta que o formato treina justamente a incapacidade de sustentar atenção prolongada.",
+      "A matéria integra a cobertura de startups do TechCrunch publicada em 20 de setembro."
+    ],
+    nota: "Resumo construído a partir do título, da linha fina e do enquadramento editorial da matéria no índice do TechCrunch."
+  },
+  {
+    id: 10,
+    title: "\"I like to draw pretty things\": Lia Sued C. on trading too much screen-time for tactile illustrations",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/lia-sued-c-illustration-project-210926",
+    imageUrl: "https://m.itsnicethat.com/original_images/lia-sued-illustration-itsnicethat-BABY_CARMELA.jpg?class=w1440",
+    alt: "Ilustração colorida e saturada de Lia Sued C., feita com canetas, lápis de cor, glitter e adesivos",
+    tituloPt: "Ela desistiu da tela e voltou para caneta gel, glitter e adesivo: Lia Sued C. desenha sorvete, sabonete e flor até a página não caber mais nada",
+    categoria: "Design",
+    estrelas: 3,
+    dataPt: "21/09/2026",
+    chamada: "\"Não sei explicar melhor do que dizer que gosto de desenhar coisas bonitas\", diz a ilustradora, que trabalha para a Crack Magazine e o New York Times.",
+    resumo: [
+      "Lia Sued C. descreve os próprios desenhos como exagerados, coloridos e às vezes tão malucos que ela mesma tem dificuldade de identificar o que está ali — e gosta que seja assim. O que a interessa é a imagem que entrega coisinhas novas a cada olhada, efeito que ela obtém bombardeando a página com textura: marcadores, lápis de cor, canetas gel, glitter, adesivos.",
+      "A explicação que ela dá ao It's Nice That é desarmada: não consegue pensar em jeito melhor de dizer do que gosta de desenhar coisas bonitas. Uma casquinha de sorvete cheia de confeitos e ursinhos de goma. Um inseto bonito, uma barra de sabonete bonita. Literalmente qualquer flor ou combinação de flores.",
+      "Esse acúmulo aparece em encomendas para a Crack Magazine e para o New York Times, onde ela ilustra receitas de músicos e comida em geral — a ponto de admitir que gosta mais de desenhar comida do que de comer.",
+      "Da última vez que o site a cobriu, a prática dela era quase inteiramente digital. Desde então se cansou, entrou no desafio online Still Here, Still Life e passou a praticar desenho realista, o que confirmou a necessidade de um intervalo da luz azul do monitor. O digital não sumiu: segue como ferramenta de esboço inicial e como recurso para prazos apertados — quando é para ontem, ela vai de digital e chega a insistir nisso quando o cliente pede acabamento tradicional em tempo de arquivo digital.",
+      "Ela também mudou a relação com o trabalho. Antes aceitava toda e qualquer encomenda que aparecia, mesmo sobrepostas, o que acabou cobrando um preço.",
+      "As referências, essas, só se aprofundaram: música, Mickey Mouse, o designer Bráulio Amado e Marc Chagall — cujo quadro Les mariés de la Tour Eiffel esteve pendurado na casa dela a vida inteira. David Hockney entrou como inspiração menos pela estética e mais pelo trânsito livre entre pintura física e digital, o que ensinou Lia a abandonar regras falsas que ela mesma tinha inventado."
+    ],
+    nota: null
+  }
+];
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

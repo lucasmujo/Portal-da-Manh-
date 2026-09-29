@@ -4,225 +4,208 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portal da Manhã — 29 de setembro de 2026</title>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#17171a;--mut:#6b6b76;--line:#e8e6e1;--brand:#e8590c;--design:#0f9d8a;--tech:#5b5bd6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+h1{font-size:34px;letter-spacing:-.02em;margin:0}.sub{color:var(--mut);font-size:14px;margin-top:4px}
+.badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--mut)}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;border:1px solid var(--line)}
+.card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.05),0 14px 32px rgba(0,0,0,.09)}
+.media{position:relative;aspect-ratio:16/9;background:#eee;overflow:hidden}.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 18px 18px}.meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);margin-bottom:8px;flex-wrap:wrap}
+.tag{font-weight:700;padding:2px 9px;border-radius:99px;color:#fff;font-size:11px}
+.stars{color:#f5a300;letter-spacing:1px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:26px}.hero .media{aspect-ratio:auto;min-height:340px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.hero p{color:var(--mut);line-height:1.6;font-size:15px}.cta{margin-top:14px;font-weight:600;color:var(--brand);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.aviso{font-size:12px;background:#fff7e6;border:1px solid #ffe2a8;color:#8a5a00;padding:6px 10px;border-radius:8px;margin-top:10px}
+.overlay{position:fixed;inset:0;background:rgba(20,20,25,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:32px 16px;z-index:10;animation:fade .25s ease}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal .media{aspect-ratio:16/9}.modal .in{padding:26px 30px 32px}.modal h2{margin:0 0 6px;font-size:26px;line-height:1.25}.modal p{line-height:1.75;font-size:16px;color:#2c2c33}
+.orig{font-size:13px;color:var(--mut);margin-bottom:14px}
+.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.btn{border:0;border-radius:99px;padding:10px 18px;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--ink);color:#fff}.btn.s{background:#efeeea;color:var(--ink)}
+footer{margin-top:36px;color:var(--mut);font-size:12px;text-align:center}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero .media{min-height:220px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:27px}.hero h2{font-size:22px}.modal .in{padding:20px}}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
-<style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7185;--line:#e6e8f0;--acc:#4f46e5}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 60px}
-header h1{font-size:34px;margin:0;letter-spacing:-.02em}
-header p{color:var(--mut);margin:4px 0 26px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(20,22,31,.08);cursor:pointer;transition:transform .2s,box-shadow .2s}
-.hero:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(20,22,31,.12)}
-.hero .img{min-height:340px}
-.hero .txt{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:27px;line-height:1.2;margin:0;letter-spacing:-.01em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;margin-top:24px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(20,22,31,.06);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(20,22,31,.12)}
-.card .img{height:180px}
-.card .b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:16.5px;line-height:1.3;margin:0}
-.img{position:relative;background:#eceef5;overflow:hidden}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11.5px}
-.Branding{background:#fff0e3;color:#c2570c}.Design{background:#dcf6f0;color:#0d7d6c}.Tecnologia{background:#e8e6ff;color:#4338ca}
-.stars{color:#f5a623;letter-spacing:1px}
-.modal-bg{position:fixed;inset:0;background:rgba(15,17,26,.5);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:30px 14px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .28s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.modal .img{height:340px}
-.modal .c{padding:26px 30px 32px}
-.modal h2{margin:8px 0 12px;font-size:25px;line-height:1.25}
-.modal p{font-size:16px;color:#2a2e3d}
-.orig{font-size:13px;color:var(--mut);font-style:italic}
-.btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.btn{border:0;border-radius:12px;padding:10px 18px;font-weight:600;cursor:pointer;font-size:14px;text-decoration:none}
-.pri{background:var(--acc);color:#fff}.sec{background:#eef0f7;color:var(--ink)}
-.note{font-size:12.5px;color:var(--mut);margin-top:14px}
-footer{margin-top:40px;text-align:center;color:var(--mut);font-size:13px}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.modal .img{height:220px}header h1{font-size:27px}}
-</style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useEffect } = React;
-
-const NEWS = [
+const NOTICIAS = [
 {
-  title: "Inca Kola rebrands as the world's other cola war heats up",
-  tituloPt: "A Inca Kola perdeu o mapa do Peru e o 'desde 1935': o redesenho da Coca-Cola para a soda peruana irritou os consumidores",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/design/branding/inca-kola-rebrands-as-the-worlds-other-cola-war-heats-up",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/fk7JyXYZoS4q3sW7LzAA3o-1920-80.jpg",
-  cat: "Branding", stars: 5, data: "27/09/2026",
-  resumo: ["A Coca-Cola atualizou a identidade visual da Inca Kola, a icônica bebida peruana de erva-luísa, e a mudança gerou polêmica imediata. O novo logo abandona o contorno em formato do Peru, as bordas brancas e a inscrição 'desde 1935' que marcavam a versão anterior.","O trabalho ficou a cargo da agência Epoch, que buscou melhorar a visibilidade na prateleira e reforçar um ar mais contemporâneo. Manteve-se o amarelo característico e foi criado um logo sonoro a partir do som de batidas em garrafas de vidro tradicionais. A comunicação passou a posicionar a bebida como conectora social e como acompanhamento de refeições.","Muitos peruanos reagiram mal: para críticos, a marca deixou de ter identidade e virou algo genérico, trocando patrimônio por globalização. O movimento acontece num momento de pressão de concorrentes locais como Triple Kola e Oro, que usam combinações de azul e amarelo para disputar a liderança histórica da Inca Kola."]
+title: "Nomad designs identities for new Ultimate Sevens rugby league",
+tituloPt: "A Nomad criou seis identidades tipográficas, sem mascotes, para a nova liga Ultimate Sevens de rugby sevens",
+source: "Creative Review",
+url: "https://www.creativereview.co.uk/nomad-design-identity-ultimate-sevens-rugby-league/",
+imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/NMD_U7_CS_THUMBNAIL_16x9.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1125",
+categoria: "Branding", estrelas: 5, data: "28 set 2026",
+resumo: ["A agência londrina Nomad, especializada em branding esportivo, desenvolveu as identidades visuais da Ultimate Sevens, uma nova competição global de rugby sevens com seis clubes, cada um com times masculino e feminino, disputando torneios pela Europa.","O ponto de partida foi a construção dos nomes: prefixo geográfico, um nome central que reflete o caráter do time e o sufixo unificador \"Sevens Club\". Daí saíram Albion Athletic, Atlantic Novas, Clan Taran, Foudre Bleue, Pacific Current e Sol Feroz.","Em vez de recorrer aos mascotes animais tão comuns no rugby, a Nomad apostou em logotipos guiados por letras, com formas tipográficas contemporâneas que traduzem a essência de cada equipe. A paleta usa tons de vermelho, verde e azul para garantir que os seis clubes sejam facilmente distinguíveis.","O pacote inclui manifestos e slogans individuais que refletem a energia em campo e a atitude dos jogadores, além de um sistema de motion design dinâmico. O diretor criativo Callum York resumiu o trabalho como algo \"feito para o jogo moderno: rápido, divertido e a todo vapor\"."]
 },
 {
-  title: "New Logo and Identity for Intuit by JKR and In-house",
-  tituloPt: "Intuit vai para o minúsculo: nova identidade da JKR com o time interno traz wordmark azul em fonte proprietária, a MCKL Type",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_intuit_by_jkr_and_in_house.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/intuit_2026_logo_before_after.png",
-  cat: "Branding", stars: 5, data: "28/09/2026",
-  resumo: ["A Intuit, dona de produtos de software financeiro, apresentou uma identidade renovada desenvolvida em parceria entre a consultoria Jones Knowles Ritchie (JKR) e a equipe interna da empresa.","O centro da mudança é um wordmark em letras minúsculas, na cor azul, desenhado com uma fonte proprietária chamada MCKL Type. A passagem para minúsculas e a tipografia própria reforçam o reconhecimento da marca no setor de software e serviços financeiros, mantendo continuidade visual e modernizando a apresentação em aplicações digitais e físicas."],
-  paywall: true
+title: "Udder disbelief: The Laughing Cow loses her smile",
+tituloPt: "A vaca que ri parou de rir: a Laughing Cow tira o sorriso do mascote em campanha enigmática",
+source: "Campaign",
+url: "https://www.campaignlive.com/article/udder-disbelief-laughing-cow-loses-smile/1970963",
+imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/laughing-cow-not-laughing-UWP-CUS.jpg",
+categoria: "Branding", estrelas: 5, data: "25 set 2026",
+resumo: ["A marca de queijos Laughing Cow lançou uma campanha propositalmente misteriosa: nas novas embalagens, o rosto do mascote perdeu o sorriso característico e ganhou uma expressão preocupada.","O material direciona o público ao site TheNotLaughingCow.com, que traz a mensagem de que, depois de mais de 100 anos, a vaca parou de rir e que \"precisamos conversar\". A marca divulgou vídeos melancólicos do personagem sozinho em um balcão de lanchonete e num balanço de parque, sem explicar o motivo.","A CMO da Bel Brands, Jamee Pearlstein, disse que ver um ícone tão querido sem a risada característica despertaria curiosidade e conversa nas redes. A empresa sugere que o mascote não ficará calado por muito tempo, indicando uma revelação futura.","Quando um seguidor demonstrou preocupação com o estado da personagem, a marca respondeu em tom enigmático: ela não está triste, só \"não está rindo\"."]
 },
 {
-  title: "D&AD announces Black Pencil winners",
-  tituloPt: "D&AD entrega quatro Lápis Pretos: Coinbase, The Ordinary e AXA lideram, e a Apple é a Marca do Ano",
-  source: "Creative Review",
-  url: "https://www.creativereview.co.uk/dad-announces-black-pencil-winners/",
-  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/DAD-Black-Pencil-scaled.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2560&h=965",
-  cat: "Branding", stars: 5, data: "25/09/2026",
-  resumo: ["Quatro Lápis Pretos foram entregues na cerimônia do D&AD em Londres. A Isle of Any levou dois, pelo anúncio 'Your Way Out' da Coinbase, que usou coreografia e figurino para simular a estética de um videogame.","A Uncommon Creative Studio foi premiada por 'The Periodic Fable', da The Ordinary, campanha que desmistifica o jargão do setor de beleza, e a Publicis Conseil venceu com 'Three Words', da AXA, iniciativa que incluiu cobertura contra violência doméstica em seguros residenciais.","Entre os demais prêmios, a Apple foi eleita Marca do Ano, a Uncommon Londres ficou com Agência de Publicidade do Ano e a Isle of Any com Agência Independente do Ano. A designer Irma Boom recebeu o President's Award."]
+title: "New Identity for DeafCity Hub by TEMPLO",
+tituloPt: "A TEMPLO criou a identidade do DeafCity Hub, espaço de coworking londrino, com estética de matriz de pontos e cores vibrantes",
+source: "Brand New",
+url: "https://www.underconsideration.com/brandnew/archives/new_identity_for_deafcity_hub_by_templo.php",
+imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/DeafCityHub2026_Feature.jpg",
+categoria: "Branding", estrelas: 4, data: "24 set 2026",
+resumo: ["O estúdio TEMPLO desenvolveu a nova identidade visual do DeafCity Hub, um espaço de coworking em Londres voltado à comunidade surda. O Brand New resenhou o trabalho sob o título \"A Lovely Gesture\", indicando recepção positiva.","Pelas tags e imagens públicas, o sistema combina uma estética de matriz de pontos (dot-matrix) com paleta multicolorida em laranja e rosa sobre preto, além de movimento como elemento central, uma abordagem contemporânea e lúdica para uma marca comunitária e inclusiva.","Aviso: a análise completa está atrás de paywall; este resumo se baseia apenas em elementos públicos (título, categoria, tags e imagem)."],
+paywall: true
 },
 {
-  title: "We have the kind of stuff AI wishes it could make: Why trust is more important than ever for the NASA brand",
-  tituloPt: "'Temos o que a IA gostaria de fazer': o diretor criativo da NASA explica por que a marca proibiu imagens geradas por IA",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/design/we-have-the-kind-of-stuff-ai-wishes-it-could-make-why-trust-is-more-important-than-ever-for-the-nasa-brand",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/7U2hdcGUCJhHVqMbZdHGg6-1920-80.jpg",
-  cat: "Branding", stars: 4, data: "27/09/2026",
-  resumo: ["Em entrevista, David Rager, diretor criativo da NASA, conta sua trajetória pouco convencional: música, museus, agências e Disney, até chegar ao Jet Propulsion Laboratory em 2019.","Um dos destaques é a volta do logotipo 'worm', abandonado em 1992 e recuperado para conviver em harmonia com o emblema 'meatball' da agência; o worm hoje integra a coleção permanente do MoMA.","Rager define a marca como comunicadora de otimismo e humanidade e como um bem de confiança pública. Por isso, a NASA proibiu imagens geradas por IA em suas comunicações: quem vê uma imagem da agência precisa saber que ela é real, e o acervo fotográfico e artístico da casa supera o que a IA consegue produzir."]
+title: "2026 is the year of the cancelled ad",
+tituloPt: "2026 é o ano do anúncio cancelado: por que tantas campanhas estão sendo retiradas do ar",
+source: "Creative Bloq",
+url: "https://www.creativebloq.com/design/advertising/2026-is-the-year-of-the-cancelled-ad",
+imageUrl: "https://cdn.mos.cms.futurecdn.net/JrcmGQaXbGhjjH7XomDhhN-1204-80.jpg",
+categoria: "Branding", estrelas: 4, data: "28 set 2026",
+resumo: ["O artigo de Tom May analisa uma tendência de 2026: várias campanhas de grande visibilidade sendo retiradas rapidamente após reação negativa do público. Entre os casos citados estão uma publicação apagada da Pepsi, um anúncio de golfe da Callaway, uma peça de apostas esportivas com Sydney Sweeney, a linha de roupas \"United 93\" do Oxford United e um anúncio da Converse com imagem acidentalmente associada à KKK.","O autor separa descuidos genuínos (Oxford United, Converse) de provocações deliberadas. Em vez de culpar o público por ser sensível demais ou as marcas por serem descuidadas, propõe outra explicação: a irrelevância cultural da publicidade.","Com streaming sem anúncios, bloqueadores e queda da mídia impressa, a publicidade perdeu o lugar central que tinha nos anos 1970. Assim, marcas passariam a fabricar polêmica de propósito, na lógica de que atenção negativa é melhor que nenhuma. Nas palavras do texto, anúncios deixaram de ser coisas que assistimos e viraram coisas sobre as quais discutimos."]
 },
 {
-  title: "New Logo and Identity for &Cookies by Fishfinger",
-  tituloPt: "&Cookies, do Kuwait, ganha identidade gorducha da Fishfinger, com e comercial gigante e vermelho vivo",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_cookies_by_fishfinger.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/and_cookies_logo_new.png",
-  cat: "Branding", stars: 3, data: "25/09/2026",
-  resumo: ["O Brand New publicou o novo logo e a identidade da &Cookies, marca de cookies com sede no Kuwait, criados pelo estúdio Fishfinger.","Pelas tags da publicação, o sistema aposta em traços grossos ('chunky'), no e comercial como elemento de destaque e numa paleta vermelha, com exemplos de aplicação em diferentes pontos de contato."],
-  paywall: true
+title: "Meta debuts Tamagotchi-style AI agent",
+tituloPt: "Meta lança o Muse Charm, um agente de IA de bolso estilo Tamagotchi",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/09/25/meta-debuts-tamagotchi-style-ai-agent/",
+imageUrl: "https://static.dezeen.com/uploads/2026/09/sq-meta-muse-charm_dezeen_2364_col_0.jpg",
+categoria: "Tecnologia e IA", estrelas: 4, data: "25 set 2026",
+resumo: ["A Meta apresentou o Muse Charm, dispositivo portátil do tamanho de um chaveiro criado para abrigar seu agente de IA. O projeto vem do time de design da empresa, liderado por Alan Dye, ex-chefe de design da Apple.","O aparelho tem tela de duas polegadas com um personagem de desenho animado personalizável, lembrando os antigos bichinhos virtuais. Traz sensor de digital para ativar a voz, conectividade 5G e câmera integrada. Segundo Mark Zuckerberg, é uma forma de interagir com o assistente Muse sem usar óculos.","O avatar pode assumir vários personagens, incluindo \"Jolly\", o mascote da Meta, uma manga antropomórfica. O alvo é a geração Z, que curte bag charms e pelúcias colecionáveis.","O texto lembra que o histórico da Meta preocupa: o Muse já foi acusado de acessar mensagens privadas e pressionar usuários a revelar dados financeiros, e defensores da privacidade temem que isso se agrave num aparelho com áudio e imagem integrados."]
 },
 {
-  title: "Rockwell Group eschews 90-degree angles for Skywalker Grill at Lucas Museum",
-  tituloPt: "Sem nenhum ângulo reto: a Rockwell Group desenha o Skywalker Grill, restaurante do Museu Lucas em Los Angeles",
-  source: "Dezeen",
-  url: "https://www.dezeen.com/2026/09/26/skywalker-grill-lucas-museum-narrative-art-los-angeles-rockwell-group/",
-  imageUrl: "https://static.dezeen.com/uploads/2026/09/skywalker-grill_lucas-museum_rockwell-group_dezeen_sq1.jpg",
-  cat: "Design", stars: 4, data: "26/09/2026",
-  resumo: ["A Rockwell Group concluiu o Skywalker Grill, restaurante e bar no quinto andar do recém-inaugurado Lucas Museum of Narrative Art, em Los Angeles. O projeto eliminou todos os ângulos de 90 graus para dialogar com as formas curvas do edifício do escritório MAD.","Painéis de cerejeira feitos sob medida remetem ao Skywalker Ranch de George Lucas; paredes curvas, divisórias onduladas e colunas anguladas criam espaços orgânicos. O bar sinuoso tem azulejos prateados cintilantes e um fundo iluminado em Corian.","A proposta traz elementos de narrativa cinematográfica, como enquadramento, luz e escala, aliando materiais de alta tecnologia a detalhes artesanais. Uma janela ovoide dá para um terraço com vista do centro de Los Angeles, e o cardápio californiano usa ingredientes como wagyu e ricota com mel do próprio rancho."]
+title: "Nothing's $399 Headphones Take Aim at Sony, Bose, and Apple at Once",
+tituloPt: "Os fones de US$ 399 da Nothing miram Sony, Bose e Apple com design transparente",
+source: "Yanko Design",
+url: "https://www.yankodesign.com/2026/09/29/nothings-399-headphones-take-aim-at-sony-bose-and-apple-at-once/",
+imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/nothings-399-headphones-take-aim-at-sony-bose-and-apple-at-once/nothing-headphones-1-pro-06.jpg",
+categoria: "Design", estrelas: 4, data: "29 set 2026",
+resumo: ["A Nothing apresentou o Headphones (1) Pro, por US$ 399, com a linguagem transparente que resgata a estética de eletrônicos antigos e o posiciona contra Sony, Bose e Apple.","Cada concha tem três drivers: um dinâmico de 40 mm para graves, um driver de precisão para médios e uma unidade xMEMS de estado sólido para agudos. São 10 microfones para cancelamento de ruído adaptativo de até 46 dB, e um botão de EQ plano.","No design, hastes de titânio e painéis de vidro mantêm o peso em 327 g. A faixa é 10% mais larga, com mais acolchoamento e uma vedação de silicone de 8 mm. Os painéis de vidro resistem a testes de queda, têm película de proteção e podem ser removidos para reparo com calor externo.","A autonomia vai de 30 a 68 horas conforme o uso do cancelamento de ruído, e cinco minutos de carga rendem cerca de quatro horas de música."]
 },
 {
-  title: "New York Times campaign celebrates 175 years",
-  tituloPt: "Com o Studio Dumbar, o New York Times comemora 175 anos celebrando a própria história… da publicidade",
-  source: "Creative Review",
-  url: "https://www.creativereview.co.uk/new-campaign-celebrates-175-years-of-the-new-york-times/",
-  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/NYTA175_All.png?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1333",
-  cat: "Branding", stars: 4, data: "24/09/2026",
-  resumo: ["Para marcar os 175 anos, o New York Times criou, com o Studio Dumbar, uma campanha pouco convencional que celebra tanto o jornalismo quanto o legado publicitário do jornal, mostrando como a publicidade refletiu momentos culturais decisivos.","A experiência reúne anúncios de 1851 até hoje: peças da Tiffany & Co. lançadas três meses após o primeiro número, a virada da Ford para a produção em massa em 1909, a Heinz em 1925 e a campanha da IBM para a NASA em 1966. Exemplos recentes vêm de parcerias do T Brand Studio com Google, DoorDash e L'Oréal.","A liderança do jornal defende que a publicidade muitas vezes antecipa grandes momentos culturais e sustenta o jornalismo independente, ao alcançar leitores engajados que confiam no conteúdo editorial."]
+title: "Viral AI agent Instinct raises $1B Series C at a $10B valuation",
+tituloPt: "Instinct, agente de IA viral, capta US$ 1 bi em rodada Série C e chega a US$ 10 bi de avaliação",
+source: "TechCrunch",
+url: "https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/",
+imageUrl: "https://techcrunch.com/wp-content/uploads/2026/05/ai-agents-GettyImages-2229880232.jpg?resize=1200,675",
+categoria: "Tecnologia e IA", estrelas: 4, data: "28 set 2026",
+resumo: ["A startup de agentes de IA para consumidores Instinct levantou US$ 1 bilhão em rodada Série C, avaliada em US$ 10 bilhões, apenas um mês depois de captar US$ 350 milhões a US$ 2,5 bilhões. Entre os investidores estão Sequoia, Benchmark e Coatue.","O serviço, lançado por convite em agosto de 2026, faz parte de uma nova categoria de agentes que executam tarefas, como reservar viagens, fazer compras, pagar contas e pesquisar. O Instinct usa telefone e computador próprios para agir e recentemente ganhou um serviço de concierge que liga para marcar compromissos e uma rede de pessoas de confiança para coordenar agentes de diferentes usuários.","A empresa enfrenta pressão do Muse, da Meta, que oferece funções parecidas com integração mais profunda a Instagram e Facebook e já soma milhões de downloads. Preocupações antigas de privacidade levaram a ajustes nas políticas. O fundador Noah Shinn disse que o dinheiro levará o Instinct a mais pessoas."]
 },
 {
-  title: "SoreThumbStudio rebrands veg1 to prepare flagship vegan multivitamin for retail",
-  tituloPt: "veg1, o multivitamínico da Vegan Society, troca a lata de alumínio por sachê compostável e ganha logo desenhado à mão",
-  source: "Design Week",
-  url: "https://www.designweek.co.uk/sorethumbstudio-rebrands-veg1-to-prepare-flagship-vegan-multivitamin-for-retail/",
-  imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/VEG1®-Close-up-1024x750.jpg",
-  cat: "Design", stars: 3, data: "25/09/2026",
-  resumo: ["A SoreThumbStudio redesenhou a veg1, suplemento multivitamínico da The Vegan Society, para prepará-lo para a entrada no varejo, depois de anos vendido direto ao consumidor. Os recipientes de alumínio deram lugar a sachês compostáveis em casa, que reduzem desperdício e custos de frete e ajudam na visibilidade em prateleira.","A identidade traz um logotipo em minúsculas desenhado à mão e inspirado nos elementos da tabela periódica, equilibrando simpatia e tom científico suave. O novo slogan, 'Created by vegans, made for everyone', amplia o público para além dos veganos.","A embalagem usa um sistema de duas cores e um grande círculo gráfico para se destacar, e a arquitetura de informação foi reorganizada com base em pesquisas com compradores, com flexibilidade para novas linhas. A gama de quatro SKUs chegou ao mercado no fim do verão de 2026."]
+title: "Quest is a highly designed sci-fi and fantasy magazine built for web fiction",
+tituloPt: "Quest é uma revista de ficção científica e fantasia feita para a web, com design próprio para cada conto",
+source: "It's Nice That",
+url: "https://www.itsnicethat.com/articles/ross-gendels-zane-miller-quest-magazine-graphic-design-publication-project-280926",
+imageUrl: "https://m.itsnicethat.com/original_images/quest-publication-itsnicethat--Issue-01-Alexa-Velasquez.png?class=w1440",
+categoria: "Design", estrelas: 3, data: "28 set 2026",
+resumo: ["Quest é uma publicação digital de ficção científica e fantasia criada por Ross Gendels e Zane Miller, que trata cada história como uma experiência visual única, com tipografia sob medida, arte encomendada e paleta própria por peça.","A segunda edição, lançada em agosto de 2026, reúne nove contos, ensaios e despachos, escolhidos entre 1.154 submissões, o dobro da primeira edição. A revista usa 11 famílias tipográficas diferentes.","O modelo é gratuito para ler e financiado pelos leitores via Patreon. A interface traz elementos de jogo, como geração de nome de usuário, níveis de progressão e chat da comunidade, que superaram as expectativas de engajamento dos criadores. Há suporte a vídeo e áudio, e as edições impressas das duas primeiras edições estão em desenvolvimento."]
 },
 {
-  title: "LOLA Madrid parodies high-end perfume packaging with luxury Lynx holder",
-  tituloPt: "A LOLA Madrid zomba a embalagem de perfume de luxo com um suporte de vidro cobalto para o desodorante Lynx",
-  source: "Design Week",
-  url: "https://www.designweek.co.uk/lola-madrid-parodies-high-end-perfume-packaging-with-luxury-lynx-holder/",
-  imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/hf_20260827_144834_bbdb9226-20f5-4f9b-8ea5-a76f4255c817-denoise-max-1024x572.png",
-  cat: "Design", stars: 4, data: "23/09/2026",
-  resumo: ["A agência LOLA Madrid criou para a Lynx, da Unilever, um suporte decorativo extravagante que satiriza a embalagem de fragrâncias de luxo: uma peça translúcida de vidro azul-cobalto com colar prateado polido, dentro da qual entra a lata de aerossol comum.","A ideia parte de testes cegos da Unilever indicando que as fragrâncias da Lynx têm desempenho comparável ao de perfumes que custam cerca de 350 libras. Ao exagerar os códigos do luxo, a campanha provoca o esnobismo do setor.","Segundo o diretor de criação Tomás Ostiglia, é 'um acessório completamente desnecessário e muito chique — e é exatamente esse o ponto'. A distribuição começa em setembro de 2026 em mercados como Reino Unido, Austrália, Alemanha, México, Canadá e Argentina, via compras online selecionadas e ativações."]
+title: "New Logo for Carter's",
+tituloPt: "Novo logo para a Carter's, varejista de roupas infantis",
+source: "Brand New",
+url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_carters.php",
+imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/carters_logo_before_after.png",
+categoria: "Branding", estrelas: 3, data: "25 set 2026",
+resumo: ["O Brand New registrou, na categoria \"Spotted\", a atualização do logo da Carter's, marca americana de roupas para bebês e crianças. O post mostra uma comparação de antes e depois.","As tags públicas (baby, blue, script, star) indicam que as mudanças envolvem o tratamento em letra cursiva, a cor azul e o elemento de estrela da marca.","Aviso: o conteúdo completo está atrás de paywall e os créditos não são públicos; este resumo usa apenas título, categoria, indústria e tags. Nenhum detalhe além disso foi inferido."],
+paywall: true
 },
 {
-  title: "Nest Egg is a tech-based take on a children's piggy bank",
-  tituloPt: "Nest Egg: um ovo que 'choca' um cartão de débito reinventa o cofrinho infantil na era do dinheiro invisível",
-  source: "Dezeen",
-  url: "https://www.dezeen.com/2026/09/28/nest-egg-filament-piggy-bank/",
-  imageUrl: "https://static.dezeen.com/uploads/2026/09/sq-nest-egg-filament_dezeen_2364_col_0.jpg",
-  cat: "Design", stars: 3, data: "28/09/2026",
-  resumo: ["O estúdio escocês Filament apresentou um conceito de plataforma de educação financeira para crianças, centrado em um objeto em forma de ovo que une interação tátil e aplicativo. A premissa: quando o dinheiro se torna invisível, as lições ligadas a ele desaparecem.","As crianças ganham estrelas digitais por tarefas ou marcos de desenvolvimento e, aos poucos, revelam um personagem escondido no ovo. Ao atingir a meta, o brinquedo vira uma interface NFC para acessar a mesada virtual com toques no celular.","No fim, quando a criança chega à maturidade financeira, o ovo se 'quebra' mecanicamente e revela um cartão de débito real. O cofundador Craig Lynn defende a importância de objetos físicos na educação infantil, e o estúdio busca parceiros bancários para levar o conceito ao mercado."]
+title: "Farshid Moussavi wins 2026 Soane Medal for architecture",
+tituloPt: "Farshid Moussavi recebe a Medalha Soane 2026 de arquitetura",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/09/28/farshid-moussavi-2026-soane-medal/",
+imageUrl: "https://static.dezeen.com/uploads/2026/09/farshid-moussavi-2026-soane-medal_dezeen_2364_col_1.jpg",
+categoria: "Design", estrelas: 3, data: "28 set 2026",
+resumo: ["A arquiteta britânico-iraniana Farshid Moussavi foi a décima premiada com a Medalha Soane, criada em 2017, em reconhecimento a uma contribuição \"contínua e rigorosa\" à arquitetura, ao ensino e à pesquisa.","Fundadora do Farshid Moussavi Architects (2011) e professora na Graduate School of Design de Harvard, foi elogiada por mostrar que a ética da arquitetura nasce da prática, e não do discurso. O presidente do júri, Amin Taha, disse que ela traça um \"terceiro caminho: a atenção\", projetando com humildade e cuidado com a experiência dos usuários, e não em busca de espetáculo.","Entre os projetos concluídos estão o Museu de Arte Contemporânea de Cleveland, o Ismaili Center em Houston, a loja principal de Victoria Beckham em Londres e o terminal de Yokohama (feito no Foreign Office Architects). A medalha será entregue na Royal Academy, em Londres, em 24 de novembro de 2026."]
 },
 {
-  title: "CorelDRAW adds Text-to-Vector AI in the September update – is it a good move?",
-  tituloPt: "CorelDRAW ganha Text-to-Vector: IA que gera vetores editáveis, com curvas e nós, e não imagens achatadas",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/design/graphic-design-software/coreldraw-adds-text-to-vector-ai-in-the-september-update-is-it-a-good-move",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/EHxixv8fQK56YzKNKNoAnb-1920-80.jpg",
-  cat: "Design", stars: 3, data: "28/09/2026",
-  resumo: ["A atualização de setembro de 2026 do CorelDRAW traz o Text-to-Vector, recurso de IA que gera arte vetorial totalmente editável, com curvas e nós, em vez de imagens raster.","Há três modelos: Vector Spark, para desenhos simples; Vector Craft, multiuso; e Vector Master, para trabalhos complexos. O usuário pode fornecer sua própria arte como referência para gerar ativos no mesmo estilo. Tudo roda na nuvem, sem exigir GPU local.","A atualização também acelera o PowerTRACE em até quatro vezes e melhora o tratamento de objetos. A ressalva: é IA generativa com limitações, e alguns detalhes se perdem na geração por referência; testadores a veem mais como ferramenta de ideação do que de resultado final."]
+title: "Rezen transforms hotel stables in Australia into \"raw and direct\" wellness centre",
+tituloPt: "Rezen transforma estábulos de um hotel australiano em centro de bem-estar \"cru e direto\"",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/09/28/rezen-alchemy-saunas/",
+imageUrl: "https://static.dezeen.com/uploads/2026/09/alchemy-saunas-rezen-architecture-interiors-public-leisure-australia_dezeen_2364_hero.jpg",
+categoria: "Design", estrelas: 3, data: "28 set 2026",
+resumo: ["O estúdio Rezen converteu um antigo estábulo e adega sob o Royal George Hotel (1903), em Fremantle, na Austrália, no Alchemy Saunas, espaço de bem-estar inspirado nas casas de banho romanas.","A reforma valoriza o tijolo vermelho e o calcário local Tamala, com acréscimos utilitários de aço e revestimentos cerâmicos. O diretor Rhys Bowring descreve a linguagem como \"pragmática, crua e direta\", com materiais novos discretos para destacar a arquitetura original.","O layout compacto abriga duas piscinas, uma de gelo e outra morna com magnésio, no antigo estábulo de pé-direito duplo, iluminado por grandes janelas em arco. Saunas, chuveiros e vestiários ocupam os andares superiores, com paredes de aço inox em contraste com o calcário envelhecido. Bancos de concreto contornam as piscinas e sustentam as paredes de tijolo."]
 },
 {
-  title: "AMD will acquire Fei-Fei Li's World Labs for $8.2 billion",
-  tituloPt: "AMD vai comprar a World Labs, de Fei-Fei Li, por US$ 8,2 bilhões para entrar na corrida dos 'modelos de mundo'",
-  source: "TechCrunch",
-  url: "https://techcrunch.com/2026/09/28/amd-will-acquire-fei-fei-lis-world-labs-for-8-2-billion/",
-  imageUrl: "https://techcrunch.com/wp-content/uploads/2024/10/GettyImages-1833911955.jpg?resize=1200,800",
-  cat: "Tecnologia", stars: 3, data: "28/09/2026",
-  resumo: ["A AMD vai adquirir a World Labs, startup de IA fundada por Fei-Fei Li, por US$ 8,2 bilhões. Li assumirá como vice-presidente executiva e cientista-chefe da AMD.","A World Labs desenvolve modelos de aprendizado profundo capazes de entender e simular a realidade física. Seu primeiro produto, o Marble, cria experiências imersivas e ambientes sintéticos de treinamento para robótica. Li disse que ampliar a pesquisa exigia 'chegar mais perto do hardware'.","O negócio fortalece a AMD contra a Nvidia, que já tem um portfólio público de modelos de mundo mais robusto. Especialistas veem esses modelos como peça-chave para robótica, de carros autônomos a humanoides, por gerarem dados sintéticos onde faltam dados reais. A conclusão é esperada antes do fim do ano, sujeita à aprovação regulatória."]
+title: "New Tyson Fury vs. Anthony Joshua poster features graphic design fail",
+tituloPt: "Pôster da luta Fury vs. Joshua vira exemplo de falha de design: o título lê \"U vs J\"",
+source: "Creative Bloq",
+url: "https://www.creativebloq.com/design/poster-design/new-tyson-fury-vs-anthony-joshua-poster-features-graphic-design-fail",
+imageUrl: "https://cdn.mos.cms.futurecdn.net/2TE77H7XvKM8ZvVcsX4e3Z-1920-80.jpg",
+categoria: "Design", estrelas: 3, data: "26 set 2026",
+resumo: ["O Creative Bloq mostra o pôster promocional da luta entre Tyson Fury e Anthony Joshua, criticado pela comunidade de design por um problema de leitura na tipografia.","A composição coloca a palavra \"finally\" em destaque, com \"Fury\" e \"AJ\" dispostos na vertical, um de cada lado. O arranjo faz o pôster ser lido como \"U vs J\" em vez de mostrar claramente os nomes dos lutadores, uma falha grave em um cartaz em que a legibilidade é essencial.","Nas redes, designers reagiram duramente, chamando a peça de um design terrível e dando nota F à arte. O artigo a usa como exemplo de tipografia que dá errado até em materiais de grande porte."]
 }
 ];
-
-const PAL = {
-  Branding:[["#ff9a5a","#ff5e62"],["#ffb347","#e8590c"],["#f7797d","#fbd786"]],
-  Design:[["#2dd4bf","#0f766e"],["#5eead4","#059669"],["#34d399","#0e7490"]],
-  Tecnologia:[["#6366f1","#a855f7"],["#3b82f6","#7c3aed"],["#818cf8","#4338ca"]]
-};
-function Ilustra({cat,seed}){
-  const p=PAL[cat][seed%3], id="g"+seed;
-  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-    <rect width="400" height="240" fill={"url(#"+id+")"}/>
-    <circle cx={90+seed*17%120} cy="70" r="70" fill="#fff" opacity=".18"/>
-    <rect x={200+seed*13%80} y="90" width="140" height="140" rx="28" fill="#fff" opacity=".16" transform="rotate(18 270 160)"/>
-    <polygon points="40,230 140,120 240,230" fill="#fff" opacity=".14"/>
-    <circle cx="330" cy="50" r="26" fill="#fff" opacity=".25"/>
+const {useState,useEffect}=React;
+const CORES={"Branding":["#e8590c","#f59f00","#c92a2a"],"Design":["#0f9d8a","#12b886","#087f5b"],"Tecnologia e IA":["#5b5bd6","#7950f2","#3b5bdb"]};
+function Ilustracao({categoria,seed}){
+  const c=CORES[categoria]||CORES.Design;const id="g"+seed;
+  const f=(n)=>((seed*37+n*53)%100);
+  return(<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+categoria}>
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={c[0]}/><stop offset="1" stopColor={c[2]}/></linearGradient></defs>
+    <rect width="400" height="225" fill={"url(#"+id+")"}/>
+    <circle cx={60+f(1)*2.5} cy={40+f(2)} r={70+f(3)/2} fill={c[1]} opacity=".45"/>
+    <rect x={200+f(4)} y={90+f(5)/2} width="120" height="120" rx="24" fill="#fff" opacity=".18" transform={"rotate("+(f(6)-50)+" 260 150)"}/>
+    <polygon points={"40,225 "+(120+f(7))+",120 "+(200+f(8))+",225"} fill="#fff" opacity=".14"/>
+    <circle cx={330-f(9)} cy={50+f(10)/2} r="28" fill="none" stroke="#fff" strokeWidth="6" opacity=".5"/>
   </svg>);
 }
-function Imagem({item,idx,alt}){
+function Media({item,seed}){
   const [falhou,setFalhou]=useState(false);
-  return (<div className="img">
-    {item.imageUrl && !falhou
-      ? <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-      : <Ilustra cat={item.cat} seed={idx}/>}
-  </div>);
+  if(!item.imageUrl||falhou) return <Ilustracao categoria={item.categoria} seed={seed}/>;
+  return <img src={item.imageUrl} referrerPolicy="no-referrer" loading="lazy" alt={"Imagem da matéria: "+item.tituloPt} onError={()=>setFalhou(true)}/>;
 }
-const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-const Meta=({it})=>(<div className="meta"><span className={"tag "+it.cat}>{it.cat}</span><Stars n={it.stars}/><span>{it.source} · {it.data}</span></div>);
-
-function Modal({it,idx,onClose}){
-  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",k);return()=>document.removeEventListener("keydown",k)},[]);
-  return (<div className="modal-bg" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <Imagem item={it} idx={idx} alt={"Imagem da matéria: "+it.tituloPt}/>
-    <div className="c">
-      <Meta it={it}/>
-      <h2>{it.tituloPt}</h2>
-      <div className="orig">Título original: {it.title}</div>
-      {it.resumo.map((p,i)=><p key={i}>{p}</p>)}
-      {it.paywall && <div className="note">Resumo feito a partir dos elementos públicos da matéria (título, tags e chamada); o texto completo está atrás de paywall.</div>}
-      <div className="btns"><a className="btn pri" href={it.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn sec" onClick={onClose}>Fechar</button></div>
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
+const Tag=({c})=><span className="tag" style={{background:(CORES[c]||CORES.Design)[0]}}>{c}</span>;
+function Modal({item,seed,onClose}){
+  useEffect(()=>{const h=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",h);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",h);document.body.style.overflow=""}},[]);
+  return(<div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <div className="media"><Media item={item} seed={seed}/></div>
+    <div className="in">
+      <div className="meta"><Tag c={item.categoria}/><Stars n={item.estrelas}/><span>{item.source} · {item.data}</span></div>
+      <h2>{item.tituloPt}</h2><div className="orig">Título original: {item.title}</div>
+      {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
+      {item.paywall&&<div className="aviso">Matéria com paywall: resumo baseado apenas em elementos públicos.</div>}
+      <div className="btns"><a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn s" onClick={onClose}>Fechar</button></div>
     </div></div></div>);
 }
+function Card({item,seed,onOpen}){
+  return(<article className="card" onClick={()=>onOpen(item)} tabIndex={0} onKeyDown={e=>e.key==="Enter"&&onOpen(item)}>
+    <div className="media"><Media item={item} seed={seed}/></div>
+    <div className="body"><div className="meta"><Tag c={item.categoria}/><Stars n={item.estrelas}/><span>{item.source}</span></div><h3>{item.tituloPt}</h3></div></article>);
+}
 function App(){
-  const [sel,setSel]=useState(null);
-  const ord=[...NEWS].sort((a,b)=>b.stars-a.stars);
-  const [top,...rest]=ord;
-  const idxOf=it=>NEWS.indexOf(it);
-  return (<div className="wrap">
-    <header><h1>Portal da Manhã</h1><p>Terça-feira, 29 de setembro de 2026 · Branding, design e tecnologia em {new Set(NEWS.map(n=>n.source)).size} portais</p></header>
-    <div className="hero" onClick={()=>setSel(top)}>
-      <Imagem item={top} idx={idxOf(top)} alt={"Imagem da matéria: "+top.tituloPt}/>
-      <div className="txt"><Meta it={top}/><h2>{top.tituloPt}</h2><span style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</span></div>
-    </div>
-    <div className="grid">{rest.map(it=>(
-      <div className="card" key={it.url} onClick={()=>setSel(it)}>
-        <Imagem item={it} idx={idxOf(it)} alt={"Imagem da matéria: "+it.tituloPt}/>
-        <div className="b"><Meta it={it}/><h3>{it.tituloPt}</h3></div>
-      </div>))}</div>
-    {sel && <Modal it={sel} idx={idxOf(sel)} onClose={()=>setSel(null)}/>}
-    <footer>Resumos parafraseados em português. Toda a autoria pertence aos portais de origem.</footer>
+  const [aberto,setAberto]=useState(null);
+  const lista=[...NOTICIAS].sort((a,b)=>b.estrelas-a.estrelas);
+  const [h,...resto]=lista;
+  const idx=i=>NOTICIAS.indexOf(i)+1;
+  return(<div className="wrap">
+    <header><div><h1>Portal da Manhã</h1><div className="sub">Terça-feira, 29 de setembro de 2026 · Branding, design e tecnologia</div></div><span className="badge">{NOTICIAS.length} notícias</span></header>
+    <article className="card hero" onClick={()=>setAberto(h)} tabIndex={0} onKeyDown={e=>e.key==="Enter"&&setAberto(h)}>
+      <div className="media"><Media item={h} seed={idx(h)}/></div>
+      <div className="body"><div className="meta"><Tag c={h.categoria}/><Stars n={h.estrelas}/><span>{h.source} · {h.data}</span></div>
+        <h2>{h.tituloPt}</h2><p>{h.resumo[0]}</p><div className="cta">Abrir resumo completo →</div></div>
+    </article>
+    <div className="grid">{resto.map(i=><Card key={i.url} item={i} seed={idx(i)} onOpen={setAberto}/>)}</div>
+    <footer>Resumos parafraseados em português a partir das fontes originais. Imagens pertencem aos respectivos portais.</footer>
+    {aberto&&<Modal item={aberto} seed={idx(aberto)} onClose={()=>setAberto(null)}/>}
   </div>);
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);

@@ -3,209 +3,194 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 29 de setembro de 2026</title>
-<style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#17171a;--mut:#6b6b76;--line:#e8e6e1;--brand:#e8590c;--design:#0f9d8a;--tech:#5b5bd6}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-h1{font-size:34px;letter-spacing:-.02em;margin:0}.sub{color:var(--mut);font-size:14px;margin-top:4px}
-.badge{font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--mut)}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;border:1px solid var(--line)}
-.card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.05),0 14px 32px rgba(0,0,0,.09)}
-.media{position:relative;aspect-ratio:16/9;background:#eee;overflow:hidden}.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
-.body{padding:16px 18px 18px}.meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);margin-bottom:8px;flex-wrap:wrap}
-.tag{font-weight:700;padding:2px 9px;border-radius:99px;color:#fff;font-size:11px}
-.stars{color:#f5a300;letter-spacing:1px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:26px}.hero .media{aspect-ratio:auto;min-height:340px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center}
-.hero p{color:var(--mut);line-height:1.6;font-size:15px}.cta{margin-top:14px;font-weight:600;color:var(--brand);font-size:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.aviso{font-size:12px;background:#fff7e6;border:1px solid #ffe2a8;color:#8a5a00;padding:6px 10px;border-radius:8px;margin-top:10px}
-.overlay{position:fixed;inset:0;background:rgba(20,20,25,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:32px 16px;z-index:10;animation:fade .25s ease}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.modal .media{aspect-ratio:16/9}.modal .in{padding:26px 30px 32px}.modal h2{margin:0 0 6px;font-size:26px;line-height:1.25}.modal p{line-height:1.75;font-size:16px;color:#2c2c33}
-.orig{font-size:13px;color:var(--mut);margin-bottom:14px}
-.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.btn{border:0;border-radius:99px;padding:10px 18px;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none}
-.btn.p{background:var(--ink);color:#fff}.btn.s{background:#efeeea;color:var(--ink)}
-footer{margin-top:36px;color:var(--mut);font-size:12px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero .media{min-height:220px}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}h1{font-size:27px}.hero h2{font-size:22px}.modal .in{padding:20px}}
-</style>
+<title>Portal da Manhã — 30 de setembro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#6b7280;--line:#e8e6e1;--acc:#e8590c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+h1{font-size:34px;margin:0;letter-spacing:-.02em}.date{color:var(--mut);font-size:15px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.12)}
+.hero .img{min-height:340px}.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.card .img{height:180px}.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:17px;line-height:1.3;margin:0}
+.img{position:relative;overflow:hidden;background:#eee}.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11.5px}
+.Branding{background:#ffe8d6;color:#b4460a}.Design{background:#d3f4ec;color:#0b7a63}.Tecnologia{background:#e2e0ff;color:#4338ca}
+.stars{color:#f59f00;letter-spacing:1px}
+.overlay{position:fixed;inset:0;background:rgba(15,17,22,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:32px 16px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal .img{height:340px}.modal .in{padding:28px 32px 32px}.modal h2{font-size:26px;line-height:1.2;margin:10px 0 4px}
+.modal p{font-size:16.5px;margin:14px 0}.close{float:right;border:0;background:#f1efea;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;margin:14px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:11px 20px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
+.note{font-size:13px;color:var(--mut);background:#faf8f3;border-left:3px solid #f0c987;padding:8px 12px;border-radius:6px}
+footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
+@keyframes fade{from{opacity:0}}@keyframes up{from{transform:translateY(24px);opacity:0}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:28px}.modal .img{height:220px}.modal .in{padding:20px}}
+</style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const NOTICIAS = [
-{
-title: "Nomad designs identities for new Ultimate Sevens rugby league",
-tituloPt: "A Nomad criou seis identidades tipográficas, sem mascotes, para a nova liga Ultimate Sevens de rugby sevens",
-source: "Creative Review",
-url: "https://www.creativereview.co.uk/nomad-design-identity-ultimate-sevens-rugby-league/",
-imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/NMD_U7_CS_THUMBNAIL_16x9.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1125",
-categoria: "Branding", estrelas: 5, data: "28 set 2026",
-resumo: ["A agência londrina Nomad, especializada em branding esportivo, desenvolveu as identidades visuais da Ultimate Sevens, uma nova competição global de rugby sevens com seis clubes, cada um com times masculino e feminino, disputando torneios pela Europa.","O ponto de partida foi a construção dos nomes: prefixo geográfico, um nome central que reflete o caráter do time e o sufixo unificador \"Sevens Club\". Daí saíram Albion Athletic, Atlantic Novas, Clan Taran, Foudre Bleue, Pacific Current e Sol Feroz.","Em vez de recorrer aos mascotes animais tão comuns no rugby, a Nomad apostou em logotipos guiados por letras, com formas tipográficas contemporâneas que traduzem a essência de cada equipe. A paleta usa tons de vermelho, verde e azul para garantir que os seis clubes sejam facilmente distinguíveis.","O pacote inclui manifestos e slogans individuais que refletem a energia em campo e a atitude dos jogadores, além de um sistema de motion design dinâmico. O diretor criativo Callum York resumiu o trabalho como algo \"feito para o jogo moderno: rápido, divertido e a todo vapor\"."]
-},
-{
-title: "Udder disbelief: The Laughing Cow loses her smile",
-tituloPt: "A vaca que ri parou de rir: a Laughing Cow tira o sorriso do mascote em campanha enigmática",
-source: "Campaign",
-url: "https://www.campaignlive.com/article/udder-disbelief-laughing-cow-loses-smile/1970963",
-imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/laughing-cow-not-laughing-UWP-CUS.jpg",
-categoria: "Branding", estrelas: 5, data: "25 set 2026",
-resumo: ["A marca de queijos Laughing Cow lançou uma campanha propositalmente misteriosa: nas novas embalagens, o rosto do mascote perdeu o sorriso característico e ganhou uma expressão preocupada.","O material direciona o público ao site TheNotLaughingCow.com, que traz a mensagem de que, depois de mais de 100 anos, a vaca parou de rir e que \"precisamos conversar\". A marca divulgou vídeos melancólicos do personagem sozinho em um balcão de lanchonete e num balanço de parque, sem explicar o motivo.","A CMO da Bel Brands, Jamee Pearlstein, disse que ver um ícone tão querido sem a risada característica despertaria curiosidade e conversa nas redes. A empresa sugere que o mascote não ficará calado por muito tempo, indicando uma revelação futura.","Quando um seguidor demonstrou preocupação com o estado da personagem, a marca respondeu em tom enigmático: ela não está triste, só \"não está rindo\"."]
-},
-{
-title: "New Identity for DeafCity Hub by TEMPLO",
-tituloPt: "A TEMPLO criou a identidade do DeafCity Hub, espaço de coworking londrino, com estética de matriz de pontos e cores vibrantes",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_identity_for_deafcity_hub_by_templo.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/DeafCityHub2026_Feature.jpg",
-categoria: "Branding", estrelas: 4, data: "24 set 2026",
-resumo: ["O estúdio TEMPLO desenvolveu a nova identidade visual do DeafCity Hub, um espaço de coworking em Londres voltado à comunidade surda. O Brand New resenhou o trabalho sob o título \"A Lovely Gesture\", indicando recepção positiva.","Pelas tags e imagens públicas, o sistema combina uma estética de matriz de pontos (dot-matrix) com paleta multicolorida em laranja e rosa sobre preto, além de movimento como elemento central, uma abordagem contemporânea e lúdica para uma marca comunitária e inclusiva.","Aviso: a análise completa está atrás de paywall; este resumo se baseia apenas em elementos públicos (título, categoria, tags e imagem)."],
-paywall: true
-},
-{
-title: "2026 is the year of the cancelled ad",
-tituloPt: "2026 é o ano do anúncio cancelado: por que tantas campanhas estão sendo retiradas do ar",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/design/advertising/2026-is-the-year-of-the-cancelled-ad",
-imageUrl: "https://cdn.mos.cms.futurecdn.net/JrcmGQaXbGhjjH7XomDhhN-1204-80.jpg",
-categoria: "Branding", estrelas: 4, data: "28 set 2026",
-resumo: ["O artigo de Tom May analisa uma tendência de 2026: várias campanhas de grande visibilidade sendo retiradas rapidamente após reação negativa do público. Entre os casos citados estão uma publicação apagada da Pepsi, um anúncio de golfe da Callaway, uma peça de apostas esportivas com Sydney Sweeney, a linha de roupas \"United 93\" do Oxford United e um anúncio da Converse com imagem acidentalmente associada à KKK.","O autor separa descuidos genuínos (Oxford United, Converse) de provocações deliberadas. Em vez de culpar o público por ser sensível demais ou as marcas por serem descuidadas, propõe outra explicação: a irrelevância cultural da publicidade.","Com streaming sem anúncios, bloqueadores e queda da mídia impressa, a publicidade perdeu o lugar central que tinha nos anos 1970. Assim, marcas passariam a fabricar polêmica de propósito, na lógica de que atenção negativa é melhor que nenhuma. Nas palavras do texto, anúncios deixaram de ser coisas que assistimos e viraram coisas sobre as quais discutimos."]
-},
-{
-title: "Meta debuts Tamagotchi-style AI agent",
-tituloPt: "Meta lança o Muse Charm, um agente de IA de bolso estilo Tamagotchi",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/09/25/meta-debuts-tamagotchi-style-ai-agent/",
-imageUrl: "https://static.dezeen.com/uploads/2026/09/sq-meta-muse-charm_dezeen_2364_col_0.jpg",
-categoria: "Tecnologia e IA", estrelas: 4, data: "25 set 2026",
-resumo: ["A Meta apresentou o Muse Charm, dispositivo portátil do tamanho de um chaveiro criado para abrigar seu agente de IA. O projeto vem do time de design da empresa, liderado por Alan Dye, ex-chefe de design da Apple.","O aparelho tem tela de duas polegadas com um personagem de desenho animado personalizável, lembrando os antigos bichinhos virtuais. Traz sensor de digital para ativar a voz, conectividade 5G e câmera integrada. Segundo Mark Zuckerberg, é uma forma de interagir com o assistente Muse sem usar óculos.","O avatar pode assumir vários personagens, incluindo \"Jolly\", o mascote da Meta, uma manga antropomórfica. O alvo é a geração Z, que curte bag charms e pelúcias colecionáveis.","O texto lembra que o histórico da Meta preocupa: o Muse já foi acusado de acessar mensagens privadas e pressionar usuários a revelar dados financeiros, e defensores da privacidade temem que isso se agrave num aparelho com áudio e imagem integrados."]
-},
-{
-title: "Nothing's $399 Headphones Take Aim at Sony, Bose, and Apple at Once",
-tituloPt: "Os fones de US$ 399 da Nothing miram Sony, Bose e Apple com design transparente",
-source: "Yanko Design",
-url: "https://www.yankodesign.com/2026/09/29/nothings-399-headphones-take-aim-at-sony-bose-and-apple-at-once/",
-imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/nothings-399-headphones-take-aim-at-sony-bose-and-apple-at-once/nothing-headphones-1-pro-06.jpg",
-categoria: "Design", estrelas: 4, data: "29 set 2026",
-resumo: ["A Nothing apresentou o Headphones (1) Pro, por US$ 399, com a linguagem transparente que resgata a estética de eletrônicos antigos e o posiciona contra Sony, Bose e Apple.","Cada concha tem três drivers: um dinâmico de 40 mm para graves, um driver de precisão para médios e uma unidade xMEMS de estado sólido para agudos. São 10 microfones para cancelamento de ruído adaptativo de até 46 dB, e um botão de EQ plano.","No design, hastes de titânio e painéis de vidro mantêm o peso em 327 g. A faixa é 10% mais larga, com mais acolchoamento e uma vedação de silicone de 8 mm. Os painéis de vidro resistem a testes de queda, têm película de proteção e podem ser removidos para reparo com calor externo.","A autonomia vai de 30 a 68 horas conforme o uso do cancelamento de ruído, e cinco minutos de carga rendem cerca de quatro horas de música."]
-},
-{
-title: "Viral AI agent Instinct raises $1B Series C at a $10B valuation",
-tituloPt: "Instinct, agente de IA viral, capta US$ 1 bi em rodada Série C e chega a US$ 10 bi de avaliação",
-source: "TechCrunch",
-url: "https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/",
-imageUrl: "https://techcrunch.com/wp-content/uploads/2026/05/ai-agents-GettyImages-2229880232.jpg?resize=1200,675",
-categoria: "Tecnologia e IA", estrelas: 4, data: "28 set 2026",
-resumo: ["A startup de agentes de IA para consumidores Instinct levantou US$ 1 bilhão em rodada Série C, avaliada em US$ 10 bilhões, apenas um mês depois de captar US$ 350 milhões a US$ 2,5 bilhões. Entre os investidores estão Sequoia, Benchmark e Coatue.","O serviço, lançado por convite em agosto de 2026, faz parte de uma nova categoria de agentes que executam tarefas, como reservar viagens, fazer compras, pagar contas e pesquisar. O Instinct usa telefone e computador próprios para agir e recentemente ganhou um serviço de concierge que liga para marcar compromissos e uma rede de pessoas de confiança para coordenar agentes de diferentes usuários.","A empresa enfrenta pressão do Muse, da Meta, que oferece funções parecidas com integração mais profunda a Instagram e Facebook e já soma milhões de downloads. Preocupações antigas de privacidade levaram a ajustes nas políticas. O fundador Noah Shinn disse que o dinheiro levará o Instinct a mais pessoas."]
-},
-{
-title: "Quest is a highly designed sci-fi and fantasy magazine built for web fiction",
-tituloPt: "Quest é uma revista de ficção científica e fantasia feita para a web, com design próprio para cada conto",
-source: "It's Nice That",
-url: "https://www.itsnicethat.com/articles/ross-gendels-zane-miller-quest-magazine-graphic-design-publication-project-280926",
-imageUrl: "https://m.itsnicethat.com/original_images/quest-publication-itsnicethat--Issue-01-Alexa-Velasquez.png?class=w1440",
-categoria: "Design", estrelas: 3, data: "28 set 2026",
-resumo: ["Quest é uma publicação digital de ficção científica e fantasia criada por Ross Gendels e Zane Miller, que trata cada história como uma experiência visual única, com tipografia sob medida, arte encomendada e paleta própria por peça.","A segunda edição, lançada em agosto de 2026, reúne nove contos, ensaios e despachos, escolhidos entre 1.154 submissões, o dobro da primeira edição. A revista usa 11 famílias tipográficas diferentes.","O modelo é gratuito para ler e financiado pelos leitores via Patreon. A interface traz elementos de jogo, como geração de nome de usuário, níveis de progressão e chat da comunidade, que superaram as expectativas de engajamento dos criadores. Há suporte a vídeo e áudio, e as edições impressas das duas primeiras edições estão em desenvolvimento."]
-},
-{
-title: "New Logo for Carter's",
-tituloPt: "Novo logo para a Carter's, varejista de roupas infantis",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_carters.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/carters_logo_before_after.png",
-categoria: "Branding", estrelas: 3, data: "25 set 2026",
-resumo: ["O Brand New registrou, na categoria \"Spotted\", a atualização do logo da Carter's, marca americana de roupas para bebês e crianças. O post mostra uma comparação de antes e depois.","As tags públicas (baby, blue, script, star) indicam que as mudanças envolvem o tratamento em letra cursiva, a cor azul e o elemento de estrela da marca.","Aviso: o conteúdo completo está atrás de paywall e os créditos não são públicos; este resumo usa apenas título, categoria, indústria e tags. Nenhum detalhe além disso foi inferido."],
-paywall: true
-},
-{
-title: "Farshid Moussavi wins 2026 Soane Medal for architecture",
-tituloPt: "Farshid Moussavi recebe a Medalha Soane 2026 de arquitetura",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/09/28/farshid-moussavi-2026-soane-medal/",
-imageUrl: "https://static.dezeen.com/uploads/2026/09/farshid-moussavi-2026-soane-medal_dezeen_2364_col_1.jpg",
-categoria: "Design", estrelas: 3, data: "28 set 2026",
-resumo: ["A arquiteta britânico-iraniana Farshid Moussavi foi a décima premiada com a Medalha Soane, criada em 2017, em reconhecimento a uma contribuição \"contínua e rigorosa\" à arquitetura, ao ensino e à pesquisa.","Fundadora do Farshid Moussavi Architects (2011) e professora na Graduate School of Design de Harvard, foi elogiada por mostrar que a ética da arquitetura nasce da prática, e não do discurso. O presidente do júri, Amin Taha, disse que ela traça um \"terceiro caminho: a atenção\", projetando com humildade e cuidado com a experiência dos usuários, e não em busca de espetáculo.","Entre os projetos concluídos estão o Museu de Arte Contemporânea de Cleveland, o Ismaili Center em Houston, a loja principal de Victoria Beckham em Londres e o terminal de Yokohama (feito no Foreign Office Architects). A medalha será entregue na Royal Academy, em Londres, em 24 de novembro de 2026."]
-},
-{
-title: "Rezen transforms hotel stables in Australia into \"raw and direct\" wellness centre",
-tituloPt: "Rezen transforma estábulos de um hotel australiano em centro de bem-estar \"cru e direto\"",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/09/28/rezen-alchemy-saunas/",
-imageUrl: "https://static.dezeen.com/uploads/2026/09/alchemy-saunas-rezen-architecture-interiors-public-leisure-australia_dezeen_2364_hero.jpg",
-categoria: "Design", estrelas: 3, data: "28 set 2026",
-resumo: ["O estúdio Rezen converteu um antigo estábulo e adega sob o Royal George Hotel (1903), em Fremantle, na Austrália, no Alchemy Saunas, espaço de bem-estar inspirado nas casas de banho romanas.","A reforma valoriza o tijolo vermelho e o calcário local Tamala, com acréscimos utilitários de aço e revestimentos cerâmicos. O diretor Rhys Bowring descreve a linguagem como \"pragmática, crua e direta\", com materiais novos discretos para destacar a arquitetura original.","O layout compacto abriga duas piscinas, uma de gelo e outra morna com magnésio, no antigo estábulo de pé-direito duplo, iluminado por grandes janelas em arco. Saunas, chuveiros e vestiários ocupam os andares superiores, com paredes de aço inox em contraste com o calcário envelhecido. Bancos de concreto contornam as piscinas e sustentam as paredes de tijolo."]
-},
-{
-title: "New Tyson Fury vs. Anthony Joshua poster features graphic design fail",
-tituloPt: "Pôster da luta Fury vs. Joshua vira exemplo de falha de design: o título lê \"U vs J\"",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/design/poster-design/new-tyson-fury-vs-anthony-joshua-poster-features-graphic-design-fail",
-imageUrl: "https://cdn.mos.cms.futurecdn.net/2TE77H7XvKM8ZvVcsX4e3Z-1920-80.jpg",
-categoria: "Design", estrelas: 3, data: "26 set 2026",
-resumo: ["O Creative Bloq mostra o pôster promocional da luta entre Tyson Fury e Anthony Joshua, criticado pela comunidade de design por um problema de leitura na tipografia.","A composição coloca a palavra \"finally\" em destaque, com \"Fury\" e \"AJ\" dispostos na vertical, um de cada lado. O arranjo faz o pôster ser lido como \"U vs J\" em vez de mostrar claramente os nomes dos lutadores, uma falha grave em um cartaz em que a legibilidade é essencial.","Nas redes, designers reagiram duramente, chamando a peça de um design terrível e dando nota F à arte. O artigo a usa como exemplo de tipografia que dá errado até em materiais de grande porte."]
-}
+const { useState, useEffect } = React;
+const NEWS = [
+ {
+  title: "\"We went for a Marmite icon\": how Formula E's new logo is made to grow on you",
+  tituloPt: "\"Fizemos um ícone estilo Marmite\": como o novo logo da Fórmula E foi feito para crescer em você",
+  source: "Creative Bloq",
+  url: "https://www.creativebloq.com/design/we-went-for-a-marmite-icon-how-formula-es-new-logo-is-made-to-grow-on-you",
+  imageUrl: "https://cdn.mos.cms.futurecdn.net/6oD44eDvr6sL5AKPDYiiqe-1920-80.jpg",
+  cat: "Branding", stars: 5, data: "29/09",
+  resumo: ["A Fórmula E apresentou uma nova identidade visual criada pela agência MOX, pensada para a chegada da era GEN4 do campeonato de carros elétricos. O centro do sistema é um logotipo em que as letras F e E formam um duplo trocadilho visual, inclinadas em 30 graus para transmitir movimento e energia.","O diretor criativo Matt Bolton admite que o desenho foi pensado para provocar reações divididas de início — nas palavras dele, um \"ícone Marmite\", daqueles que se estranham antes de se entranhar, e que \"cresce em você\" com o tempo.","A identidade inclui uma família tipográfica própria, desenvolvida com o All Purpose Studio, com variações como Turbo Mode (para textos dinâmicos) e Micro Mono (para dados técnicos). A paleta troca o esquema anterior por Surge Purple, Signal Orange e Electric Lime, com gradientes batizados de Pulse e Ignite.","A marca quer sinalizar uma Fórmula E \"mais rápida, mais ambiciosa e culturalmente mais relevante\", um salto visual claro em relação à fase GEN3."]
+ },
+ {
+  title: "Vauxhall unveils \"sharper, cleaner\" griffin logo",
+  tituloPt: "Vauxhall apresenta grifo \"mais afiado e limpo\": pela primeira vez em 121 anos, some a bandeira com o V",
+  source: "Dezeen",
+  url: "https://www.dezeen.com/2026/09/30/vauxhall-griffin-logo-streamline/",
+  imageUrl: "https://static.dezeen.com/uploads/2026/09/vauxhall-griffin-logo-streamline_dezeen_2364_sq_2.jpg",
+  cat: "Branding", stars: 5, data: "30/09",
+  resumo: ["A Vauxhall revelou a 13ª versão do seu logotipo: um grifo simplificado que acompanha a virada da marca para os carros elétricos. Pela primeira vez em 121 anos, o emblema abandona a bandeira com a letra V que o grifo segurava.","Segundo o vice-presidente de design, Mark Adams, o novo grifo é \"mais afiado, mais limpo e combina perfeitamente com a próxima evolução da linguagem de design, ousada e pura\" da marca. Os pelos do pescoço foram simplificados e o bico agora aparece fechado, avançando sobre o desenho plano de 2020.","O emblema foi projetado para ser iluminado nos futuros modelos elétricos, ganhando visibilidade. O grifo nasceu em 1915, criado pelo aprendiz Harry Varley em referência ao brasão de Sir Falkes de Bréauté, e sempre esteve no centro da marca.","O novo logo estreia no Salão de Paris, em outubro, no conceito Vauxhall STX, e passa a equipar todos os modelos de série a partir do ano que vem."]
+ },
+ {
+  title: "A hard-hitting ad campaign throws shade at Musk, Bezos and Zuckerberg to highlight the real tech innovators",
+  tituloPt: "Campanha da Mozilla Foundation tira sarro de Musk, Bezos e Zuckerberg para destacar quem realmente inova",
+  source: "Creative Bloq",
+  url: "https://www.creativebloq.com/design/logos-icons/new-ad-campaign-throws-shade-at-musk-bezos-and-zuckerberg-to-promote-online-democracy",
+  imageUrl: "https://cdn.mos.cms.futurecdn.net/FCe6ttRnyFveAsVy4zNSwE-1920-80.jpg",
+  cat: "Branding", stars: 4, data: "29/09",
+  resumo: ["A Mozilla Foundation lançou, durante a Climate Week NYC, uma campanha de cartazes colados em muros (wheatpaste) que confronta diretamente a influência dos bilionários da tecnologia.","Os cartazes zombam da compra do Twitter por Elon Musk, do turismo espacial de Jeff Bezos e dos óculos com Meta AI de Mark Zuckerberg, tratando-os como projetos de vaidade e não como inovação de fato.","Em contraponto, a campanha destaca tecnólogos pouco conhecidos apoiados pelo programa de bolsas da Mozilla, como Rose Njeri Tunguru, que criou infraestrutura de verificação eleitoral para o Quênia, e Rudy Fraser, criador da rede social descentralizada Blacksky.","A mensagem central é que \"um futuro melhor não será construído apenas por bilionários\". A tática visual de rua, com um tom provocador, ajuda a divulgar o programa e a missão da Mozilla de manter a internet como um recurso público."]
+ },
+ {
+  title: "How Fishwife's illustrated branding made tinned fish cool",
+  tituloPt: "Como a identidade ilustrada da Fishwife fez do peixe em lata algo descolado",
+  source: "Creative Review",
+  url: "https://www.creativereview.co.uk/fishwife-illustrated-branding-tinned-fish-danny-miller/",
+  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Fishwife-anchovies-tin.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+  cat: "Branding", stars: 4, data: "29/09",
+  resumo: ["A Creative Review conta como a Fishwife, marca de frutos do mar em conserva de Los Angeles fundada na pandemia por Becca Millstein e Caroline Goldfarb, mudou a imagem do peixe enlatado por meio de embalagens ilustradas.","O ilustrador Danny Miller, em seu primeiro projeto profissional, buscou inspiração nas latas espanholas e portuguesas antigas, nas aquarelas de Winslow Homer e nos filmes de Wes Anderson para chegar ao traço manual característico, com cores primárias vivas e ilustrações debochadas e minuciosas.","O nome da marca, que resgata o termo histórico para as mulheres vendedoras de peixe, guiou a direção visual ousada. Com a expansão da linha e colaborações que vão de cuidados com a pele a acessórios de cabelo, o desafio passou a ser manter a coesão e dar personalidade própria a cada lata.","Miller também evoluiu de materiais físicos para ferramentas digitais como o Procreate, sem abandonar os métodos tradicionais para preservar a autenticidade."]
+ },
+ {
+  title: "Snøhetta designs Hong Kong clubhouse with undulating playground and rope-climbing tower",
+  tituloPt: "Snøhetta cria clube em Hong Kong com playground ondulado e torre de escalada em corda",
+  source: "Dezeen",
+  url: "https://www.dezeen.com/2026/09/30/snohetta-sky-house-pavilia-farm-hong-kong/",
+  imageUrl: "https://static.dezeen.com/uploads/2026/09/snohetta-sky-house-pavilia-farm-playground-community-centre-hong-kong_dezeen_2364_col_2-1704x2560-1.jpg",
+  cat: "Design", stars: 4, data: "30/09",
+  resumo: ["O escritório Snøhetta concluiu o Sky House, o último clube do condomínio Pavilia Farm, em Tai Wai, Hong Kong. O prédio de dois andares funciona como \"playground e academia para todas as idades\".","Do lado de fora, uma área infantil de paisagem ondulada, com escorregadores e plataformas, avança para o interior, onde há playgrounds em forma de túnel, uma sala de aula e uma sala de música. No andar superior ficam áreas de estar e de ginástica pensadas para os moradores mais velhos.","Uma clarabóia central em cúpula funciona como torre de escalada em corda, ligando os dois pavimentos e inundando o espaço de luz natural.","O Sky House se soma a três edifícios já entregues — Tea House, Well House e Farm House —, todos integrando natureza e convivência, na ideia de um \"bairro em camadas\" que estimula o encontro entre gerações."]
+ },
+ {
+  title: "Two animators reveal the roles, risks and limits of making Don Quixote with AI",
+  tituloPt: "Dois animadores revelam papéis, riscos e limites de fazer Dom Quixote com IA",
+  source: "Creative Bloq",
+  url: "https://www.creativebloq.com/ai/two-animators-reveal-the-roles-risks-and-limits-of-making-don-quixote-with-ai",
+  imageUrl: "https://cdn.mos.cms.futurecdn.net/yTsiNcv4KpypUTG54t53rU-1600-80.jpg",
+  cat: "Tecnologia", stars: 4, data: "29/09",
+  resumo: ["Os animadores Guillermo Miranda e Javier de la Chica fizeram um curta de 11 minutos gerado com IA, La Triste Figura, adaptação de Dom Quixote de Cervantes, exibido em estreia em Madri no dia 23 de setembro.","Eles afirmam que a narrativa, e não o espetáculo tecnológico, ancorou a produção, que reuniu storyboarders, dubladores e compositores ao lado de ferramentas de geração de vídeo. Descrevem o processo como um cinema \"multiplayer\", em que os departamentos tradicionais de animação trabalham de forma mais fluida.","Foram criados designs de produção completos antes de gerar cerca de 1.200 planos a partir de prompts escritos, principalmente com o Seedance 2.5. A IA ainda tropeça em cenas cômicas cheias de diálogo e na consistência dos personagens.","A dupla vê o filme como protótipo experimental, reconhece o desconforto de colegas do setor e defende a construção de marcos éticos à medida que a produção com IA se expande."]
+ },
+ {
+  title: "New Logo and Identity for Zero Waste France by PAM!",
+  tituloPt: "Novo logo e identidade da Zero Waste France, pela agência PAM!",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_zero_waste_france_by_pam.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/zero_waste_france_logo_before_after.png",
+  cat: "Branding", stars: 3, data: "29/09",
+  paywall: true,
+  resumo: ["O Brand New publicou a resenha da nova identidade da Zero Waste France, organização francesa de defesa do meio ambiente, desenvolvida pela agência PAM!. É um caso clássico de antes e depois, na categoria de ativismo e causas ambientais.","Pelas tags públicas do post, o novo sistema trabalha com preto, círculo, tipografia sans serif condensada, monograma e traços em contorno — um vocabulário gráfico enxuto, que sugere uma marca mais direta e reconhecível para uma causa ligada à redução de resíduos."]
+ },
+ {
+  title: "New Logo, Identity, and Packaging for Flynny's by Studio South",
+  tituloPt: "Novo logo, identidade e embalagem da Flynny's, pelo Studio South",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_flynnys_by_studio_south.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/flynnys_logo_new.png",
+  cat: "Branding", stars: 3, data: "29/09",
+  paywall: true,
+  resumo: ["O Brand New resenhou o novo logo, a identidade e as embalagens da Flynny's, marca de lâminas de barbear, desenhados pelo Studio South. O post está na categoria \"Reviewed\" e na indústria de bens de consumo.","As tags públicas — cachorro, lâminas, Studio South e amarelo — indicam uma identidade com mascote canino e o amarelo como cor de destaque nas embalagens."]
+ },
+ {
+  title: "New Name, Logo, and Packaging for Coach Potato by Echt Brands",
+  tituloPt: "Novo nome, logo e embalagem da Coach Potato, pela Echt Brands",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_name_logo_and_packaging_for_coach_potato_by_echt_brands.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/coach_potato_logo_new.png",
+  cat: "Branding", stars: 3, data: "29/09",
+  paywall: true,
+  resumo: ["O Brand New registrou, com o título \"Suck it Up\", a mudança de nome, logo e embalagem da Coach Potato, feita pela Echt Brands, da Eslováquia. O post está na categoria \"Noted\", em bens de consumo.","As tags públicas — colorido, mascote, embalagem e rosa — sugerem uma marca extrovertida, com personagem e cor forte nas embalagens."]
+ },
+ {
+  title: "New Balance Quietly Fixed What Makes Tech Sneakers Unwearable",
+  tituloPt: "A New Balance resolveu, sem alarde, o que torna tênis tecnológicos difíceis de usar",
+  source: "Yanko Design",
+  url: "https://www.yankodesign.com/2026/09/30/new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable/",
+  imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable/abzorb-00.jpg",
+  cat: "Design", stars: 3, data: "30/09",
+  resumo: ["A Yanko Design analisa o ABZORB 2000 Luxe, nova versão do tênis da New Balance que ataca uma frustração comum do calçado técnico: obrigar quem usa a escolher entre conforto visível e discrição, com o look inteiro girando em torno do tênis.","A versão Luxe mantém a entressola com amortecimento exposto e os \"pods\", mas troca as cores por tons de marrom e cinza, com cabedais discretos, materiais em contraste e costuras aparentes.","O solado continua chamando atenção enquanto a parte superior não compete com ele. O autor defende que é um refinamento pela contenção, e não uma reinvenção. O lançamento está marcado para 1º de outubro de 2026."]
+ },
+ {
+  title: "McDonald's starts testing ads from other brands on its restaurant menu screens",
+  tituloPt: "McDonald's começa a testar anúncios de outras marcas nas telas de cardápio dos restaurantes",
+  source: "Campaign",
+  url: "https://www.campaignlive.com/article/mcdonalds-starts-testing-ads-brands-its-restaurant-menu-screens/1971094",
+  imageUrl: null,
+  cat: "Branding", stars: 3, data: "28/09",
+  resumo: ["O McDonald's está pilotando anúncios de marcas terceiras nas telas digitais de cardápio de restaurantes próprios selecionados nos EUA. Os anúncios aparecem depois que o cliente conclui o pedido, durante a espera pela retirada, tanto nos totens de autoatendimento quanto nas telas do drive-thru.","Um porta-voz disse que a ideia é \"compartilhar conteúdo pós-compra que os clientes possam achar útil, relevante ou interessante\".","O teste pode abrir uma fonte de receita relevante, transformando a rede numa plataforma de mídia como as redes de varejo do Walmart e da Target. O setor sofre com tráfego fraco e custos em alta, o que torna a diversificação estratégica.","Com cerca de 26 milhões de clientes diários em 13.700 unidades nos EUA, o alcance é grande; o sucesso dependerá de a publicidade melhorar ou piorar a experiência no salão."]
+ }
 ];
-const {useState,useEffect}=React;
-const CORES={"Branding":["#e8590c","#f59f00","#c92a2a"],"Design":["#0f9d8a","#12b886","#087f5b"],"Tecnologia e IA":["#5b5bd6","#7950f2","#3b5bdb"]};
-function Ilustracao({categoria,seed}){
-  const c=CORES[categoria]||CORES.Design;const id="g"+seed;
-  const f=(n)=>((seed*37+n*53)%100);
-  return(<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+categoria}>
-    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={c[0]}/><stop offset="1" stopColor={c[2]}/></linearGradient></defs>
-    <rect width="400" height="225" fill={"url(#"+id+")"}/>
-    <circle cx={60+f(1)*2.5} cy={40+f(2)} r={70+f(3)/2} fill={c[1]} opacity=".45"/>
-    <rect x={200+f(4)} y={90+f(5)/2} width="120" height="120" rx="24" fill="#fff" opacity=".18" transform={"rotate("+(f(6)-50)+" 260 150)"}/>
-    <polygon points={"40,225 "+(120+f(7))+",120 "+(200+f(8))+",225"} fill="#fff" opacity=".14"/>
-    <circle cx={330-f(9)} cy={50+f(10)/2} r="28" fill="none" stroke="#fff" strokeWidth="6" opacity=".5"/>
+
+const PAL = {Branding:[["#ff9a3c","#e8590c"],["#ffd166","#ef476f"],["#f76b1c","#fad961"]],Design:[["#2dd4bf","#0f766e"],["#86efac","#0d9488"],["#34d399","#155e75"]],Tecnologia:[["#6366f1","#a855f7"],["#3b82f6","#7c3aed"],["#60a5fa","#4f46e5"]]};
+function Arte({cat,seed}){
+  const p=PAL[cat][seed%3], id="g"+seed, r=(n)=>((seed*37+n*53)%100);
+  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+    <rect width="400" height="240" fill={"url(#"+id+")"}/>
+    <circle cx={60+r(1)*3} cy={40+r(2)} r={50+r(3)/2} fill="#fff" opacity=".18"/>
+    <rect x={200+r(4)} y={90+r(5)/2} width="140" height="140" rx="28" fill="#fff" opacity=".14" transform={"rotate("+(r(6)-30)+" 270 160)"}/>
+    <polygon points={"40,230 "+(120+r(7))+",120 "+(200+r(8))+",230"} fill="#000" opacity=".12"/>
+    <circle cx={330-r(9)} cy="50" r="22" fill="#fff" opacity=".3"/>
   </svg>);
 }
-function Media({item,seed}){
+function Imagem({item,i,alt}){
   const [falhou,setFalhou]=useState(false);
-  if(!item.imageUrl||falhou) return <Ilustracao categoria={item.categoria} seed={seed}/>;
-  return <img src={item.imageUrl} referrerPolicy="no-referrer" loading="lazy" alt={"Imagem da matéria: "+item.tituloPt} onError={()=>setFalhou(true)}/>;
+  return (<div className="img">{item.imageUrl && !falhou
+    ? <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+    : <Arte cat={item.cat} seed={i+1}/>}</div>);
 }
-const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
-const Tag=({c})=><span className="tag" style={{background:(CORES[c]||CORES.Design)[0]}}>{c}</span>;
-function Modal({item,seed,onClose}){
-  useEffect(()=>{const h=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",h);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",h);document.body.style.overflow=""}},[]);
-  return(<div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <div className="media"><Media item={item} seed={seed}/></div>
-    <div className="in">
-      <div className="meta"><Tag c={item.categoria}/><Stars n={item.estrelas}/><span>{item.source} · {item.data}</span></div>
-      <h2>{item.tituloPt}</h2><div className="orig">Título original: {item.title}</div>
-      {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
-      {item.paywall&&<div className="aviso">Matéria com paywall: resumo baseado apenas em elementos públicos.</div>}
-      <div className="btns"><a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn s" onClick={onClose}>Fechar</button></div>
-    </div></div></div>);
-}
-function Card({item,seed,onOpen}){
-  return(<article className="card" onClick={()=>onOpen(item)} tabIndex={0} onKeyDown={e=>e.key==="Enter"&&onOpen(item)}>
-    <div className="media"><Media item={item} seed={seed}/></div>
-    <div className="body"><div className="meta"><Tag c={item.categoria}/><Stars n={item.estrelas}/><span>{item.source}</span></div><h3>{item.tituloPt}</h3></div></article>);
+const Estrelas=({n})=><span className="stars" title={n+" de 5"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+function Meta({item}){return (<div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><span>{item.source}</span><span>·</span><span>{item.data}</span><Estrelas n={item.stars}/></div>);}
+function Modal({item,i,onClose}){
+  useEffect(()=>{const h=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",h);return()=>window.removeEventListener("keydown",h)},[]);
+  return (<div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+    <Imagem item={item} i={i} alt={item.tituloPt}/>
+    <div className="in"><Meta item={item}/><h2>{item.tituloPt}</h2>
+    {item.resumo.map((p,k)=><p key={k}>{p}</p>)}
+    {item.paywall && <div className="note">Matéria atrás de paywall: resumo baseado apenas em elementos públicos (título, categoria, indústria e tags).</div>}
+    <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a></div>
+  </div></div>);
 }
 function App(){
-  const [aberto,setAberto]=useState(null);
-  const lista=[...NOTICIAS].sort((a,b)=>b.estrelas-a.estrelas);
-  const [h,...resto]=lista;
-  const idx=i=>NOTICIAS.indexOf(i)+1;
-  return(<div className="wrap">
-    <header><div><h1>Portal da Manhã</h1><div className="sub">Terça-feira, 29 de setembro de 2026 · Branding, design e tecnologia</div></div><span className="badge">{NOTICIAS.length} notícias</span></header>
-    <article className="card hero" onClick={()=>setAberto(h)} tabIndex={0} onKeyDown={e=>e.key==="Enter"&&setAberto(h)}>
-      <div className="media"><Media item={h} seed={idx(h)}/></div>
-      <div className="body"><div className="meta"><Tag c={h.categoria}/><Stars n={h.estrelas}/><span>{h.source} · {h.data}</span></div>
-        <h2>{h.tituloPt}</h2><p>{h.resumo[0]}</p><div className="cta">Abrir resumo completo →</div></div>
-    </article>
-    <div className="grid">{resto.map(i=><Card key={i.url} item={i} seed={idx(i)} onOpen={setAberto}/>)}</div>
-    <footer>Resumos parafraseados em português a partir das fontes originais. Imagens pertencem aos respectivos portais.</footer>
-    {aberto&&<Modal item={aberto} seed={idx(aberto)} onClose={()=>setAberto(null)}/>}
+  const [sel,setSel]=useState(null);
+  const [hero,...resto]=NEWS;
+  return (<div className="wrap">
+    <header><div><h1>Portal da Manhã</h1><div className="date">Quarta-feira, 30 de setembro de 2026 · Branding, Design e Tecnologia</div></div><div className="date">{NEWS.length} notícias</div></header>
+    <div className="hero" onClick={()=>setSel(0)}>
+      <Imagem item={hero} i={0} alt={hero.tituloPt}/>
+      <div className="txt"><Meta item={hero}/><h2>{hero.tituloPt}</h2><p style={{margin:0,color:"#4b5563"}}>{hero.resumo[0]}</p><span style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</span></div>
+    </div>
+    <div className="grid">{resto.map((it,k)=>(<div className="card" key={k} onClick={()=>setSel(k+1)}>
+      <Imagem item={it} i={k+1} alt={it.tituloPt}/><div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div></div>))}</div>
+    <footer>Resumos escritos em português a partir das matérias originais. Clique em qualquer notícia para abrir o resumo completo.</footer>
+    {sel!==null && <Modal item={NEWS[sel]} i={sel} onClose={()=>setSel(null)}/>}
   </div>);
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);

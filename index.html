@@ -1,199 +1,310 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 30 de setembro de 2026</title>
+<title>Portal da Manhã — 1 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#6b7280;--line:#e8e6e1;--acc:#e8590c}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#16161a;--mut:#6b6b76;--line:#e8e6e1;--acc:#e8590c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-h1{font-size:34px;margin:0;letter-spacing:-.02em}.date{color:var(--mut);font-size:15px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:18px}
+h1{margin:0;font-size:34px;letter-spacing:-.02em}
+.date{color:var(--mut);font-size:15px;text-transform:capitalize}
 .hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.12)}
-.hero .img{min-height:340px}.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
-.card .img{height:180px}.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:17px;line-height:1.3;margin:0}
-.img{position:relative;overflow:hidden;background:#eee}.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
+.hero .img{min-height:340px}
+.hero .body{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.1)}
+.card .img{height:190px}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.img{position:relative;overflow:hidden;background:#eee}
+.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
 .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11.5px}
-.Branding{background:#ffe8d6;color:#b4460a}.Design{background:#d3f4ec;color:#0b7a63}.Tecnologia{background:#e2e0ff;color:#4338ca}
-.stars{color:#f59f00;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(15,17,22,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:32px 16px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.modal .img{height:340px}.modal .in{padding:28px 32px 32px}.modal h2{font-size:26px;line-height:1.2;margin:10px 0 4px}
-.modal p{font-size:16.5px;margin:14px 0}.close{float:right;border:0;background:#f1efea;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;margin:14px}
-.btn{display:inline-block;background:var(--ink);color:#fff;padding:11px 20px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;margin-top:8px}
-.note{font-size:13px;color:var(--mut);background:#faf8f3;border-left:3px solid #f0c987;padding:8px 12px;border-radius:6px}
+.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:11.5px;color:#fff}
+.Branding{background:#e8590c}.Design{background:#0f9d8a}.Tecnologia{background:#5b5bd6}
+.stars{color:#f5a623;letter-spacing:1px}
+.overlay{position:fixed;inset:0;background:rgba(20,20,25,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:28px 14px;z-index:10;animation:f .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:u .3s;position:relative}
+.modal .img{height:340px}
+.modal .in{padding:28px 32px 34px}
+.modal h2{margin:8px 0 4px;font-size:27px;line-height:1.2}
+.modal .orig{color:var(--mut);font-size:14px;margin:0 0 16px}
+.modal p{font-size:16.5px;margin:0 0 14px}
+.note{background:#fff7ed;border-left:3px solid var(--acc);padding:10px 14px;border-radius:8px;font-size:13.5px;color:#7a4a1c;margin-top:8px}
+.btn{display:inline-block;margin-top:14px;background:var(--ink);color:#fff;padding:11px 20px;border-radius:99px;text-decoration:none;font-weight:600;font-size:14px}
+.close{position:absolute;top:14px;right:14px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:20px;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}}@keyframes up{from{transform:translateY(24px);opacity:0}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:28px}.modal .img{height:220px}.modal .in{padding:20px}}
+@keyframes f{from{opacity:0}to{opacity:1}}@keyframes u{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:27px}.modal .in{padding:20px}.modal .img{height:220px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
+
 const NEWS = [
- {
-  title: "\"We went for a Marmite icon\": how Formula E's new logo is made to grow on you",
-  tituloPt: "\"Fizemos um ícone estilo Marmite\": como o novo logo da Fórmula E foi feito para crescer em você",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/design/we-went-for-a-marmite-icon-how-formula-es-new-logo-is-made-to-grow-on-you",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/6oD44eDvr6sL5AKPDYiiqe-1920-80.jpg",
-  cat: "Branding", stars: 5, data: "29/09",
-  resumo: ["A Fórmula E apresentou uma nova identidade visual criada pela agência MOX, pensada para a chegada da era GEN4 do campeonato de carros elétricos. O centro do sistema é um logotipo em que as letras F e E formam um duplo trocadilho visual, inclinadas em 30 graus para transmitir movimento e energia.","O diretor criativo Matt Bolton admite que o desenho foi pensado para provocar reações divididas de início — nas palavras dele, um \"ícone Marmite\", daqueles que se estranham antes de se entranhar, e que \"cresce em você\" com o tempo.","A identidade inclui uma família tipográfica própria, desenvolvida com o All Purpose Studio, com variações como Turbo Mode (para textos dinâmicos) e Micro Mono (para dados técnicos). A paleta troca o esquema anterior por Surge Purple, Signal Orange e Electric Lime, com gradientes batizados de Pulse e Ignite.","A marca quer sinalizar uma Fórmula E \"mais rápida, mais ambiciosa e culturalmente mais relevante\", um salto visual claro em relação à fase GEN3."]
- },
- {
-  title: "Vauxhall unveils \"sharper, cleaner\" griffin logo",
-  tituloPt: "Vauxhall apresenta grifo \"mais afiado e limpo\": pela primeira vez em 121 anos, some a bandeira com o V",
+{
+  title: "Synthetic memories feature in MoMA information design exhibition",
+  tituloPt: "Memórias sintéticas no MoMA: mostra de design de informação questiona o que significa 'visualizar dados'",
   source: "Dezeen",
-  url: "https://www.dezeen.com/2026/09/30/vauxhall-griffin-logo-streamline/",
-  imageUrl: "https://static.dezeen.com/uploads/2026/09/vauxhall-griffin-logo-streamline_dezeen_2364_sq_2.jpg",
-  cat: "Branding", stars: 5, data: "30/09",
-  resumo: ["A Vauxhall revelou a 13ª versão do seu logotipo: um grifo simplificado que acompanha a virada da marca para os carros elétricos. Pela primeira vez em 121 anos, o emblema abandona a bandeira com a letra V que o grifo segurava.","Segundo o vice-presidente de design, Mark Adams, o novo grifo é \"mais afiado, mais limpo e combina perfeitamente com a próxima evolução da linguagem de design, ousada e pura\" da marca. Os pelos do pescoço foram simplificados e o bico agora aparece fechado, avançando sobre o desenho plano de 2020.","O emblema foi projetado para ser iluminado nos futuros modelos elétricos, ganhando visibilidade. O grifo nasceu em 1915, criado pelo aprendiz Harry Varley em referência ao brasão de Sir Falkes de Bréauté, e sempre esteve no centro da marca.","O novo logo estreia no Salão de Paris, em outubro, no conceito Vauxhall STX, e passa a equipar todos os modelos de série a partir do ano que vem."]
- },
- {
-  title: "A hard-hitting ad campaign throws shade at Musk, Bezos and Zuckerberg to highlight the real tech innovators",
-  tituloPt: "Campanha da Mozilla Foundation tira sarro de Musk, Bezos e Zuckerberg para destacar quem realmente inova",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/design/logos-icons/new-ad-campaign-throws-shade-at-musk-bezos-and-zuckerberg-to-promote-online-democracy",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/FCe6ttRnyFveAsVy4zNSwE-1920-80.jpg",
-  cat: "Branding", stars: 4, data: "29/09",
-  resumo: ["A Mozilla Foundation lançou, durante a Climate Week NYC, uma campanha de cartazes colados em muros (wheatpaste) que confronta diretamente a influência dos bilionários da tecnologia.","Os cartazes zombam da compra do Twitter por Elon Musk, do turismo espacial de Jeff Bezos e dos óculos com Meta AI de Mark Zuckerberg, tratando-os como projetos de vaidade e não como inovação de fato.","Em contraponto, a campanha destaca tecnólogos pouco conhecidos apoiados pelo programa de bolsas da Mozilla, como Rose Njeri Tunguru, que criou infraestrutura de verificação eleitoral para o Quênia, e Rudy Fraser, criador da rede social descentralizada Blacksky.","A mensagem central é que \"um futuro melhor não será construído apenas por bilionários\". A tática visual de rua, com um tom provocador, ajuda a divulgar o programa e a missão da Mozilla de manter a internet como um recurso público."]
- },
- {
-  title: "How Fishwife's illustrated branding made tinned fish cool",
-  tituloPt: "Como a identidade ilustrada da Fishwife fez do peixe em lata algo descolado",
-  source: "Creative Review",
-  url: "https://www.creativereview.co.uk/fishwife-illustrated-branding-tinned-fish-danny-miller/",
-  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/Fishwife-anchovies-tin.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-  cat: "Branding", stars: 4, data: "29/09",
-  resumo: ["A Creative Review conta como a Fishwife, marca de frutos do mar em conserva de Los Angeles fundada na pandemia por Becca Millstein e Caroline Goldfarb, mudou a imagem do peixe enlatado por meio de embalagens ilustradas.","O ilustrador Danny Miller, em seu primeiro projeto profissional, buscou inspiração nas latas espanholas e portuguesas antigas, nas aquarelas de Winslow Homer e nos filmes de Wes Anderson para chegar ao traço manual característico, com cores primárias vivas e ilustrações debochadas e minuciosas.","O nome da marca, que resgata o termo histórico para as mulheres vendedoras de peixe, guiou a direção visual ousada. Com a expansão da linha e colaborações que vão de cuidados com a pele a acessórios de cabelo, o desafio passou a ser manter a coesão e dar personalidade própria a cada lata.","Miller também evoluiu de materiais físicos para ferramentas digitais como o Procreate, sem abandonar os métodos tradicionais para preservar a autenticidade."]
- },
- {
-  title: "Snøhetta designs Hong Kong clubhouse with undulating playground and rope-climbing tower",
-  tituloPt: "Snøhetta cria clube em Hong Kong com playground ondulado e torre de escalada em corda",
-  source: "Dezeen",
-  url: "https://www.dezeen.com/2026/09/30/snohetta-sky-house-pavilia-farm-hong-kong/",
-  imageUrl: "https://static.dezeen.com/uploads/2026/09/snohetta-sky-house-pavilia-farm-playground-community-centre-hong-kong_dezeen_2364_col_2-1704x2560-1.jpg",
-  cat: "Design", stars: 4, data: "30/09",
-  resumo: ["O escritório Snøhetta concluiu o Sky House, o último clube do condomínio Pavilia Farm, em Tai Wai, Hong Kong. O prédio de dois andares funciona como \"playground e academia para todas as idades\".","Do lado de fora, uma área infantil de paisagem ondulada, com escorregadores e plataformas, avança para o interior, onde há playgrounds em forma de túnel, uma sala de aula e uma sala de música. No andar superior ficam áreas de estar e de ginástica pensadas para os moradores mais velhos.","Uma clarabóia central em cúpula funciona como torre de escalada em corda, ligando os dois pavimentos e inundando o espaço de luz natural.","O Sky House se soma a três edifícios já entregues — Tea House, Well House e Farm House —, todos integrando natureza e convivência, na ideia de um \"bairro em camadas\" que estimula o encontro entre gerações."]
- },
- {
-  title: "Two animators reveal the roles, risks and limits of making Don Quixote with AI",
-  tituloPt: "Dois animadores revelam papéis, riscos e limites de fazer Dom Quixote com IA",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/ai/two-animators-reveal-the-roles-risks-and-limits-of-making-don-quixote-with-ai",
-  imageUrl: "https://cdn.mos.cms.futurecdn.net/yTsiNcv4KpypUTG54t53rU-1600-80.jpg",
-  cat: "Tecnologia", stars: 4, data: "29/09",
-  resumo: ["Os animadores Guillermo Miranda e Javier de la Chica fizeram um curta de 11 minutos gerado com IA, La Triste Figura, adaptação de Dom Quixote de Cervantes, exibido em estreia em Madri no dia 23 de setembro.","Eles afirmam que a narrativa, e não o espetáculo tecnológico, ancorou a produção, que reuniu storyboarders, dubladores e compositores ao lado de ferramentas de geração de vídeo. Descrevem o processo como um cinema \"multiplayer\", em que os departamentos tradicionais de animação trabalham de forma mais fluida.","Foram criados designs de produção completos antes de gerar cerca de 1.200 planos a partir de prompts escritos, principalmente com o Seedance 2.5. A IA ainda tropeça em cenas cômicas cheias de diálogo e na consistência dos personagens.","A dupla vê o filme como protótipo experimental, reconhece o desconforto de colegas do setor e defende a construção de marcos éticos à medida que a produção com IA se expande."]
- },
- {
-  title: "New Logo and Identity for Zero Waste France by PAM!",
-  tituloPt: "Novo logo e identidade da Zero Waste France, pela agência PAM!",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_zero_waste_france_by_pam.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/zero_waste_france_logo_before_after.png",
-  cat: "Branding", stars: 3, data: "29/09",
-  paywall: true,
-  resumo: ["O Brand New publicou a resenha da nova identidade da Zero Waste France, organização francesa de defesa do meio ambiente, desenvolvida pela agência PAM!. É um caso clássico de antes e depois, na categoria de ativismo e causas ambientais.","Pelas tags públicas do post, o novo sistema trabalha com preto, círculo, tipografia sans serif condensada, monograma e traços em contorno — um vocabulário gráfico enxuto, que sugere uma marca mais direta e reconhecível para uma causa ligada à redução de resíduos."]
- },
- {
-  title: "New Logo, Identity, and Packaging for Flynny's by Studio South",
-  tituloPt: "Novo logo, identidade e embalagem da Flynny's, pelo Studio South",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_flynnys_by_studio_south.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/flynnys_logo_new.png",
-  cat: "Branding", stars: 3, data: "29/09",
-  paywall: true,
-  resumo: ["O Brand New resenhou o novo logo, a identidade e as embalagens da Flynny's, marca de lâminas de barbear, desenhados pelo Studio South. O post está na categoria \"Reviewed\" e na indústria de bens de consumo.","As tags públicas — cachorro, lâminas, Studio South e amarelo — indicam uma identidade com mascote canino e o amarelo como cor de destaque nas embalagens."]
- },
- {
-  title: "New Name, Logo, and Packaging for Coach Potato by Echt Brands",
-  tituloPt: "Novo nome, logo e embalagem da Coach Potato, pela Echt Brands",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_name_logo_and_packaging_for_coach_potato_by_echt_brands.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/coach_potato_logo_new.png",
-  cat: "Branding", stars: 3, data: "29/09",
-  paywall: true,
-  resumo: ["O Brand New registrou, com o título \"Suck it Up\", a mudança de nome, logo e embalagem da Coach Potato, feita pela Echt Brands, da Eslováquia. O post está na categoria \"Noted\", em bens de consumo.","As tags públicas — colorido, mascote, embalagem e rosa — sugerem uma marca extrovertida, com personagem e cor forte nas embalagens."]
- },
- {
-  title: "New Balance Quietly Fixed What Makes Tech Sneakers Unwearable",
-  tituloPt: "A New Balance resolveu, sem alarde, o que torna tênis tecnológicos difíceis de usar",
+  url: "https://www.dezeen.com/2026/09/30/moma-information-design-exhibition-full-disclosure/",
+  imageUrl: "https://static.dezeen.com/uploads/2026/09/moma-full-disclosure-data-exhibition_dezeen_2364_sq.jpg",
+  cat: "Design", stars: 5,
+  resumo: [
+    "O Museu de Arte Moderna de Nova York inaugurou 'Full Disclosure: The Edge of Information Design', com curadoria de Paola Antonelli. A exposição amplia o conceito de design de informação para muito além do infográfico tradicional e dos gráficos estatísticos, reunindo desde peças desenhadas à mão até trabalhos gerados por inteligência artificial.",
+    "Um dos destaques é o Synthetic Memories Archive, do coletivo Domestic Data Streamers: imagens produzidas por IA a partir de lembranças pessoais descritas em palavras. Para Antonelli, design de informação 'nem sempre trata de conjuntos de dados vindos de uma fonte científica ou estatística' — ele também pode lidar com memória, afeto e incerteza.",
+    "A mostra inclui ainda investigações como o mapeamento, pela Forensic Architecture, de um barco de resgate no Mediterrâneo; o 'Calculating Empires', de Kate Crawford e Vladan Joler, que traça cinco séculos de história institucional e cultural; a série de cartões-postais 'Dear Data', de Giorgia Lupi e Stefanie Posavec; e peças digitais do New York Times.",
+    "O argumento central da curadora é que, num momento de ceticismo generalizado, bons designers permitem ao público 'seguir o caminho' de um designer, jornalista ou político e avaliar as conclusões por conta própria. A exposição fica em cartaz até 13 de junho de 2027."
+  ]
+},
+{
+  title: "Amman Design Week Returns After 7 Years: 220 Designers, 204 Events, and a City That Doesn't Forget",
+  tituloPt: "Amman Design Week volta após sete anos com 220 designers, 204 eventos e o tema 'Acumulações'",
   source: "Yanko Design",
-  url: "https://www.yankodesign.com/2026/09/30/new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable/",
-  imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/new-balance-quietly-fixed-what-makes-tech-sneakers-unwearable/abzorb-00.jpg",
-  cat: "Design", stars: 3, data: "30/09",
-  resumo: ["A Yanko Design analisa o ABZORB 2000 Luxe, nova versão do tênis da New Balance que ataca uma frustração comum do calçado técnico: obrigar quem usa a escolher entre conforto visível e discrição, com o look inteiro girando em torno do tênis.","A versão Luxe mantém a entressola com amortecimento exposto e os \"pods\", mas troca as cores por tons de marrom e cinza, com cabedais discretos, materiais em contraste e costuras aparentes.","O solado continua chamando atenção enquanto a parte superior não compete com ele. O autor defende que é um refinamento pela contenção, e não uma reinvenção. O lançamento está marcado para 1º de outubro de 2026."]
- },
- {
-  title: "McDonald's starts testing ads from other brands on its restaurant menu screens",
-  tituloPt: "McDonald's começa a testar anúncios de outras marcas nas telas de cardápio dos restaurantes",
-  source: "Campaign",
-  url: "https://www.campaignlive.com/article/mcdonalds-starts-testing-ads-brands-its-restaurant-menu-screens/1971094",
-  imageUrl: null,
-  cat: "Branding", stars: 3, data: "28/09",
-  resumo: ["O McDonald's está pilotando anúncios de marcas terceiras nas telas digitais de cardápio de restaurantes próprios selecionados nos EUA. Os anúncios aparecem depois que o cliente conclui o pedido, durante a espera pela retirada, tanto nos totens de autoatendimento quanto nas telas do drive-thru.","Um porta-voz disse que a ideia é \"compartilhar conteúdo pós-compra que os clientes possam achar útil, relevante ou interessante\".","O teste pode abrir uma fonte de receita relevante, transformando a rede numa plataforma de mídia como as redes de varejo do Walmart e da Target. O setor sofre com tráfego fraco e custos em alta, o que torna a diversificação estratégica.","Com cerca de 26 milhões de clientes diários em 13.700 unidades nos EUA, o alcance é grande; o sucesso dependerá de a publicidade melhorar ou piorar a experiência no salão."]
- }
+  url: "https://www.yankodesign.com/2026/09/30/amman-design-week-returns-after-7-years-220-designers-204-events-and-a-city-that-doesnt-forget/",
+  imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/amman-design-week-returns-after-7-years-220-designers-204-events-and-a-city-that-doesnt-forget/amman_design_week_2026_intro_1.jpg",
+  cat: "Design", stars: 4,
+  resumo: [
+    "Depois de sete anos de pausa, a Amman Design Week retorna em sua quarta edição, de 2 a 17 de outubro de 2026, organizada em torno do tema 'Acumulações'. O evento se espalha por cinco distritos de Amã e, pela primeira vez, inclui também a cidade costeira de Aqaba.",
+    "A curadoria parte de um verso histórico — 'não despreze o pequeno; montanhas são feitas de pedrinhas' — para explorar como conhecimento, tradições e cidades se constroem em camadas. Os projetos são apresentados em pares, dialogando com artefatos históricos ou documentos de arquivo, e dão ênfase a práticas herdadas e origens frequentemente ignoradas.",
+    "São mais de 220 designers, 59 espaços e 204 atividades. Quatro intervenções urbanas permanentes ficarão na cidade depois do evento: um poste escultórico que faz referência à história estrutural da Cúpula da Rocha, uma quadra de basquete decorada com a imagem das frutas e verduras típicas de Amã, um cruzamento redesenhado com resíduos de pedra local e uma estrutura de sombra em cerâmica entre as árvores de um parque.",
+    "A programação inclui ainda parcerias com escolas, por meio da iniciativa Madrasati, e um programa de mentoria para estudantes de várias disciplinas do design."
+  ]
+},
+{
+  title: "Danish charity Kirkens Korshær launches digital thrift store for gamers",
+  tituloPt: "Brechó digital para gamers: instituição dinamarquesa recebe skins de Counter-Strike 2 como doação",
+  source: "Creative Review",
+  url: "https://www.creativereview.co.uk/danish-charity-kirkens-korshaer-launches-digital-thrift-store-for-gamers/",
+  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/09/SECONDHAND_SKINS_image2_16x9.jpg",
+  cat: "Branding", stars: 4,
+  resumo: [
+    "A Kirkens Korshær, instituição dinamarquesa que apoia jovens em situação de vulnerabilidade, criou com a agência Nord a campanha 'Secondhand Skins', que adapta o conceito do brechó tradicional ao universo dos jogos.",
+    "O mecanismo é simples: jogadores de Counter-Strike 2 podem doar skins e itens de jogo que não usam mais por meio de um site dedicado. A organização então revende esses itens e converte o valor em recursos para seus projetos.",
+    "A lógica por trás é a escala: segundo os dados citados, existem cerca de 8,2 milhões de inventários únicos de CS2, com média de 70 itens por jogador — um 'guarda-roupa' digital enorme e parado. A ideia é permitir que o público jovem doe onde já está, dando uma 'segunda vida' a itens sem uso e levando a causa para um canal que as campanhas de arrecadação costumam ignorar."
+  ]
+},
+{
+  title: "Photoshop's controversial new AI tool is dividing opinion",
+  tituloPt: "A nova ferramenta de IA do Photoshop, o Relight, divide opinião entre criativos",
+  source: "Creative Bloq",
+  url: "https://www.creativebloq.com/design/graphic-design/photoshops-newest-ai-tool-is-immediately-dividing-opinion",
+  imageUrl: "https://cdn.mos.cms.futurecdn.net/naMDw2juYUcAcYp2AbFJGU-1440-80.webp",
+  cat: "Design", stars: 4,
+  resumo: [
+    "A Adobe lançou no Photoshop beta o Relight, recurso de IA generativa que permite adicionar e manipular iluminação em fotografias depois do clique, ajustando posição, intensidade, cor e difusão da luz em tempo real e sem destruir os pixels originais.",
+    "As reações são polarizadas. Quem defende a ferramenta vê potencial para acelerar fluxos de retoque e dispensar o trabalho manual de 'pintar luz'. Os críticos dizem que o resultado fica liso e sintético demais, com estética de 'personagem de videogame' parecida com renderizações do Unreal Engine, e que a ferramenta às vezes altera traços do rosto e outros detalhes além da iluminação.",
+    "O recurso custa 30 créditos por uso e aceita até três fontes de luz simultâneas. Está na build beta 27.10.0, em Camada > Nova Camada de Relight, com lançamento completo ainda pendente. A discussão repete o debate sobre se ferramentas de IA realmente melhoram imagens ou apenas geram imagens novas."
+  ]
+},
+{
+  title: "You can now use ChatGPT and Claude to speed up 3D art in Cinema 4D",
+  tituloPt: "Cinema 4D ganha servidor MCP e passa a aceitar Claude, ChatGPT e Codex como assistentes de 3D",
+  source: "Creative Bloq",
+  url: "https://www.creativebloq.com/ai/you-can-now-use-chatgpt-and-claude-to-speed-up-3d-art-in-cinema-4d",
+  imageUrl: "https://cdn.mos.cms.futurecdn.net/DT46hrKgj3M2G2y2xf3KA3-1920-80.jpg",
+  cat: "Tecnologia", stars: 4,
+  resumo: [
+    "A Maxon integrou ao Cinema 4D suporte a assistentes de IA de terceiros por meio de um servidor MCP (Model Context Protocol). Com isso, o usuário pode usar Claude, ChatGPT ou Codex para acelerar fluxos de modelagem e animação 3D com instruções em linguagem natural.",
+    "As tarefas automatizáveis incluem organizar hierarquias de objetos, criar variações de materiais, preparar renders multipass, tracking de movimento, mapeamento UV, rigging e animação.",
+    "A empresa enfatiza o controle do artista: todas as ações passam pelas ferramentas nativas do Cinema 4D, localmente na máquina do usuário, mantendo dados de cena editáveis em vez de saídas achatadas. Há também salvaguardas — o MCP vem desativado por padrão, usa token de acesso, permissões granulares por ferramenta e registro de auditoria das ações do assistente; cada lote de alterações aparece separado no histórico de desfazer.",
+    "O recurso está disponível a partir do Cinema 4D 2026.4, em Windows e macOS, com um app para iPad previsto antes do fim do ano."
+  ]
+},
+{
+  title: "Accidental greenwashing – Chacho Puebla on the launch of his anti-greenwashing course",
+  tituloPt: "Greenwashing acidental: Chacho Puebla lança curso para designers evitarem alegações ambientais enganosas",
+  source: "Design Week",
+  url: "https://www.designweek.co.uk/accidental-greenwashing-chacho-puebla-on-the-launch-of-his-anti-greenwashing-course/",
+  imageUrl: "https://www.designweek.co.uk/content/uploads/2026/09/Chacho-headshot-225x300.jpg",
+  cat: "Branding", stars: 4,
+  resumo: [
+    "Chacho Puebla, ex-executivo de publicidade com mais de 30 anos de carreira e mais de 500 prêmios (incluindo mais de 90 Leões de Cannes), hoje atua em consultoria de sustentabilidade. Ele defende que designers criam alegações ambientais enganosas sem querer, por falta de conhecimento técnico, e não por má-fé.",
+    "Segundo ele, elementos visuais como cores suaves, folhas e ícones circulares podem sugerir virtude ambiental onde não há comprovação. Os exemplos são concretos: uma caixa de pizza contaminada com óleo não é reciclável, mas marcas ainda a vendem como '100% reciclável'; produtos com componentes metálicos inseparáveis fazem o mesmo tipo de afirmação.",
+    "O timing é relevante: a Diretiva europeia 2024/825 entrou em vigor em 27 de setembro de 2026 e proíbe termos vagos como 'ecológico' e 'sustentável' sem evidência verificável, exigindo alegações específicas e quantificáveis.",
+    "Puebla fundou o estúdio Felicidad em 2020 e criou o curso antigreenwashing com a Do Epic Good. Sobre IA, prevê que a automação vai banalizar o design mediano e aumentar a demanda por criativos humanos de renome e por trabalho artesanal físico."
+  ]
+},
+{
+  title: "New Logo and Identity for Melius by View Source",
+  tituloPt: "Melius, empresa de tecnologia, adota laranja e wordmark serifado em nova identidade da View Source",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_melius_by_view_source.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/melius_logo_before_after.png",
+  cat: "Branding", stars: 3,
+  paywall: true,
+  resumo: [
+    "O Brand New resenhou a nova identidade da Melius, empresa do setor de tecnologia, desenvolvida pelo estúdio View Source. A resenha leva o título 'Agent Orange' e o foco é a adoção de uma paleta laranja, que passa a ser a assinatura cromática da marca.",
+    "O novo wordmark é serifado, escolha que dialoga com a tendência de marcas de tecnologia e IA trocarem sans-serifs frias por letras com mais personalidade. A identidade inclui ainda um ícone e um sistema de imagens, e as tags da resenha mencionam IA e geração de imagem.",
+    "O post mostra a comparação antes/depois e aplicações da marca em diferentes pontos de contato."
+  ]
+},
+{
+  title: "New Logo and Packaging for DRZZL by Derek&Eric",
+  tituloPt: "DRZZL, marca de azeite do Reino Unido, ganha logo curvilíneo verde e nova embalagem da Derek&Eric",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_drzzl_by_derekeric.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/drzzl_logo_new.png",
+  cat: "Branding", stars: 3,
+  paywall: true,
+  resumo: [
+    "O Brand New publicou, na seção 'Noted', a nova identidade e embalagem da DRZZL, marca britânica de azeite de oliva, criadas pelo estúdio londrino Derek&Eric em colaboração com o studio DRAMA. A resenha tem o título 'Fo Shzzl'.",
+    "O logo é um wordmark de letras curvilíneas, fiéis ao caráter fluido do produto, e a paleta se apoia em tons de verde, cor naturalmente associada ao azeite.",
+    "O conteúdo completo da resenha é restrito a assinantes, por isso este resumo se limita aos elementos públicos da página."
+  ]
+},
+{
+  title: "Rare Collectiv models Skroget sauna on hull of a ship",
+  tituloPt: "Estudantes norueguesas criam sauna comunitária que evoca o casco de um navio em Båtsfjord",
+  source: "Dezeen",
+  url: "https://www.dezeen.com/2026/09/30/rare-collectiv-skroget-sauna/",
+  imageUrl: "https://static.dezeen.com/uploads/2026/09/rare-collectiv-skroget-timber-sauna-norway-hero_dezeen_2364_col_1.jpg",
+  cat: "Design", stars: 3,
+  resumo: [
+    "Um grupo de 15 estudantes de arquitetura da NTNU, na Noruega, o Rare Collectiv, concluiu o Skroget, uma sauna comunitária de 40 metros em Båtsfjord, um dos principais portos pesqueiros do país. A forma remete ao esqueleto de um barco.",
+    "A estrutura tem dezenove costelas de madeira inclinadas em direção à água, formando uma cobertura em declive que abriga passarelas e áreas de estar. A equipe usou madeira recuperada de um prédio municipal recém-demolido e reservou madeira nova para a câmara da sauna, de 15 m², com exterior escuro e interior em bétula clara.",
+    "O desenho alongado cria microclimas contrastantes: um lado exposto para o choque térmico junto à água e outro protegido, com abrigo do vento e sol. O percurso é contínuo, sem becos sem saída, ligando a entrada com fogueira a oeste, os vestiários e a sauna a leste. O mobiliário sob medida repete a estética angular da construção."
+  ]
+},
+{
+  title: "Swirls, beads and Art Nouveau roots: Emily Klaebe on type design as world building",
+  tituloPt: "Espirais, miçangas e Art Nouveau: Emily Klaebe fala do design de tipos como construção de mundos",
+  source: "It's Nice That",
+  url: "https://www.itsnicethat.com/articles/emily-klaebe-graphic-design-discover-300926",
+  imageUrl: "https://m.itsnicethat.com/original_images/Screenshot_2026-09-23_at_15.00.39.png?class=w1440",
+  cat: "Design", stars: 3,
+  resumo: [
+    "A designer de Portland Emily Klaebe encara a criação de tipografias como um ato de construção de mundos. Para ela, fontes são 'embaixadoras de sentimentos e cultura', e cada decisão de desenho comunica tom e significado de forma intencional.",
+    "Seu trabalho vai de fontes proprietárias sob encomenda a lançamentos em foundries. A Kickdrum mistura a rigidez geométrica dos anos 1970 com espirais orgânicas e brincalhonas, que lembram pirulitos e conchas de caracol. Já a Missive Serif e a Missive Bead são complementares: a primeira é uma display ornamentada com influência Art Nouveau; a segunda transforma essas formas em um sistema de grade inspirado em bordado, com proporções de miçangas tubulares.",
+    "Klaebe descreve seu processo como criar 'um microcosmo, combinando cores, materiais e composição tipográfica, que mostra onde a tipografia poderia viver', ou seja, a fonte é sempre apresentada dentro de um contexto visual e cultural."
+  ]
+},
+{
+  title: "New Logo and Identity for Hudson County, NJ, by Paper Tiger",
+  tituloPt: "Condado de Hudson (NJ) evolui seu brasão em nova identidade da Paper Tiger",
+  source: "Brand New",
+  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_hudson_county_nj_by_paper_tiger.php",
+  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/09/hudson_county_logo_before_after.png",
+  cat: "Branding", stars: 2,
+  paywall: true,
+  resumo: [
+    "O Brand New registrou, na seção 'Spotted', a nova identidade do condado de Hudson, em Nova Jersey, desenvolvida pelo estúdio Paper Tiger. O trabalho é classificado como uma evolução do brasão existente.",
+    "A resenha mostra a comparação antes/depois do selo, modernizado mas mantendo as convenções visuais de uma marca governamental.",
+    "O texto completo é restrito a assinantes; este resumo se baseia nos elementos públicos da página (categoria, tags e imagem)."
+  ]
+}
 ];
 
-const PAL = {Branding:[["#ff9a3c","#e8590c"],["#ffd166","#ef476f"],["#f76b1c","#fad961"]],Design:[["#2dd4bf","#0f766e"],["#86efac","#0d9488"],["#34d399","#155e75"]],Tecnologia:[["#6366f1","#a855f7"],["#3b82f6","#7c3aed"],["#60a5fa","#4f46e5"]]};
-function Arte({cat,seed}){
-  const p=PAL[cat][seed%3], id="g"+seed, r=(n)=>((seed*37+n*53)%100);
-  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-    <rect width="400" height="240" fill={"url(#"+id+")"}/>
-    <circle cx={60+r(1)*3} cy={40+r(2)} r={50+r(3)/2} fill="#fff" opacity=".18"/>
-    <rect x={200+r(4)} y={90+r(5)/2} width="140" height="140" rx="28" fill="#fff" opacity=".14" transform={"rotate("+(r(6)-30)+" 270 160)"}/>
-    <polygon points={"40,230 "+(120+r(7))+",120 "+(200+r(8))+",230"} fill="#000" opacity=".12"/>
-    <circle cx={330-r(9)} cy="50" r="22" fill="#fff" opacity=".3"/>
-  </svg>);
+const PALETTES = { Branding:["#ff9a3c","#e8590c","#b3261e"], Design:["#7be0c3","#0f9d8a","#0b5c63"], Tecnologia:["#8b8bf0","#5b5bd6","#2a2a8f"] };
+
+function Ilustracao({ cat, seed }) {
+  const p = PALETTES[cat] || PALETTES.Design;
+  const id = "g" + seed;
+  const r = (n) => ((seed * 9301 + n * 49297) % 233280) / 233280;
+  return (
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração " + cat}>
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[2]}/></linearGradient></defs>
+      <rect width="400" height="240" fill={"url(#"+id+")"}/>
+      <circle cx={80+r(1)*240} cy={40+r(2)*120} r={50+r(3)*60} fill="#fff" opacity=".18"/>
+      <rect x={r(4)*220} y={90+r(5)*80} width={120+r(6)*80} height={90} rx="18" fill={p[1]} opacity=".55" transform={"rotate("+Math.round(r(7)*30-15)+" 200 150)"}/>
+      <polygon points={`${200+r(8)*150},20 ${330+r(9)*50},150 ${190+r(10)*60},170`} fill="#fff" opacity=".14"/>
+      <circle cx={40+r(11)*60} cy={190} r="34" fill="none" stroke="#fff" strokeWidth="6" opacity=".4"/>
+    </svg>
+  );
 }
-function Imagem({item,i,alt}){
-  const [falhou,setFalhou]=useState(false);
-  return (<div className="img">{item.imageUrl && !falhou
-    ? <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-    : <Arte cat={item.cat} seed={i+1}/>}</div>);
-}
-const Estrelas=({n})=><span className="stars" title={n+" de 5"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-function Meta({item}){return (<div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><span>{item.source}</span><span>·</span><span>{item.data}</span><Estrelas n={item.stars}/></div>);}
-function Modal({item,i,onClose}){
-  useEffect(()=>{const h=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",h);return()=>window.removeEventListener("keydown",h)},[]);
-  return (<div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-    <Imagem item={item} i={i} alt={item.tituloPt}/>
-    <div className="in"><Meta item={item}/><h2>{item.tituloPt}</h2>
-    {item.resumo.map((p,k)=><p key={k}>{p}</p>)}
-    {item.paywall && <div className="note">Matéria atrás de paywall: resumo baseado apenas em elementos públicos (título, categoria, indústria e tags).</div>}
-    <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a></div>
-  </div></div>);
-}
-function App(){
-  const [sel,setSel]=useState(null);
-  const [hero,...resto]=NEWS;
-  return (<div className="wrap">
-    <header><div><h1>Portal da Manhã</h1><div className="date">Quarta-feira, 30 de setembro de 2026 · Branding, Design e Tecnologia</div></div><div className="date">{NEWS.length} notícias</div></header>
-    <div className="hero" onClick={()=>setSel(0)}>
-      <Imagem item={hero} i={0} alt={hero.tituloPt}/>
-      <div className="txt"><Meta item={hero}/><h2>{hero.tituloPt}</h2><p style={{margin:0,color:"#4b5563"}}>{hero.resumo[0]}</p><span style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</span></div>
+
+function Imagem({ item, idx }) {
+  const [falhou, setFalhou] = useState(false);
+  return (
+    <div className="img">
+      {item.imageUrl && !falhou
+        ? <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+        : <Ilustracao cat={item.cat} seed={idx + 3} />}
     </div>
-    <div className="grid">{resto.map((it,k)=>(<div className="card" key={k} onClick={()=>setSel(k+1)}>
-      <Imagem item={it} i={k+1} alt={it.tituloPt}/><div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div></div>))}</div>
-    <footer>Resumos escritos em português a partir das matérias originais. Clique em qualquer notícia para abrir o resumo completo.</footer>
-    {sel!==null && <Modal item={NEWS[sel]} i={sel} onClose={()=>setSel(null)}/>}
-  </div>);
+  );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+const Estrelas = ({ n }) => <span className="stars" title={n + " de 5"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
+const Meta = ({ item }) => (
+  <div className="meta">
+    <span className={"tag " + item.cat}>{item.cat}</span>
+    <strong>{item.source}</strong>
+    <Estrelas n={item.stars} />
+  </div>
+);
+
+function Detalhe({ item, idx, onClose }) {
+  useEffect(() => {
+    const k = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", k);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", k); document.body.style.overflow = ""; };
+  }, []);
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+        <Imagem item={item} idx={idx} />
+        <div className="in">
+          <Meta item={item} />
+          <h2>{item.tituloPt}</h2>
+          <p className="orig">Título original: {item.title}</p>
+          {item.resumo.map((t, i) => <p key={i}>{t}</p>)}
+          {item.paywall && <div className="note">Matéria com acesso restrito: o resumo foi escrito a partir dos elementos públicos da página (título, categoria, tags e imagem).</div>}
+          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [aberta, setAberta] = useState(null);
+  const lista = [...NEWS].sort((a, b) => b.stars - a.stars);
+  const [top, ...resto] = lista;
+  const hoje = new Date(2026, 9, 1).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  return (
+    <div className="wrap">
+      <header>
+        <h1>☀ Portal da Manhã</h1>
+        <span className="date">{hoje}</span>
+      </header>
+      <div className="hero" onClick={() => setAberta(0)}>
+        <Imagem item={top} idx={0} />
+        <div className="body">
+          <Meta item={top} />
+          <h2>{top.tituloPt}</h2>
+          <span style={{color:"var(--mut)"}}>{top.resumo[0].slice(0, 190)}…</span>
+          <span style={{fontWeight:600,color:"var(--acc)"}}>Ler resumo →</span>
+        </div>
+      </div>
+      <div className="grid">
+        {resto.map((it, i) => (
+          <article className="card" key={it.url} onClick={() => setAberta(i + 1)}>
+            <Imagem item={it} idx={i + 1} />
+            <div className="body">
+              <Meta item={it} />
+              <h3>{it.tituloPt}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+      {aberta !== null && <Detalhe item={lista[aberta]} idx={aberta} onClose={() => setAberta(null)} />}
+      <footer>{NEWS.length} notícias · resumos produzidos em português a partir das fontes originais</footer>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

@@ -3,205 +3,247 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 3 de outubro de 2026</title>
+<title>Portal da Manhã — 5 de outubro de 2026</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7080;--line:#e6e8f0;--acc:#4f46e5;--r:18px}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1c1b1a;--mut:#6b6862;--line:#e8e5df;--acc:#e4572e}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 18px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{font-size:30px;margin:0;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:14px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(20,22,31,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(20,22,31,.13)}
-.hero .img{min-height:340px}
-.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.02em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(20,22,31,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(20,22,31,.12)}
-.card .img{height:190px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+h1{margin:0;font-size:32px;letter-spacing:-.02em}
+.data{color:var(--mut);font-size:14px;text-transform:capitalize}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
+.t-branding{background:#e4572e}.t-design{background:#0f9d8a}.t-tech{background:#5b5fd6}
+.stars{color:#f0a500;letter-spacing:2px;font-size:14px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:26px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.1)}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
+.src{color:var(--mut);font-size:13px}
+.media{position:relative;aspect-ratio:16/10;background:#eee;overflow:hidden}
+.hero .media{aspect-ratio:auto;min-height:300px}
+.media img,.media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
 .card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:17px;line-height:1.3;margin:0}
-.img{position:relative;background:#e9eaf2;overflow:hidden}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
-.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:12px}
-.Branding{background:#fff0e0;color:#b45309}.Design{background:#dcf5ee;color:#0f766e}.Tecnologia{background:#e7e5ff;color:#4338ca}
-.stars{color:#f5a524;letter-spacing:1px}
-.modal-bg{position:fixed;inset:0;background:rgba(15,17,28,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:24px;max-width:760px;width:100%;max-height:92vh;overflow:auto;animation:up .3s}
-.modal .img{height:320px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.row{display:flex;justify-content:space-between;align-items:center}
+.overlay{position:fixed;inset:0;background:rgba(20,18,16,.5);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;position:relative}
+.modal .media{aspect-ratio:16/9}
 .modal .in{padding:26px 30px 32px}
-.modal h2{font-size:26px;line-height:1.2;margin:10px 0 4px}
-.modal .orig{color:var(--mut);font-size:14px;font-style:italic;margin-bottom:14px}
-.modal p{font-size:16px;margin:0 0 14px}
-.nota{font-size:13px;color:var(--mut);background:#f3f4f8;padding:8px 12px;border-radius:10px}
-.btn{display:inline-block;margin-top:10px;padding:10px 18px;background:var(--acc);color:#fff;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer}
-.btn.g{background:#eceef6;color:var(--ink);margin-left:8px}
+.modal h2{margin:10px 0 4px;font-size:26px;line-height:1.2}
+.modal p{white-space:pre-line;font-size:16px}
+.nota{font-size:13px;color:var(--mut);background:#faf7f0;border-left:3px solid #f0a500;padding:8px 12px;border-radius:6px}
+.orig{font-size:13px;color:var(--mut);font-style:italic}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:11px 20px;border-radius:99px;font-weight:600;font-size:14px;margin-top:8px}
+.x{position:absolute;top:12px;right:12px;z-index:2;border:0;background:rgba(255,255,255,.92);width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:23px}.modal .img{height:210px}}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px;order:-1}h1{font-size:26px}.hero h2{font-size:22px}.modal .in{padding:20px}}
 </style>
-</head>
-<body>
-<div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
 <script type="text/babel">
 const {useState,useEffect}=React;
-const NEWS=[
-{
- title: "Vollebak creates Rock Jacket from 54,000 slate tiles",
- tituloPt: "Vollebak cria jaqueta de pedra feita com 54 mil lascas de ardósia",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/02/vollebak-rock-jacket-slate-tiles/",
- imageUrl: "https://static.dezeen.com/uploads/2026/10/vollebak-rock-jacket-slate-tiles_dezeen_2364_hero_7.jpg",
- cat:"Design", stars:5,
- resumo:["A marca experimental de roupas Vollebak apresentou uma jaqueta única composta por cerca de 54 mil pequenas peças de ardósia. Cada lasca mede 5 mm por 5 mm, tem meio milímetro de espessura e é fixada sobre uma base de neoprene, o que mantém o conjunto flexível.","Os criadores a descrevem como uma jaqueta Harrington de estilo ficção científica. Segundo o cofundador Nick Tidball, a rocha parecia 'o próximo desafio lógico' para uma marca que vive de questionar quais materiais podem virar roupa.","O projeto foi desenvolvido com o tecnólogo francês Steven Leprizé, aproveitando técnicas da antiga Wooden Jacket da marca. Para Leprizé, a etapa mais crítica entre as cerca de 50 do processo é o corte a laser preciso dos quadradinhos, que permite à peça dobrar e acompanhar o corpo.","A Vollebak pretende comercializar o design em até dois anos, posicionando a rocha como material alternativo, durável e sustentável, em contraponto à cultura da moda descartável."]
-},
-{
- title: "Perfect Storm helps switch pet protection firm from identibase to identi",
- tituloPt: "Perfect Storm transforma a identibase em 'identi', com logo que é focinho e marcador de mapa",
- source: "Design Week",
- url: "https://www.designweek.co.uk/perfect-storm-helps-switch-pet-protection-firm-from-identibase-to-identi/",
- imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/identi-branded-merchandise-flat-lay-1024x640.png",
- cat:"Branding", stars:5,
- resumo:["A agência Perfect Storm, de Leeds, rebatizou e redesenhou a empresa de proteção para pets identibase, que agora se chama identi. A marca anterior era descrita como profissional, limpa e simples, mas, num mercado cada vez mais lotado, parecia corporativa e envelhecida.","A nova identidade aposta num tom mais caloroso e acessível, com paleta ousada de índigo, rosa e bege, além de fotografias autênticas de tutores e seus bichos. O novo logo funciona ao mesmo tempo como focinho de animal e como marcador de mapa, reforçando a função de localizar pets perdidos.","A agência evitou os clichês do setor e trocou imagens idealizadas por retratos realistas. O diretor criativo Matt Rennie resumiu: é alegre, mas caótico, e às vezes é estar na rua de pijama gritando 'Fluffy' às 2 da manhã.","A tipografia combina Bigek Black nos títulos e Proxima Nova Bold no texto. A implantação será gradual, em materiais digitais e impressos."]
-},
-{
- title: "Nothing wants to revolutionise the takeaway paper cup",
- tituloPt: "A Nothing quer revolucionar o copo de papel para viagem, com tampa integrada e compostável",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/02/nothing-takeaway-paper-cup/",
- imageUrl: "https://static.dezeen.com/uploads/2026/10/nothing-paper-cup_dezeen_2364_sq.jpg",
- cat:"Design", stars:4,
- resumo:["A empresa americana Nothing (sem relação com a fabricante de eletrônicos) desenvolveu copos de papel com tampa integrada e materiais compostáveis. Há duas versões: uma para bebidas quentes, com bico cônico fechado por três abas dobráveis, e outra para frias, com quatro dobras e abertura para canudo.","Fundada pelos irmãos Brandon e Jordan Leeds, um programador e um designer de produto, a empresa nasceu da irritação com o greenwashing, como canudos de papel vendidos em copos plásticos. O revestimento é à base de água, certificado como livre de plástico pela Flustix, e o copo se decompõe em até 180 dias em compostagem doméstica, com selo TÜV OK compost HOME.","Eliminar a tampa separada reduz embalagem, transporte e estoque para os negócios. Brandon admite que haverá resistência: as pessoas gostam do que já conhecem, e mudanças só são aceitas quando viram norma. O copo de papel quase não mudou desde 1907.","Hoje os copos já são usados por milhares de vendedores nos EUA e no Canadá."]
-},
-{
- title: "This Stained Glass Car Imagines a Future Where You Sleep Through Your Commute",
- tituloPt: "Carro de vitral imagina um futuro em que você dorme durante o trajeto até o trabalho",
- source: "Yanko Design",
- url: "https://www.yankodesign.com/2026/10/02/this-stained-glass-car-imagines-a-future-where-you-sleep-through-your-commute/",
- imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/this-stained-glass-car-imagines-a-future-where-you-sleep-through-your-commute/Stained_glass_car_01.jpg",
- cat:"Design", stars:4,
- resumo:["O designer Dominic Wilcox criou o Stained Glass Driverless Sleeper Car, conceito de veículo autônomo pensado em torno do conforto do passageiro e não da mecânica de dirigir. Dentro há uma cama, e por fora uma carcaça feita de centenas de peças de vitral cortadas à mão, uma 'catedral em miniatura sobre rodas'.","Wilcox situa o projeto em 2059, quando carros autônomos serão estatisticamente mais seguros que motoristas humanos. Sem necessidade de controle ativo, a arquitetura do carro pode priorizar a experiência, e aqui isso significa dormir no caminho.","A casca usa a técnica tradicional de vitral com fita de cobre, inspirada na estética da Catedral de Durham, e contrasta com o chassi modular controlado por computador. O trabalho foi feito para a mostra Dezeen e MINI Frontiers, durante o London Design Festival, com referências sutis ao Mini original de 1959, como pneus de época e peças reaproveitadas.","Wilcox também criou o 'Taxirobot', que imagina o transporte de 2059 como espaços arquitetônicos temporários e personalizáveis, em vez de veículos próprios."]
-},
-{
- title: "You can buy a Server Rack plush toy that actually emits Data Center noise when you hug it",
- tituloPt: "Pelúcia 'Bezzy' em forma de rack de servidor emite o zumbido de um data center quando abraçada",
- source: "Yanko Design",
- url: "https://www.yankodesign.com/2026/10/02/you-can-buy-a-server-rack-plush-toy-that-actually-emits-data-center-noise-when-you-hug-it/",
- imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/auto-draft/bezzy_data_center_stuffed_toy_1.jpeg",
- cat:"Design", stars:4,
- resumo:["Rajeev Basu e Alan Wilkis criaram Bezzy, pelúcia satírica que critica a indústria de data centers. Ela imita os bichinhos de campanhas de adoção de caridade, mas tem estética de rack de servidor, com luzes LED azuis no tronco. Ao ser abraçada, emite o zumbido real de um data center da Virgínia.","O brinquedo é a peça central de 'Adopt A Data Center', projeto que imita sites de adoção, com o lema 'Tudo o que eles pedem é tudo'. O som foi captado com uma moradora que vive ao lado de um dos mais de 500 data centers da região.","A pesquisa por trás do projeto destaca o enorme consumo de eletricidade e água dessas instalações. Foram feitas só 20 unidades artesanais, a US$ 99 cada.","A sátira mira o modo como empresas de IA se apresentam como inofensivas por meio de branding fofo, enquanto escondem impactos ambientais e o uso de dados. Bezzy chega junto do primeiro álbum em sete anos do músico Big Data."]
-},
-{
- title: "New Logo and Identity for Bankrate by KOTA",
- tituloPt: "Bankrate ganha novo logo e identidade assinados pela KOTA",
- source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_bankrate_by_kota.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/bankrate_logo_before_after.png",
- cat:"Branding", stars:4,
- resumo:["A empresa de conteúdo financeiro Bankrate recebeu uma atualização completa de marca feita pela agência KOTA. A mudança moderniza a identidade visual preservando o posicionamento da empresa no setor financeiro.","Pelos elementos públicos da publicação, o novo sistema combina tipografia serifada e azul, escolhas clássicas para transmitir estabilidade e confiança, além de iconografia refinada que funciona em pontos de contato digitais e físicos.","A marcação 'Spotted' do Brand New indica um exemplo digno de registro no acervo de rebrandings do site, que costuma comparar o antes e o depois do logo.","O projeto reflete a abordagem da KOTA de modernizar marcas financeiras tradicionais sem abrir mão do reconhecimento já construído."],
- nota:"Artigo restrito a assinantes: resumo baseado nos elementos públicos (título, categoria, tags e imagem comparativa)."
-},
-{
- title: "Tidy Cats taps Kumail Nanjiani and Jordan Howlett for true-crime parody 'Special Litter Unit'",
- tituloPt: "Tidy Cats chama Kumail Nanjiani e Jordan Howlett para paródia de true crime, a 'Special Litter Unit'",
- source: "Campaign",
- url: "https://www.campaignlive.com/article/tidy-cats-taps-kumail-nanjiani-jordan-howlett-true-crime-parody-special-litter-unit/1971598",
- imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Tidy-Cats-UWP-CUS.jpg",
- cat:"Branding", stars:4,
- resumo:["A Tidy Cats, marca de areia sanitária da Purina, com a agência Golin Ketchum, lançou 'Special Litter Unit' (S.L.U.), série cômica de três episódios no estilo drama policial. Kumail Nanjiani e o criador de conteúdo Jordan Howlett interpretam parceiros detetives.","Os 'crimes' investigados são problemas da caixa de areia: odor, torrões fracos e rastro de grãos, justamente o que a linha Performance+ promete resolver.","Os episódios foram lançados ao longo da semana no Instagram, TikTok e YouTube, unindo apelo de celebridade e credibilidade de criador em vídeos curtos. A campanha inclui ainda uma experiência pop-up no SoHo, em Manhattan, com adoção de gatos da Petfinder tratados como 'agentes felinos'.","Nanjiani contou que leva a experiência de ser tutor dos gatos Bagel e Biscuit para o papel."]
-},
-{
- title: "Sean Parker is rebuilding Stability AI around music",
- tituloPt: "Sean Parker está reconstruindo a Stability AI em torno da música",
- source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/02/sean-parker-is-rebuilding-stability-ai-around-music/",
- imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Sean-Parker.jpg?w=1024",
- cat:"Tecnologia", stars:4,
- resumo:["Sean Parker, cofundador do Napster, voltou à indústria musical com uma abordagem colaborativa. Ele entrou na Stability AI há dois anos, num resgate de US$ 80 milhões, e agora, com o CEO Prem Akkaraju, reposiciona a empresa como plataforma de ferramentas de IA para música.","A companhia captou US$ 76 milhões de grandes gravadoras (Sony, Warner e Universal), que também liberaram direitos de catálogo para o treinamento dos modelos.","A Stability apresentou três novos modelos de áudio e um software de edição capaz de gerar composições instrumentais completas ou trechos curtos a partir de texto. Um recurso a caminho permitirá guiar a geração cantarolando melodias ou fazendo beatbox.","O contraste com o passado de Parker é marcante: do disruptor do Napster a parceiro do setor que antes combatia."]
-},
-{
- title: "Pope Leo XIV is not a fan of AI-generated art",
- tituloPt: "Papa Leão XIV não é fã de arte gerada por IA",
- source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/02/pope-leo-xiv-is-not-a-fan-of-ai-generated-art/",
- imageUrl: null,
- cat:"Tecnologia", stars:3,
- resumo:["O Papa Leão XIV criticou publicamente imagens geradas por IA, defendendo que existe uma diferença fundamental entre a criatividade humana e o conteúdo produzido por máquinas.","Em suas palavras, há uma 'diferença ontológica, antes mesmo de estética' entre a arte e aquilo que uma máquina gera por cálculo estatístico a partir de milhões de imagens criadas por outras pessoas.","Para o pontífice, os algoritmos não têm a essência humana presente na criação. A posição dá continuidade a uma encíclica divulgada em maio sobre IA e dignidade humana na era da automação.","O texto observa ainda que a Anthropic tentou convencer autoridades do Vaticano a rever a posição sobre a consciência das máquinas, com resultados aparentemente pequenos."]
-},
-{
- title: "Elon Musk's Grokipedia gets a scholarly makeover",
- tituloPt: "Grokipedia, de Elon Musk, ganha visual 'acadêmico' em redesenho",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/web-design/elon-musks-grokipedia-gets-a-scholarly-makeover",
- imageUrl: "https://cdn.mos.cms.futurecdn.net/ERtPKhSXpKqvnhSQtRFUgF-1920-80.jpg",
- cat:"Design", stars:3,
- resumo:["A Grokipedia, enciclopédia movida a IA de Elon Musk que estava dormente, voltou com interface redesenhada na versão 0.3. Entre as novidades estão um logo em fonte script e uma home inspirada em bibliotecas, com capas de livros 3D interativas e seções de navegação.","A autora Natalie Fear é cética: 'aparência não é tudo', sobretudo pelo histórico de fontes frágeis e suspeitas de viés. Ela nota que, apesar da melhor experiência de uso, o layout basicamente espelha o da Wikipédia, sem originalidade na arquitetura.","O serviço foi lançado em outubro de 2025 com conteúdo da Wikipédia clonado por IA, ganhou a v0.2 em novembro e suspendeu a edição autônoma por IA no início de 2026, antes deste redesenho."]
-},
-{
- title: "New Logo and Identity for Alexa of London by Lazy Snail",
- tituloPt: "Alexa of London recebe novo logo e identidade da Lazy Snail",
- source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_alexa_of_london_by_lazy_snail.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/alexa_of_london_logo_before_after.png",
- cat:"Branding", stars:3,
- resumo:["A Lazy Snail redesenhou o logo e o sistema de identidade da Alexa of London. O trabalho se concentra num tratamento renovado do wordmark, que deixa a versão anterior e adota um visual mais contemporâneo.","O post, classificado como 'Noted' no Brand New, traz tags que remetem a barcos e a wordmark, sugerindo que imagens náuticas podem ter papel na nova direção.","O caso ilustra como um refinamento tipográfico pode atualizar a presença de uma marca preservando seu reconhecimento."],
- nota:"Artigo restrito a assinantes: resumo baseado apenas nos elementos públicos (categoria, tags e imagem comparativa)."
-},
-{
- title: "Studio Armitage creates Field Shelter for people tending allotments in Nara",
- tituloPt: "Studio Armitage cria o Field Shelter, abrigo para quem cuida de hortas em Nara, no Japão",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/03/studio-armitage-field-shelter/",
- imageUrl: "https://static.dezeen.com/uploads/2026/10/field-shelter-studio-armitage-nara-japan-architecture-pavilion-wood-polycarbonate_dezeen_1704_hero.jpg",
- cat:"Design", stars:3,
- resumo:["O escritório londrino Studio Armitage projetou o Field Shelter, pavilhão de madeira em Nara, no Japão, para quem cultiva arrozais e hortas vizinhas. A região carecia de lugares para descansar, e a estrutura é desmontável.","O projeto é mínimo: seções e ripas de madeira apoiadas em blocos de concreto, com cobertura de painéis ondulados de policarbonato. Dois bancos ladeiam um tanque d'água central, que divide o espaço e armazena água compartilhada para os moradores.","Nas palavras do fundador Freddie Armitage, o abrigo é essencialmente um piso elevado, um telhado e dois bancos. Não há frente nem fundo definidos: os bancos olham em direções opostas para captar a luz da manhã e a do fim do dia.","Só foram usados materiais comuns, obtidos localmente, com pouco equipamento, e a construção pode ser desmontada e levada a outro lugar."]
-}
+const NOTICIAS=[
+  {
+    id: "Brahma",
+    cat: "branding",
+    stars: 5,
+    title: "New Logo, Identity, and Packaging for Brahma by Futurebrand",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_packaging_for_brahma_by_futurebrand.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/brahma_logo_before_after-1.png",
+    tituloPt: "Brahma, a das cervejas mais icônicas do Brasil, ganha novo logo, identidade e embalagens assinados pela Futurebrand",
+    resumo: "O Brand New analisou, sob o título “Take it Foam the Top”, a atualização da Brahma feita pela Futurebrand, que envolve logo, tipografia proprietária e embalagens. A classificação do post é “Reviewed”, categoria reservada às análises completas do site, e as tags indicam um trabalho de evolução (e não de ruptura) para uma marca de cerveja brasileira de enorme presença no varejo e na cultura popular.",
+    nota: "O artigo completo está atrás do paywall do Brand New; este resumo se baseia nos elementos públicos (título, categoria, setor, tags e imagem de antes e depois). Detalhes do racional criativo não foram lidos."
+  },
+  {
+    id: "Brisbane",
+    cat: "branding",
+    stars: 5,
+    title: "Brisbane Olympics and Paralympics 2032 logos revealed",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/brisbane-olympics-and-paralympics-2032-logos-revealed/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Brisbane-Olympics-logo.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=750&h=610",
+    tituloPt: "Reveladas as marcas das Olimpíadas e Paralimpíadas de Brisbane 2032, com cacatuas que desenham o mapa de Queensland",
+    resumo: "As emblemas dos Jogos de 2032 são compostas por seis elementos que se combinam para formar as identidades olímpica e paralímpica. Duas cacatuas nativas da Austrália são o motivo central: a cacatua-rosa representa as Olimpíadas e a cacatua-de-crista-amarela, as Paralimpíadas. As cristas das aves desenham o contorno de Queensland e incorporam, de forma simbólica, as chamas olímpica e paralímpica.\n\nA identidade foi criada por um consórcio de agências globais e locais: VML, Landor, Black Card e Verian, vencedoras da concorrência anunciada no ano anterior. Elementos das culturas dos povos originários estão presentes nas emblemas, já que as cacatuas são vistas como mensageiras que carregam significado cultural e ligam pessoas a lugares, histórias e cerimônias.\n\nO lançamento teve um tropeço: os logos vazaram por um vídeo no YouTube antes do anúncio oficial. Atletas australianos já haviam revelado peças das emblemas em diferentes pontos de Queensland, criando expectativa antes da revelação formal no Instagram e do anúncio completo.",
+    nota: ""
+  },
+  {
+    id: "McAfee",
+    cat: "branding",
+    stars: 4,
+    title: "New Logo and Identity for McAfee",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_mcafee.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/mcafee_2026_logo_before_after.png",
+    tituloPt: "McAfee muda logo e identidade em evolução visual que o Brand New resumiu com trocadilho: “Do as I Safe, Not as I Do”",
+    resumo: "O Brand New publicou hoje a análise do novo logo e da identidade da McAfee, empresa de software de segurança digital. A página mostra o comparativo de antes e depois e classifica o trabalho como uma evolução, com as tags laranja e tipografia sem serifa, sugerindo que a marca manteve a cor associada ao seu legado enquanto modernizou a assinatura. O título do post faz um jogo de palavras com o universo da cibersegurança e indica um tom crítico.",
+    nota: "Conteúdo completo sob paywall: resumo feito a partir de título, categoria, setor e tags públicos. A agência responsável não aparece nas informações abertas."
+  },
+  {
+    id: "PlantLife",
+    cat: "design",
+    stars: 4,
+    title: "Plant Life exhibition imagines a future where \"plants return as the dominant source\"",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/05/plat-life-nature-of-design-ngv-melbourne/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/ngv-plant-life-the-nature-of-design-exhibition-biomaterial-melbourne-australia_dezeen_1704_col_sq.jpg",
+    tituloPt: "Exposição Plant Life imagina um futuro em que “as plantas voltam a ser a fonte dominante”",
+    resumo: "A National Gallery of Victoria, em Melbourne, apresenta “Plant Life: The Nature of Design”, com mais de 60 obras que exploram a relação da humanidade com materiais de origem vegetal por meio de móveis, arquitetura, artes decorativas, artesanato, fotografia e cinema. Os temas incluem alternativas vegetais a materiais não renováveis e o engajamento de comunidades indígenas com a natureza. O curador sênior Ewan McEoin resume a proposta: olhar para um futuro em que as plantas voltam a ser a fonte dominante.\n\nEntre os destaques estão blocos de biomassonaria de algas e conchas de ostra de Kate Scardifield, uma jaqueta de couro vegetal Shiringa feita com o povo Awajún, do Peru, uma jaqueta corta-fogo de micélio desenvolvida por pesquisadores da RMIT, uma cadeira de cânhamo e fungos de Bart Schilder e tecidos de seda tingidos com plantas do Vietnã. A mostra fica em cartaz até fevereiro de 2027 no Ian Potter Centre: NGV Australia.",
+    nota: ""
+  },
+  {
+    id: "SpacePopular",
+    cat: "design",
+    stars: 4,
+    title: "Space Popular creates carpet-covered gallery for Nieuwe Instituut",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/04/space-popular-nieuwe-instituut-collection-gallery-rotterdam/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/space-popular-nieuwe-instituut-gallery-rotterdam-sq_dezeen_2364_col_0.jpg",
+    tituloPt: "Space Popular cria galeria forrada de carpete para o Nieuwe Instituut, em Roterdã",
+    resumo: "O estúdio Space Popular projetou a nova Galeria da Coleção do Nieuwe Instituut, em Roterdã, que reúne o acervo de arquitetura holandesa. A ideia foi fugir do minimalismo claro típico das galerias e criar algo “mais parecido com um clube ou um lounge”.\n\nO elemento central é um carpete impresso digitalmente, com grade de 50 por 50 centímetros que organiza todo o espaço: cada pódio e objeto segue essa malha. O desenho foi feito em colaboração com a designer gráfica Mariana Lobão e divide a coleção em cinco seções temáticas por cores. Pódios de madeira feitos por Rob den Dulk, também com acabamento em carpete, abrigam maquetes sob vitrines. Cores quentes e tons escuros convidam o visitante a desacelerar, sentar e sentir a maciez do carpete, e uma parede de projeção de concreto de 40 metros percorre a sala. A galeria ficará aberta até maio de 2029.",
+    nota: ""
+  },
+  {
+    id: "Harbour",
+    cat: "branding",
+    stars: 3,
+    title: "Thirst brings sun-soaked optimism to Harbour Brewing Co.",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/thirst-brings-sun-soaked-optimism-to-harbour-brewing-co/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Harbour-2026-brand-update-01-1024x576.jpg",
+    tituloPt: "Thirst leva otimismo ensolarado à cervejaria corniana Harbour Brewing Co. e vendas sobem 45%",
+    resumo: "A agência Thirst transformou a identidade da Harbour Brewing Co., cervejaria da Cornualha, de uma estética contida para uma experiência de marca vibrante, baseada no conceito “Sun-Soaked Playground”. A nova paleta combina amarelo-sol, azul-céu e azul-marinho profundo, com gráficos de ondas. O monograma “H” foi redesenhado com inspiração em estruturas de porto e vem acompanhado de ilustrações de Con McHugh. O sistema se estende a latas, torneiras, copos e merchandising para reforçar a presença na prateleira e no consumo em bares.\n\nSegundo o diretor criativo Sam Cutler, a marca já tinha um grande espírito e a ideia foi “engarrafar” essa sensação, evocando o clima descontraído de depois de um dia de lazer no mar, e não apenas a localização geográfica.\n\nOs resultados comerciais são expressivos: a Harbour informa crescimento de 45% nas vendas ano a ano e desempenho 18% acima do orçamento desde o relançamento. O fundador Eddie Lofthouse destacou a capacidade da Thirst de equilibrar inovação estética e crescimento do negócio.",
+    nota: ""
+  },
+  {
+    id: "Montanhas",
+    cat: "branding",
+    stars: 3,
+    title: "Everyone's making mountain-inspired logos in 2026 – here's what that tells us",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/logos-icons/everyones-making-mountain-inspired-logos-in-2026-heres-what-that-tells-us",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/RPUmdXRUqn79EkbFmxHE3g-2428-80.png",
+    tituloPt: "Todo mundo está fazendo logos inspirados em montanhas em 2026 — e o que isso revela",
+    resumo: "Tom May analisa por que a imagem de montanhas se tornou tão presente no design de logos neste ano, citando exemplos como a emblema dos Jogos de Inverno Alpes 2030, a marca de turismo de Vermont e o logo do time de hóquei Utah Mammoth. O argumento é que as montanhas funcionam bem como símbolo por sua simplicidade e significado: um triângulo transmite permanência, aspiração, aventura e a ideia de chegar ao topo, com pouquíssima complexidade visual.\n\nO autor lembra exemplos históricos, como a North Face (Half Dome), a Patagonia (Monte Fitz Roy) e a Paramount, e defende que os melhores logos de montanha remetem a lugares específicos, não a picos genéricos. O caso negativo é o da Toblerone, que após encerrar a produção na Suíça, em 2023, trocou o Matterhorn por uma montanha genérica e perdeu especificidade. Já o Utah Mammoth embute a cordilheira Wasatch e o formato do estado, e Vermont incorpora o Camel's Hump.\n\nA conclusão é que, em tempos de imagens geradas por IA, as montanhas representam autenticidade tangível.",
+    nota: ""
+  },
+  {
+    id: "TypographyProtest",
+    cat: "design",
+    stars: 3,
+    title: "A new book explores how type became a tool of rebellion",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/the-typography-of-protest-revolution-and-rebellion-in-protest-art-book-theo-inglis/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Amterdam-protest-1980.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    tituloPt: "Novo livro explora como a tipografia virou ferramenta de rebelião",
+    resumo: "A Creative Review conversa sobre o livro “The Typography of Protest: Revolution and Rebellion in Protest Art”, do designer Theo Inglis (Batsford), que traça como fontes e design visual serviram para desafiar autoridades e impulsionar movimentos sociais, das sufragistas ao Black Lives Matter.\n\nInglis destaca que escolhas de design comunicam intensidade emocional tanto quanto a mensagem, e por isso não se limita a cartazes com sans serif pesada, examinando vocabulários visuais variados. O livro mostra como a publicidade comercial influenciou o design ativista, como no uso da Futura Extra Bold Condensed pelo Act Up para transformar tipografia comercial em símbolo de resistência. Entre os temas estão acessibilidade (a mensagem precisa alcançar o público geral), autenticidade no ambiente digital e o trabalho perigoso do coletivo Medu Art Ensemble contra o apartheid. Ele alerta contra reduzir movimentos complexos a moodboards estéticos.",
+    nota: ""
+  },
+  {
+    id: "AdobeFirefly",
+    cat: "tech",
+    stars: 3,
+    title: "Adobe's AI text-to-3D world concept is a glimpse of where Firefly could go next",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/graphic-design/adobes-ai-text-to-3d-world-concept-is-a-glimpse-of-where-firefly-could-go-next",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/KCf9dWFqE4TDJMmRjfvos-1920-80.jpg",
+    tituloPt: "Conceito de mundos 3D por texto da Adobe é um vislumbre do futuro do Firefly",
+    resumo: "A Adobe registrou pedidos de patente que revelam possíveis rumos de sua IA além do trabalho em 2D. O mais notável descreve um método para gerar ambientes 3D navegáveis a partir de texto. O sistema teria duas etapas: o usuário descreve algo como “um jardim japonês enevoado ao entardecer”, um modelo de IA cria uma imagem esférica de 360 graus e um segundo processo constrói a geometria 3D para explorar de vários ângulos.\n\nO artigo lembra que a Adobe tem presença limitada em 3D apesar da suíte Substance, considerada nicho perto de ZBrush e Blender. Outras patentes sugerem geração de ângulos de câmera a partir de uma só foto, correspondência de materiais entre modelos 3D e provadores virtuais de roupas. A empresa não está sozinha: a Blockade Labs oferece texto-para-3D parecido, ainda sem navegação completa. Patentes não garantem produto, mas indicam estratégia.",
+    nota: ""
+  },
+  {
+    id: "Haaland",
+    cat: "branding",
+    stars: 2,
+    title: "Erling Haaland files lawsuit against Norwegian Air for unexpected reason",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/branding/erling-haaland-files-lawsuit-against-norwegian-air-for-unexpected-reason",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/pFdMPtMt5Vr5w6C6hrtEsN-1920-80.jpg",
+    tituloPt: "Haaland processa a Norwegian Air por usar o seu coque em publicidade",
+    resumo: "O atacante Erling Haaland iniciou uma ação judicial contra a Norwegian Air por causa do uso do seu penteado característico em conteúdo promocional. A disputa gira em torno de um post em redes sociais com a imagem de um avião editada para ganhar o coque do jogador, com a legenda “We've never looked more Norwegian”, publicado em plena temporada da Copa do Mundo.\n\nOs representantes de Haaland afirmam que a campanha explorou indevidamente sua imagem e identidade visual sem permissão. A companhia aérea disse lamentar que “manifestações de apoio” tenham sido respondidas com um processo e defendeu um diálogo construtivo sobre futuras parcerias com atletas. O caso se soma a outras disputas em que celebridades protegem traços visuais distintivos contra a exploração comercial.",
+    nota: ""
+  },
+  {
+    id: "NikeDunk",
+    cat: "design",
+    stars: 2,
+    title: "Nike Actually Made Sneakers That Look Like Grandma's Couch",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/05/nike-actually-made-sneakers-that-look-like-grandmas-couch/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/nike-actually-made-sneakers-that-look-like-grandmas-couch/nike-brocade-01.jpg",
+    tituloPt: "A Nike lançou tênis que parecem o sofá da vovó: o Dunk Low “Golden Hops Brocade”",
+    resumo: "A Nike prepara um novo Dunk Low que abraça o maximalismo vintage com o desenho “Golden Hops Brocade”. O cabedal em veludo traz padrões florais elaborados por toda a peça, da biqueira às laterais e ao calcanhar, em tons de marrom quente e dourado com detalhes em marfim claro.\n\nEm vez de tentar deixar o veludo esportivo, o design assume a comparação com móveis tradicionais. Swooshes bordados e em relevo com debrum marrom e a língua em lona de cor contrastante dão respiro visual ao conjunto. O autor sugere usá-los como peça de destaque com roupas neutras e lembra que o veludo exige cuidado, sendo melhor reservá-lo a dias de tempo bom. O par custa US$ 125 e chega no outono/inverno de 2026, uma guinada em relação ao minimalismo habitual da linha.",
+    nota: ""
+  },
+  {
+    id: "Dentsu",
+    cat: "branding",
+    stars: 2,
+    title: "Dentsu ventures into Hollywood with 'The Angry Birds 3'",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/dentsu-ventures-hollywood-the-angry-birds-3/1971703",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Angry-Birds-3-SC-YouTube-CUS.png",
+    tituloPt: "Dentsu entra em Hollywood como produtora e agência global de “Angry Birds 3”",
+    resumo: "A Dentsu fez um investimento significativo em “The Angry Birds Movie 3”, assumindo os papéis de produtora e agência global de registro da continuação animada, que estreia em dezembro de 2026. A rede contribui para o orçamento de marketing e distribuição de US$ 66 milhões e já integrou clientes não identificados ao projeto. Como agência de registro, supervisiona estratégia de mídia, planejamento e ativação em mais de 50 mercados, com centros em Londres, Nova York e Los Angeles.\n\nPara Dan Pantumsinchai, diretor de games e entretenimento da Dentsu APAC, é um grande passo para fortalecer o negócio de entretenimento. O acordo dá à Dentsu a primeira opção de integrações e copromoções, permitindo que marcas acessem a propriedade intelectual do filme cedo. O movimento a coloca ao lado de WPP e Publicis, que também investem em produção para alcançar públicos que evitam a publicidade tradicional.",
+    nota: ""
+  }
 ];
-const PAL={Branding:["#ff9a5a","#ff5e7e","#ffd36b"],Design:["#10b981","#0d9488","#a7f3d0"],Tecnologia:["#4f46e5","#8b5cf6","#60a5fa"]};
-function Art({cat,seed}){
- const p=PAL[cat],s=seed*37;
- return <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+cat}>
-  <defs><linearGradient id={"g"+seed} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-  <rect width="400" height="240" fill={"url(#g"+seed+")"}/>
-  <circle cx={80+(s%160)} cy={60+(s%90)} r={70+(s%30)} fill={p[2]} opacity=".35"/>
-  <rect x={220+(s%70)} y="90" width="130" height="130" rx="26" fill="#fff" opacity=".22" transform={"rotate("+(s%40)+" 285 155)"}/>
-  <circle cx="330" cy="40" r="26" fill="#fff" opacity=".3"/>
- </svg>;
+const CATS={branding:"Branding",design:"Design",tech:"Tecnologia"};
+const GRAD={branding:["#ff9a5a","#e4572e","#8c2f39"],design:["#5fd3b8","#0f9d8a","#134e5e"],tech:["#8f94fb","#5b5fd6","#2b2d6e"]};
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function Ilustracao({item}){
+  const h=hash(item.id),g=GRAD[item.cat],gid="g"+item.id;
+  const shapes=[0,1,2,3].map(i=>{const x=(h>>(i*3))%400,y=(h>>(i*2+1))%250,r=40+((h>>i)%90);
+    return i%2?<circle key={i} cx={x} cy={y} r={r} fill="#fff" opacity={.14}/>:<rect key={i} x={x-r/2} y={y-r/2} width={r*1.4} height={r*1.4} rx="18" transform={`rotate(${(h>>i)%60} ${x} ${y})`} fill="#fff" opacity={.12}/>});
+  return <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
+    <defs><linearGradient id={gid} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={g[0]}/><stop offset=".55" stopColor={g[1]}/><stop offset="1" stopColor={g[2]}/></linearGradient></defs>
+    <rect width="400" height="250" fill={`url(#${gid})`}/>{shapes}</svg>;
 }
-function Img({item,i}){
- const [falhou,setFalhou]=useState(false);
- return <div className="img">{item.imageUrl&&!falhou
-  ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-  : <Art cat={item.cat} seed={i+1}/>}</div>;
+function Midia({item}){
+  const [falhou,setFalhou]=useState(false);
+  return <div className="media">{item.imageUrl&&!falhou
+    ? <img src={item.imageUrl} alt={item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+    : <Ilustracao item={item}/>}</div>;
 }
-const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-const Meta=({item})=><div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><span>{item.source}</span><Stars n={item.stars}/></div>;
-function Modal({item,i,close}){
- useEffect(()=>{const k=e=>e.key==="Escape"&&close();window.addEventListener("keydown",k);return()=>window.removeEventListener("keydown",k)},[]);
- return <div className="modal-bg" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}>
-  <Img item={item} i={i}/>
-  <div className="in"><Meta item={item}/><h2>{item.tituloPt}</h2><div className="orig">{item.title}</div>
-   {item.resumo.map((p,k)=><p key={k}>{p}</p>)}
-   {item.nota&&<div className="nota">{item.nota}</div>}
-   <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) ↗</a>
-   <button className="btn g" onClick={close}>Fechar</button></div></div></div>;
+const Estrelas=({n})=><span className="stars" title={n+" de 5"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
+const Tag=({cat})=><span className={"tag t-"+cat}>{CATS[cat]}</span>;
+function Modal({item,onClose}){
+  useEffect(()=>{const f=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",f);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",f);document.body.style.overflow=""}},[]);
+  return <div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <button className="x" onClick={onClose} aria-label="Fechar">×</button>
+    <Midia item={item}/>
+    <div className="in"><div className="row"><Tag cat={item.cat}/><Estrelas n={item.stars}/></div>
+      <h2>{item.tituloPt}</h2><div className="orig">{item.title} — {item.source}</div>
+      <p>{item.resumo}</p>
+      {item.nota&&<div className="nota">{item.nota}</div>}
+      <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a></div>
+  </div></div>;
 }
 function App(){
- const [sel,setSel]=useState(null);
- const [top,...rest]=NEWS;
- return <div className="wrap">
-  <header><h1>☀️ Portal da Manhã</h1><div className="date">Sábado, 3 de outubro de 2026 · {NEWS.length} notícias</div></header>
-  <div className="hero" onClick={()=>setSel(0)}><Img item={top} i={0}/><div className="txt"><Meta item={top}/><h2>{top.tituloPt}</h2><div style={{color:"#6b7080"}}>{top.resumo[0].slice(0,170)}…</div><div style={{color:"#4f46e5",fontWeight:600}}>Ler resumo →</div></div></div>
-  <div className="grid">{rest.map((it,k)=><div className="card" key={k} onClick={()=>setSel(k+1)}><Img item={it} i={k+1}/><div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div></div>)}</div>
-  {sel!==null&&<Modal item={NEWS[sel]} i={sel} close={()=>setSel(null)}/>}
-  <footer>Resumos parafraseados em português. Clique em uma notícia para ler o resumo e acessar a fonte.</footer>
- </div>;
+  const [sel,setSel]=useState(null);
+  const [top,...resto]=NOTICIAS;
+  return <div className="wrap">
+    <header><h1>☀️ Portal da Manhã</h1><div className="data">segunda-feira, 5 de outubro de 2026</div></header>
+    <div className="hero" onClick={()=>setSel(top)}>
+      <div className="body"><div className="row"><Tag cat={top.cat}/><Estrelas n={top.stars}/></div>
+        <h2>{top.tituloPt}</h2><div className="src">{top.source}</div><div style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</div></div>
+      <Midia item={top}/>
+    </div>
+    <div className="grid">{resto.map(it=><div className="card" key={it.id} onClick={()=>setSel(it)}>
+      <Midia item={it}/><div className="body"><div className="row"><Tag cat={it.cat}/><Estrelas n={it.stars}/></div>
+      <h3>{it.tituloPt}</h3><div className="src">{it.source}</div></div></div>)}</div>
+    <footer>Resumos escritos em português a partir das matérias originais. Clique em uma notícia para ler.</footer>
+    {sel&&<Modal item={sel} onClose={()=>setSel(null)}/>}
+  </div>;
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>

@@ -3,249 +3,320 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 5 de outubro de 2026</title>
-<style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#1c1b1a;--mut:#6b6862;--line:#e8e5df;--acc:#e4572e}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-h1{margin:0;font-size:32px;letter-spacing:-.02em}
-.data{color:var(--mut);font-size:14px;text-transform:capitalize}
-.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
-.t-branding{background:#e4572e}.t-design{background:#0f9d8a}.t-tech{background:#5b5fd6}
-.stars{color:#f0a500;letter-spacing:2px;font-size:14px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:26px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.1)}
-.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
-.src{color:var(--mut);font-size:13px}
-.media{position:relative;aspect-ratio:16/10;background:#eee;overflow:hidden}
-.hero .media{aspect-ratio:auto;min-height:300px}
-.media img,.media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.row{display:flex;justify-content:space-between;align-items:center}
-.overlay{position:fixed;inset:0;background:rgba(20,18,16,.5);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;position:relative}
-.modal .media{aspect-ratio:16/9}
-.modal .in{padding:26px 30px 32px}
-.modal h2{margin:10px 0 4px;font-size:26px;line-height:1.2}
-.modal p{white-space:pre-line;font-size:16px}
-.nota{font-size:13px;color:var(--mut);background:#faf7f0;border-left:3px solid #f0a500;padding:8px 12px;border-radius:6px}
-.orig{font-size:13px;color:var(--mut);font-style:italic}
-.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:11px 20px;border-radius:99px;font-weight:600;font-size:14px;margin-top:8px}
-.x{position:absolute;top:12px;right:12px;z-index:2;border:0;background:rgba(255,255,255,.92);width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px;order:-1}h1{font-size:26px}.hero h2{font-size:22px}.modal .in{padding:20px}}
-</style>
+<title>Portal da Manhã — 7 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6a7085;--line:#e6e8f0;--acc:#4f46e5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+h1{margin:0;font-size:30px;letter-spacing:-.02em}
+.date{color:var(--mut);font-size:14px;text-transform:capitalize}
+.hero,.card{background:var(--card);border-radius:20px;box-shadow:0 2px 14px rgba(20,22,40,.07);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid var(--line)}
+.hero:hover,.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,22,40,.12)}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px}
+.hero .img{min-height:340px}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card .img{height:180px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.img{position:relative;overflow:hidden;background:#eee}
+.img img,.img svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
+.tag{padding:2px 10px;border-radius:99px;font-weight:600;font-size:11px}
+.Branding{background:#fff0e6;color:#c2561a}.Design{background:#e3f7f2;color:#0f7a63}.Tecnologia{background:#ece9ff;color:#4a3fd1}
+.stars{color:#f5a623;letter-spacing:1px}
+.orig{font-size:12px;color:var(--mut);font-style:italic}
+.ov{position:fixed;inset:0;background:rgba(15,17,30,.55);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:f .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:u .25s}
+.modal .img{height:320px}
+.modal .in{padding:26px 30px 32px}
+.modal h2{margin:8px 0 14px;font-size:26px;line-height:1.2}
+.modal p{font-size:16px;color:#2b2f40}
+.note{font-size:13px;color:var(--mut);border-left:3px solid var(--line);padding-left:10px;margin-top:14px}
+.btn{display:inline-block;margin-top:16px;background:var(--acc);color:#fff;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px}
+.x{float:right;border:0;background:#f0f1f6;border-radius:99px;width:36px;height:36px;font-size:18px;cursor:pointer}
+@keyframes f{from{opacity:0}to{opacity:1}}@keyframes u{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+footer{margin-top:36px;text-align:center;color:var(--mut);font-size:12px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:22px}}
+</style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const {useState,useEffect}=React;
-const NOTICIAS=[
+const { useState, useEffect } = React;
+
+const NEWS = [
   {
-    id: "Brahma",
-    cat: "branding",
-    stars: 5,
-    title: "New Logo, Identity, and Packaging for Brahma by Futurebrand",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_packaging_for_brahma_by_futurebrand.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/brahma_logo_before_after-1.png",
-    tituloPt: "Brahma, a das cervejas mais icônicas do Brasil, ganha novo logo, identidade e embalagens assinados pela Futurebrand",
-    resumo: "O Brand New analisou, sob o título “Take it Foam the Top”, a atualização da Brahma feita pela Futurebrand, que envolve logo, tipografia proprietária e embalagens. A classificação do post é “Reviewed”, categoria reservada às análises completas do site, e as tags indicam um trabalho de evolução (e não de ruptura) para uma marca de cerveja brasileira de enorme presença no varejo e na cultura popular.",
-    nota: "O artigo completo está atrás do paywall do Brand New; este resumo se baseia nos elementos públicos (título, categoria, setor, tags e imagem de antes e depois). Detalhes do racional criativo não foram lidos."
-  },
-  {
-    id: "Brisbane",
-    cat: "branding",
-    stars: 5,
-    title: "Brisbane Olympics and Paralympics 2032 logos revealed",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/brisbane-olympics-and-paralympics-2032-logos-revealed/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Brisbane-Olympics-logo.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=750&h=610",
-    tituloPt: "Reveladas as marcas das Olimpíadas e Paralimpíadas de Brisbane 2032, com cacatuas que desenham o mapa de Queensland",
-    resumo: "As emblemas dos Jogos de 2032 são compostas por seis elementos que se combinam para formar as identidades olímpica e paralímpica. Duas cacatuas nativas da Austrália são o motivo central: a cacatua-rosa representa as Olimpíadas e a cacatua-de-crista-amarela, as Paralimpíadas. As cristas das aves desenham o contorno de Queensland e incorporam, de forma simbólica, as chamas olímpica e paralímpica.\n\nA identidade foi criada por um consórcio de agências globais e locais: VML, Landor, Black Card e Verian, vencedoras da concorrência anunciada no ano anterior. Elementos das culturas dos povos originários estão presentes nas emblemas, já que as cacatuas são vistas como mensageiras que carregam significado cultural e ligam pessoas a lugares, histórias e cerimônias.\n\nO lançamento teve um tropeço: os logos vazaram por um vídeo no YouTube antes do anúncio oficial. Atletas australianos já haviam revelado peças das emblemas em diferentes pontos de Queensland, criando expectativa antes da revelação formal no Instagram e do anúncio completo.",
-    nota: ""
-  },
-  {
-    id: "McAfee",
-    cat: "branding",
-    stars: 4,
-    title: "New Logo and Identity for McAfee",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_mcafee.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/mcafee_2026_logo_before_after.png",
-    tituloPt: "McAfee muda logo e identidade em evolução visual que o Brand New resumiu com trocadilho: “Do as I Safe, Not as I Do”",
-    resumo: "O Brand New publicou hoje a análise do novo logo e da identidade da McAfee, empresa de software de segurança digital. A página mostra o comparativo de antes e depois e classifica o trabalho como uma evolução, com as tags laranja e tipografia sem serifa, sugerindo que a marca manteve a cor associada ao seu legado enquanto modernizou a assinatura. O título do post faz um jogo de palavras com o universo da cibersegurança e indica um tom crítico.",
-    nota: "Conteúdo completo sob paywall: resumo feito a partir de título, categoria, setor e tags públicos. A agência responsável não aparece nas informações abertas."
-  },
-  {
-    id: "PlantLife",
-    cat: "design",
-    stars: 4,
-    title: "Plant Life exhibition imagines a future where \"plants return as the dominant source\"",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/05/plat-life-nature-of-design-ngv-melbourne/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/ngv-plant-life-the-nature-of-design-exhibition-biomaterial-melbourne-australia_dezeen_1704_col_sq.jpg",
-    tituloPt: "Exposição Plant Life imagina um futuro em que “as plantas voltam a ser a fonte dominante”",
-    resumo: "A National Gallery of Victoria, em Melbourne, apresenta “Plant Life: The Nature of Design”, com mais de 60 obras que exploram a relação da humanidade com materiais de origem vegetal por meio de móveis, arquitetura, artes decorativas, artesanato, fotografia e cinema. Os temas incluem alternativas vegetais a materiais não renováveis e o engajamento de comunidades indígenas com a natureza. O curador sênior Ewan McEoin resume a proposta: olhar para um futuro em que as plantas voltam a ser a fonte dominante.\n\nEntre os destaques estão blocos de biomassonaria de algas e conchas de ostra de Kate Scardifield, uma jaqueta de couro vegetal Shiringa feita com o povo Awajún, do Peru, uma jaqueta corta-fogo de micélio desenvolvida por pesquisadores da RMIT, uma cadeira de cânhamo e fungos de Bart Schilder e tecidos de seda tingidos com plantas do Vietnã. A mostra fica em cartaz até fevereiro de 2027 no Ian Potter Centre: NGV Australia.",
-    nota: ""
-  },
-  {
-    id: "SpacePopular",
-    cat: "design",
-    stars: 4,
-    title: "Space Popular creates carpet-covered gallery for Nieuwe Instituut",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/04/space-popular-nieuwe-instituut-collection-gallery-rotterdam/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/space-popular-nieuwe-instituut-gallery-rotterdam-sq_dezeen_2364_col_0.jpg",
-    tituloPt: "Space Popular cria galeria forrada de carpete para o Nieuwe Instituut, em Roterdã",
-    resumo: "O estúdio Space Popular projetou a nova Galeria da Coleção do Nieuwe Instituut, em Roterdã, que reúne o acervo de arquitetura holandesa. A ideia foi fugir do minimalismo claro típico das galerias e criar algo “mais parecido com um clube ou um lounge”.\n\nO elemento central é um carpete impresso digitalmente, com grade de 50 por 50 centímetros que organiza todo o espaço: cada pódio e objeto segue essa malha. O desenho foi feito em colaboração com a designer gráfica Mariana Lobão e divide a coleção em cinco seções temáticas por cores. Pódios de madeira feitos por Rob den Dulk, também com acabamento em carpete, abrigam maquetes sob vitrines. Cores quentes e tons escuros convidam o visitante a desacelerar, sentar e sentir a maciez do carpete, e uma parede de projeção de concreto de 40 metros percorre a sala. A galeria ficará aberta até maio de 2029.",
-    nota: ""
-  },
-  {
-    id: "Harbour",
-    cat: "branding",
-    stars: 3,
-    title: "Thirst brings sun-soaked optimism to Harbour Brewing Co.",
+    title: "Jaguar leaps forward with the radical new Type 01 — the in-depth story behind the design revolution",
+    tituloPt: "Jaguar dá o salto com o radical Type 01: a história por trás da revolução de design",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/thirst-brings-sun-soaked-optimism-to-harbour-brewing-co/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Harbour-2026-brand-update-01-1024x576.jpg",
-    tituloPt: "Thirst leva otimismo ensolarado à cervejaria corniana Harbour Brewing Co. e vendas sobem 45%",
-    resumo: "A agência Thirst transformou a identidade da Harbour Brewing Co., cervejaria da Cornualha, de uma estética contida para uma experiência de marca vibrante, baseada no conceito “Sun-Soaked Playground”. A nova paleta combina amarelo-sol, azul-céu e azul-marinho profundo, com gráficos de ondas. O monograma “H” foi redesenhado com inspiração em estruturas de porto e vem acompanhado de ilustrações de Con McHugh. O sistema se estende a latas, torneiras, copos e merchandising para reforçar a presença na prateleira e no consumo em bares.\n\nSegundo o diretor criativo Sam Cutler, a marca já tinha um grande espírito e a ideia foi “engarrafar” essa sensação, evocando o clima descontraído de depois de um dia de lazer no mar, e não apenas a localização geográfica.\n\nOs resultados comerciais são expressivos: a Harbour informa crescimento de 45% nas vendas ano a ano e desempenho 18% acima do orçamento desde o relançamento. O fundador Eddie Lofthouse destacou a capacidade da Thirst de equilibrar inovação estética e crescimento do negócio.",
-    nota: ""
+    url: "https://www.designweek.co.uk/the-in-depth-story-behind-the-jaguar-type-01-design-revolution/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/SILVER_WORDMARK-1024x761.jpg",
+    categoria: "Design", stars: 5, data: "7 out 2026",
+    resumo: [
+      "O Jaguar Type 01 é apresentado como a maior reinvenção da marca desde 1935. Os líderes de design Rebecca Dockeray, Alexey Andreev e Axel Goulee contam que o projeto nasceu durante o isolamento da pandemia, quando três equipes concorrentes produziram modelos de argila em escala real. A direção mais radical foi escolhida em votação interna de 11 a 1, justamente para evitar soluções de meio-termo.",
+      "Entre as soluções de engenharia estão os chamados 'Tri-Apex Nodes', que acomodam as baterias no capô alongado mantendo um coeficiente de arrasto de 0,23, e o 'Impossible Panel', uma peça lateral única conformada em seis etapas de prensagem que ultrapassa os limites do ferramental automotivo convencional. A traseira não tem vidro: a visão de ré é feita por uma tela integrada à barra de som Meridian.",
+      "Com 5,2 m de comprimento e mais de 2 m de largura, o carro tem balanço dianteiro curto, criando um 'vão de prestígio' de 89 cm entre a roda e a porta. Por dentro, carpete de pelo alto sobe até os painéis das portas e o novo brasão com o 'J' e o 'r' aparece nas costuras dos bancos. A filosofia da equipe é a redução: tirar o que é excesso e deixar o melhor. Acabamentos como o Visionary Silver Satin imitam o toque do alumínio jateado em vez de verniz convencional."
+    ]
   },
   {
-    id: "Montanhas",
-    cat: "branding",
-    stars: 3,
-    title: "Everyone's making mountain-inspired logos in 2026 – here's what that tells us",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/logos-icons/everyones-making-mountain-inspired-logos-in-2026-heres-what-that-tells-us",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/RPUmdXRUqn79EkbFmxHE3g-2428-80.png",
-    tituloPt: "Todo mundo está fazendo logos inspirados em montanhas em 2026 — e o que isso revela",
-    resumo: "Tom May analisa por que a imagem de montanhas se tornou tão presente no design de logos neste ano, citando exemplos como a emblema dos Jogos de Inverno Alpes 2030, a marca de turismo de Vermont e o logo do time de hóquei Utah Mammoth. O argumento é que as montanhas funcionam bem como símbolo por sua simplicidade e significado: um triângulo transmite permanência, aspiração, aventura e a ideia de chegar ao topo, com pouquíssima complexidade visual.\n\nO autor lembra exemplos históricos, como a North Face (Half Dome), a Patagonia (Monte Fitz Roy) e a Paramount, e defende que os melhores logos de montanha remetem a lugares específicos, não a picos genéricos. O caso negativo é o da Toblerone, que após encerrar a produção na Suíça, em 2023, trocou o Matterhorn por uma montanha genérica e perdeu especificidade. Já o Utah Mammoth embute a cordilheira Wasatch e o formato do estado, e Vermont incorpora o Camel's Hump.\n\nA conclusão é que, em tempos de imagens geradas por IA, as montanhas representam autenticidade tangível.",
-    nota: ""
-  },
-  {
-    id: "TypographyProtest",
-    cat: "design",
-    stars: 3,
-    title: "A new book explores how type became a tool of rebellion",
+    title: "Highlands' new identity puts the region's character on the map",
+    tituloPt: "Nova identidade de Highlands (Carolina do Norte) coloca o caráter da região no mapa",
     source: "Creative Review",
-    url: "https://www.creativereview.co.uk/the-typography-of-protest-revolution-and-rebellion-in-protest-art-book-theo-inglis/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Amterdam-protest-1980.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    tituloPt: "Novo livro explora como a tipografia virou ferramenta de rebelião",
-    resumo: "A Creative Review conversa sobre o livro “The Typography of Protest: Revolution and Rebellion in Protest Art”, do designer Theo Inglis (Batsford), que traça como fontes e design visual serviram para desafiar autoridades e impulsionar movimentos sociais, das sufragistas ao Black Lives Matter.\n\nInglis destaca que escolhas de design comunicam intensidade emocional tanto quanto a mensagem, e por isso não se limita a cartazes com sans serif pesada, examinando vocabulários visuais variados. O livro mostra como a publicidade comercial influenciou o design ativista, como no uso da Futura Extra Bold Condensed pelo Act Up para transformar tipografia comercial em símbolo de resistência. Entre os temas estão acessibilidade (a mensagem precisa alcançar o público geral), autenticidade no ambiente digital e o trabalho perigoso do coletivo Medu Art Ensemble contra o apartheid. Ele alerta contra reduzir movimentos complexos a moodboards estéticos.",
-    nota: ""
+    url: "https://www.creativereview.co.uk/highlands-new-identity-blue-ridge-mountains-matey-branding/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Visit-Highlands-Main-Logo.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    categoria: "Branding", stars: 4, data: "7 out 2026",
+    resumo: [
+      "A agência Matey, de Birmingham (Alabama), criou a nova identidade da Visit Highlands, organização de turismo da cidade de Highlands, na Carolina do Norte. O objetivo é dar ao destino de montanha uma marca própria, em vez de depender de hotéis e restaurantes individuais ou do boca a boca.",
+      "O logotipo é lettering personalizado inspirado em materiais de arquivo da cidade, com letras que 'sobem' sugerindo a subida ao platô. O 'H' traz uma referência sutil à Whiteside Mountain, marco regional. Ícones desenhados à mão — flora, fauna, clima e topografia — aparecem num selo oval artesanal, e a paleta mistura tons de pedras preciosas com cores naturais.",
+      "A Matey descreve o posicionamento como a união entre 'conforto de férias' e a rusticidade das Blue Ridge Mountains, com a marca atuando como um guia discreto, e não como um vendedor ostensivo."
+    ]
   },
   {
-    id: "AdobeFirefly",
-    cat: "tech",
-    stars: 3,
-    title: "Adobe's AI text-to-3D world concept is a glimpse of where Firefly could go next",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/graphic-design/adobes-ai-text-to-3d-world-concept-is-a-glimpse-of-where-firefly-could-go-next",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/KCf9dWFqE4TDJMmRjfvos-1920-80.jpg",
-    tituloPt: "Conceito de mundos 3D por texto da Adobe é um vislumbre do futuro do Firefly",
-    resumo: "A Adobe registrou pedidos de patente que revelam possíveis rumos de sua IA além do trabalho em 2D. O mais notável descreve um método para gerar ambientes 3D navegáveis a partir de texto. O sistema teria duas etapas: o usuário descreve algo como “um jardim japonês enevoado ao entardecer”, um modelo de IA cria uma imagem esférica de 360 graus e um segundo processo constrói a geometria 3D para explorar de vários ângulos.\n\nO artigo lembra que a Adobe tem presença limitada em 3D apesar da suíte Substance, considerada nicho perto de ZBrush e Blender. Outras patentes sugerem geração de ângulos de câmera a partir de uma só foto, correspondência de materiais entre modelos 3D e provadores virtuais de roupas. A empresa não está sozinha: a Blockade Labs oferece texto-para-3D parecido, ainda sem navegação completa. Patentes não garantem produto, mas indicam estratégia.",
-    nota: ""
+    title: "Foster + Partners extends Bilbao Fine Arts Museum with bridge-like gallery",
+    tituloPt: "Foster + Partners amplia o Museu de Belas Artes de Bilbao com galeria em forma de ponte",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/06/foster-partners-bilbao-fine-arts-museum/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/bilbao-fine-arts-museum-foster-partners-sq_dezeen_2364_col_0.jpg",
+    categoria: "Design", stars: 4, data: "6 out 2026",
+    resumo: [
+      "O escritório Foster + Partners, em colaboração com o arquiteto espanhol Luis María Uriarte, concluiu a ampliação do Museu de Belas Artes de Bilbao. A nova estrutura, chamada Agravitas, é uma galeria elevada de 55 metros que funciona como ponte entre os edifícios existentes do museu.",
+      "Colunas de aço em V sustentam o volume sem tocar nas construções originais, conectando uma ala estendida ao corpo principal e melhorando a circulação dentro da planta em formato de U. Por dentro há um salão de esculturas envolto em vidro no térreo, galerias sem colunas nos andares superiores com claraboias reguláveis, escritórios e terraços com vista da cidade.",
+      "O projeto usa aço de origem local, em referência ao passado industrial de Bilbao, e prevê beirais para controle solar e painéis fotovoltaicos na cobertura. Os edifícios antigos foram restaurados e a entrada original dos anos 1940, fechada por décadas, foi reaberta."
+    ]
   },
   {
-    id: "Haaland",
-    cat: "branding",
-    stars: 2,
-    title: "Erling Haaland files lawsuit against Norwegian Air for unexpected reason",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/branding/erling-haaland-files-lawsuit-against-norwegian-air-for-unexpected-reason",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/pFdMPtMt5Vr5w6C6hrtEsN-1920-80.jpg",
-    tituloPt: "Haaland processa a Norwegian Air por usar o seu coque em publicidade",
-    resumo: "O atacante Erling Haaland iniciou uma ação judicial contra a Norwegian Air por causa do uso do seu penteado característico em conteúdo promocional. A disputa gira em torno de um post em redes sociais com a imagem de um avião editada para ganhar o coque do jogador, com a legenda “We've never looked more Norwegian”, publicado em plena temporada da Copa do Mundo.\n\nOs representantes de Haaland afirmam que a campanha explorou indevidamente sua imagem e identidade visual sem permissão. A companhia aérea disse lamentar que “manifestações de apoio” tenham sido respondidas com um processo e defendeu um diálogo construtivo sobre futuras parcerias com atletas. O caso se soma a outras disputas em que celebridades protegem traços visuais distintivos contra a exploração comercial.",
-    nota: ""
+    title: "Visit Sweden campaign launches 'a paradise for introverts'",
+    tituloPt: "Visit Sweden lança campanha 'um paraíso para introvertidos' com agência de viagens pop-up",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/visit-sweden-the-introverts-travel-agency/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Visit-Sweden-Introvert-Travel-Agency.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    categoria: "Branding", stars: 4, data: "6 out 2026",
+    resumo: [
+      "A Visit Sweden lançou a 'Introvert Travel Agency', uma agência de viagens pop-up voltada a viajantes introvertidos. A ação abre em Londres de 28 a 31 de outubro, com Berlim e Paris previstas em seguida.",
+      "A campanha parte de uma pesquisa segundo a qual 48% dos britânicos se declaram introvertidos. O filme mostra um agente de viagens nervoso explicando que espaço pessoal, na Suécia, 'não é preferência, é um modo de vida'. A mensagem destaca a liberdade de percorrer a natureza, a aceitação cultural do silêncio e o 'fika', a pausa para café com doces em que o visitante escolhe quando socializar.",
+      "O CEO da Visit Sweden resume a proposta como a liberdade de decidir quando se quer companhia e quando não. A ação segue a tradição de campanhas bem-humoradas do país que brincam com estereótipos suecos."
+    ]
   },
   {
-    id: "NikeDunk",
-    cat: "design",
-    stars: 2,
-    title: "Nike Actually Made Sneakers That Look Like Grandma's Couch",
+    title: "How Kit Studio switched Exell to EXF.STUDIO with ASCII ingenuity",
+    tituloPt: "Como a Kit Studio transformou a Exell em EXF.STUDIO com engenhosidade em ASCII",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/how-kit-studio-switched-exell-to-exf-studio-with-ascii-ingenuity/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/KitStudio_EXFStudio_Press_10-1024x576.gif",
+    categoria: "Branding", stars: 4, data: "6 out 2026",
+    resumo: [
+      "A Kit Studio rebatizou a Exell Film como EXF.STUDIO, criando uma experiência digital imersiva em vez de um site tradicional. A identidade usa elementos de código ASCII, navegação espacial em várias direções e movimento expressivo para posicionar o estúdio como um 'cheat code' da produção criativa.",
+      "A designer digital sênior Rosie Guy explica que a ideia foi fazer as pessoas sentirem a diferença, e não apenas ouvi-la. O portfólio abandona a grade convencional: o usuário pode rolar livremente ou alternar para uma visualização em grade, e no celular a experiência vira rolagem vertical.",
+      "Guy defende que UX não convencional só funciona com desempenho e acessibilidade pensados desde o primeiro dia, e que PDFs estáticos de manual de marca perdem sentido quando marca e digital trabalham juntos desde o início. Num cenário em que sites gerados por IA se multiplicam, ela argumenta que o diferencial está no artesanato."
+    ]
+  },
+  {
+    title: "Estúdio Módulo releases designs for Itaú Cultural headquarters in São Paulo",
+    tituloPt: "Estúdio Módulo revela projeto da nova sede do Itaú Cultural, na Avenida Paulista",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/05/estudio-modulo-itau-cultural-sao-paulo-design/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/estudio-modulo-itau-cultural-sao-paolo_dezeen_2364_sq.jpg",
+    categoria: "Design", stars: 4, data: "5 out 2026",
+    resumo: [
+      "O escritório brasileiro Estúdio Módulo apresentou o projeto da nova sede do Itaú Cultural em São Paulo, escolhido em concurso com seis escritórios. A torre de 19 andares (oito deles subterrâneos) é esbelta e retangular, envolvida por uma fachada de brises brancos na Avenida Paulista.",
+      "Uma escada em tom terracota, visível através de vidro do piso ao teto, deve 'evocar o caráter artesanal da arte popular brasileira'. O anteparo semitransparente de brises cria um efeito cinético: as cores internas se revelam conforme o observador se move. Um pódio baixo abriga o recorte da entrada principal, e há terraços na cobertura.",
+      "São 12.275 m² para exposições, espaços de performance, áreas educativas e ateliês, com auditório de mais de 100 lugares e teatro de mais de 400 nos subsolos. A conclusão está prevista para 2031, ao lado de vizinhos como o MASP e o Centro Cultural FIESP."
+    ]
+  },
+  {
+    title: "Nobody Redesigned the Allen Key for 115 Years. Here's the Fix.",
+    tituloPt: "Ninguém redesenhou a chave Allen em 115 anos. Aqui está a solução",
     source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/05/nike-actually-made-sneakers-that-look-like-grandmas-couch/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/nike-actually-made-sneakers-that-look-like-grandmas-couch/nike-brocade-01.jpg",
-    tituloPt: "A Nike lançou tênis que parecem o sofá da vovó: o Dunk Low “Golden Hops Brocade”",
-    resumo: "A Nike prepara um novo Dunk Low que abraça o maximalismo vintage com o desenho “Golden Hops Brocade”. O cabedal em veludo traz padrões florais elaborados por toda a peça, da biqueira às laterais e ao calcanhar, em tons de marrom quente e dourado com detalhes em marfim claro.\n\nEm vez de tentar deixar o veludo esportivo, o design assume a comparação com móveis tradicionais. Swooshes bordados e em relevo com debrum marrom e a língua em lona de cor contrastante dão respiro visual ao conjunto. O autor sugere usá-los como peça de destaque com roupas neutras e lembra que o veludo exige cuidado, sendo melhor reservá-lo a dias de tempo bom. O par custa US$ 125 e chega no outono/inverno de 2026, uma guinada em relação ao minimalismo habitual da linha.",
-    nota: ""
+    url: "https://www.yankodesign.com/2026/10/06/nobody-redesigned-the-allen-key-for-115-years-heres-the-fix/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/nobody-redesigned-the-allen-key-for-115-years-heres-the-fix/turn-kit-01.jpg",
+    categoria: "Design", stars: 3, data: "6 out 2026",
+    resumo: [
+      "A designer Siddhi Ravi criou o Turn Kit, um redesenho da chave Allen que ataca mais de um século de estagnação do objeto. O kit traz três chaves hexagonais (4, 5 e 6 mm) combinadas a acessórios ergonômicos: uma manivela azul e uma empunhadura laranja.",
+      "Em vez da pegada de pinça das chaves tradicionais, os cabos permitem um movimento de manivela para baixo, reduzindo o esforço e o escorregamento nas mãos. A proposta mantém a forma familiar criada em 1909 e muda o foco para 'a parte que seguramos'.",
+      "Há também um recado de inclusão: avós com punhos doloridos e crianças passam a participar da montagem de móveis. O produto ainda é apresentado numa embalagem organizada e visualmente agradável."
+    ]
   },
   {
-    id: "Dentsu",
-    cat: "branding",
-    stars: 2,
-    title: "Dentsu ventures into Hollywood with 'The Angry Birds 3'",
+    title: "700 Interlocking Pieces, No Glue: The Pavilion That Quietly Disappears",
+    tituloPt: "700 peças encaixadas, sem cola: o pavilhão que desaparece em silêncio",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/06/700-interlocking-pieces-no-glue-the-pavilion-that-quietly-disappears/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/700-interlocking-pieces-no-glue-the-pavilion-that-quietly-disappears/woven-01.jpg",
+    categoria: "Design", stars: 3, data: "6 out 2026",
+    resumo: [
+      "O Atelier DARN projetou o 'Woven', pavilhão temporário na floresta de Les Gavarres, na Espanha. A estrutura reúne cerca de 700 peças modulares impressas em 3D com filamento biodegradável derivado de capim-miscanthus, que se encaixam sem adesivos ou fixadores sintéticos e podem ser desmontadas com facilidade.",
+      "A filosofia trata a decomposição como parte do projeto, e não como falha. O padrão tecido aberto se integra à paisagem em vez de dominá-la, e a visibilidade das juntas reforça a transparência construtiva.",
+      "O texto reconhece que a biodegradabilidade depende das condições ambientais, mas argumenta que a contribuição do Woven é oferecer 'um ponto de partida mais honesto' para instalações temporárias, dando ao fim da vida útil o mesmo peso da construção inicial."
+    ]
+  },
+  {
+    title: "Didea creates steel-clad streetwear store inside ZHA's Mercury Tower",
+    tituloPt: "Didea cria loja de streetwear revestida de aço dentro da Mercury Tower, de Zaha Hadid, em Malta",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/07/didea-super-f-streetwear-store-mercury-tower-malta/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/super-f-didea-malta_dezeen_2364_col_sq1.jpg",
+    categoria: "Design", stars: 3, data: "7 out 2026",
+    resumo: [
+      "O estúdio Didea projetou uma loja de streetwear de 600 m² para a Super F, em St Julian's (Malta), dentro da Mercury Tower, de Zaha Hadid Architects. O projeto usa uma grade modular e flexível revestida em aço para minimizar intervenções no edifício.",
+      "O interior combina curvas e ângulos: uma vitrine central curva de vidro e provadores arredondados de aço ecoam a fluidez da torre, enquanto componentes em grade dominam o layout. O diretor criativo Nicola Andò diz que a equipe evitou alterações invasivas e alvenaria, optando por um sistema sob medida de montagem a seco.",
+      "O teto tem painéis de aço preto que escondem as instalações, e superfícies de aço escovado, polido e espelhado criam clima industrial e refinado. Plintos de blocos de aço e araras móveis, num 'sistema de pente', permitem mudar a exposição sem fixações permanentes. À noite, som e iluminação transformam o espaço em local de eventos."
+    ]
+  },
+  {
+    title: "Chipotle composes corn flutes, jalapeño trumpets for 'From Ground to Sound' jingle",
+    tituloPt: "Chipotle compõe jingle com flautas de milho e trompetes de jalapeño em 'From Ground to Sound'",
     source: "Campaign",
-    url: "https://www.campaignlive.com/article/dentsu-ventures-hollywood-the-angry-birds-3/1971703",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Angry-Birds-3-SC-YouTube-CUS.png",
-    tituloPt: "Dentsu entra em Hollywood como produtora e agência global de “Angry Birds 3”",
-    resumo: "A Dentsu fez um investimento significativo em “The Angry Birds Movie 3”, assumindo os papéis de produtora e agência global de registro da continuação animada, que estreia em dezembro de 2026. A rede contribui para o orçamento de marketing e distribuição de US$ 66 milhões e já integrou clientes não identificados ao projeto. Como agência de registro, supervisiona estratégia de mídia, planejamento e ativação em mais de 50 mercados, com centros em Londres, Nova York e Los Angeles.\n\nPara Dan Pantumsinchai, diretor de games e entretenimento da Dentsu APAC, é um grande passo para fortalecer o negócio de entretenimento. O acordo dá à Dentsu a primeira opção de integrações e copromoções, permitindo que marcas acessem a propriedade intelectual do filme cedo. O movimento a coloca ao lado de WPP e Publicis, que também investem em produção para alcançar públicos que evitam a publicidade tradicional.",
-    nota: ""
+    url: "https://www.campaignlive.com/article/chipotle-composes-corn-flutes-jalapeno-trumpets-from-ground-sound-jingle/1971790",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/chipotleinstruments-uwp-cus.png",
+    categoria: "Branding", stars: 3, data: "6 out 2026",
+    resumo: [
+      "A Chipotle criou o jingle 'From Ground to Sound' com instrumentos feitos inteiramente de produtos frescos. A marca se uniu à London Vegetable Orchestra, grupo de cinco integrantes especializado em instrumentos de legumes, que projetou trompetes de jalapeño, flautas de milho e trompas de pimentão, em colaboração com funcionários da rede para escolher os ingredientes.",
+      "A gravação aconteceu em um único dia no Abbey Road Studios, porque os vegetais mudam de forma, textura e umidade e ficam tocáveis por menos de 24 horas. A orquestra levou três meses desenvolvendo os instrumentos. A Beacon Street Studios compôs a música e a agência Kids cuidou da direção criativa.",
+      "A Chipotle lançou ainda um vídeo de quatro minutos com entrevistas dos músicos sobre o processo."
+    ]
+  },
+  {
+    title: "New Logo and Identity for ABCmouse by Digitas Design",
+    tituloPt: "ABCmouse ganha novo logo e identidade da Digitas Design",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_abcmouse_by_digitas_design.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/abcmouse_logo_before_after.png",
+    categoria: "Branding", stars: 2, data: "5 out 2026", paywall: true,
+    resumo: [
+      "O Brand New destacou a repaginação do logo e da identidade da ABCmouse, plataforma de aprendizado infantil, assinada pela Digitas Design. O projeto aparece na seção 'Spotted' e é classificado na indústria de Educação.",
+      "As tags públicas descrevem uma identidade colorida, com tipografia sem serifa e uso de formas geométricas, e a publicação traz a comparação de antes e depois do logo."
+    ]
+  },
+  {
+    title: "Hark releases an AI personal assistant with a focus on privacy",
+    tituloPt: "Hark lança assistente pessoal de IA com foco em privacidade",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/06/hark-releases-an-ai-personal-assistant-with-a-focus-on-privacy/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Hark-Panels.png?resize=1200,675",
+    categoria: "Tecnologia", stars: 3, data: "6 out 2026",
+    resumo: [
+      "A Hark, startup do empreendedor Brett Adcock, lançou o Hark Pro, assistente pessoal de IA que se vende pela proteção de privacidade. O serviço funciona em tela cheia, concebido como um sistema operacional para a computação com IA do futuro.",
+      "A interface tem chat, sugestões de ação e 'painéis' personalizados que funcionam como minidashboards de interesses. O usuário dá acesso a e-mail, agenda, arquivos e contas financeiras para que a IA resolva tarefas digitais sozinha; um modelo treinado para uso de computador navega por sites e conclui transações.",
+      "O líder de design, Abidhur Chowdhury, ex-Apple, diz que a empresa não está ali para vender anúncios nem roubar dados. A tela mostra numa pequena janela como o agente navega, para criar confiança. A Hark se coloca contra concorrentes como Muse, Dots e Instinct, promete um dispositivo de hardware nativo de IA em 2027 e oferece plano gratuito com assinatura para usuários avançados."
+    ]
   }
 ];
-const CATS={branding:"Branding",design:"Design",tech:"Tecnologia"};
-const GRAD={branding:["#ff9a5a","#e4572e","#8c2f39"],design:["#5fd3b8","#0f9d8a","#134e5e"],tech:["#8f94fb","#5b5fd6","#2b2d6e"]};
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
-function Ilustracao({item}){
-  const h=hash(item.id),g=GRAD[item.cat],gid="g"+item.id;
-  const shapes=[0,1,2,3].map(i=>{const x=(h>>(i*3))%400,y=(h>>(i*2+1))%250,r=40+((h>>i)%90);
-    return i%2?<circle key={i} cx={x} cy={y} r={r} fill="#fff" opacity={.14}/>:<rect key={i} x={x-r/2} y={y-r/2} width={r*1.4} height={r*1.4} rx="18" transform={`rotate(${(h>>i)%60} ${x} ${y})`} fill="#fff" opacity={.12}/>});
-  return <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
-    <defs><linearGradient id={gid} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={g[0]}/><stop offset=".55" stopColor={g[1]}/><stop offset="1" stopColor={g[2]}/></linearGradient></defs>
-    <rect width="400" height="250" fill={`url(#${gid})`}/>{shapes}</svg>;
+
+const PALETAS = {
+  Branding: [["#ff9a5a","#ff5f6d"],["#ffd36e","#ff8a4c"],["#ff7e67","#c94b8a"]],
+  Design: [["#34d3a8","#0e8f8a"],["#7be0c3","#1b9aaa"],["#4fd1a5","#2b7a78"]],
+  Tecnologia: [["#6c8cff","#7b3fe4"],["#4facfe","#6a3fd8"],["#8e7bff","#3b5bdb"]]
+};
+
+function Ilustracao({ cat, seed }) {
+  const ps = PALETAS[cat] || PALETAS.Design;
+  const [a, b] = ps[seed % ps.length];
+  const id = "g" + seed;
+  const r = (n) => ((seed * 37 + n * 53) % 100);
+  return (
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração " + cat}>
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a}/><stop offset="1" stopColor={b}/></linearGradient>
+      </defs>
+      <rect width="400" height="240" fill={`url(#${id})`}/>
+      <circle cx={80 + r(1) * 2} cy={60 + r(2)} r={50 + r(3) / 2} fill="#fff" opacity=".18"/>
+      <rect x={200 + r(4)} y={90 + r(5) / 2} width="120" height="120" rx="26" fill="#fff" opacity=".16" transform={`rotate(${r(6) - 20} 260 150)`}/>
+      <polygon points={`${40 + r(7)},230 ${140 + r(8)},120 ${240 + r(9)},230`} fill="#fff" opacity=".14"/>
+      <circle cx={330} cy={50} r="22" fill="#fff" opacity=".3"/>
+    </svg>
+  );
 }
-function Midia({item}){
-  const [falhou,setFalhou]=useState(false);
-  return <div className="media">{item.imageUrl&&!falhou
-    ? <img src={item.imageUrl} alt={item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-    : <Ilustracao item={item}/>}</div>;
-}
-const Estrelas=({n})=><span className="stars" title={n+" de 5"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
-const Tag=({cat})=><span className={"tag t-"+cat}>{CATS[cat]}</span>;
-function Modal({item,onClose}){
-  useEffect(()=>{const f=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",f);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",f);document.body.style.overflow=""}},[]);
-  return <div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <button className="x" onClick={onClose} aria-label="Fechar">×</button>
-    <Midia item={item}/>
-    <div className="in"><div className="row"><Tag cat={item.cat}/><Estrelas n={item.stars}/></div>
-      <h2>{item.tituloPt}</h2><div className="orig">{item.title} — {item.source}</div>
-      <p>{item.resumo}</p>
-      {item.nota&&<div className="nota">{item.nota}</div>}
-      <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a></div>
-  </div></div>;
-}
-function App(){
-  const [sel,setSel]=useState(null);
-  const [top,...resto]=NOTICIAS;
-  return <div className="wrap">
-    <header><h1>☀️ Portal da Manhã</h1><div className="data">segunda-feira, 5 de outubro de 2026</div></header>
-    <div className="hero" onClick={()=>setSel(top)}>
-      <div className="body"><div className="row"><Tag cat={top.cat}/><Estrelas n={top.stars}/></div>
-        <h2>{top.tituloPt}</h2><div className="src">{top.source}</div><div style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</div></div>
-      <Midia item={top}/>
+
+function Imagem({ item, idx }) {
+  const [falhou, setFalhou] = useState(false);
+  if (!item.imageUrl || falhou) return <div className="img"><Ilustracao cat={item.categoria} seed={idx + 1} /></div>;
+  return (
+    <div className="img">
+      <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
     </div>
-    <div className="grid">{resto.map(it=><div className="card" key={it.id} onClick={()=>setSel(it)}>
-      <Midia item={it}/><div className="body"><div className="row"><Tag cat={it.cat}/><Estrelas n={it.stars}/></div>
-      <h3>{it.tituloPt}</h3><div className="src">{it.source}</div></div></div>)}</div>
-    <footer>Resumos escritos em português a partir das matérias originais. Clique em uma notícia para ler.</footer>
-    {sel&&<Modal item={sel} onClose={()=>setSel(null)}/>}
-  </div>;
+  );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+function Estrelas({ n }) { return <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>; }
+
+function Meta({ item }) {
+  return (
+    <div className="meta">
+      <span className={"tag " + item.categoria}>{item.categoria}</span>
+      <strong>{item.source}</strong><span>· {item.data}</span><Estrelas n={item.stars} />
+    </div>
+  );
+}
+
+function Detalhe({ item, idx, fechar }) {
+  useEffect(() => {
+    const h = (e) => e.key === "Escape" && fechar();
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, []);
+  return (
+    <div className="ov" onClick={fechar}>
+      <article className="modal" onClick={(e) => e.stopPropagation()}>
+        <Imagem item={item} idx={idx} />
+        <div className="in">
+          <button className="x" onClick={fechar} aria-label="Fechar">✕</button>
+          <Meta item={item} />
+          <h2>{item.tituloPt}</h2>
+          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
+          {item.paywall && <div className="note">Matéria atrás de paywall: o resumo foi escrito apenas a partir dos elementos públicos (título, categoria, indústria e tags).</div>}
+          <div className="orig">Título original: {item.title}</div>
+          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+function App() {
+  const [aberto, setAberto] = useState(null);
+  const itens = [...NEWS].sort((a, b) => b.stars - a.stars);
+  const [hero, ...resto] = itens;
+  const hoje = new Date(2026, 9, 7).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const abrir = (it) => setAberto(it);
+  return (
+    <div className="wrap">
+      <header>
+        <h1>☀️ Portal da Manhã</h1>
+        <div className="date">{hoje}</div>
+      </header>
+      <section className="hero" onClick={() => abrir(hero)}>
+        <Imagem item={hero} idx={0} />
+        <div className="body">
+          <Meta item={hero} />
+          <h2>{hero.tituloPt}</h2>
+          <p style={{ margin: 0, color: "#4a4f63" }}>{hero.resumo[0]}</p>
+          <span style={{ color: "var(--acc)", fontWeight: 600 }}>Ler resumo completo →</span>
+        </div>
+      </section>
+      <section className="grid">
+        {resto.map((it, i) => (
+          <div className="card" key={it.url} onClick={() => abrir(it)}>
+            <Imagem item={it} idx={i + 1} />
+            <div className="body">
+              <Meta item={it} />
+              <h3>{it.tituloPt}</h3>
+            </div>
+          </div>
+        ))}
+      </section>
+      <footer>Resumos produzidos em português a partir das matérias originais · Edição de 7 de outubro de 2026</footer>
+      {aberto && <Detalhe item={aberto} idx={NEWS.indexOf(aberto)} fechar={() => setAberto(null)} />}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

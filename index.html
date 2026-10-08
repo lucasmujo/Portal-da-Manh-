@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 7 de outubro de 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<title>Portal da Manhã — 8 de outubro de 2026</title>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6a7085;--line:#e6e8f0;--acc:#4f46e5}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14171f;--mute:#667085;--line:#e6e8f0;--brand:#e8590c;--design:#0b8f7a;--tech:#5b4bdb}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:14px;text-transform:capitalize}
-.hero,.card{background:var(--card);border-radius:20px;box-shadow:0 2px 14px rgba(20,22,40,.07);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid var(--line)}
-.hero:hover,.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,22,40,.12)}
+.date{color:var(--mute);font-size:14px}
+.card{background:var(--card);border-radius:18px;box-shadow:0 2px 12px rgba(20,23,31,.06);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid var(--line)}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,23,31,.12)}
 .hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px}
-.hero .img{min-height:340px}
-.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.hero .media{min-height:320px}
+.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card .img{height:180px}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.img{position:relative;overflow:hidden;background:#eee}
-.img img,.img svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
-.tag{padding:2px 10px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#fff0e6;color:#c2561a}.Design{background:#e3f7f2;color:#0f7a63}.Tecnologia{background:#ece9ff;color:#4a3fd1}
+.media{position:relative;width:100%;aspect-ratio:16/9;background:#eceef5;overflow:hidden}
+.hero .media{aspect-ratio:auto;height:100%}
+.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 18px 18px}
+.body h3{margin:6px 0 8px;font-size:17px;line-height:1.3}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.tag{padding:2px 9px;border-radius:99px;font-weight:600;color:#fff;font-size:11px}
+.tag.Branding{background:var(--brand)}.tag.Design{background:var(--design)}.tag.Tecnologia{background:var(--tech)}
 .stars{color:#f5a623;letter-spacing:1px}
-.orig{font-size:12px;color:var(--mut);font-style:italic}
-.ov{position:fixed;inset:0;background:rgba(15,17,30,.55);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:f .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:u .25s}
-.modal .img{height:320px}
-.modal .in{padding:26px 30px 32px}
+.lead{color:var(--mute);font-size:14px;margin:0}
+.overlay{position:fixed;inset:0;background:rgba(20,23,31,.5);display:flex;align-items:flex-start;justify-content:center;padding:30px 14px;overflow:auto;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;overflow:hidden;animation:up .25s;position:relative}
+.modal .media{aspect-ratio:16/8}
+.modal .body{padding:24px 28px 30px}
 .modal h2{margin:8px 0 14px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;color:#2b2f40}
-.note{font-size:13px;color:var(--mut);border-left:3px solid var(--line);padding-left:10px;margin-top:14px}
-.btn{display:inline-block;margin-top:16px;background:var(--acc);color:#fff;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px}
-.x{float:right;border:0;background:#f0f1f6;border-radius:99px;width:36px;height:36px;font-size:18px;cursor:pointer}
-@keyframes f{from{opacity:0}to{opacity:1}}@keyframes u{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-footer{margin-top:36px;text-align:center;color:var(--mut);font-size:12px}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:22px}}
+.modal p{font-size:16px;color:#2a2f3a}
+.close{position:absolute;top:12px;right:12px;z-index:2;border:0;background:rgba(255,255,255,.92);width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.src{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:99px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+.note{font-size:13px;color:var(--mute);background:#f6f7fb;border-radius:10px;padding:8px 12px;margin-top:6px}
+footer{margin-top:36px;text-align:center;color:var(--mute);font-size:12px}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:200px;aspect-ratio:16/9}.hero h2{font-size:23px}.modal .body{padding:18px}}
 </style>
 </head>
 <body>
@@ -53,226 +53,233 @@ const { useState, useEffect } = React;
 
 const NEWS = [
   {
-    title: "Jaguar leaps forward with the radical new Type 01 — the in-depth story behind the design revolution",
-    tituloPt: "Jaguar dá o salto com o radical Type 01: a história por trás da revolução de design",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/the-in-depth-story-behind-the-jaguar-type-01-design-revolution/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/SILVER_WORDMARK-1024x761.jpg",
-    categoria: "Design", stars: 5, data: "7 out 2026",
-    resumo: [
-      "O Jaguar Type 01 é apresentado como a maior reinvenção da marca desde 1935. Os líderes de design Rebecca Dockeray, Alexey Andreev e Axel Goulee contam que o projeto nasceu durante o isolamento da pandemia, quando três equipes concorrentes produziram modelos de argila em escala real. A direção mais radical foi escolhida em votação interna de 11 a 1, justamente para evitar soluções de meio-termo.",
-      "Entre as soluções de engenharia estão os chamados 'Tri-Apex Nodes', que acomodam as baterias no capô alongado mantendo um coeficiente de arrasto de 0,23, e o 'Impossible Panel', uma peça lateral única conformada em seis etapas de prensagem que ultrapassa os limites do ferramental automotivo convencional. A traseira não tem vidro: a visão de ré é feita por uma tela integrada à barra de som Meridian.",
-      "Com 5,2 m de comprimento e mais de 2 m de largura, o carro tem balanço dianteiro curto, criando um 'vão de prestígio' de 89 cm entre a roda e a porta. Por dentro, carpete de pelo alto sobe até os painéis das portas e o novo brasão com o 'J' e o 'r' aparece nas costuras dos bancos. A filosofia da equipe é a redução: tirar o que é excesso e deixar o melhor. Acabamentos como o Visionary Silver Satin imitam o toque do alumínio jateado em vez de verniz convencional."
-    ]
-  },
-  {
-    title: "Highlands' new identity puts the region's character on the map",
-    tituloPt: "Nova identidade de Highlands (Carolina do Norte) coloca o caráter da região no mapa",
+    title: "Fulham FC unveils evolved identity inspired by its riverside home",
+    tituloPt: "Fulham FC revela identidade evoluída inspirada no estádio à beira do Tâmisa",
     source: "Creative Review",
-    url: "https://www.creativereview.co.uk/highlands-new-identity-blue-ridge-mountains-matey-branding/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Visit-Highlands-Main-Logo.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    categoria: "Branding", stars: 4, data: "7 out 2026",
+    url: "https://www.creativereview.co.uk/fulham-fc-new-identity-music-f37/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Fulham-FC-branding.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    cat: "Branding", stars: 5,
     resumo: [
-      "A agência Matey, de Birmingham (Alabama), criou a nova identidade da Visit Highlands, organização de turismo da cidade de Highlands, na Carolina do Norte. O objetivo é dar ao destino de montanha uma marca própria, em vez de depender de hotéis e restaurantes individuais ou do boca a boca.",
-      "O logotipo é lettering personalizado inspirado em materiais de arquivo da cidade, com letras que 'sobem' sugerindo a subida ao platô. O 'H' traz uma referência sutil à Whiteside Mountain, marco regional. Ícones desenhados à mão — flora, fauna, clima e topografia — aparecem num selo oval artesanal, e a paleta mistura tons de pedras preciosas com cores naturais.",
-      "A Matey descreve o posicionamento como a união entre 'conforto de férias' e a rusticidade das Blue Ridge Mountains, com a marca atuando como um guia discreto, e não como um vendedor ostensivo."
+      "O Fulham FC apresentou uma identidade visual evoluída, batizada de “Written into the Cottage” (algo como “escrito no Cottage”). O nome faz referência ao Craven Cottage, estádio às margens do Tâmisa onde o clube joga desde 1896 e que deu aos torcedores o apelido de “Cottagers”. A mudança vem na esteira da recente atualização do escudo e do sistema de design do Newcastle United.",
+      "Segundo o diretor de marketing Jack Burrows, a marca foi enraizada no caráter original do clube, buscando manter consistência ao mesmo tempo em que fica mais ágil e expressiva. A agência de longa data do clube, a Music, partiu das letras que existem dentro do próprio Craven Cottage em vez de redesenhar tudo do zero. Para o CEO e diretor de criação Dave Simpson, é a herança que cria a identidade moderna.",
+      "A peça central é uma família tipográfica sob medida, a FFC Original, criada em parceria com a fundição independente F37 a partir do mural “The Fulham Football Club” existente no estádio. A fonte ancora a marca em redes sociais, loja, campanhas e dias de jogo. Variações do slogan “London’s original football club” (o clube original de Londres) aparecem por toda parte, reforçando o orgulho de ser o primeiro clube profissional da capital, às vésperas do 150º aniversário.",
+      "O contexto também pesa: a reforma da Riverside Stand e o novo Fulham Pier criaram ofertas de hospitalidade e entretenimento voltadas a quem nem sempre vai ao jogo, de modo que a marca precisa funcionar para públicos muito diferentes."
     ]
   },
   {
-    title: "Foster + Partners extends Bilbao Fine Arts Museum with bridge-like gallery",
-    tituloPt: "Foster + Partners amplia o Museu de Belas Artes de Bilbao com galeria em forma de ponte",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/06/foster-partners-bilbao-fine-arts-museum/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/bilbao-fine-arts-museum-foster-partners-sq_dezeen_2364_col_0.jpg",
-    categoria: "Design", stars: 4, data: "6 out 2026",
-    resumo: [
-      "O escritório Foster + Partners, em colaboração com o arquiteto espanhol Luis María Uriarte, concluiu a ampliação do Museu de Belas Artes de Bilbao. A nova estrutura, chamada Agravitas, é uma galeria elevada de 55 metros que funciona como ponte entre os edifícios existentes do museu.",
-      "Colunas de aço em V sustentam o volume sem tocar nas construções originais, conectando uma ala estendida ao corpo principal e melhorando a circulação dentro da planta em formato de U. Por dentro há um salão de esculturas envolto em vidro no térreo, galerias sem colunas nos andares superiores com claraboias reguláveis, escritórios e terraços com vista da cidade.",
-      "O projeto usa aço de origem local, em referência ao passado industrial de Bilbao, e prevê beirais para controle solar e painéis fotovoltaicos na cobertura. Os edifícios antigos foram restaurados e a entrada original dos anos 1940, fechada por décadas, foi reaberta."
-    ]
-  },
-  {
-    title: "Visit Sweden campaign launches 'a paradise for introverts'",
-    tituloPt: "Visit Sweden lança campanha 'um paraíso para introvertidos' com agência de viagens pop-up",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/visit-sweden-the-introverts-travel-agency/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Visit-Sweden-Introvert-Travel-Agency.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    categoria: "Branding", stars: 4, data: "6 out 2026",
-    resumo: [
-      "A Visit Sweden lançou a 'Introvert Travel Agency', uma agência de viagens pop-up voltada a viajantes introvertidos. A ação abre em Londres de 28 a 31 de outubro, com Berlim e Paris previstas em seguida.",
-      "A campanha parte de uma pesquisa segundo a qual 48% dos britânicos se declaram introvertidos. O filme mostra um agente de viagens nervoso explicando que espaço pessoal, na Suécia, 'não é preferência, é um modo de vida'. A mensagem destaca a liberdade de percorrer a natureza, a aceitação cultural do silêncio e o 'fika', a pausa para café com doces em que o visitante escolhe quando socializar.",
-      "O CEO da Visit Sweden resume a proposta como a liberdade de decidir quando se quer companhia e quando não. A ação segue a tradição de campanhas bem-humoradas do país que brincam com estereótipos suecos."
-    ]
-  },
-  {
-    title: "How Kit Studio switched Exell to EXF.STUDIO with ASCII ingenuity",
-    tituloPt: "Como a Kit Studio transformou a Exell em EXF.STUDIO com engenhosidade em ASCII",
+    title: "Mother Design exercises restraint with new M&S pack system",
+    tituloPt: "Mother Design aposta na contenção em novo sistema de embalagens da M&S",
     source: "Design Week",
-    url: "https://www.designweek.co.uk/how-kit-studio-switched-exell-to-exf-studio-with-ascii-ingenuity/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/KitStudio_EXFStudio_Press_10-1024x576.gif",
-    categoria: "Branding", stars: 4, data: "6 out 2026",
+    url: "https://www.designweek.co.uk/mother-design-exercises-restraint-with-new-ms-pack-system/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Mother-Design_MS_Bedding-1024x576.png",
+    cat: "Branding", stars: 5,
     resumo: [
-      "A Kit Studio rebatizou a Exell Film como EXF.STUDIO, criando uma experiência digital imersiva em vez de um site tradicional. A identidade usa elementos de código ASCII, navegação espacial em várias direções e movimento expressivo para posicionar o estúdio como um 'cheat code' da produção criativa.",
-      "A designer digital sênior Rosie Guy explica que a ideia foi fazer as pessoas sentirem a diferença, e não apenas ouvi-la. O portfólio abandona a grade convencional: o usuário pode rolar livremente ou alternar para uma visualização em grade, e no celular a experiência vira rolagem vertical.",
-      "Guy defende que UX não convencional só funciona com desempenho e acessibilidade pensados desde o primeiro dia, e que PDFs estáticos de manual de marca perdem sentido quando marca e digital trabalham juntos desde o início. Num cenário em que sites gerados por IA se multiplicam, ela argumenta que o diferencial está no artesanato."
+      "A Mother Design, braço de branding da agência Mother, criou um novo sistema de embalagens para as linhas Home (casa) e Lingerie da Marks & Spencer. O estúdio eliminou sub-marcas, nomes de linhas, alegações e hierarquias concorrentes. Em vez de seguir marcas monocromáticas de casa como The White Company e Zara Home, recorreu ao design de informação: tipografia, grids e estrutura para tornar sistemas complexos fáceis de ler em um ambiente de autosserviço.",
+      "Na tipografia, a Mother manteve a MS London, aplicada de forma consistente em três pesos e com espaçamento ampliado. Títulos de produto vão em caixa-alta; benefícios e textos corridos em caixa mista, para hierarquia e legibilidade em tamanhos pequenos. Foi criado ainda o conjunto numérico MS London Geo, pensado para grandes escalas e finalizado pela Monotype.",
+      "Em Home, a embalagem segue uma hierarquia da frente para o verso, com uma “grade de benefícios” constante, paleta monocromática e adesivos coloridos por tamanho de roupa de cama. Alguns produtos saíram de sacos plásticos para caixas de aparência premium, e os edredons agora vêm em bolsas de algodão reutilizáveis, com tom bem-humorado. Em Lingerie, a imagem usa luz natural e styling descontraído, com brancos quentes e tons de grafite; um sistema de cores por tamanho reúne todos os tamanhos em uma só linha, eliminando a sub-marca separada para numerações maiores.",
+      "O sistema acabou de começar a ser implantado, então o retorno até agora é anedótico e positivo. A Mother trabalha com a M&S desde 2023; a nova linguagem não se estende à área de Alimentos, e as equipes internas da M&S vão aplicá-la a outras unidades, como Kids."
     ]
   },
   {
-    title: "Estúdio Módulo releases designs for Itaú Cultural headquarters in São Paulo",
-    tituloPt: "Estúdio Módulo revela projeto da nova sede do Itaú Cultural, na Avenida Paulista",
+    title: "Former Zaha Hadid headquarters to open as public arts venue in London",
+    tituloPt: "Antiga sede de Zaha Hadid será aberta como espaço público de artes em Londres",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/05/estudio-modulo-itau-cultural-sao-paulo-design/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/estudio-modulo-itau-cultural-sao-paolo_dezeen_2364_sq.jpg",
-    categoria: "Design", stars: 4, data: "5 out 2026",
+    url: "https://www.dezeen.com/2026/10/08/zaha-hadid-foundation-cultural-hub-london/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/zaha-hadid-foundation-cultural-hub-london-sq_dezeen_2364_col_0.jpg",
+    cat: "Design", stars: 4,
     resumo: [
-      "O escritório brasileiro Estúdio Módulo apresentou o projeto da nova sede do Itaú Cultural em São Paulo, escolhido em concurso com seis escritórios. A torre de 19 andares (oito deles subterrâneos) é esbelta e retangular, envolvida por uma fachada de brises brancos na Avenida Paulista.",
-      "Uma escada em tom terracota, visível através de vidro do piso ao teto, deve 'evocar o caráter artesanal da arte popular brasileira'. O anteparo semitransparente de brises cria um efeito cinético: as cores internas se revelam conforme o observador se move. Um pódio baixo abriga o recorte da entrada principal, e há terraços na cobertura.",
-      "São 12.275 m² para exposições, espaços de performance, áreas educativas e ateliês, com auditório de mais de 100 lugares e teatro de mais de 400 nos subsolos. A conclusão está prevista para 2031, ao lado de vizinhos como o MASP e o Centro Cultural FIESP."
+      "A Zaha Hadid Foundation vai abrir um espaço público de artes na antiga sede do estúdio de Zaha Hadid em Londres: o número 10 da Bowling Green Lane, em Clerkenwell, uma escola vitoriana tombada (Grade II) onde o escritório trabalhou por mais de 30 anos. O diretor da fundação, Aric Chen, diz que o local manterá viva a herança da arquiteta por meio de programas e exposições baseados em seu acervo e em sua abordagem voltada ao futuro.",
+      "O estúdio Studio KA reformou o térreo, abriu o interior para melhorar a circulação e restaurou elementos originais, como uma lareira e portas; as maçanetas em forma de Z de Hadid foram preservadas. O edifício ganha novas galerias, áreas de exibição, um espaço de aprendizado e um auditório para exposições, palestras, oficinas e residências criativas.",
+      "A abertura ao público acontece no próximo mês, com um simpósio de dois dias organizado com a Architectural Association e a Serpentine Galleries, em comemoração aos dez anos da fundação. A primeira exposição, com curadoria de Catherine Howe e Libby Sellers, destaca cenografias e projetos de palco de Hadid e seu estúdio. Entre as encomendas estão uma videoinstalação de 11 minutos do artista LionHeart e uma linha do tempo da vida e influência de Hadid, da ilustradora Mona Chalabi.",
+      "A fundação também ganhou nova identidade visual, assinada pela Experimental Jetset, e um novo site da Made by ON. O texto lembra que o estúdio foi rebatizado como ZHA em 2026 por Patrik Schumacher, após uma disputa judicial com a fundação."
     ]
   },
   {
-    title: "Nobody Redesigned the Allen Key for 115 Years. Here's the Fix.",
-    tituloPt: "Ninguém redesenhou a chave Allen em 115 anos. Aqui está a solução",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/06/nobody-redesigned-the-allen-key-for-115-years-heres-the-fix/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/nobody-redesigned-the-allen-key-for-115-years-heres-the-fix/turn-kit-01.jpg",
-    categoria: "Design", stars: 3, data: "6 out 2026",
-    resumo: [
-      "A designer Siddhi Ravi criou o Turn Kit, um redesenho da chave Allen que ataca mais de um século de estagnação do objeto. O kit traz três chaves hexagonais (4, 5 e 6 mm) combinadas a acessórios ergonômicos: uma manivela azul e uma empunhadura laranja.",
-      "Em vez da pegada de pinça das chaves tradicionais, os cabos permitem um movimento de manivela para baixo, reduzindo o esforço e o escorregamento nas mãos. A proposta mantém a forma familiar criada em 1909 e muda o foco para 'a parte que seguramos'.",
-      "Há também um recado de inclusão: avós com punhos doloridos e crianças passam a participar da montagem de móveis. O produto ainda é apresentado numa embalagem organizada e visualmente agradável."
-    ]
-  },
-  {
-    title: "700 Interlocking Pieces, No Glue: The Pavilion That Quietly Disappears",
-    tituloPt: "700 peças encaixadas, sem cola: o pavilhão que desaparece em silêncio",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/06/700-interlocking-pieces-no-glue-the-pavilion-that-quietly-disappears/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/700-interlocking-pieces-no-glue-the-pavilion-that-quietly-disappears/woven-01.jpg",
-    categoria: "Design", stars: 3, data: "6 out 2026",
-    resumo: [
-      "O Atelier DARN projetou o 'Woven', pavilhão temporário na floresta de Les Gavarres, na Espanha. A estrutura reúne cerca de 700 peças modulares impressas em 3D com filamento biodegradável derivado de capim-miscanthus, que se encaixam sem adesivos ou fixadores sintéticos e podem ser desmontadas com facilidade.",
-      "A filosofia trata a decomposição como parte do projeto, e não como falha. O padrão tecido aberto se integra à paisagem em vez de dominá-la, e a visibilidade das juntas reforça a transparência construtiva.",
-      "O texto reconhece que a biodegradabilidade depende das condições ambientais, mas argumenta que a contribuição do Woven é oferecer 'um ponto de partida mais honesto' para instalações temporárias, dando ao fim da vida útil o mesmo peso da construção inicial."
-    ]
-  },
-  {
-    title: "Didea creates steel-clad streetwear store inside ZHA's Mercury Tower",
-    tituloPt: "Didea cria loja de streetwear revestida de aço dentro da Mercury Tower, de Zaha Hadid, em Malta",
+    title: "Chrysler Building set to be restored and overhauled after being sold",
+    tituloPt: "Chrysler Building será restaurado e reformulado após mudança de controle",
     source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/07/didea-super-f-streetwear-store-mercury-tower-malta/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/super-f-didea-malta_dezeen_2364_col_sq1.jpg",
-    categoria: "Design", stars: 3, data: "7 out 2026",
+    url: "https://www.dezeen.com/2026/10/07/chrysler-building-restoration-plan-tishman-speyer/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/chrysler-building-renovation-_dezeen_2364_sq.jpg",
+    cat: "Design", stars: 4,
     resumo: [
-      "O estúdio Didea projetou uma loja de streetwear de 600 m² para a Super F, em St Julian's (Malta), dentro da Mercury Tower, de Zaha Hadid Architects. O projeto usa uma grade modular e flexível revestida em aço para minimizar intervenções no edifício.",
-      "O interior combina curvas e ângulos: uma vitrine central curva de vidro e provadores arredondados de aço ecoam a fluidez da torre, enquanto componentes em grade dominam o layout. O diretor criativo Nicola Andò diz que a equipe evitou alterações invasivas e alvenaria, optando por um sistema sob medida de montagem a seco.",
-      "O teto tem painéis de aço preto que escondem as instalações, e superfícies de aço escovado, polido e espelhado criam clima industrial e refinado. Plintos de blocos de aço e araras móveis, num 'sistema de pente', permitem mudar a exposição sem fixações permanentes. À noite, som e iluminação transformam o espaço em local de eventos."
+      "A incorporadora Tishman Speyer assumiu o arrendamento do Chrysler Building, em Nova York, e divulgou um plano de renovação. O pacote prevê restaurar a fachada, renovar a coroa, redesenhar ao menos 75% dos interiores e modernizar os sistemas mecânicos do marco art déco de 1,3 milhão de pés quadrados, projetado por William Van Alen nos anos 1920.",
+      "A Cooper Union, dona do terreno desde 1902, assinou o contrato de arrendamento, e os pagamentos vão diretamente para a faculdade. A Tishman Speyer, que já foi proprietária e reformou o prédio nos anos 1990 antes de vendê-lo em 2008, comprometeu US$ 235 milhões para a restauração, além dos pagamentos. Em 2024, o New York Times havia relatado a deterioração do edifício sob os antigos donos.",
+      "Nos interiores, os andares de escritório se tornarão escritórios de alto padrão, e o 61º andar — onde ficam as famosas gárgulas art déco — virará área de convivência com lounge, bem-estar e terraços. Cerca de 75% do espaço será entregue já equipado para permitir mudança rápida de inquilinos, e muitos espaços públicos, protegidos por tombamento, serão mantidos. As imagens mostram interiores contidos, com mobiliário de inspiração art déco e materiais como pedra e madeira. Os escritórios de arquitetura e interiores ainda não foram anunciados."
     ]
   },
   {
-    title: "Chipotle composes corn flutes, jalapeño trumpets for 'From Ground to Sound' jingle",
-    tituloPt: "Chipotle compõe jingle com flautas de milho e trompetes de jalapeño em 'From Ground to Sound'",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/chipotle-composes-corn-flutes-jalapeno-trumpets-from-ground-sound-jingle/1971790",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/chipotleinstruments-uwp-cus.png",
-    categoria: "Branding", stars: 3, data: "6 out 2026",
+    title: "Subway spotlights strange customer requests in new campaign",
+    tituloPt: "Subway destaca pedidos estranhos de clientes em nova campanha",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/subway-get-your-own-way-campaign/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Subway-Go-Your-Own-Way-Hero.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1534&h=1080",
+    cat: "Branding", stars: 4,
     resumo: [
-      "A Chipotle criou o jingle 'From Ground to Sound' com instrumentos feitos inteiramente de produtos frescos. A marca se uniu à London Vegetable Orchestra, grupo de cinco integrantes especializado em instrumentos de legumes, que projetou trompetes de jalapeño, flautas de milho e trompas de pimentão, em colaboração com funcionários da rede para escolher os ingredientes.",
-      "A gravação aconteceu em um único dia no Abbey Road Studios, porque os vegetais mudam de forma, textura e umidade e ficam tocáveis por menos de 24 horas. A orquestra levou três meses desenvolvendo os instrumentos. A Beacon Street Studios compôs a música e a agência Kids cuidou da direção criativa.",
-      "A Chipotle lançou ainda um vídeo de quatro minutos com entrevistas dos músicos sobre o processo."
+      "A Subway lançou sua primeira campanha independente para a região EMEA, criada pela Saatchi & Saatchi e intitulada “Get Your Own Way” (“Faça do seu jeito”). A ideia gira em torno do sistema de montar o próprio sanduíche, que existe desde 1965 e permite escolher pão, recheios, molhos e se o sanduíche vem frio ou tostado. A campanha usa clientes reais e seus pedidos, além de um sistema de design atualizado, inspirado nas bandejas de metal das lojas.",
+      "Há dois filmes principais. Em cada um, um cliente faz um pedido absurdamente específico, e a exigência causa confusão depois que ele sai: um troca o canal da TV no meio da partida em um pub, o outro faz compras na Ikea durante uma aula de direção. A mensagem é que a Subway é o lugar onde o cliente sempre consegue o que quer.",
+      "Na mídia exterior, fotos em preto e branco de recibos reais trazem pedidos bem-humorados — como pedir o máximo de milho possível sem ser demitido, ou molho de alho e ervas suficiente para afastar um vampiro. Franki Goodwin, CCO da Saatchi & Saatchi, compara a construção de uma plataforma de longo prazo em torno da personalização a montar o sub perfeito: o sistema de design é o pão, o formato de filme flexível são os recheios, e a técnica e o humor são o molho secreto."
     ]
   },
   {
-    title: "New Logo and Identity for ABCmouse by Digitas Design",
-    tituloPt: "ABCmouse ganha novo logo e identidade da Digitas Design",
+    title: "New Logo, Identity, and Sub-Brands for Bombas by &Walsh",
+    tituloPt: "Bombas ganha novo logo, identidade e sub-marcas assinados pela &Walsh",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_abcmouse_by_digitas_design.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/abcmouse_logo_before_after.png",
-    categoria: "Branding", stars: 2, data: "5 out 2026", paywall: true,
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_sub_brands_for_bombas_by_walsh.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Bombas_before_after.jpg",
+    cat: "Branding", stars: 4, paywall: true,
     resumo: [
-      "O Brand New destacou a repaginação do logo e da identidade da ABCmouse, plataforma de aprendizado infantil, assinada pela Digitas Design. O projeto aparece na seção 'Spotted' e é classificado na indústria de Educação.",
-      "As tags públicas descrevem uma identidade colorida, com tipografia sem serifa e uso de formas geométricas, e a publicação traz a comparação de antes e depois do logo."
+      "O Brand New publicou em 7 de outubro a análise “Sock and Awe” sobre o novo logo, a identidade e as sub-marcas da Bombas, marca americana de vestuário conhecida por meias, com trabalho da agência &Walsh. O post está na categoria de produtos de consumo.",
+      "As tags do artigo indicam os elementos do projeto: uma abelha (o mascote histórico da marca), um conjunto de ícones, ilustração, uma sans serif humanista e um sistema de sub-marcas. A página mostra uma comparação do logo antes e depois, além de exemplos de aplicação.",
+      "O texto completo da análise e a opinião do crítico ficam atrás de assinatura, por isso este resumo se baseia apenas nas informações públicas (título, categoria e tags)."
     ]
   },
   {
-    title: "Hark releases an AI personal assistant with a focus on privacy",
-    tituloPt: "Hark lança assistente pessoal de IA com foco em privacidade",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/06/hark-releases-an-ai-personal-assistant-with-a-focus-on-privacy/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Hark-Panels.png?resize=1200,675",
-    categoria: "Tecnologia", stars: 3, data: "6 out 2026",
+    title: "Free Ben & Jerry's 'turns up the pressure' on 'Magnum Monster's' political censorship",
+    tituloPt: "Free Ben & Jerry's aumenta a pressão sobre a “censura política” do “Monstro Magnum”",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/free-ben-jerrys-turns-pressure-magnum-monsters-political-censorship/1971920",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Ben-Jerrys-UWP-CUS.jpeg",
+    cat: "Branding", stars: 4,
     resumo: [
-      "A Hark, startup do empreendedor Brett Adcock, lançou o Hark Pro, assistente pessoal de IA que se vende pela proteção de privacidade. O serviço funciona em tela cheia, concebido como um sistema operacional para a computação com IA do futuro.",
-      "A interface tem chat, sugestões de ação e 'painéis' personalizados que funcionam como minidashboards de interesses. O usuário dá acesso a e-mail, agenda, arquivos e contas financeiras para que a IA resolva tarefas digitais sozinha; um modelo treinado para uso de computador navega por sites e conclui transações.",
-      "O líder de design, Abidhur Chowdhury, ex-Apple, diz que a empresa não está ali para vender anúncios nem roubar dados. A tela mostra numa pequena janela como o agente navega, para criar confiança. A Hark se coloca contra concorrentes como Muse, Dots e Instinct, promete um dispositivo de hardware nativo de IA em 2027 e oferece plano gratuito com assinatura para usuários avançados."
+      "Na Advertising Week de Nova York, o cofundador da Ben & Jerry’s, Ben Cohen, falou sobre a missão social da marca e sobre a campanha Free Ben & Jerry’s, que busca tornar a marca independente da dona, a Magnum Ice Cream Company. Cohen compara a Magnum à história do ganso dos ovos de ouro, argumentando que a empresa está corroendo o valor da marca, e a chama de “Monstro Magnum”.",
+      "A Unilever comprou a Ben & Jerry’s em 2000 por US$ 326 milhões e, no ano passado, separou seus mais de 100 sorvetes na Magnum. Desde então, a marca moveu ações alegando que a Magnum censurou suas mensagens sociais e políticas sobre o governo Trump e refugiados palestinos. A campanha, lançada em setembro do ano passado, soma mais de 200 mil assinaturas, 868 mil seguidores, 150 milhões de visualizações orgânicas e engajamento de 6% a 22%.",
+      "Cohen lembrou a história da marca — a primeira loja em 1978, a oferta pública que fez uma em cada cem famílias de Vermont acionistas, o Peace Pop de 1987 — e culpou a venda de 2000 pela guinada financeira. Ele afirma que, se os consumidores perderem a confiança na missão, a marca sofrerá; a Ben & Jerry’s fatura US$ 1,2 bilhão e é a segunda em autenticidade nos EUA, atrás da Patagonia. Ele desafiou a plateia a criar um briefing de guerrilha para libertar a marca. A Magnum reportou alta de 3,8% na receita do primeiro semestre de 2026, para US$ 5,4 bilhões."
+    ]
+  },
+  {
+    title: "Architects Office uses mass-timber scrap as 'immense jigsaw' for São Paulo pavilion",
+    tituloPt: "Architects Office usa sobras de madeira laminada como “imenso quebra-cabeça” em pavilhão em São Paulo",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/07/architects-office-brazilian-pavilion-glulam-scrap/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/iz-pavilion-architects-office-hero_dezeen_2364_col_0.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "O estúdio brasileiro Architects Office (AO) construiu o Pavilhão IZ, estrutura de 661 m² em Pinheiros, São Paulo, num terreno cercado de prédios residenciais. Encomendado pela incorporadora Idea!Zarvos como espaço de marketing para um empreendimento, ele foi concebido para ser desmontado, remontado e reconfigurado ao longo do tempo, em vez de ser um estande de vendas convencional.",
+      "O fundador Greg Bousquet e o diretor criativo Rafael Igayara trabalharam com a fabricante de madeira laminada colada Urbem para reaproveitar sobras de tamanhos variados do estoque da empresa — um processo que Bousquet descreve como “um imenso quebra-cabeça”.",
+      "O projeto usa o kigumi, técnica japonesa de encaixes que dispensa parafusos e peças metálicas visíveis. Design paramétrico e fabricação CNC moldaram as juntas que formam pilares e capitéis, coroados por vigas numa estrutura recíproca. As diferenças de dimensão e perfil da madeira ficam à mostra. O pavilhão se apoia numa malha de pilares pesados que liberta o térreo para circulação, vegetação e uso público, funcionando como uma “ilha” aberta à cidade."
+    ]
+  },
+  {
+    title: "New Logo and Identity for Wana Edibles by Stout",
+    tituloPt: "Wana Edibles recebe novo logo e identidade da Stout",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_wana_edibles_by_stout.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/wana_logo_before_after-1.png",
+    cat: "Branding", stars: 3, paywall: true,
+    resumo: [
+      "O Brand New publicou em 8 de outubro a análise “Wana Piece of Me?” sobre o novo logo e a identidade da Wana Edibles, marca de produtos comestíveis de cannabis, desenvolvidos pela agência Stout. O post está na categoria de produtos de consumo.",
+      "As tags citam cannabis, embalagem, fotografia, lifestyle, suplementos, paleta colorida, sans serif e sans serif condensada, sugerindo uma identidade vibrante, com tipografia condensada e abordagem fotográfica de estilo de vida. A página traz comparação do logo antes e depois e imagens das embalagens.",
+      "A avaliação completa está atrás de assinatura, então este resumo usa somente os elementos públicos da página."
+    ]
+  },
+  {
+    title: "RIMOWA's 2 New Colors Quietly Solve the Baggage Claim Problem",
+    tituloPt: "Duas novas cores da RIMOWA resolvem em silêncio o problema da esteira de bagagens",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/08/rimowas-2-new-colors-quietly-solve-the-baggage-claim-problem/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/rimowas-2-new-colors-quietly-solve-the-baggage-claim-problem/rimowa-01.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "O texto de Ida Torres parte de uma frustração comum: na esteira de bagagens, muitas malas parecem iguais, e uma mala bem projetada acaba difícil de reconhecer. Cores vivas resolvem, mas podem exagerar, e nem todo mundo quer uma mala tão chamativa.",
+      "As novas cores da RIMOWA, Umber e Ultramarine, surgem como meio-termo. O Umber é um marrom terroso, quente e contemporâneo, para quem quer sair do preto sem chamar atenção; o Ultramarine é um azul profundo e saturado, com presença suficiente para se destacar sem virar novidade passageira. As cores se estendem de malas a bolsas e acessórios.",
+      "A autora elogia a execução: nas malas Essential com ranhuras, a cor cobre também as ferragens, criando um acabamento monocromático que valoriza a forma. A campanha liga os tons a pigmentos históricos — o umber a tons de terra e o ultramarine ao azul feito de lápis-lazúli. A linha inclui bolsas Groove, como a Mini Shopping Bag nas duas cores. O texto é comedido: cor não aumenta espaço nem acelera um voo atrasado, e a Essential Cabin em Ultramarine custa US$ 990, então tamanho e configuração devem pesar mais. O veredito: Umber é calmo e versátil; Ultramarine tem mais energia sem parecer gimmick."
+    ]
+  },
+  {
+    title: "First AI came and scooped up your art. Now it's scooped up Adobe.",
+    tituloPt: "Primeiro a IA levou sua arte. Agora levou a Adobe: projeto clona o Creative Cloud",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/first-ai-came-and-scooped-up-your-art-now-its-scooped-up-adobe/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/photocraft-adjustments-1024x640.jpg",
+    cat: "Tecnologia", stars: 3,
+    resumo: [
+      "David Coveney, na Design Week, relata que o ArtCraft, um pequeno projeto de duas pessoas no GitHub, usou IA para replicar boa parte do pacote Creative Cloud da Adobe. O projeto surgiu cerca de uma semana antes, com enorme volume de código em vários subprojetos — o autor argumenta que duas pessoas não poderiam tê-lo escrito tão rápido, logo foi provavelmente criado quase todo por IA.",
+      "Os clones lembram Photoshop, Illustrator e Premiere no visual e no uso. Segundo os desenvolvedores no Discord, trata-se de engenharia reversa “clean room”; há teorias de que agentes de IA locais estudaram o software e o reescreveram, ou que ele foi decompilado e refeito em Rust, o que em geral violaria os termos de licença da Adobe. James O’Malley, que testou o clone do Photoshop (“Photocraft”), disse que era essencialmente Photoshop, mas notou que o desfoque gaussiano não funcionava direito e que o programa parecia “instável”.",
+      "O autor não testou e afirma que não executaria software “vibe-coded” com acesso ao disco; alerta que código gerado por IA sem auditoria é perigoso. Ele observa que o ArtCraft é construído em torno do Model Context Protocol (MCP), o que o diferencia fundamentalmente do desenho da Adobe, e prevê que os advogados da empresa reagirão e que o projeto pode não sobreviver sem financiamento. O episódio é visto como sinal de que a IA pode replicar software existente, ameaçando empresas que vivem de possuir e alugar seus produtos."
+    ]
+  },
+  {
+    title: "Uber and China's Pony.ai plan to launch robotaxis in London",
+    tituloPt: "Uber e a chinesa Pony.ai planejam lançar robotáxis em Londres",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/08/uber-and-chinas-pony-ai-plan-to-launch-robotaxis-in-london/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/11/pony.ai-robotaxi.jpg?resize=1200,800",
+    cat: "Tecnologia", stars: 2,
+    resumo: [
+      "A Uber e a fabricante chinesa de veículos autônomos Pony.ai planejam lançar um serviço de robotáxi em Londres, como parte de uma parceria ampliada para levar carros sem motorista à Europa. As empresas disseram que começarão a testar os robotáxis Gen-7 da Pony.ai na cidade “nas próximas semanas”.",
+      "A Uber já fez acordos com mais de 30 empresas de veículos autônomos e espera oferecer corridas autônomas em até 15 cidades até o fim de 2026, divididas de forma aproximada entre EUA e exterior. A parceria com a Pony.ai começou em maio de 2025, focada no Oriente Médio, e agora prevê 2.000 robotáxis na Europa, a começar por Zagreb, na Croácia, onde em agosto de 2026 foi lançado um serviço com a startup Verne, de Mate Rimac. A Pony.ai fornece o sistema de direção autônoma e o veículo Arcfox Alpha T5, desenvolvido com a BAIC; a Verne opera a frota; a Uber dá acesso à sua rede.",
+      "Em Londres o modelo deve ser semelhante, mas não se sabe quem será dono e operador da frota. A Pony.ai não é a única parceira da Uber na cidade: a empresa também apoia a britânica Wayve, que levantou US$ 1,2 bilhão em fevereiro de 2026 (Microsoft, Nvidia e Uber entre os investidores), com mais US$ 300 milhões da Uber condicionados ao início de operações de robotáxi, começando por Londres. A Pony.ai opera serviços em quatro cidades chinesas e se expande pela Europa e Oriente Médio, incluindo o Catar."
     ]
   }
 ];
 
-const PALETAS = {
-  Branding: [["#ff9a5a","#ff5f6d"],["#ffd36e","#ff8a4c"],["#ff7e67","#c94b8a"]],
-  Design: [["#34d3a8","#0e8f8a"],["#7be0c3","#1b9aaa"],["#4fd1a5","#2b7a78"]],
-  Tecnologia: [["#6c8cff","#7b3fe4"],["#4facfe","#6a3fd8"],["#8e7bff","#3b5bdb"]]
+const PALETTES = {
+  Branding: ["#ff8a3d", "#e8590c", "#ffd166", "#c2255c"],
+  Design: ["#2dd4bf", "#0b8f7a", "#a7f3d0", "#0f766e"],
+  Tecnologia: ["#6366f1", "#5b4bdb", "#a78bfa", "#2563eb"]
 };
 
-function Ilustracao({ cat, seed }) {
-  const ps = PALETAS[cat] || PALETAS.Design;
-  const [a, b] = ps[seed % ps.length];
-  const id = "g" + seed;
-  const r = (n) => ((seed * 37 + n * 53) % 100);
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+
+function Ilustracao({ item }) {
+  const p = PALETTES[item.cat] || PALETTES.Branding;
+  const h = hash(item.title);
+  const id = "g" + h;
+  const shapes = [0,1,2,3].map(i => {
+    const x = (h >> (i*3)) % 80 + 10, y = (h >> (i*2+1)) % 70 + 10, r = 8 + ((h >> i) % 22);
+    return i % 2 ? <circle key={i} cx={x} cy={y} r={r} fill={p[(i+1)%4]} opacity=".45"/> :
+      <rect key={i} x={x-r} y={y-r} width={r*2} height={r*2} rx="6" transform={`rotate(${(h>>i)%60} ${x} ${y})`} fill={p[(i+2)%4]} opacity=".4"/>;
+  });
   return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração " + cat}>
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a}/><stop offset="1" stopColor={b}/></linearGradient>
-      </defs>
-      <rect width="400" height="240" fill={`url(#${id})`}/>
-      <circle cx={80 + r(1) * 2} cy={60 + r(2)} r={50 + r(3) / 2} fill="#fff" opacity=".18"/>
-      <rect x={200 + r(4)} y={90 + r(5) / 2} width="120" height="120" rx="26" fill="#fff" opacity=".16" transform={`rotate(${r(6) - 20} 260 150)`}/>
-      <polygon points={`${40 + r(7)},230 ${140 + r(8)},120 ${240 + r(9)},230`} fill="#fff" opacity=".14"/>
-      <circle cx={330} cy={50} r="22" fill="#fff" opacity=".3"/>
+    <svg viewBox="0 0 100 56" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`Ilustração: ${item.tituloPt}`}>
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+      <rect width="100" height="56" fill={`url(#${id})`}/>
+      <g transform="scale(1,.56)">{shapes}</g>
     </svg>
   );
 }
 
-function Imagem({ item, idx }) {
+function Imagem({ item }) {
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) return <div className="img"><Ilustracao cat={item.categoria} seed={idx + 1} /></div>;
   return (
-    <div className="img">
-      <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+    <div className="media">
+      {item.imageUrl && !falhou
+        ? <img src={item.imageUrl} alt={`Foto da matéria: ${item.tituloPt}`} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+        : <Ilustracao item={item} />}
     </div>
   );
 }
 
-function Estrelas({ n }) { return <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>; }
+const Stars = ({ n }) => <span className="stars" title={`Relevância ${n}/5`}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
 
 function Meta({ item }) {
   return (
     <div className="meta">
-      <span className={"tag " + item.categoria}>{item.categoria}</span>
-      <strong>{item.source}</strong><span>· {item.data}</span><Estrelas n={item.stars} />
+      <span className={"tag " + item.cat}>{item.cat}</span>
+      <strong>{item.source}</strong>
+      <Stars n={item.stars} />
     </div>
   );
 }
 
-function Detalhe({ item, idx, fechar }) {
+function Modal({ item, onClose }) {
   useEffect(() => {
-    const h = (e) => e.key === "Escape" && fechar();
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
+    const k = e => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", k);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = ""; };
   }, []);
   return (
-    <div className="ov" onClick={fechar}>
-      <article className="modal" onClick={(e) => e.stopPropagation()}>
-        <Imagem item={item} idx={idx} />
-        <div className="in">
-          <button className="x" onClick={fechar} aria-label="Fechar">✕</button>
+    <div className="overlay" onClick={onClose}>
+      <article className="modal" onClick={e => e.stopPropagation()}>
+        <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+        <Imagem item={item} />
+        <div className="body">
           <Meta item={item} />
           <h2>{item.tituloPt}</h2>
           {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
-          {item.paywall && <div className="note">Matéria atrás de paywall: o resumo foi escrito apenas a partir dos elementos públicos (título, categoria, indústria e tags).</div>}
-          <div className="orig">Título original: {item.title}</div>
-          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
+          {item.paywall && <div className="note">Resumo feito a partir dos elementos públicos (título, categoria, tags), pois o texto completo está atrás de paywall.</div>}
+          <a className="src" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
         </div>
       </article>
     </div>
@@ -281,41 +288,37 @@ function Detalhe({ item, idx, fechar }) {
 
 function App() {
   const [aberto, setAberto] = useState(null);
-  const itens = [...NEWS].sort((a, b) => b.stars - a.stars);
-  const [hero, ...resto] = itens;
-  const hoje = new Date(2026, 9, 7).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-  const abrir = (it) => setAberto(it);
+  const [manchete, ...demais] = NEWS;
   return (
     <div className="wrap">
-      <header>
-        <h1>☀️ Portal da Manhã</h1>
-        <div className="date">{hoje}</div>
+      <header className="top">
+        <div><h1>Portal da Manhã</h1><div className="date">quinta-feira, 8 de outubro de 2026 · {NEWS.length} notícias de branding, design e tecnologia</div></div>
       </header>
-      <section className="hero" onClick={() => abrir(hero)}>
-        <Imagem item={hero} idx={0} />
+      <section className="card hero" onClick={() => setAberto(manchete)}>
+        <Imagem item={manchete} />
         <div className="body">
-          <Meta item={hero} />
-          <h2>{hero.tituloPt}</h2>
-          <p style={{ margin: 0, color: "#4a4f63" }}>{hero.resumo[0]}</p>
-          <span style={{ color: "var(--acc)", fontWeight: 600 }}>Ler resumo completo →</span>
+          <Meta item={manchete} />
+          <h2>{manchete.tituloPt}</h2>
+          <p className="lead">{manchete.resumo[0].slice(0, 230)}…</p>
         </div>
       </section>
       <section className="grid">
-        {resto.map((it, i) => (
-          <div className="card" key={it.url} onClick={() => abrir(it)}>
-            <Imagem item={it} idx={i + 1} />
+        {demais.map(it => (
+          <article key={it.url} className="card" onClick={() => setAberto(it)}>
+            <Imagem item={it} />
             <div className="body">
               <Meta item={it} />
               <h3>{it.tituloPt}</h3>
             </div>
-          </div>
+          </article>
         ))}
       </section>
-      <footer>Resumos produzidos em português a partir das matérias originais · Edição de 7 de outubro de 2026</footer>
-      {aberto && <Detalhe item={aberto} idx={NEWS.indexOf(aberto)} fechar={() => setAberto(null)} />}
+      <footer>Resumos escritos em português a partir das matérias originais. Clique em um cartão para ler mais.</footer>
+      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
     </div>
   );
 }
+
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>

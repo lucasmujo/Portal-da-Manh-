@@ -1,49 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 8 de outubro de 2026</title>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<title>Portal da Manhã — 9 de outubro de 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14171f;--mute:#667085;--line:#e6e8f0;--brand:#e8590c;--design:#0b8f7a;--tech:#5b4bdb}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1c1b19;--mute:#6b6862;--line:#e8e5de;--accent:#e4572e;--r:18px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:var(--mute);font-size:14px}
-.card{background:var(--card);border-radius:18px;box-shadow:0 2px 12px rgba(20,23,31,.06);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid var(--line)}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,23,31,.12)}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px}
-.hero .media{min-height:320px}
-.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+h1{font-size:34px;letter-spacing:-.02em;margin:0}
+.date{color:var(--mute);font-size:15px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
+.hero .img{min-height:340px}
+.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 .hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.media{position:relative;width:100%;aspect-ratio:16/9;background:#eceef5;overflow:hidden}
-.hero .media{aspect-ratio:auto;height:100%}
-.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
-.body{padding:16px 18px 18px}
-.body h3{margin:6px 0 8px;font-size:17px;line-height:1.3}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;color:#fff;font-size:11px}
-.tag.Branding{background:var(--brand)}.tag.Design{background:var(--design)}.tag.Tecnologia{background:var(--tech)}
-.stars{color:#f5a623;letter-spacing:1px}
-.lead{color:var(--mute);font-size:14px;margin:0}
-.overlay{position:fixed;inset:0;background:rgba(20,23,31,.5);display:flex;align-items:flex-start;justify-content:center;padding:30px 14px;overflow:auto;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;overflow:hidden;animation:up .25s;position:relative}
-.modal .media{aspect-ratio:16/8}
-.modal .body{padding:24px 28px 30px}
-.modal h2{margin:8px 0 14px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;color:#2a2f3a}
-.close{position:absolute;top:12px;right:12px;z-index:2;border:0;background:rgba(255,255,255,.92);width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.src{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:99px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:14px}
-.note{font-size:13px;color:var(--mute);background:#f6f7fb;border-radius:10px;padding:8px 12px;margin-top:6px}
-footer{margin-top:36px;text-align:center;color:var(--mute);font-size:12px}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:200px;aspect-ratio:16/9}.hero h2{font-size:23px}.modal .body{padding:18px}}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.card .img{height:180px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:17px;line-height:1.3;margin:0}
+.img{position:relative;width:100%;overflow:hidden;background:#eee}
+.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mute)}
+.tag{padding:2px 10px;border-radius:99px;font-weight:600;font-size:12px;color:#fff}
+.tag.Branding{background:#e4572e}.tag.Design{background:#14a38b}.tag.Tecnologia{background:#5b5bd6}
+.stars{color:#f0a500;letter-spacing:1px}
+.sub{color:var(--mute);font-size:14px}
+.overlay{position:fixed;inset:0;background:rgba(20,18,15,.5);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 14px;z-index:10;animation:fade .25s}
+.modal{background:var(--card);border-radius:24px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal .img{height:320px}
+.modal .in{padding:26px 30px 32px}
+.modal h2{font-size:26px;line-height:1.2;margin:8px 0 4px}
+.modal p{font-size:16px;color:#34322e}
+.close{position:sticky;float:right;top:12px;margin:12px;border:0;background:rgba(255,255,255,.92);border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.btn{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;text-decoration:none;padding:10px 20px;border-radius:99px;font-weight:600;font-size:14px}
+.note{font-size:13px;color:var(--mute);font-style:italic}
+footer{margin-top:36px;text-align:center;color:var(--mute);font-size:13px}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:26px}.modal .img{height:210px}.modal .in{padding:20px}}
 </style>
 </head>
 <body>
@@ -51,274 +53,264 @@ footer{margin-top:36px;text-align:center;color:var(--mute);font-size:12px}
 <script type="text/babel">
 const { useState, useEffect } = React;
 
-const NEWS = [
+const NOTICIAS = [
   {
-    title: "Fulham FC unveils evolved identity inspired by its riverside home",
-    tituloPt: "Fulham FC revela identidade evoluída inspirada no estádio à beira do Tâmisa",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/fulham-fc-new-identity-music-f37/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Fulham-FC-branding.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    cat: "Branding", stars: 5,
-    resumo: [
-      "O Fulham FC apresentou uma identidade visual evoluída, batizada de “Written into the Cottage” (algo como “escrito no Cottage”). O nome faz referência ao Craven Cottage, estádio às margens do Tâmisa onde o clube joga desde 1896 e que deu aos torcedores o apelido de “Cottagers”. A mudança vem na esteira da recente atualização do escudo e do sistema de design do Newcastle United.",
-      "Segundo o diretor de marketing Jack Burrows, a marca foi enraizada no caráter original do clube, buscando manter consistência ao mesmo tempo em que fica mais ágil e expressiva. A agência de longa data do clube, a Music, partiu das letras que existem dentro do próprio Craven Cottage em vez de redesenhar tudo do zero. Para o CEO e diretor de criação Dave Simpson, é a herança que cria a identidade moderna.",
-      "A peça central é uma família tipográfica sob medida, a FFC Original, criada em parceria com a fundição independente F37 a partir do mural “The Fulham Football Club” existente no estádio. A fonte ancora a marca em redes sociais, loja, campanhas e dias de jogo. Variações do slogan “London’s original football club” (o clube original de Londres) aparecem por toda parte, reforçando o orgulho de ser o primeiro clube profissional da capital, às vésperas do 150º aniversário.",
-      "O contexto também pesa: a reforma da Riverside Stand e o novo Fulham Pier criaram ofertas de hospitalidade e entretenimento voltadas a quem nem sempre vai ao jogo, de modo que a marca precisa funcionar para públicos muito diferentes."
-    ]
-  },
-  {
-    title: "Mother Design exercises restraint with new M&S pack system",
-    tituloPt: "Mother Design aposta na contenção em novo sistema de embalagens da M&S",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/mother-design-exercises-restraint-with-new-ms-pack-system/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Mother-Design_MS_Bedding-1024x576.png",
-    cat: "Branding", stars: 5,
-    resumo: [
-      "A Mother Design, braço de branding da agência Mother, criou um novo sistema de embalagens para as linhas Home (casa) e Lingerie da Marks & Spencer. O estúdio eliminou sub-marcas, nomes de linhas, alegações e hierarquias concorrentes. Em vez de seguir marcas monocromáticas de casa como The White Company e Zara Home, recorreu ao design de informação: tipografia, grids e estrutura para tornar sistemas complexos fáceis de ler em um ambiente de autosserviço.",
-      "Na tipografia, a Mother manteve a MS London, aplicada de forma consistente em três pesos e com espaçamento ampliado. Títulos de produto vão em caixa-alta; benefícios e textos corridos em caixa mista, para hierarquia e legibilidade em tamanhos pequenos. Foi criado ainda o conjunto numérico MS London Geo, pensado para grandes escalas e finalizado pela Monotype.",
-      "Em Home, a embalagem segue uma hierarquia da frente para o verso, com uma “grade de benefícios” constante, paleta monocromática e adesivos coloridos por tamanho de roupa de cama. Alguns produtos saíram de sacos plásticos para caixas de aparência premium, e os edredons agora vêm em bolsas de algodão reutilizáveis, com tom bem-humorado. Em Lingerie, a imagem usa luz natural e styling descontraído, com brancos quentes e tons de grafite; um sistema de cores por tamanho reúne todos os tamanhos em uma só linha, eliminando a sub-marca separada para numerações maiores.",
-      "O sistema acabou de começar a ser implantado, então o retorno até agora é anedótico e positivo. A Mother trabalha com a M&S desde 2023; a nova linguagem não se estende à área de Alimentos, e as equipes internas da M&S vão aplicá-la a outras unidades, como Kids."
-    ]
-  },
-  {
-    title: "Former Zaha Hadid headquarters to open as public arts venue in London",
-    tituloPt: "Antiga sede de Zaha Hadid será aberta como espaço público de artes em Londres",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/08/zaha-hadid-foundation-cultural-hub-london/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/zaha-hadid-foundation-cultural-hub-london-sq_dezeen_2364_col_0.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "A Zaha Hadid Foundation vai abrir um espaço público de artes na antiga sede do estúdio de Zaha Hadid em Londres: o número 10 da Bowling Green Lane, em Clerkenwell, uma escola vitoriana tombada (Grade II) onde o escritório trabalhou por mais de 30 anos. O diretor da fundação, Aric Chen, diz que o local manterá viva a herança da arquiteta por meio de programas e exposições baseados em seu acervo e em sua abordagem voltada ao futuro.",
-      "O estúdio Studio KA reformou o térreo, abriu o interior para melhorar a circulação e restaurou elementos originais, como uma lareira e portas; as maçanetas em forma de Z de Hadid foram preservadas. O edifício ganha novas galerias, áreas de exibição, um espaço de aprendizado e um auditório para exposições, palestras, oficinas e residências criativas.",
-      "A abertura ao público acontece no próximo mês, com um simpósio de dois dias organizado com a Architectural Association e a Serpentine Galleries, em comemoração aos dez anos da fundação. A primeira exposição, com curadoria de Catherine Howe e Libby Sellers, destaca cenografias e projetos de palco de Hadid e seu estúdio. Entre as encomendas estão uma videoinstalação de 11 minutos do artista LionHeart e uma linha do tempo da vida e influência de Hadid, da ilustradora Mona Chalabi.",
-      "A fundação também ganhou nova identidade visual, assinada pela Experimental Jetset, e um novo site da Made by ON. O texto lembra que o estúdio foi rebatizado como ZHA em 2026 por Patrik Schumacher, após uma disputa judicial com a fundação."
-    ]
-  },
-  {
-    title: "Chrysler Building set to be restored and overhauled after being sold",
-    tituloPt: "Chrysler Building será restaurado e reformulado após mudança de controle",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/07/chrysler-building-restoration-plan-tishman-speyer/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/chrysler-building-renovation-_dezeen_2364_sq.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "A incorporadora Tishman Speyer assumiu o arrendamento do Chrysler Building, em Nova York, e divulgou um plano de renovação. O pacote prevê restaurar a fachada, renovar a coroa, redesenhar ao menos 75% dos interiores e modernizar os sistemas mecânicos do marco art déco de 1,3 milhão de pés quadrados, projetado por William Van Alen nos anos 1920.",
-      "A Cooper Union, dona do terreno desde 1902, assinou o contrato de arrendamento, e os pagamentos vão diretamente para a faculdade. A Tishman Speyer, que já foi proprietária e reformou o prédio nos anos 1990 antes de vendê-lo em 2008, comprometeu US$ 235 milhões para a restauração, além dos pagamentos. Em 2024, o New York Times havia relatado a deterioração do edifício sob os antigos donos.",
-      "Nos interiores, os andares de escritório se tornarão escritórios de alto padrão, e o 61º andar — onde ficam as famosas gárgulas art déco — virará área de convivência com lounge, bem-estar e terraços. Cerca de 75% do espaço será entregue já equipado para permitir mudança rápida de inquilinos, e muitos espaços públicos, protegidos por tombamento, serão mantidos. As imagens mostram interiores contidos, com mobiliário de inspiração art déco e materiais como pedra e madeira. Os escritórios de arquitetura e interiores ainda não foram anunciados."
-    ]
-  },
-  {
-    title: "Subway spotlights strange customer requests in new campaign",
-    tituloPt: "Subway destaca pedidos estranhos de clientes em nova campanha",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/subway-get-your-own-way-campaign/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Subway-Go-Your-Own-Way-Hero.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1534&h=1080",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "A Subway lançou sua primeira campanha independente para a região EMEA, criada pela Saatchi & Saatchi e intitulada “Get Your Own Way” (“Faça do seu jeito”). A ideia gira em torno do sistema de montar o próprio sanduíche, que existe desde 1965 e permite escolher pão, recheios, molhos e se o sanduíche vem frio ou tostado. A campanha usa clientes reais e seus pedidos, além de um sistema de design atualizado, inspirado nas bandejas de metal das lojas.",
-      "Há dois filmes principais. Em cada um, um cliente faz um pedido absurdamente específico, e a exigência causa confusão depois que ele sai: um troca o canal da TV no meio da partida em um pub, o outro faz compras na Ikea durante uma aula de direção. A mensagem é que a Subway é o lugar onde o cliente sempre consegue o que quer.",
-      "Na mídia exterior, fotos em preto e branco de recibos reais trazem pedidos bem-humorados — como pedir o máximo de milho possível sem ser demitido, ou molho de alho e ervas suficiente para afastar um vampiro. Franki Goodwin, CCO da Saatchi & Saatchi, compara a construção de uma plataforma de longo prazo em torno da personalização a montar o sub perfeito: o sistema de design é o pão, o formato de filme flexível são os recheios, e a técnica e o humor são o molho secreto."
-    ]
-  },
-  {
-    title: "New Logo, Identity, and Sub-Brands for Bombas by &Walsh",
-    tituloPt: "Bombas ganha novo logo, identidade e sub-marcas assinados pela &Walsh",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_sub_brands_for_bombas_by_walsh.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Bombas_before_after.jpg",
-    cat: "Branding", stars: 4, paywall: true,
-    resumo: [
-      "O Brand New publicou em 7 de outubro a análise “Sock and Awe” sobre o novo logo, a identidade e as sub-marcas da Bombas, marca americana de vestuário conhecida por meias, com trabalho da agência &Walsh. O post está na categoria de produtos de consumo.",
-      "As tags do artigo indicam os elementos do projeto: uma abelha (o mascote histórico da marca), um conjunto de ícones, ilustração, uma sans serif humanista e um sistema de sub-marcas. A página mostra uma comparação do logo antes e depois, além de exemplos de aplicação.",
-      "O texto completo da análise e a opinião do crítico ficam atrás de assinatura, por isso este resumo se baseia apenas nas informações públicas (título, categoria e tags)."
-    ]
-  },
-  {
-    title: "Free Ben & Jerry's 'turns up the pressure' on 'Magnum Monster's' political censorship",
-    tituloPt: "Free Ben & Jerry's aumenta a pressão sobre a “censura política” do “Monstro Magnum”",
+    title: "Southwest Airlines tackles burnout culture in first campaign under new marketing chief",
+    tituloPt: "Southwest ataca a cultura do burnout na primeira campanha sob a nova chefe de marketing",
     source: "Campaign",
-    url: "https://www.campaignlive.com/article/free-ben-jerrys-turns-pressure-magnum-monsters-political-censorship/1971920",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Ben-Jerrys-UWP-CUS.jpeg",
-    cat: "Branding", stars: 4,
+    url: "https://www.campaignlive.com/article/southwest-airlines-tackles-burnout-culture-first-campaign-new-marketing-chief/1972138",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Southwest-burnout-UWP-CUS.jpeg",
+    categoria: "Branding", estrelas: 5, data: "9 out 2026",
     resumo: [
-      "Na Advertising Week de Nova York, o cofundador da Ben & Jerry’s, Ben Cohen, falou sobre a missão social da marca e sobre a campanha Free Ben & Jerry’s, que busca tornar a marca independente da dona, a Magnum Ice Cream Company. Cohen compara a Magnum à história do ganso dos ovos de ouro, argumentando que a empresa está corroendo o valor da marca, e a chama de “Monstro Magnum”.",
-      "A Unilever comprou a Ben & Jerry’s em 2000 por US$ 326 milhões e, no ano passado, separou seus mais de 100 sorvetes na Magnum. Desde então, a marca moveu ações alegando que a Magnum censurou suas mensagens sociais e políticas sobre o governo Trump e refugiados palestinos. A campanha, lançada em setembro do ano passado, soma mais de 200 mil assinaturas, 868 mil seguidores, 150 milhões de visualizações orgânicas e engajamento de 6% a 22%.",
-      "Cohen lembrou a história da marca — a primeira loja em 1978, a oferta pública que fez uma em cada cem famílias de Vermont acionistas, o Peace Pop de 1987 — e culpou a venda de 2000 pela guinada financeira. Ele afirma que, se os consumidores perderem a confiança na missão, a marca sofrerá; a Ben & Jerry’s fatura US$ 1,2 bilhão e é a segunda em autenticidade nos EUA, atrás da Patagonia. Ele desafiou a plateia a criar um briefing de guerrilha para libertar a marca. A Magnum reportou alta de 3,8% na receita do primeiro semestre de 2026, para US$ 5,4 bilhões."
+      "A Southwest Airlines, em parceria com a agência GSD&M, lançou a plataforma “Enter Airplane Mode”, que propõe ajudar viajantes a combater o burnout transformando notificações de celular em pontos do programa Rapid Rewards. É a primeira grande campanha sob Sabrina Callahan, que chegou em fevereiro como primeira vice-presidente sênior e diretora de digital e marketing da companhia, pouco depois da introdução dos assentos marcados.",
+      "A peça central, a “Notification Vacation”, convida as pessoas a enviar uma captura da tela inicial do celular: cada notificação visível vale um ponto, com limite de 10 mil pontos por pessoa. A empresa comprometeu mais de 185 milhões de pontos entre essa ação e um quiz sobre burnout. Segundo a marca, os tetos diários foram atingidos em poucas horas, e a distribuição teve de ser espalhada por vários dias.",
+      "A campanha se apoia em uma pesquisa com mais de 2 mil adultos nos EUA: 76% dizem sentir burnout e 68% acreditam que uma viagem ajuda a retomar o controle do tempo. Os diretores Will Speck e Josh Gordon fizeram filmes curtos narrados por Adam Scott, mostrando estresses cotidianos — como o transporte lotado ou uma noite em claro ouvindo um podcast de true crime — que se resolvem com uma escapada de avião.",
+      "Callahan descreve a plataforma como algo para durar vários anos, com novos produtos e experiências ao longo do tempo. Como seu cargo une marketing e digital, a mesma equipe cuida da narrativa de marca e do site/app, eliminando a passagem de bastão entre comunicação e conversão. A ideia é reafirmar a Southwest como uma companhia divertida e centrada nas pessoas."
     ]
   },
   {
-    title: "Architects Office uses mass-timber scrap as 'immense jigsaw' for São Paulo pavilion",
-    tituloPt: "Architects Office usa sobras de madeira laminada como “imenso quebra-cabeça” em pavilhão em São Paulo",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/07/architects-office-brazilian-pavilion-glulam-scrap/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/iz-pavilion-architects-office-hero_dezeen_2364_col_0.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "O estúdio brasileiro Architects Office (AO) construiu o Pavilhão IZ, estrutura de 661 m² em Pinheiros, São Paulo, num terreno cercado de prédios residenciais. Encomendado pela incorporadora Idea!Zarvos como espaço de marketing para um empreendimento, ele foi concebido para ser desmontado, remontado e reconfigurado ao longo do tempo, em vez de ser um estande de vendas convencional.",
-      "O fundador Greg Bousquet e o diretor criativo Rafael Igayara trabalharam com a fabricante de madeira laminada colada Urbem para reaproveitar sobras de tamanhos variados do estoque da empresa — um processo que Bousquet descreve como “um imenso quebra-cabeça”.",
-      "O projeto usa o kigumi, técnica japonesa de encaixes que dispensa parafusos e peças metálicas visíveis. Design paramétrico e fabricação CNC moldaram as juntas que formam pilares e capitéis, coroados por vigas numa estrutura recíproca. As diferenças de dimensão e perfil da madeira ficam à mostra. O pavilhão se apoia numa malha de pilares pesados que liberta o térreo para circulação, vegetação e uso público, funcionando como uma “ilha” aberta à cidade."
-    ]
-  },
-  {
-    title: "New Logo and Identity for Wana Edibles by Stout",
-    tituloPt: "Wana Edibles recebe novo logo e identidade da Stout",
+    title: "New Logo and Identity for Royal Copenhagen by Kontrapunkt",
+    tituloPt: "Royal Copenhagen recebe novo logo e identidade da Kontrapunkt",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_wana_edibles_by_stout.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/wana_logo_before_after-1.png",
-    cat: "Branding", stars: 3, paywall: true,
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_royal_copenhagen_by_kontrapunkt.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/royal_copenhagen_logo_before_after.png",
+    categoria: "Branding", estrelas: 4, data: "8 out 2026",
+    paywall: true,
     resumo: [
-      "O Brand New publicou em 8 de outubro a análise “Wana Piece of Me?” sobre o novo logo e a identidade da Wana Edibles, marca de produtos comestíveis de cannabis, desenvolvidos pela agência Stout. O post está na categoria de produtos de consumo.",
-      "As tags citam cannabis, embalagem, fotografia, lifestyle, suplementos, paleta colorida, sans serif e sans serif condensada, sugerindo uma identidade vibrante, com tipografia condensada e abordagem fotográfica de estilo de vida. A página traz comparação do logo antes e depois e imagens das embalagens.",
-      "A avaliação completa está atrás de assinatura, então este resumo usa somente os elementos públicos da página."
+      "O Brand New publicou a atualização de logo e identidade da Royal Copenhagen, tradicional marca dinamarquesa de porcelana, assinada pelo estúdio Kontrapunkt. O título do post — um trocadilho que sugere “se a porcelana não quebrou, não conserte” — indica uma evolução contida, que preserva boa parte do legado visual da casa.",
+      "Pelas tags da publicação (azul, coroa, Dinamarca, tipografia proprietária, wordmark), o trabalho gira em torno do tradicional azul da marca, da coroa que a acompanha há séculos e de um logotipo tipográfico com letras desenhadas sob medida. A indústria classificada é a de bens de consumo."
     ]
   },
   {
-    title: "RIMOWA's 2 New Colors Quietly Solve the Baggage Claim Problem",
-    tituloPt: "Duas novas cores da RIMOWA resolvem em silêncio o problema da esteira de bagagens",
+    title: "Fanta's AI slop Halloween advert is a real horror show",
+    tituloPt: "O comercial de Halloween da Fanta feito com IA é um verdadeiro show de horrores",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/ai/fantas-ai-slop-halloween-advert-is-a-real-horror-show",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/LwnUfbgu2K8uUiUSyLP8Wh-1920-80.jpg",
+    categoria: "Branding", estrelas: 4, data: "8 out 2026",
+    resumo: [
+      "O Creative Bloq critica duramente o novo comercial de Halloween da Fanta, produzido inteiramente com inteligência artificial pelo estúdio GRAiL. A peça faz parte do “Haunted Universe da Fanta”, plataforma pensada para que a marca “reivindique o Halloween”, nos moldes dos comerciais de Natal gerados por IA da Coca-Cola, e deve virar uma série anual com personagens e história em evolução.",
+      "O filme traz personagens originais, como um Frankenstein ciborgue e um lobisomem DJ, além de uma participação do Ghostface de “Pânico”. O autor argumenta que o resultado carece da artesania e dos efeitos práticos que o gênero de terror pede, e que os cortes bruscos deixam o produto pouco apetitoso.",
+      "A reação do público, segundo a matéria, é majoritariamente negativa: há quem diga que vai deixar de comprar o refrigerante e quem lembre que a Fanta patrocina o Fright Nights do parque Thorpe Park, também criticado pelo uso de imagens de IA. O texto questiona por que marcas historicamente feitas para agradar a todos arriscariam alienar parte relevante do público."
+    ]
+  },
+  {
+    title: "Aesop explores scent and storytelling through fragrance installations around the world",
+    tituloPt: "Aesop explora perfume e narrativa em instalações de fragrâncias pelo mundo",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/09/aesop-fragrant-fables-perfumes-installation-video/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/aesop-fragrant-fables-installations-perfumes-video-sq1_dezeen_2364_col_0.jpg",
+    categoria: "Design", estrelas: 4, data: "9 out 2026",
+    resumo: [
+      "Para a campanha “Fragrant Fables”, a Aesop transformou suas lojas em perfumarias temporárias em mais de 15 locais de 10 países, apresentando 12 perfumes ligados à ideia de unir fragrância e narrativa. Papéis e livros suspensos fazem referência às fábulas por trás de cada aroma.",
+      "Em Tóquio, a marca montou uma exposição no Hyokeikan, do Museu Nacional, com a papeleira Hiroko Tanino e seu ateliê de washi. Foram criados três acabamentos do papel artesanal, com ingredientes botânicos ligados às fragrâncias; folhas pendem entre as colunas de mármore e outras foram dobradas em formas de pergaminho. Para o novo perfume Unforeseen Aer, um grande rolo de washi traz noz-moscada prensada no papel.",
+      "Nas demais lojas, cada perfume é mostrado em três etapas — ingredientes brutos, interpretação de como cheirariam na natureza e o perfume final —, com centenas de folhas impressas no teto e pilhas de papel como pedestais para os frascos âmbar. As embalagens lembram lombadas de livros. Nova York teve leituras ao vivo das fábulas e Taiwan, uma estante de madeira com ingredientes isolados. A matéria é conteúdo de parceria produzido para a Aesop."
+    ]
+  },
+  {
+    title: "Ex-Dyson designer builds a Y2K Nokia-flavored landline for kids",
+    tituloPt: "Ex-designer da Dyson cria telefone fixo infantil com sabor Nokia dos anos 2000",
     source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/08/rimowas-2-new-colors-quietly-solve-the-baggage-claim-problem/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/rimowas-2-new-colors-quietly-solve-the-baggage-claim-problem/rimowa-01.jpg",
-    cat: "Design", stars: 3,
+    url: "https://www.yankodesign.com/2026/10/08/ex-dyson-designer-builds-a-y2k-nokia-flavored-landline-for-kids/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/an-ex-dyson-designer-built-a-landline-for-kids/yapa_landline_phone_1.jpeg",
+    categoria: "Design", estrelas: 4, data: "8 out 2026",
     resumo: [
-      "O texto de Ida Torres parte de uma frustração comum: na esteira de bagagens, muitas malas parecem iguais, e uma mala bem projetada acaba difícil de reconhecer. Cores vivas resolvem, mas podem exagerar, e nem todo mundo quer uma mala tão chamativa.",
-      "As novas cores da RIMOWA, Umber e Ultramarine, surgem como meio-termo. O Umber é um marrom terroso, quente e contemporâneo, para quem quer sair do preto sem chamar atenção; o Ultramarine é um azul profundo e saturado, com presença suficiente para se destacar sem virar novidade passageira. As cores se estendem de malas a bolsas e acessórios.",
-      "A autora elogia a execução: nas malas Essential com ranhuras, a cor cobre também as ferragens, criando um acabamento monocromático que valoriza a forma. A campanha liga os tons a pigmentos históricos — o umber a tons de terra e o ultramarine ao azul feito de lápis-lazúli. A linha inclui bolsas Groove, como a Mini Shopping Bag nas duas cores. O texto é comedido: cor não aumenta espaço nem acelera um voo atrasado, e a Essential Cabin em Ultramarine custa US$ 990, então tamanho e configuração devem pesar mais. O veredito: Umber é calmo e versátil; Ultramarine tem mais energia sem parecer gimmick."
+      "A YAPA, startup britânica, lançou um telefone fixo com fio para crianças de 5 a 14 anos, projetado com o estúdio Aetha, de Poole, liderado por Tom Parsons, ex-designer da Dyson. A proposta resgata o gesto físico de bater o fone no gancho, impossível nos smartphones.",
+      "O aparelho tem fone com cabo, teclado real e um pequeno visor com identificador de chamadas e lista de contatos. Conecta-se por Wi-Fi, sem precisar de tomada de telefone. Pais aprovam contatos por aplicativo e definem horários de chamadas; há chamadas em grupo.",
+      "A base translúcida fosca deixa ver o interior, enquanto fone, teclas e apoio traseiro vêm em cor sólida contrastante, sempre com o mesmo cabo espiral laranja — uma referência ao iMac G3. Capas intercambiáveis evocam as Xpress-On da Nokia (£19,99 cada). O aparelho custa £99,99; chamadas entre YAPAs são gratuitas, e ligar para celulares exige o plano Pro (£9,99/mês). A pré-venda é no Reino Unido, com Europa a seguir."
     ]
   },
   {
-    title: "First AI came and scooped up your art. Now it's scooped up Adobe.",
-    tituloPt: "Primeiro a IA levou sua arte. Agora levou a Adobe: projeto clona o Creative Cloud",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/first-ai-came-and-scooped-up-your-art-now-its-scooped-up-adobe/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/photocraft-adjustments-1024x640.jpg",
-    cat: "Tecnologia", stars: 3,
+    title: "New Logo and Identity for Olympic by KIND",
+    tituloPt: "Olympic ganha novo logo e identidade da KIND",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_olympic_by_kind.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/olympic_logo_before_after.png",
+    categoria: "Branding", estrelas: 3, data: "8 out 2026",
+    paywall: true,
     resumo: [
-      "David Coveney, na Design Week, relata que o ArtCraft, um pequeno projeto de duas pessoas no GitHub, usou IA para replicar boa parte do pacote Creative Cloud da Adobe. O projeto surgiu cerca de uma semana antes, com enorme volume de código em vários subprojetos — o autor argumenta que duas pessoas não poderiam tê-lo escrito tão rápido, logo foi provavelmente criado quase todo por IA.",
-      "Os clones lembram Photoshop, Illustrator e Premiere no visual e no uso. Segundo os desenvolvedores no Discord, trata-se de engenharia reversa “clean room”; há teorias de que agentes de IA locais estudaram o software e o reescreveram, ou que ele foi decompilado e refeito em Rust, o que em geral violaria os termos de licença da Adobe. James O’Malley, que testou o clone do Photoshop (“Photocraft”), disse que era essencialmente Photoshop, mas notou que o desfoque gaussiano não funcionava direito e que o programa parecia “instável”.",
-      "O autor não testou e afirma que não executaria software “vibe-coded” com acesso ao disco; alerta que código gerado por IA sem auditoria é perigoso. Ele observa que o ArtCraft é construído em torno do Model Context Protocol (MCP), o que o diferencia fundamentalmente do desenho da Adobe, e prevê que os advogados da empresa reagirão e que o projeto pode não sobreviver sem financiamento. O episódio é visto como sinal de que a IA pode replicar software existente, ameaçando empresas que vivem de possuir e alugar seus produtos."
+      "O Brand New destaca a nova identidade da Olympic, empresa do setor de logística ligada ao mar e à Noruega, criada pela agência KIND. As tags da publicação — ícone, sem serifa, mar, Noruega — apontam para um símbolo gráfico e uma tipografia sem serifa como base do sistema."
     ]
   },
   {
-    title: "Uber and China's Pony.ai plan to launch robotaxis in London",
-    tituloPt: "Uber e a chinesa Pony.ai planejam lançar robotáxis em Londres",
+    title: "Nespresso and Strava partner ahead of NYC Marathon",
+    tituloPt: "Nespresso e Strava fazem parceria antes da Maratona de Nova York",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/nespresso-strava-partner-ahead-nyc-marathon/1972086",
+    imageUrl: null,
+    categoria: "Branding", estrelas: 3, data: "8 out 2026",
+    resumo: [
+      "Durante a Advertising Week de Nova York, Nespresso e Strava anunciaram uma parceria voltada a corredores, com lançamento previsto para a semana seguinte, algumas semanas antes da Maratona de Nova York. Usuários do Strava que se comprometerem com rotinas de bem-estar durante a campanha poderão ganhar prêmios ainda não divulgados.",
+      "Jessica Padula, da Nespresso EUA, diz que o café faz parte do ritual pré-corrida e que a marca prefere se juntar a experiências já existentes — chegou a cogitar um clube de corrida próprio, mas optou pela plataforma, que tem cerca de 200 milhões de usuários mensais. A campanha mira também a Geração Z, que vê o café mais como acessório ou ingrediente do que como bebida funcional."
+    ]
+  },
+  {
+    title: "Trevor Noah knocks forced brand partnerships at Advertising Week New York",
+    tituloPt: "Trevor Noah critica parcerias forçadas com marcas na Advertising Week de Nova York",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/trevor-noah-knocks-forced-brand-partnerships-advertising-week-new-york/1972140",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/ad-week-new-york-trevor-noah-UWP-CUS.jpeg",
+    categoria: "Branding", estrelas: 3, data: "9 out 2026",
+    resumo: [
+      "Em painel na Advertising Week de Nova York, o comediante Trevor Noah disse que o público reconhece de imediato endossos forçados e simplesmente pula. Ele criticou marcas que exigem aderência estrita à sua mensagem e usou os filmes do Homem de Ferro como exemplo: as aparições de produtos funcionavam enquanto serviam ao personagem, mas pioraram quando as marcas passaram a exigir controle total.",
+      "Noah citou como caso de sucesso seus vídeos de watch party da Copa do Mundo de 2026 com a Lovesac, em que a marca abriu mão do microgerenciamento. Executivos do Google e da Publicis defenderam que a confiança migra de instituições para indivíduos e que apostar em talentos emergentes diferencia as marcas."
+    ]
+  },
+  {
+    title: "Formant Studio reinterprets the classic tavern at contemporary Mexico City restaurant",
+    tituloPt: "Formant Studio reinterpreta a taverna clássica em restaurante contemporâneo na Cidade do México",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/09/nota-taverna-mexico-city-formant-studio/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/formant-studio-nota-tavern-mexico-city_dezeen_2364_sq.jpg",
+    categoria: "Design", estrelas: 3, data: "9 out 2026",
+    resumo: [
+      "A Formant Studio projetou o interior e boa parte do mobiliário do Nota Tavern, restaurante ítalo-americano de dois andares no bairro Escandón I, ocupando a metade sobrevivente de uma casa estilo hacienda. O briefing era reinterpretar as tavernas de bairro de Chicago de forma contemporânea, combinando o minimalismo de Mies van der Rohe com o modernismo mais caloroso de Frank Lloyd Wright.",
+      "As paredes e banquetas são de rosewood mexicano, com estofados pretos Kvadrat; os pilares de pedra originais foram mantidos e despintados. Há escada espiral metálica, bar com espelho e piso de terrazzo cinza. A cozinha fica escondida sob a sala privativa e a arte e antiguidades foram curadas pela Galería Córdoba."
+    ]
+  },
+  {
+    title: "Victoria Beckham designs first homeware collection for Westwing",
+    tituloPt: "Victoria Beckham desenha sua primeira coleção de utilidades domésticas para a Westwing",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/09/victoria-beckham-first-homeware-collection-westwing/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/westwing-victoria-beckham-homeware-collection-sq.jpg",
+    categoria: "Design", estrelas: 3, data: "9 out 2026",
+    resumo: [
+      "A estilista Victoria Beckham apresentou sua coleção de estreia em casa e mesa para o varejista online Westwing, inspirada no movimento Arts and Crafts do século XIX, com formas orgânicas e materiais minimalistas.",
+      "A linha inclui manteigueiras e saleiros de aço inox com sutil formato de concha, talheres martelados, pratos de porcelana e vidro com relevo em escamas, taças e copos de vidro texturizado, castiçais, vasos e têxteis como guardanapos e porta-guardanapos. Detalhes de corrente e acentos de joalheria vêm das linhas de moda da designer, e a embalagem é verde sob medida. A matéria situa o lançamento numa tendência de designers e grandes marcas, citando as colaborações de Gustaf Westman com a IKEA e da Iittala com Pokémon."
+    ]
+  },
+  {
+    title: "This modern day iPod could be a dream come true for nostalgic MP3 player fans",
+    tituloPt: "Este iPod dos tempos modernos pode ser um sonho realizado para fãs nostálgicos de MP3 players",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/design/product-design/this-modern-day-ipod-could-be-a-dream-come-true-for-nostalgic-mp3-player-fans",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/B8aqxCbZAB8zmU2Jnp66jV-1920-80.png",
+    categoria: "Design", estrelas: 3, data: "7 out 2026",
+    resumo: [
+      "O Creative Bloq apresenta o New Matter Sudo, um MP3 player de terceiros que lembra o iPod Classic, em meio ao renovado interesse por modelos usados e recondicionados entre jovens que querem se afastar do celular.",
+      "O corpo é de alumínio, com click wheel física sob uma tela touch de 2,73 polegadas e sistema Sudo OS. Diferentemente do original, também faz streaming (serviços compatíveis ainda indefinidos), tem slot microSD de até 1 TB e entrada de fone 3,5 mm. Ainda não está à venda: um depósito de US$ 50 reserva lugar na fila, com entregas previstas para o fim de 2027 e preço esperado de US$ 249. O autor alerta para o risco de pagar por um produto inexistente, lembrando o Humane AI Pin."
+    ]
+  },
+  {
+    title: "Remember Orkut? Its founder wants to bring it back",
+    tituloPt: "Lembra do Orkut? O fundador quer trazê-lo de volta",
     source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/08/uber-and-chinas-pony-ai-plan-to-launch-robotaxis-in-london/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/11/pony.ai-robotaxi.jpg?resize=1200,800",
-    cat: "Tecnologia", stars: 2,
+    url: "https://techcrunch.com/2026/10/09/remember-orkut-its-founder-wants-to-bring-it-back/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/orkut.jpg?resize=1200,800",
+    categoria: "Tecnologia", estrelas: 3, data: "9 out 2026",
     resumo: [
-      "A Uber e a fabricante chinesa de veículos autônomos Pony.ai planejam lançar um serviço de robotáxi em Londres, como parte de uma parceria ampliada para levar carros sem motorista à Europa. As empresas disseram que começarão a testar os robotáxis Gen-7 da Pony.ai na cidade “nas próximas semanas”.",
-      "A Uber já fez acordos com mais de 30 empresas de veículos autônomos e espera oferecer corridas autônomas em até 15 cidades até o fim de 2026, divididas de forma aproximada entre EUA e exterior. A parceria com a Pony.ai começou em maio de 2025, focada no Oriente Médio, e agora prevê 2.000 robotáxis na Europa, a começar por Zagreb, na Croácia, onde em agosto de 2026 foi lançado um serviço com a startup Verne, de Mate Rimac. A Pony.ai fornece o sistema de direção autônoma e o veículo Arcfox Alpha T5, desenvolvido com a BAIC; a Verne opera a frota; a Uber dá acesso à sua rede.",
-      "Em Londres o modelo deve ser semelhante, mas não se sabe quem será dono e operador da frota. A Pony.ai não é a única parceira da Uber na cidade: a empresa também apoia a britânica Wayve, que levantou US$ 1,2 bilhão em fevereiro de 2026 (Microsoft, Nvidia e Uber entre os investidores), com mais US$ 300 milhões da Uber condicionados ao início de operações de robotáxi, começando por Londres. A Pony.ai opera serviços em quatro cidades chinesas e se expande pela Europa e Oriente Médio, incluindo o Catar."
+      "Orkut Büyükkökten, criador da rede social Orkut, pediu no X que usuários visitem Orkut.com, deixem o nome em apoio a um retorno e convidem outras pessoas. A rede, lançada em 2004 como projeto paralelo dele no Google, fez enorme sucesso na Índia e no Brasil, perdeu espaço para o Facebook e foi encerrada pelo Google em setembro de 2014.",
+      "Em carta no site, ele critica os rumos das redes sociais, sobretudo o peso dos algoritmos e do conteúdo gerado por IA, que “dissolve a premissa que tornava as redes sociais especiais”: a crença de que há uma pessoa real do outro lado. Sua tentativa anterior, o Hello (2016–2020), teve cerca de 2 milhões de downloads. Não está claro se há um novo Orkut em desenvolvimento; ele não respondeu ao TechCrunch."
     ]
   }
 ];
 
-const PALETTES = {
-  Branding: ["#ff8a3d", "#e8590c", "#ffd166", "#c2255c"],
-  Design: ["#2dd4bf", "#0b8f7a", "#a7f3d0", "#0f766e"],
-  Tecnologia: ["#6366f1", "#5b4bdb", "#a78bfa", "#2563eb"]
+const PALETAS = {
+  Branding: [["#ff9a5a","#e4572e"],["#ffd36e","#d9480f"],["#ff7e8b","#b5179e"]],
+  Design: [["#5ee0c0","#0b7a6b"],["#9be37a","#14a38b"],["#6bd6e6","#0f766e"]],
+  Tecnologia: [["#7aa7ff","#4c3fd1"],["#b08cff","#2f2a9c"],["#6fd0ff","#5b5bd6"]]
 };
 
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
-
-function Ilustracao({ item }) {
-  const p = PALETTES[item.cat] || PALETTES.Branding;
-  const h = hash(item.title);
-  const id = "g" + h;
-  const shapes = [0,1,2,3].map(i => {
-    const x = (h >> (i*3)) % 80 + 10, y = (h >> (i*2+1)) % 70 + 10, r = 8 + ((h >> i) % 22);
-    return i % 2 ? <circle key={i} cx={x} cy={y} r={r} fill={p[(i+1)%4]} opacity=".45"/> :
-      <rect key={i} x={x-r} y={y-r} width={r*2} height={r*2} rx="6" transform={`rotate(${(h>>i)%60} ${x} ${y})`} fill={p[(i+2)%4]} opacity=".4"/>;
-  });
+function Ilustracao({ item, idx }) {
+  const p = PALETAS[item.categoria][idx % 3];
+  const id = "g" + idx;
   return (
-    <svg viewBox="0 0 100 56" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`Ilustração: ${item.tituloPt}`}>
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-      <rect width="100" height="56" fill={`url(#${id})`}/>
-      <g transform="scale(1,.56)">{shapes}</g>
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: " + item.tituloPt}>
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor={p[0]} /><stop offset="1" stopColor={p[1]} />
+        </linearGradient>
+      </defs>
+      <rect width="400" height="240" fill={`url(#${id})`} />
+      <circle cx={80 + (idx * 37) % 200} cy="70" r="90" fill="#fff" opacity=".14" />
+      <circle cx={300 - (idx * 23) % 120} cy="190" r="70" fill="#fff" opacity=".18" />
+      <rect x="150" y="60" width="130" height="130" rx="26" fill="#fff" opacity=".2" transform={`rotate(${15 + idx * 9} 215 125)`} />
+      <polygon points="40,220 120,120 200,220" fill="#000" opacity=".12" />
     </svg>
   );
 }
 
-function Imagem({ item }) {
+function Imagem({ item, idx, className }) {
   const [falhou, setFalhou] = useState(false);
+  const mostrarSvg = !item.imageUrl || falhou;
   return (
-    <div className="media">
-      {item.imageUrl && !falhou
-        ? <img src={item.imageUrl} alt={`Foto da matéria: ${item.tituloPt}`} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
-        : <Ilustracao item={item} />}
+    <div className={"img " + (className || "")}>
+      {mostrarSvg
+        ? <Ilustracao item={item} idx={idx} />
+        : <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />}
     </div>
   );
 }
 
-const Stars = ({ n }) => <span className="stars" title={`Relevância ${n}/5`}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
+const Estrelas = ({ n }) => <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
 
 function Meta({ item }) {
   return (
     <div className="meta">
-      <span className={"tag " + item.cat}>{item.cat}</span>
-      <strong>{item.source}</strong>
-      <Stars n={item.stars} />
+      <span className={"tag " + item.categoria}>{item.categoria}</span>
+      <Estrelas n={item.estrelas} />
+      <span>{item.source} · {item.data}</span>
     </div>
   );
 }
 
-function Modal({ item, onClose }) {
+function Detalhe({ item, idx, onClose }) {
   useEffect(() => {
-    const k = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", k);
+    const h = e => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", h);
     document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", k); document.body.style.overflow = ""; };
+    return () => { window.removeEventListener("keydown", h); document.body.style.overflow = ""; };
   }, []);
   return (
     <div className="overlay" onClick={onClose}>
-      <article className="modal" onClick={e => e.stopPropagation()}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
         <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-        <Imagem item={item} />
-        <div className="body">
+        <Imagem item={item} idx={idx} />
+        <div className="in">
           <Meta item={item} />
           <h2>{item.tituloPt}</h2>
-          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
-          {item.paywall && <div className="note">Resumo feito a partir dos elementos públicos (título, categoria, tags), pois o texto completo está atrás de paywall.</div>}
-          <a className="src" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
+          <div className="sub">{item.title}</div>
+          <div style={{ marginTop: 14 }}>{item.resumo.map((t, i) => <p key={i}>{t}</p>)}</div>
+          {item.paywall && <p className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, indústria e tags).</p>}
+          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
         </div>
-      </article>
+      </div>
     </div>
   );
 }
 
 function App() {
-  const [aberto, setAberto] = useState(null);
-  const [manchete, ...demais] = NEWS;
+  const [aberta, setAberta] = useState(null);
+  const lista = [...NOTICIAS].sort((a, b) => b.estrelas - a.estrelas);
+  const [top, ...resto] = lista;
   return (
     <div className="wrap">
-      <header className="top">
-        <div><h1>Portal da Manhã</h1><div className="date">quinta-feira, 8 de outubro de 2026 · {NEWS.length} notícias de branding, design e tecnologia</div></div>
+      <header>
+        <h1>☀️ Portal da Manhã</h1>
+        <div className="date">sexta-feira, 9 de outubro de 2026 · {lista.length} notícias</div>
       </header>
-      <section className="card hero" onClick={() => setAberto(manchete)}>
-        <Imagem item={manchete} />
-        <div className="body">
-          <Meta item={manchete} />
-          <h2>{manchete.tituloPt}</h2>
-          <p className="lead">{manchete.resumo[0].slice(0, 230)}…</p>
+      <div className="hero" onClick={() => setAberta(0)}>
+        <Imagem item={top} idx={0} />
+        <div className="txt">
+          <Meta item={top} />
+          <h2>{top.tituloPt}</h2>
+          <div className="sub">{top.resumo[0].slice(0, 190)}…</div>
         </div>
-      </section>
-      <section className="grid">
-        {demais.map(it => (
-          <article key={it.url} className="card" onClick={() => setAberto(it)}>
-            <Imagem item={it} />
-            <div className="body">
-              <Meta item={it} />
-              <h3>{it.tituloPt}</h3>
-            </div>
+      </div>
+      <div className="grid">
+        {resto.map((n, i) => (
+          <article className="card" key={n.url} onClick={() => setAberta(i + 1)}>
+            <Imagem item={n} idx={i + 1} />
+            <div className="body"><Meta item={n} /><h3>{n.tituloPt}</h3></div>
           </article>
         ))}
-      </section>
-      <footer>Resumos escritos em português a partir das matérias originais. Clique em um cartão para ler mais.</footer>
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
+      </div>
+      <footer>Resumos escritos em português a partir das matérias originais. Clique em um card para ler.</footer>
+      {aberta !== null && <Detalhe item={lista[aberta]} idx={aberta} onClose={() => setAberta(null)} />}
     </div>
   );
 }
-
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>

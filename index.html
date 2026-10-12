@@ -1,317 +1,265 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 9 de outubro de 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<title>Portal da Manhã — 12 de outubro de 2026</title>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#1c1b19;--mute:#6b6862;--line:#e8e5de;--accent:#e4572e;--r:18px}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7185;--line:#e6e8f0;--acc:#4f46e5}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-h1{font-size:34px;letter-spacing:-.02em;margin:0}
-.date{color:var(--mute);font-size:15px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
-.hero .img{min-height:340px}
-.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+header.top h1{margin:0;font-size:30px;letter-spacing:-.02em}
+header.top p{margin:0;color:var(--mut);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#eef0ff;color:var(--acc)}
+.tag.Branding{background:#fff1e6;color:#c2410c}.tag.Design{background:#e3f8f2;color:#0f766e}.tag.Tecnologia{background:#ece9ff;color:#5b3fd0}
+.stars{color:#f59e0b;letter-spacing:1px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 1px 3px rgba(20,22,31,.05);transition:transform .2s,box-shadow .2s;text-align:left;padding:0;font:inherit;color:inherit;display:block;width:100%}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(20,22,31,.10)}
+.media{position:relative;aspect-ratio:16/9;background:#eceef5;overflow:hidden}
+.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 18px 18px}
+.body h3{margin:10px 0 6px;font-size:17px;line-height:1.3}
+.meta{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:12.5px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:24px}
+.hero .media{aspect-ratio:auto;min-height:340px}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.hero h2{font-size:28px;line-height:1.2;margin:12px 0 10px;letter-spacing:-.01em}
+.orig{color:var(--mut);font-size:13px;font-style:italic}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
-.card .img{height:180px}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:17px;line-height:1.3;margin:0}
-.img{position:relative;width:100%;overflow:hidden;background:#eee}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mute)}
-.tag{padding:2px 10px;border-radius:99px;font-weight:600;font-size:12px;color:#fff}
-.tag.Branding{background:#e4572e}.tag.Design{background:#14a38b}.tag.Tecnologia{background:#5b5bd6}
-.stars{color:#f0a500;letter-spacing:1px}
-.sub{color:var(--mute);font-size:14px}
-.overlay{position:fixed;inset:0;background:rgba(20,18,15,.5);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 14px;z-index:10;animation:fade .25s}
-.modal{background:var(--card);border-radius:24px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.modal .img{height:320px}
-.modal .in{padding:26px 30px 32px}
-.modal h2{font-size:26px;line-height:1.2;margin:8px 0 4px}
-.modal p{font-size:16px;color:#34322e}
-.close{position:sticky;float:right;top:12px;margin:12px;border:0;background:rgba(255,255,255,.92);border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.btn{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;text-decoration:none;padding:10px 20px;border-radius:99px;font-weight:600;font-size:14px}
-.note{font-size:13px;color:var(--mute);font-style:italic}
-footer{margin-top:36px;text-align:center;color:var(--mute);font-size:13px}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:26px}.modal .img{height:210px}.modal .in{padding:20px}}
+.overlay{position:fixed;inset:0;background:rgba(20,22,31,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:30px 14px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .28s ease;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.modal .media{aspect-ratio:16/8}
+.modal .in{padding:26px 30px 30px}
+.modal h2{margin:10px 0 6px;font-size:26px;line-height:1.2}
+.modal p{font-size:16px;color:#2b2f3d}
+.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:11px 18px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.p{background:var(--acc);color:#fff}.btn.s{background:#eef0f6;color:var(--ink)}
+footer{margin-top:40px;color:var(--mut);font-size:12.5px;text-align:center}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero h2{font-size:23px}.modal .in{padding:20px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-
 const NOTICIAS = [
   {
-    title: "Southwest Airlines tackles burnout culture in first campaign under new marketing chief",
-    tituloPt: "Southwest ataca a cultura do burnout na primeira campanha sob a nova chefe de marketing",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/southwest-airlines-tackles-burnout-culture-first-campaign-new-marketing-chief/1972138",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Southwest-burnout-UWP-CUS.jpeg",
-    categoria: "Branding", estrelas: 5, data: "9 out 2026",
-    resumo: [
-      "A Southwest Airlines, em parceria com a agência GSD&M, lançou a plataforma “Enter Airplane Mode”, que propõe ajudar viajantes a combater o burnout transformando notificações de celular em pontos do programa Rapid Rewards. É a primeira grande campanha sob Sabrina Callahan, que chegou em fevereiro como primeira vice-presidente sênior e diretora de digital e marketing da companhia, pouco depois da introdução dos assentos marcados.",
-      "A peça central, a “Notification Vacation”, convida as pessoas a enviar uma captura da tela inicial do celular: cada notificação visível vale um ponto, com limite de 10 mil pontos por pessoa. A empresa comprometeu mais de 185 milhões de pontos entre essa ação e um quiz sobre burnout. Segundo a marca, os tetos diários foram atingidos em poucas horas, e a distribuição teve de ser espalhada por vários dias.",
-      "A campanha se apoia em uma pesquisa com mais de 2 mil adultos nos EUA: 76% dizem sentir burnout e 68% acreditam que uma viagem ajuda a retomar o controle do tempo. Os diretores Will Speck e Josh Gordon fizeram filmes curtos narrados por Adam Scott, mostrando estresses cotidianos — como o transporte lotado ou uma noite em claro ouvindo um podcast de true crime — que se resolvem com uma escapada de avião.",
-      "Callahan descreve a plataforma como algo para durar vários anos, com novos produtos e experiências ao longo do tempo. Como seu cargo une marketing e digital, a mesma equipe cuida da narrativa de marca e do site/app, eliminando a passagem de bastão entre comunicação e conversão. A ideia é reafirmar a Southwest como uma companhia divertida e centrada nas pessoas."
-    ]
+    title: "USA's Department of War quietly releases new branding that isn't at all alarming.",
+    tituloPt: "Departamento de Guerra dos EUA lança nova marca “sem nada de alarmante”",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/usas-department-of-war-quietly-releases-new-branding-that-isnt-at-all-alarming/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/styles-to-avoid-mood-board-1-1024x700.png",
+    categoria: "Branding",
+    estrelas: 5,
+    resumo: ["Em um texto de opinião satírico publicado em 10 de outubro, o designer David Coveney imagina como seria vencer a licitação para criar a identidade de um departamento do governo americano — e descobrir que o cliente é o Departamento de Defesa, que adotou como título preferido o nome “Departamento de Guerra”, em desuso desde 1947.", "Na narrativa, ao sugerir de brincadeira que evitassem o nome, o cliente reagiu com entusiasmo. Um moodboard intitulado “evite isto”, com o título em corpo minúsculo, teria sido mostrado aos oficiais — que o aprovaram. O resultado seria um emblema com águias severas e tipografia pesada e imperativa, de inspiração romana simplificada.", "O autor liga o visual a uma onda de nostalgia no design e observa que a imagética lembra símbolos europeus de meados do século XX, tratando a semelhança, com ironia, como coincidência. O texto defende ainda que bons designers devem questionar direções criativas ruins em vez de simplesmente aceitá-las. Tags: processo de branding, direção de design, moodboards, nostalgia, rebrand."],
   },
   {
-    title: "New Logo and Identity for Royal Copenhagen by Kontrapunkt",
-    tituloPt: "Royal Copenhagen recebe novo logo e identidade da Kontrapunkt",
+    title: "New Logo and Identity for Liverpool Philharmonic by Smiling Wolf",
+    tituloPt: "Liverpool Philharmonic ganha novo logo e identidade da Smiling Wolf",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_royal_copenhagen_by_kontrapunkt.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/royal_copenhagen_logo_before_after.png",
-    categoria: "Branding", estrelas: 4, data: "8 out 2026",
-    paywall: true,
-    resumo: [
-      "O Brand New publicou a atualização de logo e identidade da Royal Copenhagen, tradicional marca dinamarquesa de porcelana, assinada pelo estúdio Kontrapunkt. O título do post — um trocadilho que sugere “se a porcelana não quebrou, não conserte” — indica uma evolução contida, que preserva boa parte do legado visual da casa.",
-      "Pelas tags da publicação (azul, coroa, Dinamarca, tipografia proprietária, wordmark), o trabalho gira em torno do tradicional azul da marca, da coroa que a acompanha há séculos e de um logotipo tipográfico com letras desenhadas sob medida. A indústria classificada é a de bens de consumo."
-    ]
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_liverpool_philharmonic_by_smiling_wolf.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/liverpool_philharmonic_logo_before_after.png",
+    categoria: "Branding",
+    estrelas: 5,
+    resumo: ["O Brand New publicou em 9 de outubro uma análise da nova identidade da Liverpool Philharmonic, orquestra britânica, criada pelo estúdio Smiling Wolf. O post, na categoria Cultura, vem com o trocadilho “I’m Hall Ears” e mostra imagens de antes e depois do logo e uma aplicação de exemplo.", "As tags da publicação — concêntrico, orquestra, sem serifa, sinfonia, Reino Unido — sugerem um sistema baseado em formas circulares ou aninhadas e tipografia sem serifa, mas são apenas rótulos, não uma descrição confirmada do conceito.", "Nota: o artigo completo está atrás de paywall; este resumo se limita a título, legendas, categoria e tags públicas."],
   },
   {
-    title: "Fanta's AI slop Halloween advert is a real horror show",
-    tituloPt: "O comercial de Halloween da Fanta feito com IA é um verdadeiro show de horrores",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/ai/fantas-ai-slop-halloween-advert-is-a-real-horror-show",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/LwnUfbgu2K8uUiUSyLP8Wh-1920-80.jpg",
-    categoria: "Branding", estrelas: 4, data: "8 out 2026",
-    resumo: [
-      "O Creative Bloq critica duramente o novo comercial de Halloween da Fanta, produzido inteiramente com inteligência artificial pelo estúdio GRAiL. A peça faz parte do “Haunted Universe da Fanta”, plataforma pensada para que a marca “reivindique o Halloween”, nos moldes dos comerciais de Natal gerados por IA da Coca-Cola, e deve virar uma série anual com personagens e história em evolução.",
-      "O filme traz personagens originais, como um Frankenstein ciborgue e um lobisomem DJ, além de uma participação do Ghostface de “Pânico”. O autor argumenta que o resultado carece da artesania e dos efeitos práticos que o gênero de terror pede, e que os cortes bruscos deixam o produto pouco apetitoso.",
-      "A reação do público, segundo a matéria, é majoritariamente negativa: há quem diga que vai deixar de comprar o refrigerante e quem lembre que a Fanta patrocina o Fright Nights do parque Thorpe Park, também criticado pelo uso de imagens de IA. O texto questiona por que marcas historicamente feitas para agradar a todos arriscariam alienar parte relevante do público."
-    ]
-  },
-  {
-    title: "Aesop explores scent and storytelling through fragrance installations around the world",
-    tituloPt: "Aesop explora perfume e narrativa em instalações de fragrâncias pelo mundo",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/09/aesop-fragrant-fables-perfumes-installation-video/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/aesop-fragrant-fables-installations-perfumes-video-sq1_dezeen_2364_col_0.jpg",
-    categoria: "Design", estrelas: 4, data: "9 out 2026",
-    resumo: [
-      "Para a campanha “Fragrant Fables”, a Aesop transformou suas lojas em perfumarias temporárias em mais de 15 locais de 10 países, apresentando 12 perfumes ligados à ideia de unir fragrância e narrativa. Papéis e livros suspensos fazem referência às fábulas por trás de cada aroma.",
-      "Em Tóquio, a marca montou uma exposição no Hyokeikan, do Museu Nacional, com a papeleira Hiroko Tanino e seu ateliê de washi. Foram criados três acabamentos do papel artesanal, com ingredientes botânicos ligados às fragrâncias; folhas pendem entre as colunas de mármore e outras foram dobradas em formas de pergaminho. Para o novo perfume Unforeseen Aer, um grande rolo de washi traz noz-moscada prensada no papel.",
-      "Nas demais lojas, cada perfume é mostrado em três etapas — ingredientes brutos, interpretação de como cheirariam na natureza e o perfume final —, com centenas de folhas impressas no teto e pilhas de papel como pedestais para os frascos âmbar. As embalagens lembram lombadas de livros. Nova York teve leituras ao vivo das fábulas e Taiwan, uma estante de madeira com ingredientes isolados. A matéria é conteúdo de parceria produzido para a Aesop."
-    ]
-  },
-  {
-    title: "Ex-Dyson designer builds a Y2K Nokia-flavored landline for kids",
-    tituloPt: "Ex-designer da Dyson cria telefone fixo infantil com sabor Nokia dos anos 2000",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/08/ex-dyson-designer-builds-a-y2k-nokia-flavored-landline-for-kids/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/an-ex-dyson-designer-built-a-landline-for-kids/yapa_landline_phone_1.jpeg",
-    categoria: "Design", estrelas: 4, data: "8 out 2026",
-    resumo: [
-      "A YAPA, startup britânica, lançou um telefone fixo com fio para crianças de 5 a 14 anos, projetado com o estúdio Aetha, de Poole, liderado por Tom Parsons, ex-designer da Dyson. A proposta resgata o gesto físico de bater o fone no gancho, impossível nos smartphones.",
-      "O aparelho tem fone com cabo, teclado real e um pequeno visor com identificador de chamadas e lista de contatos. Conecta-se por Wi-Fi, sem precisar de tomada de telefone. Pais aprovam contatos por aplicativo e definem horários de chamadas; há chamadas em grupo.",
-      "A base translúcida fosca deixa ver o interior, enquanto fone, teclas e apoio traseiro vêm em cor sólida contrastante, sempre com o mesmo cabo espiral laranja — uma referência ao iMac G3. Capas intercambiáveis evocam as Xpress-On da Nokia (£19,99 cada). O aparelho custa £99,99; chamadas entre YAPAs são gratuitas, e ligar para celulares exige o plano Pro (£9,99/mês). A pré-venda é no Reino Unido, com Europa a seguir."
-    ]
-  },
-  {
-    title: "New Logo and Identity for Olympic by KIND",
-    tituloPt: "Olympic ganha novo logo e identidade da KIND",
+    title: "New Logo and Identity for Instytut Adama Mickiewicza by Podpunkt",
+    tituloPt: "Instytut Adama Mickiewicza, da Polônia, recebe novo logo e identidade da Podpunkt",
     source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_olympic_by_kind.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/olympic_logo_before_after.png",
-    categoria: "Branding", estrelas: 3, data: "8 out 2026",
-    paywall: true,
-    resumo: [
-      "O Brand New destaca a nova identidade da Olympic, empresa do setor de logística ligada ao mar e à Noruega, criada pela agência KIND. As tags da publicação — ícone, sem serifa, mar, Noruega — apontam para um símbolo gráfico e uma tipografia sem serifa como base do sistema."
-    ]
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_instytut_adama_mickiewicza_by_podpunkt.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/iam_pl_logo_before_after.png",
+    categoria: "Branding",
+    estrelas: 4,
+    resumo: ["O Brand New registrou em 9 de outubro, na seção “Spotted”, o novo logo e identidade do Instytut Adama Mickiewicza, instituto cultural polonês, desenvolvidos pelo estúdio Podpunkt. A indústria listada é Educação, e o post exibe o antes e o depois do logotipo.", "As tags — ângulo, evolução, Podpunkt, Polônia e vermelho — indicam uma evolução da marca com uso de ângulos e da cor vermelha, sem que o texto público detalhe o conceito.", "Nota: o corpo do artigo está atrás de paywall; o resumo usa apenas elementos públicos (título, categoria, tags)."],
   },
   {
-    title: "Nespresso and Strava partner ahead of NYC Marathon",
-    tituloPt: "Nespresso e Strava fazem parceria antes da Maratona de Nova York",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/nespresso-strava-partner-ahead-nyc-marathon/1972086",
-    imageUrl: null,
-    categoria: "Branding", estrelas: 3, data: "8 out 2026",
-    resumo: [
-      "Durante a Advertising Week de Nova York, Nespresso e Strava anunciaram uma parceria voltada a corredores, com lançamento previsto para a semana seguinte, algumas semanas antes da Maratona de Nova York. Usuários do Strava que se comprometerem com rotinas de bem-estar durante a campanha poderão ganhar prêmios ainda não divulgados.",
-      "Jessica Padula, da Nespresso EUA, diz que o café faz parte do ritual pré-corrida e que a marca prefere se juntar a experiências já existentes — chegou a cogitar um clube de corrida próprio, mas optou pela plataforma, que tem cerca de 200 milhões de usuários mensais. A campanha mira também a Geração Z, que vê o café mais como acessório ou ingrediente do que como bebida funcional."
-    ]
-  },
-  {
-    title: "Trevor Noah knocks forced brand partnerships at Advertising Week New York",
-    tituloPt: "Trevor Noah critica parcerias forçadas com marcas na Advertising Week de Nova York",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/trevor-noah-knocks-forced-brand-partnerships-advertising-week-new-york/1972140",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/ad-week-new-york-trevor-noah-UWP-CUS.jpeg",
-    categoria: "Branding", estrelas: 3, data: "9 out 2026",
-    resumo: [
-      "Em painel na Advertising Week de Nova York, o comediante Trevor Noah disse que o público reconhece de imediato endossos forçados e simplesmente pula. Ele criticou marcas que exigem aderência estrita à sua mensagem e usou os filmes do Homem de Ferro como exemplo: as aparições de produtos funcionavam enquanto serviam ao personagem, mas pioraram quando as marcas passaram a exigir controle total.",
-      "Noah citou como caso de sucesso seus vídeos de watch party da Copa do Mundo de 2026 com a Lovesac, em que a marca abriu mão do microgerenciamento. Executivos do Google e da Publicis defenderam que a confiança migra de instituições para indivíduos e que apostar em talentos emergentes diferencia as marcas."
-    ]
-  },
-  {
-    title: "Formant Studio reinterprets the classic tavern at contemporary Mexico City restaurant",
-    tituloPt: "Formant Studio reinterpreta a taverna clássica em restaurante contemporâneo na Cidade do México",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/09/nota-taverna-mexico-city-formant-studio/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/formant-studio-nota-tavern-mexico-city_dezeen_2364_sq.jpg",
-    categoria: "Design", estrelas: 3, data: "9 out 2026",
-    resumo: [
-      "A Formant Studio projetou o interior e boa parte do mobiliário do Nota Tavern, restaurante ítalo-americano de dois andares no bairro Escandón I, ocupando a metade sobrevivente de uma casa estilo hacienda. O briefing era reinterpretar as tavernas de bairro de Chicago de forma contemporânea, combinando o minimalismo de Mies van der Rohe com o modernismo mais caloroso de Frank Lloyd Wright.",
-      "As paredes e banquetas são de rosewood mexicano, com estofados pretos Kvadrat; os pilares de pedra originais foram mantidos e despintados. Há escada espiral metálica, bar com espelho e piso de terrazzo cinza. A cozinha fica escondida sob a sala privativa e a arte e antiguidades foram curadas pela Galería Córdoba."
-    ]
-  },
-  {
-    title: "Victoria Beckham designs first homeware collection for Westwing",
-    tituloPt: "Victoria Beckham desenha sua primeira coleção de utilidades domésticas para a Westwing",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/09/victoria-beckham-first-homeware-collection-westwing/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/westwing-victoria-beckham-homeware-collection-sq.jpg",
-    categoria: "Design", estrelas: 3, data: "9 out 2026",
-    resumo: [
-      "A estilista Victoria Beckham apresentou sua coleção de estreia em casa e mesa para o varejista online Westwing, inspirada no movimento Arts and Crafts do século XIX, com formas orgânicas e materiais minimalistas.",
-      "A linha inclui manteigueiras e saleiros de aço inox com sutil formato de concha, talheres martelados, pratos de porcelana e vidro com relevo em escamas, taças e copos de vidro texturizado, castiçais, vasos e têxteis como guardanapos e porta-guardanapos. Detalhes de corrente e acentos de joalheria vêm das linhas de moda da designer, e a embalagem é verde sob medida. A matéria situa o lançamento numa tendência de designers e grandes marcas, citando as colaborações de Gustaf Westman com a IKEA e da Iittala com Pokémon."
-    ]
-  },
-  {
-    title: "This modern day iPod could be a dream come true for nostalgic MP3 player fans",
-    tituloPt: "Este iPod dos tempos modernos pode ser um sonho realizado para fãs nostálgicos de MP3 players",
+    title: "New Balance's Steve Jobs homage is so subtle you might have missed it",
+    tituloPt: "A homenagem da New Balance a Steve Jobs é tão sutil que você pode ter perdido",
     source: "Creative Bloq",
-    url: "https://www.creativebloq.com/design/product-design/this-modern-day-ipod-could-be-a-dream-come-true-for-nostalgic-mp3-player-fans",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/B8aqxCbZAB8zmU2Jnp66jV-1920-80.png",
-    categoria: "Design", estrelas: 3, data: "7 out 2026",
-    resumo: [
-      "O Creative Bloq apresenta o New Matter Sudo, um MP3 player de terceiros que lembra o iPod Classic, em meio ao renovado interesse por modelos usados e recondicionados entre jovens que querem se afastar do celular.",
-      "O corpo é de alumínio, com click wheel física sob uma tela touch de 2,73 polegadas e sistema Sudo OS. Diferentemente do original, também faz streaming (serviços compatíveis ainda indefinidos), tem slot microSD de até 1 TB e entrada de fone 3,5 mm. Ainda não está à venda: um depósito de US$ 50 reserva lugar na fila, com entregas previstas para o fim de 2027 e preço esperado de US$ 249. O autor alerta para o risco de pagar por um produto inexistente, lembrando o Humane AI Pin."
-    ]
+    url: "https://www.creativebloq.com/news/new-balances-steve-jobs-homage-is-so-subtle-you-might-have-missed-it",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/k3dYgBH3hy7Jh43jo6w6pZ-1920-80.jpg",
+    categoria: "Branding",
+    estrelas: 4,
+    resumo: ["Quinze anos após a morte de Steve Jobs, a New Balance prestou uma homenagem discreta ao cofundador da Apple: recriou uma de suas poses mais conhecidas, a da apresentação original do iPad, em 2010.", "Em vez de anunciar a referência, a marca a inseriu entre as imagens promocionais do tênis cinza 992, funcionando como um detalhe escondido para quem reconhece a cena. O artigo vê o gesto como elegante e coerente com o minimalismo associado a Jobs.", "Nas redes, usuários elogiaram: um deles disse que o melhor branding não precisa gritar. O texto é de Natalie Fear, com créditos de foto à New Balance e à Getty Images."],
   },
   {
-    title: "Remember Orkut? Its founder wants to bring it back",
-    tituloPt: "Lembra do Orkut? O fundador quer trazê-lo de volta",
+    title: "Did a book from 1973 predict the logo designs of some of today's biggest companies?",
+    tituloPt: "Um livro de 1973 previu os logos de algumas das maiores empresas de hoje?",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/did-a-book-from-1973-predict-the-logo-designs-of-some-of-todays-biggest-companies",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/YfgQQHgxQyxhDYR4oTvRAB-1200-80.jpg",
+    categoria: "Branding",
+    estrelas: 4,
+    resumo: ["Um livro de referência de 1973, “Trademarks & Symbols, Vol. 2: Symbolical Designs”, do designer japonês Yasaburo Kuwayama, viralizou nas redes depois que algumas páginas foram compartilhadas. A obra cataloga símbolos reais agrupados por forma — círculos, quadrados, árvores, olhos, figuras humanas.", "Usuários notaram semelhanças com identidades atuais, como AMD, Google Drive, Chase, NatWest, CIBC, Renault e o banco estatal de Portugal; outros citaram Perplexity, Snowflake e o metrô de Londres.", "O autor, Joe Foley, argumenta que as coincidências são prováveis: formas geométricas são universais e a simetria minimalista limita as opções. O livro é raro — uma edição capa dura chegou a ser listada por mais de US$ 2.000 — e ele sugere como alternativas os livros “Logo Beginnings” e “Logo Modernism”, de Jens Müller (Taschen)."],
+  },
+  {
+    title: "Imaginary Forces uses paint to bring War title sequence to life",
+    tituloPt: "Imaginary Forces usa tinta para dar vida à abertura da série “War”",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/war-title-sequence-imaginary-forces/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/War-title-sequence.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    categoria: "Design",
+    estrelas: 3,
+    resumo: ["O estúdio Imaginary Forces, de Los Angeles, criou a abertura de “War”, nova série britânica de drama jurídico. Em vez de iconografia de tribunal, a equipe construiu o visual com pinceladas grossas e enérgicas que formam um campo de tinta em constante transformação.", "A série, do roteirista de “Lupin” e “Hijack”, gira em torno da disputa entre dois escritórios de advocacia de Londres. O diretor Ronnie Koff explica que a ideia foi mostrar o conflito em sua forma mais crua: duas forças opostas se encontrando.", "Na abertura, tinta preta e branca disputam a tela, avançando e recuando, até surgir uma explosão de vermelho que sugere violência. A virada veio ao focar em como a tinta se comporta, comparando os lados a boxeadores. Como muitos espectadores pulam aberturas, a peça se destaca pela originalidade."],
+  },
+  {
+    title: "Paris Match opens its photo archives for the first time",
+    tituloPt: "Paris Match abre seus arquivos fotográficos pela primeira vez",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/paris-match-archives-lvmh-journees-particulieres/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/M0004259.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1347",
+    categoria: "Design",
+    estrelas: 3,
+    resumo: ["A cada dois anos, o grupo LVMH abre ao público algumas de suas 46 casas no evento Journées Particulières, mostrando os bastidores de suas marcas. Nesta sexta edição, com o tema “A Fonte dos Sonhos”, a maior atração é a visita ao arquivo fotográfico da Paris Match, nunca exibido ao público — os ingressos online esgotaram quase de imediato.", "A Creative Review fez uma prévia guiada pelo diretor de arquivos Pascal Beno e pela diretora de patrimônio Gwenaëlle de Kerros, sendo a primeira publicação internacional a entrar no espaço.", "A Paris Match foi fundada em 25 de março de 1949 por Jean Prouvost, que relançou a revista esportiva Match inspirando-se na americana Life, inclusive no logo vermelho e branco. O acervo traz Jacques Chirac, Alain Delon, Marianne Faithfull, Mick Jagger e uma capa de novembro de 1957 com criação da Dior."],
+  },
+  {
+    title: "\"Monolithic\" concrete house informed by rock-cut monastic homes",
+    tituloPt: "Casa de concreto “monolítica” inspirada em moradias monásticas escavadas na rocha",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/11/monastic-field-roomoor-india/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/09/monastic-field-roomoor-india_dezeen_2364_hero_0.jpg",
+    categoria: "Design",
+    estrelas: 3,
+    resumo: ["O estúdio Roomoor concluiu a Monastic Field, casa de concreto em Baleshwar, na Índia, dentro de um terreno de templo jainista. A família que doou a terra em 2005 encomendou a residência. Como o local recebe centenas de visitantes por dia, os arquitetos criaram um conjunto baixo de volumes fechados para fora e iluminados por claraboias.", "No centro há um salão com cobertura piramidal de concreto, claraboia no topo e janelas altas nos quatro lados, que se abre para sala de jantar, biblioteca e varanda. Cozinha, escritório, banheiros e três quartos ficam em blocos dispostos em cata-vento.", "Liderado por Mahendra e Dhruv Gusain, o estúdio escolheu concreto em resposta ao templo de pedra branca vizinho e aos santuários escavados no Planalto de Decão: o material recua para que a luz seja protagonista. Por fora, arenito vermelho; por dentro, madeira escura e piso de pedra. Fotos de Jainee Gusain."],
+  },
+  {
+    title: "OpenAI Wants ChatGPT Ads to Become a Permanent Line Item in Agency Media Plans",
+    tituloPt: "OpenAI quer que anúncios no ChatGPT virem item permanente nos planos de mídia das agências",
+    source: "Adweek",
+    url: "https://www.adweek.com/media/openai-wants-chatgpt-ads-to-become-a-permanent-line-item-in-agency-media-plans/",
+    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/09/GettyImages-2246494580.jpg?w=600&h=315&crop=1",
+    categoria: "Tecnologia",
+    estrelas: 3,
+    resumo: ["A OpenAI está contratando um “Agency Partner” para o time de Ads Solutions, com o objetivo de tornar a publicidade no ChatGPT um item recorrente nos orçamentos de mídia das agências. A vaga, em Nova York, tem salário-base de US$ 216 mil a US$ 273 mil, mais ações e comissão.", "O profissional cultivaria relações com os grandes grupos de agências, conduziria planejamento conjunto de negócios, programas de educação e contatos com executivos de investimento, estratégia, planejamento, inovação, dados e comércio.", "A leitura do Adweek é que a OpenAI quer replicar a infraestrutura comercial que Meta e Google têm com os holdings, garantindo gasto contínuo em vez de testes pontuais. Nota: o artigo é exclusivo para assinantes; o resumo usa só o trecho público."],
+  },
+  {
+    title: "Microsoft's Satya Nadella says AI models need an 'emergency brake'",
+    tituloPt: "Satya Nadella, da Microsoft, diz que modelos de IA precisam de um “freio de emergência”",
     source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/09/remember-orkut-its-founder-wants-to-bring-it-back/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/orkut.jpg?resize=1200,800",
-    categoria: "Tecnologia", estrelas: 3, data: "9 out 2026",
-    resumo: [
-      "Orkut Büyükkökten, criador da rede social Orkut, pediu no X que usuários visitem Orkut.com, deixem o nome em apoio a um retorno e convidem outras pessoas. A rede, lançada em 2004 como projeto paralelo dele no Google, fez enorme sucesso na Índia e no Brasil, perdeu espaço para o Facebook e foi encerrada pelo Google em setembro de 2014.",
-      "Em carta no site, ele critica os rumos das redes sociais, sobretudo o peso dos algoritmos e do conteúdo gerado por IA, que “dissolve a premissa que tornava as redes sociais especiais”: a crença de que há uma pessoa real do outro lado. Sua tentativa anterior, o Hello (2016–2020), teve cerca de 2 milhões de downloads. Não está claro se há um novo Orkut em desenvolvimento; ele não respondeu ao TechCrunch."
-    ]
-  }
+    url: "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2023/11/satya-nadella-2_web.png?w=1000",
+    categoria: "Tecnologia",
+    estrelas: 3,
+    resumo: ["Em post no X no sábado, o CEO da Microsoft, Satya Nadella, defendeu que a indústria de IA pare para revisar a “arquitetura de confiança” dos sistemas, que não deveriam ser caixas-pretas cujos resultados só se aceitam ou rejeitam.", "Sua proposta separa o modelo do software que direciona seu trabalho e coloca controles e salvaguardas fora do modelo; pede registros à prova de adulteração e legíveis por humanos das ações relevantes e a possibilidade de uma pessoa autorizada interromper o modelo no meio de uma tarefa. Segundo ele, é preciso assumir que um modelo pode ser comprometido e contê-lo desde o início — como um freio de emergência.", "A fala vem após casos em que empresas de IA aparentaram perder o controle de seus modelos e após o CEO da Anthropic, Dario Amodei, apresentar um plano de desenvolvimento mais cauteloso."],
+  },
+  {
+    title: "Architecture is 'much the same' as music says Daniel Libeskind",
+    tituloPt: "Arquitetura é “muito parecida” com música, diz Daniel Libeskind",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/11/daniel-libeskind-interview-key-projects/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/daniel-libeskind-interview-key-projects_dezeen_2364_col_0-2.jpg",
+    categoria: "Design",
+    estrelas: 2,
+    resumo: ["Antes da votação pública do Dezeen Awards 2026, o jurado Daniel Libeskind escolheu cinco projetos que melhor refletem sua abordagem. Ele se define como arquiteto e contador de histórias e compara sua obra a uma composição musical, em que o sentido nasce da relação entre as obras. Recentemente, foi nomeado laureado de arquitetura do Praemium Imperiale 2026.", "Os escolhidos: Museu Judaico de Berlim (2001), Imperial War Museum North (2002), plano diretor do World Trade Center (2003), Museu de História Militar de Dresden (2011) e Złota 44, em Varsóvia (2017) — este último em frente ao Palácio da Cultura de Stálin, como contraponto à monumentalidade autoritária.", "A votação pública termina em 16 de outubro e a festa do prêmio será em 16 de novembro."],
+  },
+  {
+    title: "Ten pandemic-era dining sheds that show 'wildly different tastes' of New Yorkers",
+    tituloPt: "Dez cabanas de refeição da pandemia mostram os gostos “muito diferentes” dos nova-iorquinos",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/11/new-york-pandemic-era-dining-sheds-penny-hardy-book/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/pandemic-dining-sheds-penny-hardy_dezeen_2364_col_1.jpg",
+    categoria: "Design",
+    estrelas: 2,
+    resumo: ["A fotógrafa Penny Hardy documentou no livro “Pandemic Architecture: NYC Dining Sheds 2020-2024” as estruturas improvisadas de refeição que surgiram em Nova York durante a Covid-19 e muitas vezes permaneceram por anos. Várias já foram removidas, com a cidade migrando para um programa padronizado; uma mudança legal recente permite instalação o ano todo.", "Para Hardy, as estruturas criaram um novo tipo de edifício de espaço público, transformando a rua de corredor de trânsito em lugar de encontro, graças à criatividade e ao humor dos donos de restaurantes.", "Entre os exemplos: uma cabana feita de porta e painéis plásticos, outra com barracas de camping, uma inspirada em Venturi, um cenário tropical com palha em SoHo e um design com aquecedores embutidos nos assentos. Ensaios de Michael Bullock e Fred Bernstein acompanham as fotos."],
+  },
+
 ];
-
 const PALETAS = {
-  Branding: [["#ff9a5a","#e4572e"],["#ffd36e","#d9480f"],["#ff7e8b","#b5179e"]],
-  Design: [["#5ee0c0","#0b7a6b"],["#9be37a","#14a38b"],["#6bd6e6","#0f766e"]],
-  Tecnologia: [["#7aa7ff","#4c3fd1"],["#b08cff","#2f2a9c"],["#6fd0ff","#5b5bd6"]]
+  Branding:["#ff9a5a","#ff5e62","#ffd36e"],
+  Design:["#2dd4bf","#0f766e","#86efac"],
+  Tecnologia:["#6366f1","#8b5cf6","#38bdf8"]
 };
-
-function Ilustracao({ item, idx }) {
-  const p = PALETAS[item.categoria][idx % 3];
-  const id = "g" + idx;
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
+function Ilustracao({titulo,categoria}){
+  const p=PALETAS[categoria]||PALETAS.Design, h=hash(titulo), id="g"+h;
+  const r=n=>(h>>n)%100;
   return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: " + item.tituloPt}>
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={p[0]} /><stop offset="1" stopColor={p[1]} />
-        </linearGradient>
-      </defs>
-      <rect width="400" height="240" fill={`url(#${id})`} />
-      <circle cx={80 + (idx * 37) % 200} cy="70" r="90" fill="#fff" opacity=".14" />
-      <circle cx={300 - (idx * 23) % 120} cy="190" r="70" fill="#fff" opacity=".18" />
-      <rect x="150" y="60" width="130" height="130" rx="26" fill="#fff" opacity=".2" transform={`rotate(${15 + idx * 9} 215 125)`} />
-      <polygon points="40,220 120,120 200,220" fill="#000" opacity=".12" />
+    <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+titulo}>
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+      <rect width="400" height="225" fill={"url(#"+id+")"}/>
+      <circle cx={80+r(3)*2} cy={60+r(5)} r={50+r(7)/2} fill={p[2]} opacity=".55"/>
+      <rect x={200+r(2)} y={90+r(4)/2} width="120" height="120" rx="26" fill="#fff" opacity=".22" transform={"rotate("+(r(6)-20)+" 260 150)"}/>
+      <path d={"M0 "+(180+r(1)/4)+" Q 120 "+(120+r(8))+" 240 "+(180)+" T 400 "+(150+r(9)/2)+" V225 H0Z"} fill="#fff" opacity=".18"/>
+      <circle cx={330-r(4)} cy={50+r(2)/2} r="22" fill="#fff" opacity=".35"/>
     </svg>
   );
 }
-
-function Imagem({ item, idx, className }) {
-  const [falhou, setFalhou] = useState(false);
-  const mostrarSvg = !item.imageUrl || falhou;
+function Midia({item}){
+  const [falhou,setFalhou]=useState(false);
   return (
-    <div className={"img " + (className || "")}>
-      {mostrarSvg
-        ? <Ilustracao item={item} idx={idx} />
-        : <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />}
+    <div className="media">
+      {item.imageUrl && !falhou
+        ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+        : <Ilustracao titulo={item.title} categoria={item.categoria}/>}
     </div>
   );
 }
-
-const Estrelas = ({ n }) => <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
-
-function Meta({ item }) {
+const Estrelas=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+function Card({item,onOpen}){
   return (
-    <div className="meta">
-      <span className={"tag " + item.categoria}>{item.categoria}</span>
-      <Estrelas n={item.estrelas} />
-      <span>{item.source} · {item.data}</span>
-    </div>
+    <button className="card" onClick={()=>onOpen(item)}>
+      <Midia item={item}/>
+      <div className="body">
+        <span className={"tag "+item.categoria}>{item.categoria}</span>
+        <h3>{item.tituloPt}</h3>
+        <div className="meta"><span>{item.source}</span><Estrelas n={item.estrelas}/></div>
+      </div>
+    </button>
   );
 }
-
-function Detalhe({ item, idx, onClose }) {
-  useEffect(() => {
-    const h = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", h);
-    document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", h); document.body.style.overflow = ""; };
-  }, []);
+function Modal({item,onClose}){
+  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",k);document.body.style.overflow="hidden";return()=>{window.removeEventListener("keydown",k);document.body.style.overflow=""}},[]);
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-        <Imagem item={item} idx={idx} />
+      <article className="modal" onClick={e=>e.stopPropagation()}>
+        <Midia item={item}/>
         <div className="in">
-          <Meta item={item} />
+          <span className={"tag "+item.categoria}>{item.categoria}</span> <Estrelas n={item.estrelas}/>
           <h2>{item.tituloPt}</h2>
-          <div className="sub">{item.title}</div>
-          <div style={{ marginTop: 14 }}>{item.resumo.map((t, i) => <p key={i}>{t}</p>)}</div>
-          {item.paywall && <p className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, indústria e tags).</p>}
-          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
+          <div className="orig">{item.source} · original: {item.title}</div>
+          <div style={{marginTop:16}}>{item.resumo.map((p,i)=><p key={i}>{p}</p>)}</div>
+          <div className="btns">
+            <a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
+            <button className="btn s" onClick={onClose}>Fechar</button>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
   );
 }
-
-function App() {
-  const [aberta, setAberta] = useState(null);
-  const lista = [...NOTICIAS].sort((a, b) => b.estrelas - a.estrelas);
-  const [top, ...resto] = lista;
+function App(){
+  const [aberta,setAberta]=useState(null);
+  const [h,...resto]=NOTICIAS;
   return (
     <div className="wrap">
-      <header>
-        <h1>☀️ Portal da Manhã</h1>
-        <div className="date">sexta-feira, 9 de outubro de 2026 · {lista.length} notícias</div>
+      <header className="top">
+        <div><h1>☀️ Portal da Manhã</h1><p>Branding, design e tecnologia · segunda-feira, 12 de outubro de 2026</p></div>
+        <p>{NOTICIAS.length} notícias · {new Set(NOTICIAS.map(n=>n.source)).size} portais</p>
       </header>
-      <div className="hero" onClick={() => setAberta(0)}>
-        <Imagem item={top} idx={0} />
-        <div className="txt">
-          <Meta item={top} />
-          <h2>{top.tituloPt}</h2>
-          <div className="sub">{top.resumo[0].slice(0, 190)}…</div>
+      <button className="card hero" onClick={()=>setAberta(h)} style={{display:"grid"}}>
+        <Midia item={h}/>
+        <div className="body">
+          <div><span className={"tag "+h.categoria}>Manchete · {h.categoria}</span></div>
+          <h2>{h.tituloPt}</h2>
+          <div className="orig">{h.source}</div>
+          <div style={{marginTop:10}}><Estrelas n={h.estrelas}/></div>
         </div>
-      </div>
-      <div className="grid">
-        {resto.map((n, i) => (
-          <article className="card" key={n.url} onClick={() => setAberta(i + 1)}>
-            <Imagem item={n} idx={i + 1} />
-            <div className="body"><Meta item={n} /><h3>{n.tituloPt}</h3></div>
-          </article>
-        ))}
-      </div>
-      <footer>Resumos escritos em português a partir das matérias originais. Clique em um card para ler.</footer>
-      {aberta !== null && <Detalhe item={lista[aberta]} idx={aberta} onClose={() => setAberta(null)} />}
+      </button>
+      <div className="grid">{resto.map(n=><Card key={n.url} item={n} onOpen={setAberta}/>)}</div>
+      {aberta && <Modal item={aberta} onClose={()=>setAberta(null)}/>}
+      <footer>Resumos escritos em português a partir das matérias originais. Clique em um card para ler o resumo; o link leva à fonte.</footer>
     </div>
   );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

@@ -4,258 +4,322 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portal da Manhã — 12 de outubro de 2026</title>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7185;--line:#e6e8f0;--acc:#4f46e5}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14171f;--mute:#667085;--line:#e6e8ef;--acc:#4f46e5;--shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
 header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-header.top h1{margin:0;font-size:30px;letter-spacing:-.02em}
-header.top p{margin:0;color:var(--mut);font-size:14px}
-.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#eef0ff;color:var(--acc)}
-.tag.Branding{background:#fff1e6;color:#c2410c}.tag.Design{background:#e3f8f2;color:#0f766e}.tag.Tecnologia{background:#ece9ff;color:#5b3fd0}
-.stars{color:#f59e0b;letter-spacing:1px;font-size:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 1px 3px rgba(20,22,31,.05);transition:transform .2s,box-shadow .2s;text-align:left;padding:0;font:inherit;color:inherit;display:block;width:100%}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(20,22,31,.10)}
-.media{position:relative;aspect-ratio:16/9;background:#eceef5;overflow:hidden}
-.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
-.body{padding:16px 18px 18px}
-.body h3{margin:10px 0 6px;font-size:17px;line-height:1.3}
-.meta{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:12.5px}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:24px}
-.hero .media{aspect-ratio:auto;min-height:340px}
-.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center}
-.hero h2{font-size:28px;line-height:1.2;margin:12px 0 10px;letter-spacing:-.01em}
-.orig{color:var(--mut);font-size:13px;font-style:italic}
+h1{margin:0;font-size:30px;letter-spacing:-.02em}
+.date{color:var(--mute);font-size:14px;text-transform:capitalize}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:28px}
+.hero:hover{transform:translateY(-2px)}
+.hero .media{min-height:340px}
+.hero .body{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--mute)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.overlay{position:fixed;inset:0;background:rgba(20,22,31,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:30px 14px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .28s ease;box-shadow:0 30px 80px rgba(0,0,0,.25)}
-.modal .media{aspect-ratio:16/8}
-.modal .in{padding:26px 30px 30px}
-.modal h2{margin:10px 0 6px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;color:#2b2f3d}
-.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-.btn{border:0;border-radius:12px;padding:11px 18px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
-.btn.p{background:var(--acc);color:#fff}.btn.s{background:#eef0f6;color:var(--ink)}
-footer{margin-top:40px;color:var(--mut);font-size:12.5px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero h2{font-size:23px}.modal .in{padding:20px}}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px)}
+.card .media{height:180px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.media{position:relative;background:#e9ebf3;overflow:hidden}
+.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
+.t-Branding{background:#fff1e6;color:#c2410c}.t-Design{background:#e0f7f1;color:#0f766e}.t-Tecnologia{background:#e9e8ff;color:#4338ca}
+.stars{color:#f59e0b;letter-spacing:1px}
+.overlay{position:fixed;inset:0;background:rgba(16,24,40,.55);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:30px 16px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:up .25s}
+.modal .media{height:320px}
+.modal .inner{padding:28px 32px 32px}
+.modal h2{margin:8px 0 4px;font-size:26px;line-height:1.25;letter-spacing:-.02em}
+.orig{color:var(--mute);font-size:13px;margin:0 0 16px;font-style:italic}
+.modal p.s{margin:0 0 14px;font-size:16px}
+.note{font-size:13px;color:var(--mute);border-left:3px solid var(--line);padding-left:10px;margin-top:6px}
+.btns{display:flex;gap:10px;margin-top:20px}
+.btn{border:0;border-radius:12px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--acc);color:#fff}.btn.g{background:#eef0f6;color:var(--ink)}
+.warn{font-size:12px;color:#b45309;background:#fffbeb;border-radius:8px;padding:4px 8px}
+footer{margin-top:36px;text-align:center;color:var(--mute);font-size:12px}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero .body{padding:20px}.hero h2{font-size:22px}.modal .inner{padding:20px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-const NOTICIAS = [
-  {
-    title: "USA's Department of War quietly releases new branding that isn't at all alarming.",
-    tituloPt: "Departamento de Guerra dos EUA lança nova marca “sem nada de alarmante”",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/usas-department-of-war-quietly-releases-new-branding-that-isnt-at-all-alarming/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/styles-to-avoid-mood-board-1-1024x700.png",
-    categoria: "Branding",
-    estrelas: 5,
-    resumo: ["Em um texto de opinião satírico publicado em 10 de outubro, o designer David Coveney imagina como seria vencer a licitação para criar a identidade de um departamento do governo americano — e descobrir que o cliente é o Departamento de Defesa, que adotou como título preferido o nome “Departamento de Guerra”, em desuso desde 1947.", "Na narrativa, ao sugerir de brincadeira que evitassem o nome, o cliente reagiu com entusiasmo. Um moodboard intitulado “evite isto”, com o título em corpo minúsculo, teria sido mostrado aos oficiais — que o aprovaram. O resultado seria um emblema com águias severas e tipografia pesada e imperativa, de inspiração romana simplificada.", "O autor liga o visual a uma onda de nostalgia no design e observa que a imagética lembra símbolos europeus de meados do século XX, tratando a semelhança, com ironia, como coincidência. O texto defende ainda que bons designers devem questionar direções criativas ruins em vez de simplesmente aceitá-las. Tags: processo de branding, direção de design, moodboards, nostalgia, rebrand."],
-  },
-  {
-    title: "New Logo and Identity for Liverpool Philharmonic by Smiling Wolf",
-    tituloPt: "Liverpool Philharmonic ganha novo logo e identidade da Smiling Wolf",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_liverpool_philharmonic_by_smiling_wolf.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/liverpool_philharmonic_logo_before_after.png",
-    categoria: "Branding",
-    estrelas: 5,
-    resumo: ["O Brand New publicou em 9 de outubro uma análise da nova identidade da Liverpool Philharmonic, orquestra britânica, criada pelo estúdio Smiling Wolf. O post, na categoria Cultura, vem com o trocadilho “I’m Hall Ears” e mostra imagens de antes e depois do logo e uma aplicação de exemplo.", "As tags da publicação — concêntrico, orquestra, sem serifa, sinfonia, Reino Unido — sugerem um sistema baseado em formas circulares ou aninhadas e tipografia sem serifa, mas são apenas rótulos, não uma descrição confirmada do conceito.", "Nota: o artigo completo está atrás de paywall; este resumo se limita a título, legendas, categoria e tags públicas."],
-  },
-  {
-    title: "New Logo and Identity for Instytut Adama Mickiewicza by Podpunkt",
-    tituloPt: "Instytut Adama Mickiewicza, da Polônia, recebe novo logo e identidade da Podpunkt",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_instytut_adama_mickiewicza_by_podpunkt.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/iam_pl_logo_before_after.png",
-    categoria: "Branding",
-    estrelas: 4,
-    resumo: ["O Brand New registrou em 9 de outubro, na seção “Spotted”, o novo logo e identidade do Instytut Adama Mickiewicza, instituto cultural polonês, desenvolvidos pelo estúdio Podpunkt. A indústria listada é Educação, e o post exibe o antes e o depois do logotipo.", "As tags — ângulo, evolução, Podpunkt, Polônia e vermelho — indicam uma evolução da marca com uso de ângulos e da cor vermelha, sem que o texto público detalhe o conceito.", "Nota: o corpo do artigo está atrás de paywall; o resumo usa apenas elementos públicos (título, categoria, tags)."],
-  },
-  {
-    title: "New Balance's Steve Jobs homage is so subtle you might have missed it",
-    tituloPt: "A homenagem da New Balance a Steve Jobs é tão sutil que você pode ter perdido",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/new-balances-steve-jobs-homage-is-so-subtle-you-might-have-missed-it",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/k3dYgBH3hy7Jh43jo6w6pZ-1920-80.jpg",
-    categoria: "Branding",
-    estrelas: 4,
-    resumo: ["Quinze anos após a morte de Steve Jobs, a New Balance prestou uma homenagem discreta ao cofundador da Apple: recriou uma de suas poses mais conhecidas, a da apresentação original do iPad, em 2010.", "Em vez de anunciar a referência, a marca a inseriu entre as imagens promocionais do tênis cinza 992, funcionando como um detalhe escondido para quem reconhece a cena. O artigo vê o gesto como elegante e coerente com o minimalismo associado a Jobs.", "Nas redes, usuários elogiaram: um deles disse que o melhor branding não precisa gritar. O texto é de Natalie Fear, com créditos de foto à New Balance e à Getty Images."],
-  },
-  {
-    title: "Did a book from 1973 predict the logo designs of some of today's biggest companies?",
-    tituloPt: "Um livro de 1973 previu os logos de algumas das maiores empresas de hoje?",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/did-a-book-from-1973-predict-the-logo-designs-of-some-of-todays-biggest-companies",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/YfgQQHgxQyxhDYR4oTvRAB-1200-80.jpg",
-    categoria: "Branding",
-    estrelas: 4,
-    resumo: ["Um livro de referência de 1973, “Trademarks & Symbols, Vol. 2: Symbolical Designs”, do designer japonês Yasaburo Kuwayama, viralizou nas redes depois que algumas páginas foram compartilhadas. A obra cataloga símbolos reais agrupados por forma — círculos, quadrados, árvores, olhos, figuras humanas.", "Usuários notaram semelhanças com identidades atuais, como AMD, Google Drive, Chase, NatWest, CIBC, Renault e o banco estatal de Portugal; outros citaram Perplexity, Snowflake e o metrô de Londres.", "O autor, Joe Foley, argumenta que as coincidências são prováveis: formas geométricas são universais e a simetria minimalista limita as opções. O livro é raro — uma edição capa dura chegou a ser listada por mais de US$ 2.000 — e ele sugere como alternativas os livros “Logo Beginnings” e “Logo Modernism”, de Jens Müller (Taschen)."],
-  },
-  {
-    title: "Imaginary Forces uses paint to bring War title sequence to life",
-    tituloPt: "Imaginary Forces usa tinta para dar vida à abertura da série “War”",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/war-title-sequence-imaginary-forces/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/War-title-sequence.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    categoria: "Design",
-    estrelas: 3,
-    resumo: ["O estúdio Imaginary Forces, de Los Angeles, criou a abertura de “War”, nova série britânica de drama jurídico. Em vez de iconografia de tribunal, a equipe construiu o visual com pinceladas grossas e enérgicas que formam um campo de tinta em constante transformação.", "A série, do roteirista de “Lupin” e “Hijack”, gira em torno da disputa entre dois escritórios de advocacia de Londres. O diretor Ronnie Koff explica que a ideia foi mostrar o conflito em sua forma mais crua: duas forças opostas se encontrando.", "Na abertura, tinta preta e branca disputam a tela, avançando e recuando, até surgir uma explosão de vermelho que sugere violência. A virada veio ao focar em como a tinta se comporta, comparando os lados a boxeadores. Como muitos espectadores pulam aberturas, a peça se destaca pela originalidade."],
-  },
-  {
-    title: "Paris Match opens its photo archives for the first time",
-    tituloPt: "Paris Match abre seus arquivos fotográficos pela primeira vez",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/paris-match-archives-lvmh-journees-particulieres/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/M0004259.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=2000&h=1347",
-    categoria: "Design",
-    estrelas: 3,
-    resumo: ["A cada dois anos, o grupo LVMH abre ao público algumas de suas 46 casas no evento Journées Particulières, mostrando os bastidores de suas marcas. Nesta sexta edição, com o tema “A Fonte dos Sonhos”, a maior atração é a visita ao arquivo fotográfico da Paris Match, nunca exibido ao público — os ingressos online esgotaram quase de imediato.", "A Creative Review fez uma prévia guiada pelo diretor de arquivos Pascal Beno e pela diretora de patrimônio Gwenaëlle de Kerros, sendo a primeira publicação internacional a entrar no espaço.", "A Paris Match foi fundada em 25 de março de 1949 por Jean Prouvost, que relançou a revista esportiva Match inspirando-se na americana Life, inclusive no logo vermelho e branco. O acervo traz Jacques Chirac, Alain Delon, Marianne Faithfull, Mick Jagger e uma capa de novembro de 1957 com criação da Dior."],
-  },
-  {
-    title: "\"Monolithic\" concrete house informed by rock-cut monastic homes",
-    tituloPt: "Casa de concreto “monolítica” inspirada em moradias monásticas escavadas na rocha",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/11/monastic-field-roomoor-india/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/09/monastic-field-roomoor-india_dezeen_2364_hero_0.jpg",
-    categoria: "Design",
-    estrelas: 3,
-    resumo: ["O estúdio Roomoor concluiu a Monastic Field, casa de concreto em Baleshwar, na Índia, dentro de um terreno de templo jainista. A família que doou a terra em 2005 encomendou a residência. Como o local recebe centenas de visitantes por dia, os arquitetos criaram um conjunto baixo de volumes fechados para fora e iluminados por claraboias.", "No centro há um salão com cobertura piramidal de concreto, claraboia no topo e janelas altas nos quatro lados, que se abre para sala de jantar, biblioteca e varanda. Cozinha, escritório, banheiros e três quartos ficam em blocos dispostos em cata-vento.", "Liderado por Mahendra e Dhruv Gusain, o estúdio escolheu concreto em resposta ao templo de pedra branca vizinho e aos santuários escavados no Planalto de Decão: o material recua para que a luz seja protagonista. Por fora, arenito vermelho; por dentro, madeira escura e piso de pedra. Fotos de Jainee Gusain."],
-  },
-  {
-    title: "OpenAI Wants ChatGPT Ads to Become a Permanent Line Item in Agency Media Plans",
-    tituloPt: "OpenAI quer que anúncios no ChatGPT virem item permanente nos planos de mídia das agências",
-    source: "Adweek",
-    url: "https://www.adweek.com/media/openai-wants-chatgpt-ads-to-become-a-permanent-line-item-in-agency-media-plans/",
-    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/09/GettyImages-2246494580.jpg?w=600&h=315&crop=1",
-    categoria: "Tecnologia",
-    estrelas: 3,
-    resumo: ["A OpenAI está contratando um “Agency Partner” para o time de Ads Solutions, com o objetivo de tornar a publicidade no ChatGPT um item recorrente nos orçamentos de mídia das agências. A vaga, em Nova York, tem salário-base de US$ 216 mil a US$ 273 mil, mais ações e comissão.", "O profissional cultivaria relações com os grandes grupos de agências, conduziria planejamento conjunto de negócios, programas de educação e contatos com executivos de investimento, estratégia, planejamento, inovação, dados e comércio.", "A leitura do Adweek é que a OpenAI quer replicar a infraestrutura comercial que Meta e Google têm com os holdings, garantindo gasto contínuo em vez de testes pontuais. Nota: o artigo é exclusivo para assinantes; o resumo usa só o trecho público."],
-  },
-  {
-    title: "Microsoft's Satya Nadella says AI models need an 'emergency brake'",
-    tituloPt: "Satya Nadella, da Microsoft, diz que modelos de IA precisam de um “freio de emergência”",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2023/11/satya-nadella-2_web.png?w=1000",
-    categoria: "Tecnologia",
-    estrelas: 3,
-    resumo: ["Em post no X no sábado, o CEO da Microsoft, Satya Nadella, defendeu que a indústria de IA pare para revisar a “arquitetura de confiança” dos sistemas, que não deveriam ser caixas-pretas cujos resultados só se aceitam ou rejeitam.", "Sua proposta separa o modelo do software que direciona seu trabalho e coloca controles e salvaguardas fora do modelo; pede registros à prova de adulteração e legíveis por humanos das ações relevantes e a possibilidade de uma pessoa autorizada interromper o modelo no meio de uma tarefa. Segundo ele, é preciso assumir que um modelo pode ser comprometido e contê-lo desde o início — como um freio de emergência.", "A fala vem após casos em que empresas de IA aparentaram perder o controle de seus modelos e após o CEO da Anthropic, Dario Amodei, apresentar um plano de desenvolvimento mais cauteloso."],
-  },
-  {
-    title: "Architecture is 'much the same' as music says Daniel Libeskind",
-    tituloPt: "Arquitetura é “muito parecida” com música, diz Daniel Libeskind",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/11/daniel-libeskind-interview-key-projects/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/daniel-libeskind-interview-key-projects_dezeen_2364_col_0-2.jpg",
-    categoria: "Design",
-    estrelas: 2,
-    resumo: ["Antes da votação pública do Dezeen Awards 2026, o jurado Daniel Libeskind escolheu cinco projetos que melhor refletem sua abordagem. Ele se define como arquiteto e contador de histórias e compara sua obra a uma composição musical, em que o sentido nasce da relação entre as obras. Recentemente, foi nomeado laureado de arquitetura do Praemium Imperiale 2026.", "Os escolhidos: Museu Judaico de Berlim (2001), Imperial War Museum North (2002), plano diretor do World Trade Center (2003), Museu de História Militar de Dresden (2011) e Złota 44, em Varsóvia (2017) — este último em frente ao Palácio da Cultura de Stálin, como contraponto à monumentalidade autoritária.", "A votação pública termina em 16 de outubro e a festa do prêmio será em 16 de novembro."],
-  },
-  {
-    title: "Ten pandemic-era dining sheds that show 'wildly different tastes' of New Yorkers",
-    tituloPt: "Dez cabanas de refeição da pandemia mostram os gostos “muito diferentes” dos nova-iorquinos",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/11/new-york-pandemic-era-dining-sheds-penny-hardy-book/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/pandemic-dining-sheds-penny-hardy_dezeen_2364_col_1.jpg",
-    categoria: "Design",
-    estrelas: 2,
-    resumo: ["A fotógrafa Penny Hardy documentou no livro “Pandemic Architecture: NYC Dining Sheds 2020-2024” as estruturas improvisadas de refeição que surgiram em Nova York durante a Covid-19 e muitas vezes permaneceram por anos. Várias já foram removidas, com a cidade migrando para um programa padronizado; uma mudança legal recente permite instalação o ano todo.", "Para Hardy, as estruturas criaram um novo tipo de edifício de espaço público, transformando a rua de corredor de trânsito em lugar de encontro, graças à criatividade e ao humor dos donos de restaurantes.", "Entre os exemplos: uma cabana feita de porta e painéis plásticos, outra com barracas de camping, uma inspirada em Venturi, um cenário tropical com palha em SoHo e um design com aquecedores embutidos nos assentos. Ensaios de Michael Bullock e Fred Bernstein acompanham as fotos."],
-  },
 
+const NEWS = [
+  {
+    title: "The Coca-Cola rebrand is still causing confusion three months on",
+    tituloPt: "O rebrand da Coca-Cola ainda causa confusão três meses depois",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/the-coca-cola-rebrand-is-still-causing-confusion-three-months-on",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/5fsRM6ZVoVfrEoUHG9efNG-1000-80.webp",
+    cat: "Branding", stars: 5,
+    resumo: [
+      "Quase três meses depois do rebrand de julho da Coca-Cola, a nova embalagem está gerando confusão prática entre a Coca-Cola tradicional e a Coca-Cola Zero Açúcar, segundo reportagem do Creative Bloq.",
+      "A proposta da redesenhada era deixar a marca \"mais Coca-Cola\", mas críticos apontam que a lata da versão Zero agora se parece demais com a lata comum. A Zero nasceu em 2005 com uma lata toda preta, passou ao vermelho com logo preto ao virar Zero Açúcar em 2016 e agora preserva apenas uma fita preta como pista de cor.",
+      "O texto \"Zero sugar\" é relativamente grande, mas quem escolhe bebidas rapidamente e repetidas vezes — como comissários de bordo — diz que a semelhança dificulta o trabalho. Um vídeo no TikTok de uma comissária australiana mostrando duas latas quase idênticas e relatando que entregou a bebida errada várias vezes na semana rendeu milhares de curtidas e mais de 100 comentários.",
+      "Alguns comentaristas alertaram que trocas podem ser perigosas para pessoas com diabetes ou alergias que dependem da tipografia preta para distinguir os produtos.",
+      "O comunicado da Coca-Cola citava consistência como objetivo central, falando em \"uma identidade visual única e fluida\". Usuários do Reddit especulam que apagar a diferença seria uma estratégia de longo prazo para empurrar consumidores à versão Zero e talvez aposentar a tradicional, num cenário de impostos sobre açúcar e novas regras de rotulagem. A empresa não anunciou nenhum plano nesse sentido e lançou recentemente uma versão com açúcar de cana nos EUA, onde a Coca comum ainda usa xarope de milho."
+    ]
+  },
+  {
+    title: "Its embroidered logo invite shows Apple understands something other tech brands don't",
+    tituloPt: "Convite com logo bordado mostra que a Apple entende algo que outras marcas de tecnologia não entendem",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/an-embroidered-logo-shows-apples-understands-something-that-other-tech-brands-dont",
+    imageUrl: null,
+    cat: "Branding", stars: 5,
+    resumo: [
+      "A Apple enviou um convite com o logo bordado para o evento \"Welcome Home\", que, segundo o Creative Bloq, mostra que a empresa compreende a desconfiança do público em relação a conteúdo gerado por IA.",
+      "O artigo lembra que, entre 2024 e 2025, a Apple retirou anúncios que desagradaram, como o vídeo do iPad Pro M4 que esmagava ferramentas criativas, um comercial na Tailândia criticado por estereótipos e a campanha \"Parent Presentation\". Campanhas recentes sugerem que a empresa aprendeu com os tropeços, enquanto outras marcas enfrentam reação negativa à enxurrada de conteúdo feito por IA.",
+      "O convite, publicado pelo SVP de Marketing Greg Joswiak, revive o logo arco-íris de 1977 em bordado criado pelas gêmeas Maricor/Maricar, de Sydney. Por ser uma arte ancestral, o bordado em 2026 funciona como ênfase deliberada na criatividade feita por humanos. Outras campanhas, como as animações em stop-motion do novo Mac mini e do Apple Games, seguem o mesmo caminho artesanal.",
+      "O texto defende que os vídeos de bastidores hoje importam tanto quanto o anúncio final, pois ajudam o público a reconhecer o trabalho manual por trás da peça.",
+      "O evento está marcado para terça, 13 de outubro, e surpreendeu por ser um evento de outubro depois de alguns anos sem. Rumores citam um hub de casa inteligente, uma nova Apple TV 4K e um HomePod mini atualizado; nada confirmado. Pré-vendas do iPhone Duo começam em 16 de outubro."
+    ]
+  },
+  {
+    title: "Not a Hotel to open Not a Museum at Imperial Hotel Plaza Tokyo ahead of demolition",
+    tituloPt: "Not a Hotel abrirá o Not a Museum no Imperial Hotel Plaza de Tóquio antes da demolição",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/12/not-a-hotel-open-not-a-museum-imperial-plaza-hotel-tokyo/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/not-a-museum-skwat-tokyo-sq_dezeen_2364_col_0.jpg",
+    cat: "Design", stars: 4,
+    resumo: [
+      "A Nota, empresa por trás da Not a Hotel, vai abrir seu primeiro espaço cultural, o Not a Museum, projetado em parceria com o coletivo criativo tóquio-ense SKWAT.",
+      "O espaço ocupará parte do Imperial Hotel Plaza Tokyo, centro comercial de cerca de 2.000 m² que será demolido para a reconstrução da torre do Imperial Hotel. A Nota operará do primeiro ao quarto andar por quatro anos, de meados de 2027 a 2031, antes da derrubada — que foi adiada por causa do aumento dos custos de construção.",
+      "A subsidiária Not a City desenvolve o projeto com o SKWAT, que dirige o SKWAT Kameari Art Centre e é liderado por Keisuke Nakamura, do estúdio Daikei Mills. Os parceiros descrevem o local como uma \"plataforma experimental para o futuro\", reunindo arte, música, livros, cinema e moda, e cuidarão de tudo, do planejamento à operação diária.",
+      "A ideia é aproveitar espaços vagos em Tóquio, onde prédios costumam ser demolidos em vez de reutilizados. A empresa também está por trás do Japa Valley Tokyo, distrito comercial previsto para 2027 no ainda inexistente Yurakucho Park, desenvolvido com a Mitsubishi Estate e desenhado por Pharrell Williams e Nigo, consultores criativos da Nota desde o ano passado.",
+      "O SKWAT já recebeu exposições do designer Kwangho Lee e dos arquitetos Herzog & de Meuron."
+    ]
+  },
+  {
+    title: "The Shenzhen Natural History Museum looks like it was carved by water instead of architects",
+    tituloPt: "O Museu de História Natural de Shenzhen parece esculpido pela água, não por arquitetos",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/11/the-shenzhen-natural-history-museum-looks-like-it-was-carved-by-water-instead-of-architects/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/653289/shenzhen_natural_history_museum_1.jpg",
+    cat: "Design", stars: 4,
+    resumo: [
+      "O Yanko Design apresenta o Museu de História Natural de Shenzhen, projeto do escritório 3XN que lembra uma margem de rio moldada pela água mais do que um edifício institucional tradicional.",
+      "O museu abriu em 28 de julho de 2026, ao lado do lago Yanzi, no distrito de Pingshan, seis anos depois da divulgação das imagens do concurso. A 3XN liderou o projeto com B+H Architects e Zhubo Design, sob o conceito \"Delta\", inspirado em paisagens fluviais.",
+      "Com cerca de 105.300 m², é apresentado como o maior museu de história natural do sul da China. A cobertura é um parque público de acesso gratuito, e as galerias ficam em cinco grandes volumes arredondados. A planta segue as curvas do rio Pingshan, e as paredes envolvem gramados e árvores em laços que lembram antigos leitos de rio.",
+      "A fachada usa aletas verticais de granito que sombreiam as galerias e deixam entrar luz natural; painéis padronizados podem ser trocados se danificados. Grandes arcos ao sul ligam uma rua movimentada a um parque de várzea nos fundos, com espelhos d'água refletindo as aberturas.",
+      "Por dentro, os cones são revestidos de mármore com veios de madeira de Guangxi, e o átrio central, chamado \"Árvore da Vida\", abriga uma escadaria em espiral ondulada que remete à obra de Frank Gehry. O telhado paisagístico tem cinco zonas de jardim, atinge 36 m de altura, desce perto dos vizinhos para preservar vistas e foi pensado para observação de estrelas."
+    ]
+  },
+  {
+    title: "Adidas sues White Fox in battle of the stripes",
+    tituloPt: "Adidas processa a White Fox na batalha das listras",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/adidas-sues-white-fox-in-battle-of-the-stripes",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/xMqMABX8HcCx239EMnmCH4-1920-80.jpg",
+    cat: "Branding", stars: 4,
+    resumo: [
+      "A Adidas processou a boutique australiana White Fox, alegando que as peças de quatro listras da marca infringem sua marca registrada de três listras.",
+      "A Adidas afirma que as três listras são centrais para sua identidade e que detém o registro na Austrália desde 1957. Descreve os desenhos da White Fox como \"enganosamente semelhantes\" e \"substancialmente idênticos\" ao seu sinal.",
+      "A empresa argumenta ainda que a publicidade da White Fox, que destaca as listras, indica a intenção de se beneficiar da reputação da Adidas.",
+      "A defesa da White Fox aponta que outros varejistas australianos, como Cotton On e Sportscraft, vendem itens com listras decorativas parecidas. A Adidas rebate que os anúncios da White Fox mostram produtos genuínos da Adidas, o que poderia criar associação na mente do consumidor.",
+      "A Adidas pede indenização, incluindo os lucros obtidos com os produtos contestados, além de juros e custas. A matéria faz parte da seção de Branding e remete a outras disputas, como o processo da New Balance sobre um logo em tênis."
+    ]
+  },
+  {
+    title: "Gundry & Ducker draws on French dining culture for London restaurant Cassette",
+    tituloPt: "Gundry & Ducker se inspira na cultura gastronômica francesa para o restaurante Cassette, em Londres",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/12/gundry-ducker-french-dining-culture-london-cassette/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/Gundry-Ducker-French-Dining-Culture-Cassette-Featured_dezeen_2364_col_0.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "O estúdio Gundry & Ducker reformou os interiores de uma oficina tombada (Grade II) em Covent Garden, em Londres, para o Cassette, um bistrô de inspiração parisiense recém-inaugurado.",
+      "O restaurante ocupa um edifício gótico do século XIX, com pé-direito duplo e grande fachada de vidro ornamentada. São 1.151 m², com 52 lugares internos entre salão térreo e subsolo e mais 30 no terraço.",
+      "Segundo o cofundador Tyeth Gundry, o briefing pedia um restaurante de bairro no centro da cidade, focado em familiaridade e conforto. O estúdio recorreu aos bistrôs tradicionais de Paris: acabamentos berinjela, bancos escuros e cadeiras de madeira curvada.",
+      "Os materiais incluem tecidos naturais, madeira sapele, aço inox e tijolo aparente, numa paleta contida e \"deliberadamente sem frescura\". Os tons quentes foram escolhidos para escurecer bem à noite, o que depende do controle da luz refletida.",
+      "Inspirados no vizinho distrito de teatros, os designers instalaram um sistema de som de alta qualidade e uma cortina acústica que envolve o salão. Os donos, Mark Gurney e Matt Bushnell, compraram obras em mercados locais e bazares para dar cor e personalidade."
+    ]
+  },
+  {
+    title: "Facha Architekti adds \"deliberately distinct\" red extension to former-pigsty home",
+    tituloPt: "Facha Architekti acrescenta extensão vermelha \"deliberadamente distinta\" a casa que já foi chiqueiro",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/11/facha-architekti-red-extension-czech-pigsty-home/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/facha-architekti-house-with-red-addition-peter-fabo-27-scaled.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "O escritório praguense Facha Architekti concluiu a \"House With a Red Addition\", uma extensão em metal corrugado vermelho para uma pequena casa de família na região de Příbram, na República Tcheca.",
+      "O anexo amplia a área de convivência e melhora o acesso ao exterior por meio de degraus-assento, um terraço de larício e um toldo retrátil na mesma cor.",
+      "A casa original nasceu como um chiqueiro térreo, alterado várias vezes até virar residência permanente. Para preservar esse histórico, os arquitetos fizeram a adição \"deliberadamente distinta\" do volume principal, num terreno de 515 m² à beira de uma vila.",
+      "Por dentro, compensado de pinus reveste paredes e mobiliário embutido, que esconde armazenamento — antiga carência da casa. O vermelho aparece em bancadas, portas de armários, corrimãos e duas cadeiras, contra linóleo e vigas de madeira aparentes.",
+      "A cor foi escolhida entre as opções-padrão do revestimento corrugado, sem motivo simbólico, e ajuda a separar o antigo do novo. Com a entrada principal levada para a extensão, a equipe reorganizou a planta, ampliou o banheiro e trocou uma entrada apertada por outra mais generosa."
+    ]
+  },
+  {
+    title: "8 Japanese Stationery That Make US Back-to-School Supplies Look Boring",
+    tituloPt: "8 itens de papelaria japonesa que fazem o material escolar americano parecer entediante",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/11/8-japanese-stationery-that-make-us-back-to-school-supplies-look-boring/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/japan-stationery-that-make-us-back-to-school-supplies-look-boring/8_japanese_stationery_yanko_design_hero.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "O Yanko Design reúne oito produtos de papelaria japonesa como alternativa ao material escolar padrão, argumentando que os fabricantes do Japão tratam instrumentos de escrita e papel com atenção extrema ao detalhe e à contenção.",
+      "Entre os itens estão a prancheta MagBoard, que usa ímã e alavanca para segurar até 30 folhas e tem superfície resistente à água (US$ 45), e o suporte dobrável Sonic Kakusta, que inclina as canetas para facilitar a visualização.",
+      "Há também o caderno Stalogy 365 Days, A6 pontilhado com 368 páginas que abre totalmente plano, e a Levitating Pen, caneta que fica em pé equilibrada sobre um pedestal magnético (US$ 79).",
+      "O timer de mesa King Jim VBT10 mostra o tempo restante em segmentos de LCD que somem da direita para a esquerda; o carimbo modular Shachihata permite montar qualquer data; e o suporte Lihit Lab Firm Book End usa um travão ativado pela gravidade para segurar um único livro em pé.",
+      "O texto fecha com um bloco de desenho da ITO Bindery com o Yanko Design, de US$ 40 e tiragem limitada a 100 unidades numeradas por tamanho."
+    ]
+  },
+  {
+    title: "Derek&Eric bring bright colours and funky typography to the launch of DRZZL",
+    tituloPt: "Derek&Eric trazem cores vibrantes e tipografia irreverente ao lançamento da DRZZL",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/derekeric-bring-bright-colours-and-funky-typography-to-the-launch-fo-drzzl/",
+    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/10/DE_LDN058_S1R1_AES_Drzzl_Artboard-1.png?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=576",
+    cat: "Branding", stars: 3,
+    resumo: [
+      "A agência londrina Derek&Eric criou a identidade da DRZZL, azeite de oliva de origem única lançado pela influenciadora Natalia Rudin, do perfil Nats Nourishments, com 1,6 milhão de seguidores no Instagram. A matéria saiu em 5 de outubro, ainda fora da edição anterior.",
+      "A marca mira jovens cozinheiros domésticos que querem formas rápidas e sem cerimônia de regar saladas e massas. A empresa Studio Drama desenhou o lettering personalizado.",
+      "O azeite vem em frascos squeeze ergonômicos, em vez do tradicional vidro escuro. A embalagem usa letras empilhadas e uma paleta ousada de verde-escuro, laranja e amarelo, com tipografia neon que comunica os modos de uso.",
+      "O diretor criativo Adam Swan explicou que a categoria é saturada de marcas com visuais parecidos, então o time reduziu a identidade ao prazer de simplesmente regar o óleo. O artigo liga a escolha a uma tendência do branding de alimentos: visuais utilitários e de alto contraste pensados para telas de celular.",
+      "Rudin disse que o objetivo era criar uma marca com a qual as pessoas se identifiquem e desafiar o esnobismo típico das cozinhas."
+    ]
+  },
+  {
+    title: "Exclusive: WPP Creative hires McCann's Tyler Turnbull as CEO",
+    tituloPt: "Exclusivo: WPP Creative contrata Tyler Turnbull, da McCann, como CEO",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/exclusive-wpp-creative-hires-mccanns-tyler-turnbull-ceo/1971966",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/FCB-Global-Tyler-Turnbull-GettyImages-RM-2217006476-CUS.jpg",
+    cat: "Branding", stars: 3,
+    resumo: [
+      "A WPP contratou Tyler Turnbull, CEO global da McCann Worldgroup, para comandar a WPP Creative, vaga deixada por Jon Cook. Turnbull assume o cargo global no início de 2027. A matéria é de 8 de outubro, ainda não coberta nas edições anteriores.",
+      "Cook anunciou sua saída na sexta anterior, após três décadas na WPP, e deixa a empresa em março de 2027. A WPP pretende promover Eric Campbell a CEO global da VML quando isso acontecer. A CEO Cindy Rose chamou Turnbull de líder de classe mundial e disse que a nomeação coloca a criatividade no centro do crescimento.",
+      "A WPP Creative foi criada em 2026 dentro da estratégia Elevate28 e reúne VML, Ogilvy, Grey, Burson, AKQA, Landor e Design Bridge & Partners.",
+      "Turnbull começou na Publicis Toronto em 2006, liderou a FCB Canada a partir de 2014 e virou CEO global da FCB em 2022; a rede foi Network Regional do Ano da América do Norte em Cannes Lions por sete anos seguidos até 2025. Após a Omnicom concluir a compra da IPG, em novembro de 2025, ele assumiu a McCann em dezembro de 2025.",
+      "No primeiro semestre de 2026, a receita líquida da WPP Creative caiu 4,9% em base comparável, com melhora no segundo trimestre; a América do Norte, uma das regiões mais fracas, teve queda de 6%. A Omnicom não quis comentar."
+    ]
+  },
+  {
+    title: "Can the AI industry persuade data center opponents by getting rid of NDAs?",
+    tituloPt: "Indústria de IA conseguirá convencer opositores de data centers abolindo NDAs?",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/9-DSCF1649.jpg?resize=800,1200",
+    cat: "Tecnologia", stars: 3,
+    resumo: [
+      "A Amazon anunciou que deixará de usar acordos de confidencialidade (NDAs) em negociações com governos locais sobre data centers, seguindo movimento semelhante da Microsoft no início do ano. O anúncio apareceu no meio de um longo post que defende os benefícios dos data centers para as comunidades.",
+      "No podcast Equity, do TechCrunch, Anthony Ha, Sean O'Kane e Rebecca Bellan debateram a decisão. Bellan duvida que as atuais moratórias tenham efeito duradouro, pois costumam durar um ou dois anos, enquanto as instalações levam anos para ficar prontas. Ha citou uma moratória de cerca de um ano em Nova York para licenças de grandes projetos, que deixa margem para aprovação posterior.",
+      "O'Kane argumentou que negociações secretas alimentam a revolta pública e comparou a prática aos acordos sigilosos do Uber com governos locais em meados dos anos 2010. Ha ponderou que encerrar os NDAs não conquista opositores automaticamente, mas é um bom primeiro passo, já que moradores muitas vezes nem sabem o que está sendo construído.",
+      "O problema maior, segundo O'Kane, é de comunicação: a indústria se explica mal e as pessoas têm dificuldade de ver utilidade da IA para elas. O episódio também comenta a missão \"abundância\" da Tesla, e Ha sugere que a pressão pública obriga as empresas de IA a defender de fato seu trabalho em vez de tratá-lo como inevitável."
+    ]
+  },
+  {
+    title: "Will the HomeView be Apple's first smart home success?",
+    tituloPt: "O HomeView será o primeiro sucesso da Apple em casa inteligente?",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2021/11/homepod.jpg?resize=1200,854",
+    cat: "Tecnologia", stars: 2,
+    resumo: [
+      "Citando Mark Gurman, da Bloomberg, o TechCrunch relata que a Apple anunciará na terça-feira um novo hub de casa inteligente chamado HomeView.",
+      "Segundo Gurman, o aparelho é um dispositivo \"movido pela Siri\", com tela e chip A18, projetado para controlar outros gadgets da casa. Haveria duas versões: uma de bancada e outra para parede.",
+      "O texto chama o HomeView de a aposta mais séria da Apple em casa inteligente, depois da adesão limitada ao HomeKit e ao HomePod. No mesmo evento, a empresa deve apresentar uma Apple TV e um HomePod mini atualizados.",
+      "No começo da semana, Gurman também havia reportado que a Apple pretende fazer parceria com a LG em fechadura, termostato e campainha inteligentes. Rumores de um produto assim circulam há alguns anos, mas esta é a primeira vez que surgem nome e data de lançamento.",
+      "A matéria, assinada por Anthony Ha, deixa a pergunta em aberto: o HomeView será o primeiro grande sucesso da Apple na casa conectada?"
+    ],
+    nota: "Imagem de arquivo do HomePod (a que o portal definiu como imagem de destaque)."
+  }
 ];
-const PALETAS = {
-  Branding:["#ff9a5a","#ff5e62","#ffd36e"],
-  Design:["#2dd4bf","#0f766e","#86efac"],
-  Tecnologia:["#6366f1","#8b5cf6","#38bdf8"]
+NEWS[1].nota = "Imagem de destaque não disponível; exibindo ilustração gerada.";
+NEWS[9].nota = "Resumo baseado no episódio do podcast Equity descrito na página do artigo.";
+
+const PALETTES = {
+  Branding: [["#fb923c","#f43f5e"],["#fbbf24","#ea580c"],["#f472b6","#f97316"]],
+  Design: [["#10b981","#0d9488"],["#34d399","#0891b2"],["#2dd4bf","#16a34a"]],
+  Tecnologia: [["#6366f1","#8b5cf6"],["#3b82f6","#7c3aed"],["#60a5fa","#a855f7"]]
 };
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
-function Ilustracao({titulo,categoria}){
-  const p=PALETAS[categoria]||PALETAS.Design, h=hash(titulo), id="g"+h;
-  const r=n=>(h>>n)%100;
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function Illustration({item}){
+  const h=hash(item.title), p=PALETTES[item.cat][h%3], id="g"+h;
+  const sh=[0,1,2,3].map(i=>({x:(h>>(i*3))%100*8,y:(h>>(i*2+1))%100*4,r:40+((h>>i)%90),o:.15+((h>>i)%4)*.08}));
   return (
-    <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+titulo}>
+    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
       <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-      <rect width="400" height="225" fill={"url(#"+id+")"}/>
-      <circle cx={80+r(3)*2} cy={60+r(5)} r={50+r(7)/2} fill={p[2]} opacity=".55"/>
-      <rect x={200+r(2)} y={90+r(4)/2} width="120" height="120" rx="26" fill="#fff" opacity=".22" transform={"rotate("+(r(6)-20)+" 260 150)"}/>
-      <path d={"M0 "+(180+r(1)/4)+" Q 120 "+(120+r(8))+" 240 "+(180)+" T 400 "+(150+r(9)/2)+" V225 H0Z"} fill="#fff" opacity=".18"/>
-      <circle cx={330-r(4)} cy={50+r(2)/2} r="22" fill="#fff" opacity=".35"/>
+      <rect width="800" height="400" fill={`url(#${id})`}/>
+      {sh.map((s,i)=> i%2? <circle key={i} cx={s.x} cy={s.y} r={s.r} fill="#fff" opacity={s.o}/> : <rect key={i} x={s.x-s.r} y={s.y-s.r} width={s.r*2} height={s.r*1.4} rx="18" fill="#fff" opacity={s.o} transform={`rotate(${(h>>i)%40-20} ${s.x} ${s.y})`}/>)}
     </svg>
   );
 }
-function Midia({item}){
+function Media({item}){
   const [falhou,setFalhou]=useState(false);
   return (
     <div className="media">
       {item.imageUrl && !falhou
-        ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-        : <Ilustracao titulo={item.title} categoria={item.categoria}/>}
+        ? <img src={item.imageUrl} alt={"Foto da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+        : <Illustration item={item}/>}
     </div>
   );
 }
-const Estrelas=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-function Card({item,onOpen}){
-  return (
-    <button className="card" onClick={()=>onOpen(item)}>
-      <Midia item={item}/>
-      <div className="body">
-        <span className={"tag "+item.categoria}>{item.categoria}</span>
-        <h3>{item.tituloPt}</h3>
-        <div className="meta"><span>{item.source}</span><Estrelas n={item.estrelas}/></div>
-      </div>
-    </button>
-  );
-}
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+function Meta({item}){return <div className="meta"><span className={"tag t-"+item.cat}>{item.cat}</span><span>{item.source}</span><Stars n={item.stars}/></div>}
+
 function Modal({item,onClose}){
-  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",k);document.body.style.overflow="hidden";return()=>{window.removeEventListener("keydown",k);document.body.style.overflow=""}},[]);
+  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",k);return()=>window.removeEventListener("keydown",k)},[]);
   return (
     <div className="overlay" onClick={onClose}>
-      <article className="modal" onClick={e=>e.stopPropagation()}>
-        <Midia item={item}/>
-        <div className="in">
-          <span className={"tag "+item.categoria}>{item.categoria}</span> <Estrelas n={item.estrelas}/>
+      <div className="modal" onClick={e=>e.stopPropagation()}>
+        <Media item={item}/>
+        <div className="inner">
+          <Meta item={item}/>
           <h2>{item.tituloPt}</h2>
-          <div className="orig">{item.source} · original: {item.title}</div>
-          <div style={{marginTop:16}}>{item.resumo.map((p,i)=><p key={i}>{p}</p>)}</div>
+          <p className="orig">Título original: {item.title}</p>
+          {item.resumo.map((p,i)=><p className="s" key={i}>{p}</p>)}
+          {item.nota && <p className="note">{item.nota}</p>}
           <div className="btns">
             <a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
-            <button className="btn s" onClick={onClose}>Fechar</button>
+            <button className="btn g" onClick={onClose}>Fechar</button>
           </div>
         </div>
-      </article>
+      </div>
     </div>
   );
 }
 function App(){
-  const [aberta,setAberta]=useState(null);
-  const [h,...resto]=NOTICIAS;
+  const [open,setOpen]=useState(null);
+  const sorted=[...NEWS].sort((a,b)=>b.stars-a.stars);
+  const [top,...rest]=sorted;
   return (
     <div className="wrap">
       <header className="top">
-        <div><h1>☀️ Portal da Manhã</h1><p>Branding, design e tecnologia · segunda-feira, 12 de outubro de 2026</p></div>
-        <p>{NOTICIAS.length} notícias · {new Set(NOTICIAS.map(n=>n.source)).size} portais</p>
+        <h1>☀️ Portal da Manhã</h1>
+        <div className="date">segunda-feira, 12 de outubro de 2026</div>
       </header>
-      <button className="card hero" onClick={()=>setAberta(h)} style={{display:"grid"}}>
-        <Midia item={h}/>
+      <div className="hero" onClick={()=>setOpen(top)}>
+        <Media item={top}/>
         <div className="body">
-          <div><span className={"tag "+h.categoria}>Manchete · {h.categoria}</span></div>
-          <h2>{h.tituloPt}</h2>
-          <div className="orig">{h.source}</div>
-          <div style={{marginTop:10}}><Estrelas n={h.estrelas}/></div>
+          <Meta item={top}/>
+          <h2>{top.tituloPt}</h2>
+          <p>{top.resumo[0]}</p>
+          <span style={{color:"var(--acc)",fontWeight:600,fontSize:14}}>Ler resumo →</span>
         </div>
-      </button>
-      <div className="grid">{resto.map(n=><Card key={n.url} item={n} onOpen={setAberta}/>)}</div>
-      {aberta && <Modal item={aberta} onClose={()=>setAberta(null)}/>}
-      <footer>Resumos escritos em português a partir das matérias originais. Clique em um card para ler o resumo; o link leva à fonte.</footer>
+      </div>
+      <div className="grid">
+        {rest.map(it=>(
+          <article className="card" key={it.url} onClick={()=>setOpen(it)}>
+            <Media item={it}/>
+            <div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div>
+          </article>
+        ))}
+      </div>
+      <footer>Resumos escritos em português a partir dos artigos originais · Fotos hospedadas nos portais de origem · Edição de 12/10/2026</footer>
+      {open && <Modal item={open} onClose={()=>setOpen(null)}/>}
     </div>
   );
 }

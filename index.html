@@ -1,327 +1,188 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 12 de outubro de 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<title>Portal da Manhã — 13 de outubro de 2026</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14171f;--mute:#667085;--line:#e6e8ef;--acc:#4f46e5;--shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:#f6f7fb;color:#1a1d29;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:24px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:var(--mute);font-size:14px;text-transform:capitalize}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:28px}
-.hero:hover{transform:translateY(-2px)}
-.hero .media{min-height:340px}
-.hero .body{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.date{color:#6b7280;font-size:14px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(20,25,50,.08);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:28px}
+.hero:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(20,25,50,.12)}
+.hero .img{min-height:320px}
+.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 .hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
-.hero p{margin:0;color:var(--mute)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px)}
-.card .media{height:180px}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(20,25,50,.06);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,25,50,.12)}
+.card .img{height:180px}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:8px}
 .card h3{margin:0;font-size:17px;line-height:1.3}
-.media{position:relative;background:#e9ebf3;overflow:hidden}
-.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.img{position:relative;overflow:hidden;background:#e5e7eb}
+.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:#6b7280}
 .tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
-.t-Branding{background:#fff1e6;color:#c2410c}.t-Design{background:#e0f7f1;color:#0f766e}.t-Tecnologia{background:#e9e8ff;color:#4338ca}
+.Branding{background:#ffe9dc;color:#b4501a}.Design{background:#d9f5ee;color:#0f7a62}.Tecnologia{background:#e5e4ff;color:#4a3fc7}
 .stars{color:#f59e0b;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(16,24,40,.55);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:30px 16px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:up .25s}
-.modal .media{height:320px}
-.modal .inner{padding:28px 32px 32px}
-.modal h2{margin:8px 0 4px;font-size:26px;line-height:1.25;letter-spacing:-.02em}
-.orig{color:var(--mute);font-size:13px;margin:0 0 16px;font-style:italic}
-.modal p.s{margin:0 0 14px;font-size:16px}
-.note{font-size:13px;color:var(--mute);border-left:3px solid var(--line);padding-left:10px;margin-top:6px}
-.btns{display:flex;gap:10px;margin-top:20px}
-.btn{border:0;border-radius:12px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
-.btn.p{background:var(--acc);color:#fff}.btn.g{background:#eef0f6;color:var(--ink)}
-.warn{font-size:12px;color:#b45309;background:#fffbeb;border-radius:8px;padding:4px 8px}
-footer{margin-top:36px;text-align:center;color:var(--mute);font-size:12px}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero .body{padding:20px}.hero h2{font-size:22px}.modal .inner{padding:20px}}
+.overlay{position:fixed;inset:0;background:rgba(15,18,35,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;max-height:92vh;overflow:auto;animation:pop .25s}
+.modal .img{height:340px}
+.modal .content{padding:24px 28px 28px}
+.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
+.modal p{font-size:16px;margin:0 0 14px;color:#2b3042}
+.note{font-size:13px;color:#8a5a00;background:#fff6dd;border-radius:10px;padding:8px 12px}
+.btns{display:flex;gap:10px;margin-top:16px}
+.btn{padding:10px 18px;border-radius:10px;border:0;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+.primary{background:#1a1d29;color:#fff}.ghost{background:#eef0f6;color:#1a1d29}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes pop{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.modal .img{height:220px}h1{font-size:24px}}
+footer{margin-top:36px;text-align:center;color:#9aa0b0;font-size:12px}
 </style>
 </head>
 <body>
 <div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
-const { useState, useEffect } = React;
-
-const NEWS = [
-  {
-    title: "The Coca-Cola rebrand is still causing confusion three months on",
-    tituloPt: "O rebrand da Coca-Cola ainda causa confusão três meses depois",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/the-coca-cola-rebrand-is-still-causing-confusion-three-months-on",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/5fsRM6ZVoVfrEoUHG9efNG-1000-80.webp",
-    cat: "Branding", stars: 5,
-    resumo: [
-      "Quase três meses depois do rebrand de julho da Coca-Cola, a nova embalagem está gerando confusão prática entre a Coca-Cola tradicional e a Coca-Cola Zero Açúcar, segundo reportagem do Creative Bloq.",
-      "A proposta da redesenhada era deixar a marca \"mais Coca-Cola\", mas críticos apontam que a lata da versão Zero agora se parece demais com a lata comum. A Zero nasceu em 2005 com uma lata toda preta, passou ao vermelho com logo preto ao virar Zero Açúcar em 2016 e agora preserva apenas uma fita preta como pista de cor.",
-      "O texto \"Zero sugar\" é relativamente grande, mas quem escolhe bebidas rapidamente e repetidas vezes — como comissários de bordo — diz que a semelhança dificulta o trabalho. Um vídeo no TikTok de uma comissária australiana mostrando duas latas quase idênticas e relatando que entregou a bebida errada várias vezes na semana rendeu milhares de curtidas e mais de 100 comentários.",
-      "Alguns comentaristas alertaram que trocas podem ser perigosas para pessoas com diabetes ou alergias que dependem da tipografia preta para distinguir os produtos.",
-      "O comunicado da Coca-Cola citava consistência como objetivo central, falando em \"uma identidade visual única e fluida\". Usuários do Reddit especulam que apagar a diferença seria uma estratégia de longo prazo para empurrar consumidores à versão Zero e talvez aposentar a tradicional, num cenário de impostos sobre açúcar e novas regras de rotulagem. A empresa não anunciou nenhum plano nesse sentido e lançou recentemente uma versão com açúcar de cana nos EUA, onde a Coca comum ainda usa xarope de milho."
-    ]
-  },
-  {
-    title: "Its embroidered logo invite shows Apple understands something other tech brands don't",
-    tituloPt: "Convite com logo bordado mostra que a Apple entende algo que outras marcas de tecnologia não entendem",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/an-embroidered-logo-shows-apples-understands-something-that-other-tech-brands-dont",
-    imageUrl: null,
-    cat: "Branding", stars: 5,
-    resumo: [
-      "A Apple enviou um convite com o logo bordado para o evento \"Welcome Home\", que, segundo o Creative Bloq, mostra que a empresa compreende a desconfiança do público em relação a conteúdo gerado por IA.",
-      "O artigo lembra que, entre 2024 e 2025, a Apple retirou anúncios que desagradaram, como o vídeo do iPad Pro M4 que esmagava ferramentas criativas, um comercial na Tailândia criticado por estereótipos e a campanha \"Parent Presentation\". Campanhas recentes sugerem que a empresa aprendeu com os tropeços, enquanto outras marcas enfrentam reação negativa à enxurrada de conteúdo feito por IA.",
-      "O convite, publicado pelo SVP de Marketing Greg Joswiak, revive o logo arco-íris de 1977 em bordado criado pelas gêmeas Maricor/Maricar, de Sydney. Por ser uma arte ancestral, o bordado em 2026 funciona como ênfase deliberada na criatividade feita por humanos. Outras campanhas, como as animações em stop-motion do novo Mac mini e do Apple Games, seguem o mesmo caminho artesanal.",
-      "O texto defende que os vídeos de bastidores hoje importam tanto quanto o anúncio final, pois ajudam o público a reconhecer o trabalho manual por trás da peça.",
-      "O evento está marcado para terça, 13 de outubro, e surpreendeu por ser um evento de outubro depois de alguns anos sem. Rumores citam um hub de casa inteligente, uma nova Apple TV 4K e um HomePod mini atualizado; nada confirmado. Pré-vendas do iPhone Duo começam em 16 de outubro."
-    ]
-  },
-  {
-    title: "Not a Hotel to open Not a Museum at Imperial Hotel Plaza Tokyo ahead of demolition",
-    tituloPt: "Not a Hotel abrirá o Not a Museum no Imperial Hotel Plaza de Tóquio antes da demolição",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/12/not-a-hotel-open-not-a-museum-imperial-plaza-hotel-tokyo/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/not-a-museum-skwat-tokyo-sq_dezeen_2364_col_0.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "A Nota, empresa por trás da Not a Hotel, vai abrir seu primeiro espaço cultural, o Not a Museum, projetado em parceria com o coletivo criativo tóquio-ense SKWAT.",
-      "O espaço ocupará parte do Imperial Hotel Plaza Tokyo, centro comercial de cerca de 2.000 m² que será demolido para a reconstrução da torre do Imperial Hotel. A Nota operará do primeiro ao quarto andar por quatro anos, de meados de 2027 a 2031, antes da derrubada — que foi adiada por causa do aumento dos custos de construção.",
-      "A subsidiária Not a City desenvolve o projeto com o SKWAT, que dirige o SKWAT Kameari Art Centre e é liderado por Keisuke Nakamura, do estúdio Daikei Mills. Os parceiros descrevem o local como uma \"plataforma experimental para o futuro\", reunindo arte, música, livros, cinema e moda, e cuidarão de tudo, do planejamento à operação diária.",
-      "A ideia é aproveitar espaços vagos em Tóquio, onde prédios costumam ser demolidos em vez de reutilizados. A empresa também está por trás do Japa Valley Tokyo, distrito comercial previsto para 2027 no ainda inexistente Yurakucho Park, desenvolvido com a Mitsubishi Estate e desenhado por Pharrell Williams e Nigo, consultores criativos da Nota desde o ano passado.",
-      "O SKWAT já recebeu exposições do designer Kwangho Lee e dos arquitetos Herzog & de Meuron."
-    ]
-  },
-  {
-    title: "The Shenzhen Natural History Museum looks like it was carved by water instead of architects",
-    tituloPt: "O Museu de História Natural de Shenzhen parece esculpido pela água, não por arquitetos",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/11/the-shenzhen-natural-history-museum-looks-like-it-was-carved-by-water-instead-of-architects/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/653289/shenzhen_natural_history_museum_1.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "O Yanko Design apresenta o Museu de História Natural de Shenzhen, projeto do escritório 3XN que lembra uma margem de rio moldada pela água mais do que um edifício institucional tradicional.",
-      "O museu abriu em 28 de julho de 2026, ao lado do lago Yanzi, no distrito de Pingshan, seis anos depois da divulgação das imagens do concurso. A 3XN liderou o projeto com B+H Architects e Zhubo Design, sob o conceito \"Delta\", inspirado em paisagens fluviais.",
-      "Com cerca de 105.300 m², é apresentado como o maior museu de história natural do sul da China. A cobertura é um parque público de acesso gratuito, e as galerias ficam em cinco grandes volumes arredondados. A planta segue as curvas do rio Pingshan, e as paredes envolvem gramados e árvores em laços que lembram antigos leitos de rio.",
-      "A fachada usa aletas verticais de granito que sombreiam as galerias e deixam entrar luz natural; painéis padronizados podem ser trocados se danificados. Grandes arcos ao sul ligam uma rua movimentada a um parque de várzea nos fundos, com espelhos d'água refletindo as aberturas.",
-      "Por dentro, os cones são revestidos de mármore com veios de madeira de Guangxi, e o átrio central, chamado \"Árvore da Vida\", abriga uma escadaria em espiral ondulada que remete à obra de Frank Gehry. O telhado paisagístico tem cinco zonas de jardim, atinge 36 m de altura, desce perto dos vizinhos para preservar vistas e foi pensado para observação de estrelas."
-    ]
-  },
-  {
-    title: "Adidas sues White Fox in battle of the stripes",
-    tituloPt: "Adidas processa a White Fox na batalha das listras",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/adidas-sues-white-fox-in-battle-of-the-stripes",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/xMqMABX8HcCx239EMnmCH4-1920-80.jpg",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "A Adidas processou a boutique australiana White Fox, alegando que as peças de quatro listras da marca infringem sua marca registrada de três listras.",
-      "A Adidas afirma que as três listras são centrais para sua identidade e que detém o registro na Austrália desde 1957. Descreve os desenhos da White Fox como \"enganosamente semelhantes\" e \"substancialmente idênticos\" ao seu sinal.",
-      "A empresa argumenta ainda que a publicidade da White Fox, que destaca as listras, indica a intenção de se beneficiar da reputação da Adidas.",
-      "A defesa da White Fox aponta que outros varejistas australianos, como Cotton On e Sportscraft, vendem itens com listras decorativas parecidas. A Adidas rebate que os anúncios da White Fox mostram produtos genuínos da Adidas, o que poderia criar associação na mente do consumidor.",
-      "A Adidas pede indenização, incluindo os lucros obtidos com os produtos contestados, além de juros e custas. A matéria faz parte da seção de Branding e remete a outras disputas, como o processo da New Balance sobre um logo em tênis."
-    ]
-  },
-  {
-    title: "Gundry & Ducker draws on French dining culture for London restaurant Cassette",
-    tituloPt: "Gundry & Ducker se inspira na cultura gastronômica francesa para o restaurante Cassette, em Londres",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/12/gundry-ducker-french-dining-culture-london-cassette/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/Gundry-Ducker-French-Dining-Culture-Cassette-Featured_dezeen_2364_col_0.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "O estúdio Gundry & Ducker reformou os interiores de uma oficina tombada (Grade II) em Covent Garden, em Londres, para o Cassette, um bistrô de inspiração parisiense recém-inaugurado.",
-      "O restaurante ocupa um edifício gótico do século XIX, com pé-direito duplo e grande fachada de vidro ornamentada. São 1.151 m², com 52 lugares internos entre salão térreo e subsolo e mais 30 no terraço.",
-      "Segundo o cofundador Tyeth Gundry, o briefing pedia um restaurante de bairro no centro da cidade, focado em familiaridade e conforto. O estúdio recorreu aos bistrôs tradicionais de Paris: acabamentos berinjela, bancos escuros e cadeiras de madeira curvada.",
-      "Os materiais incluem tecidos naturais, madeira sapele, aço inox e tijolo aparente, numa paleta contida e \"deliberadamente sem frescura\". Os tons quentes foram escolhidos para escurecer bem à noite, o que depende do controle da luz refletida.",
-      "Inspirados no vizinho distrito de teatros, os designers instalaram um sistema de som de alta qualidade e uma cortina acústica que envolve o salão. Os donos, Mark Gurney e Matt Bushnell, compraram obras em mercados locais e bazares para dar cor e personalidade."
-    ]
-  },
-  {
-    title: "Facha Architekti adds \"deliberately distinct\" red extension to former-pigsty home",
-    tituloPt: "Facha Architekti acrescenta extensão vermelha \"deliberadamente distinta\" a casa que já foi chiqueiro",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/11/facha-architekti-red-extension-czech-pigsty-home/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/facha-architekti-house-with-red-addition-peter-fabo-27-scaled.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "O escritório praguense Facha Architekti concluiu a \"House With a Red Addition\", uma extensão em metal corrugado vermelho para uma pequena casa de família na região de Příbram, na República Tcheca.",
-      "O anexo amplia a área de convivência e melhora o acesso ao exterior por meio de degraus-assento, um terraço de larício e um toldo retrátil na mesma cor.",
-      "A casa original nasceu como um chiqueiro térreo, alterado várias vezes até virar residência permanente. Para preservar esse histórico, os arquitetos fizeram a adição \"deliberadamente distinta\" do volume principal, num terreno de 515 m² à beira de uma vila.",
-      "Por dentro, compensado de pinus reveste paredes e mobiliário embutido, que esconde armazenamento — antiga carência da casa. O vermelho aparece em bancadas, portas de armários, corrimãos e duas cadeiras, contra linóleo e vigas de madeira aparentes.",
-      "A cor foi escolhida entre as opções-padrão do revestimento corrugado, sem motivo simbólico, e ajuda a separar o antigo do novo. Com a entrada principal levada para a extensão, a equipe reorganizou a planta, ampliou o banheiro e trocou uma entrada apertada por outra mais generosa."
-    ]
-  },
-  {
-    title: "8 Japanese Stationery That Make US Back-to-School Supplies Look Boring",
-    tituloPt: "8 itens de papelaria japonesa que fazem o material escolar americano parecer entediante",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/11/8-japanese-stationery-that-make-us-back-to-school-supplies-look-boring/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/09/japan-stationery-that-make-us-back-to-school-supplies-look-boring/8_japanese_stationery_yanko_design_hero.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "O Yanko Design reúne oito produtos de papelaria japonesa como alternativa ao material escolar padrão, argumentando que os fabricantes do Japão tratam instrumentos de escrita e papel com atenção extrema ao detalhe e à contenção.",
-      "Entre os itens estão a prancheta MagBoard, que usa ímã e alavanca para segurar até 30 folhas e tem superfície resistente à água (US$ 45), e o suporte dobrável Sonic Kakusta, que inclina as canetas para facilitar a visualização.",
-      "Há também o caderno Stalogy 365 Days, A6 pontilhado com 368 páginas que abre totalmente plano, e a Levitating Pen, caneta que fica em pé equilibrada sobre um pedestal magnético (US$ 79).",
-      "O timer de mesa King Jim VBT10 mostra o tempo restante em segmentos de LCD que somem da direita para a esquerda; o carimbo modular Shachihata permite montar qualquer data; e o suporte Lihit Lab Firm Book End usa um travão ativado pela gravidade para segurar um único livro em pé.",
-      "O texto fecha com um bloco de desenho da ITO Bindery com o Yanko Design, de US$ 40 e tiragem limitada a 100 unidades numeradas por tamanho."
-    ]
-  },
-  {
-    title: "Derek&Eric bring bright colours and funky typography to the launch of DRZZL",
-    tituloPt: "Derek&Eric trazem cores vibrantes e tipografia irreverente ao lançamento da DRZZL",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/derekeric-bring-bright-colours-and-funky-typography-to-the-launch-fo-drzzl/",
-    imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/10/DE_LDN058_S1R1_AES_Drzzl_Artboard-1.png?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=576",
-    cat: "Branding", stars: 3,
-    resumo: [
-      "A agência londrina Derek&Eric criou a identidade da DRZZL, azeite de oliva de origem única lançado pela influenciadora Natalia Rudin, do perfil Nats Nourishments, com 1,6 milhão de seguidores no Instagram. A matéria saiu em 5 de outubro, ainda fora da edição anterior.",
-      "A marca mira jovens cozinheiros domésticos que querem formas rápidas e sem cerimônia de regar saladas e massas. A empresa Studio Drama desenhou o lettering personalizado.",
-      "O azeite vem em frascos squeeze ergonômicos, em vez do tradicional vidro escuro. A embalagem usa letras empilhadas e uma paleta ousada de verde-escuro, laranja e amarelo, com tipografia neon que comunica os modos de uso.",
-      "O diretor criativo Adam Swan explicou que a categoria é saturada de marcas com visuais parecidos, então o time reduziu a identidade ao prazer de simplesmente regar o óleo. O artigo liga a escolha a uma tendência do branding de alimentos: visuais utilitários e de alto contraste pensados para telas de celular.",
-      "Rudin disse que o objetivo era criar uma marca com a qual as pessoas se identifiquem e desafiar o esnobismo típico das cozinhas."
-    ]
-  },
-  {
-    title: "Exclusive: WPP Creative hires McCann's Tyler Turnbull as CEO",
-    tituloPt: "Exclusivo: WPP Creative contrata Tyler Turnbull, da McCann, como CEO",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/exclusive-wpp-creative-hires-mccanns-tyler-turnbull-ceo/1971966",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/FCB-Global-Tyler-Turnbull-GettyImages-RM-2217006476-CUS.jpg",
-    cat: "Branding", stars: 3,
-    resumo: [
-      "A WPP contratou Tyler Turnbull, CEO global da McCann Worldgroup, para comandar a WPP Creative, vaga deixada por Jon Cook. Turnbull assume o cargo global no início de 2027. A matéria é de 8 de outubro, ainda não coberta nas edições anteriores.",
-      "Cook anunciou sua saída na sexta anterior, após três décadas na WPP, e deixa a empresa em março de 2027. A WPP pretende promover Eric Campbell a CEO global da VML quando isso acontecer. A CEO Cindy Rose chamou Turnbull de líder de classe mundial e disse que a nomeação coloca a criatividade no centro do crescimento.",
-      "A WPP Creative foi criada em 2026 dentro da estratégia Elevate28 e reúne VML, Ogilvy, Grey, Burson, AKQA, Landor e Design Bridge & Partners.",
-      "Turnbull começou na Publicis Toronto em 2006, liderou a FCB Canada a partir de 2014 e virou CEO global da FCB em 2022; a rede foi Network Regional do Ano da América do Norte em Cannes Lions por sete anos seguidos até 2025. Após a Omnicom concluir a compra da IPG, em novembro de 2025, ele assumiu a McCann em dezembro de 2025.",
-      "No primeiro semestre de 2026, a receita líquida da WPP Creative caiu 4,9% em base comparável, com melhora no segundo trimestre; a América do Norte, uma das regiões mais fracas, teve queda de 6%. A Omnicom não quis comentar."
-    ]
-  },
-  {
-    title: "Can the AI industry persuade data center opponents by getting rid of NDAs?",
-    tituloPt: "Indústria de IA conseguirá convencer opositores de data centers abolindo NDAs?",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/9-DSCF1649.jpg?resize=800,1200",
-    cat: "Tecnologia", stars: 3,
-    resumo: [
-      "A Amazon anunciou que deixará de usar acordos de confidencialidade (NDAs) em negociações com governos locais sobre data centers, seguindo movimento semelhante da Microsoft no início do ano. O anúncio apareceu no meio de um longo post que defende os benefícios dos data centers para as comunidades.",
-      "No podcast Equity, do TechCrunch, Anthony Ha, Sean O'Kane e Rebecca Bellan debateram a decisão. Bellan duvida que as atuais moratórias tenham efeito duradouro, pois costumam durar um ou dois anos, enquanto as instalações levam anos para ficar prontas. Ha citou uma moratória de cerca de um ano em Nova York para licenças de grandes projetos, que deixa margem para aprovação posterior.",
-      "O'Kane argumentou que negociações secretas alimentam a revolta pública e comparou a prática aos acordos sigilosos do Uber com governos locais em meados dos anos 2010. Ha ponderou que encerrar os NDAs não conquista opositores automaticamente, mas é um bom primeiro passo, já que moradores muitas vezes nem sabem o que está sendo construído.",
-      "O problema maior, segundo O'Kane, é de comunicação: a indústria se explica mal e as pessoas têm dificuldade de ver utilidade da IA para elas. O episódio também comenta a missão \"abundância\" da Tesla, e Ha sugere que a pressão pública obriga as empresas de IA a defender de fato seu trabalho em vez de tratá-lo como inevitável."
-    ]
-  },
-  {
-    title: "Will the HomeView be Apple's first smart home success?",
-    tituloPt: "O HomeView será o primeiro sucesso da Apple em casa inteligente?",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2021/11/homepod.jpg?resize=1200,854",
-    cat: "Tecnologia", stars: 2,
-    resumo: [
-      "Citando Mark Gurman, da Bloomberg, o TechCrunch relata que a Apple anunciará na terça-feira um novo hub de casa inteligente chamado HomeView.",
-      "Segundo Gurman, o aparelho é um dispositivo \"movido pela Siri\", com tela e chip A18, projetado para controlar outros gadgets da casa. Haveria duas versões: uma de bancada e outra para parede.",
-      "O texto chama o HomeView de a aposta mais séria da Apple em casa inteligente, depois da adesão limitada ao HomeKit e ao HomePod. No mesmo evento, a empresa deve apresentar uma Apple TV e um HomePod mini atualizados.",
-      "No começo da semana, Gurman também havia reportado que a Apple pretende fazer parceria com a LG em fechadura, termostato e campainha inteligentes. Rumores de um produto assim circulam há alguns anos, mas esta é a primeira vez que surgem nome e data de lançamento.",
-      "A matéria, assinada por Anthony Ha, deixa a pergunta em aberto: o HomeView será o primeiro grande sucesso da Apple na casa conectada?"
-    ],
-    nota: "Imagem de arquivo do HomePod (a que o portal definiu como imagem de destaque)."
-  }
+const {useState,useEffect}=React;
+const NEWS=[
+{
+title: "Pentagram creates dynamic bilingual identity for Design Doha Biennial 2026",
+tituloPt: "Pentagram cria identidade bilíngue dinâmica para a Bienal Design Doha 2026",
+source: "Design Week",
+url: "https://www.designweek.co.uk/pentagram-creates-dynamic-bilingual-identity-for-design-doha-biennial-2026/",
+imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/SM_DDB26_1920x1080_15-1024x576.png",
+cat:"Branding",stars:5,
+resumo:["Samar Maakaroun e sua equipe na Pentagram desenvolveram a identidade visual da segunda edição da Bienal Design Doha, plataforma de design para o mundo árabe com exposições, instalações públicas e projetos colaborativos pela capital do Catar.","Em vez de um logotipo fixo, o sistema é tipográfico e flexível, pensado para representar conexões entre disciplinas, idiomas e comunidades. Árabe e inglês recebem peso igual: os dois alfabetos se fundem em composições compartilhadas, refletindo a mistura cultural da região e o papel do evento como ponte internacional.","O elemento-assinatura são traços de letras esticados que cruzam os layouts e ligam elementos distintos, lembrando linhas de mapa ou constelações. A paleta combina um bege inspirado no travertino local, um vinho profundo, um laranja vibrante e o azul saturado da primeira edição, mantido por continuidade.","O sistema se estende a sub-marcas e exposições; para a mostra principal, “Arab Design Now”, há uma variante mais ousada com a mesma estrutura. Aplicações incluem lápis, chaveiros, camisetas, cartazes em paredes de pedra e painéis iluminados. A bienal abre em 5 de novembro de 2026, em vários locais."]
+},
+{
+title: "Meta releases its first frontier model, Muse Wonder",
+tituloPt: "Meta lança seu primeiro modelo de fronteira, o Muse Wonder",
+source: "TechCrunch",
+url: "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Screenshot-2026-10-12-at-1.09.43-PM.jpg?resize=1200,676",
+cat:"Tecnologia",stars:4,
+resumo:["O Meta Superintelligence Lab lançou o Muse Wonder e o Muse Wonder Full, a primeira tentativa da empresa de entregar um modelo de fronteira. Eles são maiores e mais capazes que o Muse Spark, versão leve focada em baixa latência, e pontuam mais alto em benchmarks e tarefas complexas como programação.","O Muse Wonder está disponível pela API de modelos da Meta a US$ 4 por milhão de tokens de entrada e US$ 20 por milhão de saída, preço próximo ao de concorrentes de ponta. O Wonder Full fica restrito a assinantes do Muse Code, sem acesso por API. Ambos vão alimentar o agente Muse.","A Meta destaca a “memória ativa”: a capacidade de reter e sintetizar o que o usuário conta ao longo do tempo, alinhada à aposta em assistentes pessoais para tarefas longas. No benchmark MemoryBench, a empresa afirma superar rivais.","É o primeiro lançamento de fronteira desde a reestruturação da área de IA por Alexandr Wang em agosto de 2025. Os modelos foram treinados no data center Prometheus, em Ohio."]
+},
+{
+title: "Sour Patch Kids takes aim at Oreo in first UK campaign",
+tituloPt: "Sour Patch Kids mira na Oreo em sua primeira campanha no Reino Unido",
+source: "Creative Review",
+url: "https://www.creativereview.co.uk/sour-patch-kids-tnot-as-sweet-as-they-look-campaign-ooh/",
+imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Sour-Patch-Kids-OOH-hero.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+cat:"Branding",stars:4,
+resumo:["A VCCP assina a primeira campanha integrada da Sour Patch Kids no Reino Unido, sob a plataforma “Not As Sweet As They Look”, que brinca com a aparência fofa e o sabor azedo do doce por meio de peças de mídia exterior travessas.","O destaque é uma ação em quatro pontos especiais de Londres e Bristol em que os personagens parecem rasgar o cartaz de uma Oreo vizinha. A ideia transforma a rivalidade nas redes entre as duas marcas, ambas da Mondelēz, em espetáculo de rua.","O texto compara a ação a clássicos da publicidade comparativa, como a guerra de outdoors BMW x Audi de 2009, e a coloca numa tendência de OOH que reconhece o próprio meio. Outras peças incluem um cabo de guerra em que um doce é partido ao meio e uma cena de tênis com uma cabeça decepada.","Para o autor, é uma forma inteligente de gerar conversa online em torno de um formato fácil de ignorar."]
+},
+{
+title: "This viral packaging plays on a meme the brand ignored for decades",
+tituloPt: "Esta embalagem viral brinca com um meme que a marca ignorou por décadas",
+source: "Creative Bloq",
+url: "https://www.creativebloq.com/news/this-ingenious-packaging-design-went-viral-simply-by-recognising-how-people-were-already-using-it",
+imageUrl: "https://cdn.mos.cms.futurecdn.net/wRSCDPm62i7u424bJtVuYV-1920-80.jpg",
+cat:"Branding",stars:4,
+resumo:["A marca mexicana de laticínios Lala transformou um hábito doméstico em recurso oficial de design. Muitas famílias mexicanas reaproveitam os potes de creme para guardar feijão, molho e sobras, e o costume virou piada e meme: abre-se o pote esperando creme e encontra-se outra coisa.","O projeto “Mexiconteiners”, das agências Zurda México e Conciergency, adicionou um espaço para escrever o que há dentro após o creme acabar, com ilustrações de inspiração mexicana mantendo a identidade Lala.","A ideia veio da experiência compartilhada, não de pesquisa de mercado. A resposta foi forte, com consumidores criando versões próprias e novos memes. O conceito agora se estende a outros produtos e edições licenciadas, incluindo uma colaboração com Peanuts."]
+},
+{
+title: "New Logo and Identity for Keen by Mother Design",
+tituloPt: "Keen ganha novo logo e identidade da Mother Design",
+source: "Brand New",
+url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_keen_by_mother_design.php",
+imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/keen_logo_before_after.png",
+cat:"Branding",stars:3,
+resumo:["O Brand New publicou, em 12 de outubro de 2026, o novo logo e identidade da Keen, serviço web, criados pela Mother Design. A página traz comparativos de antes e depois e uma aplicação de exemplo.","Os elementos públicos da matéria são as tags “circles”, “illustration”, “mother design” e “wordmark”, que sugerem um sistema baseado em formas circulares, ilustração e logotipo tipográfico.","Nota: o artigo completo está atrás de paywall; este resumo se baseia apenas em título, categoria, indústria e tags."]
+},
+{
+title: "New Logo for Vauxhall",
+tituloPt: "Novo logo da Vauxhall",
+source: "Brand New",
+url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_vauxhall.php",
+imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/vauxhall_2026_logo_before_after.png",
+cat:"Branding",stars:3,
+resumo:["O Brand New, na categoria “Spotted”, registrou em 12 de outubro de 2026 um novo logo para a montadora britânica Vauxhall, com imagens de antes e depois.","As tags “bird”, “car” e “evolution” indicam que a marca mantém o motivo de pássaro (o grifo) e trata a mudança como evolução do símbolo atual, não substituição completa.","Nota: o texto completo está atrás de paywall; o resumo usa apenas título, categoria, indústria e tags, sem detalhes de forma ou cor."]
+},
+{
+title: "Gustaf Westman creates Mickey Mouse-shaped sofa and cup for Disney",
+tituloPt: "Gustaf Westman cria sofá e xícara em forma de Mickey Mouse para a Disney",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/10/12/gustaf-westman-mickey-mouse-collection-disney/",
+imageUrl: "https://static.dezeen.com/uploads/2026/10/disney-x-gustaf-westman_dezeen_2364_col_sq-1.jpg",
+cat:"Design",stars:4,
+resumo:["O designer sueco Gustaf Westman se uniu à Disney para transformar o Mickey em móveis e acessórios que transmitem “alegria e ludicidade”. As três primeiras peças são um sofá, uma xícara e um copo.","Conhecido por formas arredondadas, coloridas e infladas, Westman diz que seu estilo combina com os personagens. Cada peça aborda o Mickey de forma abstrata: orelhas, rosto e o short vermelho com botões brancos, que inspira a base do copo.","O sofá de couro, sob encomenda, custa € 9.250. A coleção completa, da marca Mickey & Friends, incluirá roupas, acessórios e utilidades, com pop-ups em Paris (a partir de 30 de outubro), Tóquio e Nova York."]
+},
+{
+title: "BIG designs cloud-like Tirana Fountain Plaza raised above public park",
+tituloPt: "BIG projeta Tirana Fountain Plaza, edifício em forma de nuvem elevado sobre parque público",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/10/12/tirana-fountain-tower-big-albania/",
+imageUrl: "https://static.dezeen.com/uploads/2026/10/tirana-fountain-tower-big_dezeen_2364_hero_0.jpg",
+cat:"Design",stars:4,
+resumo:["O escritório BIG venceu o concurso para o Tirana Fountain Plaza, edifício de uso misto em Tirana, na Albânia, que reúne apartamentos, escritórios, hotel e espaços culturais com elementos de água.","O volume superior fica sobre colunas brancas esbeltas acima do Parque Rinia, liberando o térreo como espaço público. As fachadas de vidro têm fileiras de discos brancos perfurados, e duas pontas curvas em vidro canelado ligam o volume ao chão.","A piscina existente será mantida, com água reciclada em circuito fechado, e o paisagismo prevê jardins e manejo de águas pluviais para reduzir enchentes e resfriar a área. A marca é uma “fonte invertida”, com água caindo de cima.","Bjarke Ingels descreve a obra como uma nuvem de casas flutuando sobre o parque. A BIG também constrói o Teatro Nacional da Albânia na cidade."]
+},
+{
+title: "Grimshaw completes rammed-earth visitor centre for Twelve Apostles in Australia",
+tituloPt: "Grimshaw conclui centro de visitantes em taipa de pilão para os Doze Apóstolos, na Austrália",
+source: "Dezeen",
+url: "https://www.dezeen.com/2026/10/12/grimshaw-visitor-centre-twelve-apostles-australia/",
+imageUrl: "https://static.dezeen.com/uploads/2026/10/twelve-apostles-visitor-centre-victoria-australia-architecture-exterior_dezeen_2364_sq.jpg",
+cat:"Design",stars:3,
+resumo:["Grimshaw e Aspect Studios concluíram um centro de visitantes de 3.300 m² nos Doze Apóstolos, marco natural do Parque Nacional de Port Campbell, em Victoria. Paredes de taipa de pilão fazem o prédio se fundir à paisagem.","Dois edifícios ligados: o Coastal, com área de educação e mirante no terraço, e o Hinterland, com café e loja. O projeto foi desenvolvido com a Eastern Maar Aboriginal Corporation, que ajudou a definir escala e implantação, respeitando a Country dos Eastern Maar.","Caminhos paisagísticos sobem suavemente ao terraço. Os materiais principais são taipa e compensado, e o Welcome Garden celebra a herança Eastern Maar. O acesso foi reorganizado com estacionamento paisagístico e vias separadas para ônibus e carros."]
+},
+{
+title: "Why CMF's New Milk Carton Speakers Are So Irresistible To Look At",
+tituloPt: "Por que as novas caixas de som CMF em formato de caixa de leite são irresistíveis",
+source: "Yanko Design",
+url: "https://www.yankodesign.com/2026/10/12/why-cmfs-new-milk-carton-speakers-are-so-irresistible-to-look-at/",
+imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/why-cmfs-new-milk-carton-speakers-are-so-irresistible-to-look-at/cmf_speaker_s_m_1.jpg",
+cat:"Design",stars:3,
+resumo:["A CMF, submarca econômica da Nothing, lançou suas primeiras caixas Bluetooth: Speaker S (US$ 59) e Speaker M (US$ 109). As duas se inspiram na caixa de leite de topo triangular, forma patenteada em 1915.","O argumento é que, num mercado dominado por cilindros e blocos pretos, um formato que todos reconhecem chama atenção. O telhado inclinado faz o papel do topo da caixa, o botão substitui a tampa e a aleta do modelo M serve de alça. Frente e botão são removíveis e podem ser impressos em 3D.","Há quatro cores e ambas têm IP68. A S entrega 10 W e a M, 35 W, com cerca de 18 horas de bateria. O autor vê o formato como escolha ousada a um preço de compra por impulso."]
+},
+{
+title: "Now AI isn't just faking art, it's faking artists' signatures as well",
+tituloPt: "Agora a IA não só falsifica arte, mas também assinaturas de artistas",
+source: "Creative Bloq",
+url: "https://www.creativebloq.com/news/now-ai-isnt-just-faking-art-its-faking-artists-signatures-as-well",
+imageUrl: "https://cdn.mos.cms.futurecdn.net/sEXUggEyrv562jcWDU5esn-1450-80.png",
+cat:"Tecnologia",stars:3,
+resumo:["O ChatGPT tem acrescentado nomes reais de cartunistas a cartuns gerados por IA que imitam o estilo da The New Yorker. O caso viral mostra Dolly Parton e Tim Curry chegando ao céu, assinado “BLOPER”, pseudônimo do cartunista Brendan Loper, que não o criou.","Um fã pediu um cartum no estilo da revista e o chatbot gerou a imagem com assinatura forjada. Loper soube pelo irmão e passou a receber mensagens de desconhecidos. Uma apuração do Nieman Lab achou mais de 15 cartunistas com assinaturas em imagens do ChatGPT.","Para o autor, a assinatura falsa vai além da inspiração: atribui falsamente autoria e endosso, e pode prejudicar a reputação de criativos. Ele pede cautela ao curtir e compartilhar imagens de IA."]
+}
 ];
-NEWS[1].nota = "Imagem de destaque não disponível; exibindo ilustração gerada.";
-NEWS[9].nota = "Resumo baseado no episódio do podcast Equity descrito na página do artigo.";
-
-const PALETTES = {
-  Branding: [["#fb923c","#f43f5e"],["#fbbf24","#ea580c"],["#f472b6","#f97316"]],
-  Design: [["#10b981","#0d9488"],["#34d399","#0891b2"],["#2dd4bf","#16a34a"]],
-  Tecnologia: [["#6366f1","#8b5cf6"],["#3b82f6","#7c3aed"],["#60a5fa","#a855f7"]]
-};
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
-function Illustration({item}){
-  const h=hash(item.title), p=PALETTES[item.cat][h%3], id="g"+h;
-  const sh=[0,1,2,3].map(i=>({x:(h>>(i*3))%100*8,y:(h>>(i*2+1))%100*4,r:40+((h>>i)%90),o:.15+((h>>i)%4)*.08}));
-  return (
-    <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-      <rect width="800" height="400" fill={`url(#${id})`}/>
-      {sh.map((s,i)=> i%2? <circle key={i} cx={s.x} cy={s.y} r={s.r} fill="#fff" opacity={s.o}/> : <rect key={i} x={s.x-s.r} y={s.y-s.r} width={s.r*2} height={s.r*1.4} rx="18" fill="#fff" opacity={s.o} transform={`rotate(${(h>>i)%40-20} ${s.x} ${s.y})`}/>)}
-    </svg>
-  );
+const PAL={Branding:["#ff9a5a","#e8453c","#ffd36e"],Design:["#2fc9a5","#0e7c7b","#a6f0d5"],Tecnologia:["#6c63ff","#2f3fbf","#b9a8ff"]};
+function Art({cat,seed}){
+  const p=PAL[cat],id="g"+seed;
+  return <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs><rect width="400" height="240" fill={`url(#${id})`}/><circle cx={80+seed*23%240} cy="70" r="70" fill={p[2]} opacity=".5"/><rect x={200+seed*11%80} y="110" width="140" height="140" rx="24" fill="#fff" opacity=".25" transform="rotate(18 270 180)"/><circle cx="330" cy="50" r="28" fill="#fff" opacity=".3"/></svg>;
 }
-function Media({item}){
+function Img({item,i}){
   const [falhou,setFalhou]=useState(false);
-  return (
-    <div className="media">
-      {item.imageUrl && !falhou
-        ? <img src={item.imageUrl} alt={"Foto da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-        : <Illustration item={item}/>}
-    </div>
-  );
+  if(!item.imageUrl||falhou) return <div className="img"><Art cat={item.cat} seed={i+1}/></div>;
+  return <div className="img"><img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/></div>;
 }
-const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-function Meta({item}){return <div className="meta"><span className={"tag t-"+item.cat}>{item.cat}</span><span>{item.source}</span><Stars n={item.stars}/></div>}
-
-function Modal({item,onClose}){
-  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",k);return()=>window.removeEventListener("keydown",k)},[]);
-  return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e=>e.stopPropagation()}>
-        <Media item={item}/>
-        <div className="inner">
-          <Meta item={item}/>
-          <h2>{item.tituloPt}</h2>
-          <p className="orig">Título original: {item.title}</p>
-          {item.resumo.map((p,i)=><p className="s" key={i}>{p}</p>)}
-          {item.nota && <p className="note">{item.nota}</p>}
-          <div className="btns">
-            <a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
-            <button className="btn g" onClick={onClose}>Fechar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const Stars=({n})=><span className="stars">{"★".repeat(n)+"☆".repeat(5-n)}</span>;
+const Meta=({it})=><div className="meta"><span className={"tag "+it.cat}>{it.cat}</span><span>{it.source}</span><Stars n={it.stars}/></div>;
+function Modal({it,i,close}){
+  useEffect(()=>{const f=e=>e.key==="Escape"&&close();window.addEventListener("keydown",f);return()=>window.removeEventListener("keydown",f)},[]);
+  const pay=it.resumo.some(t=>t.startsWith("Nota:"));
+  return <div className="overlay" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <Img item={it} i={i}/>
+    <div className="content"><Meta it={it}/><h2>{it.tituloPt}</h2>
+    {it.resumo.map((t,k)=>t.startsWith("Nota:")?<div className="note" key={k}>{t}</div>:<p key={k}>{t}</p>)}
+    <div className="btns"><a className="btn primary" href={it.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn ghost" onClick={close}>Fechar</button></div></div></div></div>;
 }
 function App(){
-  const [open,setOpen]=useState(null);
-  const sorted=[...NEWS].sort((a,b)=>b.stars-a.stars);
-  const [top,...rest]=sorted;
-  return (
-    <div className="wrap">
-      <header className="top">
-        <h1>☀️ Portal da Manhã</h1>
-        <div className="date">segunda-feira, 12 de outubro de 2026</div>
-      </header>
-      <div className="hero" onClick={()=>setOpen(top)}>
-        <Media item={top}/>
-        <div className="body">
-          <Meta item={top}/>
-          <h2>{top.tituloPt}</h2>
-          <p>{top.resumo[0]}</p>
-          <span style={{color:"var(--acc)",fontWeight:600,fontSize:14}}>Ler resumo →</span>
-        </div>
-      </div>
-      <div className="grid">
-        {rest.map(it=>(
-          <article className="card" key={it.url} onClick={()=>setOpen(it)}>
-            <Media item={it}/>
-            <div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div>
-          </article>
-        ))}
-      </div>
-      <footer>Resumos escritos em português a partir dos artigos originais · Fotos hospedadas nos portais de origem · Edição de 12/10/2026</footer>
-      {open && <Modal item={open} onClose={()=>setOpen(null)}/>}
-    </div>
-  );
+  const [sel,setSel]=useState(null);
+  const items=[...NEWS].sort((a,b)=>b.stars-a.stars);
+  const [h,...rest]=items;
+  return <div className="wrap">
+    <header><h1>☀️ Portal da Manhã</h1><div className="date">Terça-feira, 13 de outubro de 2026</div></header>
+    <div className="hero" onClick={()=>setSel(0)}><Img item={h} i={0}/><div className="body"><Meta it={h}/><h2>{h.tituloPt}</h2><div className="date">{h.resumo[0].slice(0,180)}…</div></div></div>
+    <div className="grid">{rest.map((it,k)=><div className="card" key={k} onClick={()=>setSel(k+1)}><Img item={it} i={k+1}/><div className="body"><Meta it={it}/><h3>{it.tituloPt}</h3></div></div>)}</div>
+    {sel!==null&&<Modal it={items[sel]} i={sel} close={()=>setSel(null)}/>}
+    <footer>Resumos parafraseados em português. Imagens e matérias pertencem aos portais de origem.</footer>
+  </div>;
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>

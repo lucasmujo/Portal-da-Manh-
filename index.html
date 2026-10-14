@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 13 de outubro de 2026</title>
+<title>Portal da Manhã — 14 de outubro de 2026</title>
 <style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6a7085;--line:#e6e8f0;--acc:#4f46e5;--r:18px}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:#f6f7fb;color:#1a1d29;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:24px 20px 60px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
 header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:#6b7280;font-size:14px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(20,25,50,.08);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:28px}
-.hero:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(20,25,50,.12)}
-.hero .img{min-height:320px}
-.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(20,25,50,.06);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,25,50,.12)}
-.card .img{height:180px}
-.card .body{padding:16px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.img{position:relative;overflow:hidden;background:#e5e7eb}
+h1{font-size:30px;margin:0;letter-spacing:-.02em}
+.date{color:var(--mut);font-size:14px;text-transform:capitalize}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(20,22,40,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(20,22,40,.13)}
+.hero .img{min-height:340px;position:relative}
+.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(20,22,40,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(20,22,40,.12)}
+.card .img{height:180px;position:relative}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:17px;line-height:1.3;margin:0}
 .img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:#6b7280}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#ffe9dc;color:#b4501a}.Design{background:#d9f5ee;color:#0f7a62}.Tecnologia{background:#e5e4ff;color:#4a3fc7}
-.stars{color:#f59e0b;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(15,18,35,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;max-height:92vh;overflow:auto;animation:pop .25s}
-.modal .img{height:340px}
-.modal .content{padding:24px 28px 28px}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
+.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:11px}
+.Branding{background:#ffe9dc;color:#b4491a}.Design{background:#d9f5ee;color:#0b7a62}.Tecnologia{background:#e4e3ff;color:#4338ca}
+.stars{color:#f5a623;letter-spacing:1px}
+.modal-bg{position:fixed;inset:0;background:rgba(20,22,40,.5);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:24px;max-width:760px;width:100%;max-height:92vh;overflow:auto;animation:up .3s}
+.modal .img{height:300px;position:relative}
+.modal .in{padding:24px 28px 30px}
 .modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;margin:0 0 14px;color:#2b3042}
-.note{font-size:13px;color:#8a5a00;background:#fff6dd;border-radius:10px;padding:8px 12px}
-.btns{display:flex;gap:10px;margin-top:16px}
-.btn{padding:10px 18px;border-radius:10px;border:0;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
-.primary{background:#1a1d29;color:#fff}.ghost{background:#eef0f6;color:#1a1d29}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes pop{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.modal .img{height:220px}h1{font-size:24px}}
-footer{margin-top:36px;text-align:center;color:#9aa0b0;font-size:12px}
+.modal p{font-size:16px;color:#2c3040}
+.note{font-size:13px;color:var(--mut);font-style:italic}
+.btn{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:12px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer}
+.btn.g{background:#eef0f6;color:var(--ink);margin-left:8px}
+footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:24px}}
 </style>
 </head>
 <body>
@@ -49,142 +48,209 @@ footer{margin-top:36px;text-align:center;color:#9aa0b0;font-size:12px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
-const {useState,useEffect}=React;
-const NEWS=[
-{
-title: "Pentagram creates dynamic bilingual identity for Design Doha Biennial 2026",
-tituloPt: "Pentagram cria identidade bilíngue dinâmica para a Bienal Design Doha 2026",
-source: "Design Week",
-url: "https://www.designweek.co.uk/pentagram-creates-dynamic-bilingual-identity-for-design-doha-biennial-2026/",
-imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/SM_DDB26_1920x1080_15-1024x576.png",
-cat:"Branding",stars:5,
-resumo:["Samar Maakaroun e sua equipe na Pentagram desenvolveram a identidade visual da segunda edição da Bienal Design Doha, plataforma de design para o mundo árabe com exposições, instalações públicas e projetos colaborativos pela capital do Catar.","Em vez de um logotipo fixo, o sistema é tipográfico e flexível, pensado para representar conexões entre disciplinas, idiomas e comunidades. Árabe e inglês recebem peso igual: os dois alfabetos se fundem em composições compartilhadas, refletindo a mistura cultural da região e o papel do evento como ponte internacional.","O elemento-assinatura são traços de letras esticados que cruzam os layouts e ligam elementos distintos, lembrando linhas de mapa ou constelações. A paleta combina um bege inspirado no travertino local, um vinho profundo, um laranja vibrante e o azul saturado da primeira edição, mantido por continuidade.","O sistema se estende a sub-marcas e exposições; para a mostra principal, “Arab Design Now”, há uma variante mais ousada com a mesma estrutura. Aplicações incluem lápis, chaveiros, camisetas, cartazes em paredes de pedra e painéis iluminados. A bienal abre em 5 de novembro de 2026, em vários locais."]
-},
-{
-title: "Meta releases its first frontier model, Muse Wonder",
-tituloPt: "Meta lança seu primeiro modelo de fronteira, o Muse Wonder",
-source: "TechCrunch",
-url: "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
-imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Screenshot-2026-10-12-at-1.09.43-PM.jpg?resize=1200,676",
-cat:"Tecnologia",stars:4,
-resumo:["O Meta Superintelligence Lab lançou o Muse Wonder e o Muse Wonder Full, a primeira tentativa da empresa de entregar um modelo de fronteira. Eles são maiores e mais capazes que o Muse Spark, versão leve focada em baixa latência, e pontuam mais alto em benchmarks e tarefas complexas como programação.","O Muse Wonder está disponível pela API de modelos da Meta a US$ 4 por milhão de tokens de entrada e US$ 20 por milhão de saída, preço próximo ao de concorrentes de ponta. O Wonder Full fica restrito a assinantes do Muse Code, sem acesso por API. Ambos vão alimentar o agente Muse.","A Meta destaca a “memória ativa”: a capacidade de reter e sintetizar o que o usuário conta ao longo do tempo, alinhada à aposta em assistentes pessoais para tarefas longas. No benchmark MemoryBench, a empresa afirma superar rivais.","É o primeiro lançamento de fronteira desde a reestruturação da área de IA por Alexandr Wang em agosto de 2025. Os modelos foram treinados no data center Prometheus, em Ohio."]
-},
-{
-title: "Sour Patch Kids takes aim at Oreo in first UK campaign",
-tituloPt: "Sour Patch Kids mira na Oreo em sua primeira campanha no Reino Unido",
-source: "Creative Review",
-url: "https://www.creativereview.co.uk/sour-patch-kids-tnot-as-sweet-as-they-look-campaign-ooh/",
-imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Sour-Patch-Kids-OOH-hero.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-cat:"Branding",stars:4,
-resumo:["A VCCP assina a primeira campanha integrada da Sour Patch Kids no Reino Unido, sob a plataforma “Not As Sweet As They Look”, que brinca com a aparência fofa e o sabor azedo do doce por meio de peças de mídia exterior travessas.","O destaque é uma ação em quatro pontos especiais de Londres e Bristol em que os personagens parecem rasgar o cartaz de uma Oreo vizinha. A ideia transforma a rivalidade nas redes entre as duas marcas, ambas da Mondelēz, em espetáculo de rua.","O texto compara a ação a clássicos da publicidade comparativa, como a guerra de outdoors BMW x Audi de 2009, e a coloca numa tendência de OOH que reconhece o próprio meio. Outras peças incluem um cabo de guerra em que um doce é partido ao meio e uma cena de tênis com uma cabeça decepada.","Para o autor, é uma forma inteligente de gerar conversa online em torno de um formato fácil de ignorar."]
-},
-{
-title: "This viral packaging plays on a meme the brand ignored for decades",
-tituloPt: "Esta embalagem viral brinca com um meme que a marca ignorou por décadas",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/news/this-ingenious-packaging-design-went-viral-simply-by-recognising-how-people-were-already-using-it",
-imageUrl: "https://cdn.mos.cms.futurecdn.net/wRSCDPm62i7u424bJtVuYV-1920-80.jpg",
-cat:"Branding",stars:4,
-resumo:["A marca mexicana de laticínios Lala transformou um hábito doméstico em recurso oficial de design. Muitas famílias mexicanas reaproveitam os potes de creme para guardar feijão, molho e sobras, e o costume virou piada e meme: abre-se o pote esperando creme e encontra-se outra coisa.","O projeto “Mexiconteiners”, das agências Zurda México e Conciergency, adicionou um espaço para escrever o que há dentro após o creme acabar, com ilustrações de inspiração mexicana mantendo a identidade Lala.","A ideia veio da experiência compartilhada, não de pesquisa de mercado. A resposta foi forte, com consumidores criando versões próprias e novos memes. O conceito agora se estende a outros produtos e edições licenciadas, incluindo uma colaboração com Peanuts."]
-},
-{
-title: "New Logo and Identity for Keen by Mother Design",
-tituloPt: "Keen ganha novo logo e identidade da Mother Design",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_keen_by_mother_design.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/keen_logo_before_after.png",
-cat:"Branding",stars:3,
-resumo:["O Brand New publicou, em 12 de outubro de 2026, o novo logo e identidade da Keen, serviço web, criados pela Mother Design. A página traz comparativos de antes e depois e uma aplicação de exemplo.","Os elementos públicos da matéria são as tags “circles”, “illustration”, “mother design” e “wordmark”, que sugerem um sistema baseado em formas circulares, ilustração e logotipo tipográfico.","Nota: o artigo completo está atrás de paywall; este resumo se baseia apenas em título, categoria, indústria e tags."]
-},
-{
-title: "New Logo for Vauxhall",
-tituloPt: "Novo logo da Vauxhall",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_vauxhall.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/vauxhall_2026_logo_before_after.png",
-cat:"Branding",stars:3,
-resumo:["O Brand New, na categoria “Spotted”, registrou em 12 de outubro de 2026 um novo logo para a montadora britânica Vauxhall, com imagens de antes e depois.","As tags “bird”, “car” e “evolution” indicam que a marca mantém o motivo de pássaro (o grifo) e trata a mudança como evolução do símbolo atual, não substituição completa.","Nota: o texto completo está atrás de paywall; o resumo usa apenas título, categoria, indústria e tags, sem detalhes de forma ou cor."]
-},
-{
-title: "Gustaf Westman creates Mickey Mouse-shaped sofa and cup for Disney",
-tituloPt: "Gustaf Westman cria sofá e xícara em forma de Mickey Mouse para a Disney",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/10/12/gustaf-westman-mickey-mouse-collection-disney/",
-imageUrl: "https://static.dezeen.com/uploads/2026/10/disney-x-gustaf-westman_dezeen_2364_col_sq-1.jpg",
-cat:"Design",stars:4,
-resumo:["O designer sueco Gustaf Westman se uniu à Disney para transformar o Mickey em móveis e acessórios que transmitem “alegria e ludicidade”. As três primeiras peças são um sofá, uma xícara e um copo.","Conhecido por formas arredondadas, coloridas e infladas, Westman diz que seu estilo combina com os personagens. Cada peça aborda o Mickey de forma abstrata: orelhas, rosto e o short vermelho com botões brancos, que inspira a base do copo.","O sofá de couro, sob encomenda, custa € 9.250. A coleção completa, da marca Mickey & Friends, incluirá roupas, acessórios e utilidades, com pop-ups em Paris (a partir de 30 de outubro), Tóquio e Nova York."]
-},
-{
-title: "BIG designs cloud-like Tirana Fountain Plaza raised above public park",
-tituloPt: "BIG projeta Tirana Fountain Plaza, edifício em forma de nuvem elevado sobre parque público",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/10/12/tirana-fountain-tower-big-albania/",
-imageUrl: "https://static.dezeen.com/uploads/2026/10/tirana-fountain-tower-big_dezeen_2364_hero_0.jpg",
-cat:"Design",stars:4,
-resumo:["O escritório BIG venceu o concurso para o Tirana Fountain Plaza, edifício de uso misto em Tirana, na Albânia, que reúne apartamentos, escritórios, hotel e espaços culturais com elementos de água.","O volume superior fica sobre colunas brancas esbeltas acima do Parque Rinia, liberando o térreo como espaço público. As fachadas de vidro têm fileiras de discos brancos perfurados, e duas pontas curvas em vidro canelado ligam o volume ao chão.","A piscina existente será mantida, com água reciclada em circuito fechado, e o paisagismo prevê jardins e manejo de águas pluviais para reduzir enchentes e resfriar a área. A marca é uma “fonte invertida”, com água caindo de cima.","Bjarke Ingels descreve a obra como uma nuvem de casas flutuando sobre o parque. A BIG também constrói o Teatro Nacional da Albânia na cidade."]
-},
-{
-title: "Grimshaw completes rammed-earth visitor centre for Twelve Apostles in Australia",
-tituloPt: "Grimshaw conclui centro de visitantes em taipa de pilão para os Doze Apóstolos, na Austrália",
-source: "Dezeen",
-url: "https://www.dezeen.com/2026/10/12/grimshaw-visitor-centre-twelve-apostles-australia/",
-imageUrl: "https://static.dezeen.com/uploads/2026/10/twelve-apostles-visitor-centre-victoria-australia-architecture-exterior_dezeen_2364_sq.jpg",
-cat:"Design",stars:3,
-resumo:["Grimshaw e Aspect Studios concluíram um centro de visitantes de 3.300 m² nos Doze Apóstolos, marco natural do Parque Nacional de Port Campbell, em Victoria. Paredes de taipa de pilão fazem o prédio se fundir à paisagem.","Dois edifícios ligados: o Coastal, com área de educação e mirante no terraço, e o Hinterland, com café e loja. O projeto foi desenvolvido com a Eastern Maar Aboriginal Corporation, que ajudou a definir escala e implantação, respeitando a Country dos Eastern Maar.","Caminhos paisagísticos sobem suavemente ao terraço. Os materiais principais são taipa e compensado, e o Welcome Garden celebra a herança Eastern Maar. O acesso foi reorganizado com estacionamento paisagístico e vias separadas para ônibus e carros."]
-},
-{
-title: "Why CMF's New Milk Carton Speakers Are So Irresistible To Look At",
-tituloPt: "Por que as novas caixas de som CMF em formato de caixa de leite são irresistíveis",
-source: "Yanko Design",
-url: "https://www.yankodesign.com/2026/10/12/why-cmfs-new-milk-carton-speakers-are-so-irresistible-to-look-at/",
-imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/why-cmfs-new-milk-carton-speakers-are-so-irresistible-to-look-at/cmf_speaker_s_m_1.jpg",
-cat:"Design",stars:3,
-resumo:["A CMF, submarca econômica da Nothing, lançou suas primeiras caixas Bluetooth: Speaker S (US$ 59) e Speaker M (US$ 109). As duas se inspiram na caixa de leite de topo triangular, forma patenteada em 1915.","O argumento é que, num mercado dominado por cilindros e blocos pretos, um formato que todos reconhecem chama atenção. O telhado inclinado faz o papel do topo da caixa, o botão substitui a tampa e a aleta do modelo M serve de alça. Frente e botão são removíveis e podem ser impressos em 3D.","Há quatro cores e ambas têm IP68. A S entrega 10 W e a M, 35 W, com cerca de 18 horas de bateria. O autor vê o formato como escolha ousada a um preço de compra por impulso."]
-},
-{
-title: "Now AI isn't just faking art, it's faking artists' signatures as well",
-tituloPt: "Agora a IA não só falsifica arte, mas também assinaturas de artistas",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/news/now-ai-isnt-just-faking-art-its-faking-artists-signatures-as-well",
-imageUrl: "https://cdn.mos.cms.futurecdn.net/sEXUggEyrv562jcWDU5esn-1450-80.png",
-cat:"Tecnologia",stars:3,
-resumo:["O ChatGPT tem acrescentado nomes reais de cartunistas a cartuns gerados por IA que imitam o estilo da The New Yorker. O caso viral mostra Dolly Parton e Tim Curry chegando ao céu, assinado “BLOPER”, pseudônimo do cartunista Brendan Loper, que não o criou.","Um fã pediu um cartum no estilo da revista e o chatbot gerou a imagem com assinatura forjada. Loper soube pelo irmão e passou a receber mensagens de desconhecidos. Uma apuração do Nieman Lab achou mais de 15 cartunistas com assinaturas em imagens do ChatGPT.","Para o autor, a assinatura falsa vai além da inspiração: atribui falsamente autoria e endosso, e pode prejudicar a reputação de criativos. Ele pede cautela ao curtir e compartilhar imagens de IA."]
-}
+const { useState, useEffect } = React;
+
+const NEWS = [
+  {
+    title: "How Michelangelo's handwriting became a Microsoft font",
+    tituloPt: "Como a caligrafia de Michelangelo virou uma fonte da Microsoft",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/how-michelangelos-handwriting-became-its-own-microsoft-font",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/snRyKcpKech8ahRn6A8uLR-2000-80.jpg",
+    cat: "Design", stars: 5,
+    resumo: "A Microsoft lançou a Michelangelus, uma tipografia de estilo manuscrito inspirada nos manuscritos de Michelangelo, para marcar os 400 anos da consagração da Basílica de São Pedro. A Fabbrica di San Pietro, instituição responsável pela manutenção da basílica, encomendou o projeto ao estúdio italiano Studiogusto. O objetivo não era copiar a letra do artista de forma exata, mas adaptá-la em um script moderno e funcional, usado na sinalização interna da basílica e em materiais digitais e impressos. A equipe estudou os manuscritos originais nos arquivos do Vaticano; o diretor criativo Stefano Caliandro destacou a geometria e o equilíbrio entre cheios e vazios na escrita do mestre. Alguns floreios originais foram mantidos, como o pontinho sobre o 'h', e os numerais precisaram ser inventados, já que não há registros de Michelangelo escrevendo números modernos — o algarismo 1, por exemplo, parte da letra I. Ao todo foram criados mais de 500 caracteres em quatro estilos: regular, itálico, negrito e negrito itálico. A fonte está disponível no Microsoft 365 e para download, e a Fabbrica espera que ela desperte interesse pela basílica e pelo artista."
+  },
+  {
+    title: "New campaign reveals how MND takes away what you love",
+    tituloPt: "Nova campanha mostra como a DNM tira de você o que você ama",
+    source: "Creative Review",
+    url: "https://www.creativereview.co.uk/motor-neurone-disease-association-campaign-pablo-london/",
+    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/MND-campaign-film-still.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
+    cat: "Branding", stars: 5,
+    resumo: "A agência Pablo London criou, para a MND Association, a campanha “Life Stripped Away”, que mostra como a doença do neurônio motor vai retirando, aos poucos, as coisas que mais importam às pessoas. A ação acompanha quatro pessoas que vivem com a condição no Reino Unido e inclui um filme de 90 segundos, rádio e mídia exterior. O filme, dirigido por Ben Liam Jones, da Merman, usa câmera em primeira pessoa para seguir Jaki Jackson, cantora de Brighton, que descreve seu declínio e o cuidado constante do parceiro, Steve. Na rádio, uma versão em voz sintetizada a partir do banco de voz de Jaki, criada com a associação, evidencia como a doença lhe tirou o canto e a capacidade de engolir. Os cartazes retratam Lorraine Redmond, Tahira Chaudhry e Steve Williams, fotografados por Emma Hardy em cenários ligados às suas paixões; os designers aplicaram um efeito que desfoca o entorno e mantém só a expressão do rosto em foco, em referência ao fato de os olhos serem muitas vezes a última coisa que a pessoa consegue mover. Os diretores criativos descrevem a abordagem como terna e, ao mesmo tempo, visceral."
+  },
+  {
+    title: "STUDIO HERRSTRÖM draws on car culture and carton typography for Milkshake rebrand",
+    tituloPt: "STUDIO HERRSTRÖM une cultura automotiva e tipografia de caixinha de leite no rebrand da Milkshake",
+    source: "Design Week",
+    url: "https://www.designweek.co.uk/studio-herrstrom-draws-on-car-culture-and-carton-typography-for-milkshake-rebrand/",
+    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/001-MILKSHAKE-4x3-©-STUDIO-HERRSTROM-1024x682.png",
+    cat: "Branding", stars: 4,
+    resumo: "O estúdio vienense STUDIO HERRSTRÖM criou a nova identidade visual da Milkshake, gravadora e agência de artistas sediada em Estocolmo e parte da Sony Music Entertainment. Fundada em 2019 como alternativa aos contratos tradicionais, a casa aposta em pop comercial, alternativo e fora do óbvio, e representa nomes como Molly Sandén, Felix Sandman e Dunalia. O briefing pedia uma estrutura visual mais refinada para sustentar o crescimento comercial sem tirar os artistas do centro das campanhas. O estúdio buscou referências nas origens do selo — o nome surgiu durante uma viagem de carro, e os veículos serviam para ouvir demos inéditas. A marca original em forma de respingo foi redesenhada como um emblema arredondado, mais estruturado. A paleta combina rosas neon e amarelos de alta visibilidade com pretos de asfalto e lilases suaves, enquanto os layouts tomam emprestadas as licenças de janela de carro e as tabelas nutricionais de embalagens de leite para organizar informações secundárias. A tipografia principal é a Gates, neogrotesca da Context Type. O sistema se estende a lançamentos, ativos digitais e comunicação corporativa, como em um cartaz de metrô para o novo single de Tove Lo."
+  },
+  {
+    title: "Prada and IOC unveil Formafantasma-designed Ocean & Climate Village exhibition",
+    tituloPt: "Prada e COI inauguram a exposição Ocean & Climate Village, desenhada pelo Formafantasma",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/13/prada-ioc-formafantasma-ocean-climate-village-exhibition/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/ocean-climate-village-prada-ioc-formafantasma-cagliari_dezeen_2364_col_sq.jpg",
+    cat: "Design", stars: 4,
+    resumo: "O estúdio italiano Formafantasma projetou a Ocean & Climate Village, exposição montada na base Luna Rossa da Prada, em Cagliari, na Sardenha. A mostra foi desenvolvida pela Comissão Oceanográfica Intergovernamental da UNESCO junto com a Prada, dentro do projeto educativo Sea Beyond. A Prada a descreve como uma “exposição científica itinerante” que usa o design como ferramenta educativa para mostrar a importância do oceano. A estrutura é leve, modular, feita de alumínio e madeira, e pode ser desmontada e transportada depois do período de exibição. O percurso tem quatro seções — Um Oceano, O Motor do Clima, Biodiversidade e Anomalias Oceânicas — que ligam processos biológicos, climáticos e geológicos. O Formafantasma trabalhou com um artesão de um museu de história natural italiano para criar animais realistas, como um caranguejo-azul e uma tartaruga. O espaço em vários níveis e um folheto que explica termos como CO2 e biodiversidade foram pensados para atrair crianças e adultos. A mostra fica aberta ao público de 10 a 15 de outubro de 2026."
+  },
+  {
+    title: "New Consumer Brand for Basketball Australia by Hulsbosch",
+    tituloPt: "Nova marca de consumo da Basketball Australia, assinada pela Hulsbosch",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_consumer_brand_for_basketball_australia_by_hulsbosch.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/basketball_australia_logo_new.png",
+    cat: "Branding", stars: 4,
+    resumo: "O Brand New registrou, em 13 de outubro, uma nova marca de consumo para a Basketball Australia, entidade nacional do basquete no país, criada pelo estúdio Hulsbosch. A publicação aparece na categoria “Spotted” (identidades flagradas e ainda sem análise completa) e está classificada no setor de esportes. O projeto é rotulado como novo, ou seja, não é uma simples atualização de um sistema anterior, e o título indica que a marca foi pensada para a relação da entidade com o público consumidor — torcedores, praticantes e produtos — e não apenas para o uso institucional.",
+    nota: "Artigo atrás de paywall: resumo feito a partir de título, categoria, setor e metadados públicos; os detalhes visuais do sistema não puderam ser lidos."
+  },
+  {
+    title: "New Logo and Identity for Biotic by Mucho",
+    tituloPt: "Biotic ganha novo logo e identidade assinados pela Mucho",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_biotic_by_mucho.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/biotic_logo_new.png",
+    cat: "Branding", stars: 4,
+    resumo: "O Brand New analisou, em 13 de outubro, o novo logo e a nova identidade da Biotic, organização sem fins lucrativos, desenvolvidos pela agência Mucho. O texto de abertura leva o título “Cell-by Date”, um trocadilho com “sell-by date” (data de validade) ligado à ideia de célula. As tags da publicação — biologia, célula, generativo, minimalista, preto e branco, sem serifa, ciência e estilo suíço — indicam uma identidade enxuta, em preto e branco, com tipografia sem serifa de inspiração suíça e um componente generativo que remete ao universo celular. As imagens públicas mostram o novo logotipo e uma aplicação de exemplo.",
+    nota: "Artigo atrás de paywall: resumo feito a partir de título, dek, setor, tags e legendas públicas; detalhes de construção do logo não foram lidos."
+  },
+  {
+    title: "New Logo and Identity for ARC Team USA by Interstate Creative Partners",
+    tituloPt: "ARC Team USA ganha novo logo e identidade da Interstate Creative Partners",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_arc_team_usa_by_interstate_creative_partners.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/arcteam_usa_logo_new.png",
+    cat: "Branding", stars: 4,
+    resumo: "O Brand New destacou, em 13 de outubro, a nova identidade da ARC Team USA, equipe norte-americana do setor esportivo, criada pela Interstate Creative Partners e publicada por Armin Vit na categoria “Spotted”. As tags — ângulo, vela, velocidade e estrela — sugerem que a marca explora formas angulares que evocam velas de barco e sensação de velocidade, além do uso de uma estrela como símbolo nacional. A ARC Team USA integra o universo da vela competitiva, e a identidade busca traduzir dinamismo e orgulho nacional em um sistema gráfico para a equipe.",
+    nota: "Artigo atrás de paywall: resumo feito a partir de título, tags e metadados públicos; a leitura de como os motivos são aplicados é inferência das tags."
+  },
+  {
+    title: "Armadillo furniture is clad in reused shingles to resemble 'friendly monsters'",
+    tituloPt: "Móveis Armadillo, revestidos de telhas reaproveitadas, lembram “monstrinhos amigáveis”",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/14/armadillo-furniture-reused-shingles-friendly-monsters/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/Lukas-Wegwerth-Corinna-Dehn-companions_dezeen_2364_col_sq1.jpg",
+    cat: "Design", stars: 4,
+    resumo: "Os designers Lukas Wegwerth e Corinna Dehn apresentaram a série de móveis Armadillo na exposição Companions, na Galleri Fumi, em Londres. A mostra reúne seis peças novas — dois armários, um aparador, uma casinha de passarinho, uma mesa de jantar e um biombo — além de trabalhos anteriores da série. Todas são cobertas por telhas de madeira que remetem à arquitetura tradicional da região alemã de Vogelsberg. A inspiração veio da reforma da casa da avó de Wegwerth, revestida com telhas envelhecidas do século XIX. O material foi obtido da própria casa, de uma obra vizinha e de um projeto anterior; depois, foi limpo, lixado e acabado de diferentes formas, com tingimentos, tintas de óleo de linhaça e um processo de escurecimento em várias etapas. As formas orgânicas e curvas lembram criaturas escamosas da floresta, e o tamanho variado das telhas fez com que o resultado só fosse conhecido ao fim de cada peça. A exposição fica em cartaz de 6 de outubro a 21 de novembro de 2026."
+  },
+  {
+    title: "Science Corporation implants its vision-restoring chip in its first Stargardt disease patient",
+    tituloPt: "Science Corporation implanta seu chip de restauração da visão no primeiro paciente com doença de Stargardt",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/55588371385_eb2e316d52_o.jpg?resize=1200,800",
+    cat: "Tecnologia", stars: 4,
+    resumo: "A Science Corporation implantou seu chip PRIMA, que restaura a visão, no primeiro paciente com doença de Stargardt, condição hereditária que destrói gradualmente a visão central, segundo o CEO Max Hodak, ex-presidente da Neuralink. Ele falou sobre o trabalho no TechCrunch Disrupt, apresentando-o como um passo rumo aos objetivos mais amplos da empresa em interfaces cérebro-computador. Para Hodak, a retina faz parte do sistema nervoso central, o que coloca os implantes retinianos na mesma categoria de próteses cocleares e motoras. O PRIMA já é vendido na Europa para pacientes que perderam a visão por atrofia geográfica, e a empresa acredita que a abordagem também pode ajudar casos de Stargardt, hoje considerados incuráveis. O paciente recebeu o implante em maio, em um ensaio no Sydney Eye Hospital, na Austrália, e evoluiu de reconhecer uma letra a ler uma palavra ao longo das sessões de reabilitação. O chip mede 2 mm por 2 mm, fica no fundo do olho e funciona com óculos com câmera, oferecendo visão nítida em preto e branco em uma pequena área central. As próximas versões querem ampliar o campo de visão e reduzir os eletrodos para mais detalhe."
+  },
+  {
+    title: "Yard NYC flips 'send nudes' into a breast cancer wake-up call",
+    tituloPt: "Yard NYC transforma “send nudes” em alerta sobre câncer de mama",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/yard-nyc-flips-send-nudes-breast-cancer-wake-up-call/1972437",
+    imageUrl: null,
+    cat: "Branding", stars: 3,
+    resumo: "A agência nova-iorquina Yard NYC lançou “Send Nudes”, campanha própria para o Mês de Conscientização do Câncer de Mama. A ideia é incentivar mulheres a fazer fotos de si mesmas sem camisa e guardá-las, para depois comparar mudanças de tamanho, forma ou textura que possam sinalizar a doença. Cartazes com o slogan e um QR code foram espalhados pelo Brooklyn e por Manhattan; o código leva a um site com recursos de organizações como Susan G. Komen Patient Care Center, Young Survival Coalition e The Breasties. Adesivos e produtos brincam com mensagens de aplicativos de namoro, e a campanha vai até o fim de outubro. A peça cita dados da American Cancer Society segundo os quais a incidência de câncer de mama cresce mais rápido entre mulheres com menos de 50 anos. A CEO Ruth Bernstein argumenta que as campanhas existentes parecem voltadas a mulheres mais velhas, e a pesquisa citada aponta que 62% das mulheres não confiam que notariam uma mudança nos seios. Segundo ela, o objetivo é iniciar uma conversa, não medir downloads."
+  },
+  {
+    title: "The new Citroen 2CV is reminding people of a very different (but equally iconic) car design",
+    tituloPt: "O novo Citroën 2CV está lembrando as pessoas de outro carro igualmente icônico",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/the-new-citroen-2cv-is-reminding-people-of-a-very-different-but-equally-iconic-car-design",
+    imageUrl: null,
+    cat: "Design", stars: 3,
+    resumo: "O conceito elétrico que revive o Citroën 2CV, apresentado no Salão de Paris de 2026, ganhou as redes por lembrar outro ícone: o Cozy Coupe, carrinho de brinquedo da Little Tikes. A Citroën mira produção em 2028 e preço em torno de 15 mil euros, sem divulgar ainda as especificações do modelo final. O conceito mantém traços reconhecíveis do original, como faróis redondos, capota de lona curva e capô nervurado, e as proporções compactas — cerca de uma tonelada e 3,76 m de comprimento — fogem da tendência de ampliar carros pequenos em revivals. O autor Joe Foley não vê a comparação como ofensa: para ele o 2CV sempre foi honesto, prático e peculiar, em contraste com os EVs de luxo mais polêmicos de marcas como Ferrari, Jaguar e Bentley. A conclusão é que um elétrico acessível, fiel à filosofia de “mobilidade para todos”, pode funcionar bem no mercado europeu."
+  },
+  {
+    title: "Cerebras CEO pushes back on AI doomsday warnings",
+    tituloPt: "CEO da Cerebras rebate alertas apocalípticos sobre IA",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/10/13/cerebras-ceo-pushes-back-on-ai-doomsday-warnings/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/55588036288_a416e1cb00_k.jpg?resize=1200,800",
+    cat: "Tecnologia", stars: 3,
+    resumo: "No TechCrunch Disrupt 2026, o CEO da Cerebras, Andrew Feldman, argumentou que líderes de IA que enfatizam cenários apocalípticos estão sufocando o debate sobre os benefícios da tecnologia, chegando a sugerir que alguns “talvez não devessem falar em público”. A reportagem liga a fala ao alarme crescente no mainstream, com relatos de modelos que escapam de contenção, debates sobre a chance de a IA acabar com a humanidade e até uma paródia do Saturday Night Live com o CEO da Anthropic, Dario Amodei. Feldman admitiu que toda tecnologia poderosa levanta questões de mau uso e defendeu regulação razoável, em vez de retórica movida pelo medo, pedindo que líderes destaquem possibilidades como um futuro em que mortes por câncer sejam raras. A reportagem lembra que a Cerebras tem OpenAI, Block, Figma, GSK e Lovable entre os clientes, ou seja, ele tem interesse claro no sucesso da IA. Ele também disse que a indústria de data centers falhou em dialogar com comunidades locais, sobretudo nos EUA, e rejeitou a ideia de que ganhos de eficiência reduzirão a demanda por chips."
+  }
 ];
-const PAL={Branding:["#ff9a5a","#e8453c","#ffd36e"],Design:["#2fc9a5","#0e7c7b","#a6f0d5"],Tecnologia:["#6c63ff","#2f3fbf","#b9a8ff"]};
-function Art({cat,seed}){
-  const p=PAL[cat],id="g"+seed;
-  return <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs><rect width="400" height="240" fill={`url(#${id})`}/><circle cx={80+seed*23%240} cy="70" r="70" fill={p[2]} opacity=".5"/><rect x={200+seed*11%80} y="110" width="140" height="140" rx="24" fill="#fff" opacity=".25" transform="rotate(18 270 180)"/><circle cx="330" cy="50" r="28" fill="#fff" opacity=".3"/></svg>;
+
+const PAL = {
+  Branding: [["#ff9a5a","#ff5e62"],["#ffd36e","#f0764a"]],
+  Design: [["#34d3b0","#0e8f7a"],["#7be0c2","#1c6f8a"]],
+  Tecnologia: [["#6c7bff","#8a4fe0"],["#4aa3ff","#5a3fd0"]]
+};
+
+function Art({ cat, seed }) {
+  const p = PAL[cat][seed % 2];
+  const id = "g" + seed;
+  return (
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+      <rect width="400" height="240" fill={`url(#${id})`}/>
+      <circle cx={80 + seed * 17 % 120} cy="70" r="90" fill="#fff" opacity=".14"/>
+      <rect x={220 - seed * 7 % 60} y="110" width="170" height="170" rx="30" fill="#fff" opacity=".16" transform="rotate(18 300 190)"/>
+      <polygon points="40,240 160,120 280,240" fill="#000" opacity=".1"/>
+      <circle cx="330" cy="50" r="26" fill="#fff" opacity=".25"/>
+    </svg>
+  );
 }
-function Img({item,i}){
-  const [falhou,setFalhou]=useState(false);
-  if(!item.imageUrl||falhou) return <div className="img"><Art cat={item.cat} seed={i+1}/></div>;
-  return <div className="img"><img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/></div>;
+
+function Pic({ item, i }) {
+  const [falhou, setFalhou] = useState(false);
+  if (!item.imageUrl || falhou) return <Art cat={item.cat} seed={i} />;
+  return <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />;
 }
-const Stars=({n})=><span className="stars">{"★".repeat(n)+"☆".repeat(5-n)}</span>;
-const Meta=({it})=><div className="meta"><span className={"tag "+it.cat}>{it.cat}</span><span>{it.source}</span><Stars n={it.stars}/></div>;
-function Modal({it,i,close}){
-  useEffect(()=>{const f=e=>e.key==="Escape"&&close();window.addEventListener("keydown",f);return()=>window.removeEventListener("keydown",f)},[]);
-  const pay=it.resumo.some(t=>t.startsWith("Nota:"));
-  return <div className="overlay" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <Img item={it} i={i}/>
-    <div className="content"><Meta it={it}/><h2>{it.tituloPt}</h2>
-    {it.resumo.map((t,k)=>t.startsWith("Nota:")?<div className="note" key={k}>{t}</div>:<p key={k}>{t}</p>)}
-    <div className="btns"><a className="btn primary" href={it.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn ghost" onClick={close}>Fechar</button></div></div></div></div>;
+
+const Stars = ({ n }) => <span className="stars" title={n + " de 5"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
+const Meta = ({ item }) => (
+  <div className="meta"><span className={"tag " + item.cat}>{item.cat}</span><strong>{item.source}</strong><Stars n={item.stars} /></div>
+);
+
+function Modal({ item, i, onClose }) {
+  useEffect(() => {
+    const h = e => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, []);
+  return (
+    <div className="modal-bg" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <div className="img"><Pic item={item} i={i} /></div>
+        <div className="in">
+          <Meta item={item} />
+          <h2>{item.tituloPt}</h2>
+          <p>{item.resumo}</p>
+          {item.nota && <p className="note">{item.nota}</p>}
+          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
+          <button className="btn g" onClick={onClose}>Fechar</button>
+        </div>
+      </div>
+    </div>
+  );
 }
-function App(){
-  const [sel,setSel]=useState(null);
-  const items=[...NEWS].sort((a,b)=>b.stars-a.stars);
-  const [h,...rest]=items;
-  return <div className="wrap">
-    <header><h1>☀️ Portal da Manhã</h1><div className="date">Terça-feira, 13 de outubro de 2026</div></header>
-    <div className="hero" onClick={()=>setSel(0)}><Img item={h} i={0}/><div className="body"><Meta it={h}/><h2>{h.tituloPt}</h2><div className="date">{h.resumo[0].slice(0,180)}…</div></div></div>
-    <div className="grid">{rest.map((it,k)=><div className="card" key={k} onClick={()=>setSel(k+1)}><Img item={it} i={k+1}/><div className="body"><Meta it={it}/><h3>{it.tituloPt}</h3></div></div>)}</div>
-    {sel!==null&&<Modal it={items[sel]} i={sel} close={()=>setSel(null)}/>}
-    <footer>Resumos parafraseados em português. Imagens e matérias pertencem aos portais de origem.</footer>
-  </div>;
+
+function App() {
+  const [sel, setSel] = useState(null);
+  const [first, ...rest] = NEWS;
+  return (
+    <div className="wrap">
+      <header>
+        <h1>☀️ Portal da Manhã</h1>
+        <div className="date">quarta-feira, 14 de outubro de 2026</div>
+      </header>
+      <div className="hero" onClick={() => setSel(0)}>
+        <div className="img"><Pic item={first} i={0} /></div>
+        <div className="txt">
+          <Meta item={first} />
+          <h2>{first.tituloPt}</h2>
+          <p style={{ color: "#6a7085", margin: 0 }}>{first.resumo.slice(0, 190)}…</p>
+          <span style={{ color: "#4f46e5", fontWeight: 600 }}>Ler resumo →</span>
+        </div>
+      </div>
+      <div className="grid">
+        {rest.map((it, k) => (
+          <div className="card" key={it.url} onClick={() => setSel(k + 1)}>
+            <div className="img"><Pic item={it} i={k + 1} /></div>
+            <div className="body"><Meta item={it} /><h3>{it.tituloPt}</h3></div>
+          </div>
+        ))}
+      </div>
+      {sel !== null && <Modal item={NEWS[sel]} i={sel} onClose={() => setSel(null)} />}
+      <footer>Resumos produzidos em português a partir das matérias originais · Edição de 14/10/2026</footer>
+    </div>
+  );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

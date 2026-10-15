@@ -1,218 +1,286 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 14 de outubro de 2026</title>
+<title>Portal da Manhã — 15 de outubro de 2026</title>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6a7085;--line:#e6e8f0;--acc:#4f46e5;--r:18px}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7285;--line:#e6e8f0;--brand:#e8643a;--design:#12a38a;--tech:#5b5bd6;--sh:0 1px 2px rgba(20,22,31,.05),0 8px 24px rgba(20,22,31,.06)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{font-size:30px;margin:0;letter-spacing:-.02em}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+h1{margin:0;font-size:34px;letter-spacing:-.02em}
 .date{color:var(--mut);font-size:14px;text-transform:capitalize}
-.hero{display:grid;grid-template-columns:1.4fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(20,22,40,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(20,22,40,.13)}
-.hero .img{min-height:340px;position:relative}
-.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.02em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(20,22,40,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(20,22,40,.12)}
-.card .img{height:180px;position:relative}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:17px;line-height:1.3;margin:0}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
-.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#ffe9dc;color:#b4491a}.Design{background:#d9f5ee;color:#0b7a62}.Tecnologia{background:#e4e3ff;color:#4338ca}
-.stars{color:#f5a623;letter-spacing:1px}
-.modal-bg{position:fixed;inset:0;background:rgba(20,22,40,.5);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:24px;max-width:760px;width:100%;max-height:92vh;overflow:auto;animation:up .3s}
-.modal .img{height:300px;position:relative}
-.modal .in{padding:24px 28px 30px}
-.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;color:#2c3040}
-.note{font-size:13px;color:var(--mut);font-style:italic}
-.btn{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:12px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer}
-.btn.g{background:#eef0f6;color:var(--ink);margin-left:8px}
-footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:24px}}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
+.tag.Branding{background:var(--brand)}.tag.Design{background:var(--design)}.tag.Tecnologia{background:var(--tech)}
+.stars{color:#f2b01e;letter-spacing:1px;font-size:13px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:24px}
+.hero:hover{transform:translateY(-2px)}
+.hero .media{min-height:340px}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
+.src{color:var(--mut);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px)}
+.card .media{height:180px}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.media{position:relative;background:#eceef5;overflow:hidden}
+.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;background:rgba(20,22,31,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:up .25s}
+.modal .media{height:320px}
+.modal .inner{padding:28px}
+.modal h2{margin:10px 0;font-size:26px;line-height:1.25}
+.modal p{font-size:16px;color:#2a2e3c}
+.note{font-size:13px;color:var(--mut);background:#f6f7fb;border-radius:10px;padding:8px 12px}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:10px 18px;border-radius:99px;font-weight:600;font-size:14px;border:0;cursor:pointer}
+.btn.ghost{background:#eef0f6;color:var(--ink)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}h1{font-size:28px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
 const { useState, useEffect } = React;
 
-const NEWS = [
+const ITEMS = [
   {
-    title: "How Michelangelo's handwriting became a Microsoft font",
-    tituloPt: "Como a caligrafia de Michelangelo virou uma fonte da Microsoft",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/how-michelangelos-handwriting-became-its-own-microsoft-font",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/snRyKcpKech8ahRn6A8uLR-2000-80.jpg",
-    cat: "Design", stars: 5,
-    resumo: "A Microsoft lançou a Michelangelus, uma tipografia de estilo manuscrito inspirada nos manuscritos de Michelangelo, para marcar os 400 anos da consagração da Basílica de São Pedro. A Fabbrica di San Pietro, instituição responsável pela manutenção da basílica, encomendou o projeto ao estúdio italiano Studiogusto. O objetivo não era copiar a letra do artista de forma exata, mas adaptá-la em um script moderno e funcional, usado na sinalização interna da basílica e em materiais digitais e impressos. A equipe estudou os manuscritos originais nos arquivos do Vaticano; o diretor criativo Stefano Caliandro destacou a geometria e o equilíbrio entre cheios e vazios na escrita do mestre. Alguns floreios originais foram mantidos, como o pontinho sobre o 'h', e os numerais precisaram ser inventados, já que não há registros de Michelangelo escrevendo números modernos — o algarismo 1, por exemplo, parte da letra I. Ao todo foram criados mais de 500 caracteres em quatro estilos: regular, itálico, negrito e negrito itálico. A fonte está disponível no Microsoft 365 e para download, e a Fabbrica espera que ela desperte interesse pela basílica e pelo artista."
-  },
-  {
-    title: "New campaign reveals how MND takes away what you love",
-    tituloPt: "Nova campanha mostra como a DNM tira de você o que você ama",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/motor-neurone-disease-association-campaign-pablo-london/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/MND-campaign-film-still.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080",
-    cat: "Branding", stars: 5,
-    resumo: "A agência Pablo London criou, para a MND Association, a campanha “Life Stripped Away”, que mostra como a doença do neurônio motor vai retirando, aos poucos, as coisas que mais importam às pessoas. A ação acompanha quatro pessoas que vivem com a condição no Reino Unido e inclui um filme de 90 segundos, rádio e mídia exterior. O filme, dirigido por Ben Liam Jones, da Merman, usa câmera em primeira pessoa para seguir Jaki Jackson, cantora de Brighton, que descreve seu declínio e o cuidado constante do parceiro, Steve. Na rádio, uma versão em voz sintetizada a partir do banco de voz de Jaki, criada com a associação, evidencia como a doença lhe tirou o canto e a capacidade de engolir. Os cartazes retratam Lorraine Redmond, Tahira Chaudhry e Steve Williams, fotografados por Emma Hardy em cenários ligados às suas paixões; os designers aplicaram um efeito que desfoca o entorno e mantém só a expressão do rosto em foco, em referência ao fato de os olhos serem muitas vezes a última coisa que a pessoa consegue mover. Os diretores criativos descrevem a abordagem como terna e, ao mesmo tempo, visceral."
-  },
-  {
-    title: "STUDIO HERRSTRÖM draws on car culture and carton typography for Milkshake rebrand",
-    tituloPt: "STUDIO HERRSTRÖM une cultura automotiva e tipografia de caixinha de leite no rebrand da Milkshake",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/studio-herrstrom-draws-on-car-culture-and-carton-typography-for-milkshake-rebrand/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/001-MILKSHAKE-4x3-©-STUDIO-HERRSTROM-1024x682.png",
-    cat: "Branding", stars: 4,
-    resumo: "O estúdio vienense STUDIO HERRSTRÖM criou a nova identidade visual da Milkshake, gravadora e agência de artistas sediada em Estocolmo e parte da Sony Music Entertainment. Fundada em 2019 como alternativa aos contratos tradicionais, a casa aposta em pop comercial, alternativo e fora do óbvio, e representa nomes como Molly Sandén, Felix Sandman e Dunalia. O briefing pedia uma estrutura visual mais refinada para sustentar o crescimento comercial sem tirar os artistas do centro das campanhas. O estúdio buscou referências nas origens do selo — o nome surgiu durante uma viagem de carro, e os veículos serviam para ouvir demos inéditas. A marca original em forma de respingo foi redesenhada como um emblema arredondado, mais estruturado. A paleta combina rosas neon e amarelos de alta visibilidade com pretos de asfalto e lilases suaves, enquanto os layouts tomam emprestadas as licenças de janela de carro e as tabelas nutricionais de embalagens de leite para organizar informações secundárias. A tipografia principal é a Gates, neogrotesca da Context Type. O sistema se estende a lançamentos, ativos digitais e comunicação corporativa, como em um cartaz de metrô para o novo single de Tove Lo."
-  },
-  {
-    title: "Prada and IOC unveil Formafantasma-designed Ocean & Climate Village exhibition",
-    tituloPt: "Prada e COI inauguram a exposição Ocean & Climate Village, desenhada pelo Formafantasma",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/13/prada-ioc-formafantasma-ocean-climate-village-exhibition/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/ocean-climate-village-prada-ioc-formafantasma-cagliari_dezeen_2364_col_sq.jpg",
-    cat: "Design", stars: 4,
-    resumo: "O estúdio italiano Formafantasma projetou a Ocean & Climate Village, exposição montada na base Luna Rossa da Prada, em Cagliari, na Sardenha. A mostra foi desenvolvida pela Comissão Oceanográfica Intergovernamental da UNESCO junto com a Prada, dentro do projeto educativo Sea Beyond. A Prada a descreve como uma “exposição científica itinerante” que usa o design como ferramenta educativa para mostrar a importância do oceano. A estrutura é leve, modular, feita de alumínio e madeira, e pode ser desmontada e transportada depois do período de exibição. O percurso tem quatro seções — Um Oceano, O Motor do Clima, Biodiversidade e Anomalias Oceânicas — que ligam processos biológicos, climáticos e geológicos. O Formafantasma trabalhou com um artesão de um museu de história natural italiano para criar animais realistas, como um caranguejo-azul e uma tartaruga. O espaço em vários níveis e um folheto que explica termos como CO2 e biodiversidade foram pensados para atrair crianças e adultos. A mostra fica aberta ao público de 10 a 15 de outubro de 2026."
-  },
-  {
-    title: "New Consumer Brand for Basketball Australia by Hulsbosch",
-    tituloPt: "Nova marca de consumo da Basketball Australia, assinada pela Hulsbosch",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_consumer_brand_for_basketball_australia_by_hulsbosch.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/basketball_australia_logo_new.png",
-    cat: "Branding", stars: 4,
-    resumo: "O Brand New registrou, em 13 de outubro, uma nova marca de consumo para a Basketball Australia, entidade nacional do basquete no país, criada pelo estúdio Hulsbosch. A publicação aparece na categoria “Spotted” (identidades flagradas e ainda sem análise completa) e está classificada no setor de esportes. O projeto é rotulado como novo, ou seja, não é uma simples atualização de um sistema anterior, e o título indica que a marca foi pensada para a relação da entidade com o público consumidor — torcedores, praticantes e produtos — e não apenas para o uso institucional.",
-    nota: "Artigo atrás de paywall: resumo feito a partir de título, categoria, setor e metadados públicos; os detalhes visuais do sistema não puderam ser lidos."
-  },
-  {
-    title: "New Logo and Identity for Biotic by Mucho",
-    tituloPt: "Biotic ganha novo logo e identidade assinados pela Mucho",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_biotic_by_mucho.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/biotic_logo_new.png",
-    cat: "Branding", stars: 4,
-    resumo: "O Brand New analisou, em 13 de outubro, o novo logo e a nova identidade da Biotic, organização sem fins lucrativos, desenvolvidos pela agência Mucho. O texto de abertura leva o título “Cell-by Date”, um trocadilho com “sell-by date” (data de validade) ligado à ideia de célula. As tags da publicação — biologia, célula, generativo, minimalista, preto e branco, sem serifa, ciência e estilo suíço — indicam uma identidade enxuta, em preto e branco, com tipografia sem serifa de inspiração suíça e um componente generativo que remete ao universo celular. As imagens públicas mostram o novo logotipo e uma aplicação de exemplo.",
-    nota: "Artigo atrás de paywall: resumo feito a partir de título, dek, setor, tags e legendas públicas; detalhes de construção do logo não foram lidos."
-  },
-  {
-    title: "New Logo and Identity for ARC Team USA by Interstate Creative Partners",
-    tituloPt: "ARC Team USA ganha novo logo e identidade da Interstate Creative Partners",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_arc_team_usa_by_interstate_creative_partners.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/arcteam_usa_logo_new.png",
-    cat: "Branding", stars: 4,
-    resumo: "O Brand New destacou, em 13 de outubro, a nova identidade da ARC Team USA, equipe norte-americana do setor esportivo, criada pela Interstate Creative Partners e publicada por Armin Vit na categoria “Spotted”. As tags — ângulo, vela, velocidade e estrela — sugerem que a marca explora formas angulares que evocam velas de barco e sensação de velocidade, além do uso de uma estrela como símbolo nacional. A ARC Team USA integra o universo da vela competitiva, e a identidade busca traduzir dinamismo e orgulho nacional em um sistema gráfico para a equipe.",
-    nota: "Artigo atrás de paywall: resumo feito a partir de título, tags e metadados públicos; a leitura de como os motivos são aplicados é inferência das tags."
-  },
-  {
-    title: "Armadillo furniture is clad in reused shingles to resemble 'friendly monsters'",
-    tituloPt: "Móveis Armadillo, revestidos de telhas reaproveitadas, lembram “monstrinhos amigáveis”",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/14/armadillo-furniture-reused-shingles-friendly-monsters/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/Lukas-Wegwerth-Corinna-Dehn-companions_dezeen_2364_col_sq1.jpg",
-    cat: "Design", stars: 4,
-    resumo: "Os designers Lukas Wegwerth e Corinna Dehn apresentaram a série de móveis Armadillo na exposição Companions, na Galleri Fumi, em Londres. A mostra reúne seis peças novas — dois armários, um aparador, uma casinha de passarinho, uma mesa de jantar e um biombo — além de trabalhos anteriores da série. Todas são cobertas por telhas de madeira que remetem à arquitetura tradicional da região alemã de Vogelsberg. A inspiração veio da reforma da casa da avó de Wegwerth, revestida com telhas envelhecidas do século XIX. O material foi obtido da própria casa, de uma obra vizinha e de um projeto anterior; depois, foi limpo, lixado e acabado de diferentes formas, com tingimentos, tintas de óleo de linhaça e um processo de escurecimento em várias etapas. As formas orgânicas e curvas lembram criaturas escamosas da floresta, e o tamanho variado das telhas fez com que o resultado só fosse conhecido ao fim de cada peça. A exposição fica em cartaz de 6 de outubro a 21 de novembro de 2026."
-  },
-  {
-    title: "Science Corporation implants its vision-restoring chip in its first Stargardt disease patient",
-    tituloPt: "Science Corporation implanta seu chip de restauração da visão no primeiro paciente com doença de Stargardt",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/55588371385_eb2e316d52_o.jpg?resize=1200,800",
-    cat: "Tecnologia", stars: 4,
-    resumo: "A Science Corporation implantou seu chip PRIMA, que restaura a visão, no primeiro paciente com doença de Stargardt, condição hereditária que destrói gradualmente a visão central, segundo o CEO Max Hodak, ex-presidente da Neuralink. Ele falou sobre o trabalho no TechCrunch Disrupt, apresentando-o como um passo rumo aos objetivos mais amplos da empresa em interfaces cérebro-computador. Para Hodak, a retina faz parte do sistema nervoso central, o que coloca os implantes retinianos na mesma categoria de próteses cocleares e motoras. O PRIMA já é vendido na Europa para pacientes que perderam a visão por atrofia geográfica, e a empresa acredita que a abordagem também pode ajudar casos de Stargardt, hoje considerados incuráveis. O paciente recebeu o implante em maio, em um ensaio no Sydney Eye Hospital, na Austrália, e evoluiu de reconhecer uma letra a ler uma palavra ao longo das sessões de reabilitação. O chip mede 2 mm por 2 mm, fica no fundo do olho e funciona com óculos com câmera, oferecendo visão nítida em preto e branco em uma pequena área central. As próximas versões querem ampliar o campo de visão e reduzir os eletrodos para mais detalhe."
-  },
-  {
-    title: "Yard NYC flips 'send nudes' into a breast cancer wake-up call",
-    tituloPt: "Yard NYC transforma “send nudes” em alerta sobre câncer de mama",
+    id: 1, cat: "Branding", stars: 5,
+    title: "Pringles offers fans eternity in a can for Halloween",
+    tituloPt: "Pringles oferece aos fãs a eternidade dentro de uma lata no Halloween",
     source: "Campaign",
-    url: "https://www.campaignlive.com/article/yard-nyc-flips-send-nudes-breast-cancer-wake-up-call/1972437",
-    imageUrl: null,
-    cat: "Branding", stars: 3,
-    resumo: "A agência nova-iorquina Yard NYC lançou “Send Nudes”, campanha própria para o Mês de Conscientização do Câncer de Mama. A ideia é incentivar mulheres a fazer fotos de si mesmas sem camisa e guardá-las, para depois comparar mudanças de tamanho, forma ou textura que possam sinalizar a doença. Cartazes com o slogan e um QR code foram espalhados pelo Brooklyn e por Manhattan; o código leva a um site com recursos de organizações como Susan G. Komen Patient Care Center, Young Survival Coalition e The Breasties. Adesivos e produtos brincam com mensagens de aplicativos de namoro, e a campanha vai até o fim de outubro. A peça cita dados da American Cancer Society segundo os quais a incidência de câncer de mama cresce mais rápido entre mulheres com menos de 50 anos. A CEO Ruth Bernstein argumenta que as campanhas existentes parecem voltadas a mulheres mais velhas, e a pesquisa citada aponta que 62% das mulheres não confiam que notariam uma mudança nos seios. Segundo ela, o objetivo é iniciar uma conversa, não medir downloads."
+    url: "https://www.campaignlive.com/article/pringles-offers-fans-eternity-halloween/1972527",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/PringlesUrn-UWP-CUS.png",
+    resumo: [
+      "A Pringles lançou uma campanha de Halloween chamada “Once You Drop”, criada pela BBDO New York em parceria com a Weber Shandwick. A ideia parte de uma curiosidade real da história da marca: o químico da Procter & Gamble Fredric Baur, inventor da lata do Pringles, teve parte de suas cinzas enterrada em uma das embalagens após sua morte, em 2008.",
+      "A campanha reinterpreta o slogan clássico “Once You Pop” (“depois que você abre, não consegue parar”) e estende a promessa para além da vida. Até 22 de outubro, os fãs podem visitar o site OnceYouDrop.com e assinar um pacto simbólico prometendo suas cinzas a uma lata de Pringles. Um vencedor sorteado leva uma urna gravada, em metal precioso e no formato da lata, além de um estoque de batatas que a marca estima durar 200 anos. Quem não ganhar pode baixar um “selo de compromisso” para compartilhar nas redes.",
+      "O filme de lançamento tem como protagonista o agente funerário e criador de conteúdo do TikTok Dan Madden. Segundo Mauricio Jenkins, da Mars Snacking, o tom mira o público mais jovem ao abraçar o humor sombrio típico do Halloween e o gosto da Geração Z por narrativas absurdas."
+    ]
   },
   {
-    title: "The new Citroen 2CV is reminding people of a very different (but equally iconic) car design",
-    tituloPt: "O novo Citroën 2CV está lembrando as pessoas de outro carro igualmente icônico",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/the-new-citroen-2cv-is-reminding-people-of-a-very-different-but-equally-iconic-car-design",
-    imageUrl: null,
-    cat: "Design", stars: 3,
-    resumo: "O conceito elétrico que revive o Citroën 2CV, apresentado no Salão de Paris de 2026, ganhou as redes por lembrar outro ícone: o Cozy Coupe, carrinho de brinquedo da Little Tikes. A Citroën mira produção em 2028 e preço em torno de 15 mil euros, sem divulgar ainda as especificações do modelo final. O conceito mantém traços reconhecíveis do original, como faróis redondos, capota de lona curva e capô nervurado, e as proporções compactas — cerca de uma tonelada e 3,76 m de comprimento — fogem da tendência de ampliar carros pequenos em revivals. O autor Joe Foley não vê a comparação como ofensa: para ele o 2CV sempre foi honesto, prático e peculiar, em contraste com os EVs de luxo mais polêmicos de marcas como Ferrari, Jaguar e Bentley. A conclusão é que um elétrico acessível, fiel à filosofia de “mobilidade para todos”, pode funcionar bem no mercado europeu."
+    id: 2, cat: "Design", stars: 5,
+    title: "Jonas Hejduk's blurry furnishings are deliberately low resolution",
+    tituloPt: "Os móveis borrados de Jonas Hejduk são deliberadamente de baixa resolução",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/15/jonas-hejduk-blurry-low-resolution-furnishings/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/jonas-hejduk-low-res-furniture-rugs-bench_dezeen_2364_col_3-1.jpg",
+    resumo: [
+      "O designer francês Jonas Hejduk criou uma coleção de tapetes e bancos cujas superfícies são propositalmente borradas e pixeladas. A inspiração vem do fascínio da infância pelos gráficos de videogames, e o trabalho é apresentado como uma rejeição ao imaginário fotorrealista que domina a cultura visual atual.",
+      "Os tapetes são tecidos digitalmente em jacquard de lã e algodão, e cada peça traz bordados o nome do arquivo, o tamanho original e o tamanho após o pós-processamento. O “Traditional-rug-1.jpeg” reimagina o tapete persa como uma miniatura desfocada, que Hejduk descreve como uma imagem de “origens problemáticas”, copiada vezes demais. Já um tapete em pele de tigre integra a coleção Crash.jpeg, que investiga a obsessão da sociedade com a nitidez digital.",
+      "O banco “Log-texture-1.jpeg” remete aos troncos usados como assento nos jogos dos anos 1990, revestido em uma casca de árvore borrada e finalizado com tachas. Hejduk também produz cerâmicas, roupas, roupas de cama e papel de parede no mesmo estilo, e define os móveis como “objetos de luto e resistência” contra a homogeneização promovida pela tecnologia e pela IA."
+    ]
   },
   {
-    title: "Cerebras CEO pushes back on AI doomsday warnings",
-    tituloPt: "CEO da Cerebras rebate alertas apocalípticos sobre IA",
+    id: 3, cat: "Tecnologia", stars: 4,
+    title: "Figma announces new features to define how agents work on its platform",
+    tituloPt: "Figma anuncia recursos para definir como agentes de IA atuam em sua plataforma",
     source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/13/cerebras-ceo-pushes-back-on-ai-doomsday-warnings/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/55588036288_a416e1cb00_k.jpg?resize=1200,800",
-    cat: "Tecnologia", stars: 3,
-    resumo: "No TechCrunch Disrupt 2026, o CEO da Cerebras, Andrew Feldman, argumentou que líderes de IA que enfatizam cenários apocalípticos estão sufocando o debate sobre os benefícios da tecnologia, chegando a sugerir que alguns “talvez não devessem falar em público”. A reportagem liga a fala ao alarme crescente no mainstream, com relatos de modelos que escapam de contenção, debates sobre a chance de a IA acabar com a humanidade e até uma paródia do Saturday Night Live com o CEO da Anthropic, Dario Amodei. Feldman admitiu que toda tecnologia poderosa levanta questões de mau uso e defendeu regulação razoável, em vez de retórica movida pelo medo, pedindo que líderes destaquem possibilidades como um futuro em que mortes por câncer sejam raras. A reportagem lembra que a Cerebras tem OpenAI, Block, Figma, GSK e Lovable entre os clientes, ou seja, ele tem interesse claro no sucesso da IA. Ele também disse que a indústria de data centers falhou em dialogar com comunidades locais, sobretudo nos EUA, e rejeitou a ideia de que ganhos de eficiência reduzirão a demanda por chips."
+    url: "https://techcrunch.com/2026/10/14/figma-announces-new-features-to-define-how-agents-work-on-its-platform/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Specs_agent.jpeg?resize=1200,675",
+    resumo: [
+      "Em seu primeiro evento Config realizado na Índia, a Figma apresentou recursos que ajudam empresas a definir regras de design para que agentes de IA — tanto os da própria Figma quanto os de terceiros — respeitem os padrões da marca.",
+      "A peça central é o Figma Specs, um editor baseado em Markdown para documentar a linguagem de design de uma equipe. Os specs podem existir como arquivo independente ou dentro do canvas, e fazem referência a elementos do canvas, diagramas do FigJam, camadas de código e telas. As equipes também podem centralizar bibliotecas de design, de código e diretrizes para que os agentes consultem uma única fonte de verdade.",
+      "A empresa ainda moveu o recurso de camadas de código, que adiciona código interativo a protótipos, de beta privado para beta público; é possível pedir ao agente que converta designs em código ou o modifique. Foram adicionadas mais de 20 ferramentas ao MCP e a integração do Payload, CMS headless open source adquirido no ano passado, ao Figma Make. A diretora de design Loredana Crisan lembrou que a produção de código cresceu muito mais rápido que os lançamentos, em boa parte feita para explorar e não para publicar. A Índia é o maior mercado da Figma fora dos EUA."
+    ]
+  },
+  {
+    id: 4, cat: "Design", stars: 4,
+    title: "I'm shocked! The first Narnia: The Magician's Nephew poster is winning me over to this controversial reboot",
+    tituloPt: "Choque: o primeiro pôster de Nárnia: O Sobrinho do Mago está me conquistando para esse reboot polêmico",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/im-shocked-the-first-narnia-magicians-nephew-poster-is-winning-me-over-to-this-controversial-reboot",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/YoSMdTAio5EkX2DS6Jeqp5-1073-80.jpg",
+    resumo: [
+      "Em artigo de opinião, Tom May conta como um pôster teaser mudou sua visão sobre o controverso reboot de Nárnia dirigido por Greta Gerwig para a Netflix. Fã dos livros desde a infância, ele estava morno quanto ao projeto, citando a fadiga de reboots.",
+      "O pôster, porém, reacendeu o entusiasmo. A imagem central mostra a cabeça de Aslan não como um leão sólido, mas como uma forma recortada em luz, preenchida de estrelas e contornada por um âmbar luminoso, sobre um fundo perolado e cintilante. Digory e Polly surgem cavalgando de dentro de uma explosão de luz no centro. May elogia o slogan discreto, “A universe begins” (“um universo começa”), que deixa a imagem trabalhar, e a tipografia que faz referência às capas de livros de bolso dos anos 1970.",
+      "Ele contrapõe a clareza do pôster ao excesso de elementos dos cartazes de cinema atuais. Reconhece que um único pôster não garante o sucesso do filme, mas diz que a peça recuperou o encantamento dos livros. A estreia nos cinemas está marcada para 11 de fevereiro."
+    ]
+  },
+  {
+    id: 5, cat: "Design", stars: 4,
+    title: "Recycled-plastic plinths hold furniture at “secret” Barragán house in Mexico City",
+    tituloPt: "Pedestais de plástico reciclado expõem móveis em casa “secreta” de Barragán na Cidade do México",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/14/design-week-mexico-2026-creative-immersions-casa-ortega/",
+    imageUrl: "https://static.dezeen.com/uploads/2026/10/casa-ortega-creative-immersions-france-mexico-design-week-mexico-2026_dezeen_2364_sq-1.jpg",
+    resumo: [
+      "Para a Design Week Mexico 2026, o estúdio 2x1 expôs móveis e objetos de mais de 30 designers franceses e mexicanos sobre pedestais nos jardins da Casa Ortega, residência particular raramente aberta ao público projetada por Luis Barragán na década de 1940.",
+      "A mostra Creative Immersions France-Mexico 2026 nasceu de três anos de residências em que designers franceses trabalharam com artesãos e estúdios mexicanos pelo país. Os pedestais vermelho-escuros, feitos com a New Fibers, são construídos em Polyroca, painel de papelão laminado pós-industrial reciclado. Unidades maiores combinam estruturas metálicas industriais com toldos de tecido.",
+      "Entre as peças estão um banco de Fanny Serouart com o Taller Maya, vasos de Matali Crasset e And Jacob e uma cadeira de metal amarela de Hall Haus e Neko Design. Os zeladores descrevem a casa como o “segredo mais bem guardado” de Barragán. Ainda habitada pela família Ortega, ela foi aberta excepcionalmente para a exposição, apoiada pela Embaixada da França, que vai de 5 a 25 de outubro."
+    ]
+  },
+  {
+    id: 6, cat: "Branding", stars: 4,
+    title: "Morgan & Morgan makes a creative case for building a powerhouse legal brand",
+    tituloPt: "Morgan & Morgan defende, com criatividade, a construção de uma marca jurídica poderosa",
+    source: "Campaign",
+    url: "https://www.campaignlive.com/article/morgan-morgan-makes-creative-case-building-powerhouse-legal-brand/1972513",
+    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Morgan-Morgan-SC-YouTube-CUS.png",
+    resumo: [
+      "A Morgan & Morgan, uma das maiores bancas americanas de ações por danos pessoais, é conhecida por uma publicidade fora do comum. A Campaign destaca ações recentes como um brunch com a família de um piloto da NASCAR, um salva-vidas sereio e uma coleção de moda inspirada em imagens de acidentes (a Slip & Fall).",
+      "O fundador, John Morgan, exige que cada anúncio seja uma “Purple Cow”, algo que se destaque da multidão. Depois da contratação de Carlos Wigle, ex-diretor de criação da McCann, como diretor criativo em 2020, o escritório apostou ainda mais em uma comunicação lúdica. No início, a liderança falava em se tornar “a Geico dos escritórios de advocacia”.",
+      "Entre os projetos recentes estão a coleção de moda e um programa de comédia ambientado em tribunais. Wigle argumenta que o tom brincalhão não tira a seriedade da marca, cujo objetivo é ser o primeiro nome em que as pessoas pensam. A firma também faz parcerias com criadores, incluindo um vídeo do Jubilee que passou de seis milhões de visualizações, e quer ser impossível de ignorar, do pré-roll aos outdoors de rodovia e à TV."
+    ]
+  },
+  {
+    id: 7, cat: "Design", stars: 4,
+    title: "This Tiny Prague House Opens Like a Giant Wardrobe",
+    tituloPt: "Esta minúscula casa em Praga se abre como um guarda-roupa gigante",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/14/this-tiny-prague-house-opens-like-a-giant-wardrobe/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/wardrobe-house/wardrobe_house_yanko_design_01.jpg",
+    resumo: [
+      "A Wardrobe House é uma estreita construção de madeira no bairro de Ořechovka, em Praga, projetada pelo escritório Šépka Architekti. O projeto nasceu quando a villa de uma família deixou de comportar confortavelmente seis filhos, e ampliar a casa original prejudicaria sua arquitetura protegida.",
+      "Em vez disso, o arquiteto Jan Šépka propôs um edifício separado no jardim, com apenas 5 por 2,5 metros de planta. A casa fica sobre pernas de aço apoiadas em microestacas que protegem as raízes das árvores, deixando o térreo aberto e coberto. Três níveis empilhados abrigam cozinha e sala de jantar compartilhadas e dois quartos com banheiro, cada um com uma cama dobrável para hóspedes.",
+      "Grandes venezianas abrem a fachada envidraçada, permitindo ajustar privacidade e sombra. Os pisos pré-fabricados em madeira foram içados em um único dia, e o compensado percorre paredes e móveis embutidos, com prateleiras abertas que mantêm os pertences à vista. A contrapartida é o uso frequente de escadas. Dois dos filhos já moram lá."
+    ]
+  },
+  {
+    id: 8, cat: "Branding", stars: 3,
+    title: "Arsenal's New Typographic Artillery",
+    tituloPt: "A nova “artilharia” tipográfica do Arsenal",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/arsenals_new_typographic_artillery.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/arsenal_custom_type.png",
+    resumo: [
+      "O Brand New, de Armin Vit, publicou em 14 de outubro uma nota na categoria “Linked” sobre a nova tipografia do clube de futebol inglês Arsenal. O título faz um trocadilho com o apelido militar do clube (os “Gunners”, ou artilheiros) e a ideia de uma “artilharia” de letras.",
+      "O arquivo da imagem de destaque se chama arsenal_custom_type, o que indica o desenvolvimento de uma família tipográfica própria para o clube."
+    ],
+    paywall: true
+  },
+  {
+    id: 9, cat: "Branding", stars: 3,
+    title: "New Logo, Identity, and Packaging for Petra by Ana Couto",
+    tituloPt: "Novo logo, identidade e embalagens da Petra, assinados pela Ana Couto",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_packaging_for_petra_by_ana_couto.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Petra_before_after.jpg",
+    resumo: [
+      "O Brand New analisou, em 14 de outubro, o novo logo, a identidade e as embalagens da Petra, marca brasileira de cerveja da indústria de bens de consumo, desenvolvidos pelo escritório brasileiro Ana Couto. A resenha, intitulada em tom bem-humorado, traz imagens de antes e depois do logo e das embalagens.",
+      "As tags do artigo indicam a direção visual: estética art déco, motivo de sol e montanha, efeito de brilho (flare), laranja e uma fonte semisserifada."
+    ],
+    paywall: true
+  },
+  {
+    id: 10, cat: "Branding", stars: 3,
+    title: "New Logo and Packaging for Attitude Fraîche by LG2",
+    tituloPt: "Novo logo e embalagens da Attitude Fraîche, assinados pela LG2",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_attitude_fraiche_by_lg2.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/attitude_fraiche_logo_before_after.png",
+    resumo: [
+      "O Brand New resenhou o novo logo e as embalagens da Attitude Fraîche, marca de alimentos aparentemente canadense, criados pelo estúdio LG2. O texto, de Armin Vit, traz comparações de antes e depois para o logo e para as embalagens.",
+      "As tags destacam um motivo de folha e o uso de uma fonte serifada, e o projeto é classificado na categoria de embalagens."
+    ],
+    paywall: true
+  },
+  {
+    id: 11, cat: "Design", stars: 3,
+    title: "Fujifilm's Instax SQUARE 2 Adds Color Filters Without an App",
+    tituloPt: "Instax SQUARE 2, da Fujifilm, adiciona filtros de cor sem precisar de aplicativo",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/15/fujifilms-instax-square-2-adds-color-filters-without-an-app/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/fujifilms-instax-square-2-adds-color-filters-without-an-app/instax-011.jpg",
+    resumo: [
+      "A Fujifilm anunciou em 14 de outubro a instax SQUARE 2, que chega às lojas em 28 de outubro e sucede a SQUARE SQ1, mantendo a exposição automática e o espelho para selfies.",
+      "Entre as novidades está um modo Paisagem para cenas distantes e grupos (para assuntos a cerca de 3 metros ou mais) e a escolha entre os modos Padrão e Close-up pelo anel da lente. Uma chave de Mood Filter oferece tons quentes, frios ou nenhum, posicionando um filtro físico diante da lente, em vez de um efeito digital.",
+      "A empresa também lançou o filme SOFT HAZE SQUARE, vendido à parte, que promete luz mais suave e tons mais quentes. A câmera vem em Misty White, Slate Blue e Brick Red, com detalhes listrados na empunhadura e na lente e controles físicos. O preço nos EUA é de US$ 119,95 sem filme. Ela registra novas fotos em filme, em vez de imprimir imagens da galeria, e a revelação leva cerca de 90 segundos."
+    ]
+  },
+  {
+    id: 12, cat: "Tecnologia", stars: 3,
+    title: "Everyone's saying the same thing about Epic's AI-first Disney game – and it's not good",
+    tituloPt: "Todo mundo diz a mesma coisa sobre o jogo da Disney da Epic feito “com IA em primeiro lugar” — e não é elogio",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/everyones-saying-the-same-thing-about-epics-ai-first-disney-game-and-its-not-good",
+    imageUrl: "https://cdn.mos.cms.futurecdn.net/dtfBHC5mkVAW2nJgTPK9tf-1600-80.jpg",
+    resumo: [
+      "A Epic Games enfrenta a reação negativa dos fãs por causa de seu atrasado e ainda não anunciado jogo de tiro de Marvel e Star Wars. Segundo uma reportagem da Bloomberg, os desenvolvedores foram orientados a trabalhar em um modelo “AI first”, com ferramentas como o Claude, da Anthropic, e um diretor teria dito que não haveria “mais código escrito à mão”.",
+      "Jogadores no Reddit questionam o que a IA de fato acrescenta aos jogos, e alguns comentaristas temem que gerar toda a arte com IA possa sair pela culatra. Outros enxergam a guinada como uma tentativa de salvar uma produção em dificuldades.",
+      "O CEO Tim Sweeney defendeu o plano, prometendo “MAIS e MELHORES coisas”, mas céticos lembram os cortes de empregos anteriores da empresa. A artista Karla Ortiz criticou os modelos de IA generativa por serem treinados com o trabalho de artistas sem permissão nem pagamento. Nenhuma nova data de lançamento foi anunciada."
+    ]
   }
 ];
 
-const PAL = {
-  Branding: [["#ff9a5a","#ff5e62"],["#ffd36e","#f0764a"]],
-  Design: [["#34d3b0","#0e8f7a"],["#7be0c2","#1c6f8a"]],
-  Tecnologia: [["#6c7bff","#8a4fe0"],["#4aa3ff","#5a3fd0"]]
+const PALETAS = {
+  Branding: [["#ff9966","#e8643a"],["#ffcc70","#c9482b"],["#f6a05c","#b53a5c"]],
+  Design: [["#6fe0c5","#12a38a"],["#a1f0d5","#0b7f7b"],["#7fd6b0","#0f6f6a"]],
+  Tecnologia: [["#8b8bf0","#5b5bd6"],["#a58cf5","#3d3fa8"],["#7aa7ff","#6a4cc9"]]
 };
 
-function Art({ cat, seed }) {
-  const p = PAL[cat][seed % 2];
-  const id = "g" + seed;
+function Ilustracao({ cat, id }) {
+  const p = PALETAS[cat][id % 3];
+  const g = "g" + id;
   return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-      <rect width="400" height="240" fill={`url(#${id})`}/>
-      <circle cx={80 + seed * 17 % 120} cy="70" r="90" fill="#fff" opacity=".14"/>
-      <rect x={220 - seed * 7 % 60} y="110" width="170" height="170" rx="30" fill="#fff" opacity=".16" transform="rotate(18 300 190)"/>
-      <polygon points="40,240 160,120 280,240" fill="#000" opacity=".1"/>
-      <circle cx="330" cy="50" r="26" fill="#fff" opacity=".25"/>
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração " + cat}>
+      <defs>
+        <linearGradient id={g} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor={p[0]} /><stop offset="1" stopColor={p[1]} />
+        </linearGradient>
+      </defs>
+      <rect width="400" height="240" fill={"url(#" + g + ")"} />
+      <circle cx={80 + (id * 37) % 220} cy="70" r="70" fill="#fff" opacity=".18" />
+      <rect x={200 + (id * 11) % 80} y="110" width="150" height="150" rx="28" fill="#fff" opacity=".16" transform="rotate(18 270 180)" />
+      <polygon points="40,240 150,120 260,240" fill="#000" opacity=".1" />
+      <circle cx="330" cy="40" r="22" fill="#fff" opacity=".3" />
     </svg>
   );
 }
 
-function Pic({ item, i }) {
+function Midia({ item, alt }) {
   const [falhou, setFalhou] = useState(false);
-  if (!item.imageUrl || falhou) return <Art cat={item.cat} seed={i} />;
-  return <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />;
+  return (
+    <div className="media">
+      {item.imageUrl && !falhou ? (
+        <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+      ) : (
+        <Ilustracao cat={item.cat} id={item.id} />
+      )}
+    </div>
+  );
 }
 
-const Stars = ({ n }) => <span className="stars" title={n + " de 5"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
-const Meta = ({ item }) => (
-  <div className="meta"><span className={"tag " + item.cat}>{item.cat}</span><strong>{item.source}</strong><Stars n={item.stars} /></div>
-);
+const Estrelas = ({ n }) => <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
 
-function Modal({ item, i, onClose }) {
+function Meta({ item }) {
+  return (
+    <div className="row">
+      <span className={"tag " + item.cat}>{item.cat}</span>
+      <Estrelas n={item.stars} />
+      <span className="src">{item.source}</span>
+    </div>
+  );
+}
+
+function Detalhe({ item, onClose }) {
   useEffect(() => {
-    const h = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
+    const f = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", f);
+    return () => window.removeEventListener("keydown", f);
   }, []);
   return (
-    <div className="modal-bg" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <div className="img"><Pic item={item} i={i} /></div>
-        <div className="in">
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <Midia item={item} alt={"Imagem da matéria: " + item.tituloPt} />
+        <div className="inner">
           <Meta item={item} />
           <h2>{item.tituloPt}</h2>
-          <p>{item.resumo}</p>
-          {item.nota && <p className="note">{item.nota}</p>}
-          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a>
-          <button className="btn g" onClick={onClose}>Fechar</button>
+          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
+          {item.paywall && <p className="note">Matéria atrás de paywall: o resumo foi escrito a partir de elementos públicos (título, categoria, tags e imagem de destaque).</p>}
+          <div className="row" style={{ marginTop: 18 }}>
+            <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
+            <button className="btn ghost" onClick={onClose}>Fechar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -220,36 +288,46 @@ function Modal({ item, i, onClose }) {
 }
 
 function App() {
-  const [sel, setSel] = useState(null);
-  const [first, ...rest] = NEWS;
+  const [aberto, setAberto] = useState(null);
+  const [manchete, ...resto] = ITEMS;
   return (
     <div className="wrap">
       <header>
-        <h1>☀️ Portal da Manhã</h1>
-        <div className="date">quarta-feira, 14 de outubro de 2026</div>
+        <div>
+          <h1>Portal da Manhã</h1>
+          <div className="src">Branding, design e tecnologia — {ITEMS.length} notícias selecionadas</div>
+        </div>
+        <div className="date">quinta-feira, 15 de outubro de 2026</div>
       </header>
-      <div className="hero" onClick={() => setSel(0)}>
-        <div className="img"><Pic item={first} i={0} /></div>
-        <div className="txt">
-          <Meta item={first} />
-          <h2>{first.tituloPt}</h2>
-          <p style={{ color: "#6a7085", margin: 0 }}>{first.resumo.slice(0, 190)}…</p>
-          <span style={{ color: "#4f46e5", fontWeight: 600 }}>Ler resumo →</span>
+
+      <div className="hero" onClick={() => setAberto(manchete)}>
+        <Midia item={manchete} alt={manchete.tituloPt} />
+        <div className="body">
+          <Meta item={manchete} />
+          <h2>{manchete.tituloPt}</h2>
+          <div className="src">{manchete.resumo[0].slice(0, 190)}…</div>
+          <div><span className="btn">Abrir resumo</span></div>
         </div>
       </div>
+
       <div className="grid">
-        {rest.map((it, k) => (
-          <div className="card" key={it.url} onClick={() => setSel(k + 1)}>
-            <div className="img"><Pic item={it} i={k + 1} /></div>
-            <div className="body"><Meta item={it} /><h3>{it.tituloPt}</h3></div>
-          </div>
+        {resto.map((it) => (
+          <article className="card" key={it.id} onClick={() => setAberto(it)}>
+            <Midia item={it} alt={it.tituloPt} />
+            <div className="body">
+              <Meta item={it} />
+              <h3>{it.tituloPt}</h3>
+            </div>
+          </article>
         ))}
       </div>
-      {sel !== null && <Modal item={NEWS[sel]} i={sel} onClose={() => setSel(null)} />}
-      <footer>Resumos produzidos em português a partir das matérias originais · Edição de 14/10/2026</footer>
+
+      <footer>Resumos parafraseados em português; clique em um card para ler sem sair da página. Imagens carregadas diretamente dos portais.</footer>
+      {aberto && <Detalhe item={aberto} onClose={() => setAberto(null)} />}
     </div>
   );
 }
+
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>

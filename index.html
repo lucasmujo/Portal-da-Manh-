@@ -1,334 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 15 de outubro de 2026</title>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<title>Portal da Manhã — 16 de outubro de 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#6b7285;--line:#e6e8f0;--brand:#e8643a;--design:#12a38a;--tech:#5b5bd6;--sh:0 1px 2px rgba(20,22,31,.05),0 8px 24px rgba(20,22,31,.06)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-h1{margin:0;font-size:34px;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:14px;text-transform:capitalize}
-.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
-.tag.Branding{background:var(--brand)}.tag.Design{background:var(--design)}.tag.Tecnologia{background:var(--tech)}
-.stars{color:#f2b01e;letter-spacing:1px;font-size:13px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s,box-shadow .2s;margin-bottom:24px}
-.hero:hover{transform:translateY(-2px)}
-.hero .media{min-height:340px}
-.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.01em}
-.src{color:var(--mut);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--sh);cursor:pointer;transition:transform .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px)}
-.card .media{height:180px}
-.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.media{position:relative;background:#eceef5;overflow:hidden}
-.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.overlay{position:fixed;inset:0;background:rgba(20,22,31,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:up .25s}
-.modal .media{height:320px}
-.modal .inner{padding:28px}
-.modal h2{margin:10px 0;font-size:26px;line-height:1.25}
-.modal p{font-size:16px;color:#2a2e3c}
-.note{font-size:13px;color:var(--mut);background:#f6f7fb;border-radius:10px;padding:8px 12px}
-.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:10px 18px;border-radius:99px;font-weight:600;font-size:14px;border:0;cursor:pointer}
-.btn.ghost{background:#eef0f6;color:var(--ink)}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}h1{font-size:28px}}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#667085;--line:#e6e8f0;--brand:#e8590c;--design:#0f9d8a;--tech:#5b5bd6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 60px}
+header h1{font-size:34px;margin:0;letter-spacing:-.03em}header p{color:var(--mut);margin:4px 0 24px}
+.tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:99px;color:#fff}
+.t-Branding{background:var(--brand)}.t-Design{background:var(--design)}.t-Tecnologia{background:var(--tech)}
+.stars{color:#f5a524;letter-spacing:2px;font-size:13px}
+.card{background:var(--card);border-radius:18px;box-shadow:0 2px 14px rgba(20,22,31,.07);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(20,22,31,.12)}
+.media{aspect-ratio:16/10;background:#eee;overflow:hidden}.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 18px 18px}.body h3{margin:10px 0 6px;font-size:18px;line-height:1.28}.meta{font-size:12.5px;color:var(--mut)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;margin-bottom:24px;cursor:pointer}.hero .media{aspect-ratio:auto;min-height:340px}.hero h2{font-size:30px;line-height:1.15;margin:12px 0 10px;letter-spacing:-.02em}.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.overlay{position:fixed;inset:0;background:rgba(15,17,26,.55);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:9;animation:f .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:u .3s}
+.modal .media{aspect-ratio:16/9}.modal .in{padding:26px 30px 30px}.modal h2{font-size:27px;line-height:1.2;margin:12px 0 4px}.modal p{font-size:16.5px;color:#2a2e3d}
+.x{float:right;border:0;background:var(--bg);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer}
+.src{display:inline-block;margin-top:10px;padding:10px 18px;background:var(--ink);color:#fff;border-radius:10px;text-decoration:none;font-weight:600}
+.aviso{font-size:13px;color:#a15c07;background:#fff6e5;padding:8px 12px;border-radius:10px;margin-top:12px}
+footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
+@keyframes f{from{opacity:0}}@keyframes u{from{transform:translateY(24px);opacity:0}}
+@media(max-width:780px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero h2{font-size:24px}header h1{font-size:27px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-
-const ITEMS = [
-  {
-    id: 1, cat: "Branding", stars: 5,
-    title: "Pringles offers fans eternity in a can for Halloween",
-    tituloPt: "Pringles oferece aos fãs a eternidade dentro de uma lata no Halloween",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/pringles-offers-fans-eternity-halloween/1972527",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/PringlesUrn-UWP-CUS.png",
-    resumo: [
-      "A Pringles lançou uma campanha de Halloween chamada “Once You Drop”, criada pela BBDO New York em parceria com a Weber Shandwick. A ideia parte de uma curiosidade real da história da marca: o químico da Procter & Gamble Fredric Baur, inventor da lata do Pringles, teve parte de suas cinzas enterrada em uma das embalagens após sua morte, em 2008.",
-      "A campanha reinterpreta o slogan clássico “Once You Pop” (“depois que você abre, não consegue parar”) e estende a promessa para além da vida. Até 22 de outubro, os fãs podem visitar o site OnceYouDrop.com e assinar um pacto simbólico prometendo suas cinzas a uma lata de Pringles. Um vencedor sorteado leva uma urna gravada, em metal precioso e no formato da lata, além de um estoque de batatas que a marca estima durar 200 anos. Quem não ganhar pode baixar um “selo de compromisso” para compartilhar nas redes.",
-      "O filme de lançamento tem como protagonista o agente funerário e criador de conteúdo do TikTok Dan Madden. Segundo Mauricio Jenkins, da Mars Snacking, o tom mira o público mais jovem ao abraçar o humor sombrio típico do Halloween e o gosto da Geração Z por narrativas absurdas."
-    ]
-  },
-  {
-    id: 2, cat: "Design", stars: 5,
-    title: "Jonas Hejduk's blurry furnishings are deliberately low resolution",
-    tituloPt: "Os móveis borrados de Jonas Hejduk são deliberadamente de baixa resolução",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/15/jonas-hejduk-blurry-low-resolution-furnishings/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/jonas-hejduk-low-res-furniture-rugs-bench_dezeen_2364_col_3-1.jpg",
-    resumo: [
-      "O designer francês Jonas Hejduk criou uma coleção de tapetes e bancos cujas superfícies são propositalmente borradas e pixeladas. A inspiração vem do fascínio da infância pelos gráficos de videogames, e o trabalho é apresentado como uma rejeição ao imaginário fotorrealista que domina a cultura visual atual.",
-      "Os tapetes são tecidos digitalmente em jacquard de lã e algodão, e cada peça traz bordados o nome do arquivo, o tamanho original e o tamanho após o pós-processamento. O “Traditional-rug-1.jpeg” reimagina o tapete persa como uma miniatura desfocada, que Hejduk descreve como uma imagem de “origens problemáticas”, copiada vezes demais. Já um tapete em pele de tigre integra a coleção Crash.jpeg, que investiga a obsessão da sociedade com a nitidez digital.",
-      "O banco “Log-texture-1.jpeg” remete aos troncos usados como assento nos jogos dos anos 1990, revestido em uma casca de árvore borrada e finalizado com tachas. Hejduk também produz cerâmicas, roupas, roupas de cama e papel de parede no mesmo estilo, e define os móveis como “objetos de luto e resistência” contra a homogeneização promovida pela tecnologia e pela IA."
-    ]
-  },
-  {
-    id: 3, cat: "Tecnologia", stars: 4,
-    title: "Figma announces new features to define how agents work on its platform",
-    tituloPt: "Figma anuncia recursos para definir como agentes de IA atuam em sua plataforma",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/14/figma-announces-new-features-to-define-how-agents-work-on-its-platform/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Specs_agent.jpeg?resize=1200,675",
-    resumo: [
-      "Em seu primeiro evento Config realizado na Índia, a Figma apresentou recursos que ajudam empresas a definir regras de design para que agentes de IA — tanto os da própria Figma quanto os de terceiros — respeitem os padrões da marca.",
-      "A peça central é o Figma Specs, um editor baseado em Markdown para documentar a linguagem de design de uma equipe. Os specs podem existir como arquivo independente ou dentro do canvas, e fazem referência a elementos do canvas, diagramas do FigJam, camadas de código e telas. As equipes também podem centralizar bibliotecas de design, de código e diretrizes para que os agentes consultem uma única fonte de verdade.",
-      "A empresa ainda moveu o recurso de camadas de código, que adiciona código interativo a protótipos, de beta privado para beta público; é possível pedir ao agente que converta designs em código ou o modifique. Foram adicionadas mais de 20 ferramentas ao MCP e a integração do Payload, CMS headless open source adquirido no ano passado, ao Figma Make. A diretora de design Loredana Crisan lembrou que a produção de código cresceu muito mais rápido que os lançamentos, em boa parte feita para explorar e não para publicar. A Índia é o maior mercado da Figma fora dos EUA."
-    ]
-  },
-  {
-    id: 4, cat: "Design", stars: 4,
-    title: "I'm shocked! The first Narnia: The Magician's Nephew poster is winning me over to this controversial reboot",
-    tituloPt: "Choque: o primeiro pôster de Nárnia: O Sobrinho do Mago está me conquistando para esse reboot polêmico",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/im-shocked-the-first-narnia-magicians-nephew-poster-is-winning-me-over-to-this-controversial-reboot",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/YoSMdTAio5EkX2DS6Jeqp5-1073-80.jpg",
-    resumo: [
-      "Em artigo de opinião, Tom May conta como um pôster teaser mudou sua visão sobre o controverso reboot de Nárnia dirigido por Greta Gerwig para a Netflix. Fã dos livros desde a infância, ele estava morno quanto ao projeto, citando a fadiga de reboots.",
-      "O pôster, porém, reacendeu o entusiasmo. A imagem central mostra a cabeça de Aslan não como um leão sólido, mas como uma forma recortada em luz, preenchida de estrelas e contornada por um âmbar luminoso, sobre um fundo perolado e cintilante. Digory e Polly surgem cavalgando de dentro de uma explosão de luz no centro. May elogia o slogan discreto, “A universe begins” (“um universo começa”), que deixa a imagem trabalhar, e a tipografia que faz referência às capas de livros de bolso dos anos 1970.",
-      "Ele contrapõe a clareza do pôster ao excesso de elementos dos cartazes de cinema atuais. Reconhece que um único pôster não garante o sucesso do filme, mas diz que a peça recuperou o encantamento dos livros. A estreia nos cinemas está marcada para 11 de fevereiro."
-    ]
-  },
-  {
-    id: 5, cat: "Design", stars: 4,
-    title: "Recycled-plastic plinths hold furniture at “secret” Barragán house in Mexico City",
-    tituloPt: "Pedestais de plástico reciclado expõem móveis em casa “secreta” de Barragán na Cidade do México",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/14/design-week-mexico-2026-creative-immersions-casa-ortega/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/casa-ortega-creative-immersions-france-mexico-design-week-mexico-2026_dezeen_2364_sq-1.jpg",
-    resumo: [
-      "Para a Design Week Mexico 2026, o estúdio 2x1 expôs móveis e objetos de mais de 30 designers franceses e mexicanos sobre pedestais nos jardins da Casa Ortega, residência particular raramente aberta ao público projetada por Luis Barragán na década de 1940.",
-      "A mostra Creative Immersions France-Mexico 2026 nasceu de três anos de residências em que designers franceses trabalharam com artesãos e estúdios mexicanos pelo país. Os pedestais vermelho-escuros, feitos com a New Fibers, são construídos em Polyroca, painel de papelão laminado pós-industrial reciclado. Unidades maiores combinam estruturas metálicas industriais com toldos de tecido.",
-      "Entre as peças estão um banco de Fanny Serouart com o Taller Maya, vasos de Matali Crasset e And Jacob e uma cadeira de metal amarela de Hall Haus e Neko Design. Os zeladores descrevem a casa como o “segredo mais bem guardado” de Barragán. Ainda habitada pela família Ortega, ela foi aberta excepcionalmente para a exposição, apoiada pela Embaixada da França, que vai de 5 a 25 de outubro."
-    ]
-  },
-  {
-    id: 6, cat: "Branding", stars: 4,
-    title: "Morgan & Morgan makes a creative case for building a powerhouse legal brand",
-    tituloPt: "Morgan & Morgan defende, com criatividade, a construção de uma marca jurídica poderosa",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/morgan-morgan-makes-creative-case-building-powerhouse-legal-brand/1972513",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Morgan-Morgan-SC-YouTube-CUS.png",
-    resumo: [
-      "A Morgan & Morgan, uma das maiores bancas americanas de ações por danos pessoais, é conhecida por uma publicidade fora do comum. A Campaign destaca ações recentes como um brunch com a família de um piloto da NASCAR, um salva-vidas sereio e uma coleção de moda inspirada em imagens de acidentes (a Slip & Fall).",
-      "O fundador, John Morgan, exige que cada anúncio seja uma “Purple Cow”, algo que se destaque da multidão. Depois da contratação de Carlos Wigle, ex-diretor de criação da McCann, como diretor criativo em 2020, o escritório apostou ainda mais em uma comunicação lúdica. No início, a liderança falava em se tornar “a Geico dos escritórios de advocacia”.",
-      "Entre os projetos recentes estão a coleção de moda e um programa de comédia ambientado em tribunais. Wigle argumenta que o tom brincalhão não tira a seriedade da marca, cujo objetivo é ser o primeiro nome em que as pessoas pensam. A firma também faz parcerias com criadores, incluindo um vídeo do Jubilee que passou de seis milhões de visualizações, e quer ser impossível de ignorar, do pré-roll aos outdoors de rodovia e à TV."
-    ]
-  },
-  {
-    id: 7, cat: "Design", stars: 4,
-    title: "This Tiny Prague House Opens Like a Giant Wardrobe",
-    tituloPt: "Esta minúscula casa em Praga se abre como um guarda-roupa gigante",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/14/this-tiny-prague-house-opens-like-a-giant-wardrobe/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/wardrobe-house/wardrobe_house_yanko_design_01.jpg",
-    resumo: [
-      "A Wardrobe House é uma estreita construção de madeira no bairro de Ořechovka, em Praga, projetada pelo escritório Šépka Architekti. O projeto nasceu quando a villa de uma família deixou de comportar confortavelmente seis filhos, e ampliar a casa original prejudicaria sua arquitetura protegida.",
-      "Em vez disso, o arquiteto Jan Šépka propôs um edifício separado no jardim, com apenas 5 por 2,5 metros de planta. A casa fica sobre pernas de aço apoiadas em microestacas que protegem as raízes das árvores, deixando o térreo aberto e coberto. Três níveis empilhados abrigam cozinha e sala de jantar compartilhadas e dois quartos com banheiro, cada um com uma cama dobrável para hóspedes.",
-      "Grandes venezianas abrem a fachada envidraçada, permitindo ajustar privacidade e sombra. Os pisos pré-fabricados em madeira foram içados em um único dia, e o compensado percorre paredes e móveis embutidos, com prateleiras abertas que mantêm os pertences à vista. A contrapartida é o uso frequente de escadas. Dois dos filhos já moram lá."
-    ]
-  },
-  {
-    id: 8, cat: "Branding", stars: 3,
-    title: "Arsenal's New Typographic Artillery",
-    tituloPt: "A nova “artilharia” tipográfica do Arsenal",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/arsenals_new_typographic_artillery.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/arsenal_custom_type.png",
-    resumo: [
-      "O Brand New, de Armin Vit, publicou em 14 de outubro uma nota na categoria “Linked” sobre a nova tipografia do clube de futebol inglês Arsenal. O título faz um trocadilho com o apelido militar do clube (os “Gunners”, ou artilheiros) e a ideia de uma “artilharia” de letras.",
-      "O arquivo da imagem de destaque se chama arsenal_custom_type, o que indica o desenvolvimento de uma família tipográfica própria para o clube."
-    ],
-    paywall: true
-  },
-  {
-    id: 9, cat: "Branding", stars: 3,
-    title: "New Logo, Identity, and Packaging for Petra by Ana Couto",
-    tituloPt: "Novo logo, identidade e embalagens da Petra, assinados pela Ana Couto",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_identity_and_packaging_for_petra_by_ana_couto.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Petra_before_after.jpg",
-    resumo: [
-      "O Brand New analisou, em 14 de outubro, o novo logo, a identidade e as embalagens da Petra, marca brasileira de cerveja da indústria de bens de consumo, desenvolvidos pelo escritório brasileiro Ana Couto. A resenha, intitulada em tom bem-humorado, traz imagens de antes e depois do logo e das embalagens.",
-      "As tags do artigo indicam a direção visual: estética art déco, motivo de sol e montanha, efeito de brilho (flare), laranja e uma fonte semisserifada."
-    ],
-    paywall: true
-  },
-  {
-    id: 10, cat: "Branding", stars: 3,
-    title: "New Logo and Packaging for Attitude Fraîche by LG2",
-    tituloPt: "Novo logo e embalagens da Attitude Fraîche, assinados pela LG2",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_attitude_fraiche_by_lg2.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/attitude_fraiche_logo_before_after.png",
-    resumo: [
-      "O Brand New resenhou o novo logo e as embalagens da Attitude Fraîche, marca de alimentos aparentemente canadense, criados pelo estúdio LG2. O texto, de Armin Vit, traz comparações de antes e depois para o logo e para as embalagens.",
-      "As tags destacam um motivo de folha e o uso de uma fonte serifada, e o projeto é classificado na categoria de embalagens."
-    ],
-    paywall: true
-  },
-  {
-    id: 11, cat: "Design", stars: 3,
-    title: "Fujifilm's Instax SQUARE 2 Adds Color Filters Without an App",
-    tituloPt: "Instax SQUARE 2, da Fujifilm, adiciona filtros de cor sem precisar de aplicativo",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/15/fujifilms-instax-square-2-adds-color-filters-without-an-app/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/fujifilms-instax-square-2-adds-color-filters-without-an-app/instax-011.jpg",
-    resumo: [
-      "A Fujifilm anunciou em 14 de outubro a instax SQUARE 2, que chega às lojas em 28 de outubro e sucede a SQUARE SQ1, mantendo a exposição automática e o espelho para selfies.",
-      "Entre as novidades está um modo Paisagem para cenas distantes e grupos (para assuntos a cerca de 3 metros ou mais) e a escolha entre os modos Padrão e Close-up pelo anel da lente. Uma chave de Mood Filter oferece tons quentes, frios ou nenhum, posicionando um filtro físico diante da lente, em vez de um efeito digital.",
-      "A empresa também lançou o filme SOFT HAZE SQUARE, vendido à parte, que promete luz mais suave e tons mais quentes. A câmera vem em Misty White, Slate Blue e Brick Red, com detalhes listrados na empunhadura e na lente e controles físicos. O preço nos EUA é de US$ 119,95 sem filme. Ela registra novas fotos em filme, em vez de imprimir imagens da galeria, e a revelação leva cerca de 90 segundos."
-    ]
-  },
-  {
-    id: 12, cat: "Tecnologia", stars: 3,
-    title: "Everyone's saying the same thing about Epic's AI-first Disney game – and it's not good",
-    tituloPt: "Todo mundo diz a mesma coisa sobre o jogo da Disney da Epic feito “com IA em primeiro lugar” — e não é elogio",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/everyones-saying-the-same-thing-about-epics-ai-first-disney-game-and-its-not-good",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/dtfBHC5mkVAW2nJgTPK9tf-1600-80.jpg",
-    resumo: [
-      "A Epic Games enfrenta a reação negativa dos fãs por causa de seu atrasado e ainda não anunciado jogo de tiro de Marvel e Star Wars. Segundo uma reportagem da Bloomberg, os desenvolvedores foram orientados a trabalhar em um modelo “AI first”, com ferramentas como o Claude, da Anthropic, e um diretor teria dito que não haveria “mais código escrito à mão”.",
-      "Jogadores no Reddit questionam o que a IA de fato acrescenta aos jogos, e alguns comentaristas temem que gerar toda a arte com IA possa sair pela culatra. Outros enxergam a guinada como uma tentativa de salvar uma produção em dificuldades.",
-      "O CEO Tim Sweeney defendeu o plano, prometendo “MAIS e MELHORES coisas”, mas céticos lembram os cortes de empregos anteriores da empresa. A artista Karla Ortiz criticou os modelos de IA generativa por serem treinados com o trabalho de artistas sem permissão nem pagamento. Nenhuma nova data de lançamento foi anunciada."
-    ]
-  }
+const NOTICIAS = [
+{
+ title: "\"Welcoming and inclusive\" London housing wins RIBA Stirling Prize 2026",
+ tituloPt: "Conjunto habitacional “acolhedor e inclusivo” de Londres vence o Prêmio Stirling 2026 do RIBA",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/15/lion-green-road-riba-stirling-prize-2026/",
+ imageUrl: "https://static.dezeen.com/uploads/2026/10/lion-green-road-mary-duggan-ruff-architects-london-riba-stirling-prize-2026-winner_dezeen_2364_hero.jpg",
+ categoria: "Design", estrelas: 5,
+ resumo: ["O conjunto Lion Green Road, no sul de Londres, projetado pelo escritório Mary Duggan Architects em parceria com a Ruff Architects, venceu o Prêmio Stirling 2026 do RIBA, que reconhece o melhor edifício novo do Reino Unido. Encomendado pela prefeitura de Croydon, em Coulsdon, o projeto reúne 157 moradias distribuídas em cinco blocos ligados por espaços verdes compartilhados.","Os blocos escalonados ocupam um terreno bastante inclinado, antes usado como estacionamento. As plantas facetadas, em formato de estrela, garantem vistas amplas e fazem com que todas as unidades tenham ventilação e luz em duas orientações. Três tipos de tijolo unificam visualmente o conjunto.","O júri elogiou o projeto por responder à urgente necessidade nacional de habitação e por oferecer casas ambientalmente cuidadosas. O presidente do RIBA, Chris Williamson, afirmou que é possível fazer habitação de alta densidade sem abrir mão da qualidade. É apenas o quarto conjunto habitacional a ganhar o prêmio, depois de Accordia, Goldsmith Street e Appleby Blue Almshouse. A cerimônia aconteceu no Old Billingsgate, onde o RIBA também entregou cinco prêmios especiais."]
+},
+{
+ title: "\"Less bank, more life\": Barkas gives Nigerian digital bank Kuda an identity with the pace of Lagos",
+ tituloPt: "“Menos banco, mais vida”: Barkas dá ao banco digital nigeriano Kuda uma identidade com o ritmo de Lagos",
+ source: "It's Nice That",
+ url: "https://www.itsnicethat.com/articles/barkas-kuda-graphic-design-project-131026",
+ imageUrl: "https://m.itsnicethat.com/original_images/barkas-kuda-itsnicethat-2.jpeg?class=w1440",
+ categoria: "Branding", estrelas: 5,
+ resumo: ["O estúdio Barkas criou a nova identidade do Kuda, banco digital nigeriano, cobrindo posicionamento estratégico, identidade visual, site e implementação nas frentes pessoal e empresarial. O conceito gira em torno de “More Life”, expressão de origem jamaicana que traduz o desejo de abundância e dialoga com o público jovem do banco.","Visualmente, a marca foge dos gradientes suaves e das ilustrações em tons pastel comuns entre os bancos desafiantes. Em vez disso, aposta em letras geométricas e robustas, inspiradas na arte e na arquitetura nigerianas, com um logotipo empilhado (KU sobre DA). O roxo profundo marca o banco pessoal e o preto identifica o Kuda Business.","O sistema inclui ainda um símbolo próprio para o naira, tipografia sob medida, layouts modulares, fotografia de estilo documental feita por fotógrafos locais, ilustrações desenhadas à mão e motion design. Fundado em 2019 como o “banco dos livres”, o Kuda quer agora se posicionar como marca consolidada para uma geração digital. A vice-presidente de marketing relata aumento de contas abertas, transações e depósitos desde o relançamento."]
+},
+{
+ title: "Tesla launches flying Roadster concept car",
+ tituloPt: "Tesla lança conceito do Roadster voador",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/16/tesla-launches-flying-roadster-concept-car/",
+ imageUrl: "https://static.dezeen.com/uploads/2026/10/tesla-roadster-flying-car_dezeen_2364_sq.jpg",
+ categoria: "Design", estrelas: 4,
+ resumo: ["A Tesla revelou uma versão voadora da segunda geração do Roadster, um elétrico de dois lugares, em um evento transmitido ao vivo no Texas. A demonstração mostrou o carro rodando de cabeça para baixo, subindo uma rampa em meia-calha e voando brevemente antes de pousar. Ele também saltou sobre uma fileira de veículos estacionados e decolou do repouso.","Propulsores de ar comprimido sob o carro e na traseira dão sustentação, amortecem os pousos e reforçam a aceleração. A Tesla afirma que o modelo vai de 0 a 96 km/h em 0,81 segundo. Um sistema de sucção por ventoinhas manteve o carro preso à rampa invertida, e os tanques de ar podem ser reabastecidos sem combustível.","Projetado em conjunto por Tesla e SpaceX, o carro tem carroceria angular de supercarro, portas tipo tesoura e aerofólio retrátil. Elon Musk disse que será o “único manual” da empresa a longo prazo, embora a demonstração tenha usado uma sequência pré-programada, sem motorista. Musk reconheceu que a legalidade do voo em vias públicas é incerta. A produção está prevista para 2028."]
+},
+{
+ title: "Andrej & Andrej gives Pohoda Festival an identity refresh, complete with 3D babies and a futuristic typeface",
+ tituloPt: "Andrej & Andrej renova a identidade do Pohoda Festival, com bebês em 3D e tipografia futurista",
+ source: "It's Nice That",
+ url: "https://www.itsnicethat.com/articles/andrej-and-andrej-pohoda-festival-30th-anniversary-graphic-design-project-141026",
+ imageUrl: "https://m.itsnicethat.com/original_images/andrej-andrej-pohoda-graphic-design-itsnicethat-13.jpg?class=w1440",
+ categoria: "Branding", estrelas: 4,
+ resumo: ["O Pohoda Festival, maior festival de música e artes ao ar livre da Eslováquia, completa 30 anos em 2026. Fundado em 1997, leva o nome de uma palavra eslovaca e tcheca que significa tranquilidade e bem-estar; não tem áreas VIP e limita o público para evitar aglomeração.","Para o aniversário, o estúdio de Bratislava Andrej & Andrej, formado por Andrej Barčák e Andrej Čanecký, criou a terceira grande identidade do festival, com novo logotipo, tipografia e paleta. A fonte de exibição, arredondada e geométrica, parte das letras usadas antes de 2010, de modo que o nome de cada atração funciona como uma peça de lettering.","O visual bebe nas imagens da música dançante dos anos 1990: logotipo em gradiente que simboliza liberdade, cores de bala e o retorno da camiseta listrada de edições passadas. O merchandising, desenvolvido com Linda Straková, é produzido em fábrica certificada GOTS em Portugal. A peça central é o logo dos bebês gêmeos, reconstruído em 3D com o artista Matej Martinec; eles surgiram como fotografia em 1997, viraram gráfico em 2001 e agora ganham versão inflável e chaveiro."]
+},
+{
+ title: "Frank Lloyd Wright's only planetarium restored in Florida",
+ tituloPt: "Único planetário de Frank Lloyd Wright é restaurado na Flórida",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/15/florida-southern-college-frank-lloyd-wright-planetarium-restoration/",
+ imageUrl: "https://static.dezeen.com/uploads/2026/10/planetarium-frank-lloyd-wright-florida-southern-college_dezeen_2364_hero.jpg",
+ categoria: "Design", estrelas: 4,
+ resumo: ["O Florida Southern College restaurou e reabriu o único planetário projetado e construído por Frank Lloyd Wright. Ele fica em uma extremidade do Polk County Science Building, no campus planejado pelo arquiteto, e estava praticamente fechado desde 2004, quando o sistema de projeção falhou. A obra foi liderada pelo arquiteto do campus, Jeff Baker, da MCWB Architects, dentro de um esforço mais longo, iniciado em 2007, para atualizar os edifícios de Wright da faculdade.","O trabalho externo começou em 2021 e incluiu novo telhado, rufos, estuque na fachada superior e mais de 280 ladrilhos moldados à mão ao longo do perímetro. A parte interna foi iniciada em 2023: removeram um armário de computadores dos anos 1980, modernizaram tecnologia e áudio e repintaram as paredes em azul profundo. Os assentos originais de compensado e vinil voltaram ao layout circular, a pintura e o reboco originais foram reinstalados e o piso recebeu acabamento avermelhado.","Baker disse que a construção elementar de Wright, sem espaços ocultos para sistemas modernos, foi o maior desafio. O planetário está aberto ao campus e ao público para visitas e sessões."]
+},
+{
+ title: "Meta launches an open-weight AI model that runs on Macs",
+ tituloPt: "Meta lança modelo de IA de pesos abertos que roda em Macs",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2296215726.jpg?resize=1200,799",
+ categoria: "Tecnologia", estrelas: 4,
+ resumo: ["A Meta lançou o Muse Spark Open, que a empresa descreve como o modelo de pesos abertos “mais capaz” dos Estados Unidos. Ele tem 816 bilhões de parâmetros e janela de contexto de 1 milhão de tokens, e a Meta diz que seus resultados superam os de outros modelos abertos populares. É nativamente multimodal e voltado a programação complexa e trabalho com agentes.","O modelo foi pensado para rodar localmente em computadores Apple, mas exige ao menos 1 terabyte de RAM, segundo o Engadget, e rende melhor no Mac Studio com chip M5 Ultra. A Meta o acompanhou do Muse Code, seu terminal de programação com IA, e o testou em tarefas como correção de bugs e novas funções em um cliente de Mastodon. A empresa também afirmou que ele consegue revisar e cortar vídeos no DaVinci Resolve.","A matéria lembra que modelos de pesos abertos podem ser mais econômicos e transparentes que os fechados. O modelo já está disponível em várias plataformas de API."]
+},
+{
+ title: "Figma finally answers the question of what design feels like – using dance",
+ tituloPt: "Figma finalmente responde como é a sensação de projetar — usando dança",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/figma-finally-answers-the-question-of-what-design-feels-like-using-dance",
+ imageUrl: "https://cdn.mos.cms.futurecdn.net/zyNLeTxPsz25zYRsjEpJQT-1920-80.jpg",
+ categoria: "Design", estrelas: 3,
+ resumo: ["A Figma lançou um vídeo para o seu agente de IA, o Figma Agent, que sai da fase beta. Em vez de uma demonstração de recursos, o filme tenta transmitir “a sensação não só de um produto, mas do próprio processo de design”. A produtora IVERSON fez o filme, com roteiro e direção do fundador David Dinetz.","Ele usou a dança para expressar as etapas mentais invisíveis do trabalho criativo: da página em branco à pesquisa, das primeiras ideias às revisões e ao feedback, até o momento em que o trabalho flui. O coreógrafo Tony Testa, com créditos ao lado de Janet Jackson, Britney Spears e Jennifer Lopez, ajudou a construir a linguagem de movimento. O filme foi rodado quase todo em câmera, com performance ao vivo, cenários móveis e efeitos práticos, ao som de uma faixa de Fred Again.","A matéria o apresenta como sequência do premiado filme do Figma Slides, também da IVERSON, e o contrasta com anúncios de IA que explicam o produto de forma literal. O Figma Agent trabalha dentro de arquivos, camadas e frames para explorar layouts, montar fluxos, gerar telas a partir de texto e remixar designs existentes."]
+},
+{
+ title: "Why brands are rethinking packaging norms",
+ tituloPt: "Por que as marcas estão repensando as convenções de embalagem",
+ source: "Creative Review",
+ url: "https://www.creativereview.co.uk/rethinking-packaging-norms-graphic-design-branding/",
+ imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/One-Trick-Pony_Hued-486_HR_V3feat.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1200&h=1200",
+ categoria: "Branding", estrelas: 3,
+ resumo: ["O artigo de Rebecca Fulleylove examina por que as marcas estão questionando as convenções de embalagem. A embalagem precisa proteger o produto, comunicar o que ele é e convencer o consumidor a pegá-lo, tudo isso em um mercado saturado.","Como alerta, o texto descreve como Fenty Beauty, Glow Recipe e Huda Beauty lançaram em setembro potes de adesivos para os olhos com sistema giratório de dispensa muito parecidos, embora a coreana Wonder Bath tenha apresentado formato semelhante em julho. A fundadora da Huda Beauty, Huda Kattan, culpou um fornecedor de embalagens compartilhado, que segundo ela teria falseado a exclusividade.","A tese é que marcas distintivas estão redesenhando o próprio objeto físico, com foco em como ele funciona, como é tocado e como se torna reconhecível com o tempo. Os exemplos são a embalagem da One Trick Pony, pela Polygraph Creative, e a do bálsamo desodorante AKT, pela Two Times Elliott. A conclusão: a melhor embalagem molda a experiência do produto, em vez de apenas chamar atenção."]
+},
+{
+ title: "The $20,000 MrBeast logo auction isn't as ridiculous as it seems",
+ tituloPt: "O leilão de US$ 20 mil do logo do MrBeast não é tão absurdo quanto parece",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/the-usd20-000-mrbeast-logo-auction-isnt-as-ridiculous-as-it-seems",
+ imageUrl: "https://cdn.mos.cms.futurecdn.net/ao4tjt439ZfPsDC3TiYR55-1920-80.jpg",
+ categoria: "Branding", estrelas: 3,
+ resumo: ["A Heritage Auctions colocou preço-guia de US$ 20 mil em um esboço a lápis original da sessão de ideias que originou o logo do MrBeast. O desenho, de cerca de 10 x 10 cm, está em papel amassado e manchado. A casa de leilões diz que ele saiu de uma sessão de uns dez minutos em que a equipe de design rabiscou um conceito de felino, aprovado por MrBeast (Jimmy Donaldson).","Nas redes, muita gente achou a estimativa exagerada, mas o artigo defende que o tempo gasto não define o valor de um desenho: seu peso está no papel do logo na ascensão da marca. A listagem cita apenas um “artista” e uma “equipe de design”, sem nomear o criador, o que contrasta com logos famosos como o swoosh da Nike. MrBeast não participaria da venda e já admitiu ter dado pouca atenção ao logo.","O texto lembra ainda que um esboço não carrega direitos de propriedade intelectual e compara os US$ 35 pagos a Carolyn Davidson pela Nike com o US$ 1 milhão que a Pepsi teria gasto em seu redesign de 2008. O esboço integra o leilão Fall Sports Catalog, de 23 a 25 de outubro."]
+},
+{
+ title: "Fairbuds 2 Earbuds Let You Swap Worn Batteries Instead of Buying a New Pair",
+ tituloPt: "Fairbuds 2 permitem trocar baterias gastas em vez de comprar um novo par",
+ source: "Yanko Design",
+ url: "https://www.yankodesign.com/2026/10/15/fairbuds-2-earbuds-let-you-swap-worn-batteries-instead-of-buying-a-new-pair/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/fairbuds-2-earbuds-let-you-swap-worn-batteries-instead-of-buying-a-new-pair/fairbuds-2-11.jpg",
+ categoria: "Design", estrelas: 3,
+ resumo: ["Os Fairbuds 2, da Fairphone, foram projetados para que as baterias possam ser trocadas tanto nos fones quanto no estojo, evitando descartar o conjunto inteiro quando a autonomia cai. Cada fone tem uma capa de silicone removível que expõe o compartimento da bateria sem ferramentas; já o estojo exige uma chave Torx T5. A Fairphone lista sete peças substituíveis, incluindo o corpo do estojo e cada fone.","O som vem de drivers de biocelulose de 0,43 polegada, com predefinições e equalizador de cinco bandas; o LDAC só funciona em celulares Android compatíveis. O cancelamento de ruído chega a 45 dB, com seis microfones, e o multipoint conecta dois aparelhos ao mesmo tempo.","A autonomia declarada é de até oito horas (seis com cancelamento), mais 40 horas com o estojo. A recarga é só por USB-C e a certificação IP54 protege contra poeira e respingos. O preço nos EUA é de US$ 119,99, com lançamento em 2 de novembro de 2026 e até três anos de garantia."]
+},
+{
+ title: "New Logo and Identity for Salt Lick on Salt Creek by Order",
+ tituloPt: "Novo logo e identidade para o Salt Lick on Salt Creek, assinados pela Order",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_salt_lick_on_salt_creek_by_order.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/slsc_logo_new.png",
+ categoria: "Branding", estrelas: 3,
+ aviso: "O texto completo do Brand New está atrás de paywall; este resumo se baseia apenas nos elementos públicos (título, categoria, indústria e tags).",
+ resumo: ["O Brand New publicou em 15 de outubro de 2026 a análise do novo logo e identidade do Salt Lick on Salt Creek, projeto assinado pela agência Order. A matéria, intitulada “Made to Border”, está na categoria “Reviewed” e na indústria de hospitalidade.","As tags indicam os elementos envolvidos: border (borda), hotel, menu, order, packaging, restaurant e sans serif — o que sugere um sistema que alcança cardápios, embalagens e a comunicação do estabelecimento, com tipografia sem serifa. A página mostra imagens do novo logo e de uma aplicação.","A análise detalhada da crítica não é pública, por isso este resumo se limita ao que a página expõe."]
+},
+{
+ title: "New Logo and Packaging for KINGS by BrandOpus",
+ tituloPt: "Novo logo e embalagens da KINGS, assinados pela BrandOpus",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_kings_by_brandopus.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/kings_jerky_logo_before_after.png",
+ categoria: "Branding", estrelas: 2,
+ aviso: "O texto completo do Brand New está atrás de paywall; este resumo se baseia apenas nos elementos públicos (título, categoria, indústria e tags).",
+ resumo: ["O Brand New publicou em 15 de outubro de 2026 o novo logo e embalagens da KINGS, projeto da BrandOpus, com o título “Bite off Less than you can Chew” (algo como “Morda menos do que consegue mastigar”). A matéria está na categoria “Noted” e na indústria de bens de consumo.","As imagens trazem comparações de antes e depois do logo e das embalagens, e o nome do arquivo sugere que o produto é carne seca (jerky). As tags citam brandopus, chunky (formas robustas), colorful (colorido), rob clarke e uk.","A análise completa do autor, com a justificativa de design, é restrita a assinantes e por isso não foi lida para este resumo."]
+}
 ];
-
-const PALETAS = {
-  Branding: [["#ff9966","#e8643a"],["#ffcc70","#c9482b"],["#f6a05c","#b53a5c"]],
-  Design: [["#6fe0c5","#12a38a"],["#a1f0d5","#0b7f7b"],["#7fd6b0","#0f6f6a"]],
-  Tecnologia: [["#8b8bf0","#5b5bd6"],["#a58cf5","#3d3fa8"],["#7aa7ff","#6a4cc9"]]
-};
-
-function Ilustracao({ cat, id }) {
-  const p = PALETAS[cat][id % 3];
-  const g = "g" + id;
-  return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração " + cat}>
-      <defs>
-        <linearGradient id={g} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={p[0]} /><stop offset="1" stopColor={p[1]} />
-        </linearGradient>
-      </defs>
-      <rect width="400" height="240" fill={"url(#" + g + ")"} />
-      <circle cx={80 + (id * 37) % 220} cy="70" r="70" fill="#fff" opacity=".18" />
-      <rect x={200 + (id * 11) % 80} y="110" width="150" height="150" rx="28" fill="#fff" opacity=".16" transform="rotate(18 270 180)" />
-      <polygon points="40,240 150,120 260,240" fill="#000" opacity=".1" />
-      <circle cx="330" cy="40" r="22" fill="#fff" opacity=".3" />
-    </svg>
-  );
+const PAL={Branding:["#ff9a3c","#e8590c","#ffd166"],Design:["#2dd4bf","#0f9d8a","#a7f3d0"],Tecnologia:["#818cf8","#5b5bd6","#c4b5fd"]};
+function Ilustra({cat,seed}){
+ const p=PAL[cat],id="g"+seed;
+ return (<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração "+cat}>
+  <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+  <rect width="400" height="250" fill={"url(#"+id+")"}/>
+  <circle cx={80+seed*17%240} cy="70" r="70" fill={p[2]} opacity=".35"/>
+  <rect x={200+seed*11%120} y="110" width="120" height="120" rx="24" fill="#fff" opacity=".22" transform={"rotate("+(12+seed*7%30)+" 260 170)"}/>
+  <polygon points="40,230 140,120 230,230" fill="#fff" opacity=".18"/>
+ </svg>);
 }
-
-function Midia({ item, alt }) {
-  const [falhou, setFalhou] = useState(false);
-  return (
-    <div className="media">
-      {item.imageUrl && !falhou ? (
-        <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
-      ) : (
-        <Ilustracao cat={item.cat} id={item.id} />
-      )}
-    </div>
-  );
+function Img({n,i,eager}){
+ const [falhou,setFalhou]=useState(false);
+ if(!n.imageUrl||falhou) return <Ilustra cat={n.categoria} seed={i+1}/>;
+ return <img src={n.imageUrl} alt={"Imagem da matéria: "+n.tituloPt} referrerPolicy="no-referrer" loading={eager?"eager":"lazy"} onError={()=>setFalhou(true)}/>;
 }
-
-const Estrelas = ({ n }) => <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
-
-function Meta({ item }) {
-  return (
-    <div className="row">
-      <span className={"tag " + item.cat}>{item.cat}</span>
-      <Estrelas n={item.stars} />
-      <span className="src">{item.source}</span>
-    </div>
-  );
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+function Modal({n,i,fechar}){
+ useEffect(()=>{const h=e=>e.key==="Escape"&&fechar();document.addEventListener("keydown",h);return()=>document.removeEventListener("keydown",h)},[]);
+ return (<div className="overlay" onClick={fechar}><div className="modal" onClick={e=>e.stopPropagation()}>
+  <div className="media"><Img n={n} i={i} eager/></div>
+  <div className="in"><button className="x" onClick={fechar} aria-label="Fechar">✕</button>
+   <span className={"tag t-"+n.categoria}>{n.categoria}</span> <Stars n={n.estrelas}/>
+   <h2>{n.tituloPt}</h2><div className="meta">{n.source}</div><div style={{height:14}}/>
+   {n.resumo.map((p,k)=><p key={k}>{p}</p>)}
+   {n.aviso&&<div className="aviso">{n.aviso}</div>}
+   <a className="src" href={n.url} target="_blank" rel="noopener noreferrer">Ler na fonte original ↗</a>
+  </div></div></div>);
 }
-
-function Detalhe({ item, onClose }) {
-  useEffect(() => {
-    const f = (e) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", f);
-    return () => window.removeEventListener("keydown", f);
-  }, []);
-  return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <Midia item={item} alt={"Imagem da matéria: " + item.tituloPt} />
-        <div className="inner">
-          <Meta item={item} />
-          <h2>{item.tituloPt}</h2>
-          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
-          {item.paywall && <p className="note">Matéria atrás de paywall: o resumo foi escrito a partir de elementos públicos (título, categoria, tags e imagem de destaque).</p>}
-          <div className="row" style={{ marginTop: 18 }}>
-            <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
-            <button className="btn ghost" onClick={onClose}>Fechar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+function App(){
+ const [sel,setSel]=useState(null);
+ const ord=[...NOTICIAS].sort((a,b)=>b.estrelas-a.estrelas);
+ const [h,...resto]=ord;
+ return (<div className="wrap">
+  <header><h1>Portal da Manhã</h1><p>Sexta-feira, 16 de outubro de 2026 · Branding, design e tecnologia em {ord.length} notícias</p></header>
+  <article className="card hero" onClick={()=>setSel(0)}>
+   <div className="media"><Img n={h} i={0} eager/></div>
+   <div className="body"><div><span className={"tag t-"+h.categoria}>{h.categoria}</span> <Stars n={h.estrelas}/></div>
+    <h2>{h.tituloPt}</h2><div className="meta">{h.source} · clique para ler o resumo</div></div>
+  </article>
+  <section className="grid">
+   {resto.map((n,k)=>(<article className="card" key={n.url} onClick={()=>setSel(k+1)}>
+    <div className="media"><Img n={n} i={k+1}/></div>
+    <div className="body"><div><span className={"tag t-"+n.categoria}>{n.categoria}</span> <Stars n={n.estrelas}/></div>
+     <h3>{n.tituloPt}</h3><div className="meta">{n.source}</div></div>
+   </article>))}
+  </section>
+  {sel!==null&&<Modal n={ord[sel]} i={sel} fechar={()=>setSel(null)}/>}
+  <footer>Resumos produzidos em português a partir das matérias originais. Clique em qualquer card para ler.</footer>
+ </div>);
 }
-
-function App() {
-  const [aberto, setAberto] = useState(null);
-  const [manchete, ...resto] = ITEMS;
-  return (
-    <div className="wrap">
-      <header>
-        <div>
-          <h1>Portal da Manhã</h1>
-          <div className="src">Branding, design e tecnologia — {ITEMS.length} notícias selecionadas</div>
-        </div>
-        <div className="date">quinta-feira, 15 de outubro de 2026</div>
-      </header>
-
-      <div className="hero" onClick={() => setAberto(manchete)}>
-        <Midia item={manchete} alt={manchete.tituloPt} />
-        <div className="body">
-          <Meta item={manchete} />
-          <h2>{manchete.tituloPt}</h2>
-          <div className="src">{manchete.resumo[0].slice(0, 190)}…</div>
-          <div><span className="btn">Abrir resumo</span></div>
-        </div>
-      </div>
-
-      <div className="grid">
-        {resto.map((it) => (
-          <article className="card" key={it.id} onClick={() => setAberto(it)}>
-            <Midia item={it} alt={it.tituloPt} />
-            <div className="body">
-              <Meta item={it} />
-              <h3>{it.tituloPt}</h3>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <footer>Resumos parafraseados em português; clique em um card para ler sem sair da página. Imagens carregadas diretamente dos portais.</footer>
-      {aberto && <Detalhe item={aberto} onClose={() => setAberto(null)} />}
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

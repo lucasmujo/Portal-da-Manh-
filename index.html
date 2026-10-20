@@ -1,315 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 19 de outubro de 2026</title>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<title>Portal da Manhã — 20 de outubro de 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#17181c;--mute:#6b6f7a;--line:#e8e6e0;--accent:#e4572e;--r:18px;--sh:0 1px 2px rgba(20,20,30,.05),0 8px 24px rgba(20,20,30,.06)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14161f;--mut:#667085;--line:#e6e8ef;--acc:#4f46e5;--br:#f97316;--ds:#0d9488;--tc:#6366f1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
 header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:var(--mute);font-size:14px;text-transform:capitalize}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-2px)}
-.hero .body{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
-.hero p{margin:0;color:var(--mute)}
-.media{position:relative;min-height:220px;background:#eee;overflow:hidden}
-.media img,.media svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .25s}
-.card:hover{transform:translateY(-3px)}
-.card .media{height:170px;min-height:0}
-.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#fde8df;color:#b8401c}.Design{background:#dcf3ee;color:#0f6d5e}.Tecnologia{background:#e5e4fb;color:#4a46b8}
-.stars{color:#f0a500;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(20,20,30,.45);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .25s}
-.modal{background:var(--card);border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:up .3s}
-.modal .media{height:320px}
-.modal .inner{padding:26px 30px 32px}
-.modal h2{margin:8px 0 4px;font-size:26px;line-height:1.25}
-.modal .orig{color:var(--mute);font-size:13px;margin-bottom:14px}
-.modal p{margin:0 0 14px}
-.nota{font-size:13px;color:var(--mute);background:#faf7ee;border-left:3px solid #f0a500;padding:8px 12px;border-radius:6px}
-.btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.btn{border:0;border-radius:99px;padding:10px 18px;font-weight:600;cursor:pointer;font-size:14px;text-decoration:none}
-.primary{background:var(--ink);color:#fff}.ghost{background:#efede8;color:var(--ink)}
-footer{text-align:center;color:var(--mute);font-size:12px;margin-top:36px}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{height:220px}.hero h2{font-size:22px}.modal .media{height:220px}.modal .inner{padding:20px}}
+h1{margin:0;font-size:30px;letter-spacing:-.02em}.date{color:var(--mut);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
+.Branding{background:var(--br)}.Design{background:var(--ds)}.Tecnologia{background:var(--tc)}
+.card{background:var(--card);border-radius:18px;box-shadow:0 1px 3px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;border:0;text-align:left;padding:0;font:inherit;color:inherit;display:block;width:100%}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(16,24,40,.12)}
+.img{aspect-ratio:16/9;background:#eee;overflow:hidden}.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px}.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.02em}.hero .img{aspect-ratio:auto;min-height:300px;height:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.body{padding:16px 18px 20px}.body h3{margin:10px 0 8px;font-size:17px;line-height:1.3}
+.meta{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--mut);flex-wrap:wrap}.stars{color:#f5a623;letter-spacing:1px}
+.warn{font-size:12px;color:#b54708;background:#fffaeb;border-radius:8px;padding:4px 8px;margin-top:8px;display:inline-block}
+.overlay{position:fixed;inset:0;background:rgba(16,24,40,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:fade .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .28s ease;position:relative}
+.modal .img{aspect-ratio:16/9}.modal .in{padding:24px 28px 30px}.modal h2{font-size:25px;line-height:1.25;margin:10px 0 12px;letter-spacing:-.02em}
+.modal p{font-size:16px;color:#2b2f3a;margin:0 0 14px}.close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2}
+.src{display:inline-block;margin-top:6px;background:var(--acc);color:#fff;text-decoration:none;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px}
+@keyframes fade{from{opacity:0}}@keyframes up{from{opacity:0;transform:translateY(20px)}}
+footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:0;aspect-ratio:16/9}.hero h2{font-size:23px}h1{font-size:24px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-
 const ITEMS = [
-  {
-    title: "Just Eat finds joy in staying put in VCCP campaign",
-    tituloPt: "Just Eat encontra alegria em ficar onde se está, em campanha da VCCP",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/just-eat-vccp-stay-where-you-are-campaign-advertising/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/0.-Hero-PR-still-scaled.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1600&h=1600",
-    cat: "Branding", stars: 5,
-    resumo: [
-      "A Just Eat lançou “Stay Just Where You Are” (“Fique exatamente onde está”), nova plataforma global de marca criada pela VCCP, primeiro trabalho da agência para a empresa. A virada é clara: sai a publicidade ancorada em celebridades e entra uma abordagem mais humana e discreta.",
-      "A ideia parte de uma observação simples: quem está curtindo um momento raramente quer sair dele. Segundo pesquisa citada pela marca, 81% das pessoas gostariam de passar mais tempo nos momentos de que gostam. Assim, o delivery deixa de ser vendido pela comida em si e passa a ser a ferramenta que permite ficar onde se está.",
-      "O filme principal mostra um avô encantado com o neto recém-nascido que, depois de prometer cozinhar para a família, resolve pedir pelo app. Outras cenas incluem amigos tentando ingressos de festival, um casal em um estacionamento, colegas de casa brincando com o gato e um pai tocando bateria com a filha. A direção é de Michael Spiccia (MJZ) e o estúdio Girl&Bear, da VCCP, produziu os conteúdos para redes, dirigidos por Pip + Lib.",
-      "A plataforma substitui a longeva “Did Somebody Say”, que apostava em famosos, humor e música. O mnemônico sonoro ainda fecha os filmes, em versão atualizada, mas o tom é mais calmo. A campanha também destaca supermercado e outros itens do portfólio, e inclui uma identidade visual atualizada. Para o CMO global Ralph Rijks, é a base para os próximos 20 anos da marca."
-    ]
-  },
-  {
-    title: "Factory in Bangladesh wins RIBA International Prize",
-    tituloPt: "Fábrica em Bangladesh vence o Prêmio Internacional do RIBA",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/16/green-field-factory-nakshabid-architects-riba-international-prize/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/green-field-factory-nakshabid-architects-riba-international-prize_dezeen_2364_hero_1.jpg",
-    cat: "Design", stars: 5,
-    resumo: [
-      "A Green Field Factory, fábrica de tapetes em Rangpur, Bangladesh, projetada pelo escritório de Daca Nakshabid Architects, venceu o Prêmio Internacional do RIBA 2026, quinta edição do prêmio bienal que reconhece o melhor edifício novo fora do Reino Unido.",
-      "O júri elogiou o projeto pelo desenho passivo e por colocar o bem-estar de cerca de 5 mil funcionários no centro. O edifício de sete andares, encomendado pela fabricante Karupannya Rangpur Limited, se inspira na casa bengali tradicional, com pátios, varandas, jardins e uma grande fachada verde que traz luz natural e ventilação, reduzindo a dependência de sistemas mecânicos.",
-      "Um detalhe simbólico é a entrada única, com duas escadarias grandiosas usadas por todos os trabalhadores, em contraste com fábricas vizinhas que separam acessos de operários e gestores. Os espaços compartilhados estimulam pausas e convivência, e há creche na cobertura, consultório médico, mercado e sala de oração para trabalhadores, famílias e comunidade. A vegetação de baixa manutenção abriga insetos e pássaros, e obras de arte homenageiam o papel das mulheres no trabalho, em casa e na comunidade.",
-      "O prêmio foi anunciado na cerimônia do Stirling Prize, em Londres, onde o Lion Green Road, de Mary Duggan Architects e Ruff Architects, levou o prêmio principal. Entre os finalistas internacionais estavam BRAC University (WOHA), o museu Z33 (Francesca Torzo) e a reforma do Royale Belge. A Maker Architecten recebeu o prêmio de arquiteto emergente."
-    ]
-  },
-  {
-    title: "Jev is Vercel's fastest-adopted AI model ever",
-    tituloPt: "Jev é o modelo de IA de adoção mais rápida da história da Vercel",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/16/jev-is-vercels-fastest-adopted-ai-model-ever/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/04/vercel-2249343327-smaller.jpg?resize=1200,800",
-    cat: "Tecnologia", stars: 4,
-    resumo: [
-      "O Jev, novo modelo de IA da TypeSafe AI, teve a adoção mais rápida já registrada na plataforma da Vercel. Segundo dados divulgados pela empresa, em duas semanas após o lançamento 35% das equipes pagantes já o utilizavam, quase o dobro do segundo colocado, o Sonnet 5.5.",
-      "Em liberação limitada desde 15 de setembro, o Jev foi concebido como um modelo leve de decisão, que escolhe entre um conjunto fixo de saídas predefinidas. Por ter opções restritas, ele roda de forma mais barata e rápida que modelos generalistas, o que o torna ideal para classificar grandes volumes de dados. O sucesso já motivou produtos concorrentes de OpenAI e Amazon.",
-      "Os números vêm do AI Gateway da Vercel, uma API unificada parecida com o OpenRouter. A reportagem ressalta que a visão é parcial e provavelmente subestima o uso de modelos de grandes laboratórios, que vendem por APIs próprias. A própria Vercel foi uma das primeiras adotantes e usou o Jev para substituir o GPT-6 Luna na sinalização de comandos nocivos.",
-      "O relatório também mostra que modelos de código aberto respondem por mais de 70% dos tokens do gateway e perto de 25% dos gastos, enquanto o gasto com laboratórios de fronteira cresceu cerca de dez vezes, apesar de a participação relativa ter caído. Para o TechCrunch, isso sugere que modelos de fronteira e abertos são complementares, e não apenas concorrentes."
-    ]
-  },
-  {
-    title: "Polymarket Taps Kathryn Bigelow to Court a Wider Audience in Midterm Ad Blitz",
-    tituloPt: "Polymarket recruta Kathryn Bigelow para conquistar público mais amplo em ofensiva publicitária antes das eleições",
-    source: "Adweek",
-    url: "https://adweek.com/creativity/polymarket-taps-kathryn-bigelow-to-court-a-wider-audience-in-midterm-ad-blitz",
-    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/10/PolymarketBacheloretteParty.png",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "A Polymarket, plataforma de mercado de previsões cercada de controvérsia, estreou em 14 de outubro sua primeira campanha política nacional nos EUA, cerca de três semanas antes das eleições de meio de mandato.",
-      "Dois dos três filmes foram dirigidos por Kathryn Bigelow, vencedora do Oscar, e o terceiro pelo trio argentino Pantera. A produção ficou a cargo da Smuggler. Os anúncios dramatizam cenários inventados a partir de preocupações cotidianas dos eleitores, sobretudo o aumento do preço de supermercado e gasolina.",
-      "Em um dos filmes de Bigelow, uma assessora de campanha descobre informações comprometedoras sobre um político e decide expô-las. Em outro, uma despedida de solteira é interrompida quando as convidadas se deparam com o alto custo de vida.",
-      "A reportagem enquadra a ação como tentativa da Polymarket de alcançar um público mais amplo num momento de crescente escrutínio sobre o setor."
-    ],
-    nota: "Matéria atrás de paywall: o resumo se baseia apenas na parte pública do artigo."
-  },
-  {
-    title: "This weird legal case could change how we think of copyright forever",
-    tituloPt: "Este caso jurídico estranho pode mudar para sempre o que entendemos por direitos autorais",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/this-weird-legal-case-could-change-how-we-think-of-copyright-forever",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/JoUu8JLXzrgKRoDJU72EME-1000-80.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "Um processo ligado ao fenômeno “Italian brain rot”, tendência online de personagens absurdos gerados por IA que se espalhou desde o início de 2025, pode ter implicações profundas para criativos. Os personagens combinam elementos improváveis, como um tubarão de tênis, e já viraram negócio: cartas, álbuns de figurinhas, brinquedos, skins e o jogo Steal a Brainrot, no Roblox.",
-      "O centro da disputa é Tung Tung Tung Sahur, figura de madeira com um taco, inspirada em um tambor tradicional do Sudeste Asiático usado para acordar fiéis antes do amanhecer no Ramadã. O personagem foi criado por um adolescente indonésio, conhecido como Noxa, com o gerador de imagens da OpenAI, e hoje é representado pela agência francesa Mementum. Em setembro de 2025, a Mementum notificou a Do Big Studios, dona do jogo; a empresa retirou o personagem, tentou um acordo e, sem sucesso, processou a Mementum na Justiça federal da Califórnia.",
-      "Nos EUA, o direito autoral protege apenas obras de autoria humana. Um relatório de 2025 do Copyright Office teria indicado que material puramente gerado por IA não pode ser protegido, mas que obras com contribuição criativa humana suficiente podem ser, caso a caso. O autor lembra que o personagem teria sido feito em cerca de 15 minutos, com sete prompts.",
-      "O artigo argumenta que o impacto vai além do caso: se obras assistidas por IA forem desprotegidas, clientes que encomendam logos e ilustrações feitos com IA poderiam ver o trabalho copiado livremente; se forem protegidas, clientes poderiam preferir gerar tudo por prompts, ameaçando freelancers e agências."
-    ]
-  },
-  {
-    title: "Why the future of branding is multisensory",
-    tituloPt: "Por que o futuro do branding é multissensorial",
-    source: "Creative Review",
-    url: "https://www.creativereview.co.uk/sensory-experiences-multisensory-branding-bentley/",
-    imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/DLUV-Sound-Speaker-Media-Group-4x3-1.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1440&h=1080",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "O artigo defende que uma marca deve considerar como um produto soa, cheira e é sentido ao toque, e não apenas como ele parece. O design ainda é tratado como disciplina majoritariamente visual: logos, paletas e tipografias recebem a atenção, o som costuma entrar no fim do processo e os demais sentidos só quando o projeto exige.",
-      "O texto apresenta a Sensory Experiences, laboratório de pesquisa e design que une neurociência, branding e criatividade. Fundada por Russell Jones, a empresa estuda há cerca de vinte anos como os sentidos moldam percepção, emoção e comportamento, e aplica isso à criação de produtos e experiências de marca.",
-      "O principal exemplo é o trabalho com a Bentley na nova geração de carros elétricos. O estúdio repensa a experiência a bordo por meio de iluminação, gráficos, som e feedback tátil, para criar um vínculo mais forte entre motorista e carro. A parceria de cinco anos inclui uma nova identidade sonora, com um som desenhado para o V8 elétrico da marca. Uma legenda de foto cita alto-falantes parabólicos usados para comparar o som de um motor V8 com uma performance de bateria ao vivo."
-    ]
-  },
-  {
-    title: "Amazon's Bee launches two new personal AI devices, starting at $75",
-    tituloPt: "Bee, da Amazon, lança dois novos dispositivos pessoais de IA a partir de US$ 75",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/15/amazons-bee-launches-two-new-personal-ai-devices-starting-at-75/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/BEE_FAMILY_01_1080x1080.jpg?w=1080",
-    cat: "Tecnologia", stars: 3,
-    resumo: [
-      "A Bee, empresa adquirida pela Amazon em 2025, lançou seu primeiro hardware de IA desde a compra, com dois dispositivos. O Bee Frontier (US$ 74,99) é a nova geração do wearable, usado no pulso ou preso à roupa, nas cores Onyx, Lavender e Sage, já à venda na Amazon. O Bee Eclipse (US$ 99,99) é um gravador do tamanho de um cartão de crédito que se prende magneticamente ao celular e chega logo depois.",
-      "Ambos têm um único botão e uma luz que indica quando uma conversa está sendo resumida. O Frontier tem resistência IP67, até sete dias de bateria, carga USB-C e microfones duplos com filtro de ruído. Os preços ficam abaixo de rivais como Plaud Note (US$ 159) e Pocket (US$ 129).",
-      "Os aparelhos ouvem conversas do dia a dia e as transformam em resumos, listas de tarefas e insights, por exemplo agendando um horário combinado ou registrando notas de aula. Todos oferecem resumos gratuitos e 14 dias de memória; a assinatura Bee Pro (US$ 11,99/mês) libera resumos ilimitados, integrações com Amazon.com, Alexa+ e apps de terceiros, chat com assistente e modelos de conversa.",
-      "Sobre privacidade, a Bee diz não armazenar áudio bruto, processado em tempo real e descartado, e que as transcrições são criptografadas com chaves do dispositivo. As integrações incluem Gmail, Google Agenda, Outlook e Apple HealthKit, com novo app móvel e de desktop."
-    ]
-  },
-  {
-    title: "Lily Allen's provocative poster is a massive middle finger to the Grammys",
-    tituloPt: "Pôster provocativo de Lily Allen é um enorme dedo do meio para o Grammy",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/lily-allens-provocative-poster-is-a-massive-middle-finger-to-the-grammys",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/BhT6oTWDqiKTPmSFZh2gu6-1920-80.jpg",
-    cat: "Branding", stars: 3,
-    resumo: [
-      "A cantora britânica Lily Allen divulgou um pôster de “For Your Consideration” (FYC), peça tradicional das campanhas de premiação, para promover o álbum West End Girl no Grammy. O resultado é ousado, mas bem acabado.",
-      "A imagem traz um pendrive de novidade, de bolinhas, em formato de plug anal, objeto que se tornou parte marcante da campanha do disco. O texto do Creative Bloq o descreve como “maravilhosamente nada sério” e destaca o contraste entre o padrão de bolinhas, que evoca o ambiente doméstico, e o objeto sexual no centro da composição.",
-      "O tom, segundo a autora Natalie Fear, conversa com os temas do álbum: romances bagunçados, sexualidade e um estilo cru e sincero. O pôster também é apresentado como uma quebra bem-humorada dos pitches de FYC geralmente muito polidos, como os de Taylor Swift e Harry Styles, e como mostra da disposição da artista de desafiar convenções."
-    ]
-  },
-  {
-    title: "Fiat's strange, transforming Multiplay concept vehicle",
-    tituloPt: "O estranho conceito transformável Multiplay, da Fiat",
-    source: "Core77",
-    url: "https://www.core77.com/posts/145645",
-    imageUrl: "https://s3files.core77.com/blog/images/lead_n_spotlight/1853685_lead_400_145645_.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "A Fiat revelou o Multiplay, conceito que embaralha as categorias de veículos por meio de uma carroceria transformável. A marca o descreve como uma mistura do espaço de uma minivan, da personalidade de um SUV e da praticidade de uma picape.",
-      "O núcleo da ideia é a arquitetura “C-Pillar Metamorfosi”, que usa um módulo traseiro móvel. Ele permite passar de uma configuração familiar para seis passageiros mais um para uma picape de quatro lugares com caçamba aberta. Para a mudança, os bancos traseiros são removidos, o módulo desliza para a frente e revela uma pequena caçamba coberta por uma capota retrátil.",
-      "A matéria destaca detalhes curiosos: um assento verde-azulado pensado para cães pequenos e o banco do passageiro dianteiro, que se rebate e, junto com o painel estofado, forma um lounge voltado para trás. Um vídeo mostra as transformações. A Fiat enquadra o Multiplay como um conceito experimental para testar ideias de mobilidade, e não como prévia de um modelo de produção."
-    ]
-  },
-  {
-    title: "Thin concrete plane defines minimalist villa in Ibiza by Fran Silvestre Arquitectos",
-    tituloPt: "Plano fino de concreto define villa minimalista em Ibiza, do Fran Silvestre Arquitectos",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/18/bellavista-11-villa-fran-silvestre-arquitectos/",
-    imageUrl: "https://static.dezeen.com/uploads/2026/10/bellavista-11-fran-silvestre-arquitectos-houses-ibiza-spain-residential-villas-white_dezeen_2364_hero.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "A Bellavista 11 é uma casa minimalista numa encosta com vista para o mar em Ibiza, projetada pelo estúdio valenciano Fran Silvestre Arquitectos. É a primeira villa concluída do conjunto The Roca Views, com seis casas em Roca Lisa, na costa leste da ilha. Todas compartilham formas retilíneas e paredes brancas finas, apresentadas como releitura contemporânea da arquitetura branca tradicional de Ibiza.",
-      "A ideia central, segundo Silvestre, é um único elemento contínuo que acompanha o declive: um plano de concreto branco com apenas 15 cm de espessura que se dobra e desce o terreno. As dobras adaptam o edifício ao relevo, organizam o programa, orientam cada ambiente para uma vista e geram sombra, além de formar terraços-jardim sobre os dois volumes mais baixos.",
-      "A casa se divide em três volumes baixos: garagem e escada de acesso no topo, o volume social no meio e um bloco com cinco quartos ao final. A sala integrada à cozinha abre para a piscina, e portas de vidro de piso a teto, com trilhos embutidos, ligam tudo ao exterior.",
-      "Por dentro, o acabamento segue a contenção: paredes brancas, pisos de pedra clara e marcenaria em madeira, escolhidos para mostrar o movimento da luz e da sombra ao longo do dia. A fotografia é de Jesus Orrico."
-    ]
-  },
-  {
-    title: "The Outline: Dolmio puppets, debt coasters, and Dacia's stand – 19/10/2026",
-    tituloPt: "The Outline: bonecos da Dolmio, porta-copos sobre dívidas e o estande da Dacia",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/the-outline-dolmio-puppets-debt-coasters-and-dacias-stand-19-10-2026/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/IMG_4225-1024x768.jpeg",
-    cat: "Branding", stars: 3,
-    resumo: [
-      "A coluna The Outline, da Design Week, reúne as notícias de design da semana. Um destaque é a volta da família de bonecos da Dolmio, após uma década, nos 40 anos da marca da Mars Food & Nutrition. A Elmwood reconstruiu os personagens para se encaixarem no sistema de identidade existente e escreveu diretrizes com oito princípios centrais. A estreia é com o Papa nas redes sociais, seguida de TV, mídia exterior, vídeo online e ponto de venda.",
-      "Outro item é o estande de 900 m² da Dacia no Salão de Paris 2026, desenhado pela W Conran Design (Havas), onde estreou a segunda geração do Spring. O layout aberto tem tela central, loja, lounge e salas de vendas, e mostra o plano de lançar quatro elétricos até 2030.",
-      "A credora Lowell encomendou 25 porta-copos a cinco ilustradores de cinco cidades britânicas, cada um com uma pergunta para puxar conversas sobre dívidas em bares e cafés; a pesquisa da empresa indica que muitos preferem falar de sexo com a família a falar de dívidas. A coluna ainda cita o Effie australiano de uma dupla norte-irlandesa, nomeações na RSA, a ampliação do conselho do V&A Dundee, a exposição “Chairman”, de Yinka Ilori, e um concurso estudantil de design de latas."
-    ]
-  },
-  {
-    title: "New Logo and Identity for The Blaydon Race by Channels Agency",
-    tituloPt: "Novo logo e identidade da The Blaydon Race, assinados pela Channels Agency",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_the_blaydon_race_by_channels_agency.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/the_blaydon_race_logo_before_after.png",
-    cat: "Branding", stars: 2,
-    resumo: [
-      "O Brand New, de Armin Vit, publicou em 14 de outubro o novo logo e identidade da The Blaydon Race, corrida de rua tradicional do Reino Unido ligada ao setor de causas beneficentes, criada pela Channels Agency.",
-      "A publicação mostra imagens de antes e depois do logotipo. Os elementos públicos da página apontam traços visuais como tipografia serifada e uma paleta de marrom e amarelo, com referência ao Reino Unido.",
-      "O texto completo da análise, com o raciocínio do redesenho e as mudanças específicas, não está acessível publicamente."
-    ],
-    nota: "Matéria atrás de paywall: o resumo se baseia apenas em título, categoria, tags e imagens públicas. Nenhum detalhe adicional foi inventado."
-  }
+{
+ title: "Kiwibank sheep went viral for all the wrong reasons, and there's something every brand can learn from it",
+ tituloPt: "A ovelha do Kiwibank viralizou pelos motivos errados — e toda marca pode aprender com isso",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/the-kiwibank-sheep-controversy-suggests-brands-should-give-up-trying-to-control-ai-mascots",
+ imageUrl: "https://cdn.mos.cms.futurecdn.net/QnZ64XSk25kRmz56YoYCeS-1920-80.jpg",
+ cat: "Branding", stars: 5, aviso: null,
+ resumo: ["O banco estatal neozelandês Kiwibank lançou uma campanha com Buck, uma ovelha animada com IA que aparece tomando um flat white e convida o público a escolher um banco “nascido para desafiar o sistema”. A peça passou quase despercebida fora da Nova Zelândia — até um usuário do X publicar um comentário sexualizado sobre a personagem, o que fez imagens explícitas geradas por IA se espalharem por fóruns e memes antigos do país ressurgirem.","A reação do banco foi pedir remoções por direitos autorais, o que foi lido como censura e provocou o efeito Streisand: a conversa deixou de ser sobre a campanha e passou a ser sobre liberdade de expressão. O texto lembra que tribunais dos EUA já decidiram que arte feita por IA não é protegível por copyright, e que o Kiwibank afirma que a personagem foi criada por artistas, usando IA apenas na animação.","O autor, Joe Foley, usa o caso para defender que marcas aceitem perder parte do controle sobre seus mascotes. Exemplos positivos incluem o McDonald's com o Grimace Shake, o Duolingo abraçando a versão ameaçadora da coruja Duo e a Reddit e o GitHub, que incentivam remixes de Snoo e Octocat. A linha proposta é agir apenas contra conteúdo realmente nocivo (assédio, ódio, golpes) e deixar a paródia inofensiva circular. Quando a marca usa IA para criar o próprio mascote, o público tende a tratá-lo ainda mais como material cultural livre."]
+},
+{
+ title: "\"Connect the Dots\" — New Logo and Identity for Design Doha Biennial 2026 by Pentagram",
+ tituloPt: "Novo logo e identidade da Design Doha Biennial 2026, assinados pela Pentagram",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_design_doha_biennial_2026_by_pentagram.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/DesignDohaBiennial2026_Logo_New.png",
+ cat: "Branding", stars: 5, aviso: "Artigo atrás de paywall: resumo baseado em título, categoria, indústria e tags públicas.",
+ resumo: ["O Brand New publicou hoje a análise do novo logo e da identidade visual da Design Doha Biennial 2026, projeto desenvolvido pelo escritório Pentagram. O texto recebeu o título “Connect the Dots” (algo como “ligue os pontos”) e está na categoria “Reviewed”, voltada a trabalhos concluídos e analisados em profundidade, no setor de cultura.","As tags públicas — árabe, azul, laranja, conferência, design, evento, Pentagram e Catar — indicam um sistema bilíngue, com escrita árabe e latina e uma paleta que combina azul e laranja. O próprio Design Week havia descrito a identidade, na semana passada, como dinâmica e bilíngue.","A página mostra imagens do novo logo e de aplicações de exemplo, mas o corpo do texto, com a justificativa do conceito, a tipografia e o sistema gráfico, fica restrito a assinantes e, por isso, não é detalhado aqui."]
+},
+{
+ title: "Logistics fiasco or clever marketing? Apple's iPhone Duo sellout might not be such a big blunder",
+ tituloPt: "Fiasco logístico ou marketing esperto? Esgotar o iPhone Duo talvez não seja um erro tão grande",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/logistics-fiasco-or-clever-marketing-apples-iphone-duo-sellout-might-not-be-such-a-mistake",
+ imageUrl: null,
+ cat: "Tecnologia", stars: 4, aviso: "Imagem de destaque não encontrada nos metadados; usando ilustração.",
+ resumo: ["O iPhone Duo, dobrável de US$ 1.999 e o celular mais caro e de venda mais rápida da Apple, abriu pré-venda em 16 de outubro, com lançamento em 23. O estoque inicial esgotou, e a loja da Apple já indica entrega apenas em 25 de janeiro de 2027. Operadoras citam datas anteriores (Verizon em 5 de novembro, Xfinity em 13 de novembro, AT&T no início de dezembro) e revendedores pedem mais de US$ 4.000 no eBay.","Mark Gurman, da Bloomberg, chamou o lançamento de “grande erro”, argumentando que foi apressado para entrar no resultado do trimestre mesmo sem capacidade de produção, e que a Apple insistiu em mais de 70 países após considerar limitar a EUA e China.","Joe Foley contrapõe que a escassez gera buzz e manchetes, que um lançamento escalonado faz sentido para um produto de demanda imprevisível, num mercado em que Samsung e Google já estão estabelecidas e com escassez de chips. A Apple diz atender os pedidos o mais rápido possível, e já antecipou datas antes. Também marcou um evento “Pro and tell” para 28 de outubro, onde se espera um MacBook com tela OLED sensível ao toque."]
+},
+{
+ title: "Made Thought and SODA Studio create new pod hotel chain",
+ tituloPt: "Made Thought e SODA Studio criam nova rede de hotéis-cápsula em Londres",
+ source: "Design Week",
+ url: "https://www.designweek.co.uk/made-thought-and-soda-studio-create-new-pod-hotel-chain/",
+ imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/SODA_Otherwander_Ruth-Ward_01-1024x768.jpg",
+ cat: "Design", stars: 4, aviso: null,
+ resumo: ["A Otherwander é um hotel de 566 cápsulas ao lado da entrada da linha Elizabeth, na estação Tottenham Court Road, em Soho. O CEO Fredrik Korallus pretende expandir a marca pelo Reino Unido e além, com modelos próprios, administrados e de franquia. A SODA Studio restaurou dois edifícios históricos na Dean Street e acrescentou um prédio novo atrás deles.","A Made Thought cuidou de estratégia, identidade, direção de arte, site, tom de voz, campanha de lançamento, mídia exterior, embalagens e pontos de contato dentro das cápsulas. O logo usa um O e um W arredondados, como bolhas, e o sistema se inspira em sinalização urbana e marcadores de rota, com paleta ousada e propositalmente descombinada.","No espaço, há recepção branca brilhante com tela de seis metros, o lounge Huddle com bancos verdes e rosa, parede de máquinas de venda e bar de neon. Uma escada em fita de cinco andares muda de vermelho profundo a amarelo e funciona como orientação e ponto de encontro. As cápsulas, a partir de £70 por noite, foram projetadas com a UberDutch e fabricadas pela Umdasch, com ventilação individual filtrada e um chuveiro para cada seis hóspedes. Alunos da Central Saint Martins e jovens viajantes ajudaram a calibrar privacidade e sociabilidade. Um segundo endereço, em Covent Garden, já está em desenvolvimento."]
+},
+{
+ title: "How the NCAA turned its website from a digital information dump to a brand marketing touchpoint",
+ tituloPt: "Como a NCAA transformou seu site de depósito de informação em ponto de contato de marca",
+ source: "Campaign",
+ url: "https://www.campaignlive.com/article/ncaa-turned-its-website-digital-information-dump-brand-marketing-touchpoint/1972925",
+ imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/ncaa-GettyImages-RM-1210820897-CUS.jpg",
+ cat: "Branding", stars: 4, aviso: null,
+ resumo: ["O site NCAA.org tinha mais de 3.000 páginas acumuladas por atualizações pontuais e era difícil de navegar. A entidade lançou a reformulação em julho, com a agência Borshoff, de Indianápolis, e o parceiro digital Crafted. A Borshoff já havia auditado o site em 2025 e venceu a concorrência para o projeto.","A equipe cruzou conteúdo, desempenho de SEO e tráfego com os objetivos de comunicação e com pesquisas de usuários que pediam orientação mais clara. O site antigo era pesado em texto e links para PDF, com pouca marca ou narrativa; o novo é mais enérgico, próximo de um folheto de marca, e organizado por públicos: atletas atuais e futuros, pais, técnicos, funcionários de campus, administradores e jornalistas.","Cerca de 4.000 páginas antigas foram reduzidas a 400, com textos novos para as páginas principais, CMS de autosserviço e painel de análise. Há busca com IA baseada em comportamento em tempo real e um hub de carreira, já que só cerca de 2% dos atletas universitários chegam ao profissional. Entre 6 de julho e o fim de setembro, comparado a 2025, o tempo médio de engajamento subiu 97%, as sessões engajadas por usuário 40% e a conversão de eventos-chave 44%."]
+},
+{
+ title: "Does brand design have a longevity problem?",
+ tituloPt: "O design de marca tem um problema de longevidade?",
+ source: "Design Week",
+ url: "https://www.designweek.co.uk/does-brand-design-have-a-longevity-problem/",
+ imageUrl: "https://imagescdn.designweek.co.uk/uploads/2026/10/shutterstock_2777479683.jpg?fit=crop&crop=faces&q=45&auto=compress,format&cs=origin&w=1024&h=622",
+ cat: "Branding", stars: 4, aviso: null,
+ resumo: ["Em artigo de opinião, Bud Rodecker, sócio e diretor de design da Span, argumenta que o design de marca vem sendo tratado como descartável. Ele cita a HBO Max, que abandonou o nome HBO, e a Jaguar, que deixou o felino saltando de lado, como sinais de uma corrida por novidade e crescimento rápido na economia da atenção.","Seguir tendências gera sameness, e produtos virais perdem força rápido — como a Stanley, de 1915, que teve explosão em 2023 e agora precisa se perguntar se aquele momento ainda fortalece a marca. Instituições culturais, que trabalham em escalas de tempo mais longas, mostram outro caminho: o IIT College of Architecture adapta a herança de Mies van der Rohe e as grades rígidas ao digital, e o Intuit Art Museum digitaliza texturas feitas à mão para alcançar jovens.","Marcas centenárias como Coca-Cola, Heinz, John Deere, Louis Vuitton e GE sobreviveram evoluindo, não congelando; o recente refresh da Coca-Cola pela JKR reorganizou ativos existentes em um sistema. Seis princípios fecham o texto: construir sobre princípios e não tendências, projetar sistemas e não peças isoladas, deixar espaço para evolução, priorizar clareza sobre novidade, investir em fundamentos duráveis como tipografia, proporção e acabamento, e equilibrar consistência com relevância."]
+},
+{
+ title: "Why Oatly is pouring its marketing efforts into coffee shop culture",
+ tituloPt: "Por que a Oatly está investindo seu marketing na cultura das cafeterias",
+ source: "Campaign",
+ url: "https://www.campaignlive.com/article/why-oatly-pouring-its-marketing-efforts-coffee-shop-culture/1972895",
+ imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/oatly-cafe-UWP-CUS.jpg",
+ cat: "Branding", stars: 4, aviso: null,
+ resumo: ["Conhecida pelos outdoors cheios de texto e humor, a Oatly quer agora ser parte central da cultura do café e das bebidas. Em entrevista à Campaign US, o diretor executivo de criação Jeremy Elias diz que é uma evolução: os outdoors serviram para apresentar a marca na América do Norte, e a fase de introdução está em grande parte concluída, de modo que o foco passa a ser aprofundar a relação com fãs.","A marca montou um time de ex-baristas em várias regiões para integrar o produto às cafeterias, vistas como o melhor “terceiro espaço”. As ações cruzam café com música, moda, esporte e vida noturna: o Losers Café, durante a Copa do Mundo na Cidade do México; o evento Aftertaste com o comediante Hasan Minhaj; um pop-up com a artista Yaeji, com latte gelado de gochujang; a plataforma noturna Barista; e uma parceria no Reino Unido com a Gigs ligando dieta vegetal e hip hop.","Elias também aponta a ascensão do matcha e de bebidas mais experimentais, e quer liderar em produto e pensamento. O desafio é escalar além de um único café: a rede sul-coreana Tous Les Jours adaptou o latte da Yaeji e o vende em 210 lojas de outubro a novembro. Ativações de nicho servirão de faísca para campanhas maiores."]
+},
+{
+ title: "OMA dresses faceted French courthouse in coloured glass",
+ tituloPt: "OMA reveste fórum facetado na França com vidro colorido",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/19/oma-palais-de-justice-de-lille/",
+ imageUrl: "https://static.dezeen.com/uploads/2026/10/palais-de-justice-de-lille-oma-architecture-france_dezeen_2364_hero2.jpg",
+ cat: "Design", stars: 4, aviso: null,
+ resumo: ["O escritório holandês OMA concluiu o Palais de Justice de Lille, um tribunal hexagonal no norte da França, com fachada facetada revestida de vidro colorido. Encomendado pelo Ministério da Justiça, o prédio abriga os tribunais de grande e de pequena instância da cidade.","Ele fica num parque ao lado de uma fortificação em forma de estrela construída em 1667 pelo engenheiro militar Vauban, e a silhueta pontiaguda ecoa a fortaleza. Cada fachada tem acabamento próprio em vidro colorido. O programa se organiza em três volumes sobre uma base pública: o pódio, com as salas de audiência principais; uma torre triangular central, com as menores; e um anel facetado de escritórios que envolve a torre e leva luz natural ao interior.","Cada volume tem expressão material e caráter espacial próprios, unidos por acabamentos claros, mobiliário e a intenção de criar um ambiente acolhedor. Há praça pública no térreo e jardim na cobertura com vista da cidade. O OMA ganhou o concurso em 2018 e a entrega estava prevista para 2023. Fotos de François-Xavier Gbré."]
+},
+{
+ title: "Design Academy Eindhoven students protest overcrowded facilities",
+ tituloPt: "Estudantes da Design Academy Eindhoven protestam contra instalações superlotadas",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/20/design-academy-eindhoven-student-protests-overcrowding/",
+ imageUrl: "https://static.dezeen.com/uploads/2026/10/design-academy-eindhoven-student-protest-2026_dezeen_2364_hero.jpg",
+ cat: "Design", stars: 3, aviso: null,
+ resumo: ["Estudantes de mestrado da Design Academy Eindhoven protestaram na abertura da mostra anual de formandos, reunidos na entrada com o grito “sem espaço hoje, sem trabalho para mostrar” e uma faixa dizendo que a escola está superlotada e sem espaço. Segundo eles, a falta de áreas de trabalho cria “segregação econômica”.","A escola ocupa desde 1997 o edifício Witte Dame, antiga fábrica da Philips. A mudança para a nova sede na Kanaalzone foi adiada de 2026 para setembro de 2028, e parte do prédio, incluindo o quinto andar dos mestrandos, foi devolvida ao proprietário no início do ano letivo. Os alunos relatam menos de uma mesa por pessoa, poucas salas de aula, ausência de oficina para trabalhos grandes e biblioteca fechada desde o fim de setembro por falta de pessoal; alguns desistiram e outros pagam ateliês externos.","Exigem espaços externos, transparência financeira, comunicação clara e representação nas decisões. O presidente do conselho, Raf De Keninck, reconhece que a escola “perdeu um terço do prédio”, diz priorizar o ensino e se diz confiante em uma solução. O caso ocorre em meio a protestos estudantis na França e em outros países europeus."]
+},
+{
+ title: "New Logo and Identity for Neveo by Nemesis Studio",
+ tituloPt: "Novo logo e identidade da Neveo, assinados pela Nemesis Studio",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_neveo_by_nemesis_studio.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/neveo_logo_before_after.png",
+ cat: "Branding", stars: 3, aviso: "Artigo atrás de paywall: resumo baseado em título, categoria, indústria e tags públicas.",
+ resumo: ["O Brand New publicou hoje, na seção “Noted”, uma comparação de antes e depois do logo da Neveo, serviço web, redesenhado pela Nemesis Studio. O texto leva o título “All Smiles”, e a página exibe o logo anterior e o novo lado a lado.","As tags disponíveis — handwritten, lowercase, sans serif, smile, wordmark — sugerem um logotipo apenas tipográfico, em minúsculas e sem serifa, com toque manuscrito e um sorriso como motivo central. O texto, porém, não está acessível sem assinatura, então a justificativa do conceito e a extensão da identidade não são detalhadas aqui."]
+},
+{
+ title: "Kenko's 18-Gram Pieni III Camera Shoots Without a Screen",
+ tituloPt: "Pieni III, da Kenko, pesa 18 gramas e fotografa sem tela",
+ source: "Yanko Design",
+ url: "https://www.yankodesign.com/2026/10/20/kenkos-18-gram-pieni-iii-camera-shoots-without-a-screen/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/kenkos-18-gram-pieni-iii-camera-shoots-without-a-screen/pieni-01.jpg",
+ cat: "Design", stars: 3, aviso: null,
+ resumo: ["A Kenko Tokina apresentou a Pieni III, câmera digital de brinquedo com pouco mais de cinco centímetros de largura e cerca de 18 gramas, pensada para ser usada como colar ou acessório; acompanha cordão. O estilo clássico de câmera também a torna um objeto decorativo, e o texto a descreve como complemento, não substituta, de uma câmera tradicional.","Os sensores têm cerca de 0,32 megapixel, com fotos de 1440 × 960 por interpolação e vídeos com áudio de 720 × 480 a 30 fps — resultados adequados para uso casual, não para grandes impressões. Não há tela nem visor: o usuário não vê o enquadramento nem revisa as fotos, o que o texto apresenta como forma de capturar momentos sem perfeccionismo, ao custo de erros de enquadramento.","São dois botões (liga/disparo e troca de foto/vídeo), LEDs de modo e um ímã traseiro para fixar em superfícies metálicas. Não há armazenamento interno, e é preciso um cartão microSDHC de 4 a 32 GB; a transferência e a carga usam USB-C, incluindo cabo para celulares compatíveis. Vem em Soda, Strawberry, Milk e Black, além de linha Sanrio com Hello Kitty, My Melody, Kuromi, Cinnamoroll e Hangyodon."]
+}
 ];
+ITEMS.sort((a,b)=>b.stars-a.stars);
 
-const PALETTES = {
-  Branding:["#e4572e","#f6a04d","#ffd8a8","#b8401c"],
-  Design:["#0f8b7a","#4cc5a8","#bfece0","#0b5d52"],
-  Tecnologia:["#4a46b8","#8b7cf0","#c9c2ff","#2d2a7a"]
-};
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
-function Ilustracao({item}){
-  const p=PALETTES[item.cat], h=hash(item.title), id="g"+h;
-  const r=(n,m)=>((h>>n)%m);
-  return (
-    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[3]}/></linearGradient></defs>
-      <rect width="400" height="240" fill={"url(#"+id+")"}/>
-      <circle cx={80+r(2,240)} cy={50+r(5,100)} r={50+r(3,50)} fill={p[1]} opacity=".55"/>
-      <rect x={200+r(4,120)} y={90+r(6,60)} width={90+r(7,60)} height={90+r(8,60)} rx="18" fill={p[2]} opacity=".5" transform={"rotate("+(r(9,40)-20)+" 300 160)"}/>
-      <polygon points={`${40+r(1,60)},230 ${130+r(2,60)},120 ${230+r(3,40)},230`} fill={p[2]} opacity=".35"/>
-      <circle cx={330} cy={40} r={22} fill="#fff" opacity=".3"/>
-    </svg>
-  );
+function Art({cat,seed}){
+  const pal={Branding:["#f97316","#ef4444","#fde68a"],Design:["#0d9488","#14b8a6","#a7f3d0"],Tecnologia:["#4f46e5","#7c3aed","#c7d2fe"]}[cat];
+  const r=(n)=>{const x=Math.sin(seed*97+n*13.7)*10000;return x-Math.floor(x)};
+  const id="g"+seed;
+  return (<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração decorativa">
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={pal[0]}/><stop offset="1" stopColor={pal[1]}/></linearGradient></defs>
+    <rect width="320" height="180" fill={`url(#${id})`}/>
+    {[0,1,2,3,4].map(i=>(i%2? <circle key={i} cx={r(i)*320} cy={r(i+9)*180} r={20+r(i+3)*50} fill={pal[2]} opacity=".35"/> : <rect key={i} x={r(i)*260} y={r(i+9)*130} width={40+r(i+3)*90} height={40+r(i+5)*70} rx="14" fill="#fff" opacity=".22" transform={`rotate(${r(i+2)*50-25} 160 90)`}/>))}
+  </svg>);
 }
-function Midia({item}){
+function Pic({item,i,alt}){
   const [falhou,setFalhou]=useState(false);
-  return (
-    <div className="media">
-      {item.imageUrl && !falhou
-        ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-        : <Ilustracao item={item}/>}
-    </div>
-  );
+  return (<div className="img">{item.imageUrl && !falhou
+    ? <img src={item.imageUrl} alt={alt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+    : <Art cat={item.cat} seed={i+1}/>}</div>);
 }
-const Estrelas=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-function Meta({item}){
-  return <div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><strong>{item.source}</strong><Estrelas n={item.stars}/></div>;
-}
-function Modal({item,onClose}){
-  useEffect(()=>{
-    const k=e=>e.key==="Escape"&&onClose();
-    document.addEventListener("keydown",k);
-    document.body.style.overflow="hidden";
-    return()=>{document.removeEventListener("keydown",k);document.body.style.overflow=""};
-  },[]);
-  return (
-    <div className="overlay" onClick={onClose}>
-      <article className="modal" onClick={e=>e.stopPropagation()}>
-        <Midia item={item}/>
-        <div className="inner">
-          <Meta item={item}/>
-          <h2>{item.tituloPt}</h2>
-          <div className="orig">Título original: {item.title}</div>
-          {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
-          {item.nota && <div className="nota">{item.nota}</div>}
-          <div className="btns">
-            <a className="btn primary" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
-            <button className="btn ghost" onClick={onClose}>Fechar</button>
-          </div>
-        </div>
-      </article>
-    </div>
-  );
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+function Meta({item}){return (<div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><strong>{item.source}</strong><Stars n={item.stars}/></div>)}
+
+function Modal({item,i,onClose}){
+  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",k);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",k);document.body.style.overflow=""}},[]);
+  return (<div className="overlay" onClick={onClose}><article className="modal" onClick={e=>e.stopPropagation()}>
+    <button className="close" onClick={onClose} aria-label="Fechar">✕</button>
+    <Pic item={item} i={i} alt={"Imagem da matéria: "+item.tituloPt}/>
+    <div className="in"><Meta item={item}/><h2>{item.tituloPt}</h2>
+      {item.resumo.map((p,k)=><p key={k}>{p}</p>)}
+      {item.aviso && <p className="warn">{item.aviso}</p>}
+      <div><a className="src" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte original ({item.source}) →</a></div>
+    </div></article></div>);
 }
 function App(){
-  const [aberto,setAberto]=useState(null);
-  const itens=[...ITEMS].sort((a,b)=>b.stars-a.stars);
-  const [top,...resto]=itens;
-  const data=new Date(2026,9,19).toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
-  return (
-    <div className="wrap">
-      <header><h1>☀️ Portal da Manhã</h1><div className="date">{data}</div></header>
-      <section className="hero" onClick={()=>setAberto(top)}>
-        <div className="body">
-          <Meta item={top}/>
-          <h2>{top.tituloPt}</h2>
-          <p>{top.resumo[0]}</p>
-          <span style={{color:"var(--accent)",fontWeight:600}}>Ler resumo completo →</span>
-        </div>
-        <Midia item={top}/>
-      </section>
-      <section className="grid">
-        {resto.map(it=>(
-          <div className="card" key={it.url} onClick={()=>setAberto(it)}>
-            <Midia item={it}/>
-            <div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div>
-          </div>
-        ))}
-      </section>
-      <footer>Resumos em português produzidos a partir das matérias originais, sem cópia de texto. Imagens carregadas diretamente dos portais.</footer>
-      {aberto && <Modal item={aberto} onClose={()=>setAberto(null)}/>}
-    </div>
-  );
+  const [sel,setSel]=useState(null);
+  const [hero,...rest]=ITEMS;
+  return (<div className="wrap">
+    <header><div><h1>☀️ Portal da Manhã</h1><div className="date">Terça-feira, 20 de outubro de 2026 · {ITEMS.length} notícias selecionadas</div></div></header>
+    <button className="card hero" onClick={()=>setSel(0)}>
+      <Pic item={hero} i={0} alt={"Imagem da matéria: "+hero.tituloPt}/>
+      <div className="body"><Meta item={hero}/><h2>{hero.tituloPt}</h2><div style={{color:"#475467"}}>{hero.resumo[0].slice(0,230)}…</div><span style={{color:"#4f46e5",fontWeight:600}}>Abrir resumo →</span></div>
+    </button>
+    <div className="grid">{rest.map((it,k)=>(
+      <button key={it.url} className="card" onClick={()=>setSel(k+1)}>
+        <Pic item={it} i={k+1} alt={"Imagem da matéria: "+it.tituloPt}/>
+        <div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3>{it.aviso && <span className="warn">⚠ {it.aviso.includes("paywall")?"Conteúdo parcial (paywall)":"Sem foto da fonte"}</span>}</div>
+      </button>))}</div>
+    {sel!==null && <Modal item={ITEMS[sel]} i={sel} onClose={()=>setSel(null)}/>}
+    <footer>Resumos produzidos em português a partir das matérias originais. Clique em um card para ler sem sair da página.</footer>
+  </div>);
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>

@@ -3,326 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 21 de outubro de 2026</title>
+<title>Portal da Manhã — 22 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--muted:#6b7280;--line:#e8e6e1;--brand:#e8590c;--design:#0f9d82;--tech:#5b5bd6}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#12141a;--mut:#6b7280;--line:#e8eaf0;--acc:#4f46e5}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-h1{font-size:34px;letter-spacing:-.02em;margin:0}
-.date{color:var(--muted);font-size:15px;text-transform:capitalize}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.1)}
-.hero .art{min-height:340px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+h1{margin:0;font-size:30px;letter-spacing:-.02em}
+.date{color:var(--mut);font-size:14px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(20,24,40,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(20,24,40,.13)}
+.hero .img{min-height:340px}
 .hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--mut)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
-.card .art{height:180px}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{font-size:17px;line-height:1.3;margin:0}
-.art{position:relative;overflow:hidden;background:#eee}
-.art img,.art svg{width:100%;height:100%;object-fit:cover;display:block}
-.meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
-.tag{font-weight:600;color:#fff;border-radius:99px;padding:2px 10px;font-size:11.5px}
-.stars{color:#f5a623;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(20,22,28,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:30px 14px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;position:relative}
-.modal .art{height:340px}
-.modal .in{padding:26px 30px 32px}
-.modal h2{font-size:26px;line-height:1.25;margin:6px 0 4px}
-.modal .orig{color:var(--muted);font-size:14px;margin-bottom:14px;font-style:italic}
-.modal p{font-size:16.5px;margin:0 0 14px}
-.note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;padding:8px 12px;font-size:13.5px}
-.close{position:absolute;top:14px;right:14px;border:0;background:rgba(255,255,255,.95);width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.src{display:inline-block;margin-top:8px;background:var(--ink);color:#fff;text-decoration:none;padding:10px 18px;border-radius:12px;font-weight:600;font-size:14px}
-footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .art{min-height:220px}h1{font-size:27px}.modal .art{height:220px}.modal .in{padding:20px}}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(20,24,40,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(20,24,40,.12)}
+.card .img{height:180px}
+.card .b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.img{position:relative;overflow:hidden;background:#eee}
+.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
+.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:11px}
+.Branding{background:#fff1e6;color:#c2410c}.Design{background:#e0f7f4;color:#0f766e}.Tecnologia{background:#ece9ff;color:#4338ca}
+.stars{color:#f59e0b;letter-spacing:1px}
+.modal-bg{position:fixed;inset:0;background:rgba(15,18,30,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;max-height:90vh;overflow:auto;animation:pop .3s}
+.modal .img{height:320px}
+.modal .c{padding:28px 32px 32px}
+.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
+.modal p{font-size:16px;color:#2b2f3a}
+.note{font-size:13px;color:var(--mut);border-left:3px solid var(--line);padding-left:10px}
+.btn{display:inline-block;margin-top:14px;padding:10px 18px;background:var(--acc);color:#fff;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer}
+.btn.g{background:#eef0f6;color:var(--ink);margin-left:8px}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes pop{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+footer{margin-top:40px;color:var(--mut);font-size:12px;text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:23px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-
-const NOTICIAS = [
-  {
-    title: "Dezeen launches \"richer and more versatile\" new website",
-    tituloPt: "Dezeen lança novo site, \"mais rico e versátil\"",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/21/dezeen-launches-new-website-2026/",
-    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/Dezeen-website-homepage-laptop_dezeen_01_sq.jpg",
-    cat: "Design", stars: 5,
-    resumo: [
-      "A Dezeen relançou seu site pela primeira vez desde a grande reformulação de 2016. Os co-CEOs Benedict Hobson e Wai Shin Li definem a mudança como \"evolução, não revolução\": a ideia foi melhorar gradualmente, sem romper com o que os leitores já conhecem.",
-      "O veículo nasceu em 2006 como um blog simples em WordPress criado por Marcus Fairs, com logo e layout assinados pelo designer Micha Weidmann — base que permaneceu até hoje. Para a atualização, a equipe trabalhou com o estúdio de tecnologia criativa Made by On e reconstruiu tanto o front-end quanto o back-end, já que o site anterior estava instável e lento de consertar. Redução da pegada de carbono e desempenho (sobretudo otimização de imagens) foram prioridades; a hospedagem migrou para a Positive Internet Company, movida a energia renovável, e os sistemas de busca e recomendação passaram a ser internos.",
-      "Com o tempo, a Dezeen passou a incluir serviços como Dezeen Awards, Events Guide e Showroom, que pareciam desconectados. Weidmann atualizou as diretrizes da marca, com novos esquemas de cor e logos para essas submarcas, criando uma identidade mais unificada. O site segue padrões atuais de acessibilidade, e o Dezeen Jobs será atualizado nas próximas semanas.",
-      "Visualmente, mantém a tipografia clássica, o feed cronológico e as imagens quadradas, mas ganha hierarquia mais forte, acentos de cor por serviço, imagens de tamanhos variados, seções com rolagem horizontal, menu e busca unificados, barra lateral simplificada, parallax, melhor integração de vídeo vertical e mais destaque ao podcast Dezeen Weekly. A empresa reforça que o conteúdo continua sendo apurado, escrito e editado por humanos, e atualizou os formatos de anúncio com rotulagem mais clara de conteúdo patrocinado."
-    ]
-  },
-  {
-    title: "Is this what designers need to do to get work in 2026? A viral high-production video has sparked debate",
-    tituloPt: "É isso que designers precisam fazer para conseguir trabalho em 2026? Vídeo viral de alta produção divide opiniões",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/is-this-what-designers-need-to-do-to-get-work-in-2026-a-viral-high-production-video-has-sparked-debate",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/KajASJiLzFaaLtzCDKeVZZ-1920-80.jpg",
-    cat: "Design", stars: 5,
-    resumo: [
-      "A Creative Bloq conta o caso de Darshita Patankar, designer visual e ilustradora de Bengaluru, cujo vídeo de busca por trabalho viralizou. A matéria parte de um cenário conhecido: está cada vez mais difícil chamar a atenção de clientes, com concorrência tanto de outros designers quanto da IA — e até as regras do Instagram limitam autopromoções mais ousadas, em contraste com o famoso cartão-postal provocativo de Stefan Sagmeister em 1993.",
-      "Depois de passar um ano ansiosa com o impacto da IA na profissão, Patankar abandonou o portfólio tradicional e as postagens de rotina e, com o irmão Vikrant, produziu um filme polido de quatro minutos, descrito como gravado em 8K, com equipe completa e em um grande estúdio. Intitulado \"Design is Dead\", abre com uma frase deliberadamente provocativa sobre IA e percorre seus primeiros passos no MS Paint, sua abordagem de narrativa, projetos como uma tipografia própria e o trabalho visual do jogo Codebusters, defendendo que o design deve orientar as decisões centrais de uma marca, e não apenas entregar um resultado final.",
-      "O vídeo alcançou quase 3 milhões de visualizações no X em um dia e gerou milhares de curtidas e comentários no Instagram e no LinkedIn, abrindo o debate sobre até onde designers precisam ir para se promover. A conclusão da matéria: a maioria não precisará de uma produção hollywoodiana — autenticidade, personalidade e memorabilidade importam mais e podem aparecer em formatos simples, de panfletos físicos a conteúdo social."
-    ]
-  },
-  {
-    title: "New Identity for Hard Rock Bet Casino by 72andSunny, BUCK, and In-house",
-    tituloPt: "Nova identidade do Hard Rock Bet Casino, por 72andSunny, BUCK e equipe interna",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_identity_for_hard_rock_bet_casino_by_72andsunny_buck_and_in_house.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/hard_rock_bet_casino_new.png",
-    cat: "Branding", stars: 4, paywall: true,
-    resumo: [
-      "O Brand New publicou, em 19 de outubro, a análise da nova identidade do Hard Rock Bet Casino, assinada pela agência 72andSunny em parceria com o estúdio de motion BUCK e a equipe interna da marca. A matéria, intitulada \"Between a Rock and a Hard Ace\", está classificada como projeto novo no setor de entretenimento.",
-      "O conteúdo completo é restrito a assinantes, mas as seções públicas indicam um sistema de linguagem visual com aplicações de exemplo, e as tags do projeto apontam para um conjunto de ícones, gradientes e forte uso de motion — elementos típicos de uma marca de cassino digital que precisa ganhar vida em telas e em movimento.",
-      "Vale acompanhar o caso por unir uma marca de entretenimento consagrada, uma agência de publicidade, um estúdio de animação e um time interno em um mesmo sistema de identidade."
-    ]
-  },
-  {
-    title: "Away appoints DJ John Summit 'chief destruction officer' for its aluminum luggage line",
-    tituloPt: "Away nomeia o DJ John Summit \"diretor de destruição\" para sua linha de malas de alumínio",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/away-appoints-dj-john-summit-chief-destruction-officer-its-aluminum-luggage-line/1973095",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/Away-DJ-John-Summit-UWP-CUS.jpg",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "A marca de malas Away escolheu o DJ e produtor John Summit como seu \"chief destruction officer\" — um papel de cocriador de campanha, e não de embaixador tradicional. O anúncio acompanha novas cores da linha de malas de alumínio, a maior atualização desde o lançamento, em 2020.",
-      "A parceria nasceu de um momento viral: no início do ano, Summit postou no TikTok um vídeo destruindo e queimando uma mala Rimowa que chegou danificada após o despacho. A Away, que já publicava conteúdo de testes de resistência, viu a chance de entrar na conversa e preferiu construir uma colaboração de longo prazo em vez de uma ação pontual com influenciador, segundo a VP de marca, Quynh Dang.",
-      "Os vídeos da campanha dão continuidade à brincadeira: Summit submete as malas a testes exagerados, como quedas de plataformas, arrasto atrás de um carro e exposição ao fogo. A marca afirma que cada casca de alumínio passa por mais de 900 horas de testes em laboratório. A ação segue a campanha de setembro com o ator Colman Domingo, que marcou os 10 anos da marca e o lançamento da Series 3. A estratégia é comunicar benefícios do produto por meio de entretenimento, não de especificações técnicas. Teasers já circulam no Instagram, com campanha completa e links de compra das novas cores a seguir."
-    ]
-  },
-  {
-    title: "The Body Shop returns the Pod to its packaging",
-    tituloPt: "The Body Shop traz o Pod de volta ao centro de suas embalagens",
-    source: "Design Week",
-    url: "https://www.designweek.co.uk/the-body-shop-returns-the-pod-to-its-packaging/",
-    imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Together-Design-London-TBS-Before-and-After-1024x654.png",
-    cat: "Branding", stars: 4,
-    resumo: [
-      "A agência Together Design London redesenhou as embalagens da linha Body Butter da The Body Shop e de todo o portfólio de banho e corpo. O trabalho acompanha o relançamento do Body Butter, criado em 1992 e atualizado para uma nova geração de consumidoras, com o desafio de dar aos produtos uma identidade própria que funcione como sistema de design consistente.",
-      "O projeto gira em torno do Pod, símbolo histórico da marca ligado a natureza, crescimento e mudança positiva, que sai da posição de elemento secundário para virar o principal organizador visual. Sobre o verde tradicional da marca — herdado da primeira loja de Anita Roddick, em Brighton —, o Pod forma uma silhueta reconhecível em toda a linha.",
-      "Cada produto ganha personalidade com ilustrações de ingredientes de Sally Caulwell dentro do Pod, coloridas e sensoriais, que comunicam aroma e composição. O equilíbrio entre estrutura comum e caráter individual foi central, assim como a escala: o sistema precisava funcionar em muitos formatos, nomes e ingredientes. Segundo a diretora criativa Bryony Meyrick, a intenção foi dar ao Pod um papel mais confiante sem perder o jeito inconfundível da marca. O CMO Victor Sabbe explica que o Body Butter é o campeão de vendas e foi reformulado com textura mais rica a pedido do público. A parceria continua com novas linhas previstas para 2027 e 2028."
-    ]
-  },
-  {
-    title: "New Logo System and Identity for REX by Hunt",
-    tituloPt: "Novo sistema de logo e identidade da REX, por Hunt",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_system_and_identity_for_rex_by_hunt.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/REX_before_after.jpg",
-    cat: "Branding", stars: 3, paywall: true,
-    resumo: [
-      "O Brand New analisa hoje o novo sistema de logo e identidade da REX, desenvolvido pelo estúdio Hunt, em matéria intitulada \"R-E-X-P-E-C-T\". O projeto está classificado no setor corporativo e traz imagens de comparação entre o logo antigo e o novo, além de aplicações de exemplo.",
-      "O texto completo é restrito a assinantes. As tags públicas sugerem uma identidade com formas anguladas, um urso como elemento gráfico, paleta de preto e verde, tipografia proprietária sem serifa e estética industrial ligada à construção — mas essas leituras são inferências a partir das tags, sem confirmação do raciocínio dos designers."
-    ]
-  },
-  {
-    title: "Snap's Specs hires Robert Downey Jr. to star in original content series",
-    tituloPt: "Snap contrata Robert Downey Jr. para estrelar série de conteúdo original dos óculos Specs",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/snaps-specs-hires-robert-downey-jr-star-original-content-series/1973091",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/specs-robert-downey-jr-PR-CUS.jpg",
-    cat: "Tecnologia", stars: 3,
-    resumo: [
-      "A Snap contratou Robert Downey Jr. como primeiro diretor honorário de experiência do cliente (chief customer experience officer) dos óculos de realidade aumentada Specs. A escolha aproveita os anos do ator como Tony Stark em Homem de Ferro, personagem ligado à tecnologia de RA, para ajudar o público a entender e imaginar usos dos óculos.",
-      "Além do título, ele trabalhará com a equipe de Specs em como a RA pode melhorar o dia a dia — do entretenimento e educação a áreas como medicina, engenharia e manufatura —, ajudará no desenvolvimento de recursos, na experiência do usuário, no design de hardware e em eventos presenciais, e estrelará uma série original. Downey disse ter sido conquistado depois de anos pouco impressionado com tecnologia vestível, citando famílias compartilhando experiências sem ficar presas a telas, aprendizado de habilidades e agilidade nos negócios.",
-      "Os óculos são controlados por gestos e voz e sobrepõem conteúdo digital ao mundo físico. O primeiro projeto da parceria são episódios no YouTube e no site do Specs, mostrando RA no trabalho, no golfe, ao assistir TV e no desenvolvimento artístico. A estreia ocorreu durante um jogo Knicks x 76ers da NBA, e um episódio irá ao ar no Jogo 1 da World Series, em 23 de outubro."
-    ]
-  },
-  {
-    title: "David Chipperfield Architects builds concrete gallery around singular artwork in Germany",
-    tituloPt: "David Chipperfield Architects constrói galeria de concreto em torno de uma única obra, na Alemanha",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/20/anselm-kiefer-pavilion-david-chipperfield-architects-germany/",
-    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/anselm-kiefer-pavilion-david-chipperfield-architects-germany_dezeen_2364_hero_1.jpg",
-    cat: "Design", stars: 4,
-    resumo: [
-      "O escritório de Berlim de David Chipperfield Architects concluiu uma galeria de concreto no jardim de esculturas do Carmen Würth Forum, em Künzelsau, na Alemanha, para abrigar uma única pintura de Anselm Kiefer, \"Schwarze Flocken\" (Flocos Negros). A obra, de 11 por 7,1 metros, era grande demais para o museu — também projetado pelo escritório e inaugurado em 2020 —, e suas dimensões definiram o edifício.",
-      "O título da pintura vem de um poema de Paul Celan. Trabalhando com Kiefer, os arquitetos criaram um volume sereno e escultural, com marquise na entrada e fachada de tijolo e concreto apicoado que ecoa os materiais do Forum. O interior segue o espaço especificado pelo artista.",
-      "Por dentro, paredes de reboco de argila e estrutura de telhado em madeira aparente; claraboias trazem luz natural que muda ao longo do dia e das estações, em vez de iluminação uniforme. A galeria não tem controle rígido de clima: a parede de três camadas (concreto, tijolo e argila) lida com as variações externas e evita congelamento sem climatização ativa. Fotografia de Studio Menges Tugushi."
-    ]
-  },
-  {
-    title: "Hangzhou's glowing glass museum takes its cues from 5,000-year-old jade",
-    tituloPt: "Museu de vidro luminoso em Hangzhou se inspira em jade de 5.000 anos",
-    source: "Yanko Design",
-    url: "https://www.yankodesign.com/2026/10/20/hangzhous-glowing-glass-museum-takes-its-cues-from-5000-year-old-jade/",
-    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/655007/yohoo_museum_1.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "A Aedas projetou o Museu Yohoo, em Hangzhou, na China: um edifício envidraçado em forma de dois anéis entrelaçados, numa ilha de um lago artificial no Liangzhu Yohoo Park. A forma remete aos anéis rituais de jade da cultura Liangzhu, civilização neolítica que floresceu na região há cerca de 5.000 anos. O projeto, liderado por Ken Wai, tem cerca de 5.356 m² e foi concluído em 2024.",
-      "A pele do prédio é um laminado translúcido em várias camadas, chamado de \"vidro esmeralda\", que difunde a luz do dia nas galerias. Uma estrutura de aço única faz as pontas dos anéis se erguerem do chão, criando praças públicas cobertas; sob uma densa treliça branca, as galerias ficam claras e quase sem sombras. A entrada usa vidro mais verde em faixas horizontais, que muda de cor conforme o ângulo. O projeto ganhou Arquitetura do Ano e ouro na categoria Cultural no International Design Awards.",
-      "Os dois anéis simbolizam o legado Liangzhu e o Grande Canal, ambos patrimônios da UNESCO. A matéria compara o museu a dois vizinhos no mesmo local — o de Chipperfield (2008, barras de pedra) e o centro cultural de Tadao Ando (2016, concreto): onde eles tratam a herança como algo pesado e permanente, a Aedas usa a luz."
-    ]
-  },
-  {
-    title: "Red-and-white aluminum safety barriers convert into public seating at Dutch Design Week",
-    tituloPt: "Barreiras de segurança de alumínio vermelhas e brancas viram bancos públicos na Dutch Design Week",
-    source: "Designboom",
-    url: "https://www.designboom.com/design/red-white-aluminum-safety-barriers-public-seating-dutch-design-week-martins-mezulis-13_0663_tsx/",
-    imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/red-and-white-aluminum-traffic-barrier-stop-outdoor-benches-martins-mezulis-13_0663_tsx-designboom-1200-1-1.jpg",
-    cat: "Design", stars: 3,
-    resumo: [
-      "\"stop!\" é uma coleção de bancos e banquetas para espaços externos criada pelo Studio Martins Mezulis em parceria com o time criativo 13_0663_tsx. Os designers pegaram a barreira de tráfego de alumínio vermelha e branca, figura comum nos Países Baixos para sinalizar obras e desviar pedestres, e a transformaram em assento.",
-      "A ideia inverte a função original: em vez de bloquear o fluxo, a peça convida as pessoas a parar, sentar e permanecer juntas no espaço público. A coleção mantém a identidade visual e os materiais da barreira, adaptando painéis de alumínio de alta visibilidade em mobiliário urbano modular, e discute como a infraestrutura de segurança do cotidiano pode servir à comunidade.",
-      "O projeto estreou na Dutch Design Week, em Eindhoven, com instalações no Strijp-S Ketelhuisplein e no Design Perron. Cada peça mede 450 mm de altura, 1.250 mm de comprimento e 500 mm de largura, em barreiras rodoviárias recicladas e aço. A matéria foi enviada por leitores pelo programa de submissões da Designboom."
-    ]
-  },
-  {
-    title: "Hedley Studios shrinks the Porsche 550 Spyder into a handcrafted electric two-seater",
-    tituloPt: "Hedley Studios reduz o Porsche 550 Spyder a um elétrico artesanal de dois lugares",
-    source: "Designboom",
-    url: "https://www.designboom.com/technology/hedley-studios-shrinks-porsche-550-j-spyder-electric-car/",
-    imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/porsche-550-spyder-j-hedley-studios-mini-electric-car-designboom-FB.jpg",
-    cat: "Design", stars: 2,
-    resumo: [
-      "A fabricante britânica Hedley Studios criou uma versão em miniatura e 100% elétrica do Porsche 550 Spyder dos anos 1950, chamada 550 J (\"J\" de Junior). O carro tem cerca de 80% do tamanho do original, foi desenvolvido com a Porsche para marcar os 75 anos da marca no automobilismo e será produzido em apenas 250 unidades, artesanais e oficialmente licenciadas. Apesar do porte, acomoda duas pessoas: mede cerca de 2,9 m de comprimento e 1,2 m de largura.",
-      "O 550 Spyder original foi o primeiro carro de corrida projetado do zero pela Porsche; leve e com motor central, enfrentou rivais mais potentes, e na Carrera Panamericana de 1954 dois Spyders terminaram em terceiro e quarto no geral. A Hedley teve acesso aos arquivos da Porsche para reproduzir a forma. A réplica mantém faróis redondos, cavas de roda esculpidas e grades traseiras duplas; a cabine tem volante creme e painel simples com mostradores redondos.",
-      "O sistema é de 48 V: 8 kW (cerca de 11 cv) na versão padrão e 16 kW (cerca de 21 cv) com o pacote opcional RS, com velocidade máxima de cerca de 80 km/h. É um item de colecionador, não para vias públicas, feito à mão em Bicester, na Inglaterra, com opções de prata clássica, cores históricas e librés de corrida, além de personalização sob medida."
-    ]
-  },
-  {
-    title: "The new Clayface poster is skin crawlingly creepy",
-    tituloPt: "O novo pôster de Clayface dá arrepios na pele",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/the-new-clayface-poster-is-skin-crawlingly-creepy",
-    imageUrl: "https://cdn.mos.cms.futurecdn.net/KfEkngK3PoKBRTwMBazHPd-1920-80.jpg",
-    cat: "Design", stars: 2,
-    resumo: [
-      "A Creative Bloq analisa o novo pôster do filme Clayface, da DC Studios, estrelado pela versão Matt Hagen do personagem. A campanha tem apostado em uma abordagem de terror corporal, e este cartaz segue a linha com imagens perturbadoras.",
-      "A arte é do ilustrador Estevan Silveira e mistura ilustração em estilo quadrinhos com horror clássico: Clayface aparece curvado, segurando a cabeça, com o corpo parecendo derreter lentamente e um único olho brilhante que reforça a sensação de dor. A pele amarelo-esverdeada doentia se destaca contra um fundo vermelho escuro e sujo, evocando filmes antigos de monstros.",
-      "Os fãs reagiram bem no X e no Reddit, elogiando a arte grotesca; um comentarista comparou o cartaz favoravelmente ao estilo de \"cabeças flutuantes\" de muitos pôsteres recentes."
-    ]
-  }
+const NEWS = [
+{
+ title: "Sunlife's new logo design is 'optimised for a digital world', but does it take minimalism too far?",
+ tituloPt: "O novo logo da Sunlife é 'otimizado para o mundo digital', mas será que o minimalismo foi longe demais?",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/sunlifes-new-logo-design-is-optimised-for-a-digital-world-but-does-it-take-minimalism-too-far",
+ imageUrl: "https://cdn.mos.cms.futurecdn.net/zS4fgXaBnQXcy7vSHBDwG8-1920-80.jpg",
+ cat: "Branding", stars: 5, date: "21/10",
+ dek: "A financeira canadense Sun Life vira 'Sunlife' e reduz o símbolo a um disco quase sem detalhes.",
+ resumo: ["A seguradora e gestora financeira canadense Sun Life passou a escrever o nome em uma única palavra, 'Sunlife', e apresentou um novo logo que a própria empresa descreve como otimizado para um mundo digital. O espaço entre as palavras sumiu e o símbolo do sol foi simplificado ao extremo: manteve-se a cor, mas o desenho virou um disco liso, parecido com o ícone de previsão do tempo.","O wordmark continua em fonte serifada, só que mais fina, leve e contemporânea. A marca praticamente não mudava havia 25 anos, enquanto o negócio saiu do seguro de vida para saúde, gestão de ativos e outros seguros. A empresa também lançou o slogan 'Making life brighter' e afirma que a mudança cria uma identidade global mais moderna, distinta e consistente.","A reação nas redes foi de estranhamento, com quem ache que o minimalismo passou do ponto, e o artigo compara o disco a outros símbolos ultra simples, como o da Green Party do Canadá e o do USA Today, inserindo o caso no debate sobre 'blanding'. O autor, porém, defende o resultado: acha o serifado distintivo e que o nome em uma palavra funciona melhor agora que a empresa deixou de ser só seguradora de vida."]
+},
+{
+ title: "Ad of the Day: Which? shows its working in 'The answer you can trust'",
+ tituloPt: "Anúncio do dia: a Which? mostra como trabalha em 'The answer you can trust'",
+ source: "The Drum",
+ url: "https://www.thedrum.com/news/ad-of-the-day-which-shows-its-working-in-the-answer-you-can-trust",
+ imageUrl: null,
+ cat: "Branding", stars: 4, date: "21/10",
+ dek: "Nova plataforma de marca da defensora do consumidor aposta em provas, não em promessas.",
+ resumo: ["A Which?, organização britânica de defesa do consumidor, lançou em 19 de outubro uma nova plataforma de marca criada pelas agências WhyProjects e Neverland. Num cenário em que os conselhos de compra vêm de criadores, links de afiliados e avaliações duvidosas, a ideia é ocupar a lacuna de confiança. A pesquisa da marca indica que 82% das pessoas sentem que pagam mais e recebem menos.","Em vez de apenas pedir confiança, a campanha explica de onde ela vem: testes independentes. Nos filmes de TV, uma imagem simples acompanha uma explicação — um aspirador robô recolhe migalhas enquanto se diz que os especialistas testam aparelhos com pelos de gato e cereal; uma cápsula derrama pó revelando uma 'dose de verdade'; um anúncio de máscara facial usa o mote 'Face the facts'.","Nos cartazes, frases como 'We can't be bought' lembram que a Which? paga pelos produtos que testa, uma alfinetada nos presentes a influenciadores. O visual é contido: tipografia calma, preto e branco e toques de vermelho do logo. A ação inclui rádio, social, conteúdo com especialistas e parcerias com podcasts. O texto conclui que a marca consegue sustentar o que promete com evidências."]
+},
+{
+ title: "Dollar Tree branches out with first national brand campaign",
+ tituloPt: "Dollar Tree amplia horizontes com sua primeira campanha nacional de marca",
+ source: "Campaign",
+ url: "https://www.campaignlive.com/article/dollar-tree-branches-first-national-brand-campaign/1973143",
+ imageUrl: null,
+ cat: "Branding", stars: 4, date: "21/10",
+ dek: "'It's All in the Tree' transforma a loja num bosque e mira a Geração Z.",
+ resumo: ["A rede de descontos Dollar Tree lançou a primeira campanha nacional de marca desde sua fundação, em 1986. Criada pela agência independente Tombras, escolhida em agosto, a campanha 'It's All in the Tree' tem dois filmes de 30 segundos dirigidos por Autumn de Wilde, que apresentam a loja como uma grande árvore, com carrinhos circulando num cenário de floresta e produtos pendurados em galhos e buracos.","Num dos filmes, um casal vai atrás de petiscos e sai com louças e slime brilhante; no outro, três amigos compram doces de Halloween e acabam levando uma escova de dentes. O slogan é 'Everything you need. And want. It's all in the tree.' Mais três filmes virão este ano, sobre beleza, festas e fim de ano, com mídia em CTV, OOH e vídeo digital.","A estratégia lembra a da Ross Dress for Less: valorizar a experiência inusitada de garimpar para atrair a Geração Z e criar recorrência. A reportagem a insere no movimento de reduzir a dependência do preço baixo — a rede abandonou o modelo 'tudo por US$ 1' em 2021 — e cita vendas em alta de 7% no segundo trimestre fiscal."]
+},
+{
+ title: "Apple showcases upcycled found furniture and banana palm-paper lantern at Designers of Tomorrow show",
+ tituloPt: "Apple exibe móveis reaproveitados e luminária de papel de bananeira no Designers of Tomorrow",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/21/apple-designers-of-tomorrow-show-2026/",
+ imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/apple-designers-of-tomorrow_dezeen_2364_col_sq2.jpg",
+ cat: "Design", stars: 4, date: "21/10",
+ dek: "Mostra em Paris dá palco a jovens designers de mobiliário e iluminação.",
+ resumo: ["A exposição Designers of Tomorrow, da Apple, parte da Design Miami.Paris, abriu em 21 de outubro no L'hôtel de Maisons, em Paris, e vai até o dia 25. O tema é o processo criativo, 'a arte em construção', e o curador Rodman Primack selecionou os participantes com um júri que incluiu Jennifer Roberts, presidente da Design Miami, e o designer Nifemi Marcus-Bello. O recorte desta edição é 'Design for Presence'.","Entre as obras, a egípcio-dinamarquesa Salem S Charabi apresenta uma luminária de palmeira-tamareira, calcário e papel de bananeira; Yoonjeong Lee, de Seul, mostra uma luminária feita de uma mesa com cerca de 5 mil lâminas de madeira empilhadas; Isabel Rower, do Brooklyn, reconstrói uma cadeira a partir de móvel encontrado na rua, com papel machê e 1.500 contas de cerâmica; e a dupla Parafernalia exibe uma paisagem em aço inox corroído por ácido, cujas formas servem de bancos e mesa.","A Apple afirma que cada designer usou seus produtos em diferentes etapas, da ideação à execução. A edição de estreia, no ano passado, havia exibido uma mesa projetada para parecer manteiga."]
+},
+{
+ title: "Johnston Marklee unveils designs for Bass Museum expansion",
+ tituloPt: "Johnston Marklee revela projeto de ampliação do Bass Museum, em Miami Beach",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/21/johnston-marklee-bass-museum-expansion-miami-beach/",
+ imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/johnston-marklee-the-bass-expansion_dezeen_2364_sq.jpg",
+ cat: "Design", stars: 4, date: "21/10",
+ dek: "Dois pavilhões elevados sobre uma laje fina respondem ao risco de enchentes.",
+ resumo: ["O escritório Johnston Marklee, de Los Angeles, apresentou o projeto para ampliar o Bass Museum of Art, em Miami Beach, com cerca de 2 mil m² (22 mil pés quadrados) de espaços internos e externos no canto sudoeste do terreno.","São dois pavilhões retangulares apoiados sobre uma laje de concreto fina e elevada do solo para atender a diretrizes de resiliência frente à elevação do nível do mar. Debaixo deles passam pátios; um óculo retroiluminado ilumina a passagem à noite, e a empena cega de um pavilhão servirá de tela para sessões de cinema. As galerias principais ficam nos pavilhões, com paredes brancas, janelas retangulares e claraboia.","O projeto dialoga com o prédio art déco de Russell Pancoast e com a ampliação de Arata Isozaki, e os sócios Sharon Johnston e Mark Lee dizem que ele amplia o acesso público e honra a ideia de um 'campus poroso'."]
+},
+{
+ title: "Magical new Narnia cover art is a notch above the usual movie tie-ins",
+ tituloPt: "Nova arte de capa de Nárnia é um nível acima das típicas edições de filme",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/magical-new-narnia-cover-art-is-a-notch-above-the-usual-movie-tie-ins",
+ imageUrl: "https://cdn.mos.cms.futurecdn.net/QSS47Dnf6GqSNKai88SJ6b-1920-80.jpg",
+ cat: "Design", stars: 4, date: "20/10",
+ dek: "HarperCollins relança toda a série com ilustrações do concept artist do filme de Greta Gerwig.",
+ resumo: ["A HarperCollins vai republicar toda a série As Crônicas de Nárnia com capas inspiradas na adaptação de 'O Sobrinho do Mago', dirigida por Greta Gerwig e prevista para os cinemas em fevereiro. Em vez de fotos do filme, como é comum em edições de cinema, as capas usam ilustrações de Vance Kovacs, concept artist do longa, com passagens por Dungeons & Dragons, O Rei Leão e God of War.","A edição de luxo traz sobrecapa e estojo com hot stamping, bordas impressas digitalmente e uma ilustração de Aslan cantando Nárnia à existência, com feixes de luz e estrelas saindo de sua boca e cinco emblemas escondidos — o cavalo alado Fledge, o perfil de Aslan, a maçã da vida, o poste de luz e o martelo-sino de Charn.","O paperback do filme chega em 10 de novembro de 2026; as versões exclusivas de varejistas, com bordas diferentes, em 17 de novembro; e há box sets em brochura e capa dura. O texto lembra que a série vendeu mais de 120 milhões de cópias."]
+},
+{
+ title: "Recursive launches Flint, a laptop coding model it says was largely built by AI",
+ tituloPt: "Recursive lança o Flint, modelo de código para notebooks que diz ter sido construído em grande parte por IA",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2026/05/GettyImages-2157738833.jpg?resize=1200,800",
+ cat: "Tecnologia", stars: 4, date: "21/10",
+ dek: "Modelo aberto roda localmente e testa a ideia de autoaperfeiçoamento recursivo.",
+ resumo: ["A startup Recursive, fundada em 2025 e liderada por Richard Socher, ex-cientista-chefe da Salesforce, lançou o Flint, seu primeiro modelo: um assistente de programação gratuito que roda no próprio laptop. Segundo a empresa, um sistema de pesquisa automatizado chamado Eureka Machine ajudou em quase todas as etapas, e uma equipe pequena o construiu do zero em menos de quatro meses.","O Flint usa arquitetura de mistura de especialistas, ativando 2,5 bilhões dos seus 40 bilhões de parâmetros por tarefa. Nos testes da empresa, gerou cerca de 131 tokens por segundo num MacBook Pro com M4 Pro, aproximadamente o dobro de modelos comparáveis, e superou outros modelos abaixo de 50 bilhões de parâmetros no SWE-Bench Verified. Está disponível no Hugging Face com licença Apache 2.0.","A Recursive admite que o modelo precisa de mais orientação que assistentes pagos de grande porte. A ideia de IA que ajuda a construir IA é debatida, e Socher diz que a meta é o autoaperfeiçoamento recursivo com supervisão humana e possibilidade de interrupção."]
+},
+{
+ title: "Meta says Muse has over 10M users, with shopping a top activity",
+ tituloPt: "Meta diz que o Muse tem mais de 10 milhões de usuários, com compras entre as atividades principais",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/21/meta-says-muse-has-over-10m-users-with-shopping-a-top-activity/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/meta-muse-finger-on-app-GettyImages-2293791808.jpg?w=1024",
+ cat: "Tecnologia", stars: 3, date: "21/10",
+ dek: "Na teleconferência do 3º tri, Zuckerberg afirma que o app de IA atingiu product-market fit.",
+ resumo: ["A Meta informou, na divulgação de resultados do terceiro trimestre, que seu app de IA, o Muse, ultrapassou 10 milhões de usuários. Segundo Mark Zuckerberg, cerca de 25% de quem configura o app o usa diariamente, e as compras por agente aparecem entre os usos mais populares, via conector da Plaid, com parte dos compradores gastando mais de US$ 200 em média.","A empresa diz que o Muse alcançou product-market fit e que vai focar em escalar, gerar receita e reduzir custos de computação, com expectativa de melhorar a eficiência em mais de dez vezes em um ano. O plano é manter o app gratuito para a maioria, cobrar uma porcentagem do comércio e vender planos para usuários avançados.","O Muse é central para a estratégia de óculos inteligentes da Meta, cuja divisão Reality Labs ainda perde bilhões — a previsão é de queda do prejuízo de US$ 19,1 bi em 2025 para US$ 15 bi em 2026."]
+},
+{
+ title: "Takero Shimazaki upgrades makeshift theatre into permanent 'church-like' London venue",
+ tituloPt: "Takero Shimazaki transforma teatro improvisado em casa permanente 'quase uma igreja' em Londres",
+ source: "Dezeen",
+ url: "https://www.dezeen.com/2026/10/21/yard-theatre-revamp-takero-shimazaki-architects-london/",
+ imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/yard-theatre-revamp-takero-shimazaki-architects-london_dezeen_2364_hero_0.jpg",
+ cat: "Design", stars: 3, date: "21/10",
+ dek: "O Yard Theatre, em Hackney Wick, ganha novo auditório, bar e uma chaminé-marco.",
+ resumo: ["O estúdio londrino Takero Shimazaki Architects reformou e ampliou o Yard Theatre, em Hackney Wick, usando materiais reaproveitados. Aberto em 2011 num galpão, como projeto temporário de três meses da Practice Architecture, o espaço agora vira um teatro permanente, com bar, bastidores e área comunitária.","O auditório antigo, de 110 lugares, foi renovado, e a nova sala, de 224 lugares, ocupa uma antiga cervejaria cujas paredes de tijolo foram mantidas, com arquibancada curva e estrutura de telhado em madeira laminada sobre aço reciclado. Uma torre de guindaste virou chaminé de ventilação de 23 metros, revestida de policarbonato translúcido, que funciona como marco visual.","A extensão usa fibrocimento, policarbonato e K-Briq colorido, feito com mais de 95% de conteúdo reciclado, e uma escultura de Antony Gormley fica sobre o telhado."]
+},
+{
+ title: "New Logo and Identity for Reset by Studio Kiln",
+ tituloPt: "Novo logo e identidade da Reset, assinados pelo Studio Kiln",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_reset_by_studio_kiln.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/reset_logo_before_after.png",
+ cat: "Branding", stars: 3, date: "21/10",
+ dek: "Identidade com wordmark, mascote e elementos 3D, no segmento de estilo de vida.",
+ resumo: ["O Brand New publicou em 21 de outubro o novo logo e identidade da Reset, marca do segmento de lifestyle, desenvolvidos pelo Studio Kiln. As tags da publicação apontam para wordmark, mascote e elementos em 3D.","A análise completa, com conceito e crítica, está atrás do paywall do Brand New; o que é público mostra apenas as seções de logo antes e depois e exemplos de aplicação."],
+ paywall: true
+},
+{
+ title: "New Logo and Identity for Winston Artory Group by Fifty Thousand Feet",
+ tituloPt: "Novo logo e identidade do Winston Artory Group, assinados pela Fifty Thousand Feet",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_winston_artory_group_by_fifty_thousand_feet.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/winston_artory_group_logo_before_after.png",
+ cat: "Branding", stars: 3, date: "20/10",
+ dek: "Grifo, azul e serifa flared para um grupo corporativo do mercado de arte.",
+ resumo: ["O Brand New mostrou o novo logo e identidade do Winston Artory Group, criados pela Fifty Thousand Feet, com imagens de antes e depois. Pelas tags, a identidade combina esquema de cores azul, tipografia serifada com terminais abertos (flared), um ícone e um motivo de grifo.","O conteúdo completo, incluindo conceito e comentários, é exclusivo para assinantes."],
+ paywall: true
+},
+{
+ title: "Sfumato dissolves the boundaries between architecture and its surroundings",
+ tituloPt: "Sfumato dissolve os limites entre arquitetura e entorno, em Guadalajara",
+ source: "Designboom",
+ url: "https://www.designboom.com/architecture/mirrored-acrylic-skin-cube-pavilion-surroundings-mexico-errre-taller/",
+ imageUrl: "https://www.designboom.com/twitterimages/dbsub/468179/2026-10-14/sfumato-dissolves-the-boundaries-between-architecture-and-its-surroundings-7-6acec77202fd3.jpg",
+ cat: "Design", stars: 3, date: "18/10",
+ dek: "Pavilhão espelhado faz um cubo sumir dentro da paisagem (publicado em 18/10).",
+ resumo: ["O escritório mexicano errre taller venceu a primeira edição do concurso Pabellón MEM com o 'Sfumato', pavilhão temporário que reinterpreta o Cubo MEM, marco escultórico do complexo de arquitetura do ITESO, em Guadalajara. A proposta é fazer a estrutura existente desaparecer visualmente, mantendo sua pegada física.","O cubo de 6,40 × 6,40 m foi envolvido por painéis de acrílico espelhado de 3 mm, fixados com fita dupla face e silicone a uma estrutura leve de aço, apoiada numa subestrutura de madeira. Para preservar o aspecto monolítico, há uma única abertura, na face oeste.","Por dentro, o espaço é um pátio aberto voltado para o céu, onde a mudança do sol cria sombras que marcam a passagem do tempo. A publicação é de 18 de outubro, um pouco anterior às demais da edição."]
+}
 ];
 
-const PALETAS = {
-  Branding: ["#ff9a3c","#e8590c","#ffd166","#c2410c"],
-  Design: ["#2dd4bf","#0f9d82","#a7f3d0","#047857"],
-  Tecnologia: ["#7c83fd","#5b5bd6","#c4b5fd","#3730a3"]
-};
-const COR = { Branding: "var(--brand)", Design: "var(--design)", Tecnologia: "var(--tech)" };
-
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
-
-function Ilustracao({ seed, cat }) {
-  const p = PALETAS[cat] || PALETAS.Design;
-  const h = hash(seed);
-  const id = "g" + h;
-  const formas = [0,1,2,3].map(i => {
-    const x = (h >> (i*3)) % 400, y = (h >> (i*2+1)) % 300, r = 40 + ((h >> i) % 90);
-    return i % 2 ? <circle key={i} cx={x} cy={y} r={r} fill={p[i]} opacity=".45"/> :
-      <rect key={i} x={x-r} y={y-r} width={r*2} height={r*1.4} rx={r/4} fill={p[i]} opacity=".4" transform={`rotate(${(h>>i)%60} ${x} ${y})`}/>;
-  });
-  return (
-    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração decorativa">
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[2]}/><stop offset="1" stopColor={p[0]}/></linearGradient></defs>
-      <rect width="400" height="300" fill={`url(#${id})`}/>
-      {formas}
-    </svg>
-  );
+const PAL = {Branding:["#f97316","#ec4899","#fbbf24"],Design:["#10b981","#06b6d4","#14b8a6"],Tecnologia:["#3b82f6","#8b5cf6","#6366f1"]};
+function Art({cat,seed}){
+  const p=PAL[cat]||PAL.Design; const s=seed*37;
+  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+cat}>
+    <defs><linearGradient id={"g"+seed} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+    <rect width="400" height="240" fill={"url(#g"+seed+")"}/>
+    <circle cx={80+(s%160)} cy={60+(s%90)} r={70+(s%40)} fill={p[2]} opacity=".45"/>
+    <rect x={200+(s%80)} y="90" width="140" height="140" rx="28" fill="#fff" opacity=".18" transform={"rotate("+(s%40)+" 270 160)"}/>
+    <circle cx="340" cy="40" r="30" fill="#fff" opacity=".25"/>
+    <path d="M0 200 Q100 150 200 200 T400 190 V240 H0Z" fill="#fff" opacity=".2"/>
+  </svg>);
 }
+function Pic({item,seed}){
+  const [falhou,setFalhou]=useState(false);
+  if(!item.imageUrl||falhou) return <Art cat={item.cat} seed={seed}/>;
+  return <img src={item.imageUrl} referrerPolicy="no-referrer" loading="lazy" alt={"Imagem da matéria: "+item.tituloPt} onError={()=>setFalhou(true)}/>;
+}
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
+const Meta=({it})=>(<div className="meta"><span className={"tag "+it.cat}>{it.cat}</span><Stars n={it.stars}/><span>{it.source} · {it.date}</span></div>);
 
-function Arte({ item }) {
-  const [falhou, setFalhou] = useState(false);
-  return (
-    <div className="art">
-      {item.imageUrl && !falhou ?
-        <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} /> :
-        <Ilustracao seed={item.title} cat={item.cat} />}
+function App(){
+  const [open,setOpen]=useState(null);
+  const items=[...NEWS].sort((a,b)=>b.stars-a.stars);
+  const [hero,...rest]=items;
+  useEffect(()=>{const h=e=>e.key==="Escape"&&setOpen(null);window.addEventListener("keydown",h);return()=>window.removeEventListener("keydown",h)},[]);
+  return (<div className="wrap">
+    <header><div><h1>☀️ Portal da Manhã</h1><div className="date">Quinta-feira, 22 de outubro de 2026 · {items.length} notícias de {new Set(items.map(i=>i.source)).size} portais</div></div></header>
+    <div className="hero" onClick={()=>setOpen(hero)}>
+      <div className="img"><Pic item={hero} seed={0}/></div>
+      <div className="txt"><Meta it={hero}/><h2>{hero.tituloPt}</h2><p>{hero.dek}</p><span style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</span></div>
     </div>
-  );
+    <div className="grid">{rest.map((it,i)=>(
+      <article className="card" key={it.url} onClick={()=>setOpen(it)}>
+        <div className="img"><Pic item={it} seed={i+1}/></div>
+        <div className="b"><Meta it={it}/><h3>{it.tituloPt}</h3><div style={{fontSize:13,color:"var(--mut)"}}>{it.dek}</div></div>
+      </article>))}</div>
+    {open&&(<div className="modal-bg" onClick={()=>setOpen(null)}><div className="modal" onClick={e=>e.stopPropagation()}>
+      <div className="img"><Pic item={open} seed={3}/></div>
+      <div className="c"><Meta it={open}/><h2>{open.tituloPt}</h2>
+        {open.resumo.map((p,i)=><p key={i}>{p}</p>)}
+        {open.paywall&&<p className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, categoria, tags).</p>}
+        <a className="btn" href={open.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({open.source})</a>
+        <button className="btn g" onClick={()=>setOpen(null)}>Fechar</button>
+      </div></div></div>)}
+    <footer>Resumos parafraseados em português. Imagens carregadas diretamente dos portais de origem.</footer>
+  </div>);
 }
-
-function Estrelas({ n }) { return <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>; }
-
-function Meta({ item }) {
-  return (
-    <div className="meta">
-      <span className="tag" style={{ background: COR[item.cat] }}>{item.cat}</span>
-      <strong>{item.source}</strong>
-      <Estrelas n={item.stars} />
-    </div>
-  );
-}
-
-function Modal({ item, onClose }) {
-  useEffect(() => {
-    const f = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", f);
-    document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", f); document.body.style.overflow = ""; };
-  }, []);
-  return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-        <Arte item={item} />
-        <div className="in">
-          <Meta item={item} />
-          <h2>{item.tituloPt}</h2>
-          <div className="orig">Original: {item.title}</div>
-          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
-          {item.paywall && <div className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, categoria, setor e tags).</div>}
-          <a className="src" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function App() {
-  const [aberto, setAberto] = useState(null);
-  const itens = [...NOTICIAS].sort((a, b) => b.stars - a.stars);
-  const [top, ...resto] = itens;
-  const data = new Date(2026, 9, 21).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-  return (
-    <div className="wrap">
-      <header>
-        <h1>Portal da Manhã</h1>
-        <div className="date">{data}</div>
-      </header>
-      <div className="hero" onClick={() => setAberto(top)}>
-        <Arte item={top} />
-        <div className="txt">
-          <Meta item={top} />
-          <h2>{top.tituloPt}</h2>
-          <p style={{ margin: 0, color: "var(--muted)" }}>{top.resumo[0].slice(0, 190)}…</p>
-        </div>
-      </div>
-      <div className="grid">
-        {resto.map(it => (
-          <article className="card" key={it.url} onClick={() => setAberto(it)}>
-            <Arte item={it} />
-            <div className="body">
-              <Meta item={it} />
-              <h3>{it.tituloPt}</h3>
-            </div>
-          </article>
-        ))}
-      </div>
-      <footer>Resumos produzidos em português a partir das matérias originais · Clique em um card para ler</footer>
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

@@ -1,229 +1,334 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 22 de outubro de 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<title>Portal da Manhã — 23 de outubro de 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js" crossorigin></script>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#12141a;--mut:#6b7280;--line:#e8eaf0;--acc:#4f46e5}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#16171a;--muted:#6b6f78;--line:#e7e5e0;--accent:#e4572e;--r:18px;--sh:0 1px 2px rgba(20,20,30,.05),0 8px 24px rgba(20,20,30,.06)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{margin:0;font-size:30px;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:14px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(20,24,40,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(20,24,40,.13)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+header.top h1{margin:0;font-size:30px;letter-spacing:-.02em}
+header.top .date{color:var(--muted);font-size:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;color:var(--ink);transition:.2s}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:24px;box-shadow:var(--sh);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:24px}
+.hero:hover{transform:translateY(-2px)}
 .hero .img{min-height:340px}
-.hero .txt{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
-.hero p{margin:0;color:var(--mut)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(20,24,40,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(20,24,40,.12)}
-.card .img{height:180px}
-.card .b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{margin:0;font-size:28px;line-height:1.15;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px)}
+.card .img{height:170px}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font-size:16px;line-height:1.3}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.tag{padding:2px 9px;border-radius:999px;font-weight:600;font-size:11px}
+.tag.Branding{background:#fde8df;color:#b8401c}.tag.Design{background:#dcf3ee;color:#0d7566}.tag.Tecnologia{background:#e5e4fb;color:#4b43c4}
+.stars{color:#f0a500;letter-spacing:1px}
 .img{position:relative;overflow:hidden;background:#eee}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mut)}
-.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#fff1e6;color:#c2410c}.Design{background:#e0f7f4;color:#0f766e}.Tecnologia{background:#ece9ff;color:#4338ca}
-.stars{color:#f59e0b;letter-spacing:1px}
-.modal-bg{position:fixed;inset:0;background:rgba(15,18,30,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;max-height:90vh;overflow:auto;animation:pop .3s}
-.modal .img{height:320px}
-.modal .c{padding:28px 32px 32px}
-.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;color:#2b2f3a}
-.note{font-size:13px;color:var(--mut);border-left:3px solid var(--line);padding-left:10px}
-.btn{display:inline-block;margin-top:14px;padding:10px 18px;background:var(--acc);color:#fff;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer}
-.btn.g{background:#eef0f6;color:var(--ink);margin-left:8px}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes pop{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-footer{margin-top:40px;color:var(--mut);font-size:12px;text-align:center}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:23px}}
+.img img{width:100%;height:100%;object-fit:cover;display:block}
+.img svg{width:100%;height:100%;display:block;position:absolute;inset:0}
+.overlay{position:fixed;inset:0;background:rgba(20,20,28,.45);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:24px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:up .3s}
+.modal .img{height:340px}
+.modal .inner{padding:28px}
+.modal h2{margin:8px 0 14px;font-size:26px;line-height:1.2;letter-spacing:-.01em}
+.modal p{margin:0 0 14px;font-size:16px}
+.modal .orig{color:var(--muted);font-size:13px;margin-bottom:12px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-size:14px;margin-right:8px;border:0;cursor:pointer}
+.btn.sec{background:#efeee9;color:var(--ink)}
+.note{font-size:12px;color:#8a6d00;background:#fff6d6;border-radius:10px;padding:8px 12px;margin:0 0 14px}
+footer{margin-top:36px;color:var(--muted);font-size:12px;text-align:center}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}.hero h2{font-size:23px}.modal .img{height:220px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useEffect } = React;
+const { useState } = React;
+
 const NEWS = [
-{
- title: "Sunlife's new logo design is 'optimised for a digital world', but does it take minimalism too far?",
- tituloPt: "O novo logo da Sunlife é 'otimizado para o mundo digital', mas será que o minimalismo foi longe demais?",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/news/sunlifes-new-logo-design-is-optimised-for-a-digital-world-but-does-it-take-minimalism-too-far",
- imageUrl: "https://cdn.mos.cms.futurecdn.net/zS4fgXaBnQXcy7vSHBDwG8-1920-80.jpg",
- cat: "Branding", stars: 5, date: "21/10",
- dek: "A financeira canadense Sun Life vira 'Sunlife' e reduz o símbolo a um disco quase sem detalhes.",
- resumo: ["A seguradora e gestora financeira canadense Sun Life passou a escrever o nome em uma única palavra, 'Sunlife', e apresentou um novo logo que a própria empresa descreve como otimizado para um mundo digital. O espaço entre as palavras sumiu e o símbolo do sol foi simplificado ao extremo: manteve-se a cor, mas o desenho virou um disco liso, parecido com o ícone de previsão do tempo.","O wordmark continua em fonte serifada, só que mais fina, leve e contemporânea. A marca praticamente não mudava havia 25 anos, enquanto o negócio saiu do seguro de vida para saúde, gestão de ativos e outros seguros. A empresa também lançou o slogan 'Making life brighter' e afirma que a mudança cria uma identidade global mais moderna, distinta e consistente.","A reação nas redes foi de estranhamento, com quem ache que o minimalismo passou do ponto, e o artigo compara o disco a outros símbolos ultra simples, como o da Green Party do Canadá e o do USA Today, inserindo o caso no debate sobre 'blanding'. O autor, porém, defende o resultado: acha o serifado distintivo e que o nome em uma palavra funciona melhor agora que a empresa deixou de ser só seguradora de vida."]
-},
-{
- title: "Ad of the Day: Which? shows its working in 'The answer you can trust'",
- tituloPt: "Anúncio do dia: a Which? mostra como trabalha em 'The answer you can trust'",
- source: "The Drum",
- url: "https://www.thedrum.com/news/ad-of-the-day-which-shows-its-working-in-the-answer-you-can-trust",
- imageUrl: null,
- cat: "Branding", stars: 4, date: "21/10",
- dek: "Nova plataforma de marca da defensora do consumidor aposta em provas, não em promessas.",
- resumo: ["A Which?, organização britânica de defesa do consumidor, lançou em 19 de outubro uma nova plataforma de marca criada pelas agências WhyProjects e Neverland. Num cenário em que os conselhos de compra vêm de criadores, links de afiliados e avaliações duvidosas, a ideia é ocupar a lacuna de confiança. A pesquisa da marca indica que 82% das pessoas sentem que pagam mais e recebem menos.","Em vez de apenas pedir confiança, a campanha explica de onde ela vem: testes independentes. Nos filmes de TV, uma imagem simples acompanha uma explicação — um aspirador robô recolhe migalhas enquanto se diz que os especialistas testam aparelhos com pelos de gato e cereal; uma cápsula derrama pó revelando uma 'dose de verdade'; um anúncio de máscara facial usa o mote 'Face the facts'.","Nos cartazes, frases como 'We can't be bought' lembram que a Which? paga pelos produtos que testa, uma alfinetada nos presentes a influenciadores. O visual é contido: tipografia calma, preto e branco e toques de vermelho do logo. A ação inclui rádio, social, conteúdo com especialistas e parcerias com podcasts. O texto conclui que a marca consegue sustentar o que promete com evidências."]
-},
-{
- title: "Dollar Tree branches out with first national brand campaign",
- tituloPt: "Dollar Tree amplia horizontes com sua primeira campanha nacional de marca",
- source: "Campaign",
- url: "https://www.campaignlive.com/article/dollar-tree-branches-first-national-brand-campaign/1973143",
- imageUrl: null,
- cat: "Branding", stars: 4, date: "21/10",
- dek: "'It's All in the Tree' transforma a loja num bosque e mira a Geração Z.",
- resumo: ["A rede de descontos Dollar Tree lançou a primeira campanha nacional de marca desde sua fundação, em 1986. Criada pela agência independente Tombras, escolhida em agosto, a campanha 'It's All in the Tree' tem dois filmes de 30 segundos dirigidos por Autumn de Wilde, que apresentam a loja como uma grande árvore, com carrinhos circulando num cenário de floresta e produtos pendurados em galhos e buracos.","Num dos filmes, um casal vai atrás de petiscos e sai com louças e slime brilhante; no outro, três amigos compram doces de Halloween e acabam levando uma escova de dentes. O slogan é 'Everything you need. And want. It's all in the tree.' Mais três filmes virão este ano, sobre beleza, festas e fim de ano, com mídia em CTV, OOH e vídeo digital.","A estratégia lembra a da Ross Dress for Less: valorizar a experiência inusitada de garimpar para atrair a Geração Z e criar recorrência. A reportagem a insere no movimento de reduzir a dependência do preço baixo — a rede abandonou o modelo 'tudo por US$ 1' em 2021 — e cita vendas em alta de 7% no segundo trimestre fiscal."]
-},
-{
- title: "Apple showcases upcycled found furniture and banana palm-paper lantern at Designers of Tomorrow show",
- tituloPt: "Apple exibe móveis reaproveitados e luminária de papel de bananeira no Designers of Tomorrow",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/21/apple-designers-of-tomorrow-show-2026/",
- imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/apple-designers-of-tomorrow_dezeen_2364_col_sq2.jpg",
- cat: "Design", stars: 4, date: "21/10",
- dek: "Mostra em Paris dá palco a jovens designers de mobiliário e iluminação.",
- resumo: ["A exposição Designers of Tomorrow, da Apple, parte da Design Miami.Paris, abriu em 21 de outubro no L'hôtel de Maisons, em Paris, e vai até o dia 25. O tema é o processo criativo, 'a arte em construção', e o curador Rodman Primack selecionou os participantes com um júri que incluiu Jennifer Roberts, presidente da Design Miami, e o designer Nifemi Marcus-Bello. O recorte desta edição é 'Design for Presence'.","Entre as obras, a egípcio-dinamarquesa Salem S Charabi apresenta uma luminária de palmeira-tamareira, calcário e papel de bananeira; Yoonjeong Lee, de Seul, mostra uma luminária feita de uma mesa com cerca de 5 mil lâminas de madeira empilhadas; Isabel Rower, do Brooklyn, reconstrói uma cadeira a partir de móvel encontrado na rua, com papel machê e 1.500 contas de cerâmica; e a dupla Parafernalia exibe uma paisagem em aço inox corroído por ácido, cujas formas servem de bancos e mesa.","A Apple afirma que cada designer usou seus produtos em diferentes etapas, da ideação à execução. A edição de estreia, no ano passado, havia exibido uma mesa projetada para parecer manteiga."]
-},
-{
- title: "Johnston Marklee unveils designs for Bass Museum expansion",
- tituloPt: "Johnston Marklee revela projeto de ampliação do Bass Museum, em Miami Beach",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/21/johnston-marklee-bass-museum-expansion-miami-beach/",
- imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/johnston-marklee-the-bass-expansion_dezeen_2364_sq.jpg",
- cat: "Design", stars: 4, date: "21/10",
- dek: "Dois pavilhões elevados sobre uma laje fina respondem ao risco de enchentes.",
- resumo: ["O escritório Johnston Marklee, de Los Angeles, apresentou o projeto para ampliar o Bass Museum of Art, em Miami Beach, com cerca de 2 mil m² (22 mil pés quadrados) de espaços internos e externos no canto sudoeste do terreno.","São dois pavilhões retangulares apoiados sobre uma laje de concreto fina e elevada do solo para atender a diretrizes de resiliência frente à elevação do nível do mar. Debaixo deles passam pátios; um óculo retroiluminado ilumina a passagem à noite, e a empena cega de um pavilhão servirá de tela para sessões de cinema. As galerias principais ficam nos pavilhões, com paredes brancas, janelas retangulares e claraboia.","O projeto dialoga com o prédio art déco de Russell Pancoast e com a ampliação de Arata Isozaki, e os sócios Sharon Johnston e Mark Lee dizem que ele amplia o acesso público e honra a ideia de um 'campus poroso'."]
-},
-{
- title: "Magical new Narnia cover art is a notch above the usual movie tie-ins",
- tituloPt: "Nova arte de capa de Nárnia é um nível acima das típicas edições de filme",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/news/magical-new-narnia-cover-art-is-a-notch-above-the-usual-movie-tie-ins",
- imageUrl: "https://cdn.mos.cms.futurecdn.net/QSS47Dnf6GqSNKai88SJ6b-1920-80.jpg",
- cat: "Design", stars: 4, date: "20/10",
- dek: "HarperCollins relança toda a série com ilustrações do concept artist do filme de Greta Gerwig.",
- resumo: ["A HarperCollins vai republicar toda a série As Crônicas de Nárnia com capas inspiradas na adaptação de 'O Sobrinho do Mago', dirigida por Greta Gerwig e prevista para os cinemas em fevereiro. Em vez de fotos do filme, como é comum em edições de cinema, as capas usam ilustrações de Vance Kovacs, concept artist do longa, com passagens por Dungeons & Dragons, O Rei Leão e God of War.","A edição de luxo traz sobrecapa e estojo com hot stamping, bordas impressas digitalmente e uma ilustração de Aslan cantando Nárnia à existência, com feixes de luz e estrelas saindo de sua boca e cinco emblemas escondidos — o cavalo alado Fledge, o perfil de Aslan, a maçã da vida, o poste de luz e o martelo-sino de Charn.","O paperback do filme chega em 10 de novembro de 2026; as versões exclusivas de varejistas, com bordas diferentes, em 17 de novembro; e há box sets em brochura e capa dura. O texto lembra que a série vendeu mais de 120 milhões de cópias."]
-},
-{
- title: "Recursive launches Flint, a laptop coding model it says was largely built by AI",
- tituloPt: "Recursive lança o Flint, modelo de código para notebooks que diz ter sido construído em grande parte por IA",
- source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
- imageUrl: "https://techcrunch.com/wp-content/uploads/2026/05/GettyImages-2157738833.jpg?resize=1200,800",
- cat: "Tecnologia", stars: 4, date: "21/10",
- dek: "Modelo aberto roda localmente e testa a ideia de autoaperfeiçoamento recursivo.",
- resumo: ["A startup Recursive, fundada em 2025 e liderada por Richard Socher, ex-cientista-chefe da Salesforce, lançou o Flint, seu primeiro modelo: um assistente de programação gratuito que roda no próprio laptop. Segundo a empresa, um sistema de pesquisa automatizado chamado Eureka Machine ajudou em quase todas as etapas, e uma equipe pequena o construiu do zero em menos de quatro meses.","O Flint usa arquitetura de mistura de especialistas, ativando 2,5 bilhões dos seus 40 bilhões de parâmetros por tarefa. Nos testes da empresa, gerou cerca de 131 tokens por segundo num MacBook Pro com M4 Pro, aproximadamente o dobro de modelos comparáveis, e superou outros modelos abaixo de 50 bilhões de parâmetros no SWE-Bench Verified. Está disponível no Hugging Face com licença Apache 2.0.","A Recursive admite que o modelo precisa de mais orientação que assistentes pagos de grande porte. A ideia de IA que ajuda a construir IA é debatida, e Socher diz que a meta é o autoaperfeiçoamento recursivo com supervisão humana e possibilidade de interrupção."]
-},
-{
- title: "Meta says Muse has over 10M users, with shopping a top activity",
- tituloPt: "Meta diz que o Muse tem mais de 10 milhões de usuários, com compras entre as atividades principais",
- source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/21/meta-says-muse-has-over-10m-users-with-shopping-a-top-activity/",
- imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/meta-muse-finger-on-app-GettyImages-2293791808.jpg?w=1024",
- cat: "Tecnologia", stars: 3, date: "21/10",
- dek: "Na teleconferência do 3º tri, Zuckerberg afirma que o app de IA atingiu product-market fit.",
- resumo: ["A Meta informou, na divulgação de resultados do terceiro trimestre, que seu app de IA, o Muse, ultrapassou 10 milhões de usuários. Segundo Mark Zuckerberg, cerca de 25% de quem configura o app o usa diariamente, e as compras por agente aparecem entre os usos mais populares, via conector da Plaid, com parte dos compradores gastando mais de US$ 200 em média.","A empresa diz que o Muse alcançou product-market fit e que vai focar em escalar, gerar receita e reduzir custos de computação, com expectativa de melhorar a eficiência em mais de dez vezes em um ano. O plano é manter o app gratuito para a maioria, cobrar uma porcentagem do comércio e vender planos para usuários avançados.","O Muse é central para a estratégia de óculos inteligentes da Meta, cuja divisão Reality Labs ainda perde bilhões — a previsão é de queda do prejuízo de US$ 19,1 bi em 2025 para US$ 15 bi em 2026."]
-},
-{
- title: "Takero Shimazaki upgrades makeshift theatre into permanent 'church-like' London venue",
- tituloPt: "Takero Shimazaki transforma teatro improvisado em casa permanente 'quase uma igreja' em Londres",
- source: "Dezeen",
- url: "https://www.dezeen.com/2026/10/21/yard-theatre-revamp-takero-shimazaki-architects-london/",
- imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/yard-theatre-revamp-takero-shimazaki-architects-london_dezeen_2364_hero_0.jpg",
- cat: "Design", stars: 3, date: "21/10",
- dek: "O Yard Theatre, em Hackney Wick, ganha novo auditório, bar e uma chaminé-marco.",
- resumo: ["O estúdio londrino Takero Shimazaki Architects reformou e ampliou o Yard Theatre, em Hackney Wick, usando materiais reaproveitados. Aberto em 2011 num galpão, como projeto temporário de três meses da Practice Architecture, o espaço agora vira um teatro permanente, com bar, bastidores e área comunitária.","O auditório antigo, de 110 lugares, foi renovado, e a nova sala, de 224 lugares, ocupa uma antiga cervejaria cujas paredes de tijolo foram mantidas, com arquibancada curva e estrutura de telhado em madeira laminada sobre aço reciclado. Uma torre de guindaste virou chaminé de ventilação de 23 metros, revestida de policarbonato translúcido, que funciona como marco visual.","A extensão usa fibrocimento, policarbonato e K-Briq colorido, feito com mais de 95% de conteúdo reciclado, e uma escultura de Antony Gormley fica sobre o telhado."]
-},
-{
- title: "New Logo and Identity for Reset by Studio Kiln",
- tituloPt: "Novo logo e identidade da Reset, assinados pelo Studio Kiln",
- source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_reset_by_studio_kiln.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/reset_logo_before_after.png",
- cat: "Branding", stars: 3, date: "21/10",
- dek: "Identidade com wordmark, mascote e elementos 3D, no segmento de estilo de vida.",
- resumo: ["O Brand New publicou em 21 de outubro o novo logo e identidade da Reset, marca do segmento de lifestyle, desenvolvidos pelo Studio Kiln. As tags da publicação apontam para wordmark, mascote e elementos em 3D.","A análise completa, com conceito e crítica, está atrás do paywall do Brand New; o que é público mostra apenas as seções de logo antes e depois e exemplos de aplicação."],
- paywall: true
-},
-{
- title: "New Logo and Identity for Winston Artory Group by Fifty Thousand Feet",
- tituloPt: "Novo logo e identidade do Winston Artory Group, assinados pela Fifty Thousand Feet",
- source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_winston_artory_group_by_fifty_thousand_feet.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/winston_artory_group_logo_before_after.png",
- cat: "Branding", stars: 3, date: "20/10",
- dek: "Grifo, azul e serifa flared para um grupo corporativo do mercado de arte.",
- resumo: ["O Brand New mostrou o novo logo e identidade do Winston Artory Group, criados pela Fifty Thousand Feet, com imagens de antes e depois. Pelas tags, a identidade combina esquema de cores azul, tipografia serifada com terminais abertos (flared), um ícone e um motivo de grifo.","O conteúdo completo, incluindo conceito e comentários, é exclusivo para assinantes."],
- paywall: true
-},
-{
- title: "Sfumato dissolves the boundaries between architecture and its surroundings",
- tituloPt: "Sfumato dissolve os limites entre arquitetura e entorno, em Guadalajara",
- source: "Designboom",
- url: "https://www.designboom.com/architecture/mirrored-acrylic-skin-cube-pavilion-surroundings-mexico-errre-taller/",
- imageUrl: "https://www.designboom.com/twitterimages/dbsub/468179/2026-10-14/sfumato-dissolves-the-boundaries-between-architecture-and-its-surroundings-7-6acec77202fd3.jpg",
- cat: "Design", stars: 3, date: "18/10",
- dek: "Pavilhão espelhado faz um cubo sumir dentro da paisagem (publicado em 18/10).",
- resumo: ["O escritório mexicano errre taller venceu a primeira edição do concurso Pabellón MEM com o 'Sfumato', pavilhão temporário que reinterpreta o Cubo MEM, marco escultórico do complexo de arquitetura do ITESO, em Guadalajara. A proposta é fazer a estrutura existente desaparecer visualmente, mantendo sua pegada física.","O cubo de 6,40 × 6,40 m foi envolvido por painéis de acrílico espelhado de 3 mm, fixados com fita dupla face e silicone a uma estrutura leve de aço, apoiada numa subestrutura de madeira. Para preservar o aspecto monolítico, há uma única abertura, na face oeste.","Por dentro, o espaço é um pátio aberto voltado para o céu, onde a mudança do sol cria sombras que marcam a passagem do tempo. A publicação é de 18 de outubro, um pouco anterior às demais da edição."]
-}
+  {
+    title: "How do you make KFC look more like KFC?",
+    tituloPt: "Como fazer a KFC parecer ainda mais KFC? O novo visual esconde um ingrediente secreto",
+    source: "The Drum",
+    url: "https://www.thedrum.com/news/kfc-s-new-look-has-a-secret-ingredient-it-s-hiding-in-plain-sight-in-the-c",
+    imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/kfc-type.png?w=1280&ar=default&fit=crop&crop=faces&auto=format",
+    cat: "Branding", stars: 5,
+    resumo: [
+      "A Studio Drama, fundição tipográfica londrina, desenhou as novas fontes da KFC em parceria com a agência JKR. O detalhe mais comentado é uma coxinha de frango escondida no espaço negativo do “C” do novo logo — uma referência, segundo o cofundador Chris Nott, à seta escondida no logotipo da FedEx. Para encaixar a ideia, a equipe precisou quebrar regras clássicas do desenho de letras, como o equilíbrio entre traços grossos e finos, e aceitou o custo em nome do conceito.",
+      "A Studio Drama entrou cedo no projeto, antes de a direção tipográfica estar definida, e conduziu um “type sprint” exploratório com muitos caminhos, todos obrigados a conversar com a identidade da KFC. Outra ideia central, surgida mais tarde, foi transformar as listras vermelhas e brancas do balde em letras, com K, F e C acompanhando as faixas para que o próprio balde sinalize a marca.",
+      "O novo lettermark é mais pesado, mais redondo e pensado para telas, mas preserva traços reconhecíveis do original: a inclinação itálica, as serifas pequenas e arredondadas e as terminações abertas na base do K e do F. A cabeça enorme do Coronel sobre um corpo minúsculo — piada antiga da internet — foi tratada com uma gravata-borboleta maior, que elimina o aspecto de “dançando”.",
+      "Nott defende que um rebrand bem-sucedido precisa parecer novo e familiar ao mesmo tempo, citando a reação negativa ao rebrand da Cracker Barrel como alerta. O trabalho técnico incluiu fazer a família tipográfica funcionar em vários idiomas e sistemas operacionais para mais de 33 mil restaurantes, além de espaçamento, pesos e engenharia de fontes. O conselho principal: envolva a tipografia desde o início de qualquer rebrand, já que palavras aparecem em quase todos os pontos de contato da marca."
+    ]
+  },
+  {
+    title: "Apple Music's splashy new logo is gorgeous – so why isn't the new app icon?",
+    tituloPt: "O novo logo espalhafatoso do Apple Music é lindo — então por que o novo ícone do app não é?",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/apple-musics-splashy-new-logo-is-gorgeous-so-why-isnt-the-app-icon",
+    imageUrl: null,
+    cat: "Branding", stars: 5,
+    resumo: [
+      "A Apple apresentou um rebrand completo do Apple Music, criado em colaboração com o produtor eletrônico Fred Again. A identidade visual nasceu do som: o logo foi mergulhado em um tanque de água, e uma composição de Fred Again e da NEST Acoustics foi tocada por um transdutor subaquático. As vibrações e ondulações resultantes foram usadas para animar a identidade, que o artigo associa à estética Liquid Glass da empresa.",
+      "O projeto levou meses e exigiu uma estrutura e um software sob medida. O mesmo som serve ainda como novo logo sonoro do serviço. O estudo de caso da Apple resume o objetivo como “tornar a música visível”.",
+      "O autor argumenta, porém, que o trabalho de marca, embora marcante, não se traduz para o aplicativo em si. O novo ícone preto e branco, visto pela primeira vez no iOS 27.2, vem sendo criticado por usuários — um deles no Reddit disse que o rebrand “traduziu HORRIVELMENTE” para pontos de contato cotidianos como o ícone na tela inicial e a barra de navegação.",
+      "Dentro do app, a Apple removeu quase todos os acentos vermelhos, substituindo-os por textos azuis e uma estrela amarela de favoritos. O autor espera que o ícone monocromático seja provisório e que um design mais vibrante venha por aí, mas por ora vê uma marca forte associada a um aplicativo bem mais sem graça."
+    ]
+  },
+  {
+    title: "Tuesday Labs debuts \"droid butler\" Voxel",
+    tituloPt: "Tuesday Labs estreia Voxel, um “mordomo-droide” doméstico",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/22/tuesday-labs-voxel-series-1/",
+    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/tuesday-labs-voxel-robot_dezeen_hero.jpg",
+    cat: "Tecnologia", stars: 4,
+    resumo: [
+      "A empresa nova-iorquina Tuesday Labs apresentou o Voxel Series-1, seu primeiro robô semiautônomo para tarefas domésticas. Em vez de copiar a forma humana, ele tem um corpo compacto, em formato de caixa, na altura de uma bancada, revestido de plástico em cores vivas, com olhos de LED luminosos e garras simples.",
+      "A fundadora, Rosalind Shinkle, ex-engenheira da Boston Dynamics, diz que a equipe de design se inspirou em objetos do dia a dia, como luminárias e cadeiras, e trabalhou com o ex-designer de personagens da Pixar Alonso Martinez. Ela argumenta que robôs humanoides correm o risco de causar desconforto e que a aparência de um robô deve sinalizar o que ele realmente consegue fazer, para não frustrar o usuário.",
+      "Por enquanto, o Voxel rega plantas e varre migalhas combinando software autônomo com operação remota. As primeiras unidades irão para um pequeno grupo de adotantes iniciais que aceitam ajudar a treinar o software dentro de casa. O preço estimado é de US$ 20 mil, apresentado como produto de luxo, com a promessa de baratear conforme a produção ganhar escala. O robô usa bateria recarregável e volta a uma base de recarga. Shinkle, que fundou o estúdio em 2025, diz que sua própria aversão a tarefas domésticas motivou o projeto."
+    ]
+  },
+  {
+    title: "New (Old) Name and Logo for Etisalat",
+    tituloPt: "Novo (velho) nome e logo para a Etisalat",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_old_name_and_logo_for_etisalat.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/etisalat_2026_logo_before_after.png",
+    cat: "Branding", stars: 4, paywall: true,
+    resumo: [
+      "O Brand New publicou, em 22 de outubro de 2026, a análise de um novo nome e logo para a Etisalat, operadora de telecomunicações dos Emirados Árabes Unidos. O título (“novo velho nome”) indica que a empresa está retornando a uma denominação anterior, o que torna o rebrand um movimento de retorno às origens.",
+      "A página traz imagens de antes e depois do logo, e as tags da matéria apontam para uma paleta vermelha e para um elemento em forma de “swoosh” (curva dinâmica) na nova marca. A matéria está na categoria Corporativo."
+    ]
+  },
+  {
+    title: "New Logo and Identity for Kuda by Barkas",
+    tituloPt: "Novo logo e identidade da Kuda, assinados pela Barkas",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_kuda_by_barkas.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/kuda_logo_before_after.png",
+    cat: "Branding", stars: 4, paywall: true,
+    resumo: [
+      "O Brand New analisou, em 22 de outubro de 2026, o novo logo e identidade da Kuda, fintech nigeriana, desenvolvidos pelo estúdio Barkas. A matéria está na categoria Finanças e foi classificada como análise completa (“Reviewed”).",
+      "As tags indicam alguns caminhos de design: esquema de cor roxo, wordmark em caixa-alta e uma tipografia proprietária. A página inclui comparação de logo antes e depois e uma imagem de aplicações, sugerindo que a nova marca foi mostrada ao lado da antiga e aplicada em materiais."
+    ]
+  },
+  {
+    title: "Iris van Herpen translates invisible rhythms of nature into sculptural forms for Perrier-Jouët",
+    tituloPt: "Iris van Herpen traduz os ritmos invisíveis da natureza em formas escultóricas para a Perrier-Jouët",
+    source: "Designboom",
+    url: "https://www.designboom.com/design/iris-van-herpen-invisible-rhythms-nature-sculptural-forms-perrier-jouet/",
+    imageUrl: "https://www.designboom.com/wp-content/uploads/2026/10/iris-van-herpen-invisible-rhythms-nature-sculptural-forms-perrier-jouet-designboom-1200.jpg",
+    cat: "Design", stars: 4,
+    resumo: [
+      "A designer holandesa Iris van Herpen colaborou com a casa de champanhe Maison Perrier-Jouët em um projeto que transforma som em forma. Ela gravou áudio nos vinhedos de Ambonnay e Cramant e usou a cimática — método que torna vibrações visíveis como padrões em água, areia ou pó — para gerar as formas. O trabalho também dialoga com o Art Nouveau, estilo historicamente associado à identidade visual da marca.",
+      "A colaboração nasceu do Perrier-Jouët Design for Nature Award, do qual Van Herpen foi a primeira premiada, em dezembro de 2025. A primeira peça, “Symphonic Bloom”, é uma escultura de seda e ouro 22 quilates reciclado que emerge do gargalo de um jeroboão de Belle Époque 1988. Seu movimento ascendente remete aos figurinos da dançarina Loïe Fuller e a uma luminária Art Nouveau de Raoul Larche; as formas orgânicas foram moldadas em parte por conversas com a chef de adega Séverine Frerson sobre o amadurecimento do champanhe.",
+      "“Symphonic Life” é uma edição limitada de dez peças de ouro reciclado que envolvem magnuns de Belle Époque 1999. Há ainda uma edição especial de Belle Époque 2018 com garrafa e caixa redesenhadas, com texturas inspiradas em metal, madeira, seda e veludo. Frerson ajustou também a dosagem para realçar as notas florais. As obras foram reveladas na Tokyo Gendai em setembro de 2026, mostradas em Paris em 21 de outubro e seguem para o Design Miami em dezembro."
+    ]
+  },
+  {
+    title: "Liverpool's The Beatles museum to relocate to 1960s shopping centre",
+    tituloPt: "Museu dos Beatles em Liverpool vai se mudar para um shopping center dos anos 1960",
+    source: "Dezeen",
+    url: "https://www.dezeen.com/2026/10/22/the-beatles-story-liverpool-relocation/",
+    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/radio-city-tower-liverpool-the-beatles-story_dezeen_2364_col_0.jpg",
+    cat: "Design", stars: 4,
+    resumo: [
+      "A Apple Corps anunciou que o museu The Beatles Story deixará sua sede atual no Royal Albert Dock, em Liverpool, e passará a ocupar dois locais: o St Johns Shopping Centre e a antiga Radio City Tower. O novo museu terá mais de quatro vezes o tamanho do atual, com cerca de 9.300 m² para design expositivo imersivo, objetos originais e cenários reconstruídos que contam a ascensão da banda.",
+      "A maior parte do museu ficará no antigo St Johns Market, dentro do shopping projetado pelo arquiteto inglês James A Roberts e concluído em 1969, em frente à estação Lime Street. A Radio City Tower (St Johns Beacon), tombada como Grade II, será uma atração independente, com plataforma de observação temática do Yellow Submarine. A estrutura de 138 metros já abrigou uma torre de comunicação e um restaurante giratório.",
+      "A mudança está prevista para 2028, coincidindo com o lançamento de um novo filme sobre os Beatles. A Apple Corps, fundada pelos quatro integrantes em 1968, assumirá a propriedade da atração, hoje da Mersey Ferries. Ringo Starr e Paul McCartney, além do primeiro-ministro britânico Andy Burnham, celebraram o anúncio. O texto lembra que propostas anteriores para a torre, como uma tirolesa ligando-a à Biblioteca Central, enfrentaram oposição."
+    ]
+  },
+  {
+    title: "Leica's new Formula 1 camera brings carbon fiber and racing-inspired DNA to photography",
+    tituloPt: "Nova câmera Fórmula 1 da Leica leva fibra de carbono e DNA de corrida à fotografia",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/22/leicas-new-formula-1-camera-brings-carbon-fiber-and-racing-inspired-dna-to-photography/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/leicas-new-formula-1-camera-brings-carbon-fiber-and-racing-inspired-dna-to-photography/Leica-Formula-1-Camera.jpg",
+    cat: "Design", stars: 4,
+    resumo: [
+      "Leica e Fórmula 1 se uniram na Leica Q3 43 Formula 1 Edition, edição especial que inaugura uma parceria de licenciamento entre as duas marcas. A câmera é baseada na Q3 43 padrão, com corpo preto e revestimento texturizado inspirado no volante de um carro de F1.",
+      "A fibra de carbono aparece no grip com carregamento sem fio, no apoio do polegar e no botão de disparo suave — peças fabricadas e testadas na Alemanha. Detalhes em vermelho no disparador e em um botão de função remetem aos controles coloridos dos volantes de corrida. A marca F1 aparece na tampa superior e na tampa da lente, e o pacote inclui alça de corda co-branded e embalagem com acabamento vermelho.",
+      "O hardware de imagem não muda: sensor full-frame de 60 MP, lente fixa de 43 mm f/2, saídas de 60, 36 ou 18 MP, autofoco híbrido e vídeo. Há um “F1 Leica Look” exclusivo no app Leica FOTOS, que aumenta contraste e saturação e pode ser aplicado durante a captura. O lançamento ocorreu na loja-galeria da Leica em Los Angeles; o preço é de US$ 9.950, com vendas desde 21 de outubro de 2026."
+    ]
+  },
+  {
+    title: "Daft Punk's iconic Coachella pyramid stage is becoming an official LEGO set in 2027",
+    tituloPt: "A icônica pirâmide do Daft Punk no Coachella vai virar set oficial da LEGO em 2027",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/22/daft-punks-iconic-coachella-pyramid-stage-is-becoming-an-official-lego-set-in-2027/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/lego-x-daft-punk-finally-collaborate-on-a-brickset-with-a-2027-launch-date/lego_daft_punk_2027_brickset1.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "A LEGO e o Daft Punk firmaram parceria para um set baseado na pirâmide usada pela dupla na turnê Alive, com lançamento previsto para 2027 — ano em que o álbum de estreia, Homework, completa 30 anos.",
+      "O projeto nasceu com Patrick Harboun, construtor de Luxemburgo. Durante o confinamento de 2020, ele e o filho, então com oito anos, montaram a pirâmide em peças, vencendo o grande prêmio do desafio Music to Our Ears do LEGO Ideas. Após reenviar o projeto em 2024 e reunir 10 mil apoiadores em 2025, o design passou cerca de um ano em análise antes de os designers da LEGO começarem a adaptá-lo.",
+      "A pirâmide real estreou em abril de 2006 na Sahara Tent do Coachella, projetada por Martin Phillips, da Bionic League, com painéis de LED comuns. O modelo de Harboun tem cerca de 2.000 peças, minifiguras da dupla com capacetes de robô e um núcleo motorizado com peças transparentes giratórias e luzes que imitam as telas de LED. A LEGO diz que a versão de varejo será diferente; preço, número de peças e disponibilidade ainda não foram anunciados. Será o primeiro set físico do Daft Punk."
+    ]
+  },
+  {
+    title: "From Burger King to Shrek, GTA VI trendjacking is going too far",
+    tituloPt: "De Burger King a Shrek, o “trendjacking” de GTA VI está indo longe demais",
+    source: "Creative Bloq",
+    url: "https://www.creativebloq.com/news/from-burger-king-to-shrek-gta-vi-trend-jacking-is-out-of-control",
+    imageUrl: null,
+    cat: "Branding", stars: 3,
+    resumo: [
+      "O artigo de Joe Foley critica marcas que usam o visual de GTA VI para surfar no hype antes do lançamento do jogo, em 17 de novembro. A Rockstar não vende anúncios in-game nem faz colaborações como a Fortnite, mas empresas como BMW, Burger King, Hyundai, JBL, Axe e Mercedes-Benz já imitaram o estilo de Vice City. O trailer-paródia de Shrek 2 Remastered é citado como exemplo esperto; algumas marcas fizeram acenos sutis e conscientes.",
+      "Para o autor, boa parte do fenômeno é preguiçosa, especialmente as imagens vaporwave geradas por IA e os rosas e laranjas neon genéricos, palmeiras e gradientes. Como a estética se espalha por toda parte, corre o risco de se esgotar em semanas e gerar pouco valor de marca. O público costuma perceber oportunismo, e comentaristas zombam de marcas sem histórico no universo gamer; a linguagem da Axe causou confusão sobre uma suposta colaboração oficial.",
+      "O texto também aponta desconforto em associar marcas ao conteúdo adulto e violento de GTA. A conclusão: campanhas melhores reinterpretariam os temas de fundo da franquia — escapismo, liberdade, excesso e americana glamourosa — em vez de copiar a estética, mostrando que entendem o momento cultural."
+    ]
+  },
+  {
+    title: "New Logo and Identity for San Francisco Running Company by Study Hall",
+    tituloPt: "Novo logo e identidade da San Francisco Running Company, assinados pela Study Hall",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_san_francisco_running_company_by_study_hall.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/sfrc_logo_before_after-1.png",
+    cat: "Branding", stars: 3, paywall: true,
+    resumo: [
+      "O Brand New destacou, em 22 de outubro de 2026, o novo logo e identidade da San Francisco Running Company, rede de varejo de corrida, criados pela Study Hall. O post, intitulado “A Jog in the Fog” (um trocadilho provável com a neblina de San Francisco), integra a seção “Noted”, de textos curtos.",
+      "A página mostra comparação de logo antes e depois e uma imagem de aplicação. As tags (negrito, caixa-alta, largo) sugerem uma marca de letras pesadas e expandidas."
+    ]
+  },
+  {
+    title: "Aery's Office Chair Offers a Fit You Can Actually Fine-Tune.",
+    tituloPt: "Cadeira de escritório da Aery oferece um ajuste que você realmente consegue personalizar",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/10/23/aerys-office-chair-offers-a-fit-you-can-actually-fine-tune/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/aerys-office-chair-offers-a-fit-you-can-actually-fine-tune/aery-01.jpg",
+    cat: "Design", stars: 3,
+    resumo: [
+      "Ida Torres, do Yanko Design, apresenta a cadeira ergonômica Aery, da EFFYDESK, como uma tentativa de fechar a distância entre um home office bonito e um confortável. A cadeira tem encosto em tela, assento acolchoado e vários ajustes para se adaptar a quem senta.",
+      "A autora observa que a tela aberta evita que um encosto alto pareça volumoso ao lado de uma mesa pequena, e que o apoio de cabeça separado a mantém claramente como cadeira de trabalho. Entre os recursos, destaca o assento deslizante, que muda o apoio sob as pernas, e os braços que sobem, descem, deslizam e giram para acompanhar a posição natural dos braços.",
+      "Torres ressalva que não sentou na Aery e, portanto, não avalia o conforto do estofado nem a sensação dos controles; gostaria de testar se os braços seguram a posição e se a cadeira entra sob a mesa. No geral, vê uma opção prática para quem quer ajustar a cadeira ao corpo em vez de aceitar um desenho fixo."
+    ]
+  }
 ];
 
-const PAL = {Branding:["#f97316","#ec4899","#fbbf24"],Design:["#10b981","#06b6d4","#14b8a6"],Tecnologia:["#3b82f6","#8b5cf6","#6366f1"]};
-function Art({cat,seed}){
-  const p=PAL[cat]||PAL.Design; const s=seed*37;
-  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+cat}>
-    <defs><linearGradient id={"g"+seed} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-    <rect width="400" height="240" fill={"url(#g"+seed+")"}/>
-    <circle cx={80+(s%160)} cy={60+(s%90)} r={70+(s%40)} fill={p[2]} opacity=".45"/>
-    <rect x={200+(s%80)} y="90" width="140" height="140" rx="28" fill="#fff" opacity=".18" transform={"rotate("+(s%40)+" 270 160)"}/>
-    <circle cx="340" cy="40" r="30" fill="#fff" opacity=".25"/>
-    <path d="M0 200 Q100 150 200 200 T400 190 V240 H0Z" fill="#fff" opacity=".2"/>
-  </svg>);
-}
-function Pic({item,seed}){
-  const [falhou,setFalhou]=useState(false);
-  if(!item.imageUrl||falhou) return <Art cat={item.cat} seed={seed}/>;
-  return <img src={item.imageUrl} referrerPolicy="no-referrer" loading="lazy" alt={"Imagem da matéria: "+item.tituloPt} onError={()=>setFalhou(true)}/>;
-}
-const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>;
-const Meta=({it})=>(<div className="meta"><span className={"tag "+it.cat}>{it.cat}</span><Stars n={it.stars}/><span>{it.source} · {it.date}</span></div>);
+const PALETAS = {
+  Branding: [["#ff9966","#ff5e62"],["#f6d365","#fda085"],["#fc6076","#ff9a44"]],
+  Design: [["#11998e","#38ef7d"],["#0f9b8e","#7be0c3"],["#0ba360","#3cba92"]],
+  Tecnologia: [["#4776e6","#8e54e9"],["#5b86e5","#36d1dc"],["#667eea","#764ba2"]]
+};
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
 
-function App(){
-  const [open,setOpen]=useState(null);
-  const items=[...NEWS].sort((a,b)=>b.stars-a.stars);
-  const [hero,...rest]=items;
-  useEffect(()=>{const h=e=>e.key==="Escape"&&setOpen(null);window.addEventListener("keydown",h);return()=>window.removeEventListener("keydown",h)},[]);
-  return (<div className="wrap">
-    <header><div><h1>☀️ Portal da Manhã</h1><div className="date">Quinta-feira, 22 de outubro de 2026 · {items.length} notícias de {new Set(items.map(i=>i.source)).size} portais</div></div></header>
-    <div className="hero" onClick={()=>setOpen(hero)}>
-      <div className="img"><Pic item={hero} seed={0}/></div>
-      <div className="txt"><Meta it={hero}/><h2>{hero.tituloPt}</h2><p>{hero.dek}</p><span style={{color:"var(--acc)",fontWeight:600}}>Ler resumo →</span></div>
-    </div>
-    <div className="grid">{rest.map((it,i)=>(
-      <article className="card" key={it.url} onClick={()=>setOpen(it)}>
-        <div className="img"><Pic item={it} seed={i+1}/></div>
-        <div className="b"><Meta it={it}/><h3>{it.tituloPt}</h3><div style={{fontSize:13,color:"var(--mut)"}}>{it.dek}</div></div>
-      </article>))}</div>
-    {open&&(<div className="modal-bg" onClick={()=>setOpen(null)}><div className="modal" onClick={e=>e.stopPropagation()}>
-      <div className="img"><Pic item={open} seed={3}/></div>
-      <div className="c"><Meta it={open}/><h2>{open.tituloPt}</h2>
-        {open.resumo.map((p,i)=><p key={i}>{p}</p>)}
-        {open.paywall&&<p className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, categoria, tags).</p>}
-        <a className="btn" href={open.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({open.source})</a>
-        <button className="btn g" onClick={()=>setOpen(null)}>Fechar</button>
-      </div></div></div>)}
-    <footer>Resumos parafraseados em português. Imagens carregadas diretamente dos portais de origem.</footer>
-  </div>);
+function Ilustracao({ item }) {
+  const h = hash(item.title);
+  const [a,b] = PALETAS[item.cat][h % 3];
+  const id = "g"+h;
+  const shapes = [0,1,2,3].map(i => {
+    const x = (h >> (i*3)) % 100, y = (h >> (i*2+1)) % 100, r = 18 + ((h >> i) % 30);
+    return i % 2 ? <circle key={i} cx={x*4} cy={y*2} r={r} fill="#fff" opacity=".18"/> :
+      <rect key={i} x={x*3} y={y} width={r*2} height={r*2} rx={r/2} fill="#fff" opacity=".15" transform={`rotate(${(h>>i)%60} ${x*3} ${y})`}/>;
+  });
+  return (
+    <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={a}/><stop offset="1" stopColor={b}/></linearGradient></defs>
+      <rect width="400" height="200" fill={`url(#${id})`}/>
+      {shapes}
+      <circle cx="330" cy="40" r="60" fill="none" stroke="#fff" strokeOpacity=".25" strokeWidth="2"/>
+    </svg>
+  );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+function Imagem({ item }) {
+  const [falhou, setFalhou] = useState(false);
+  return (
+    <div className="img">
+      {item.imageUrl && !falhou
+        ? <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+        : <Ilustracao item={item} />}
+    </div>
+  );
+}
+
+function Estrelas({ n }) { return <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5-n)}</span>; }
+
+function Meta({ item }) {
+  return (
+    <div className="meta">
+      <span className={"tag " + item.cat}>{item.cat}</span>
+      <span>{item.source}</span>
+      <Estrelas n={item.stars} />
+    </div>
+  );
+}
+
+function Modal({ item, onClose }) {
+  React.useEffect(() => {
+    const k = e => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", k);
+    return () => document.removeEventListener("keydown", k);
+  }, []);
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <Imagem item={item} />
+        <div className="inner">
+          <Meta item={item} />
+          <h2>{item.tituloPt}</h2>
+          <div className="orig">Título original: {item.title}</div>
+          {item.paywall && <p className="note">Matéria atrás de paywall: resumo feito a partir dos elementos públicos (título, categoria, tags e imagens).</p>}
+          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
+          <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a>
+          <button className="btn sec" onClick={onClose}>Fechar</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [aberto, setAberto] = useState(null);
+  const [filtro, setFiltro] = useState("Todas");
+  const ordenadas = [...NEWS].sort((a,b) => b.stars - a.stars);
+  const lista = filtro === "Todas" ? ordenadas : ordenadas.filter(n => n.cat === filtro);
+  const [manchete, ...resto] = lista;
+  return (
+    <div className="wrap">
+      <header className="top">
+        <h1>☀️ Portal da Manhã</h1>
+        <div className="date">Sexta-feira, 23 de outubro de 2026 · {NEWS.length} notícias</div>
+      </header>
+      <div className="filters">
+        {["Todas","Branding","Design","Tecnologia"].map(f =>
+          <button key={f} className={"chip" + (filtro===f ? " on" : "")} onClick={() => setFiltro(f)}>{f}</button>)}
+      </div>
+      {manchete && (
+        <article className="hero" onClick={() => setAberto(manchete)}>
+          <Imagem item={manchete} />
+          <div className="body">
+            <Meta item={manchete} />
+            <h2>{manchete.tituloPt}</h2>
+            <p>{manchete.resumo[0].slice(0, 190)}…</p>
+            <span style={{color:"var(--accent)",fontWeight:600,fontSize:14}}>Ler resumo →</span>
+          </div>
+        </article>
+      )}
+      <section className="grid">
+        {resto.map(n => (
+          <article key={n.url} className="card" onClick={() => setAberto(n)}>
+            <Imagem item={n} />
+            <div className="body"><Meta item={n} /><h3>{n.tituloPt}</h3></div>
+          </article>
+        ))}
+      </section>
+      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
+      <footer>Resumos produzidos em português a partir das matérias originais. Clique em qualquer card para abrir.</footer>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>

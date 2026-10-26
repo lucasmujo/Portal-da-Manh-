@@ -1,322 +1,267 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 25 de outubro de 2026</title>
+<title>Portal da Manhã — 26 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#6b7280;--line:#e8e6e1;--acc:#e8590c;--r:18px}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.55}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#17181c;--mut:#6b6e78;--line:#e8e6e0;--brand:#e8590c;--design:#0f9d8a;--tech:#5b4bdb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:26px;border-bottom:1px solid var(--line);padding-bottom:18px}
-h1{margin:0;font-size:34px;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:14px;text-transform:capitalize}
-.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px}
-.tag.Branding{background:#fff0e5;color:#c2410c}.tag.Design{background:#e3f6f1;color:#0f766e}.tag.Tecnologia{background:#ece9ff;color:#4338ca}
-.stars{color:#f59f00;letter-spacing:1px;font-size:13px}
-.meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
-.media{position:relative;overflow:hidden;background:#ececec}
-.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.card:hover .media img,.card:hover .media svg,.hero:hover .media img,.hero:hover .media svg{transform:scale(1.04)}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(20,20,40,.08);cursor:pointer;margin-bottom:26px;transition:box-shadow .3s}
-.hero:hover{box-shadow:0 14px 48px rgba(20,20,40,.14)}
-.hero .media{min-height:340px}
-.hero .body{padding:30px;display:flex;flex-direction:column;gap:14px;justify-content:center}
-.hero h2{margin:0;font-size:29px;line-height:1.18;letter-spacing:-.02em}
-.hero p{margin:0;color:#444}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(20,20,40,.06);cursor:pointer;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(20,20,40,.12)}
-.card .media{aspect-ratio:16/10}
-.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:9px}
-.card h3{margin:0;font-size:18px;line-height:1.28}
-.card p{margin:0;color:#555;font-size:14px}
-.warn{font-size:12px;color:#92400e;background:#fef3c7;border-radius:8px;padding:5px 9px}
-.overlay{position:fixed;inset:0;background:rgba(15,17,25,.5);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px;z-index:50;animation:fade .25s}
-.modal{background:#fff;border-radius:24px;max-width:780px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:up .3s}
-.modal .media{aspect-ratio:16/9}
-.modal .in{padding:28px 32px 34px;display:flex;flex-direction:column;gap:14px}
-.modal h2{margin:0;font-size:28px;line-height:1.2;letter-spacing:-.02em}
-.modal .orig{color:var(--mut);font-size:13px;font-style:italic;margin-top:-6px}
-.modal p{margin:0;font-size:16.5px;color:#2b2e35}
-.src{align-self:flex-start;background:var(--ink);color:#fff;text-decoration:none;padding:11px 18px;border-radius:12px;font-weight:600;font-size:14px}
-.src:hover{background:var(--acc)}
-.close{position:sticky;float:right;top:12px;margin:12px 12px -48px 0;z-index:3;border:0;background:rgba(255,255,255,.92);width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-footer{margin-top:40px;color:var(--mut);font-size:12.5px;text-align:center}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+h1{font-size:30px;margin:0;letter-spacing:-.02em}.date{color:var(--mut);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
+.t-Branding{background:var(--brand)}.t-Design{background:var(--design)}.t-Tecnologia{background:var(--tech)}
+.stars{color:#f5a623;letter-spacing:1px;font-size:13px}
+.media{position:relative;overflow:hidden;background:#eee}.media img,.media svg{width:100%;height:100%;object-fit:cover;display:block}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:24px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(0,0,0,.1)}
+.hero .media{min-height:340px}.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.02em}
+.src{color:var(--mut);font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.1)}
+.card .media{height:180px}.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:17px;line-height:1.3}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.overlay{position:fixed;inset:0;background:rgba(20,20,25,.45);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal .media{height:340px}.modal .in{padding:26px 30px 30px}.modal h2{font-size:26px;line-height:1.2;margin:10px 0}
+.modal p{font-size:16px;margin:0 0 14px}.close{position:absolute;top:14px;right:14px;border:0;background:#fff;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:2}
+.btn{display:inline-block;margin-top:6px;padding:10px 18px;border-radius:99px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.note{font-size:12px;color:var(--mut);border-left:3px solid var(--line);padding-left:10px;margin-top:10px}
+footer{margin-top:36px;text-align:center;color:var(--mut);font-size:13px}
 @keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}h1{font-size:27px}.hero h2{font-size:23px}.modal .in{padding:20px}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .media{min-height:220px}.hero h2{font-size:23px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
-
 const NEWS = [
-  {
-    title: "Atlanta Falcons 'Nazi' logo controversy strikes again",
-    tituloPt: "A polêmica do logo 'nazista' do Atlanta Falcons volta à tona",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/the-atlanta-falcons-nazi-logo-controversy-strikes-again",
-    imageUrl: null,
-    categoria: "Branding", estrelas: 5, data: "24 out",
-    resumo: [
-      "O Atlanta Falcons reacendeu uma discussão antiga sobre identidade visual esportiva. Há dois anos, o time ressuscitou um logo dos anos 1960: uma ave de rapina preta, angulosa, sobre fundo vermelho, que parte do público achou parecida com a estética fascista dos anos 1930. Agora, a equipe lançou uma versão remixada, com listras verticais em vermelho, bege, preto e creme, e o falcão desenhado de modo a formar a letra 'F'.",
-      "Muitos críticos dizem que o novo desenho torna a semelhança com imagens da era nazista ainda mais evidente. Nas redes sociais, o símbolo ganhou apelidos como 'gridiron cross' e 'Bird Reich'. O logo parece ser temporário, criado para um jogo de domingo contra o San Francisco 49ers, em que o time usará uniformes retrô inspirados em 1966.",
-      "O autor, Joe Foley, lembra que aves de rapina e a águia-careca são símbolos comuns e que a própria suástica tem uma história muito anterior ao Terceiro Reich. Mesmo assim, argumenta que o clube deveria ter antecipado a reação, dada a polêmica anterior. Ele também se pergunta se a mesma comparação era feita quando o logo surgiu nos anos 1960, antes de as redes sociais colocarem o design gráfico sob escrutínio constante, e conclui que o logo principal dos Falcons segue na lista de melhores logos da NFL do site."
-    ]
-  },
-  {
-    title: "New Logo for Jewelers of America",
-    tituloPt: "Novo logo para a Jewelers of America",
-    source: "Brand New",
-    url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_jewelers_of_america.php",
-    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/jewelers_of_america_logo_before_after.png",
-    categoria: "Branding", estrelas: 4, data: "23 out",
-    paywall: true,
-    resumo: [
-      "O Brand New publicou, em 23 de outubro, a análise do novo logo da Jewelers of America, associação de defesa dos interesses do setor joalheiro (indústria listada como 'Advocacy'). A publicação traz uma imagem comparando o antes e o depois da marca.",
-      "Pelas tags da matéria — azul, joalheria, espaço negativo, serifa e brilho (sparkle) — dá para deduzir que o novo desenho aposta em uma paleta azul, tipografia serifada e um recurso de espaço negativo que sugere o brilho de uma gema.",
-      "O estúdio responsável e a crítica completa não estão disponíveis publicamente."
-    ]
-  },
-  {
-    title: "How Ben & Jerry's became a beacon of brand bravery",
-    tituloPt: "Como a Ben & Jerry's se tornou um farol de coragem de marca",
-    source: "Creative Bloq",
-    url: "https://www.creativebloq.com/news/how-ben-and-jerrys-became-a-beacon-of-brand-bravery",
-    imageUrl: null,
-    categoria: "Branding", estrelas: 4, data: "24 out",
-    resumo: [
-      "A matéria perfila a Ben & Jerry's como uma marca que trata o ativismo social como parte central da identidade. O texto parte de uma entrevista com o diretor de marketing, Jay Curley, que falou na conferência Paradigms, na Croácia, sobre marcas que impulsionam mudança social.",
-      "Curley defende que empresas devem ir além do apoio simbólico a causas: para ele, o ativismo faz parte da operação, não apenas do marketing. Ele atribui o silêncio de muitas empresas à aversão ao risco e à preferência pela neutralidade, e cita Patagonia, Lush e Penzeys Spices como inspirações.",
-      "O executivo admite que os funcionários não são selecionados por valores, o que gera discordâncias internas, tratadas com educação e diálogo. A escolha das causas começa pelos valores da empresa e pondera onde a marca pode ter impacto real e quais temas são urgentes. Esperar perfeição significaria nunca se posicionar — ele reconhece que a declaração de 2016 sobre o Black Lives Matter poderia ter sido mais bem redigida, mas que falar foi importante. Quanto aos clientes, alguns continuam comprando mesmo discordando; outros deixam de comprar, e a marca aceita os dois resultados."
-    ]
-  },
-  {
-    title: "Ad of the Day: Factorial ties office workers in knots to sell its AI for business",
-    tituloPt: "Anúncio do dia: a Factorial enrola funcionários de escritório em fios para vender sua IA para empresas",
-    source: "The Drum",
-    url: "https://www.thedrum.com/news/factorial-ties-office-workers-in-knots-to-sell-the-ai-for-business",
-    imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/factorial-office-jpg.jpg?w=1280&ar=default&fit=crop&crop=faces&auto=format",
-    categoria: "Branding", estrelas: 4, data: "23 out",
-    resumo: [
-      "A campanha global 'Tangled' (Emaranhados), da agência barcelonesa Fuego Camina Conmigo, marca a mudança da Factorial — software de RH espanhol, com mais de 17 mil clientes em mais de 90 países — para uma identidade mais ampla: 'a IA para negócios'.",
-      "O filme de 60 segundos, dirigido por Dario Fau, mostra um escritório tão tomado por cabos, papéis e equipamentos que ninguém consegue se mover. As reclamações dos funcionários espelham gargalos reais, como esperar dados de despesas ou atualizações do RH. O chefe anuncia que a equipe deve trabalhar junta e apresenta a Factorial como uma IA que conhece a empresa tanto quanto a veterana Betty — cujo olhar desconfiado é o ponto alto cômico. Quando os funcionários digitam seus pedidos, o emaranhado se desfaz; o chefe se surpreende e tenta levar o crédito, até a narração corrigi-lo.",
-      "O carro-chefe é o 'One', um agente de IA que responde dúvidas, delega tarefas e automatiza fluxos com dados da empresa. Pesquisa da Factorial indica que quase metade dos líderes europeus gasta de 20% a 30% do tempo procurando informação que já existe internamente. A crítica da The Drum é que o filme funciona por vender momentos humanos reconhecíveis, e não demonstrações de produto; as breves telas do painel são o ponto mais fraco."
-    ]
-  },
-  {
-    title: "Yahoo Mail scares up everyday email fears with horror film parodies",
-    tituloPt: "Yahoo Mail transforma medos cotidianos de e-mail em paródias de filmes de terror",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/yahoo-mail-scares-everyday-email-fears-horror-film-parodies/1973309",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/yahoo-halloween-ts-dr-UWP-CUS.jpg",
-    categoria: "Branding", estrelas: 4, data: "23 out",
-    resumo: [
-      "O Yahoo lançou uma campanha de Halloween chamada 'TS;DR' (Too Scary; Didn't Read), criada pela Conscious Minds. São três curtas de menos de 30 segundos que parodiam filmes de terror para falar de ansiedades com a caixa de entrada: mensagens perdidas, respostas secas e a caça ao e-mail de confirmação.",
-      "'K.' brinca com o sucesso recente 'Obsession': um homem responde ao e-mail da namorada com uma única letra e um ponto, o que a deixa paranoica. 'Missed Email' recria a cena do chuveiro de 'Psicose', em que uma mãe se assusta com a fantasia da filha até ler no e-mail que era para o Dia da Fantasia na escola. 'Confirmation Email' referencia 'Pecadores': vampiros procuram desesperados o e-mail de confirmação para entrar numa festa.",
-      "Segundo Kyle Miller, gerente-geral do Yahoo Mail, a empresa quer uma caixa de entrada pessoal que destaque mensagens prioritárias e cuide de tarefas rotineiras. Kemma Kefalas, do Yahoo Creative Lab, diz que a ideia nasceu do fato de quase todo mundo ter uma história de terror com e-mail. As peças rodam em TikTok, Instagram, Facebook e YouTube e seguem a estratégia de usar humor para se diferenciar de Gmail e Outlook, na linha da campanha anterior 'The Horrors of Reply All' e da ação com Cardi B, o post mais visto da história da marca."
-    ]
-  },
-  {
-    title: "Collectible furniture meets cultural critique at Dutch Design Week's Table of Power",
-    tituloPt: "Mobiliário de colecionador encontra crítica cultural na 'Table of Power' da Dutch Design Week",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/25/collectible-furniture-dutch-design-week-table-of-power/",
-    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/table-of-power-show-not-show-design_dezeen_2364_sq.jpg",
-    categoria: "Design", estrelas: 4, data: "25 out",
-    resumo: [
-      "A exposição 'The Table of Power', do coletivo Show Not Show, ocupa o espaço Kruisruimte, em Eindhoven, durante a Dutch Design Week. Inspira-se na série fotográfica de Jacqueline Hassink, dos anos 1990, com salas de reunião vazias de empresas da Fortune 500, e usa uma longa mesa central como símbolo de autoridade institucional; um espelho no fundo faz a mesa parecer infinita.",
-      "Frank Penders e Luuk van Laarhoven desenharam a mesa em chapa metálica dobrada, com texturas escovadas e degradês de cor. Outras peças vêm de Lucas Zito, Marc Meeuwissen, Mokko e Studio Fabius Clovis, além dos convidados Aleksandra Adamchyk, Kilian Vos e Pablo Octavio, em materiais como madeira bruta, laca brilhante, metal escultórico e bioplástico translúcido.",
-      "A mostra nasceu do convite para sediar o jantar oficial de imprensa da DDW. Em vez de encaixar um jantar no espaço pequeno, o coletivo fez do jantar o ponto de partida: a imprensa como espaço de poder que molda o que o mundo do design vê e lembra. Os convidados foram incentivados a se levantar e 'dividir o poder', mas a Dezeen notou que poucos jornalistas o fizeram. Entre os destaques estão os divisores de alumínio escovado de Octavio, que criam desequilíbrio visual entre sentados e em pé, os bancos angulosos Barricada, de Meeuwissen, e as luminárias de bioplástico de Zito."
-    ]
-  },
-  {
-    title: "Stars return to Frank Lloyd Wright's only built planetarium after twenty years",
-    tituloPt: "As estrelas voltam ao único planetário construído por Frank Lloyd Wright após vinte anos",
-    source: "Designboom",
-    url: "https://www.designboom.com/architecture/frank-lloyd-wright-miller-planetarium-florida-southern-college-restoration/",
-    imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/florida-southern-college-frank-lloyd-wright-planetarium-restoration-designboom-FB.jpg",
-    categoria: "Design", estrelas: 4, data: "23 out",
-    resumo: [
-      "O Planetário Miller, do Florida Southern College, em Lakeland (EUA), foi restaurado e reaberto ao público em 26 de setembro de 2026, depois de mais de duas décadas sem sessões regulares. É o único planetário construído por Frank Lloyd Wright, parte de um conjunto de 13 edifícios do arquiteto no campus, erguido entre 1954 e 1958; a primeira sessão ocorreu em abril de 1960, cerca de um ano após a morte dele.",
-      "A equipe liderada por Jeff Baker, da MCWB Architects, começou pela envoltória em 2021: trocou trechos do telhado, reparou o reboco e substituiu mais de 280 blocos têxteis moldados à mão, usando moldes impressos em 3D para reproduzir os padrões geométricos. Atrás das paredes superiores, encontrou estrutura de aço e cavidades abertas, o que permitiu adicionar isolamento.",
-      "No interior, a retirada de um armário de computadores dos anos 1980 devolveu os bancos curvos de compensado a dois anéis concêntricos em torno do projetor. Artesãos locais recuperaram os assentos, as paredes receberam tinta mais clara e o piso voltou ao vermelho Cherokee. Um sistema digital COSM e sonorização Bowen substituíram o equipamento parado desde 2004, e o espaço volta a receber programas de astronomia para escolas."
-    ]
-  },
-  {
-    title: "Block's new voice model sounds eerily human",
-    tituloPt: "Novo modelo de voz da Block soa estranhamente humano",
-    source: "TechCrunch",
-    url: "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
-    imageUrl: "https://techcrunch.com/wp-content/uploads/2025/07/jack-dorsey.jpg?resize=1200,822",
-    categoria: "Tecnologia", estrelas: 4, data: "24 out",
-    resumo: [
-      "A Block, empresa de Jack Dorsey, lançou o Dessa, modelo de voz do seu laboratório de pesquisa. Segundo a empresa, ele roda localmente, foi treinado só com fala humana e precisou de uma única GPU NVIDIA. É um modelo 'full-duplex': fala e ouve ao mesmo tempo, como o GPT-Live da OpenAI.",
-      "A Block argumenta que a voz de IA atual soa artificial porque converte fala em texto e depois gera fala a partir do texto, perdendo informação emocional. Concorrentes como ElevenLabs v4 e Fish Audio Drama 3 usam marcações para controlar emoção; no Dessa, a emoção seria embutida no próprio modelo, embora não esteja claro se há tags. Nas demonstrações, o agente muda de voz, cadência e emoção — soa cansado ao dizer que está cansado e quase em lágrimas ao falar de quem o faz sentir confortável.",
-      "O modelo roda em um computador de consumo, como um MacBook M4 Max ou superior, e ainda não é público: a Block pediu a pesquisadores de segurança que o testem, sobretudo quanto ao risco de enganar pessoas. A empresa foca em serviços financeiros para pequenos negócios, e a Square já usa IA de voz em pedidos; um modelo no dispositivo poderia ampliar usos a custo menor."
-    ]
-  },
-  {
-    title: "Ste Marie imbues Monos Vancouver office with 'residential quality'",
-    tituloPt: "Ste Marie dá 'qualidade residencial' ao escritório da Monos em Vancouver",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/24/monos-headquarters-vancouver-ste-marie/",
-    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/monos-hq_ste-marie_dezeen_sq1.jpg",
-    categoria: "Design", estrelas: 3, data: "24 out",
-    resumo: [
-      "O estúdio canadense Ste Marie projetou a sede da marca de malas Monos, no bairro Mount Pleasant, em Vancouver. Com um briefing aberto, criou uma estrutura flexível para uma empresa que ainda define seu futuro e precisa de espaço para colaborar, experimentar e receber convidados.",
-      "O escritório é tratado como uma casa, organizado em três zonas sobrepostas: sofás modulares baixos e bancos fechados sob pendentes cônicos; uma longa mesa comunal central, usada para reuniões, desenvolvimento de produto, testes e refeições; e, ao fundo, uma cozinha com sala de chá, bancadas em superfície sólida e armários sem puxadores. Marcenaria sob medida em planos perpendiculares forma apoios verticais e caixas de luz.",
-      "Os ambientes se expandem ou se contraem: uma reunião vira refeição, uma bancada vira vitrine, uma área de estar vira espaço de eventos. Concreto polido e madeira são suavizados por tecidos, tapetes de fibra natural e cortinas translúcidas, e a luz regulável muda o clima do trabalho focado da manhã aos eventos da noite."
-    ]
-  },
-  {
-    title: "Adrian Smith + Gordon Gill Architecture designs 'fluid' skyscraper Lilli for Miami waterfront",
-    tituloPt: "Adrian Smith + Gordon Gill projeta o arranha-céu 'fluido' Lilli para a orla de Miami",
-    source: "Dezeen",
-    url: "https://www.dezeen.com/2026/10/23/adrian-smith-gordon-gill-lilli-skyscraper-miami/",
-    imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/adrian-smith-gordon-gill-lilli-skyscraper-miami_dezeen_2364_sq.jpg",
-    categoria: "Design", estrelas: 3, data: "23 out",
-    resumo: [
-      "O escritório Adrian Smith + Gordon Gill Architecture (AS+GG), conhecido por arranha-céus como a Jeddah Tower, revelou o Lilli, torre residencial para o bairro de Edgewater, em Miami. Com 193 metros (636 pés) e 53 andares, ocupa um terreno estreito à beira d'água e abrigará 117 residências, além de lounges, piscinas e spas.",
-      "O edifício tem cantos arredondados e grandes superfícies de vidro interrompidas por lajes metálicas. Terraços se voltam para a água, enquanto pátios maiores correm pelo lado oposto. O saguão de térreo traz grandes colunas metálicas e detalhes minimalistas, e uma piscina na cobertura fica sob um volume com o mesmo acabamento refletivo da fachada.",
-      "Para Juan Betancur, sócio de design, os interiores devem parecer inseparáveis da arquitetura, com paleta contida de materiais naturais que deixa luz, paisagem e vistas da baía de Biscayne fazerem parte da experiência. O Lilli segue outra torre do estúdio em Miami inspirada em iates, em meio ao avanço de arranha-céus residenciais na cidade, como a torre da Bugatti. Imagens: Darcstudio."
-    ]
-  },
-  {
-    title: "AB InBev champions moderation in new global campaign",
-    tituloPt: "AB InBev defende a moderação em nova campanha global",
-    source: "Campaign",
-    url: "https://www.campaignlive.com/article/ab-inbev-champions-moderation-new-global-campaign/1973305",
-    imageUrl: "https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/150/cached.offlinehbpl.hbpl.co.uk/news/SUC/ab-inbev-moderation-SC-CUS.jpg",
-    categoria: "Branding", estrelas: 3, data: "23 out",
-    resumo: [
-      "A AB InBev lançou a campanha global 'Choose Moderation. Choose Beer', criada pela Anomaly. O centro é um filme de 1min26 com as cervejas sem e de baixo teor alcoólico da companhia, como Corona, Budweiser, Michelob Ultra e Stella Artois, em situações sociais e de celebração que apresentam a cerveja como parte de um estilo de vida moderado.",
-      "O slogan sustenta que unir diversão e escolhas equilibradas rende momentos melhores, com textos bem-humorados como 'Choose to have fun and make the morning run'. A empresa aproveita para promover seu portfólio crescente de produtos sem álcool: cita pesquisa da Dentsu segundo a qual 82% dos consumidores da Ásia-Pacífico acham que reuniões sociais podem ser tão boas sem álcool, e um em cada quatro não bebe. A cerveja sem álcool da AB InBev cresceu 27% e o portfólio 'Balanced Choices' subiu 13% em junho.",
-      "A análise da Campaign vê a categoria migrando de vender a balada para vender o beber equilibrado, comparando com a campanha 'Now You Can', da Heineken 0.0. Conclui que a ideia é familiar no setor, mas que a marca acerta o tom."
-    ]
-  }
+ {
+  title: "Why do AI platforms want humans to design their branding?",
+  tituloPt: "Por que as plataformas de IA querem que humanos desenhem suas marcas?",
+  source: "Creative Bloq", url: "https://www.creativebloq.com/news/why-do-ai-platforms-want-humans-to-design-their-branding",
+  imageUrl: null, cat: "Branding", stars: 5, date: "25 out 2026",
+  resumo: [
+   "Em um artigo de opinião, Tom May aponta um paradoxo curioso: as empresas que prometem automatizar o trabalho criativo estão contratando designers humanos para criar suas próprias identidades visuais.",
+   "Entre os exemplos de 2026 estão o rebranding do gerador de imagens Ideogram pelo estúdio How&How, a identidade do app de vídeo Elva feita pela Lazarev, a marca da consultoria de auditoria Clusia criada pela Together e a encomenda da Meta à letrista Jessica Hische para a plataforma de IA Muse.",
+   "O argumento central é que branding trata de conquistar confiança do público, e não apenas de produzir imagens bonitas. Como muita gente já desconfia de imagens geradas por IA, assinar a marca com mão humana funciona como um selo de credibilidade.",
+   "O texto lembra a reação negativa que Hische enfrentou no Threads por causa do cachê de US$ 12.500 divulgado, com críticos dizendo que criativos não deveriam emprestar sua reputação a uma tecnologia que reduz a demanda pelo próprio trabalho.",
+   "Ainda assim, o autor questiona se recusar esse tipo de projeto mudaria algo, já que as empresas simplesmente contratariam outra pessoa. Para ele, o lado positivo é que essas companhias valorizam o trabalho de artistas, e os profissionais podem aproveitar essa demanda entregando um trabalho excelente. A conclusão é pragmática: encarar o paradoxo sem romantismo."
+  ]
+ },
+ {
+  title: "Grok releases the first seven minutes of its AI-generated 'Odyssey'",
+  tituloPt: "Grok lança os primeiros sete minutos de sua 'Odisseia' gerada por IA",
+  source: "TechCrunch", url: "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+  imageUrl: "https://techcrunch.com/wp-content/uploads/2026/03/grok-getty.jpg?resize=1200,800", cat: "Tecnologia", stars: 4, date: "25 out 2026",
+  resumo: [
+   "Cerca de três meses depois de Elon Musk anunciar uma versão completa de A Odisseia feita pelo Grok, a empresa divulgou sete minutos do que chama de primeiro episódio de uma série.",
+   "O texto contrasta o filme de Christopher Nolan, feito em boa parte com efeitos práticos e que foi um grande sucesso de bilheteria, esgotando sessões IMAX por meses, com o uso intenso de conteúdo gerado por IA por Musk, que havia criticado o elenco do longa.",
+   "A produção do Grok foi feita com a Wonder Studios e o diretor Dev Walker. A autora admite que o resultado é melhor do que esperava e supera alguns vídeos recentes de Musk, com alguns planos convincentemente reais.",
+   "As críticas, porém, são duras: os personagens falam inglês em vez de grego antigo, todos têm tons de pele claros, a narração com sotaque britânico soa genérica e o longo texto de contexto dá lugar a diálogos duros e exagerados.",
+   "Para a articulista, o trecho é sem vida, sem ritmo nem desafios emocionais, e ela o pularia como uma cena de transição de videogame. Sua conclusão é que sete minutos a mais, e muito menos um filme inteiro, seriam difíceis de acompanhar."
+  ]
+ },
+ {
+  title: "Conran Design Group rebrands luxury accommodation provider Cheval",
+  tituloPt: "Conran Design Group reformula a marca da operadora de hospedagem de luxo Cheval",
+  source: "Design Week", url: "https://www.designweek.co.uk/conran-design-group-rebrands-luxury-accommodation-provider-cheval/",
+  imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/Cheval_grid02-1024x576.png", cat: "Branding", stars: 4, date: "26 out 2026",
+  resumo: [
+   "A Conran Design Group renovou a marca da Cheval, operadora de apartamentos de luxo com serviço, num momento em que redes de hotéis e marcas de estilo de vida avançam sobre o mercado de hospedagem premium.",
+   "O reposicionamento tirou o foco do produto e o colocou na experiência completa do hóspede, com o objetivo de fortalecer a narrativa da marca.",
+   "A nova plataforma estratégica, 'Generous by design', destaca a amplitude dos apartamentos, a atenção personalizada e a rotina flexível oferecida aos hóspedes.",
+   "O logotipo reúne dois cavalos dentro de um C alongado, referência a Knightsbridge, bairro londrino onde a empresa nasceu há mais de 40 anos. Os cavalos remetem ao antigo ponto de encontro da região, e seus cascos erguidos sinalizam boas-vindas.",
+   "O verde-azulado (teal) substitui o preto, branco e dourado típicos do luxo como cor central, e a nova serifa Season é a tipografia principal. O sistema inclui emblemas, sinalização e wayfinding por propriedade, e o nome passa a ser apenas 'Cheval' nos materiais ao consumidor.",
+   "A atualização apoia a expansão para residências de marca, como Cheval Residences Dubai Islands e Cheval Residences Knightsbridge Gate, além de projetos na Arábia Saudita."
+  ]
+ },
+ {
+  title: "Cricket Wireless turns voicemails into one-off vinyl records",
+  tituloPt: "Cricket Wireless transforma mensagens de voz em discos de vinil únicos",
+  source: "Creative Review", url: "https://www.creativereview.co.uk/cricket-wireless-vinyl-voicemails-argonaut/",
+  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/Cricket-Wireless-vinyl-voicemails.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1920&h=1080", cat: "Branding", stars: 4, date: "21 out 2026",
+  resumo: [
+   "A operadora americana Cricket Wireless, em parceria com a agência Argonaut, de San Francisco, lançou 'Vinyl Voicemails', ação que grava mensagens de voz salvas em discos de vinil personalizados.",
+   "A ativação aconteceu numa loja de discos no Brooklyn, onde os visitantes transferiam o áudio do celular para um disco virgem. O estúdio Tangible Formats cortava cada gravação em tempo real, com um torno de corte ao vivo.",
+   "Cada disco único vinha com uma capa com arte do artista nova-iorquino Landon Khiry.",
+   "A ideia mira recados cotidianos que as pessoas costumam perder ao trocar de aparelho, como o parabéns de uma avó ou uma conversa casual com amigos.",
+   "A campanha ganhou buzz com vídeos teaser, incluindo um com uma figura conhecida do Brooklyn, e aproveita o renascimento da mídia física (discos, fitas e CDs) como contraponto ao caráter descartável do streaming e da nuvem.",
+   "Marcas usam cada vez mais objetos colecionáveis para se aproximar de comunidades musicais; a Cricket amplia essa lógica dando peso emocional a um formato familiar. Segundo a executiva de marketing Cindy Rozier, a ação torna a promessa de conectividade visível, humana e duradoura."
+  ]
+ },
+ {
+  title: "Foster + Partners designs pair of skyscrapers connected by garden bridges in Armenia",
+  tituloPt: "Foster + Partners projeta dois arranha-céus ligados por pontes-jardim na Armênia",
+  source: "Dezeen", url: "https://www.dezeen.com/2026/10/23/world-trade-center-yerevan-foster-partners-armenia/",
+  imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/world-trade-center-yerevan-foster-partners-armenia_dezeen_2364_col_2.jpg", cat: "Design", stars: 4, date: "23 out 2026",
+  resumo: [
+   "A Foster + Partners desenhou o World Trade Center Yerevan, complexo na capital armênia construído em torno de duas torres de vidro.",
+   "Uma torre abrigará escritórios; a outra combinará apartamentos e hotel. Três pontes fechadas ligam os edifícios e oferecem áreas compartilhadas, como terraços paisagísticos, para os usuários de ambas.",
+   "As torres têm estrutura de concreto com contraventamento de aço e núcleo dividido, o que permite interiores abertos e flexíveis. Elas são anguladas para enquadrar marcos como a Assembleia Nacional, o teatro de ópera e balé, o Memorial do Genocídio e o Monte Ararate.",
+   "Edifícios baixos na base reúnem entretenimento, hospitalidade e comércio ao redor de uma praça pública. Ao elevar as torres, metade do terreno fica livre, o que, segundo os arquitetos, beneficia a vida urbana.",
+   "O eixo verde de um parque vizinho se estende até o pódio da base, e os espaços públicos se inspiram no patrimônio arquitetônico local. O terreno fica num distrito planejado em 1924 por Alexander Tamanian, que imaginou Yerevan como cidade-jardim, e uma praça de eventos conectará o complexo à igreja de São João Batista."
+  ]
+ },
+ {
+  title: "Oatly wants to make saving the planet taste better",
+  tituloPt: "Oatly quer fazer salvar o planeta ter um gosto melhor",
+  source: "The Drum", url: "https://www.thedrum.com/news/oatly-s-plan-to-save-the-planet-make-it-taste-better",
+  imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/oatly-embassy-te-3r8a7360.jpg?w=1280&ar=default&fit=crop&crop=faces&auto=format", cat: "Branding", stars: 4, date: "23 out 2026",
+  resumo: [
+   "A The Drum visitou a Oatly Embassy, evento de três dias em Londres em que a marca de bebida de aveia montou uma falsa missão diplomática para imprensa, baristas e criadores.",
+   "Filip Nilsson, diretor criativo executivo, diz que o entusiasmo dos criadores e um crescimento de cerca de 20% nas vendas europeias neste ano mostram que a estratégia funciona; hoje o gargalo é o abastecimento.",
+   "A Oatly nasceu na Suécia em 1994 como produto nutricional para intolerantes à lactose, virou em torno de 2012 para a sustentabilidade como estilo de vida e atingiu o auge com o IPO de 2021 em Nova York. Com a queda da demanda por plant-based e prejuízos pesados em 2022, veio nova liderança e foco em crescimento em 2023.",
+   "A conclusão da empresa foi que apelos ambientais sozinhos não mudam hábitos de compra. Por isso a marca passou a falar de sabor, abraçou tendências como matcha e abandonou os ataques ao leite de vaca.",
+   "A Oatly apoia cafeterias com livro de receitas, o relatório anual Future of Taste e masterclasses. Toda a comunicação é feita por um time interno de cerca de 60 pessoas, sem agência nem diretor de marketing, com foco em redes sociais e eventos.",
+   "A diretora sênior de sustentabilidade, Caroline Reid, defende tornar o leite de aveia a opção padrão, ideia que nenhuma grande rede de cafés adotou. Para Nilsson, o sabor lidera a missão e a sustentabilidade vem em seguida."
+  ]
+ },
+ {
+  title: "Arup creates arrow-shaped viewpoint for Fehmarnbelt Tunnel project",
+  tituloPt: "Arup cria mirante em forma de flecha para as obras do Túnel de Fehmarnbelt",
+  source: "Dezeen", url: "https://www.dezeen.com/2026/10/25/arup-pilen-viewpoint-fehmarnbelt-tunnel/",
+  imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/pilen-viewpoint-arup-fehmarnbelt-tunnel-construction-denmark-architecture-public-leisure-infrastructure_dezeen_2364_hero.jpg", cat: "Design", stars: 3, date: "25 out 2026",
+  resumo: [
+   "A consultoria de engenharia Arup projetou o Pilen, um mirante removível na Dinamarca que permite ao público acompanhar as obras do Túnel de Fehmarnbelt.",
+   "O túnel rodoviário e ferroviário de 18 km está sendo construído sob o mar para ligar Rødbyhavn, na Dinamarca, a Puttgarden, na Alemanha, reforçando a conexão entre a Europa continental e a Escandinávia.",
+   "O nome vem da palavra dinamarquesa para 'flecha': a forma sugere movimento e aponta para o local onde o túnel emerge na Alemanha. A rampa tem 217 metros, o mesmo comprimento de um dos 89 segmentos de concreto do túnel.",
+   "O arquiteto Kristian Winther afirma que a estrutura aproxima comunidade e visitantes da obra e ajuda a entender sua escala. A Femern, responsável pela construção, quis abrir o canteiro ao público, e o mirante fica perto da entrada do túnel.",
+   "Feito de madeira reaproveitada e aço, será desmontado após a conclusão da obra, com peças reutilizáveis. Um deck com vegetação local abriga um caminho sem barreiras que sobe 24 metros acima do nível do mar. O túnel deve ficar pronto em 2029."
+  ]
+ },
+ {
+  title: "Sheba campaign turns cat owners from ignored to adored",
+  tituloPt: "Campanha da Sheba transforma donos de gatos de ignorados em adorados",
+  source: "Creative Review", url: "https://www.creativereview.co.uk/sheba-ignored-adored-social-advertising/",
+  imageUrl: "https://d3e341ktepti6g.cloudfront.net/uploads/2026/10/sheba-cat-ad-featured.jpg?auto=compress,format&crop=faces,entropy,edges&fit=crop&q=60&w=1105&h=1106", cat: "Branding", stars: 3, date: "22 out 2026",
+  resumo: [
+   "A Sheba, marca de comida para gatos da Mars, lançou 'Ignored to Adored', programa criado pela AMV BBDO para ajudar donos a criar vínculo mais próximo com seus gatos.",
+   "A iniciativa brinca com o jeito distante dos felinos. A pesquisa da marca mostrou que muitos donos pesquisam na internet se o gato os ama.",
+   "A Sheba posiciona sua linha premium, com garantia de devolução do dinheiro, como caminho para conquistar o bichano. A estratégia busca transformar compradores ocasionais em fiéis, dando-lhes um motivo pessoal para continuar comprando.",
+   "A campanha é pensada para redes sociais e traz celebridades, atletas e gente comum cujas conquistas passam despercebidas por gatos indiferentes. Depois de experimentar o programa, os gatos respondem com carinho.",
+   "Os filmes, lançados ao longo dos últimos meses, contam com a atriz Haley Lu Richardson, a cantora Cat Burns e o campeão olímpico Ilia Malinin, entre outros. Para Andre Sallowicz, da AMV BBDO, o desafio era dar aos donos um motivo para comprar com mais frequência."
+  ]
+ },
+ {
+  title: "Think Architecture's fragmented House on a Slope overlooks Lake Zurich",
+  tituloPt: "Casa fragmentada da Think Architecture domina o Lago de Zurique",
+  source: "Dezeen", url: "https://www.dezeen.com/2026/10/26/think-architecture-hillside-house-lake-zurich/",
+  imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/Square-Think-Architecture-House-on-a-Slope-Photos_dezeen_2364_col_3-copy-1024x1024.jpg", cat: "Design", stars: 3, date: "26 out 2026",
+  resumo: [
+   "A House on a Slope, do estúdio suíço Think Architecture, é uma residência de cerca de 1.000 m² com vista para o Lago de Zurique.",
+   "Num terreno estreito e muito inclinado, os arquitetos dividiram a casa em dois blocos, ligados por um 'corredor de arte subterrâneo'.",
+   "O bloco superior, com entrada pela rua, concentra cozinha, sala de estar e jantar, além de vários quartos no último andar. Grandes janelas de madeira revestidas de cedro enquadram a vista encosta abaixo.",
+   "O bloco inferior tem fachada de calcário escuro e clima mais recolhido, com mais quartos da família. O nível mais baixo se abre para um jardim, uma piscina grande e um terraço-jardim.",
+   "Segundo Zbinden, a divisão em volumes menores responde à escala e ao ritmo das casas vizinhas. O nível central do jardim funciona como centro social, com materiais que seguem do exterior para o interior.",
+   "A paleta é contida: carvalho-do-pântano, cedro, carvalho, pedra azul, terrazzo e latão patinado. O projeto segue outras casas da Think Architecture no Lago de Zurique, como uma casa no alto da colina e outra em um vinhedo."
+  ]
+ },
+ {
+  title: "East Surrey Council reveals in-house brand identity ahead of 2027 launch",
+  tituloPt: "East Surrey Council revela identidade criada internamente antes do lançamento em 2027",
+  source: "Design Week", url: "https://www.designweek.co.uk/east-surrey-council-reveals-in-house-brand-identity-ahead-of-2027-launch/",
+  imageUrl: "https://www.designweek.co.uk/content/uploads/2026/10/East-Surrey-launch-4-1024x1024.jpg", cat: "Branding", stars: 3, date: "22 out 2026",
+  resumo: [
+   "A East Surrey Council, nova autoridade unitária, assumirá todos os serviços do governo local a partir de 1º de abril de 2027, reunindo funções hoje divididas entre cinco conselhos distritais e o Conselho do Condado de Surrey.",
+   "A identidade foi criada por designers internos de seis conselhos, sem custo extra para os contribuintes, segundo o órgão. Uma pesquisa pública orientou o trabalho, e os respondentes destacaram temas como comunidade, campo, cursos d'água e patrimônio.",
+   "Richard Neale, chefe de marca e marketing do Conselho do Condado, liderou o projeto, e Kelly Pink coordenou o design. A equipe reduziu os conceitos a dez, apresentados de forma anônima aos vereadores, que foram orientados a deixar de lado preferências pessoais.",
+   "O desenho escolhido por Pink usa um motivo de folha em camadas que sugere curvas de nível e campo, com um 'e' minúsculo escondido. A tipografia principal é a Lexend, com Avenir Next como secundária.",
+   "A aplicação será gradual, conforme a renovação de materiais, priorizando itens exigidos por lei e voltados aos moradores. A marca do West Surrey Council será revelada em 10 de novembro."
+  ]
+ },
+ {
+  title: "A censored library logo design just took the war on woke to a new level of weird",
+  tituloPt: "Logo de biblioteca censurado leva a 'guerra ao woke' a um novo nível de estranheza",
+  source: "Creative Bloq", url: "https://www.creativebloq.com/news/a-censored-library-logo-design-just-took-the-war-on-woke-to-a-new-level-of-weird",
+  imageUrl: null, cat: "Branding", stars: 3, date: "24 out 2026",
+  resumo: [
+   "A Biblioteca Pública de Farmville, na Carolina do Norte, aposentou o logotipo usado por 14 anos: um livro aberto com cada página de uma cor. Três moradores reclamaram que o desenho parecia um arco-íris e poderia sugerir apoio à comunidade LGBTQ+, e a mudança veio depois que as queixas chegaram a um comissário da cidade.",
+   "O artigo insere o caso na 'guerra ao woke' no design americano, lembrando o rebranding da Cracker Barrel e o uso da fonte Calibri pelo Departamento de Estado. Em contraste, cita a Mars, que resistiu a pressões sobre o M&M verde, e a Bob's Red Mill, que manteve a decisão de tirar o 'Bob'.",
+   "O prefeito Alex Joyner criticou a troca, observando que o visual lembra um símbolo conhecido de bibliotecas e que a decisão foi tomada sem consulta pública.",
+   "Para o autor, a marca original era prática e chamativa, e suas sete cores representavam assuntos diferentes, não o arco-íris. Ele vê o episódio como uma batalha sobre a própria cor, que poderia atingir também Apple e Google.",
+   "Um abaixo-assinado pela volta do logo já tem 331 assinaturas, muito mais que as três queixas originais, e uma reunião pública está marcada para 2 de novembro, às 17h30, na prefeitura."
+  ],
+  aviso: "Imagem da matéria não disponível; ilustração gerada automaticamente."
+ },
+ {
+  title: "AI delivers 'zero financial payoff' to most companies, Apollo economist says",
+  tituloPt: "IA entrega 'retorno financeiro zero' à maioria das empresas, diz economista da Apollo",
+  source: "TechCrunch", url: "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+  imageUrl: "https://techcrunch.com/wp-content/uploads/2023/08/GettyImages-1308803174.jpg?resize=1200,800", cat: "Tecnologia", stars: 3, date: "25 out 2026",
+  resumo: [
+   "Segundo Anthony Ha, do TechCrunch, o economista-chefe da Apollo Global Management, Torsten Slok, não vê benefício financeiro mensurável da IA em grandes empresas americanas fora do setor de tecnologia.",
+   "Ele analisa o 'S&P 493', ou seja, o S&P 500 sem sete gigantes de tecnologia: Alphabet, Amazon, Apple, Meta, Microsoft, Nvidia e Tesla. Nesse grupo, margens de lucro e receita por funcionário parecem estáveis, sem sinal de ganho de produtividade.",
+   "Slok duvida que negócios tradicionais consigam converter inteligência de máquina cada vez mais barata em crescimento mais rápido de receita e margens maiores.",
+   "Ele compara a IA a uma calculadora muito capaz e argumenta que a inteligência empresarial depende em boa parte de julgamento humano. A IA não lida com responsabilização, confiança, cultura corporativa, normas informais, dilemas éticos e justiça, fatores que afetam o risco de reputação e, portanto, o lucro.",
+   "O texto acrescenta que outros estudos recentes também não encontraram grandes ganhos de produtividade e apresenta a ausência de retorno fora da tecnologia como sinal de que as expectativas superaram os resultados mensuráveis."
+  ]
+ }
 ];
 
-const PALETAS = {
-  Branding: [["#ff9a44","#e8590c"],["#ffd166","#f4623a"],["#ff7a59","#c92a2a"]],
-  Design: [["#5eead4","#0f766e"],["#86efac","#047857"],["#67e8f9","#0e7490"]],
-  Tecnologia: [["#818cf8","#4338ca"],["#a78bfa","#6d28d9"],["#60a5fa","#3730a3"]]
-};
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
-
-function Ilustracao({ item }) {
-  const h = hash(item.title);
-  const pal = PALETAS[item.categoria][h % 3];
-  const id = "g" + h;
-  const shapes = [];
-  for (let i = 0; i < 6; i++) {
-    const k = hash(item.title + i);
-    const x = k % 400, y = (k >> 3) % 250, r = 30 + (k >> 5) % 90;
-    const t = k % 3;
-    const op = 0.14 + ((k >> 7) % 20) / 100;
-    if (t === 0) shapes.push(<circle key={i} cx={x} cy={y} r={r} fill="#fff" opacity={op} />);
-    else if (t === 1) shapes.push(<rect key={i} x={x - r} y={y - r} width={r * 1.6} height={r * 1.6} rx={r / 5} fill="#fff" opacity={op} transform={`rotate(${k % 60} ${x} ${y})`} />);
-    else shapes.push(<polygon key={i} points={`${x},${y - r} ${x + r},${y + r} ${x - r},${y + r}`} fill="#fff" opacity={op} />);
-  }
-  return (
-    <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: " + item.tituloPt}>
-      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={pal[0]} /><stop offset="1" stopColor={pal[1]} /></linearGradient></defs>
-      <rect width="400" height="250" fill={`url(#${id})`} />
-      {shapes}
-    </svg>
-  );
+const PAL = { Branding:["#ff9a3c","#e8590c","#ffd166"], Design:["#14b8a6","#0f766e","#a7f3d0"], Tecnologia:["#6366f1","#7c3aed","#93c5fd"] };
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function Ilustra({ seed, cat }){
+  const p = PAL[cat]||PAL.Branding, h = hash(seed), id = "g"+h;
+  const sh = [0,1,2,3].map(i=>({x:(h>>(i*3))%100*4,y:(h>>(i*2+1))%60*4,r:40+(h>>(i+2))%90,c:p[i%3],o:.35+((h>>i)%4)*.12}));
+  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração "+cat}>
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
+    <rect width="400" height="240" fill={"url(#"+id+")"}/>
+    {sh.map((s,i)=> i%2? <circle key={i} cx={s.x} cy={s.y} r={s.r} fill={s.c} opacity={s.o}/> : <rect key={i} x={s.x-s.r} y={s.y-s.r/2} width={s.r*1.6} height={s.r} rx="14" fill="#fff" opacity={s.o*.5} transform={"rotate("+((h>>i)%40-20)+" "+s.x+" "+s.y+")"}/>)}
+  </svg>);
 }
-
-function Midia({ item }) {
-  const [falhou, setFalhou] = useState(false);
-  return (
-    <div className="media" style={{ width: "100%", height: "100%" }}>
-      {item.imageUrl && !falhou
-        ? <img src={item.imageUrl} alt={"Foto da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
-        : <Ilustracao item={item} />}
+function Media({ item }){
+  const [falhou,setFalhou]=useState(false);
+  return (<div className="media">{item.imageUrl && !falhou
+    ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+    : <Ilustra seed={item.title} cat={item.cat}/>}</div>);
+}
+const Stars=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
+function Modal({ item, onClose }){
+  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();window.addEventListener("keydown",k);return()=>window.removeEventListener("keydown",k)},[]);
+  return (<div className="overlay" onClick={onClose}><div className="modal" style={{position:"relative"}} onClick={e=>e.stopPropagation()}>
+    <button className="close" onClick={onClose} aria-label="Fechar">×</button>
+    <Media item={item}/>
+    <div className="in">
+      <div className="row" style={{justifyContent:"flex-start"}}><span className={"tag t-"+item.cat}>{item.cat}</span><Stars n={item.stars}/></div>
+      <h2>{item.tituloPt}</h2>
+      <div className="src">{item.source} · {item.date}</div>
+      <div style={{height:14}}/>
+      {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
+      {item.aviso && <div className="note">{item.aviso}</div>}
+      <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte original ↗</a>
+    </div></div></div>);
+}
+function App(){
+  const [sel,setSel]=useState(null);
+  const itens=[...NEWS].sort((a,b)=>b.stars-a.stars);
+  const [top,...resto]=itens;
+  return (<div className="wrap">
+    <header><div><h1>☀️ Portal da Manhã</h1><div className="date">Segunda-feira, 26 de outubro de 2026 · {itens.length} notícias de branding, design e tecnologia</div></div></header>
+    <div className="hero" onClick={()=>setSel(top)}>
+      <Media item={top}/>
+      <div className="body"><div className="row" style={{justifyContent:"flex-start"}}><span className={"tag t-"+top.cat}>{top.cat}</span><Stars n={top.stars}/></div>
+        <h2>{top.tituloPt}</h2><div className="src">{top.source} · {top.date}</div>
+        <div style={{color:"#4a4d57"}}>{top.resumo[0]}</div></div>
     </div>
-  );
+    <div className="grid">{resto.map(it=>(
+      <article className="card" key={it.url} onClick={()=>setSel(it)}>
+        <Media item={it}/>
+        <div className="body"><div className="row"><span className={"tag t-"+it.cat}>{it.cat}</span><Stars n={it.stars}/></div>
+          <h3>{it.tituloPt}</h3><div className="src">{it.source} · {it.date}</div></div>
+      </article>))}</div>
+    <footer>Resumos parafraseados em português. Clique em uma notícia para ler mais, sem sair da página.</footer>
+    {sel && <Modal item={sel} onClose={()=>setSel(null)}/>}
+  </div>);
 }
-
-const Estrelas = ({ n }) => <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n) + "☆".repeat(5 - n)}</span>;
-const Meta = ({ item }) => (
-  <div className="meta">
-    <span className={"tag " + item.categoria}>{item.categoria}</span>
-    <Estrelas n={item.estrelas} />
-    <span>{item.source} · {item.data}</span>
-  </div>
-);
-
-function Modal({ item, onClose }) {
-  useEffect(() => {
-    const f = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", f);
-    document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", f); document.body.style.overflow = ""; };
-  }, []);
-  return (
-    <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-        <div className="media"><Midia item={item} /></div>
-        <div className="in">
-          <Meta item={item} />
-          <h2>{item.tituloPt}</h2>
-          <div className="orig">Título original: {item.title}</div>
-          {item.resumo.map((p, i) => <p key={i}>{p}</p>)}
-          {item.paywall && <div className="warn">Matéria atrás de paywall: resumo feito a partir de elementos públicos (título, tags, categoria e imagem).</div>}
-          <a className="src" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte — {item.source} ↗</a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function App() {
-  const [aberto, setAberto] = useState(null);
-  const itens = [...NEWS].sort((a, b) => b.estrelas - a.estrelas);
-  const [hero, ...resto] = itens;
-  const hoje = new Date(2026, 9, 25).toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-  return (
-    <div className="wrap">
-      <header className="top">
-        <h1>☀️ Portal da Manhã</h1>
-        <div className="date">{hoje}</div>
-      </header>
-      <article className="hero" onClick={() => setAberto(hero)}>
-        <div className="media"><Midia item={hero} /></div>
-        <div className="body">
-          <Meta item={hero} />
-          <h2>{hero.tituloPt}</h2>
-          <p>{hero.resumo[0].slice(0, 230)}…</p>
-          <span style={{ color: "var(--acc)", fontWeight: 600, fontSize: 14 }}>Ler resumo →</span>
-        </div>
-      </article>
-      <section className="grid">
-        {resto.map(it => (
-          <article className="card" key={it.url} onClick={() => setAberto(it)}>
-            <div className="media"><Midia item={it} /></div>
-            <div className="body">
-              <Meta item={it} />
-              <h3>{it.tituloPt}</h3>
-              <p>{it.resumo[0].slice(0, 120)}…</p>
-              {it.paywall && <div className="warn">Matéria com paywall — resumo parcial</div>}
-            </div>
-          </article>
-        ))}
-      </section>
-      {aberto && <Modal item={aberto} onClose={() => setAberto(null)} />}
-      <footer>Resumos parafraseados em português. Fontes: Brand New, Creative Bloq, The Drum, Campaign, Dezeen, Designboom e TechCrunch.</footer>
-    </div>
-  );
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>

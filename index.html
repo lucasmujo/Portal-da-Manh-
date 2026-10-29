@@ -3,220 +3,189 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 28 de outubro de 2026</title>
+<title>Portal da Manhã — 29 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#17171a;--mut:#6b6b73;--line:#e8e6e1;--acc:#ff5a36}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{margin:0;font-size:34px;letter-spacing:-.02em}
-.date{color:var(--mut);font-size:15px}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
-.hero .img{min-height:340px}
-.hero .txt{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#6a6f7a;--line:#e8e6e1;--acc:#e8553d;--r:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+h1{margin:0;font-size:34px;letter-spacing:-.02em}.sub{color:var(--mut);font-size:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card{background:var(--card);border-radius:var(--r);box-shadow:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.05);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 2px 6px rgba(0,0,0,.06),0 14px 32px rgba(0,0,0,.09)}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px;flex-direction:row}
+.hero .img{min-height:340px}.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.hero h2{font-size:28px;line-height:1.15;margin:0;letter-spacing:-.01em}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
-.card .img{height:180px}
-.card .b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.img{position:relative;background:#eee;overflow:hidden}
-.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
-.tag{padding:3px 10px;border-radius:99px;font-weight:600;font-size:12px}
-.Branding{background:#ffe8df;color:#c2410c}.Design{background:#d9f5ee;color:#0f766e}.Tecnologia{background:#e5e4ff;color:#4338ca}
-.stars{color:#f5a524;letter-spacing:1px}
-.orig{font-size:13px;color:var(--mut)}
-.overlay{position:fixed;inset:0;background:rgba(20,20,25,.5);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:fade .25s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s;position:relative}
-.modal .img{height:340px}
-.modal .c{padding:26px 30px 32px}
-.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.2}
-.modal p{font-size:16.5px;margin:0 0 14px}
-.note{font-size:13px;color:var(--mut);background:#faf8f3;border-left:3px solid var(--acc);padding:8px 12px;border-radius:6px}
-.close{position:absolute;top:14px;right:14px;z-index:2;border:0;background:#fff;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.btn{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;text-decoration:none;font-weight:600;font-size:14px}
-footer{margin-top:40px;color:var(--mut);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:27px}.modal .img{height:220px}}
+.img{position:relative;aspect-ratio:16/10;background:#eee;overflow:hidden}.hero .img{aspect-ratio:auto}
+.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
+.body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.body h3{margin:0;font-size:17px;line-height:1.25}.orig{font-size:12px;color:var(--mut)}
+.meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);flex-wrap:wrap}
+.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
+.Branding{background:#fde8e2;color:#b53a22}.Design{background:#dff3ee;color:#17725f}.Tecnologia{background:#e6e8fb;color:#4047b5}
+.stars{color:#f0a500;letter-spacing:1px}
+.ov{position:fixed;inset:0;background:rgba(20,22,28,.5);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:4vh 14px;overflow:auto;z-index:10;animation:fi .2s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .25s;position:relative}
+.modal .img{aspect-ratio:16/9}.modal .in{padding:24px 28px 30px}.modal h2{margin:8px 0 4px;font-size:26px;line-height:1.2}
+.modal p{font-size:16px;margin:14px 0}.x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:18px;cursor:pointer;z-index:2}
+.src{display:inline-block;margin-top:8px;background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;text-decoration:none;font-size:14px}
+.note{font-size:13px;color:#8a5a00;background:#fff6e0;border-radius:10px;padding:8px 12px}
+footer{margin-top:40px;color:var(--mut);font-size:12px;text-align:center}
+@keyframes fi{from{opacity:0}}@keyframes up{from{transform:translateY(24px);opacity:0}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:0;aspect-ratio:16/10}.hero h2{font-size:22px}h1{font-size:26px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useEffect } = React;
-
-const DATA = [
+const NEWS = [
 {
-  title: "New Logo and Identity for Newcastle United FC by Futurebrand and In-house",
-  tituloPt: "Novo logo e identidade do Newcastle United FC, por Futurebrand e equipe interna",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_newcastle_united_fc_by_futurebrand_and_in_house.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/newcastle_united_logo_before_after.png",
-  cat: "Branding", stars: 5, paywall: true,
-  resumo: ["O Brand New publicou em 27 de outubro de 2026 a avaliação da nova identidade do Newcastle United, clube inglês de futebol. O trabalho foi conduzido pela consultoria Futurebrand em parceria com a equipe interna do clube, e o post, classificado na categoria Noted, traz comparações de antes e depois do logotipo e um exemplo de aplicação.","O título do texto, um trocadilho com a frase de super-heróis sobre grandes poderes e grandes responsabilidades, brinca com a palavra torre (tower), e as etiquetas do post incluem evolução, futebol, Reino Unido e tower, indicando que a torre do escudo é o elemento central da mudança — uma atualização evolutiva, e não uma ruptura com o símbolo histórico.","Em um segmento em que torcedores reagem com intensidade a qualquer mexida no escudo, a escolha por evoluir o desenho com apoio do time interno sugere cautela e continuidade."]
+ title: "Prada's hand-drawn holiday campaign is an utter joy – and a sharp lesson for Coca-Cola",
+ tituloPt: "Campanha de fim de ano da Prada, desenhada à mão, é pura alegria — e uma lição para a Coca-Cola",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/pradas-hand-drawn-holiday-campaign-is-an-utter-joy-and-a-sharp-lesson-for-coca-cola",
+ imageUrl: null,
+ cat: "Branding", stars: 5, data: "29 out 2026",
+ resumo: ["A Prada lançou sua campanha de fim de ano de 2026, \"Drawing Prada\", inteiramente em animação tradicional desenhada à mão. As embaixadoras e embaixadores da marca — Sadie Sink, Maya Hawke, Chen Haoyu, Kelvin Harrison Jr. e Luther Ford — aparecem dentro de mundos de desenho animado: uma raposa sarcástica segue Maya Hawke pela neve, um lince espia Kelvin Harrison Jr. e camundongos roubam os mocassins de bolinhas de Sadie Sink.","A direção de animação ficou com John Pomeroy, veterano que trabalhou na Disney nos anos 1970, cofundou com Don Bluth o estúdio por trás de \"O Segredo de NIMH\" e voltou à Disney para \"Pocahontas\". O animador principal, Tom Bancroft, com créditos em \"A Bela e a Fera\", \"Aladdin\", \"O Rei Leão\" e \"Mulan\", conta que Pomeroy reuniu de volta uma equipe de animadores tradicionais.","O autor do texto, Tom May, usa a campanha como contraponto aos dois últimos filmes de Natal da Coca-Cola, criticados por efeitos gerados por IA. Para ele, o trabalho da Prada é \"o antídoto\" contra o conteúdo sintético, e a Coca-Cola deveria investir também em animadores tradicionais. O ponto de fundo: em um mercado saturado de imagens geradas por máquina, o feito à mão virou sinal de valor e de cuidado de marca."]
 },
 {
-  title: "Walmart Brings The Muppets and Walton Goggins Together For Its Own Holiday Carol",
-  tituloPt: "Walmart une os Muppets e Walton Goggins em sua própria versão de conto de Natal",
-  source: "Adweek",
-  url: "https://www.adweek.com/creativity/walmart-brings-the-muppets-and-walton-goggins-together-for-its-own-holiday-carol/",
-  imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/10/WalmartWhoKnewCarol.png",
-  cat: "Branding", stars: 5, paywall: true,
-  resumo: ["A campanha de fim de ano do Walmart, chamada A Who Knew Carol, reinterpreta o filme de 1992 The Muppet Christmas Carol. Feita em parceria com a Disney e o The Muppets Studio, estreou em 26 de outubro e é a mais recente peça da plataforma Who Knew? da varejista.","O porta-voz da marca, o ator Walton Goggins, faz o papel de Ebenezer Scrooge ao lado do elenco de Muppets. A história original é alterada: em vez dos fantasmas clássicos, Scrooge recebe a visita de três novos espíritos, o Fantasma do Natal Presente (Presents), o Fantasma das Ofertas Futuras e o Fantasma do Natal Expresso, cada um representando uma parte da oferta de fim de ano do Walmart, de produtos a entrega rápida.","A matéria é de Brittaney Kiefer, editora criativa da Adweek."]
+ title: "New Logo and Identity for Twinnin by UnitedUs",
+ tituloPt: "Novo logo e identidade da Twinnin, assinados pela UnitedUs",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_twinnin_by_unitedus.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Twinnin_before_after_02.jpg",
+ cat: "Branding", stars: 4, data: "28 out 2026", paywall: true,
+ resumo: ["O Brand New publicou, sob o título \"Me, Myself, and AI\", a análise da nova identidade da Twinnin, empresa do setor de tecnologia, desenvolvida pelo estúdio UnitedUs. A análise mostra comparativos de antes e depois e aplicações da marca.","As tags da publicação indicam as linhas gerais do sistema visual: tratamentos em 3D, efeito holográfico e pixelado, uso de QR code e tipografia sem serifa em caixa-alta. O título sugere que a inteligência artificial é o tema central da marca, o que combina com o visual digital e futurista indicado.","Observação: o texto completo da análise está atrás de paywall; este resumo se baseia apenas em elementos públicos (título, categoria, indústria e tags), e os detalhes de aplicação não foram confirmados."]
 },
 {
-  title: "Hono's label branding for Temper cider animates the last rally of the 2008 Wimbledon final",
-  tituloPt: "Rótulos da Hono para a sidra Temper animam o último ponto da final de Wimbledon de 2008",
-  source: "It's Nice That",
-  url: "https://www.itsnicethat.com/articles/studio-hono-temper-branding-project-261026",
-  imageUrl: "https://m.itsnicethat.com/original_images/Temper-Hero-Close_1.gif?class=w1440",
-  cat: "Design", stars: 5,
-  resumo: ["O estúdio vienense Hono criou a embalagem de uma sidra feita em colaboração entre a Temper, estúdio de objetos e experiências de tênis, e o produtor Luka Zeichmann, lançada em Londres na primeira semana de Wimbledon.","Em vez de retratar os quase cinco horas da final de 2008 entre Nadal e Federer, o estúdio focou no momento decisivo: os últimos quatro segundos, divididos em 60 quadros, com um quadro por garrafa. Alinhados, os rótulos formam uma animação no estilo flip book. A paleta usa as cores do torneio, e uma grade verde e roxa representa a quadra.","O estúdio Herr & Frau Rio, de Munique, imprimiu em risografia uma única base, que a Hono finalizou e numerou à mão. A bola de tênis é vazada em cada rótulo, de modo que, contra a luz, a própria sidra vira a bola. As pequenas variações de registro da risografia deram movimento extra à animação digitalizada.","Como cada rótulo só faz sentido dentro da sequência, a equipe só viu o resultado completo depois de imprimir, escanear e reproduzir os 60 — um erro significaria reimprimir tudo e refazer o trabalho manual."]
+ title: "Coca-Cola gives everyday heroes the royal treatment in posh portrait campaign",
+ tituloPt: "Coca-Cola dá tratamento real a heróis do dia a dia em campanha de retratos solenes",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/coca-cola-gives-everyday-heroes-the-royal-treatment-in-posh-portrait-campaign",
+ imageUrl: null,
+ cat: "Branding", stars: 4, data: "28 out 2026",
+ resumo: ["A Coca-Cola Great Britain lançou \"Local Royalty\", campanha que homenageia quem trabalha em pequenos negócios independentes. Quatro retratos pintados à mão, feitos por artistas que já retrataram membros da família real britânica, mostram pessoas de um pub, de uma mercearia, de um café e de uma loja de fish and chips.","Segundo Rhona Stephen, da Coca-Cola, o objetivo é reconhecer donos de negócios cuja contribuição \"muitas vezes passa despercebida\". O Creative Bloq enxerga na ação uma guinada para a arte analógica num cenário publicitário dominado pelo design digital.","Os retratos ficam em exposição gratuita na Saatchi Gallery, em Londres, de 28 de outubro a 1º de novembro."]
 },
 {
-  title: "DutchScot illustrates dream symbolism to give Bar Rêve an ethereal identity",
-  tituloPt: "DutchScot usa simbolismo onírico para dar identidade etérea ao Bar Rêve",
-  source: "It's Nice That",
-  url: "https://www.itsnicethat.com/articles/dutchscots-bar-reve-graphic-design-project-271026",
-  imageUrl: "https://m.itsnicethat.com/original_images/DutchScot_Portfolio_BarReve_Postcards.jpg?class=w1440",
-  cat: "Branding", stars: 4,
-  resumo: ["O estúdio londrino DutchScot desenvolveu a identidade do Bar Rêve, novo bar de coquetéis no Brooklyn inspirado na Belle Époque e em cardápios clássicos franceses, sem apelar para a nostalgia. Segundo o designer Eoin O'Kramer, o cliente queria algo atemporal, não da moda.","A palavra francesa para sonho guia o projeto. O logotipo parte de uma caligrafia europeia, mas se comporta de forma surreal: parece esticar, flutuar e evaporar em peças impressas e digitais. O endereço, 222, vira Zzz no material. A paleta é contida e remete às cores de Joan Miró, e o site brinca com a expectativa — o usuário flutua para cima em vez de rolar para baixo.","As ilustrações, feitas internamente, ecoam as formas caligráficas soltas do logotipo e trazem três animais recorrentes como símbolos de sonho — um cordeiro, um cisne e um touro — usados com parcimônia, como ovos de Páscoa."]
+ title: "Mark Palmer: Has Nike just got its brand mojo back with a spoof toy ad on social media?",
+ tituloPt: "Mark Palmer: a Nike recuperou o brilho de marca com um anúncio-paródia de brinquedo nas redes?",
+ source: "The Drum",
+ url: "https://www.thedrum.com/opinion/has-nike-just-got-its-brand-mojo-back-with-a-spoof-toy-ad-on-social-media",
+ imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/hydrahaaland.png?w=1280&ar=default&fit=crop&crop=faces&auto=format",
+ cat: "Branding", stars: 4, data: "28 out 2026",
+ resumo: ["Em coluna de opinião, Mark Palmer, fundador da Maverick Planet, analisa um anúncio-paródia no Instagram para uma boneca fictícia, a \"Hydra Haaland\". Ele primeiro achou que fosse obra de amador, mas descobriu que foi produzido pela agência boutique Ulta London, e não pela Wieden & Kennedy, parceira histórica da Nike. A peça satiriza comerciais de brinquedos tipo Barbie e Action Man, com criança, locução e um longo aviso legal cômico; o produto é real: chuteiras que mudam de cor quando molhadas.","Palmer descreve a queda de ações e reputação da Nike, em parte atribuída ao ex-CEO John Donahoe, e diz que o novo CEO, Elliott Hill, não conseguirá corrigir a cultura rapidamente — mas a publicidade pode melhorar mais rápido. Para ele, as campanhas dos últimos dois anos foram genéricas e dependentes de atletas famosos, como \"Why do it?\" (2025) e \"Rip the Script\" da Copa.","Ele contrasta isso com momentos marcantes do passado, como \"Dream Crazy\" com Colin Kaepernick (2018) e o anúncio \"Apology\" com Eric Cantona (1995), e vê no humor da paródia um retorno da imaginação e da distintividade. A sugestão final: mostrar o anúncio a equipes e agências como lembrete — \"Just Do (More) of It\"."]
 },
 {
-  title: "New Logo and Identity for Clusia by Together",
-  tituloPt: "Novo logo e identidade da Clusia, assinados pela Together",
-  source: "Brand New",
-  url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_clusia_by_together.php",
-  imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/clusia_logo_new.png",
-  cat: "Branding", stars: 3, paywall: true,
-  resumo: ["O Brand New avaliou em 27 de outubro de 2026 o novo logotipo e a identidade da Clusia, empresa do setor de tecnologia, criados pela agência Together. O texto, intitulado com um trocadilho sobre folhas, foi classificado como Reviewed.","As etiquetas do post — 3D, verde, ícone, ilustração, interface, fotografia, sans serif e software — indicam um sistema visual que combina ícone, ilustração tridimensional e imagens de interface, em tons de verde.","O corpo da análise está atrás de paywall; não há, nas partes públicas, detalhes sobre racional, tipografia ou antes e depois."]
+ title: "Apple revived the glowing logo, and turned it into the ultimate status symbol",
+ tituloPt: "A Apple reviveu o logo que brilha e o transformou no símbolo de status definitivo",
+ source: "Yanko Design",
+ url: "https://www.yankodesign.com/2026/10/28/apple-revived-the-glowing-logo-and-turned-it-into-the-ultimate-status-symbol/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/apple-revived-the-glowing-logo-and-turned-it-into-the-ultimate-status-symbol/macbook_pro_glowing_logo_1.jpeg",
+ cat: "Design", stars: 4, data: "28 out 2026",
+ resumo: ["Sarang Sheth argumenta que a Apple fez voltar o logo luminoso nas tampas dos notebooks e o transformou em marcador de exclusividade. Os MacBooks antes de 2016 tinham a maçã retroiluminada, que sinalizava um produto premium; a Apple abandonou o recurso a partir de 2015 (MacBook de 12 polegadas) e 2016 (MacBook Pro), principalmente para afinar as tampas.","O brilho retorna no novo MacBook Pro com tela PROLED XDR, o primeiro Mac com toque. Como pixels OLED emitem a própria luz e não sobra retroiluminação, a Apple precisa de outra fonte de luz, ainda não explicada; o autor cita uma patente de 2022 de espelho parcialmente refletor retroiluminado como pista, sem confirmação.","O logo luminoso aparece só na versão a partir de US$ 2.899; os demais modelos mantêm o logo espelhado apagado. O autor compara à iluminação de emblemas e grades de marcas de carros de luxo e conclui que, depois de anos de produtos mais acessíveis sob Tim Cook, a Apple recuperou um sinal de status — \"uma corda de veludo\"."]
 },
 {
-  title: "Commuters appalled by accidental optical illusion ad",
-  tituloPt: "Passageiros ficam chocados com anúncio que causou ilusão de ótica acidental",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/news/commuters-appalled-by-accidental-optical-illusion-ad",
-  imageUrl: null,
-  cat: "Branding", stars: 4,
-  resumo: ["Um cartaz de segurança pública em Londres gerou críticas porque alguns passageiros enxergaram nele uma mulher de hijab, sob o slogan Are they trying to hide something? (Estão tentando esconder algo?). Para os críticos, a peça insinuava suspeita; houve até comparações com a vigilância de 1984.","O texto de Creative Bloq atribui a confusão ao estilo de ilustração conhecido como Corporate Memphis, com figuras sem traços definidos. A intenção era mostrar um homem olhando por cima do ombro, mas a ambiguidade levou muitos a ver outra coisa.","A TfL inicialmente chamou os cartazes de afixação não autorizada e acionou a polícia de transportes britânica, mas a publicação foi apagada depois. Veículos oficiais haviam noticiado o lançamento de versões do mesmo desenho, o que sugere que a campanha pode ter partido da própria polícia; a origem segue indefinida.","O autor conclui que o texto paranoico e a imagem ambígua minaram o anúncio, independentemente de quem o criou."]
+ title: "New Logo and Identity for Newlife by Dalziel & Pow",
+ tituloPt: "Novo logo e identidade da Newlife, assinados pela Dalziel & Pow",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_newlife_by_dalziel_pow.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/newlife_logo_before_after.png",
+ cat: "Branding", stars: 3, data: "28 out 2026", paywall: true,
+ resumo: ["O Brand New destacou na seção \"Spotted\" a nova marca da Newlife, instituição de caridade do Reino Unido, redesenhada pela agência Dalziel & Pow. A publicação traz comparativos de antes e depois do logotipo.","As tags apontam para uma paleta azul e amarela e um motivo de coração, mas o texto não detalha as mudanças nem a justificativa estratégica.","Observação: o artigo completo está atrás de paywall; este resumo usa apenas título, categoria, setor e tags, sem inventar detalhes."]
 },
 {
-  title: "Just Eat's AI apocalypse raises a glaring question",
-  tituloPt: "O apocalipse de IA do Just Eat levanta uma pergunta óbvia",
-  source: "Creative Bloq",
-  url: "https://www.creativebloq.com/news/just-eats-ai-apocalypse-raises-a-pretty-obvious-question",
-  imageUrl: null,
-  cat: "Branding", stars: 4,
-  resumo: ["O gerador de imagens por IA do Just Eat encheu os cardápios do aplicativo no Reino Unido de fotos grotescas e literais demais. A empresa pediu desculpas e disse que estava removendo as imagens.","Entre os exemplos citados estão um coquetel de pão de soda com bacon e ovo, uma jacket potato mostrada como uma jaqueta estampada de batatas, um pão de alho em formato de avião por causa de um erro de digitação, camarões tigre retratados como filhotes de tigre e um sapo de verdade para o prato toad in the hole.","Clientes compartilharam comparações entre IA e realidade, e alguns disseram que o Just Eat negou reembolsos quando a comida diferia da foto. O artigo defende que os restaurantes não têm culpa — o aplicativo criou a falsa impressão.","Joe Foley lembra que o Uber Eats teve problema parecido quase três anos antes, questiona como uma empresa avaliada em US$ 4 bilhões lançou um recurso arriscado sem teste adequado e argumenta que mesmo imagens de IA precisas seriam fotografia de produto falsa."]
+ title: "Apple is finally embracing chaos and I'm here for it",
+ tituloPt: "A Apple finalmente abraça o caos — e eu aprovo",
+ source: "Creative Bloq",
+ url: "https://www.creativebloq.com/news/apple-is-finally-embracing-chaos-and-im-here-for-it",
+ imageUrl: null,
+ cat: "Branding", stars: 3, data: "29 out 2026",
+ resumo: ["Natalie Fear, do Creative Bloq, defende que a Apple está mais lúdica no marketing: a marca, ligada ao minimalismo, ganhou personalidade a partir do lançamento do MacBook Neo, com um mascote chamado \"Lil' Finder Guy\" e alguns de seus melhores anúncios recentes.","Um post no Instagram da campanha #shotoniPhone mostrou jovens criativos, com espelho inspirado em cabine de fotos e um iPod Nano gigante feito à mão, mesclando nostalgia e estilo contemporâneo. Um fã comparou o resultado a anúncios de PlayStation dos anos 1990; outro elogiou a fotografia, em que o celular importa menos que a pessoa.","Nem tudo agrada: no X, um usuário zombou de uma jaqueta de alta-costura feita de fones EarPods emaranhados, chamando-a de \"coisa de pesadelo\". A conclusão do veículo é que a Apple se afasta de sua \"rigidez cinza-espacial\" rumo a um design mais tátil e brincalhão."]
 },
 {
-  title: "McDonald's China turns old happy meal toys into a french fry-shaped wireless mouse",
-  tituloPt: "McDonald's China transforma brinquedos de Happy Meal em mouse sem fio em formato de batata frita",
-  source: "Yanko Design",
-  url: "https://www.yankodesign.com/2026/10/27/mcdonalds-china-turns-old-happy-meal-toys-into-a-french-fry-shaped-wireless-mouse/",
-  imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/mcdonalds-china-turns-old-happy-meal-toys-into-a-french-fry-shaped-wireless-mouse/McDonalds-French-Fries-8.jpg",
-  cat: "Design", stars: 4,
-  resumo: ["O McDonald's China desenvolveu com a Lenovo o Fry Mark, um mouse sem fio cujo corpo imita a caixinha de batatas fritas, com botões esquerdo e direito. Mais de 60% da carcaça seria feita de plástico recuperado de brinquedos antigos de Happy Meal.","O design usa o vermelho e amarelo da marca, com as batatas douradas formando a parte superior e o logo dos arcos na base. Faz parte da iniciativa Reimagine Good Things, lançada em 2021, que já gerou bandejas, vasos, pelúcias e uniformes.","Tem cliques silenciosos, bateria de 380 mAh, três níveis de DPI, Bluetooth e 2,4 GHz, e uma bolsa que se abre como mousepad. Foi vendido em 22 e 23 de outubro pelo app e mini programa de WeChat por 99 yuans (cerca de US$ 14) mais 18 pontos de fidelidade; só 4.000 unidades, com limite de duas por cliente, e mais de 6.000 interessados.","É exclusivo da China, sem lançamento internacional anunciado. O artigo nota que não há dados sobre precisão, duração de bateria ou conforto."]
+ title: "Ryue Nishizawa places vivid orange peak against turquoise landfill in Japan",
+ tituloPt: "Ryue Nishizawa posiciona pico laranja vibrante sobre aterro turquesa no Japão",
+ source: "Designboom",
+ url: "https://www.designboom.com/architecture/ryue-nishizawa-vivid-orange-peak-turquoise-landfill-japan-setouchi-art-industry-2026-sanaa-kazuyo-sejima/",
+ imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/ryue-nishizawa-vivid-orange-peak-turquoise-landfill-japan-setouchi-art-industry-2026-sanaa-kazuyo-sejima-designboom-1200.jpg",
+ cat: "Design", stars: 4, data: "26–28 out 2026",
+ resumo: ["Ryue Nishizawa, cofundador do SANAA com Kazuyo Sejima, projetou uma plataforma de observação em um aterro gerido pela Oono Development, em Toon, província de Ehime. A obra integra a exposição \"Final Disposal Site\", parte da primeira edição do Setouchi Art and Industry 2026, festival descentralizado que leva arte e arquitetura a sítios industriais ativos, com sete locais (sal, têxteis, jeans, estaleiros, baterias e reciclagem).","Sejima é a curadora. O aterro fica em um vale escavado como grande bacia e isolado do solo, previsto para encher em cerca de 15 anos. A mostra chama atenção para infraestruturas normalmente invisíveis.","Os visitantes chegam de ônibus e vestem uniformes laranja-avermelhados que combinam com a instalação. A superfície laranja contrasta com o solo claro, o revestimento turquesa e as montanhas verdes. Shingo Masuda e Katsuhisa Otsubo projetaram os espaços de convivência e o ponto de ônibus; Suzuko Yamada, o ônibus e os uniformes.","Nota: a data de publicação no Designboom é 26 de outubro; a Dezeen cobriu o tema em 28 de outubro."]
 },
 {
-  title: "Photos reveal walkable Oxford Street as first phase of pedestrianisation begins",
-  tituloPt: "Fotos mostram a Oxford Street para pedestres com o início da primeira fase da pedestrianização",
-  source: "Dezeen",
-  url: "https://www.dezeen.com/2026/10/27/photos-walkable-oxford-street-pedestrianisation-begins/",
-  imageUrl: "https://static-2026.dezeen.com/uploads/2026/10/oxford-street-pedestrianisation_dezeen_2364_col_sq.jpg",
-  cat: "Design", stars: 4,
-  resumo: ["A primeira fase da pedestrianização da Oxford Street, no centro de Londres, começou. Quase um quilômetro dos dois da rua, entre a Orchard Street e a Great Portland Street, está fechado a veículos — carros, ônibus, táxis, aplicativos, bicicletas, patinetes e triciclos —, que serão desviados para ruas laterais.","O projeto é do estúdio local East, com JL Gibbons, Gehl e Publica; o Hawkins\\Brown desenvolve separadamente uma visão de longo prazo para a rua inteira, do Tottenham Court Road ao Marble Arch.","Na fase de transição, a East acrescentará sinalização, bancos e jardineiras. A transformação completa começa em 2027 e termina em 2028, com duas novas praças, perto das ruas Holles e Duke, e árvores plantadas inicialmente em vasos escultóricos.","O prefeito Sadiq Khan propôs a ideia em 2017, mas a prefeitura de Westminster barrou. Para o diretor da East, Julian Lewis, o objetivo é preservar a energia e o caráter das ruas comerciais londrinas."]
+ title: "Otter Keeps Newborns Warm Without a Reliable Power Supply",
+ tituloPt: "Otter mantém recém-nascidos aquecidos mesmo sem energia elétrica confiável",
+ source: "Yanko Design",
+ url: "https://www.yankodesign.com/2026/10/28/otter-keeps-newborns-warm-without-a-reliable-power-supply/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/otter-keeps-newborns-warm-without-a-reliable-power-supply/otter-0.jpg",
+ cat: "Design", stars: 4, data: "28 out 2026",
+ resumo: ["O Otter é um aquecedor portátil para recém-nascidos pensado para hospitais com energia instável e pouca manutenção. Já está em uso e foi desenvolvido pela organização americana Design that Matters com a fabricante vietnamita MTTS.","Em vez de colchão removível de água ou gel, usa um berço integrado de policarbonato condutor de calor, sem tecido, costuras ou frestas, o que facilita a desinfecção. Paredes transparentes arredondadas sobre base escura permitem acesso fácil ao bebê. Uma bateria assume automaticamente quando falta energia; pesa cerca de 5 kg com baterias.","O visor mostra temperatura e bateria; uma sonda de pele opcional monitora o bebê, com alarmes para falhas de aquecedor, sensor e energia. Na Zâmbia serve de aquecimento complementar enquanto a mãe descansa do método canguru. O uso exige pessoal qualificado e checagens regulares de temperatura.","Já foi usado no Vietnã, na Zâmbia e nas Filipinas, com mais de 800 recém-nascidos atendidos até janeiro de 2026, e ganhou o Grande Prêmio do Seoul Design Award 2026."]
 },
 {
-  title: "Flora's Wooden Chess Set Is Actually Shaped for Your Fingers",
-  tituloPt: "O jogo de xadrez de madeira Flora é moldado para os seus dedos",
-  source: "Yanko Design",
-  url: "https://www.yankodesign.com/2026/10/27/floras-wooden-chess-set-is-actually-shaped-for-your-fingers/",
-  imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/floras-wooden-chess-set-is-actually-shaped-for-your-fingers/flora-05.jpg",
-  cat: "Design", stars: 3,
-  resumo: ["Flora é um conjunto de xadrez tátil da designer industrial Lucy Aboonour, pensado para que as peças sejam reconhecidas e manuseadas principalmente pelo toque. O projeto vem de quatro anos de observação em parques e clubes de xadrez de Nova York.","As peças lembram uma coleção botânica em miniatura: peões arredondados como botões, peças alongadas com aberturas profundas e outras altas com projeções finas. Os perfis convexos são feitos para a pegada de pinça com dois dedos, e as bases largas e pesadas baixam o centro de gravidade para evitar tombos.","Foram feitos protótipos impressos em 3D em PLA reciclado e compósitos de madeira entre 2021 e 2025; a versão final é usinada em carvalho e nogueira americanos.","O artigo questiona se as projeções finas resistem a esbarrões e se um novo jogador aprende rápido o vocabulário visual. Não há preço nem informações de compra."]
+ title: "Reddit is the latest platform to embrace the 'For You' feed",
+ tituloPt: "Reddit é a mais nova plataforma a adotar o feed 'Para Você'",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/28/reddit-is-the-latest-platform-to-embrace-the-for-you-feed/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2023/03/reddit-e1708636699632.jpg?resize=1200,800",
+ cat: "Tecnologia", stars: 3, data: "28 out 2026",
+ resumo: ["O Reddit vai adicionar um feed \"For You\" (Para Você), juntando-se a Instagram, X, Threads e Facebook. Ao abrir o app, haverá duas abas: \"For You\", que mistura posts das comunidades do usuário com recomendações baseadas em interesses, e \"Following\", só com comunidades já assinadas.","O Reddit diz que a mudança incentiva conexão, participação e pertencimento. Analistas esperam que o formato leve usuários a conteúdos além de suas comunidades. Parte dos usuários que viram o recurso em teste reclamou de conteúdo recomendado na página inicial; o app reabre na última aba usada. A liberação global ocorrerá nas próximas semanas."]
 },
 {
-  title: "Claire Lavabre's Industrial-Minimalist Lamp for Hay",
-  tituloPt: "Luminária industrial-minimalista de Claire Lavabre para a Hay",
-  source: "Core77",
-  url: "https://www.core77.com/posts/145737/Claire-Lavabres-Industrial-Minimalist-Lamp-for-Hay",
-  imageUrl: "https://s3files.core77.com/blog/images/lead_n_spotlight/1855093_lead_400_145737_.jpg",
-  cat: "Design", stars: 3,
-  resumo: ["A designer industrial e fotógrafa francesa Claire Lavabre criou a luminária de mesa Posto, seu primeiro projeto para a Hay. O briefing girava em torno do alumínio, e ela buscou reduzir a peça ao essencial.","A luminária tem três peças de alumínio bruto unidas por dois parafusos e um soquete. A cabeça repousa levemente sobre a haste, que dá um aspecto arquitetônico, e uma ranhura guarda o cabo para manter a silhueta limpa.","O alumínio fundido tem textura granulada e acabamento jateado que preserva pequenas marcas do processo, o que dá caráter honesto e sem polimento. Serve para mesas, prateleiras ou criados-mudos, com luz focada sem dominar o ambiente.","Rolf Hay, cofundador e diretor criativo de móveis e iluminação da marca, disse gostar de que se sinta o material."]
-},
-{
-  title: "Apple unveils new 14-inch MacBook Pro with M6 chip",
-  tituloPt: "Apple apresenta novo MacBook Pro de 14 polegadas com chip M6",
-  source: "TechCrunch",
-  url: "https://techcrunch.com/2026/10/27/apple-unveils-new-14-inch-macbook-pro-with-m6-chip/",
-  imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Apple-MacBook-Pro-14-in-with-M6-hero-261027_big.jpg.medium_2x.jpg?resize=1200,675",
-  cat: "Tecnologia", stars: 3,
-  resumo: ["A Apple lançou o MacBook Pro de 14 polegadas com o chip M6, segundo Aisha Malik, do TechCrunch. A empresa promete 24 horas de bateria, Wi-Fi 7 e Bluetooth 6; o preço inicial é US$ 1.999, nas cores preto-espacial e prata. Junto veio um iMac com M6 a partir de US$ 1.499, em sete cores.","Segundo a Apple, o M6 tem CPU e GPU de 12 núcleos, até 30% mais desempenho gráfico e até 25% mais rapidez em cargas de IA que o M5, e processa prompts de LLM até 13 vezes mais rápido que o MacBook Pro M1.","O notebook começa com 16 GB de memória unificada (até 32 GB), largura de banda de até 170 GB/s, HDMI, MagSafe 3, três portas Thunderbolt 4, leitor SDXC, entrada de fone e câmera de 12 MP. Carrega 50% em cerca de 30 minutos com adaptador compatível.","O iMac tem tela Retina 4.5K de 24 polegadas, câmera e áudio melhorados e até quatro Thunderbolt 4. Pré-venda em 28 de outubro; chegada às lojas em 6 de novembro."]
+ title: "AI execs may be too out of touch to build for the general public",
+ tituloPt: "Executivos de IA podem estar desconectados demais para criar produtos para o grande público",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/28/ai-execs-may-be-too-out-of-touch-to-build-for-the-general-public/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2024/03/GettyImages-1172241499.jpg?resize=1200,728",
+ cat: "Tecnologia", stars: 3, data: "28 out 2026",
+ resumo: ["Amanda Silberling argumenta que executivos de IA vivem longe do cotidiano, usando como exemplo Marissa Mayer. Em entrevista ao New York Times sobre seu app assistente, o Dazzle, ela disse que a ferramenta ajudou a escrever três tópicos vagos sobre a filha de dez anos para uma apresentação escolar — o que gerou críticas. Mayer respondeu no X que testava um protótipo que resgatava trabalhos antigos da filha.","Mayer também falou em delegar à IA temas de festa, encontros de brincadeira, viagens e fantasias de Halloween, e, perguntada se um futuro \"planejado por IA\" seria deprimente, disse que não havia pensado nisso. O texto cita ainda Sam Altman (criar um recém-nascido com ChatGPT) e Mark Zuckerberg (companheiros e terapeutas de IA mais aceitos).","Um estudo do Pew mostra que 50% dos adultos nos EUA acham que a IA reduzirá a capacidade de formar relações significativas, contra só 5% que acham que ajudará. Para a autora, eficiência serve para chips ou carros elétricos, mas relações não são para otimizar."]
 }
 ];
-
-const PAL = {Branding:[["#ff7a45","#ffb347"],["#f43f5e","#fb923c"],["#f59e0b","#ef4444"]],Design:[["#10b981","#14b8a6"],["#059669","#2dd4bf"],["#0d9488","#84cc16"]],Tecnologia:[["#4f46e5","#a855f7"],["#2563eb","#7c3aed"],["#6366f1","#06b6d4"]]};
-function Ilustra({item,idx}){
-  const p=PAL[item.cat][idx%3]; const id="g"+idx+item.cat;
-  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+item.tituloPt}>
-    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[1]}/></linearGradient></defs>
-    <rect width="400" height="240" fill={"url(#"+id+")"}/>
-    <circle cx={90+idx*17%120} cy="70" r="70" fill="#fff" opacity=".18"/>
-    <rect x="210" y="90" width="130" height="130" rx="26" fill="#fff" opacity=".2" transform="rotate(14 275 155)"/>
-    <polygon points="40,230 140,120 230,230" fill="#fff" opacity=".15"/>
-    <circle cx="320" cy="50" r="26" fill="#fff" opacity=".3"/>
-  </svg>);
+const PAL={Branding:["#ff9a5a","#e8553d","#ffd36e"],Design:["#3fc6a8","#0e7c86","#a8ecd8"],Tecnologia:["#5b6cff","#8a4dff","#9ad0ff"]};
+function Art({n}){
+  const p=PAL[n.cat]||PAL.Branding;const s=n.title.length*7;const id="g"+s+n.stars;
+  return <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+n.tituloPt}>
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset=".6" stopColor={p[1]}/><stop offset="1" stopColor={p[2]}/></linearGradient></defs>
+    <rect width="400" height="250" fill={`url(#${id})`}/>
+    <circle cx={60+s%200} cy="80" r="70" fill="#fff" opacity=".18"/>
+    <rect x={200-s%60} y="110" width="150" height="150" rx="28" fill="#fff" opacity=".16" transform="rotate(18 270 180)"/>
+    <polygon points={`40,230 ${120+s%50},120 ${200},230`} fill="#000" opacity=".12"/>
+    <circle cx="330" cy="50" r="26" fill="#fff" opacity=".3"/>
+  </svg>;
 }
-function Imagem({item,idx}){
-  const [falhou,setFalhou]=useState(false);
-  return (<div className="img">
-    {item.imageUrl && !falhou
-      ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
-      : <Ilustra item={item} idx={idx}/>}
-  </div>);
+function Pic({n}){
+  const [falhou,setFalhou]=React.useState(false);
+  return <div className="img">{(!n.imageUrl||falhou)?<Art n={n}/>:
+    <img src={n.imageUrl} alt={"Imagem da matéria: "+n.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>}</div>;
 }
-const Estrelas=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
-function Meta({item}){return (<div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><span>{item.source}</span><Estrelas n={item.stars}/></div>);}
-
-function Modal({item,idx,onClose}){
-  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",k);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",k);document.body.style.overflow=""}},[]);
-  return (<div className="overlay" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <button className="close" onClick={onClose} aria-label="Fechar">×</button>
-    <Imagem item={item} idx={idx}/>
-    <div className="c"><Meta item={item}/><h2>{item.tituloPt}</h2>
-      {item.resumo.map((t,i)=><p key={i}>{t}</p>)}
-      {item.paywall && <p className="note">Resumo escrito a partir dos elementos públicos da página (título, etiquetas, categoria e chamada); o artigo completo está atrás de paywall.</p>}
-      <p className="orig">Título original: {item.title}</p>
-      <a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte — {item.source} ↗</a>
-    </div></div></div>);
+const Stars=({k})=><span className="stars" title={k+" de 5"}>{"★".repeat(k)+"☆".repeat(5-k)}</span>;
+const Meta=({n})=><div className="meta"><span className={"tag "+n.cat}>{n.cat}</span><span>{n.source}</span><span>·</span><span>{n.data}</span><Stars k={n.stars}/></div>;
+function Modal({n,close}){
+  React.useEffect(()=>{const f=e=>e.key==="Escape"&&close();window.addEventListener("keydown",f);return()=>window.removeEventListener("keydown",f)},[]);
+  return <div className="ov" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <button className="x" onClick={close} aria-label="Fechar">✕</button><Pic n={n}/>
+    <div className="in"><Meta n={n}/><h2>{n.tituloPt}</h2><div className="orig">{n.title}</div>
+    {n.resumo.map((t,i)=><p key={i}>{t}</p>)}
+    {n.paywall&&<div className="note">Conteúdo completo atrás de paywall — resumo feito a partir de elementos públicos.</div>}
+    <a className="src" href={n.url} target="_blank" rel="noopener noreferrer">Ler na fonte: {n.source} →</a></div></div></div>;
 }
-
 function App(){
-  const [sel,setSel]=useState(null);
-  const itens=[...DATA].sort((a,b)=>b.stars-a.stars);
-  const [h,...resto]=itens;
-  return (<div className="wrap">
-    <header><div><h1>Portal da Manhã</h1><div className="date">Quarta-feira, 28 de outubro de 2026 · Branding, Design e Tecnologia</div></div><div className="date">{itens.length} notícias selecionadas</div></header>
-    <div className="hero" onClick={()=>setSel(0)}>
-      <Imagem item={h} idx={0}/>
-      <div className="txt"><Meta item={h}/><h2>{h.tituloPt}</h2><p style={{margin:0,color:"var(--mut)"}}>{h.resumo[0].slice(0,190)}…</p><span className="orig">Clique para ler o resumo completo</span></div>
-    </div>
-    <div className="grid">{resto.map((it,i)=>(
-      <div className="card" key={it.url} onClick={()=>setSel(i+1)}>
-        <Imagem item={it} idx={i+1}/>
-        <div className="b"><Meta item={it}/><h3>{it.tituloPt}</h3></div>
-      </div>))}</div>
-    {sel!==null && <Modal item={itens[sel]} idx={sel} onClose={()=>setSel(null)}/>}
-    <footer>Resumos em português parafraseados a partir das matérias originais. Edição gerada automaticamente.</footer>
-  </div>);
+  const [sel,setSel]=React.useState(null);const [f,setF]=React.useState("Todas");
+  const all=[...NEWS].sort((a,b)=>b.stars-a.stars);
+  const list=f==="Todas"?all:all.filter(n=>n.cat===f);
+  const [h,...rest]=list;
+  return <div className="wrap">
+    <header><div><h1>Portal da Manhã</h1><div className="sub">Quinta-feira, 29 de outubro de 2026 · Branding, Design e Tecnologia</div></div><div className="sub">{NEWS.length} notícias · {new Set(NEWS.map(n=>n.source)).size} portais</div></header>
+    <div className="chips">{["Todas","Branding","Design","Tecnologia"].map(c=><button key={c} className={"chip"+(f===c?" on":"")} onClick={()=>setF(c)}>{c}</button>)}</div>
+    {h&&<div className="card hero" onClick={()=>setSel(h)}><Pic n={h}/><div className="body"><Meta n={h}/><h2>{h.tituloPt}</h2><div className="orig">{h.title}</div><div>{h.resumo[0].slice(0,220)}…</div></div></div>}
+    <div className="grid">{rest.map(n=><div key={n.url} className="card" onClick={()=>setSel(n)}><Pic n={n}/><div className="body"><Meta n={n}/><h3>{n.tituloPt}</h3><div className="orig">{n.title}</div></div></div>)}</div>
+    {sel&&<Modal n={sel} close={()=>setSel(null)}/>}
+    <footer>Resumos parafraseados em português. Imagens carregadas diretamente dos portais de origem.</footer>
+  </div>;
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>

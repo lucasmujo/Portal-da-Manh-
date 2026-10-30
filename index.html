@@ -3,189 +3,201 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 29 de outubro de 2026</title>
+<title>Portal da Manhã — 30 de outubro de 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mut:#6a6f7a;--line:#e8e6e1;--acc:#e8553d;--r:18px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
-.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-h1{margin:0;font-size:34px;letter-spacing:-.02em}.sub{color:var(--mut);font-size:14px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--ink)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.card{background:var(--card);border-radius:var(--r);box-shadow:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.05);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);box-shadow:0 2px 6px rgba(0,0,0,.06),0 14px 32px rgba(0,0,0,.09)}
-.hero{display:grid;grid-template-columns:1.3fr 1fr;margin-bottom:24px;flex-direction:row}
-.hero .img{min-height:340px}.hero .body{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:10px}
-.hero h2{font-size:28px;line-height:1.15;margin:0;letter-spacing:-.01em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.img{position:relative;aspect-ratio:16/10;background:#eee;overflow:hidden}.hero .img{aspect-ratio:auto}
+:root{--bg:#f6f5f2;--card:#fff;--ink:#17171a;--mut:#6b6b73;--line:#e8e6e1;--acc:#e8590c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+h1{margin:0;font-size:34px;letter-spacing:-.02em}
+.date{color:var(--mut);font-size:15px;text-transform:capitalize}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:26px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.1)}
+.hero .img{min-height:340px}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.card .img{height:190px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:18px;line-height:1.3}
+.img{position:relative;background:#eee;overflow:hidden}
 .img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
-.body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.body h3{margin:0;font-size:17px;line-height:1.25}.orig{font-size:12px;color:var(--mut)}
-.meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);flex-wrap:wrap}
-.tag{padding:2px 9px;border-radius:99px;font-weight:600;font-size:11px}
-.Branding{background:#fde8e2;color:#b53a22}.Design{background:#dff3ee;color:#17725f}.Tecnologia{background:#e6e8fb;color:#4047b5}
-.stars{color:#f0a500;letter-spacing:1px}
-.ov{position:fixed;inset:0;background:rgba(20,22,28,.5);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;padding:4vh 14px;overflow:auto;z-index:10;animation:fi .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .25s;position:relative}
-.modal .img{aspect-ratio:16/9}.modal .in{padding:24px 28px 30px}.modal h2{margin:8px 0 4px;font-size:26px;line-height:1.2}
-.modal p{font-size:16px;margin:14px 0}.x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:18px;cursor:pointer;z-index:2}
-.src{display:inline-block;margin-top:8px;background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;text-decoration:none;font-size:14px}
-.note{font-size:13px;color:#8a5a00;background:#fff6e0;border-radius:10px;padding:8px 12px}
-footer{margin-top:40px;color:var(--mut);font-size:12px;text-align:center}
-@keyframes fi{from{opacity:0}}@keyframes up{from{transform:translateY(24px);opacity:0}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:0;aspect-ratio:16/10}.hero h2{font-size:22px}h1{font-size:26px}}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--mut)}
+.tag{padding:2px 10px;border-radius:99px;font-weight:600;font-size:12px}
+.Branding{background:#fff0e6;color:#c2410c}.Design{background:#e0f5f0;color:#0f766e}.Tecnologia{background:#ebe9ff;color:#4338ca}
+.stars{color:#f59f00;letter-spacing:1px}
+.ov{position:fixed;inset:0;background:rgba(20,20,25,.5);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 14px;z-index:10;animation:f .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:u .3s}
+.modal .img{height:340px}
+.modal .in{padding:26px 30px 32px}
+.modal h2{margin:8px 0 12px;font-size:26px;line-height:1.25}
+.modal p{font-size:16.5px;margin:0 0 14px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;margin-right:8px;border:0;cursor:pointer}
+.btn.l{background:#eee;color:var(--ink)}
+.note{font-size:13px;color:var(--mut);font-style:italic;margin-top:10px}
+.aviso{font-size:12px;color:#b45309}
+@keyframes f{from{opacity:0}to{opacity:1}}@keyframes u{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:27px}.modal .img{height:210px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const NEWS = [
+const { useState, useEffect } = React;
+const DATA = [
 {
- title: "Prada's hand-drawn holiday campaign is an utter joy – and a sharp lesson for Coca-Cola",
- tituloPt: "Campanha de fim de ano da Prada, desenhada à mão, é pura alegria — e uma lição para a Coca-Cola",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/news/pradas-hand-drawn-holiday-campaign-is-an-utter-joy-and-a-sharp-lesson-for-coca-cola",
- imageUrl: null,
- cat: "Branding", stars: 5, data: "29 out 2026",
- resumo: ["A Prada lançou sua campanha de fim de ano de 2026, \"Drawing Prada\", inteiramente em animação tradicional desenhada à mão. As embaixadoras e embaixadores da marca — Sadie Sink, Maya Hawke, Chen Haoyu, Kelvin Harrison Jr. e Luther Ford — aparecem dentro de mundos de desenho animado: uma raposa sarcástica segue Maya Hawke pela neve, um lince espia Kelvin Harrison Jr. e camundongos roubam os mocassins de bolinhas de Sadie Sink.","A direção de animação ficou com John Pomeroy, veterano que trabalhou na Disney nos anos 1970, cofundou com Don Bluth o estúdio por trás de \"O Segredo de NIMH\" e voltou à Disney para \"Pocahontas\". O animador principal, Tom Bancroft, com créditos em \"A Bela e a Fera\", \"Aladdin\", \"O Rei Leão\" e \"Mulan\", conta que Pomeroy reuniu de volta uma equipe de animadores tradicionais.","O autor do texto, Tom May, usa a campanha como contraponto aos dois últimos filmes de Natal da Coca-Cola, criticados por efeitos gerados por IA. Para ele, o trabalho da Prada é \"o antídoto\" contra o conteúdo sintético, e a Coca-Cola deveria investir também em animadores tradicionais. O ponto de fundo: em um mercado saturado de imagens geradas por máquina, o feito à mão virou sinal de valor e de cuidado de marca."]
-},
-{
- title: "New Logo and Identity for Twinnin by UnitedUs",
- tituloPt: "Novo logo e identidade da Twinnin, assinados pela UnitedUs",
+ title: "New Logo and Identity for London Film School by Rabbithole",
+ tituloPt: "Novo logo e identidade da London Film School, assinados pela Rabbithole",
  source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_twinnin_by_unitedus.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/Twinnin_before_after_02.jpg",
- cat: "Branding", stars: 4, data: "28 out 2026", paywall: true,
- resumo: ["O Brand New publicou, sob o título \"Me, Myself, and AI\", a análise da nova identidade da Twinnin, empresa do setor de tecnologia, desenvolvida pelo estúdio UnitedUs. A análise mostra comparativos de antes e depois e aplicações da marca.","As tags da publicação indicam as linhas gerais do sistema visual: tratamentos em 3D, efeito holográfico e pixelado, uso de QR code e tipografia sem serifa em caixa-alta. O título sugere que a inteligência artificial é o tema central da marca, o que combina com o visual digital e futurista indicado.","Observação: o texto completo da análise está atrás de paywall; este resumo se baseia apenas em elementos públicos (título, categoria, indústria e tags), e os detalhes de aplicação não foram confirmados."]
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_london_film_school_by_rabbithole.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/LFS_Logo_before_after.jpg",
+ cat: "Branding", stars: 5, paywall: true,
+ resumo: ["A tradicional London Film School, uma das escolas de cinema mais conhecidas do Reino Unido, apresentou um novo logo e uma nova identidade visual criados pela agência Rabbithole. O projeto foi analisado pelo Brand New sob o título “The Reel Deal”, em um trocadilho com o universo do cinema, e foi publicado em 29 de outubro.","Pelos elementos públicos da análise, a identidade gira em torno de uma paleta de preto e vermelho e de uma tipografia sem serifa, com referências temáticas a cinema e a Londres. A página mostra a comparação do antes e depois do logotipo e um exemplo de aplicação da marca.","O caso é relevante porque instituições de ensino criativo costumam equilibrar tradição e contemporaneidade, e a mudança reposiciona a escola para uma nova geração de cineastas."]
 },
 {
- title: "Coca-Cola gives everyday heroes the royal treatment in posh portrait campaign",
- tituloPt: "Coca-Cola dá tratamento real a heróis do dia a dia em campanha de retratos solenes",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/news/coca-cola-gives-everyday-heroes-the-royal-treatment-in-posh-portrait-campaign",
- imageUrl: null,
- cat: "Branding", stars: 4, data: "28 out 2026",
- resumo: ["A Coca-Cola Great Britain lançou \"Local Royalty\", campanha que homenageia quem trabalha em pequenos negócios independentes. Quatro retratos pintados à mão, feitos por artistas que já retrataram membros da família real britânica, mostram pessoas de um pub, de uma mercearia, de um café e de uma loja de fish and chips.","Segundo Rhona Stephen, da Coca-Cola, o objetivo é reconhecer donos de negócios cuja contribuição \"muitas vezes passa despercebida\". O Creative Bloq enxerga na ação uma guinada para a arte analógica num cenário publicitário dominado pelo design digital.","Os retratos ficam em exposição gratuita na Saatchi Gallery, em Londres, de 28 de outubro a 1º de novembro."]
+ title: "New Logo and Identity for CrazyGames by DixonBaxi",
+ tituloPt: "Novo logo e identidade da CrazyGames, assinados pela DixonBaxi",
+ source: "Brand New",
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_crazygames_by_dixonbaxi.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/crazy_games_logo_before_after.png",
+ cat: "Branding", stars: 4, paywall: true,
+ resumo: ["A plataforma de jogos online CrazyGames ganhou um novo logo e uma nova identidade desenvolvidos pela consultoria de design DixonBaxi, em post do Brand New de 28 de outubro intitulado “When They Zig, You Ziggy”.","As categorias e tags do post (entretenimento, 3D, mascote, ícone e games) indicam uma identidade apoiada em elementos tridimensionais e em um personagem, algo comum em marcas de jogos que buscam afeto e reconhecimento imediato.","A análise completa está atrás de paywall; por isso, o texto se limita a esses elementos públicos, com a comparação visual entre o logo antigo e o novo."]
 },
 {
- title: "Mark Palmer: Has Nike just got its brand mojo back with a spoof toy ad on social media?",
- tituloPt: "Mark Palmer: a Nike recuperou o brilho de marca com um anúncio-paródia de brinquedo nas redes?",
+ title: "AI is compounding branding's bullshit problem",
+ tituloPt: "Rob Meyerson: a IA está agravando o problema de besteiras do branding",
  source: "The Drum",
- url: "https://www.thedrum.com/opinion/has-nike-just-got-its-brand-mojo-back-with-a-spoof-toy-ad-on-social-media",
- imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/hydrahaaland.png?w=1280&ar=default&fit=crop&crop=faces&auto=format",
- cat: "Branding", stars: 4, data: "28 out 2026",
- resumo: ["Em coluna de opinião, Mark Palmer, fundador da Maverick Planet, analisa um anúncio-paródia no Instagram para uma boneca fictícia, a \"Hydra Haaland\". Ele primeiro achou que fosse obra de amador, mas descobriu que foi produzido pela agência boutique Ulta London, e não pela Wieden & Kennedy, parceira histórica da Nike. A peça satiriza comerciais de brinquedos tipo Barbie e Action Man, com criança, locução e um longo aviso legal cômico; o produto é real: chuteiras que mudam de cor quando molhadas.","Palmer descreve a queda de ações e reputação da Nike, em parte atribuída ao ex-CEO John Donahoe, e diz que o novo CEO, Elliott Hill, não conseguirá corrigir a cultura rapidamente — mas a publicidade pode melhorar mais rápido. Para ele, as campanhas dos últimos dois anos foram genéricas e dependentes de atletas famosos, como \"Why do it?\" (2025) e \"Rip the Script\" da Copa.","Ele contrasta isso com momentos marcantes do passado, como \"Dream Crazy\" com Colin Kaepernick (2018) e o anúncio \"Apology\" com Eric Cantona (1995), e vê no humor da paródia um retorno da imaginação e da distintividade. A sugestão final: mostrar o anúncio a equipes e agências como lembrete — \"Just Do (More) of It\"."]
+ url: "https://www.thedrum.com/opinion/ai-is-compounding-branding-s-bullshit-problem",
+ imageUrl: "https://thedrum-media.imgix.net/thedrum-user-assets-prod/s3/images/original/adobestock-1204407270.jpg?w=1280&ar=default&fit=crop&crop=faces&auto=format",
+ cat: "Branding", stars: 4, paywall: false,
+ resumo: ["Em artigo de opinião publicado em 29 de outubro, Rob Meyerson, consultor de marcas e fundador da agência de naming e estratégia Heirloom, argumenta que ferramentas de IA estão espalhando velhos mitos do branding com uma confiança que não merecem.","Segundo ele, o setor tem pouca formação formal e licenciamento, de modo que muitos frameworks repetidos à exaustão se apoiam em anedotas e pseudociência. Os exemplos são a ideia de que toda marca precisa encontrar seu “porquê”, a de que cores carregam emoções fixas e a de que personalidades de marca cabem em doze arquétipos atribuídos a Jung.","Ele cita três respostas de chatbots: uma endossa a tese de Simon Sinek sobre propósito, apesar de pesquisadores como Byron Sharp e Mark Ritson a contestarem; outra repete tabelas de psicologia das cores; e outra atribui a Jung os arquétipos Herói, Sábio e Cuidador, quando eles vêm de um livro de marketing de 2001.","Meyerson admite ter usado esses modelos no início da carreira e pede que profissionais baseiem a estratégia em pesquisa acadêmica e nas particularidades de cada cliente, e que questionem os mitos, inclusive avaliando mal as respostas da IA que os repetem."]
 },
 {
- title: "Apple revived the glowing logo, and turned it into the ultimate status symbol",
- tituloPt: "A Apple reviveu o logo que brilha e o transformou no símbolo de status definitivo",
- source: "Yanko Design",
- url: "https://www.yankodesign.com/2026/10/28/apple-revived-the-glowing-logo-and-turned-it-into-the-ultimate-status-symbol/",
- imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/apple-revived-the-glowing-logo-and-turned-it-into-the-ultimate-status-symbol/macbook_pro_glowing_logo_1.jpeg",
- cat: "Design", stars: 4, data: "28 out 2026",
- resumo: ["Sarang Sheth argumenta que a Apple fez voltar o logo luminoso nas tampas dos notebooks e o transformou em marcador de exclusividade. Os MacBooks antes de 2016 tinham a maçã retroiluminada, que sinalizava um produto premium; a Apple abandonou o recurso a partir de 2015 (MacBook de 12 polegadas) e 2016 (MacBook Pro), principalmente para afinar as tampas.","O brilho retorna no novo MacBook Pro com tela PROLED XDR, o primeiro Mac com toque. Como pixels OLED emitem a própria luz e não sobra retroiluminação, a Apple precisa de outra fonte de luz, ainda não explicada; o autor cita uma patente de 2022 de espelho parcialmente refletor retroiluminado como pista, sem confirmação.","O logo luminoso aparece só na versão a partir de US$ 2.899; os demais modelos mantêm o logo espelhado apagado. O autor compara à iluminação de emblemas e grades de marcas de carros de luxo e conclui que, depois de anos de produtos mais acessíveis sob Tim Cook, a Apple recuperou um sinal de status — \"uma corda de veludo\"."]
-},
-{
- title: "New Logo and Identity for Newlife by Dalziel & Pow",
- tituloPt: "Novo logo e identidade da Newlife, assinados pela Dalziel & Pow",
+ title: "New Logo and Packaging for Biela by Elmwood",
+ tituloPt: "Novo logo e embalagem da Biela, assinados pela Elmwood",
  source: "Brand New",
- url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_newlife_by_dalziel_pow.php",
- imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/newlife_logo_before_after.png",
- cat: "Branding", stars: 3, data: "28 out 2026", paywall: true,
- resumo: ["O Brand New destacou na seção \"Spotted\" a nova marca da Newlife, instituição de caridade do Reino Unido, redesenhada pela agência Dalziel & Pow. A publicação traz comparativos de antes e depois do logotipo.","As tags apontam para uma paleta azul e amarela e um motivo de coração, mas o texto não detalha as mudanças nem a justificativa estratégica.","Observação: o artigo completo está atrás de paywall; este resumo usa apenas título, categoria, setor e tags, sem inventar detalhes."]
+ url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_packaging_for_biela_by_elmwood.php",
+ imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/10/biela_logo_before_after.png",
+ cat: "Branding", stars: 3, paywall: true,
+ resumo: ["A agência Elmwood redesenhou o logo e a embalagem da Biela, marca equatoriana de bens de consumo, em post do Brand New de 29 de outubro chamado “Out with the Old, in with the Cold”.","As tags do projeto apontam para um esquema de cores dourado, um motivo espinhoso e a ligação com o Equador. O post traz comparações do antes e depois tanto do logotipo quanto da embalagem.","O conteúdo completo da crítica está sob paywall, então este resumo se restringe ao que é público."]
 },
 {
- title: "Apple is finally embracing chaos and I'm here for it",
- tituloPt: "A Apple finalmente abraça o caos — e eu aprovo",
- source: "Creative Bloq",
- url: "https://www.creativebloq.com/news/apple-is-finally-embracing-chaos-and-im-here-for-it",
- imageUrl: null,
- cat: "Branding", stars: 3, data: "29 out 2026",
- resumo: ["Natalie Fear, do Creative Bloq, defende que a Apple está mais lúdica no marketing: a marca, ligada ao minimalismo, ganhou personalidade a partir do lançamento do MacBook Neo, com um mascote chamado \"Lil' Finder Guy\" e alguns de seus melhores anúncios recentes.","Um post no Instagram da campanha #shotoniPhone mostrou jovens criativos, com espelho inspirado em cabine de fotos e um iPod Nano gigante feito à mão, mesclando nostalgia e estilo contemporâneo. Um fã comparou o resultado a anúncios de PlayStation dos anos 1990; outro elogiou a fotografia, em que o celular importa menos que a pessoa.","Nem tudo agrada: no X, um usuário zombou de uma jaqueta de alta-costura feita de fones EarPods emaranhados, chamando-a de \"coisa de pesadelo\". A conclusão do veículo é que a Apple se afasta de sua \"rigidez cinza-espacial\" rumo a um design mais tátil e brincalhão."]
-},
-{
- title: "Ryue Nishizawa places vivid orange peak against turquoise landfill in Japan",
- tituloPt: "Ryue Nishizawa posiciona pico laranja vibrante sobre aterro turquesa no Japão",
+ title: "Herzog & de Meuron to convert former Birkenstock warehouse into the Eames Institute museum",
+ tituloPt: "Herzog & de Meuron vai converter antigo galpão da Birkenstock no museu do Eames Institute",
  source: "Designboom",
- url: "https://www.designboom.com/architecture/ryue-nishizawa-vivid-orange-peak-turquoise-landfill-japan-setouchi-art-industry-2026-sanaa-kazuyo-sejima/",
- imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/ryue-nishizawa-vivid-orange-peak-turquoise-landfill-japan-setouchi-art-industry-2026-sanaa-kazuyo-sejima-designboom-1200.jpg",
- cat: "Design", stars: 4, data: "26–28 out 2026",
- resumo: ["Ryue Nishizawa, cofundador do SANAA com Kazuyo Sejima, projetou uma plataforma de observação em um aterro gerido pela Oono Development, em Toon, província de Ehime. A obra integra a exposição \"Final Disposal Site\", parte da primeira edição do Setouchi Art and Industry 2026, festival descentralizado que leva arte e arquitetura a sítios industriais ativos, com sete locais (sal, têxteis, jeans, estaleiros, baterias e reciclagem).","Sejima é a curadora. O aterro fica em um vale escavado como grande bacia e isolado do solo, previsto para encher em cerca de 15 anos. A mostra chama atenção para infraestruturas normalmente invisíveis.","Os visitantes chegam de ônibus e vestem uniformes laranja-avermelhados que combinam com a instalação. A superfície laranja contrasta com o solo claro, o revestimento turquesa e as montanhas verdes. Shingo Masuda e Katsuhisa Otsubo projetaram os espaços de convivência e o ponto de ônibus; Suzuko Yamada, o ônibus e os uniformes.","Nota: a data de publicação no Designboom é 26 de outubro; a Dezeen cobriu o tema em 28 de outubro."]
+ url: "https://www.designboom.com/architecture/herzog-de-meuron-eames-institute-museum-birkenstock-warehouse-novato/",
+ imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/10/herzog-de-meuron-eames-institute-museum-birkenstock-warehouse-novato-designboom-5.jpg",
+ cat: "Design", stars: 5, paywall: false,
+ resumo: ["O escritório Herzog & de Meuron vai transformar o antigo campus da Birkenstock em Novato, no condado de Marin, na Califórnia, na futura sede do museu do Eames Institute. A ideia é preservar a cobertura de concreto escultural, formada por cascas repetidas em paraboloide hiperbólico, projetada originalmente por Jan Lubicz-Nycz para a editora McGraw-Hill, com engenharia estrutural de Raj Desai.","A EHDD, de San Francisco, atua como arquiteta executiva, e a Field Operations desenha a paisagem de cerca de 88 acres. O programa inclui galerias, oficinas, teatro e jardins, com um acervo que cobre design industrial, pintura, escultura e outras áreas, tendo o legado dos Eames como ponto de partida.","Por dentro, um grande salão central mantém a geometria da cobertura visível. Um pátio de entrada recortado em um talude leva ao edifício, e uma passarela de aço refletivo cria um percurso elevado. Estúdios de madeira e cerâmica ficam ao lado de galerias flexíveis para que o público veja o trabalho criativo acontecendo.","As fachadas de vidro recuadas criam áreas externas cobertas, e dez jardins serão ligados por caminhos com espécies nativas como carvalho, manzanita e papoula-da-Califórnia. O Instituto comprou o terreno em 2025, o masterplan foi enviado à prefeitura de Novato, as obras principais começam em 2028 e a inauguração é prevista para 2030."]
 },
 {
- title: "Otter Keeps Newborns Warm Without a Reliable Power Supply",
- tituloPt: "Otter mantém recém-nascidos aquecidos mesmo sem energia elétrica confiável",
+ title: "This Disposable Camera is made from Mycelium not Single-use Plastic",
+ tituloPt: "Esta câmera descartável é feita de micélio, não de plástico de uso único",
  source: "Yanko Design",
- url: "https://www.yankodesign.com/2026/10/28/otter-keeps-newborns-warm-without-a-reliable-power-supply/",
- imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/otter-keeps-newborns-warm-without-a-reliable-power-supply/otter-0.jpg",
- cat: "Design", stars: 4, data: "28 out 2026",
- resumo: ["O Otter é um aquecedor portátil para recém-nascidos pensado para hospitais com energia instável e pouca manutenção. Já está em uso e foi desenvolvido pela organização americana Design that Matters com a fabricante vietnamita MTTS.","Em vez de colchão removível de água ou gel, usa um berço integrado de policarbonato condutor de calor, sem tecido, costuras ou frestas, o que facilita a desinfecção. Paredes transparentes arredondadas sobre base escura permitem acesso fácil ao bebê. Uma bateria assume automaticamente quando falta energia; pesa cerca de 5 kg com baterias.","O visor mostra temperatura e bateria; uma sonda de pele opcional monitora o bebê, com alarmes para falhas de aquecedor, sensor e energia. Na Zâmbia serve de aquecimento complementar enquanto a mãe descansa do método canguru. O uso exige pessoal qualificado e checagens regulares de temperatura.","Já foi usado no Vietnã, na Zâmbia e nas Filipinas, com mais de 800 recém-nascidos atendidos até janeiro de 2026, e ganhou o Grande Prêmio do Seoul Design Award 2026."]
+ url: "https://www.yankodesign.com/2026/10/29/this-disposable-camera-is-made-from-mycelium-not-single-use-plastic/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/draft-soft-pixel/soft_pixel_camera_1.jpeg",
+ cat: "Design", stars: 4, paywall: false,
+ resumo: ["A Soft-pixel é uma câmera digital conceitual do designer Sree Krishna Pillarisetti, um produtor de cogumelos do Brooklyn. A carcaça combina micélio, cânhamo e o bioplástico PHA, e a proposta é ser uma espécie de sucessora espiritual das câmeras descartáveis, mas com a eletrônica feita para durar e apenas a casca pensada para ser descartada.","As fotos ficam guardadas localmente em um cartão microSD, não na nuvem. O projeto vem da tese Soft-Drive, feita na Parsons com uma casca semelhante em PLA, e a Soft-pixel recebeu o prêmio de melhor eco-design no European Product Design Award 2026 e um Top Design na categoria câmeras digitais.","O artigo faz ressalvas: a compostabilidade do PHA depende da formulação e das condições, então a casca não é automaticamente segura para compostagem doméstica. Visualmente, há uma camada externa translúcida que deixa ver o interior fibroso, tela quadrada, quatro botões direcionais e parafusos expostos, indicando que o usuário pode abrir o aparelho.","Não há dados de sensor, resolução, bateria, preço ou lançamento, então o produto segue como conceito."]
 },
 {
- title: "Reddit is the latest platform to embrace the 'For You' feed",
- tituloPt: "Reddit é a mais nova plataforma a adotar o feed 'Para Você'",
- source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/28/reddit-is-the-latest-platform-to-embrace-the-for-you-feed/",
- imageUrl: "https://techcrunch.com/wp-content/uploads/2023/03/reddit-e1708636699632.jpg?resize=1200,800",
- cat: "Tecnologia", stars: 3, data: "28 out 2026",
- resumo: ["O Reddit vai adicionar um feed \"For You\" (Para Você), juntando-se a Instagram, X, Threads e Facebook. Ao abrir o app, haverá duas abas: \"For You\", que mistura posts das comunidades do usuário com recomendações baseadas em interesses, e \"Following\", só com comunidades já assinadas.","O Reddit diz que a mudança incentiva conexão, participação e pertencimento. Analistas esperam que o formato leve usuários a conteúdos além de suas comunidades. Parte dos usuários que viram o recurso em teste reclamou de conteúdo recomendado na página inicial; o app reabre na última aba usada. A liberação global ocorrerá nas próximas semanas."]
+ title: "Nike ACG x Helinox's 1.2-Pound Chair Refuses to Blend In",
+ tituloPt: "Cadeira de 540 g da Nike ACG com Helinox se recusa a passar despercebida",
+ source: "Yanko Design",
+ url: "https://www.yankodesign.com/2026/10/29/nike-acg-x-helinoxs-1-2-pound-chair-refuses-to-blend-in/",
+ imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/nike-acg-x-helinoxs-1-2-pound-chair-refuses-to-blend-in/helinox-01.jpg",
+ cat: "Design", stars: 3, paywall: false,
+ resumo: ["Nike ACG e Helinox lançam uma versão da Chair Zero LT, cadeira de camping ultraleve. O desenho deixa a estrutura à mostra, com acabamento laranja nas varetas e assento translúcido. O peso embalado é de 534 gramas e a capacidade é de cerca de 120 kg.","A cadeira usa a plataforma existente da Helinox, com varetas de alumínio DAC TH72M e conectores de resina de nylon. O tecido Ghostgrid é uma malha monofilamento translúcida com grade de ripstop que, segundo a marca, impede a propagação de pequenos rasgos. Uma faixa X-Strap sob as pernas amplia a base em areia, terra ou grama.","O autor aponta limites: a Helinox recomenda superfície plana e firme e carga bem distribuída, e a altura de assento de cerca de 18 cm é pensada para pessoas de até 1,75 m, o que pode incomodar quem tem dificuldade para levantar.","O preço de teaser nos EUA é US$ 169,95 (contra US$ 159,95 do modelo comum), com revelação completa em 2 de novembro de 2026 e envio ainda não confirmado."]
 },
 {
- title: "AI execs may be too out of touch to build for the general public",
- tituloPt: "Executivos de IA podem estar desconectados demais para criar produtos para o grande público",
+ title: "An Italian Folding Bicycle Design that Fits Into a Suitcase",
+ tituloPt: "Uma bicicleta dobrável italiana que cabe dentro de uma mala",
+ source: "Core77",
+ url: "https://www.core77.com/posts/145766/An-Italian-Folding-Bicycle-Design-that-Fits-Into-a-Suitcase",
+ imageUrl: "https://s3files.core77.com/blog/images/lead_n_spotlight/1855426_lead_400_145766_.jpg",
+ cat: "Design", stars: 3, paywall: false,
+ resumo: ["O Core77 resgata a T&C Pocket Bici, bicicleta dobrável de 1963 fabricada pela metalúrgica italiana Tresoldi & Casiraghi. Ao contrário das dobráveis atuais, que se separam em duas metades, este projeto recolhe todos os componentes dentro de um quadro alongado em formato de laço.","Depois de dobrada, a bicicleta cabe dentro de uma mala própria, combinando com ela. As fotos mostram uma Brompton ao lado para dar escala.","A origem do modelo é nebulosa: um leilão diz que foi feita para o mercado chinês, com 2.500 unidades vendidas, enquanto o BikeFlip conta que um comprador chinês encomendou 2.000, mas o pagamento não chegou depois das primeiras 1.000 e o projeto foi cancelado. O autor achou apenas um vídeo da bicicleta sendo desdobrada, de um canal chinês, o que sugere que algumas unidades chegaram ao destino."]
+},
+{
+ title: "Granola crunches up a dictation feature to compete with Wispr",
+ tituloPt: "Granola lança recurso de ditado para competir com a Wispr",
  source: "TechCrunch",
- url: "https://techcrunch.com/2026/10/28/ai-execs-may-be-too-out-of-touch-to-build-for-the-general-public/",
- imageUrl: "https://techcrunch.com/wp-content/uploads/2024/03/GettyImages-1172241499.jpg?resize=1200,728",
- cat: "Tecnologia", stars: 3, data: "28 out 2026",
- resumo: ["Amanda Silberling argumenta que executivos de IA vivem longe do cotidiano, usando como exemplo Marissa Mayer. Em entrevista ao New York Times sobre seu app assistente, o Dazzle, ela disse que a ferramenta ajudou a escrever três tópicos vagos sobre a filha de dez anos para uma apresentação escolar — o que gerou críticas. Mayer respondeu no X que testava um protótipo que resgatava trabalhos antigos da filha.","Mayer também falou em delegar à IA temas de festa, encontros de brincadeira, viagens e fantasias de Halloween, e, perguntada se um futuro \"planejado por IA\" seria deprimente, disse que não havia pensado nisso. O texto cita ainda Sam Altman (criar um recém-nascido com ChatGPT) e Mark Zuckerberg (companheiros e terapeutas de IA mais aceitos).","Um estudo do Pew mostra que 50% dos adultos nos EUA acham que a IA reduzirá a capacidade de formar relações significativas, contra só 5% que acham que ajudará. Para a autora, eficiência serve para chips ou carros elétricos, mas relações não são para otimizar."]
+ url: "https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/Granola.jpg?resize=1200,675",
+ cat: "Tecnologia", stars: 3, paywall: false,
+ resumo: ["A Granola, conhecida pelo assistente de IA que faz anotações de reuniões, adicionou um recurso de ditado para concorrer com a Wispr, que nasceu no ditado e recentemente incluiu notas de reunião. O recurso está disponível no Mac: o usuário segura a tecla Fn, fala, e a ferramenta limpa e formata o texto antes de inseri-lo.","Como funciona em qualquer app, serve para notas, prompts de IA e respostas a e-mails e mensagens. Versões para iOS e Windows devem chegar em breve.","A Granola é avaliada em US$ 1,5 bilhão e a Wispr em US$ 2 bilhões. A matéria vê uma convergência entre apps de voz: Fireflies, Speechify e Monologue também uniram notas de reunião e ditado, depois de um período em que startups preferiam ferramentas de função única."]
+},
+{
+ title: "Meta quietly launches an AI fashion app called Style Sketch",
+ tituloPt: "Meta lança discretamente Style Sketch, app de moda com IA",
+ source: "TechCrunch",
+ url: "https://techcrunch.com/2026/10/29/meta-quietly-launches-an-ai-fashion-app-called-style-sketch/",
+ imageUrl: "https://techcrunch.com/wp-content/uploads/2026/10/meta-style-sketch.png?resize=1200,625",
+ cat: "Tecnologia", stars: 2, paywall: false,
+ resumo: ["A Meta lançou sem alarde o Style Sketch, app de estilo com IA que sugere looks a partir das roupas que o usuário já tem. O guarda-roupa digital é montado com fotos de posts do Instagram ou com itens adicionados por foto, vídeo curto ou rolo da câmera.","O app propõe combinações no estilo da pessoa, oferece provador virtual em um modelo que deve corresponder ao corpo e ao tom de pele do usuário e permite partir de uma peça para gerar ideias. Para viagens, cria um plano de looks dia a dia conforme destino, duração, atividades e previsão do tempo.","Foi descoberto pelo consultor Matt Navarra e está disponível só na Indonésia, Singapura e Tailândia, em iOS e Android. A Meta não comentou. A matéria lembra que concorrentes como Alta e Google Fotos já oferecem algo parecido, e que a vantagem da Meta seria a integração com o Instagram."]
 }
 ];
-const PAL={Branding:["#ff9a5a","#e8553d","#ffd36e"],Design:["#3fc6a8","#0e7c86","#a8ecd8"],Tecnologia:["#5b6cff","#8a4dff","#9ad0ff"]};
-function Art({n}){
-  const p=PAL[n.cat]||PAL.Branding;const s=n.title.length*7;const id="g"+s+n.stars;
-  return <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração: "+n.tituloPt}>
-    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset=".6" stopColor={p[1]}/><stop offset="1" stopColor={p[2]}/></linearGradient></defs>
-    <rect width="400" height="250" fill={`url(#${id})`}/>
-    <circle cx={60+s%200} cy="80" r="70" fill="#fff" opacity=".18"/>
-    <rect x={200-s%60} y="110" width="150" height="150" rx="28" fill="#fff" opacity=".16" transform="rotate(18 270 180)"/>
-    <polygon points={`40,230 ${120+s%50},120 ${200},230`} fill="#000" opacity=".12"/>
-    <circle cx="330" cy="50" r="26" fill="#fff" opacity=".3"/>
-  </svg>;
+DATA.sort((a,b)=>b.stars-a.stars);
+
+const PAL={Branding:["#f97316","#fbbf24","#e11d48"],Design:["#0d9488","#34d399","#0e7490"],Tecnologia:["#4f46e5","#8b5cf6","#38bdf8"]};
+function Ilustra({cat,seed}){
+  const p=PAL[cat]||PAL.Design; const s=[...seed].reduce((a,c)=>a+c.charCodeAt(0),0);
+  const r=n=>((s*(n+7))%97)/97;
+  const id="g"+s;
+  return (<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de "+cat}>
+    <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[2]}/></linearGradient></defs>
+    <rect width="400" height="240" fill={"url(#"+id+")"}/>
+    <circle cx={80+r(1)*240} cy={60+r(2)*100} r={50+r(3)*50} fill={p[1]} opacity=".55"/>
+    <rect x={20+r(4)*200} y={110+r(5)*60} width={120+r(6)*80} height={90} rx="18" fill="#fff" opacity=".25" transform={"rotate("+(r(7)*30-15)+" 200 150)"}/>
+    <polygon points={`${300+r(8)*60},20 ${380},${120+r(9)*40} ${260},${140}`} fill="#fff" opacity=".2"/>
+    <circle cx={330} cy={200} r={34+r(10)*20} fill="none" stroke="#fff" strokeWidth="6" opacity=".4"/>
+  </svg>);
 }
-function Pic({n}){
-  const [falhou,setFalhou]=React.useState(false);
-  return <div className="img">{(!n.imageUrl||falhou)?<Art n={n}/>:
-    <img src={n.imageUrl} alt={"Imagem da matéria: "+n.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>}</div>;
+function Imagem({item}){
+  const [falhou,setFalhou]=useState(false);
+  return (<div className="img">
+    {item.imageUrl && !falhou
+      ? <img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>
+      : <Ilustra cat={item.cat} seed={item.title}/>}
+  </div>);
 }
-const Stars=({k})=><span className="stars" title={k+" de 5"}>{"★".repeat(k)+"☆".repeat(5-k)}</span>;
-const Meta=({n})=><div className="meta"><span className={"tag "+n.cat}>{n.cat}</span><span>{n.source}</span><span>·</span><span>{n.data}</span><Stars k={n.stars}/></div>;
-function Modal({n,close}){
-  React.useEffect(()=>{const f=e=>e.key==="Escape"&&close();window.addEventListener("keydown",f);return()=>window.removeEventListener("keydown",f)},[]);
-  return <div className="ov" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}>
-    <button className="x" onClick={close} aria-label="Fechar">✕</button><Pic n={n}/>
-    <div className="in"><Meta n={n}/><h2>{n.tituloPt}</h2><div className="orig">{n.title}</div>
-    {n.resumo.map((t,i)=><p key={i}>{t}</p>)}
-    {n.paywall&&<div className="note">Conteúdo completo atrás de paywall — resumo feito a partir de elementos públicos.</div>}
-    <a className="src" href={n.url} target="_blank" rel="noopener noreferrer">Ler na fonte: {n.source} →</a></div></div></div>;
+const Estrelas=({n})=><span className="stars" aria-label={n+" de 5 estrelas"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>;
+function Meta({item}){return (<div className="meta"><span className={"tag "+item.cat}>{item.cat}</span><strong>{item.source}</strong><Estrelas n={item.stars}/></div>);}
+function Modal({item,onClose}){
+  useEffect(()=>{const k=e=>e.key==="Escape"&&onClose();document.addEventListener("keydown",k);return()=>document.removeEventListener("keydown",k)},[]);
+  return (<div className="ov" onClick={onClose}><div className="modal" onClick={e=>e.stopPropagation()}>
+    <Imagem item={item}/>
+    <div className="in"><Meta item={item}/>
+      <h2>{item.tituloPt}</h2>
+      {item.resumo.map((p,i)=><p key={i}>{p}</p>)}
+      {item.paywall && <div className="note">Observação: a matéria original está atrás de paywall; o resumo foi escrito a partir dos elementos públicos (título, categoria, tags e imagens).</div>}
+      <p style={{marginTop:18}}><a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn l" onClick={onClose}>Fechar</button></p>
+    </div></div></div>);
 }
 function App(){
-  const [sel,setSel]=React.useState(null);const [f,setF]=React.useState("Todas");
-  const all=[...NEWS].sort((a,b)=>b.stars-a.stars);
-  const list=f==="Todas"?all:all.filter(n=>n.cat===f);
-  const [h,...rest]=list;
-  return <div className="wrap">
-    <header><div><h1>Portal da Manhã</h1><div className="sub">Quinta-feira, 29 de outubro de 2026 · Branding, Design e Tecnologia</div></div><div className="sub">{NEWS.length} notícias · {new Set(NEWS.map(n=>n.source)).size} portais</div></header>
-    <div className="chips">{["Todas","Branding","Design","Tecnologia"].map(c=><button key={c} className={"chip"+(f===c?" on":"")} onClick={()=>setF(c)}>{c}</button>)}</div>
-    {h&&<div className="card hero" onClick={()=>setSel(h)}><Pic n={h}/><div className="body"><Meta n={h}/><h2>{h.tituloPt}</h2><div className="orig">{h.title}</div><div>{h.resumo[0].slice(0,220)}…</div></div></div>}
-    <div className="grid">{rest.map(n=><div key={n.url} className="card" onClick={()=>setSel(n)}><Pic n={n}/><div className="body"><Meta n={n}/><h3>{n.tituloPt}</h3><div className="orig">{n.title}</div></div></div>)}</div>
-    {sel&&<Modal n={sel} close={()=>setSel(null)}/>}
-    <footer>Resumos parafraseados em português. Imagens carregadas diretamente dos portais de origem.</footer>
-  </div>;
+  const [sel,setSel]=useState(null);
+  const [h,...resto]=DATA;
+  const hoje=new Date(2026,9,30).toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  return (<div className="wrap">
+    <header><h1>☀️ Portal da Manhã</h1><div className="date">{hoje}</div></header>
+    <div className="hero" onClick={()=>setSel(h)}>
+      <Imagem item={h}/>
+      <div className="body"><Meta item={h}/><h2>{h.tituloPt}</h2><span style={{color:"var(--mut)"}}>{h.resumo[0].slice(0,190)}…</span><span style={{color:"var(--acc)",fontWeight:600}}>Abrir resumo →</span></div>
+    </div>
+    <div className="grid">{resto.map(it=>(
+      <div className="card" key={it.url} onClick={()=>setSel(it)}>
+        <Imagem item={it}/>
+        <div className="body"><Meta item={it}/><h3>{it.tituloPt}</h3></div>
+      </div>))}</div>
+    <footer>Resumos escritos em português a partir das matérias originais. Clique em um card para abrir.</footer>
+    {sel && <Modal item={sel} onClose={()=>setSel(null)}/>}
+  </div>);
 }
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>

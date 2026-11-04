@@ -3,160 +3,278 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portal da Manhã — 3 de novembro de 2026</title>
+<title>Portal da Manhã — 4 de novembro de 2026</title>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-:root{--bg:#f6f5f2;--card:#fff;--ink:#16181d;--mute:#6b7280;--line:#e8e6e0;--brand:#e4572e;--design:#0f9d8a;--tech:#5b5bd6}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+:root{--bg:#f6f6f3;--card:#fff;--ink:#16171a;--mut:#6b6f76;--line:#e8e8e3;--br:#e8590c;--ds:#0d9488;--tc:#5b5bd6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.5}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 64px}
-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-h1{font-size:34px;margin:0;letter-spacing:-.02em}.date{color:var(--mute);font-size:15px;text-transform:capitalize}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(20,20,30,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:28px}
-.hero:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(20,20,30,.12)}
-.hero .img{min-height:340px}.hero .body{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.hero h2{font-size:30px;line-height:1.15;margin:0;letter-spacing:-.02em}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+h1{font-size:34px;letter-spacing:-.03em;margin:0}
+.date{color:var(--mut);font-size:15px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:#fff}
+.t-Branding{background:var(--br)}.t-Design{background:var(--ds)}.t-Tecnologia{background:var(--tc)}
+.stars{color:#f5a524;font-size:13px;letter-spacing:1px}
+.thumb{position:relative;overflow:hidden;background:#eee}
+.thumb img,.thumb svg{width:100%;height:100%;object-fit:cover;display:block}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;margin-bottom:24px}
+.hero:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.11)}
+.hero .thumb{min-height:340px}
+.hero .body{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.hero h2{font-size:28px;line-height:1.15;letter-spacing:-.02em;margin:0}
+.meta{color:var(--mut);font-size:13px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(20,20,30,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(20,20,30,.12)}
-.card .img{height:180px}.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.card .thumb{height:180px}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
 .card h3{font-size:17px;line-height:1.3;margin:0}
-.img{position:relative;background:#eee;overflow:hidden}.img img,.img svg{width:100%;height:100%;object-fit:cover;display:block}
-.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--mute)}
-.tag{padding:3px 10px;border-radius:99px;color:#fff;font-weight:600;font-size:11.5px}
-.stars{color:#f5a524;letter-spacing:1px}
-.overlay{position:fixed;inset:0;background:rgba(15,17,22,.55);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .2s}
-.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;animation:up .3s ease;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.modal .img{height:340px}.modal .in{padding:28px 32px 34px}
-.modal h2{font-size:27px;line-height:1.2;margin:10px 0 4px}.modal .orig{color:var(--mute);font-size:13.5px;font-style:italic;margin-bottom:14px}
-.modal p{font-size:16.5px;margin:0 0 14px}.note{font-size:13px;color:var(--mute);border-left:3px solid var(--line);padding-left:10px}
-.btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.btn{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;color:var(--ink)}
-.btn.p{background:var(--ink);color:#fff;border-color:var(--ink)}
-footer{margin-top:36px;color:var(--mute);font-size:13px;text-align:center}
-@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .img{min-height:220px}h1{font-size:27px}.modal .img{height:220px}.modal .in{padding:20px}}
+.aviso{font-size:12px;color:#92600a;background:#fff4de;border-radius:8px;padding:4px 8px;display:inline-block}
+.overlay{position:fixed;inset:0;background:rgba(15,16,20,.45);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:30px 16px;z-index:10;animation:fade .25s}
+.modal{background:#fff;border-radius:22px;max-width:760px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:up .3s}
+.modal .thumb{height:340px}
+.modal .in{padding:26px 30px 32px}
+.modal h2{font-size:26px;line-height:1.2;margin:10px 0 6px;letter-spacing:-.02em}
+.modal p{font-size:16.5px;color:#2a2c31}
+.close{float:right;border:0;background:#f0f0ec;border-radius:99px;width:36px;height:36px;font-size:18px;cursor:pointer}
+.btn{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;text-decoration:none;padding:10px 18px;border-radius:99px;font-weight:600;font-size:14px}
+.orig{color:var(--mut);font-size:13px;margin:0}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+footer{margin-top:36px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .thumb{min-height:220px}h1{font-size:27px}.modal .thumb{height:220px}}
 </style>
 </head>
 <body>
 <div id="root"></div>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <script type="text/babel">
-const {useState,useEffect}=React;
-const CATS={branding:{nome:"Branding e Publicidade",cor:"#e4572e",pal:["#ff9a5a","#e4572e","#ffd27a","#b83a1d"]},design:{nome:"Design",cor:"#0f9d8a",pal:["#6fe0c5","#0f9d8a","#c8f5e6","#0b6b66"]},tech:{nome:"Tecnologia e IA",cor:"#5b5bd6",pal:["#8a8cff","#5b5bd6","#c9b8ff","#35318f"]}};
-const NEWS=[
-{
-title: "Foster + Partners and MANICA unveil design for new stadium to replace Milan's San Siro",
-tituloPt: "Foster + Partners e MANICA revelam projeto do novo estádio que substituirá o San Siro, em Milão",
-source: "ArchDaily",
-url: "https://www.archdaily.com/1187932/foster-plus-partners-and-manica-unveil-design-for-new-stadium-to-replace-milans-san-siro",
-imageUrl: "https://images.adsttc.com/media/images/6ae8/58f5/d5ab/1b01/886e/5251/large_jpg/foster-plus-partners-and-manica-unveil-design-for-new-stadium-to-replace-milans-san-siro_1.jpg?1793612057",
-cat:"design",stars:5,
-resumo:["Milan e Internazionale apresentaram o projeto do Generali Stadium, arena para 71.500 pessoas que será a casa compartilhada dos dois clubes. A obra é assinada por Foster + Partners em parceria com a MANICA e ficará ao lado do atual San Siro, dentro de uma requalificação de cerca de 281 mil m² da área do entorno. As obras devem começar em 2028, com a primeira partida prevista para a temporada 2031/32, sujeita a aprovações de planejamento.","Na arquitetura, uma estrutura em X de concreto percorre as colunatas e a fachada e sustenta a cobertura; as entradas em formato de losango abrem para amplos corredores panorâmicos. O telhado de dupla curvatura (cerca de 244 x 270 m) usa um sistema estrutural em roda de raios e recebe 27,5 mil m² de painéis fotovoltaicos. O estádio será totalmente elétrico, com ventilação natural, captação de água da chuva, reúso de águas cinzas e meta de certificação LEED Gold e operação neutra em carbono.","Por dentro, dois anéis de arquibancada formam um 'bowl' contínuo de 360 graus, com duas áreas inclinadas atrás dos gols (cerca de 11.700 torcedores cada) que reinterpretam as tradicionais Curvas. São 8.088 lugares de hospitalidade, 3.698 premium e 394 posições para cadeirantes, e o espaço também receberá shows, rúgbi e futebol americano. Os clubes compraram a área em 2025 por € 197 milhões e estimam o custo da obra em € 1,2 bilhão; parte da torcida da Inter protestou na apresentação, pedindo a preservação do San Siro, que seguirá em operação até a inauguração e depois será em grande parte demolido."]},
-{
-title: "Kay Sends Colin Jost on a Gift-Seeking Odyssey for the Holiday Season",
-tituloPt: "Kay manda Colin Jost em uma odisseia em busca do presente perfeito para as festas",
-source: "Adweek",
-url: "https://adweek.com/creativity/kay-sends-colin-jost-on-a-gift-seeking-odyssey-for-the-holiday-season",
-imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/11/KayHolidayAd.png",
-cat:"branding",stars:4,
-resumo:["A joalheria Kay recrutou Colin Jost, do Saturday Night Live, para a campanha de fim de ano que brinca com o estresse de escolher um presente. Criada pela The Martin Agency, a peça mostra Jost como um viajante em uma jornada perigosa, livremente inspirada na Odisseia de Homero, atrás de um presente significativo — até encontrar, no meio de uma nevasca, um colar de prata da marca.","Estrategicamente, a Kay muda o foco: em vez de falar do presenteado, como nos anos anteriores, o filme fala da ansiedade de quem presenteia. A campanha cita uma pesquisa da American Psychological Association de 2023 segundo a qual 40% das pessoas têm dificuldade em achar o presente certo. A mensagem é 'presenteie com ousadia': o maior erro seria se conter, não errar o item.","A ação amplia a plataforma 'Love All In', lançada no início do outono, e resgata a ideia de grandes gestos em uma época em que a indiferença está em alta, segundo a presidente da marca, Julie Yoakum. O filme roda no Instagram e no YouTube da Kay, na TV linear e em streaming."]},
-{
-title: "New Logo and Identity for Teamtailor done In-house",
-tituloPt: "Novo logo e identidade da Teamtailor, feitos internamente",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_teamtailor_done_in_house.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/teamtailor_logo_before_after.png",
-cat:"branding",stars:4,
-resumo:["O Brand New publicou a nova identidade da Teamtailor, empresa sueca de software de recrutamento, desenvolvida pela equipe interna. O post tem o título 'Let's Circle Back' e é classificado no setor corporativo, com as tags círculos, geométrico, in-house, Suécia e wordmark.","As tags indicam um sistema visual geométrico apoiado em círculos e em um logotipo tipográfico (wordmark), com seção de 'antes e depois' do logo e exemplos de aplicação. A publicação marca mais um caso de empresa de tecnologia que opta por conduzir a renovação de marca sem agência externa.","Observação: o artigo completo está atrás de paywall; este resumo se baseia apenas em elementos públicos (título, categoria, setor, tags e legendas das imagens), sem detalhes do racional de design."]},
-{
-title: "This year's creepiest Halloween advert looked surprisingly ordinary",
-tituloPt: "O anúncio de Halloween mais assustador do ano parecia surpreendentemente comum",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/news/this-years-creepiest-halloween-advert-looked-surprisingly-ordinary",
-imageUrl: "https://cdn.mos.cms.futurecdn.net/7haUnywh47s5NPoPAEyjn6-1920-80.jpg",
-cat:"branding",stars:4,
-resumo:["A campanha 'Ultimate Monster Costume', do estúdio britânico independente Do Not Behave (fundado por Jo Moore em 2025, com as educadoras What Makes a Man e Cheer Up Luv), imita o anúncio de uma loja online de fantasias de Halloween. O link leva a um site falso que vende uma 'Fantasia de Monstro da Vida Real': uma camiseta branca comum, jeans e tênis brancos.","A descrição do 'produto' lista comportamentos como invadir o espaço pessoal de mulheres e compartilhar nudes sem consentimento, e o botão de compra diz 'NÃO COMPRE ESTE COMPORTAMENTO'. A ideia é mostrar que agressores costumam parecer homens comuns, difíceis de identificar, e incentivar aliados homens a ficarem mais atentos.","O site falso recebeu mais de 2.500 visitas, segundo o estúdio. O texto cita dados do Reino Unido de que a violência contra mulheres atinge cerca de uma em cada 12 mulheres na Inglaterra e no País de Gales e que cerca de 97% das mulheres que denunciam agressão sexual conhecem o agressor."]},
-{
-title: "Is this the most controversial font since Comic Sans?",
-tituloPt: "Esta é a fonte mais polêmica desde a Comic Sans?",
-source: "Creative Bloq",
-url: "https://www.creativebloq.com/news/is-this-the-most-controversial-font-since-comic-sans",
-imageUrl: null,
-cat:"design",stars:4,
-resumo:["O artigo trata de um lettering de pincel ousado, com traços ásperos e leve inclinação, que geradores de imagem por IA produzem com frequência em cartazes. O autor o viu em cafés, restaurantes e até em um salão comunitário de vilarejo. Não se trata de uma fonte real com autoria definida: segundo a resposta do ChatGPT citada no texto, o estilo é gerado a partir de inspirações em designs existentes.","Alguns o comparam à Comic Sans, mas o autor considera a comparação injusta com ela. Pequenos negócios recorrem ao estilo porque é um jeito rápido e barato de fazer um cartaz sem contratar designer. Mandy Roscoe, da Carrick Signs, lembra que 'o problema não é a fonte em si', e sim o uso em contexto errado; a Comic Sans, criada para imitar a escrita à mão dos quadrinhos, foi eleita a segunda fonte mais confiável do mundo em 2020.","A ironia, diz o texto, é que um estilo feito para parecer artesanal e rebelde agora soa nitidamente artificial porque a IA o usa em excesso."]},
-{
-title: "New Name, Logo, and Identity for Be Runner by PND Futura",
-tituloPt: "Novo nome, logo e identidade da Be Runner, assinados pela PND Futura",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_name_logo_and_identity_for_be_runner_by_pnd_futura.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/be_runner_logo_before_after.png",
-cat:"branding",stars:4,
-resumo:["O estúdio PND Futura criou novo nome, logo e identidade para a Be Runner, varejista do setor de corrida na Polônia. O post do Brand New, na categoria 'Spotted', mostra comparações de antes e depois e é marcado com as tags itálico, monograma, naming, laranja, PND Futura, Polônia e corrida.","As tags sugerem um monograma em itálico, que transmite movimento, combinado ao laranja como cor de destaque. O nome anterior da marca não aparece nos trechos públicos da página.","Observação: o texto completo está atrás de paywall; este resumo usa apenas título, categoria, setor, tags e imagens públicas, sem o racional do projeto."]},
-{
-title: "New Logo for Salesloft",
-tituloPt: "Novo logo da Salesloft",
-source: "Brand New",
-url: "https://www.underconsideration.com/brandnew/archives/new_logo_for_salesloft.php",
-imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/salesloft_logo_before_after.png",
-cat:"branding",stars:3,
-resumo:["O Brand New destacou, em 3 de novembro, o novo logo da Salesloft, empresa de software de vendas. O post está na categoria 'Spotted' e traz imagens de antes e depois, com as tags preto, círculos, verde e ícone.","O estúdio ou designer responsável não é identificado no conteúdo público, e não há texto de apoio além do título e das legendas das imagens.","Observação: o artigo completo está atrás de paywall; este resumo se baseia apenas em informações públicas (título, setor, tags), sem detalhes do racional."]},
-{
-title: "Google takes Dreambeans to India in bid to bring AI-generated personal stories to the masses",
-tituloPt: "Google leva o Dreambeans à Índia para popularizar histórias pessoais geradas por IA",
-source: "TechCrunch",
-url: "https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses",
-imageUrl: "https://techcrunch.com/wp-content/uploads/2026/11/google-dreambeans.jpg?resize=1200,800",
-cat:"tech",stars:3,
-resumo:["O Google lançou na Índia o Dreambeans, app experimental de IA, seu primeiro mercado fora dos EUA. Disponível em Android e iOS, suporta 13 idiomas indianos (como hindi, punjabi, tâmil, télugo e bengali) e inglês. O app estreou em junho e usa dados de serviços conectados — Calendar, Gemini, Gmail, Fotos, Pesquisa e YouTube — para gerar histórias ilustradas sobre os interesses e o dia a dia do usuário, sem precisar de prompt; recentemente ganhou animação com Veo.","Os números são modestos: a Sensor Tower estima cerca de 55 mil downloads nos EUA desde junho, com queda de 84% em outubro (~5,5 mil). Apps comparáveis tiveram muito mais downloads em 30 dias, como o Muse da Meta (7,4 milhões) e o ChatGPT (2,8 milhões). Um limite para a Índia é que só se pode escolher um idioma por vez, sem mistura de hindi e inglês.","Sobre privacidade, o usuário escolhe e desconecta serviços e pode apagar os dados no app; só funciona com contas pessoais do Gmail e as histórias são visíveis apenas ao dono. O risco de a abordagem proativa trazer memórias dolorosas é tratado com a opção de pedir que certos temas não apareçam."]},
-{
-title: "six-sided transparent cube with LED matrix shapes screenless AI companion",
-tituloPt: "Cubo transparente de seis faces com matriz de LED dá forma a companheiro de IA sem tela",
-source: "Designboom",
-url: "https://www.designboom.com/technology/six-sided-transparent-cube-led-matrix-screenless-ai-companion-adam-miklosi-glyph-1/",
-imageUrl: "https://www.designboom.com/wp-content/uploads/2026/11/six-sided-transparent-cube-led-matrix-screenless-ai-companion-adam-miklosi-glyph-1-designboom-1200-1.jpg",
-cat:"design",stars:3,
-resumo:["O Glyph (1) é um conceito especulativo do designer industrial Adam Miklosi: um companheiro de IA sem tela que traduz a linguagem de design da marca Nothing em um objeto físico. Em vez de menus, a interação é feita pela orientação: girar o cubo para que uma face específica fique para cima ativa o modo programado para ela.","O corpo é uma casca de policarbonato transparente moldada, de bordas arredondadas, deixando à vista um chassi interno texturizado. Cada face tem sua própria matriz de LED programável para exibir gráficos, notificações e telemetria, e pode ser associada a funções como controle da casa inteligente, reprodução de áudio, temporizadores ou um assistente de voz ambiente.","O conceito aparece em versões monocromáticas preto e branco e chegou à Designboom pela seção de submissões DIY dos leitores; as imagens são creditadas a Miklosi."]},
-{
-title: "mtpeak reimagines the classic sports car with three wheels and carbon fiber bodywork",
-tituloPt: "MTPEAK reimagina o esportivo clássico com três rodas e carroceria de fibra de carbono",
-source: "Designboom",
-url: "https://www.designboom.com/technology/mtpeak-three-wheeled-sports-car-eicma-2026/",
-imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/11/imgi_15_ht-guangyu.jpeg",
-cat:"design",stars:3,
-resumo:["A marca emergente MTPEAK vai apresentar o One All na EICMA 2026, em Milão: um esportivo aberto com duas rodas na frente e uma atrás, a meio caminho entre moto e carro. A silhueta retrô e a cabine aberta evocam roadsters clássicos, enquanto os painéis esculpidos em fibra de carbono dão um toque moderno. É o primeiro modelo da marca.","Segundo a MTPEAK, o motor central é um 2.0 turbo que aciona a roda traseira única por câmbio automático de nove marchas, com relação peso-potência declarada de 370 cv por tonelada, estrutura tubular de aço cromo-molibdênio, freios carbono-cerâmicos ventilados, pneu traseiro de 305 mm e distribuição de peso de 50:50.","A fabricação está ligada à Guangyu Industrial e inclui usinagem CNC, estampagem, soldagem e fibra de carbono feitas internamente; cada veículo será configurado sob medida. O modelo fica na EICMA de 3 a 8 de novembro (Hall 24, Stand O54E), com produção limitada prevista para 2027 — volume, velocidade máxima e aceleração não foram divulgados."]},
-{
-title: "Hal Jordan has to recharge his ring, but the NoxTi titanium EDC lantern glows for decades",
-tituloPt: "Hal Jordan precisa recarregar o anel, mas a lanterna de titânio NoxTi brilha por décadas",
-source: "Yanko Design",
-url: "https://www.yankodesign.com/2026/11/02/hal-jordan-has-to-recharge-his-ring-but-the-noxti-titanium-edc-lantern-glows-for-decades/",
-imageUrl: "https://www.yankodesign.com/images/design_news/2026/10/hal-jordan-has-to-recharge-his-ring-but-the-noxti-titanium-edc-lantern-glows-for-decades/NoxTi-TRI-Ti-Tritium-Keychain-New-Glow-Outshine-the-Night-hero.jpg",
-cat:"design",stars:3,
-resumo:["A NoxTi TRI, do designer Xedge, é uma lanterna de bolso para chaveiro ou pingente. Três tubos luminosos ficam a 120 graus em um suporte de acrílico PMMA que os faz parecer um único núcleo brilhante. O comprador escolhe tubos de trítio (duração de cerca de duas décadas, segundo a Xedge) ou fotoluminescentes não radioativos, que carregam com a luz ambiente, em seis cores combináveis.","O corpo é de titânio grau 5 usinado em CNC (47 x 14,3 mm, 15,8 g), com luva de quartzo e anéis de vedação; a Xedge diz ter testado de -20 °C a 100 °C. Cada tubo repousa sobre uma esfera de silicone, com mola de aço inox para absorver impactos. Pode ser preso por argola, clipe ou corrente e tem uma esfera cerâmica quebra-vidro; é um localizador, não uma lanterna comum.","O preço de varejo é de cerca de US$ 55 (apoios no Kickstarter a partir de US$ 35), com entregas previstas para fevereiro de 2027 e mais de US$ 81 mil arrecadados. Os dados de durabilidade e luminosidade vêm da própria fabricante e não foram verificados de forma independente."]}
+const { useState, useEffect } = React;
+
+const NOTICIAS = [
+  {
+    rank: 5, categoria: "Design",
+    title: "Sharjah Design Centre announces 2029 opening with seven specialist labs in the UAE",
+    tituloPt: "Sharjah Design Centre anuncia abertura em 2029 com sete laboratórios especializados nos Emirados Árabes",
+    source: "Designboom",
+    url: "https://www.designboom.com/architecture/sharjah-design-centre-uae-united-arab-emirates-seven-specialist-labs-2029-mauricio-rocha-daniel-rossello/",
+    imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/11/sharjah-design-centre-uae-united-arab-emirates-seven-specialist-labs-2029-mauricio-rocha-daniel-rossello-designboom-1200.jpg",
+    resumo: ["O Sharjah Design Centre, projetado pelo Taller de Arquitectura em parceria com Daniel Rosselló, deve abrir em 2029 como parte do Sharjah Creative Quarter, nos Emirados Árabes Unidos. A proposta é aproximar designers, pesquisadores e fabricantes por meio de uma infraestrutura compartilhada, atacando justamente a lacuna entre a ideia e a produção física.","Perto da Universidade da Cidade de Sharjah e da Casa da Sabedoria, o prédio abrigará sete laboratórios especializados: têxteis, prototipagem rápida, vidro, cerâmica, joalheria, metal e madeira. Além deles, haverá biblioteca de materiais, arquivo digital, ateliês privados, áreas de coworking, espaços expositivos e uma área de varejo.","Em termos de arquitetura, o projeto combina materiais locais e técnicas tradicionais, como a taipa, com tecnologia contemporânea, respondendo ao clima e à paisagem da região.","A iniciativa de pesquisa Theatrum Al Kimiya investiga recursos regionais e subprodutos industriais como sal, argila, palma e micélio, e um programa de certificação de materiais com o Atelier LUMA e a Universidade Americana de Sharjah testará o desempenho real dessas matérias-primas. Com o mapeamento industrial de Sharjah e programas educacionais, o centro quer conectar criadores a fabricantes locais, e a diretora, Sheikha Hind bint Majid Al Qasimi, apresenta a produção como parte central do processo de design."]
+  },
+  {
+    rank: 5, categoria: "Design",
+    title: "SOM's Sany IROOTECH Headquarters Hangs Its Floors From a Giant Steel Exoskeleton",
+    tituloPt: "Sede da Sany IROOTECH, da SOM, pendura seus pisos em um gigantesco exoesqueleto de aço",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/11/03/soms-sany-irootech-headquarters-hangs-its-floors-from-a-giant-steel-exoskeleton/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/11/sany-irootech-headquarters/sany_irootech_yanko_design_01.jpg",
+    resumo: ["A SOM projetou a sede da Sany IROOTECH no distrito de Pazhou, em Guangzhou, ligando duas torres por um pódio elevado que deixa uma praça pública sombreada no nível do chão. A fabricante de equipamentos de construção Sany encomendou o complexo para seu braço de tecnologia em nuvem, com o Beijing Institute of Architectural Design como arquiteto responsável.","Um exoesqueleto de aço em padrão de losangos envolve as duas torres e sustenta pisos suspensos, o que libera os interiores de colunas. As torres são organizadas em módulos de cinco andares, cujos pisos pendem de vigas-anel no perímetro, permitindo usos como escritórios, quartos de hotel ou apartamentos.","Durante o desenvolvimento, o cliente incluiu planos de hotel e residências; as fachadas de vidro inclinadas para dentro criam terraços e reduzem a insolação direta.","Para lidar com riscos de tufões e terremotos, a SOM usou seu sistema patenteado de juntas com pino-fusível, que dissipa a energia sísmica por movimento controlado e atrito; a rápida reocupação após um sismo é descrita como meta, não como algo comprovado. Treliças de vários andares com vão de 65 metros cobrem a praça, que recebe luz por um pátio aberto, com restaurantes, lojas e espaços expositivos voltados para ela e um elevador público 24 horas ligado às passarelas cobertas do bairro."]
+  },
+  {
+    rank: 5, categoria: "Branding",
+    title: "Children's toys don't need to be an eyesore with Odd Works' tasteful identity for Toyto",
+    tituloPt: "Brinquedos infantis não precisam ser feios: identidade elegante da Odd Works para a Toyto",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/odd-works-toyto-graphic-design-project-021126",
+    imageUrl: "https://m.itsnicethat.com/original_images/odd-works-toyto-graphic-design-itsnicethat-13.jpg?class=w1440",
+    resumo: ["A Odd Works, estúdio de design e arte entre Lisboa e Londres, criou a identidade visual da Toyto, marca berlinense de brinquedos de madeira abertos, que marca sua primeira incursão no universo dos brinquedos. A Toyto incentiva as crianças a se afastarem das telas e brincarem com blocos, cubos, torres e veículos artesanais, sem pilhas nem manual de instruções.","Os brinquedos são concebidos por artistas, ancorados em princípios pedagógicos humanistas e feitos por marceneiros do Leste Europeu. A abordagem visual bebe no design modernista do século 20, de Bauhaus a Eames e Dieter Rams, em vez do visual colorido e artificial típico das marcas infantis.","O estúdio combinou um logotipo sob medida, construído com formas que ecoam os produtos de madeira, com a fonte Labil Grotesk, cujas letras inclinadas sugerem uma torre de blocos prestes a tombar.","A embalagem é limpa, sem excessos, usa relevo e baixo-relevo para criar apelo tátil e foi pensada para ficar à vista na estante, não escondida. O diretor de arte Pavel Ripley resume o duplo sentido do nome: toy para os pais, to play com as crianças."]
+  },
+  {
+    rank: 4, categoria: "Design",
+    title: "Never eaten a whole fish? This beautifully designed magazine will show you how to",
+    tituloPt: "Nunca comeu um peixe inteiro? Esta revista lindamente desenhada ensina como",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/beam-eating-the-whole-fish-graphic-design-project-031126",
+    imageUrl: "https://m.itsnicethat.com/original_images/BEAM_EatingtheWholeFish_Cover.png?class=w1440",
+    resumo: ["O estúdio Beam, entre Providence e Cambridge, nos EUA, foi fundado em 2024 por Zoe Lee e Annie Chen, com Ryan Lettieri como terceiro diretor. O foco são projetos voltados ao futuro e ao meio ambiente, para instituições como a NASA e o ecossistema de tecnologia climática do MIT.","A revista Eating The Whole Fish nasceu de uma pergunta de Kate Masury, da Eating with the Ecosystem: como fazer as pessoas consumirem mais dos frutos do mar pescados em águas locais? A publicação de 200 páginas mistura revista, livro de receitas, arquivo cultural e artigo de pesquisa, com guias práticos, receitas e entrevistas com chefs, pescadores, peixeiros e cientistas.","A equipe lembra que muitas espécies da Nova Inglaterra ficam melhores inteiras, enquanto muita gente se acostumou a filés sem espinha; as próprias famílias imigrantes dos designers comiam peixe com cabeça, pele e espinhas.","O design, feito com a designer gráfica Kayla Feng, mistura xadrezes, diagramas anatômicos, referências a embalagens de peixe e motivos de pixel e ponto-cruz, equilibrando leveza e legibilidade. A esperança é que o livro mude a forma como se compra, cozinha e come frutos do mar, gerando oportunidades para pescadores locais e reforçando os laços entre comunidades costeiras e o mar."]
+  },
+  {
+    rank: 4, categoria: "Design",
+    title: "Prince de Conti hotel turns historic Parisian interiors into theatrical guest rooms",
+    tituloPt: "Hotel Prince de Conti transforma interiores históricos de Paris em quartos teatrais",
+    source: "Designboom",
+    url: "https://www.designboom.com/architecture/prince-de-conti-hotel-saint-germain-des-pres-paris/",
+    imageUrl: "https://www.designboom.com/twitterimages/uploads/2026/11/paris-prince-de-conti-hotel-saint-germain-des-pres-designboom-designboom-012-1.jpg",
+    resumo: ["O Prince de Conti é um hotel boutique quatro estrelas com 23 quartos e suítes, instalado num edifício do século 17 em Saint-Germain-des-Prés, em Paris, perto de Notre-Dame e do Hôtel de la Monnaie. Apesar do porte pequeno, empresta o caráter luxuoso de hotéis cinco estrelas, com texturas ricas e detalhes teatrais num ambiente íntimo.","O grupo Paristory, negócio familiar das irmãs Alexandra e Julie Marang, é dono do hotel, sua primeira unidade na Margem Esquerda, depois de três boutiques na Margem Direita.","Os interiores reinterpretam a história francesa do século 17 com um olhar contemporâneo: cores ousadas, motivos históricos e detalhes lúdicos, sem recriar o passado nem transformar o hotel em museu. Acabamentos em madeira, tapeçarias e tecidos luxuosos evocam a decoração da aristocracia.","Cada quarto funciona como um pequeno cenário, com personalidade e referências próprias, para que a estadia lembre uma residência particular. Um bar de honra de autosserviço, em que o hóspede se serve e anota o que consome, acrescenta um toque descontraído baseado em confiança."]
+  },
+  {
+    rank: 4, categoria: "Branding",
+    title: "The 2026 Holiday Ads Worth Watching",
+    tituloPt: "Os anúncios de fim de ano de 2026 que valem a pena assistir",
+    source: "Adweek",
+    url: "https://www.adweek.com/creativity/the-2026-holiday-ads-worth-watching/",
+    imageUrl: "https://static-www.adweek.com/wp-content/uploads/2026/10/HolidayAds2026.png?w=600&h=315&crop=1",
+    resumo: ["A Adweek reuniu um panorama das campanhas de fim de ano das grandes marcas e varejistas, assinado por Brittaney Kiefer e Rebecca Stewart. O texto abre lembrando que a National Retail Federation prevê alta de 4,2% nas vendas de fim de ano nos EUA, para US$ 1,013 trilhão, o que torna a temporada uma das mais disputadas para os anunciantes.","Walmart e Target lançaram suas campanhas antes do Halloween, cada uma com sua versão de tradições e entretenimento festivo. A Sephora apostou em estrelas inesperadas, enquanto marcas como Nordstrom e Tiffany & Co. investiram em nostalgia e na magia da época.","A barra lateral da página relaciona ainda outras peças sazonais, como a campanha da Kay com Colin Jost, o anúncio nostálgico da e.l.f. narrado por Alan Cumming e a campanha da Ulta Beauty com Selena Gomez e Tate McRae, embora o texto não confirme que todas estejam no levantamento."],
+    aviso: "Matéria atrás de paywall: resumo baseado apenas na introdução e nos elementos públicos da página."
+  },
+  {
+    rank: 4, categoria: "Branding",
+    title: "New Logo and Identity for Masani Pizza by Saint-Urbain",
+    tituloPt: "Novo logo e identidade da Masani Pizza, assinados pela Saint-Urbain",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_masani_pizza_by_saint_urbain.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/Masani_logo_new.png",
+    resumo: ["O Brand New publicou em 3 de novembro de 2026 a análise do novo logo e identidade da Masani Pizza, desenvolvidos pelo estúdio Saint-Urbain, sob o título A Real Pizz'a Work. O projeto está classificado na indústria de restaurantes.","As tags públicas da página, como vestuário, embalagem, sinalização, merchandising, serifa, sem serifa, retrô e vernacular, sugerem uma identidade de espírito retrô e popular que se estende por cardápios, embalagens, produtos e fachada, mas os detalhes não são confirmados no trecho aberto."],
+    aviso: "Matéria atrás de paywall: resumo baseado em título, categoria, indústria e tags públicas. Nenhum detalhe adicional foi inventado."
+  },
+  {
+    rank: 3, categoria: "Design",
+    title: "The 'Desktop 95' Watch is a love-letter to the greatest Windows OS of all time",
+    tituloPt: "Relógio Desktop 95 é uma carta de amor ao melhor Windows de todos os tempos",
+    source: "Yanko Design",
+    url: "https://www.yankodesign.com/2026/11/03/the-desktop-95-watch-is-a-love-letter-to-the-greatest-windows-os-of-all-time/",
+    imageUrl: "https://www.yankodesign.com/images/design_news/2026/11/657497/desktop_95_watch_1.jpg",
+    resumo: ["O Desktop 95, da Benly Watch, é um relógio analógico em edição limitada cujo mostrador recria uma área de trabalho no estilo Windows 95, em verde-azulado ou creme. A versão azul mostra uma janela de arquivos e atalhos; a branca traz uma área mais simples, com barra de carregamento e a mensagem Loading memories… numa caixa de diálogo.","Mãos em forma de cursor pixelado marcam as horas, e uma barra de tarefas percorre a base de cada mostrador. A caixa de aço inoxidável de 39 mm tem movimento a quartzo, resistência de 5 ATM e pulseiras de couro, malha ou aço.","A matéria liga o projeto ao lançamento do Windows 95, em 1995, e à paleta de sua interface, em parte moldada pelos limites gráficos da época, contrastando essa estética enxuta com os recursos atuais do Windows, como Copilot e Teams. O relógio custa US$ 159 em pré-venda, é limitado a 500 peças e tem envio previsto para novembro de 2026."]
+  },
+  {
+    rank: 3, categoria: "Tecnologia",
+    title: "Anthropic is working on a system to prove AI models' identity",
+    tituloPt: "Anthropic trabalha em sistema para provar a identidade de modelos de IA",
+    source: "TechCrunch",
+    url: "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
+    imageUrl: "https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2294192768.jpg?resize=1200,798",
+    resumo: ["A Anthropic está desenvolvendo o FlashProve, um sistema de código aberto que permite verificar qual modelo de IA produziu determinada resposta, segundo um post publicado nesta terça. A técnica, chamada de inferência comprovável, usa criptografia para dar garantia matemática de que a resposta veio de um modelo específico.","Como a assinatura de um e-mail, ela foi pensada para resistir a impostores, inclusive quando a própria empresa que opera o modelo é quem tenta se passar por outro. Isso poderia expor laboratórios que trocam discretamente o modelo por versões mais baratas para economizar, ou por mais caras para inflar benchmarks, e permitiria a terceiros checar se uma tarefa foi mesmo revisada por um modelo avançado.","Os laboratórios publicariam uma impressão digital de cada modelo, comparável com as saídas sem revelar os pesos internos, e o projeto é leve o bastante para rodar em dispositivo local. Uma especificação técnica e o código foram publicados no GitHub, mas os pesquisadores descrevem o trabalho como intermediário e não há planos de implantação na Anthropic ou em outros laboratórios."]
+  },
+  {
+    rank: 3, categoria: "Branding",
+    title: "Welcome to Hot Cottage, the jack of all trades design studio that zigzags between methods and mediums",
+    tituloPt: "Conheça o Hot Cottage, estúdio de design pau para toda obra que zigzagueia entre métodos e mídias",
+    source: "It's Nice That",
+    url: "https://www.itsnicethat.com/articles/hot-cottage-ed-davis-rob-cordiner-olivia-radonich-graphic-design-discover-031126",
+    imageUrl: "https://m.itsnicethat.com/original_images/ItsNiceThat_HotCottage_BRAINDEAD_36.jpg?class=w1440",
+    resumo: ["O Hot Cottage é um estúdio criativo liderado por Ed Davis com os sócios Rob Cordiner e Olivia Radonich, atuando em direção de arte, design gráfico, identidade, publicações e design de exposições. Faz parte de um conjunto de empreendimentos ligados a Davis, como o projeto Ecstatic Research, a marca de streetwear Brain Dead e o selo de incensos Agaric Fly, que ele toca com o filho Milo.","O estúdio cuida da marca de vários desses projetos irmãos e também criou a identidade do café Pantry e a arte de álbum do músico Lauer. O processo começa com pesquisa e coleta em bibliotecas e arquivos de imagens e tipos, reunindo referências por colagem, desenho e design gráfico.","No logotipo da Agaric Fly, a equipe combina duas letras de formas muito contrastantes com ilustração desenhada à mão; na revista Local Optimist, usa capas com adesivos brilhantes e páginas de colagem ilustrada.","Cordiner conta que os fundadores cresceram longe dos polos de subcultura, conectados por revistas e depois pela internet, e que o design os transformou em participantes ativos dessas cenas. Inspirados por Margaret Calvert, Mike Kelley, David Lynch e Tadanori Yokoo, seguem movidos pela curiosidade."]
+  },
+  {
+    rank: 3, categoria: "Branding",
+    title: "New Logo and Identity for Simmer by Play",
+    tituloPt: "Novo logo e identidade da Simmer, assinados pela Play",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_simmer_by_play.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/simmer_logo_new.png",
+    resumo: ["O Brand New cobriu em 3 de novembro de 2026 o novo logo e identidade da Simmer, criados pela Play, na categoria Noted e na indústria de entretenimento.","As tags públicas mencionam aplicativo, basquete, leão, ligadura, serifa e ícone, e a página lista as seções Novo Logo e Aplicações de Exemplo, o que indica um projeto com logotipo, símbolo e demonstrações de uso. A análise completa não está disponível sem assinatura."],
+    aviso: "Matéria atrás de paywall: resumo baseado em título, categoria, indústria e tags públicas. Nenhum detalhe adicional foi inventado."
+  },
+  {
+    rank: 2, categoria: "Branding",
+    title: "New Logo and Identity for PUK & Partners by Artı Stüdyo",
+    tituloPt: "Novo logo e identidade da PUK & Partners, assinados pela Artı Stüdyo",
+    source: "Brand New",
+    url: "https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_puk_partners_by_arti_studyo.php",
+    imageUrl: "https://www.underconsideration.com/brandnew/wp/wp-content/uploads/2026/11/puk_logo_before_after.png",
+    resumo: ["O Brand New registrou em 3 de novembro de 2026, na categoria Spotted, o novo logo e identidade da PUK & Partners, escritório do setor de arquitetura, desenvolvidos pela Artı Stüdyo, da Turquia.","As tags públicas citam ink traps (recortes de tinta na tipografia), uma escolha típica de logotipos com foco em legibilidade e personalidade gráfica. O texto completo da análise exige assinatura."],
+    aviso: "Matéria atrás de paywall: resumo baseado em título, categoria, indústria e tags públicas. Nenhum detalhe adicional foi inventado."
+  }
 ];
-function Art({cat,seed,big}){const p=CATS[cat].pal;const s=seed*37;
-return(<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id={"g"+seed} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[3]}/></linearGradient></defs>
-<rect width="400" height="240" fill={"url(#g"+seed+")"}/>
-<circle cx={80+(s%200)} cy={60+(s%90)} r={70+(s%40)} fill={p[2]} opacity=".35"/>
-<rect x={200-(s%90)} y={110+(s%40)} width="170" height="170" rx="30" transform={"rotate("+(20+s%40)+" 280 190)"} fill={p[1]} opacity=".5"/>
-<circle cx={320-(s%80)} cy={50+(s%50)} r="34" fill="#fff" opacity=".25"/></svg>);}
-function Img({item,i}){const [falhou,setFalhou]=useState(false);
-return(<div className="img">{item.imageUrl&&!falhou?<img src={item.imageUrl} alt={"Imagem da matéria: "+item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={()=>setFalhou(true)}/>:<Art cat={item.cat} seed={i+1}/>}</div>);}
-function Tag({cat}){return <span className="tag" style={{background:CATS[cat].cor}}>{CATS[cat].nome}</span>}
-function Stars({n}){return <span className="stars" title={n+" de 5"}>{"★".repeat(n)+"☆".repeat(5-n)}</span>}
-function Modal({item,i,close}){useEffect(()=>{const h=e=>e.key==="Escape"&&close();document.addEventListener("keydown",h);document.body.style.overflow="hidden";return()=>{document.removeEventListener("keydown",h);document.body.style.overflow=""}},[]);
-return(<div className="overlay" onClick={close}><div className="modal" onClick={e=>e.stopPropagation()}><Img item={item} i={i}/><div className="in">
-<div className="meta"><Tag cat={item.cat}/><Stars n={item.stars}/><span>{item.source}</span></div>
-<h2>{item.tituloPt}</h2><div className="orig">{item.title}</div>
-{item.resumo.map((p,k)=><p key={k} className={p.startsWith("Observação")?"note":""}>{p}</p>)}
-<div className="btns"><a className="btn p" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ↗</a><button className="btn" onClick={close}>Fechar</button></div></div></div></div>);}
-function App(){const [sel,setSel]=useState(null);const [h,...rest]=NEWS;
-return(<div className="wrap"><header><div><h1>Portal da Manhã</h1></div><div className="date">terça-feira, 3 de novembro de 2026</div></header>
-<div className="hero" onClick={()=>setSel(0)}><Img item={h} i={0}/><div className="body"><div className="meta"><Tag cat={h.cat}/><Stars n={h.stars}/><span>{h.source}</span></div><h2>{h.tituloPt}</h2><div className="meta">Toque para ler o resumo completo →</div></div></div>
-<div className="grid">{rest.map((n,k)=><div className="card" key={k} onClick={()=>setSel(k+1)}><Img item={n} i={k+1}/><div className="body"><div className="meta"><Tag cat={n.cat}/><Stars n={n.stars}/></div><h3>{n.tituloPt}</h3><div className="meta">{n.source}</div></div></div>)}</div>
-<footer>Resumos produzidos em português a partir das matérias originais · Edição de 3 de novembro de 2026</footer>
-{sel!==null&&<Modal item={NEWS[sel]} i={sel} close={()=>setSel(null)}/>}</div>);}
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+const PALETAS = {
+  Branding: ["#ff9f43","#e8590c","#ffd8a8","#c92a2a"],
+  Design: ["#12b886","#0d9488","#96f2d7","#087f5b"],
+  Tecnologia: ["#5b5bd6","#7950f2","#a5b4fc","#364fc7"]
+};
+
+function Ilustracao({ categoria, seed }) {
+  const p = PALETAS[categoria] || PALETAS.Design;
+  let h = 0; for (const c of seed) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const r = (n) => ((h >> n) & 255) / 255;
+  const id = "g" + h;
+  return (
+    <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label={"Ilustração de " + categoria}>
+      <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p[0]}/><stop offset="1" stopColor={p[3]}/></linearGradient></defs>
+      <rect width="400" height="240" fill={"url(#" + id + ")"}/>
+      <circle cx={80 + r(2) * 240} cy={60 + r(4) * 100} r={50 + r(6) * 60} fill={p[2]} opacity=".5"/>
+      <rect x={20 + r(8) * 200} y={90 + r(10) * 80} width={110 + r(12) * 80} height={110 + r(14) * 60} rx="24" fill={p[1]} opacity=".55" transform={"rotate(" + Math.round(r(16) * 40 - 20) + " 200 120)"}/>
+      <polygon points={`${250 + r(18) * 80},20 ${330 + r(20) * 60},150 ${210 + r(22) * 60},140`} fill="#fff" opacity=".28"/>
+    </svg>
+  );
+}
+
+function Imagem({ item }) {
+  const [falhou, setFalhou] = useState(false);
+  return (
+    <div className="thumb" style={{ height: "100%" }}>
+      {item.imageUrl && !falhou
+        ? <img src={item.imageUrl} alt={"Imagem da matéria: " + item.tituloPt} referrerPolicy="no-referrer" loading="lazy" onError={() => setFalhou(true)} />
+        : <Ilustracao categoria={item.categoria} seed={item.title} />}
+    </div>
+  );
+}
+
+function Estrelas({ n }) { return <span className="stars" aria-label={n + " de 5 estrelas"}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>; }
+
+function Meta({ item }) {
+  return (
+    <div className="meta">
+      <span className={"tag t-" + item.categoria}>{item.categoria}</span>
+      <Estrelas n={item.rank} />
+      <span>{item.source}</span>
+    </div>
+  );
+}
+
+function Detalhe({ item, onClose }) {
+  useEffect(() => {
+    const f = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", f);
+    return () => window.removeEventListener("keydown", f);
+  }, []);
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <Imagem item={item} />
+        <div className="in">
+          <button className="close" onClick={onClose} aria-label="Fechar">✕</button>
+          <Meta item={item} />
+          <h2>{item.tituloPt}</h2>
+          <p className="orig">Título original: {item.title}</p>
+          {item.resumo.map((t, i) => <p key={i}>{t}</p>)}
+          {item.aviso && <span className="aviso">{item.aviso}</span>}
+          <div><a className="btn" href={item.url} target="_blank" rel="noopener noreferrer">Ler na fonte ({item.source}) →</a></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [aberta, setAberta] = useState(null);
+  const [manchete, ...resto] = NOTICIAS;
+  return (
+    <div className="wrap">
+      <header>
+        <div>
+          <h1>☀️ Portal da Manhã</h1>
+          <div className="date">Quarta-feira, 4 de novembro de 2026 · {NOTICIAS.length} notícias de branding, design e tecnologia</div>
+        </div>
+      </header>
+      <article className="hero" onClick={() => setAberta(manchete)}>
+        <Imagem item={manchete} />
+        <div className="body">
+          <Meta item={manchete} />
+          <h2>{manchete.tituloPt}</h2>
+          <p style={{ margin: 0, color: "#44474d" }}>{manchete.resumo[0].slice(0, 190)}…</p>
+          <span style={{ fontWeight: 600 }}>Abrir resumo →</span>
+        </div>
+      </article>
+      <section className="grid">
+        {resto.map((n) => (
+          <article className="card" key={n.url} onClick={() => setAberta(n)}>
+            <Imagem item={n} />
+            <div className="body">
+              <Meta item={n} />
+              <h3>{n.tituloPt}</h3>
+              {n.aviso && <span className="aviso">Resumo parcial (paywall)</span>}
+            </div>
+          </article>
+        ))}
+      </section>
+      <footer>Resumos escritos em português a partir das matérias originais. Clique em uma notícia para abrir.</footer>
+      {aberta && <Detalhe item={aberta} onClose={() => setAberta(null)} />}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>
